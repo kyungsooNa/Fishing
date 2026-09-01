@@ -14,7 +14,7 @@
 import { loadHtml } from '../core/fetcher.js';
 import { makeTrip, STATUS } from '../core/schema.js';
 
-const DATE_RE = /(\d{1,2})월\s*(\d{1,2})일\s*\(([일월화수목금토])\)/;
+const DATE_RE = /(\d{1,2})\s*월\s*(\d{1,2})\s*일\s*\(([일월화수목금토])\)/;
 const TIDE_RE = /(\d{1,2}물|조금|무시|사리|한객기|대객기)/;
 const HAS_ROW = /운항시간/;
 const HAS_SEATS = /남은자리|예약마감|전화예약|예약대기/;
@@ -24,10 +24,14 @@ export async function collect(site, { days = 14 } = {}) {
   const path = site.path ?? 'schedule_fleet';
   const trips = [];
 
+  let found = { rows: 0, marks: 0 };
+
   for (const ym of monthsFor(days)) {
     const url = `${base}/ship/${path}/${ym}`;
     const { $ } = await loadHtml(url, { mode: site.mode ?? 'static' });
-    parseMonth($, site, ym, url, trips);
+    const seen = parseMonth($, site, ym, url, trips);
+    found.rows += seen.rows;
+    found.marks += seen.marks;
   }
 
   // 달력형이라 월 페이지에 목록이 없으면 날짜별로 받아온다
@@ -36,6 +40,13 @@ export async function collect(site, { days = 14 } = {}) {
   }
 
   if (trips.length === 0) {
+    // 행은 찾았는데 0건이면 원인이 다르다. 뭉뚱그리면 엉뚱한 데를 고치게 된다.
+    if (found.rows > 0 && found.marks === 0) {
+      throw new Error(`출조 행 ${found.rows}개는 찾았지만 날짜 머리글을 못 읽었습니다 — 날짜 표기를 확인하세요`);
+    }
+    if (found.rows > 0) {
+      throw new Error(`출조 행 ${found.rows}개 · 날짜 ${found.marks}개를 찾았지만 짝지어지지 않았습니다`);
+    }
     throw new Error(
       site.dayPath
         ? '출조 행을 못 찾음 — dayPath 주소를 확인하세요'
@@ -85,22 +96,6 @@ async function collectByDay(site, base, days) {
   return out;
 }
 
-/** 운항시간과 잔여석 표기를 둘 다 가진 가장 안쪽 요소들 = 출조 행 */
-function findRows($) {
-  const rows = [];
-  $('*').each((_, node) => {
-    const $el = $(node);
-    const text = norm($el.text());
-    if (!HAS_ROW.test(text) || !HAS_SEATS.test(text)) return;
-    const deeper = $el.find('*').filter((_, d) => {
-      const t = norm($(d).text());
-      return HAS_ROW.test(t) && HAS_SEATS.test(t);
-    });
-    if (deeper.length === 0) rows.push($el);
-  });
-  return rows;
-}
-
 export function parseMonth($, site, ym, pageUrl, out) {
   const year = Number(ym.slice(0, 4));
   const month = Number(ym.slice(4, 6));
@@ -123,25 +118,26 @@ export function parseMonth($, site, ym, pageUrl, out) {
 
   nodes.forEach((entry, idx) => {
     const { node } = entry;
+    const $el = $(node);
+    const text = norm($el.text());
 
-    // 날짜 머리글: 자기 자신이 직접 가진 텍스트에 "9월 1일(화)" 가 있는 요소
-    const own = directText(node);
-    const dm = own.match(DATE_RE);
-    if (dm) {
-      const m = Number(dm[1]);
-      // 12월 페이지에 1월이 섞여 나오는 경우를 대비해 연도를 보정한다
-      const y = m === month ? year : m < month ? year + 1 : year - 1;
-      marks.push({
-        idx,
-        date: `${y}-${pad(m)}-${pad(dm[2])}`,
-        tide: (own.match(TIDE_RE) ?? [])[1] ?? null,
-      });
-      return;
+    // 날짜 머리글: 날짜 표기를 가진 "가장 안쪽" 요소.
+    // 직접 텍스트만 보면 안 된다 — 이 템플릿은 숫자와 단위를 태그로 쪼개 놓는다:
+    //   <div class="date2">9<span>월</span><div>1<span>일</span><span>(화)</span></div></div>
+    // 직접 텍스트는 "9" 뿐이라 날짜가 하나도 안 잡힌다.
+    if (DATE_RE.test(text)) {
+      const deeperDate = $el.find('*').filter((_, d) => DATE_RE.test(norm($(d).text())));
+      if (deeperDate.length === 0) {
+        const dm = text.match(DATE_RE);
+        const m = Number(dm[1]);
+        // 12월 페이지에 1월이 섞여 나오는 경우를 대비해 연도를 보정한다
+        const y = m === month ? year : m < month ? year + 1 : year - 1;
+        marks.push({ idx, date: `${y}-${pad(m)}-${pad(dm[2])}`, tide: findTide($, $el) });
+        return;
+      }
     }
 
     // 출조 행: 운항시간과 잔여석 표기를 "둘 다" 가진 가장 안쪽 요소
-    const $el = $(node);
-    const text = norm($el.text());
     if (!HAS_ROW.test(text) || !HAS_SEATS.test(text)) return;
     const deeper = $el.find('*').filter((_, d) => {
       const t = norm($(d).text());
@@ -168,6 +164,26 @@ export function parseMonth($, site, ym, pageUrl, out) {
     const trip = parseRow($, $el, site, mark, pageUrl);
     if (trip) out.push(trip);
   }
+
+  return { rows: rows.length, marks: marks.length };
+}
+
+/**
+ * 물때는 날짜와 같은 요소에 있기도 하고(달력형), 옆 칸에 따로 있기도 하다:
+ *   <td class="date_info">9월 1일(화)</td><td class="date_info2">11물</td>
+ * 날짜 요소에서 위로 올라가며 찾되, 공지사항 같은 출조 행 본문까지 끌어오지 않도록
+ * 첫 '운항시간' 앞부분만 본다. 날짜 블록 밖까지 올라가면 그만둔다.
+ */
+function findTide($, $el) {
+  let $cur = $el;
+  for (let i = 0; i < 6 && $cur.length; i++) {
+    const head = norm($cur.text()).split('운항시간')[0];
+    if (head.length > 400) break;
+    const m = head.match(TIDE_RE);
+    if (m) return m[1];
+    $cur = $cur.parent();
+  }
+  return null;
 }
 
 function parseRow($, $el, site, mark, pageUrl) {
@@ -278,16 +294,6 @@ function upcoming(days) {
 
 const pad = (n) => String(n).padStart(2, '0');
 const norm = (s) => String(s ?? '').replace(/\s+/g, ' ').trim();
-
-/** 자식 요소를 뺀, 그 요소가 직접 들고 있는 텍스트 */
-function directText(node) {
-  return norm(
-    (node.children ?? [])
-      .filter((c) => c.type === 'text')
-      .map((c) => c.data)
-      .join(' '),
-  );
-}
 
 function absolute(href, base) {
   if (!href || href.startsWith('#') || href.startsWith('tel:')) return base;
