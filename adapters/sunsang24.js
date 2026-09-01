@@ -103,18 +103,20 @@ export function parseMonth($, site, ym, pageUrl, out) {
   // 문서를 앞에서부터 훑으면서 각 태그의 위치와 자기 하위 범위를 기록한다.
   // (하위 범위를 알아야 "이 행 안에 들어있는 날짜"와 "이 행보다 앞에 나온 날짜"를 구분할 수 있다)
   const nodes = [];
+  const entryOf = new Map(); // 확장한 행 요소를 다시 위치로 되돌리기 위해
   (function walk(node) {
     for (const child of node.children ?? []) {
       if (child.type !== 'tag') continue;
       const entry = { node: child, start: nodes.length, end: 0 };
       nodes.push(entry);
+      entryOf.set(child, entry);
       walk(child);
       entry.end = nodes.length - 1;
     }
   })($.root()[0]);
 
-  const marks = []; // { idx, date, tide }
-  const rows = [];  // { start, end, $el }
+  const marks = [];          // { idx, date, tide }
+  const rowNodes = new Set(); // 확장 결과가 겹칠 수 있어 노드 기준으로 모은다
 
   nodes.forEach((entry, idx) => {
     const { node } = entry;
@@ -137,14 +139,22 @@ export function parseMonth($, site, ym, pageUrl, out) {
       }
     }
 
-    // 출조 행: 운항시간과 잔여석 표기를 "둘 다" 가진 가장 안쪽 요소
-    if (!HAS_ROW.test(text) || !HAS_SEATS.test(text)) return;
-    const deeper = $el.find('*').filter((_, d) => {
-      const t = norm($(d).text());
-      return HAS_ROW.test(t) && HAS_SEATS.test(t);
-    });
-    if (deeper.length === 0) rows.push({ start: entry.start, end: entry.end, $el });
+    // 출조 행: '운항시간'을 가진 가장 안쪽 요소를 찾은 뒤, 그 배 한 척이
+    // 온전히 들어올 때까지 위로 확장한다.
+    // 잔여석 표기까지 "둘 다" 가진 요소를 찾는 방식은 못 쓴다. 이 템플릿은
+    // 배 이름 · 운항시간 · 잔여석을 각각 다른 <td>에 나눠 담고, 가운데 칸에
+    // '예약대기' 같은 범례 라벨이 있어서 이름도 숫자도 없는 칸이 행으로 잡힌다.
+    if (!HAS_ROW.test(text)) return;
+    if ($el.find('*').filter((_, d) => HAS_ROW.test(norm($(d).text()))).length) return;
+    const $row = expandRow($, $el);
+    if ($row) rowNodes.add($row[0]);
   });
+
+  const rows = [...rowNodes]
+    .map((n) => entryOf.get(n))
+    .filter(Boolean)
+    .sort((a, b) => a.start - b.start)
+    .map((e) => ({ start: e.start, end: e.end, $el: $(e.node) }));
 
   for (const { start, end, $el } of rows) {
     // 사이트마다 날짜 위치가 다르다.
@@ -166,6 +176,29 @@ export function parseMonth($, site, ym, pageUrl, out) {
   }
 
   return { rows: rows.length, marks: marks.length };
+}
+
+/**
+ * '운항시간' 한 번만 든 가장 안쪽 요소에서 출발해, 배 이름과 잔여석까지
+ * 한 덩어리로 들어오도록 위로 올라간다.
+ *
+ * 멈추는 조건은 둘이다.
+ *   - 다른 배가 섞인다 (운항시간이 2개 이상) → 그 날의 배 목록 전체를 삼키는 것
+ *   - 날짜 머리글을 먹는다 → 하루 블록 전체를 삼키는 것
+ * 그래서 배가 하루에 한 척뿐인 날도, 날짜가 행 안에 들어있는 달력형도 같이 처리된다.
+ */
+function expandRow($, $el) {
+  let $best = $el;
+  let $cur = $el.parent();
+  for (let i = 0; i < 12 && $cur.length && $cur[0].type === 'tag'; i++) {
+    const t = norm($cur.text());
+    if ((t.split('운항시간').length - 1) !== 1) break;
+    if (DATE_RE.test(t)) break;
+    $best = $cur;
+    $cur = $cur.parent();
+  }
+  // 잔여석 표기가 끝내 안 들어오면 출조 행이 아니다 (안내문 등)
+  return HAS_SEATS.test(norm($best.text())) ? $best : null;
 }
 
 /**
