@@ -1,0 +1,56 @@
+name: collect
+
+on:
+  schedule:
+    # UTC 기준. 한국시간 06:10 / 12:10 / 18:10 / 21:10
+    - cron: '10 21,3,9,12 * * *'
+  workflow_dispatch: # 수동 실행 버튼
+  push:
+    paths:
+      - 'sites/registry.json'
+      - 'adapters/**'
+
+permissions:
+  contents: write # data.json 커밋용
+
+concurrency:
+  group: collect
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      # JS 렌더링이 필요한 사이트가 없으면 이 단계는 지워도 된다 (1~2분 절약)
+      - run: npx playwright install --with-deps chromium
+
+      - run: node collect.js
+        env:
+          DAYS: 14
+          # 자리 났을 때 알림. Settings > Secrets and variables > Actions 에 넣으면 동작하고,
+          # 안 넣으면 알림만 조용히 건너뜁니다.
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+
+      - name: commit data.json
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data.json
+          if git diff --staged --quiet; then
+            echo "변경 없음"
+          else
+            git commit -m "chore: 예약 현황 갱신 $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git push
+          fi

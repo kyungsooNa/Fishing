@@ -1,0 +1,14 @@
+[Unit]
+Description=낚시 예약 현황판 웹
+After=network-online.target
+
+[Service]
+User=__USER__
+WorkingDirectory=__APP_DIR__
+EnvironmentFile=__APP_DIR__/.env
+ExecStart=/usr/bin/node serve.js
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

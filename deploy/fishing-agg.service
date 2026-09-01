@@ -1,0 +1,14 @@
+[Unit]
+Description=낚시 예약 수집
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=__USER__
+WorkingDirectory=__APP_DIR__
+EnvironmentFile=__APP_DIR__/.env
+ExecStart=/usr/bin/node collect.js
+# 사이트가 느려도 다음 주기를 막지 않게 자른다
+TimeoutStartSec=600
+Nice=10

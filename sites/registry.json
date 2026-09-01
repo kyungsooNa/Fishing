@@ -1,0 +1,184 @@
+[
+  {
+    "id": "akbari",
+    "name": "구매항 악바리호",
+    "adapter": "sunsang24",
+    "url": "https://akbari.sunsang24.com",
+    "port": "충남 태안 구매항",
+    "mode": "static",
+    "enabled": true,
+    "_설명": "sunsang24 템플릿. url은 도메인만 적으면 됩니다 (경로는 어댑터가 붙임). 악바리호/레드맨호/맥가이버호 3척이 한 번에 잡힙니다.",
+    "skipPhoneOnly": true,
+    "boats": {
+      "악바리호": {
+        "prices": {
+          "주꾸미": 0,
+          "갑오징어": 0,
+          "광어": 0
+        }
+      },
+      "레드맨호": {},
+      "맥가이버호": {
+        "port": "영목항"
+      }
+    },
+    "_가격안내": "일정표에 승선료가 없습니다. prices에 어종별 금액(원)을 적으면 화면에 표시됩니다. 0은 '아직 안 적음'이라는 뜻이 아니라 실제 0원으로 나오니, 모르면 항목을 지우세요.",
+    "intervalMinutes": 15
+  },
+  {
+    "id": "fishinggate",
+    "name": "안면도 피싱게이트 선단",
+    "adapter": "sunsang24",
+    "url": "https://fishinggate.sunsang24.com",
+    "path": "schedule_fleet_simple_top",
+    "port": "충남 태안 안면도 백사장항",
+    "mode": "js",
+    "enabled": true,
+    "_설명": "달력형 레이아웃. 목록이 JS로 그려지므로 mode:js 필수. 페이지에는 선택된 하루치만 나오므로 dayPath로 날짜별로 받아옵니다. 선단이라 배가 22척이라 DAYS를 7~10 정도로 줄이는 걸 권장합니다.",
+    "dayPath": "/ship/schedule_fleet_simple_top/{ymd}",
+    "boats": {},
+    "waitFor": "text=운항시간",
+    "_확인필요": "dayPath의 {ymd} 형식이 맞는지 첫 실행 로그로 확인하세요. 날짜가 안 바뀌면 '날짜를 반영하지 않습니다' 오류가 납니다.",
+    "intervalMinutes": 60,
+    "_주기": "날짜마다 브라우저를 띄우는 구조라 60분으로 제한했습니다."
+  },
+  {
+    "id": "monster",
+    "name": "오이도 몬스터호",
+    "adapter": "thefishing",
+    "url": "http://www.yusungho.kr/m/index.php?mid=bk",
+    "port": "경기 시흥 시화방조제 중간선착장",
+    "mode": "static",
+    "enabled": true,
+    "windowDays": 7,
+    "seatsTotal": 20,
+    "_설명": "더피싱(thefishing.kr) 예약모듈. 한 요청에 8일치가 오므로 7일 간격으로만 부릅니다. 몬스터호 오전배/오후배가 따로 잡힙니다.",
+    "_잔여석주의": "'남은자리' 숫자가 HTML에 없어서 입금자/입금대기 명단의 좌석번호를 세서 계산합니다. seatsTotal(정원)이 20이 맞는지 사이트와 한 번 대조해보세요. 배마다 다르면 boats에 개별로 넣으면 됩니다.",
+    "boats": {},
+    "source": "detail",
+    "bookingUrl": "http://www.yusungho.kr/m/index.php?mid=bk",
+    "intervalMinutes": 15
+  },
+  {
+    "adapter": "thefishing",
+    "mode": "static",
+    "enabled": true,
+    "source": "index",
+    "id": "chungnam",
+    "name": "영목항 청남피싱",
+    "url": "http://chungnamho.com/",
+    "bookingUrl": "http://chungnamho.com/index.php?mid=bk",
+    "port": "충남 태안 고남면 영목항",
+    "_설명": "청남호/뉴청남호/브라더스. 메인 페이지 요약에서 잔여석을 읽습니다 (요청 1번)."
+  },
+  {
+    "adapter": "thefishing",
+    "mode": "static",
+    "enabled": true,
+    "source": "index",
+    "id": "chungkwang",
+    "name": "영목항 청광호",
+    "url": "http://www.chungkwangho.net/",
+    "bookingUrl": "http://www.chungkwangho.net/index.php?mid=bk",
+    "port": "충남 태안 고남면 영목항",
+    "_설명": "청광호/해복호/해성2호. 메인 페이지 요약에서 잔여석을 읽습니다."
+  },
+  {
+    "adapter": "thefishing",
+    "mode": "static",
+    "enabled": true,
+    "source": "index",
+    "id": "eoulim",
+    "name": "어울림호",
+    "url": "https://eoulim.thefishing.kr/m/",
+    "bookingUrl": "https://eoulim.thefishing.kr/m/index.php?mid=bk",
+    "_확인필요": "구조 미검증. 메인에 요약이 없으면 예약 페이지 방식으로 자동 전환됩니다."
+  },
+  {
+    "adapter": "thefishing",
+    "mode": "static",
+    "enabled": true,
+    "source": "index",
+    "id": "winner",
+    "name": "위너호",
+    "url": "https://winner.thefishing.kr/m/",
+    "bookingUrl": "https://winner.thefishing.kr/m/index.php?mid=bk",
+    "_확인필요": "구조 미검증. 자동 전환 대상."
+  },
+  {
+    "adapter": "thefishing",
+    "mode": "static",
+    "enabled": true,
+    "source": "index",
+    "id": "punycode-bk",
+    "name": "예약 사이트 (한글도메인)",
+    "url": "https://xn--vk1b951az7etxm.com/m/",
+    "bookingUrl": "https://xn--vk1b951az7etxm.com/m/index.php?mid=bk",
+    "_확인필요": "구조 미검증. 자동 전환 대상. 선사 이름을 확인해서 name을 고쳐주세요."
+  },
+  {
+    "adapter": "thefishing",
+    "mode": "static",
+    "enabled": true,
+    "source": "index",
+    "id": "joeunfish",
+    "name": "좋은낚시",
+    "url": "http://www.joeunfish.com/m/",
+    "bookingUrl": "http://www.joeunfish.com/m/index.php?mid=bk",
+    "_확인필요": "더피싱 계열인지 미검증. 실패하면 수집 상태에 표시됩니다."
+  },
+  {
+    "id": "oceanparty",
+    "name": "안면도 오션파티호",
+    "adapter": "sunsang24",
+    "url": "https://os.sunsang24.com",
+    "mode": "static",
+    "enabled": true,
+    "port": "충남 태안 안면도",
+    "_설명": "sunsang24 목록형(schedule_fleet). 악바리호와 같은 구조라 요청 1번에 한 달치가 옵니다.",
+    "boats": {},
+    "intervalMinutes": 15
+  },
+  {
+    "id": "example-platform",
+    "name": "예약 플랫폼 예시",
+    "adapter": "example-platform",
+    "url": "https://example.com/booking/list?date={date}",
+    "mode": "auto",
+    "enabled": false,
+    "_설명": "{date} 자리에 YYYY-MM-DD 가 들어갑니다. mode: auto|static|js",
+    "selectors": {
+      "row": ".boat-list li",
+      "boat": ".boat-name",
+      "port": ".port",
+      "date": ".date",
+      "time": ".depart-time",
+      "status": ".status",
+      "seats": ".seats",
+      "price": ".price",
+      "species": ".fish",
+      "link": "a"
+    }
+  },
+  {
+    "id": "example-boat",
+    "name": "개별 선사 예시",
+    "adapter": "example-boat",
+    "url": "https://example.co.kr/reserve",
+    "boatName": "○○호",
+    "port": "여수",
+    "departTime": "05:30",
+    "seatsTotal": 20,
+    "defaultPrice": 120000,
+    "species": [
+      "갈치"
+    ],
+    "mode": "js",
+    "enabled": false,
+    "waitFor": ".calendar td",
+    "selectors": {
+      "cell": ".calendar td",
+      "day": ".day"
+    }
+  }
+]

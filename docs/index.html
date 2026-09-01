@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>출조 현황판</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  :root{
+    --deck:#0c1c22;
+    --tide:#1d3f4a;
+    --glass:#e3eae7;
+    --paper:#fff;
+    --line:#c9d5d1;
+    --mute:#5f7379;
+    --open:#0f6b46;
+    --few:#a2540d;
+    --shut:#8b9a9e;
+    --pegoff:#d5dedb;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--glass);color:var(--deck);
+    font-family:"Pretendard Variable",Pretendard,-apple-system,system-ui,sans-serif;
+    font-size:15px;line-height:1.45;
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+  .wrap{max-width:640px;margin:0 auto}
+
+  /* ── 상단: 가장 가까운 출조 ── */
+  header{background:var(--deck);color:#eaf1ee;padding:22px 18px 16px}
+  .lede{font-size:13px;color:#8fa8a4}
+  .headline{font-size:26px;font-weight:800;letter-spacing:-.02em;margin-top:4px}
+  .headline .sub{font-weight:400;font-size:15px;color:#9db4b0;margin-left:6px}
+  .stamp{font-size:12px;color:#7d9490;margin-top:10px}
+
+  /* ── 날짜 레일 ── */
+  .rail{
+    position:sticky;top:0;z-index:5;display:flex;gap:6px;overflow-x:auto;
+    background:var(--glass);border-bottom:1px solid var(--line);
+    padding:10px 14px;scrollbar-width:none;
+  }
+  .rail::-webkit-scrollbar{display:none}
+  .chip{
+    flex:0 0 auto;border:1px solid var(--line);background:var(--paper);
+    border-radius:3px;padding:6px 9px;text-align:center;cursor:pointer;
+    font:inherit;color:inherit;min-width:52px;
+  }
+  .chip:focus-visible{outline:2px solid var(--tide);outline-offset:2px}
+  .chip .d{display:block;font-size:11px;color:var(--mute)}
+  .chip .n{display:block;font-size:17px;font-weight:700;font-variant-numeric:tabular-nums}
+  .chip .c{display:block;font-size:11px;color:var(--open);font-weight:600}
+  .chip[aria-pressed="true"]{background:var(--deck);border-color:var(--deck);color:#fff}
+  .chip[aria-pressed="true"] .d,.chip[aria-pressed="true"] .c{color:#9db4b0}
+  .chip.sat .n{color:#1f5f9e}.chip.sun .n{color:#a33}
+  .chip[aria-pressed="true"] .n{color:#fff}
+
+  /* ── 필터 ── */
+  .bar{display:flex;align-items:center;gap:12px;padding:12px 16px 4px;font-size:13px;color:var(--mute)}
+  .bar label{display:flex;align-items:center;gap:6px;cursor:pointer}
+  .bar input{accent-color:var(--tide);width:15px;height:15px}
+  .bar select{font:inherit;font-size:13px;color:var(--deck);background:var(--paper);
+    border:1px solid var(--line);border-radius:3px;padding:4px 6px;max-width:44%}
+  .bar select:focus-visible{outline:2px solid var(--tide);outline-offset:1px}
+
+  /* ── 출조 목록 ── */
+  ul{list-style:none}
+  li.trip{
+    display:grid;grid-template-columns:52px 1fr auto;gap:0 12px;
+    align-items:baseline;background:var(--paper);
+    padding:13px 16px;border-bottom:1px solid var(--line);
+  }
+  .time{font-size:15px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--tide)}
+  .time.none{color:var(--shut);font-weight:400;font-size:13px}
+  .boat{font-size:16px;font-weight:600;letter-spacing:-.01em}
+  .boat a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line)}
+  .meta{grid-column:2;font-size:12.5px;color:var(--mute);margin-top:3px}
+  .price{font-size:14px;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .price small{font-weight:400;color:var(--mute)}
+
+  /* 잔여석: 선상 좌석표처럼 못을 박아 표시 */
+  .pegs{grid-column:3;display:flex;gap:2px;justify-content:flex-end;margin-top:5px}
+  .peg{width:5px;height:11px;border-radius:1px;background:var(--pegoff)}
+  .peg.on{background:var(--open)}
+  .peg.few{background:var(--few)}
+  .seats{grid-column:3;text-align:right;font-size:12.5px;font-weight:600;margin-top:3px}
+  .s-open{color:var(--open)}.s-few{color:var(--few)}.s-full,.s-closed{color:var(--shut)}
+  li.trip.gone{background:#f4f7f5}
+  li.trip.gone .boat{color:var(--mute);font-weight:500}
+
+  .stale{font-size:11px;color:var(--few);margin-left:5px;white-space:nowrap}
+
+  .empty{padding:44px 20px;text-align:center;color:var(--mute)}
+  .empty b{display:block;color:var(--deck);font-size:16px;margin-bottom:6px;font-weight:600}
+
+  footer{padding:18px 16px 34px;font-size:12px;color:var(--mute)}
+  footer h2{font-size:12px;font-weight:600;color:var(--tide);margin-bottom:6px}
+  footer div{padding:3px 0}
+  footer .bad{color:#a3352a}
+
+  @media (prefers-reduced-motion:no-preference){
+    li.trip{transition:background .12s}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="lede">가장 가까운 빈자리</p>
+    <p class="headline" id="hero">불러오는 중</p>
+    <p class="stamp" id="stamp"></p>
+  </header>
+
+  <nav class="rail" id="rail" aria-label="날짜 선택"></nav>
+
+  <div class="bar">
+    <label><input type="checkbox" id="onlyOpen" checked> 예약 가능한 배만</label>
+    <select id="siteFilter" aria-label="선사 선택"><option value="">선사 전체</option></select>
+    <span id="count"></span>
+  </div>
+
+  <ul id="list"></ul>
+
+  <footer>
+    <h2>수집 상태</h2>
+    <div id="sites"></div>
+  </footer>
+</div>
+
+<script type="module">
+const WD = ['일','월','화','수','목','금','토'];
+const LABEL = { available:'예약 가능', few:'마감 임박', full:'마감', closed:'휴항', unknown:'확인 필요' };
+
+let data = { trips: [], sites: {}, updatedAt: null };
+let selected = null;
+
+const $ = (id) => document.getElementById(id);
+
+try {
+  const res = await fetch('./data.json', { cache: 'no-store' });
+  if (!res.ok) throw new Error(res.status);
+  data = await res.json();
+} catch {
+  $('hero').textContent = '데이터를 못 읽었습니다';
+  $('stamp').textContent = 'docs/data.json 이 아직 만들어지지 않았을 수 있습니다.';
+}
+
+const dates = [...new Set(data.trips.map(t => t.date))].sort();
+selected = dates.find(d => data.trips.some(t => t.date === d && open(t))) ?? dates[0] ?? null;
+
+function open(t){ return t.status === 'available' || t.status === 'few'; }
+
+function renderHero(){
+  const first = data.trips.find(open);
+  if (!first) { $('hero').textContent = '지금은 빈자리가 없습니다'; }
+  else {
+    const d = new Date(first.date + 'T00:00');
+    $('hero').innerHTML =
+      `${d.getMonth()+1}월 ${d.getDate()}일 <span class="sub">${esc(first.boatName)}${first.departTime ? ' · ' + first.departTime : ''}</span>`;
+  }
+  if (data.updatedAt) {
+    const m = Math.round((Date.now() - new Date(data.updatedAt)) / 60000);
+    $('stamp').textContent = m < 60 ? `${m}분 전 기준` : `${Math.round(m/60)}시간 전 기준`;
+  }
+}
+
+function renderRail(){
+  $('rail').innerHTML = dates.map(date => {
+    const d = new Date(date + 'T00:00');
+    const n = data.trips.filter(t => t.date === date && open(t)).length;
+    const w = d.getDay();
+    return `<button class="chip ${w===6?'sat':w===0?'sun':''}" data-date="${date}"
+      aria-pressed="${date === selected}">
+      <span class="d">${WD[w]}</span>
+      <span class="n">${d.getDate()}</span>
+      <span class="c">${n ? n + '척' : '–'}</span></button>`;
+  }).join('');
+  $('rail').querySelectorAll('.chip').forEach(b =>
+    b.onclick = () => { selected = b.dataset.date; renderRail(); renderList(); });
+  $('rail').querySelector('[aria-pressed="true"]')
+    ?.scrollIntoView({ inline:'center', block:'nearest' });
+}
+
+function renderSiteFilter(){
+  const names = [...new Set(data.trips.map(t => t.siteName))].sort((a,b)=>a.localeCompare(b,'ko'));
+  $('siteFilter').insertAdjacentHTML('beforeend',
+    names.map(n => `<option value="${esc(n)}">${esc(n)}</option>`).join(''));
+}
+
+function renderList(){
+  const onlyOpen = $('onlyOpen').checked;
+  const site = $('siteFilter').value;
+  const rows = data.trips
+    .filter(t => t.date === selected)
+    .filter(t => !site || t.siteName === site)
+    .filter(t => !onlyOpen || open(t));
+
+  $('count').textContent = rows.length ? `${rows.length}건` : '';
+
+  if (!rows.length) {
+    $('list').innerHTML = `<li class="empty"><b>이 날은 잡히는 배가 없습니다</b>
+      다른 날짜를 고르거나, 선사 선택을 전체로 바꿔보세요.</li>`;
+    return;
+  }
+
+  $('list').innerHTML = rows.map(t => {
+    const cls = { available:'s-open', few:'s-few', full:'s-full', closed:'s-closed', unknown:'s-full' }[t.status];
+    const seats = t.seatsLeft != null ? `${t.seatsLeft}자리` : LABEL[t.status];
+    const total = t.seatsTotal ?? (t.seatsLeft != null ? Math.max(t.seatsLeft, 10) : 0);
+    const pegs = total && t.seatsLeft != null
+      ? `<div class="pegs">${Array.from({length: Math.min(total, 20)}, (_, i) =>
+          `<i class="peg ${i < t.seatsLeft ? (t.status === 'few' ? 'few' : 'on') : ''}"></i>`).join('')}</div>`
+      : '';
+    const meta = [t.tide, t.port, t.species?.join('·')].filter(Boolean).join(' · ');
+
+    return `<li class="trip ${open(t) ? '' : 'gone'}">
+      <span class="time ${t.departTime ? '' : 'none'}">${t.departTime ?? '시간\n미정'}</span>
+      <span class="boat"><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.boatName)}</a>${
+        t.stale ? '<span class="stale">갱신 실패</span>' : ''}</span>
+      <span class="price">${t.price ? (t.price/10000).toFixed(t.price % 10000 ? 1 : 0) + '<small>만원</small>' : ''}</span>
+      <span class="meta">${esc(meta || t.siteName)}</span>
+      <span class="seats ${cls}">${seats}</span>
+      ${pegs}
+    </li>`;
+  }).join('');
+}
+
+function renderSites(){
+  $('sites').innerHTML = Object.entries(data.sites ?? {}).map(([id, s]) => {
+    const when = s.ranAt ? new Date(s.ranAt).toLocaleString('ko-KR', { dateStyle:'short', timeStyle:'short' }) : '';
+    return s.ok
+      ? `<div>${esc(id)} · ${s.count}건 · ${when}</div>`
+      : `<div class="bad">${esc(id)} · 실패 · ${esc(s.error ?? '')} · ${when}</div>`;
+  }).join('') || '<div>아직 수집 기록이 없습니다.</div>';
+}
+
+function esc(s){ return String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+$('onlyOpen').onchange = renderList;
+$('siteFilter').onchange = renderList;
+renderHero(); renderRail(); renderSiteFilter(); renderList(); renderSites();
+</script>
+</body>
+</html>

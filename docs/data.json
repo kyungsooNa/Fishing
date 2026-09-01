@@ -1,0 +1,93 @@
+{
+ "updatedAt": "2026-09-01T04:05:24.244Z",
+ "sites": {
+  "akbari": {
+   "ok": true,
+   "count": 4,
+   "ranAt": "2026-09-01T04:05:24.235Z",
+   "error": null
+  }
+ },
+ "trips": [
+  {
+   "siteId": "akbari",
+   "siteName": "구매항 악바리호",
+   "boatName": "악바리호",
+   "port": "구매항",
+   "date": "2026-09-01",
+   "departTime": "05:30",
+   "tide": "12물",
+   "status": "few",
+   "seatsLeft": 1,
+   "seatsTotal": 12,
+   "price": 120000,
+   "species": [
+    "주꾸미",
+    "갑오징어"
+   ],
+   "url": "https://akbari.sunsang24.com",
+   "fetchedAt": "2026-09-01T04:05:24.234Z",
+   "stale": false
+  },
+  {
+   "siteId": "akbari",
+   "siteName": "구매항 악바리호",
+   "boatName": "레드맨호",
+   "port": "구매항",
+   "date": "2026-09-02",
+   "departTime": "05:30",
+   "tide": "12물",
+   "status": "few",
+   "seatsLeft": 2,
+   "seatsTotal": 12,
+   "price": 120000,
+   "species": [
+    "주꾸미",
+    "갑오징어"
+   ],
+   "url": "https://akbari.sunsang24.com",
+   "fetchedAt": "2026-09-01T04:05:24.234Z",
+   "stale": false
+  },
+  {
+   "siteId": "akbari",
+   "siteName": "구매항 악바리호",
+   "boatName": "맥가이버호",
+   "port": "구매항",
+   "date": "2026-09-03",
+   "departTime": "05:30",
+   "tide": "12물",
+   "status": "full",
+   "seatsLeft": 0,
+   "seatsTotal": 12,
+   "price": 120000,
+   "species": [
+    "주꾸미",
+    "갑오징어"
+   ],
+   "url": "https://akbari.sunsang24.com",
+   "fetchedAt": "2026-09-01T04:05:24.234Z",
+   "stale": false
+  },
+  {
+   "siteId": "akbari",
+   "siteName": "구매항 악바리호",
+   "boatName": "악바리호",
+   "port": "구매항",
+   "date": "2026-09-04",
+   "departTime": "05:30",
+   "tide": "12물",
+   "status": "available",
+   "seatsLeft": 4,
+   "seatsTotal": 12,
+   "price": 120000,
+   "species": [
+    "주꾸미",
+    "갑오징어"
+   ],
+   "url": "https://akbari.sunsang24.com",
+   "fetchedAt": "2026-09-01T04:05:24.235Z",
+   "stale": false
+  }
+ ]
+}

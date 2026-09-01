@@ -1,0 +1,14 @@
+[Unit]
+Description=낚시 예약 수집 주기 실행
+
+[Timer]
+# 5분마다. 취소석은 몇 분 단위 경쟁이라 이 정도가 의미 있는 하한선이다.
+OnBootSec=2min
+OnUnitActiveSec=5min
+# 모든 서버가 정각에 몰려 때리지 않도록 흩뿌린다
+RandomizedDelaySec=60
+AccuracySec=30s
+Persistent=true
+
+[Install]
+WantedBy=timers.target
