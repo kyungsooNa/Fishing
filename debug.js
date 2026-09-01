@@ -9,7 +9,7 @@
 
 import { mkdir, writeFile } from 'node:fs/promises';
 import { loadSites } from './core/runner.js';
-import { closeBrowser } from './core/fetcher.js';
+import { closeBrowser, setHtmlHook } from './core/fetcher.js';
 
 const [id, ...rest] = process.argv.slice(2);
 const dump = rest.includes('--dump');
@@ -29,21 +29,14 @@ if (!site) {
   process.exit(1);
 }
 
-// --dump: 어댑터가 부르는 fetch를 가로채서 원본을 저장한다
+// --dump: fetcher가 받아온 원본을 그대로 tmp/ 에 떨군다
 if (dump) {
   await mkdir('tmp', { recursive: true });
-  const fetcher = await import('./core/fetcher.js');
-  const orig = fetcher.loadHtml;
   let n = 0;
-  Object.defineProperty(fetcher, 'loadHtml', {
-    value: async (url, opts) => {
-      const result = await orig(url, opts);
-      const file = `tmp/${id}${n++ ? `-${n}` : ''}.html`;
-      await writeFile(file, result.$.html(), 'utf8');
-      console.log(`  [dump] ${url}\n         → ${file} (${result.mode})`);
-      return result;
-    },
-    configurable: true,
+  setHtmlHook(async (url, { $, mode }) => {
+    const file = `tmp/${id}${n++ ? `-${n}` : ''}.html`;
+    await writeFile(file, $.html(), 'utf8');
+    console.log(`  [dump] ${url}\n         → ${file} (${mode})`);
   });
 }
 

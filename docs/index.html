@@ -230,9 +230,9 @@ function renderList(){
 function renderSites(){
   $('sites').innerHTML = Object.entries(data.sites ?? {}).map(([id, s]) => {
     const when = s.ranAt ? new Date(s.ranAt).toLocaleString('ko-KR', { dateStyle:'short', timeStyle:'short' }) : '';
-    return s.ok
-      ? `<div>${esc(id)} · ${s.count}건 · ${when}</div>`
-      : `<div class="bad">${esc(id)} · 실패 · ${esc(s.error ?? '')} · ${when}</div>`;
+    if (!s.ok) return `<div class="bad">${esc(id)} · 실패 · ${esc(s.error ?? '')} · ${when}</div>`;
+    // 주기가 안 돼서 건너뛴 사이트는 실패가 아니다. 지난 수집이 그대로 유효하다.
+    return `<div>${esc(id)} · ${s.count}건 · ${when}${s.skipped ? ' · 주기 대기' : ''}</div>`;
   }).join('') || '<div>아직 수집 기록이 없습니다.</div>';
 }
 

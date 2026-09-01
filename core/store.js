@@ -23,7 +23,8 @@ export async function openStore(path = './docs/data.json') {
   for (const t of before) trips.set(tripKey(t), t);
 
   const sites = { ...(prev.sites ?? {}) };
-  const touched = new Set(); // 이번에 성공한 사이트
+  const fresh = new Set();   // 이번에 새로 받아온 사이트
+  const skipped = new Set(); // 주기가 안 돼서 건너뛴 사이트 (실패가 아니다)
 
   return {
     /** 이번 실행 전의 스냅샷 (변화 감지에 쓴다) */
@@ -37,8 +38,24 @@ export async function openStore(path = './docs/data.json') {
       // 그래야 원본에서 사라진 출조(취소된 배)가 화면에 남지 않는다.
       for (const [key, t] of trips) if (t.siteId === siteId) trips.delete(key);
       for (const t of list) trips.set(tripKey(t), t);
-      touched.add(siteId);
-      sites[siteId] = { ok: true, count: list.length, ranAt: new Date().toISOString(), error: null };
+      fresh.add(siteId);
+      sites[siteId] = {
+        ok: true,
+        count: list.length,
+        ranAt: new Date().toISOString(),
+        error: null,
+        skipped: false,
+      };
+    },
+
+    /**
+     * intervalMinutes 때문에 이번 차례를 건너뛴 사이트.
+     * 데이터도 사이트 기록도 건드리지 않는다. 지난 수집이 여전히 유효하기 때문이다.
+     * 이걸 fail과 섞으면 화면에 멀쩡한 사이트가 '갱신 실패'로 뜬다.
+     */
+    skip(siteId) {
+      skipped.add(siteId);
+      if (sites[siteId]) sites[siteId] = { ...sites[siteId], skipped: true };
     },
 
     fail(siteId, err) {
@@ -47,6 +64,7 @@ export async function openStore(path = './docs/data.json') {
         ok: false,
         error: String(err?.message ?? err),
         ranAt: new Date().toISOString(),
+        skipped: false,
       };
     },
 
@@ -54,7 +72,8 @@ export async function openStore(path = './docs/data.json') {
       const today = new Date().toISOString().slice(0, 10);
       const rows = [...trips.values()]
         .filter((t) => t.date >= today) // 지난 날짜 정리
-        .map((t) => ({ ...t, stale: !touched.has(t.siteId) }))
+        // stale = '이번에 갱신하려 했는데 못 했다'. 건너뛴 사이트는 해당하지 않는다.
+        .map((t) => ({ ...t, stale: !fresh.has(t.siteId) && !skipped.has(t.siteId) }))
         .sort((a, b) =>
           a.date.localeCompare(b.date) ||
           String(a.departTime).localeCompare(String(b.departTime)) ||

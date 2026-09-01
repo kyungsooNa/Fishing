@@ -10,6 +10,15 @@ const MIN_GAP_MS = 3000;
 
 let browserPromise = null;
 
+// debug.js 가 받아온 원본 HTML을 떨궈볼 수 있게 열어둔 자리.
+// ES 모듈 네임스페이스는 밖에서 재정의할 수 없으므로(TypeError) 모듈이 직접 내준다.
+let htmlHook = null;
+
+/** loadHtml 이 성공할 때마다 (url, {$, mode}) 로 불린다. null 이면 끈다. */
+export function setHtmlHook(fn) {
+  htmlHook = fn;
+}
+
 async function gate(url) {
   const host = new URL(url).host;
   const prev = lastHit.get(host) ?? 0;
@@ -25,7 +34,13 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
  * mode 'js'    : Playwright로 렌더링. 개별 선사 홈페이지, 달력 위젯 등에 필요.
  * 어느 쪽인지 모르면 registry에 'auto'로 두면 static 먼저 시도한다.
  */
-export async function loadHtml(url, { mode = 'auto', waitFor = null, timeout = 20000 } = {}) {
+export async function loadHtml(url, opts = {}) {
+  const result = await fetchHtml(url, opts);
+  if (htmlHook) await htmlHook(url, result);
+  return result;
+}
+
+async function fetchHtml(url, { mode = 'auto', waitFor = null, timeout = 20000 } = {}) {
   if (mode === 'js') return { $: cheerio.load(await renderJs(url, waitFor, timeout)), mode: 'js' };
 
   const html = await fetchStatic(url, timeout);

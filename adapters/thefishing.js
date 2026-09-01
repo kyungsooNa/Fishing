@@ -188,6 +188,7 @@ function sectionOf($, headingNode) {
 
 function parseSection($, $table, site, cur, boatName, pageUrl) {
   const seats = new Set();
+  let sawSeatRow = false; // 명단 행(입금자/입금대기) 자체를 봤는지
   let species = [];
 
   $table.find('tr').each((_, tr) => {
@@ -201,6 +202,7 @@ function parseSection($, $table, site, cur, boatName, pageUrl) {
       return;
     }
     if (!SEAT_ROWS.includes(label)) return;
+    sawSeatRow = true;
 
     // "차재수님(6명/13,12,11,8,9,10)" 에서 좌석번호만 뽑는다
     for (const m of value.matchAll(/\(\s*\d+\s*명\s*\/\s*([\d,\s]+)\)/g)) {
@@ -214,11 +216,15 @@ function parseSection($, $table, site, cur, boatName, pageUrl) {
   const booked = seats.size;
   const conf = site.boats?.[boatName] ?? {};
   const seatsTotal = conf.seatsTotal ?? site.seatsTotal ?? (seats.size ? Math.max(...seats) : null);
-  const seatsLeft = seatsTotal != null ? Math.max(seatsTotal - booked, 0) : null;
 
-  // 좌석번호가 하나도 없으면 빈 배인지 파싱 실패인지 구분이 안 된다. 확정하지 않는다.
+  // 명단 행을 못 찾았으면 '빈 배'가 아니라 '못 읽음'이다.
+  // 여기서 booked=0을 그대로 믿으면, registry에 seatsTotal이 적힌 사이트는
+  // 템플릿이 바뀐 순간 모든 배가 '정원만큼 자리 남음'으로 둔갑하고
+  // notify의 reopened 조건에 걸려 가짜 취소석 알림이 나간다.
+  const seatsLeft = sawSeatRow && seatsTotal != null ? Math.max(seatsTotal - booked, 0) : null;
+
   const status =
-    seatsLeft == null || (booked === 0 && seatsTotal == null)
+    seatsLeft == null
       ? STATUS.UNKNOWN
       : seatsLeft <= 0
         ? STATUS.FULL

@@ -35,6 +35,10 @@ const due = sites.filter((s) => {
   return now - new Date(last).getTime() >= gap * 60_000;
 });
 
+// 건너뛴 사이트를 store에 알려준다. 이걸 빼면 flush가 실패로 오해해서
+// 멀쩡한 데이터에 '갱신 실패' 표시가 붙는다.
+for (const s of sites) if (!due.includes(s)) store.skip(s.id);
+
 const skipped = sites.length - due.length;
 const report = await runAll(due, store, { days: DAYS, concurrency: 3 });
 const total = await store.flush();
