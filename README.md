@@ -1,0 +1,202 @@
+# 낚시 출조 예약 현황판
+
+여러 낚시 예약 사이트를 긁어와 한 페이지에서 빈자리를 확인합니다.
+GitHub Actions가 주기적으로 수집해 `docs/data.json`으로 커밋하고, GitHub Pages가 그 페이지를 서빙합니다. 서버는 필요 없습니다.
+
+```
+.github/workflows/collect.yml   4시간마다 수집 → data.json 커밋
+sites/registry.json             ★ 사이트 목록 (여기만 손대면 됩니다)
+adapters/                       사이트 유형별 파서
+  sunsang24.js                  sunsang24(산다고) 호스팅 선사 — 서브도메인만 바꾸면 재사용
+  thefishing.js                 더피싱(thefishing.kr) 예약모듈 선사
+core/schema.js                  통합 스키마 + 표기 정규화
+core/fetcher.js                 HTTP / Playwright, 호스트별 요청 간격 제어
+core/store.js                   data.json 읽기·쓰기
+core/runner.js                  전체 순회, 실패 격리
+docs/index.html                 화면
+docs/data.json                  수집 결과 (지금 든 건 예시 데이터)
+```
+
+## 시작하기
+
+1. 새 **공개** 레포를 만들고 이 파일들을 올립니다.
+   비공개로 하면 무료 개인 계정에서 스케줄이 안 도는 문제가 있습니다.
+2. Settings → Pages → Source를 `main` 브랜치의 `/docs`로 지정합니다.
+3. Settings → Actions → General → Workflow permissions를 **Read and write**로 바꿉니다.
+   (봇이 `data.json`을 커밋해야 합니다.)
+4. `sites/registry.json`에 실제 사이트를 넣고 `enabled: true`로 바꿉니다.
+5. Actions 탭 → collect → **Run workflow**로 수동 실행해서 확인합니다.
+
+로컬 확인:
+
+```bash
+npm install
+npx playwright install chromium   # JS 렌더링 사이트가 있을 때만
+
+node debug.js                     # 등록된 사이트 id 목록
+node debug.js akbari              # 한 곳만 돌려보기
+node debug.js akbari --dump       # 실패 시 원본 HTML을 tmp/ 에 저장
+node collect.js                   # 전체
+npm run serve                     # http://localhost:8080
+```
+
+어댑터를 고칠 때는 `debug.js`가 훨씬 빠릅니다. 파싱 결과를 표로 보여주고,
+잔여석이 전부 비었다거나 날짜가 하루뿐이라거나 하는 흔한 증상을 짚어줍니다.
+
+작업 맥락은 `CLAUDE.md`에 정리해뒀습니다. Claude Code로 이어서 작업할 때 그 파일부터 읽히면 됩니다.
+
+## sunsang24 선사 추가하기
+
+`akbari.sunsang24.com`처럼 sunsang24가 호스팅하는 선사는 도메인만 적으면 끝납니다.
+같은 사이트에 배가 여러 척이면 전부 한 번에 잡힙니다.
+
+```jsonc
+{
+  "id": "akbari",
+  "name": "구매항 악바리호",
+  "adapter": "sunsang24",
+  "url": "https://akbari.sunsang24.com",  // 경로는 어댑터가 붙입니다
+  "port": "충남 태안 구매항",
+  "mode": "static",
+  "enabled": true,
+  "boats": { "맥가이버호": { "port": "영목항" } }  // 배마다 출항지가 다를 때만
+}
+```
+
+### 레이아웃이 두 가지입니다
+
+- **`schedule_fleet`** — 월 페이지에 출조 목록이 다 들어있습니다. 위 설정 그대로 쓰면 됩니다. (예: 악바리호)
+- **`schedule_fleet_simple_top`** — 달력이 위에 있고 아래에 하루치 목록이 **JS로** 그려집니다. (예: 피싱게이트)
+
+달력형은 세 가지를 더 적어야 합니다.
+
+```jsonc
+{
+  "path": "schedule_fleet_simple_top",
+  "mode": "js",                                        // JS 렌더링 필수
+  "waitFor": "text=운항시간",                            // 목록이 그려질 때까지 대기
+  "dayPath": "/ship/schedule_fleet_simple_top/{ymd}"   // {ymd}=20260905, {date}=2026-09-05
+}
+```
+
+페이지에는 선택된 하루치만 나오므로 `dayPath`로 날짜를 바꿔가며 받아옵니다. 돌아온 페이지에
+적힌 날짜 머리글을 그대로 쓰기 때문에, 주소가 날짜를 반영하지 않으면 같은 날이 반복될 뿐
+엉뚱한 날짜가 붙지는 않습니다. 두 번째 요청에서 새 날짜가 안 늘면 오류로 알려줍니다.
+
+날짜 수만큼 브라우저를 띄우므로 이런 사이트를 붙이면 `DAYS`를 7~10 정도로 줄이세요.
+
+- 이 어댑터는 클래스명이 아니라 "운항시간 / 남은자리 / 예약마감" 같은 본문 표기로 파싱하므로, 템플릿이 개편돼도 잘 버팁니다.
+- 목록형은 한 달치를 요청 한 번에 가져옵니다. 2주치를 보려고 14번 요청하지 않습니다.
+- 날짜 위치도 자동으로 가립니다. 목록형은 날짜 머리글이 행 앞에 따로 있고, 달력형은 행 안 첫 칸에 들어있는데 둘 다 처리합니다.
+- "전화예약 0명"으로 뜨는 홍보성 행은 버립니다 (`skipPhoneOnly: false`로 끄면 포함).
+- **일정표에도 선박소개에도 승선료가 없습니다.** 예약창을 열어야 나오는데, 배·날짜마다 한 번씩 열어야 해서 요청 수가 수십 배로 늘고 차단 위험도 커집니다. 대신 registry에 적어두세요. 승선료는 어종·시즌 단위라 자주 안 바뀝니다.
+
+  ```jsonc
+  "boats": {
+    "악바리호": { "prices": { "주꾸미": 100000, "갑오징어": 100000, "광어": 150000 } },
+    "레드맨호": { "price": 90000 },                        // 어종 관계없이 고정가
+    "맥가이버호": { "port": "영목항" }                      // 모르면 비워두면 됩니다
+  },
+  "prices": { "우럭": 80000 }                              // 사이트 전체 공통값
+  ```
+
+  그 날 어종에 맞는 가격을 붙이고, 못 찾으면 비워둡니다. 화면에서는 가격칸이 비어 보입니다.
+- 물때(12물, 조금, 무시)도 같이 가져와 목록에 보여줍니다.
+
+## 더피싱(thefishing.kr) 선사 추가하기
+
+`?mid=bk` 형태의 예약 페이지를 쓰는 선사입니다. 한 요청에 8일치가 오므로 요청이 아주 적습니다.
+
+```jsonc
+{
+  "id": "monster",
+  "name": "오이도 몬스터호",
+  "adapter": "thefishing",
+  "url": "http://www.yusungho.kr/m/index.php?mid=bk",  // year/month/day는 어댑터가 붙입니다
+  "port": "경기 시흥 시화방조제 중간선착장",
+  "windowDays": 7,      // 한 요청에 며칠치가 오는지
+  "seatsTotal": 20,     // ★ 정원
+  "enabled": true
+}
+```
+
+### 두 가지 수집 방식
+
+- **`"source": "index"` (기본)** — 메인 페이지의 "선박예약현황" 요약을 읽습니다. **요청 한 번에 배 전부 × 4주치**가 오고 잔여석 숫자가 그대로 들어있습니다. 가장 가볍고 정확합니다. 다만 어종·물때·출항시간은 없습니다.
+- **`"source": "detail"`** — 예약 페이지(`?mid=bk`)를 날짜별로 읽습니다. 어종·물때가 필요할 때 씁니다.
+
+메인에 요약이 없는 사이트면 자동으로 detail 방식으로 넘어가므로, 잘 모르겠으면 기본값 그대로 두면 됩니다.
+
+**detail 방식의 잔여석 계산이 다릅니다.** 이 사이트는 "남은자리" 숫자가 HTML에 안 들어있습니다.
+대신 입금자·입금대기 명단에 좌석번호가 적혀 있어서(`차재수님(6명/13,12,11,8,9,10)`),
+그 번호를 세서 `정원 - 찬 자리`로 구합니다. 대기자·취소자 명단에도 좌석번호가 섞여 있지만
+그 줄은 세지 않습니다.
+
+그래서 **`seatsTotal`이 정확해야 잔여석이 맞습니다.** 처음 한 번은 사이트와 대조해보세요.
+안 적으면 명단에 나온 가장 큰 좌석번호를 정원으로 추정하는데, 배가 안 찼을 때 틀립니다.
+
+오전배·오후배는 별개 출조로 잡힙니다.
+
+## 그 밖의 사이트 추가하는 법
+
+대부분은 `registry.json`에 한 덩어리만 추가하면 끝납니다.
+
+```jsonc
+{
+  "id": "goodboat",              // 고유값, 아무거나
+  "name": "○○호 예약",
+  "adapter": "example-platform", // 재사용할 파서
+  "url": "https://.../list?date={date}",
+  "mode": "auto",                // auto | static | js
+  "enabled": true,
+  "selectors": { "row": "...", "boat": "...", "seats": "..." }
+}
+```
+
+셀렉터는 브라우저에서 F12 → 원하는 요소 우클릭 → Copy → Copy selector로 뽑고, 목록 전체에 적용되게 마지막 인덱스(`:nth-child(3)` 등)만 지워주면 됩니다.
+
+구조가 아예 다른 사이트라면 `adapters/`에 파일을 하나 만들고 `collect(site)` 하나만 내보내면 됩니다. `_mock.js`가 가장 짧은 예시입니다.
+
+```js
+export async function collect(site) {
+  // ... 파싱 ...
+  return [makeTrip(site, { date, status, seatsLeft, price, ... })];
+}
+```
+
+`toStatus()`가 "예약가능 / ○ / 잔여3 / 마감 / 휴항" 같은 제각각인 표기를 하나로 정리해주므로, 원문 텍스트와 숫자만 그대로 넘기면 됩니다.
+
+## 자리 났을 때 알림 받기
+
+수집할 때마다 이전 결과와 비교해서 **새로 열린 자리만** 골라 알려줍니다.
+
+- 마감이던 배에 자리가 남 (취소석)
+- 열려있던 배의 잔여석이 늘어남 (부분 취소)
+
+새로 올라온 일정은 알리지 않습니다. 아직 아무도 예약 안 한 게 당연해서 알림으로서 값어치가 없습니다.
+수집에 실패한 사이트도 비교 대상에서 빠집니다. 예전 데이터가 남아있어 오탐이 나기 때문입니다.
+
+텔레그램은 [@BotFather](https://t.me/BotFather)로 봇을 만들고 토큰을, 봇과 대화를 한 번 시작한 뒤
+`https://api.telegram.org/bot<토큰>/getUpdates`에서 chat id를 확인하면 됩니다.
+
+레포 Settings → Secrets and variables → Actions 에 넣으세요.
+
+```
+TELEGRAM_BOT_TOKEN=...
+TELEGRAM_CHAT_ID=...
+```
+
+디스코드를 쓰면 `DISCORD_WEBHOOK` 하나만 넣으면 됩니다. 둘 다 안 넣으면 알림만 건너뛰고
+수집은 정상 동작합니다. 알림 발송이 실패해도 수집 결과는 그대로 저장됩니다.
+
+**주기 얘기.** 취소석은 몇 분 단위 경쟁입니다. GitHub Actions cron은 최소 5분이지만 실제로는
+10~30분씩 밀리므로, 알림을 진지하게 쓸 거면 상시 서버(Oracle Cloud 등)에서 5분 주기로 돌리는 게 맞습니다.
+
+## 알아둘 것
+
+- **러너 IP는 해외 데이터센터**입니다. 국내 사이트가 차단하면 그 사이트만 국내 서버(Oracle Cloud 서울 리전 등)로 옮기면 됩니다.
+- `mode: "js"`인 사이트가 하나도 없으면 워크플로에서 playwright 설치 단계를 지우세요. 실행이 1~2분 빨라집니다.
+- 셀렉터가 바뀌면 해당 사이트만 0건이 됩니다. 페이지 하단 "수집 상태"와 목록의 "갱신 실패" 표시로 확인할 수 있고, 그 사이의 데이터는 지워지지 않고 남습니다.
+- 요청 간격은 호스트당 3초로 잡혀 있습니다(`core/fetcher.js`의 `MIN_GAP_MS`). 사이트가 민감하면 늘리세요.
+- 수집 주기는 `collect.yml`의 cron에서 바꿉니다. 현재 한국시간 06:10 / 12:10 / 18:10 / 21:10입니다.
+# Fishing
