@@ -202,14 +202,14 @@ function pickBoat(site, text) {
 }
 
 // ── 주소 ────────────────────────────────────────────────────────────────────
-function indexUrl(bookingUrl) {
+export function indexUrl(bookingUrl) {
   const u = new URL(bookingUrl);
   u.search = '';
   u.pathname = u.pathname.replace(/index\.php$/, '');
   return u.toString();
 }
 
-function detailUrl(bookingUrl, day) {
+export function detailUrl(bookingUrl, day) {
   const u = new URL(bookingUrl);
   u.searchParams.set('year', String(day.getFullYear()));
   u.searchParams.set('month', String(day.getMonth() + 1));

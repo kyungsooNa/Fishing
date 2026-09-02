@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { parseRows } from '../adapters/sunsang24.js';
-import { parseDetail } from '../adapters/thefishing.js';
+import { parseDetail, indexUrl, detailUrl } from '../adapters/thefishing.js';
 import { findOpenings } from '../core/diff.js';
 import { toStatus, toDate, toTime, parseSeats, pickPrice, STATUS } from '../core/schema.js';
 import * as fx from './fixtures.js';
@@ -94,4 +94,13 @@ test('diff: 취소석과 자리 늘어남만 알린다', () => {
   ]);
 
   assert.equal(findOpenings(prev, next, new Set(['s'])).length, 0, '수집 실패한 사이트는 비교에서 뺀다');
+});
+
+test('thefishing: 예약 주소에서 메인 요약과 날짜별 주소를 만든다', () => {
+  const bk = 'https://www.eugeneho.kr/m/index.php?mid=bk';
+  assert.equal(indexUrl(bk), 'https://www.eugeneho.kr/m/', 'index 방식은 예약모듈이 아니라 메인 요약을 봅니다');
+  assert.equal(
+    detailUrl(bk, new Date(2026, 8, 5)),
+    'https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=5',
+  );
 });

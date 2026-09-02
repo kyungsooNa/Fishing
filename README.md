@@ -205,6 +205,7 @@ TELEGRAM_CHAT_ID=...
 | `monster` | 오이도 몬스터호 | thefishing (index) | 켜짐 |
 | `ssfish` | 무창포 선상낚시 | thefishing (index) | 켜짐 |
 | `hifishing` | 대천항 하이피싱 | thefishing (index) | 켜짐 |
+| `eugeneho` | 오천항 유진호 | thefishing (index) | 켜짐 — 22인승, 승선료 registry에 기록 |
 | `seohae` | 평택항 서해피싱 | thefishing | 꺼짐 — 예약모듈 형식 미확인 |
 | `mock` | 예시 데이터 | _mock | 꺼짐 — 네트워크 없이 확인용 |
 
