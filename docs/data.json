@@ -1,0 +1,82 @@
+{
+  "generatedAt": "2026-09-02T06:01:08.487Z",
+  "sites": {
+    "mock": {
+      "ok": true,
+      "at": "2026-09-02T06:01:08.487Z",
+      "count": 4,
+      "name": "예시 데이터",
+      "platform": "예시"
+    }
+  },
+  "trips": [
+    {
+      "siteId": "mock",
+      "siteName": "예시 데이터",
+      "boat": "모형호",
+      "port": "테스트",
+      "phone": null,
+      "date": "2026-09-02",
+      "departAt": "05:30",
+      "species": "우럭",
+      "tide": "7물",
+      "status": "open",
+      "statusText": "남은자리 6명",
+      "seatsLeft": 6,
+      "seatsTotal": null,
+      "price": null,
+      "url": "https://example.invalid"
+    },
+    {
+      "siteId": "mock",
+      "siteName": "예시 데이터",
+      "boat": "모형호",
+      "port": "테스트",
+      "phone": null,
+      "date": "2026-09-03",
+      "departAt": "05:30",
+      "species": "광어",
+      "tide": "7물",
+      "status": "closed",
+      "statusText": "예약마감",
+      "seatsLeft": 0,
+      "seatsTotal": null,
+      "price": null,
+      "url": "https://example.invalid"
+    },
+    {
+      "siteId": "mock",
+      "siteName": "예시 데이터",
+      "boat": "모형2호",
+      "port": "테스트",
+      "phone": null,
+      "date": "2026-09-04",
+      "departAt": "13:00",
+      "species": "주꾸미",
+      "tide": "7물",
+      "status": "few",
+      "statusText": "남은자리 2명",
+      "seatsLeft": 2,
+      "seatsTotal": null,
+      "price": null,
+      "url": "https://example.invalid"
+    },
+    {
+      "siteId": "mock",
+      "siteName": "예시 데이터",
+      "boat": "모형2호",
+      "port": "테스트",
+      "phone": null,
+      "date": "2026-09-05",
+      "departAt": "13:00",
+      "species": "갑오징어",
+      "tide": "7물",
+      "status": "off",
+      "statusText": "휴항",
+      "seatsLeft": null,
+      "seatsTotal": null,
+      "price": null,
+      "url": "https://example.invalid"
+    }
+  ]
+}
