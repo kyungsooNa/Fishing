@@ -33,8 +33,8 @@ export async function collectSite(site) {
  * 등록된 사이트를 모두 돌고 data.json을 갱신합니다.
  * 실패한 사이트는 직전 수집 결과를 그대로 남겨둡니다 — 화면이 갑자기 비지 않도록.
  */
-export async function runAll({ only = null, days = 21, dataPath, dryRun = false } = {}) {
-  const registry = await loadRegistry();
+export async function runAll({ only = null, days = 21, registryPath, dataPath, dryRun = false } = {}) {
+  const registry = await loadRegistry(registryPath);
   const targets = registry.filter((s) => (only ? s.id === only : s.enabled !== false));
 
   if (only && !targets.length) {
