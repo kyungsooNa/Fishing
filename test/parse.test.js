@@ -291,3 +291,14 @@ test('needsBrowser: mode에 따라 브라우저 설치가 필요한지 가른다
 test('needsBrowser: 꺼둔 사이트는 세지 않는다', () => {
   assert.equal(needsBrowser([{ adapter: 'generic', enabled: false }, { adapter: 'thefishing' }]), false);
 });
+
+test('thefishing: 예약모듈이 아닌 주소를 적어도 예약 페이지를 본다', () => {
+  // 선사 홈페이지를 복사해오면 mid=index(메인)인 경우가 많습니다.
+  // 그대로 두면 detail 방식이 메인을 날짜별로 긁어 조용히 0건이 됩니다.
+  const main = 'http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=index';
+  assert.equal(indexUrl(main), 'http://www.xn--2s2b21pgpc0m80y16e.com/m/');
+  assert.equal(
+    detailUrl(main, new Date(2026, 8, 5)),
+    'http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=5',
+  );
+});
