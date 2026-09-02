@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>낚시 출조 예약 현황판</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
   :root {
     color-scheme: light dark;
@@ -40,6 +41,13 @@
   .num { text-align: right; font-variant-numeric: tabular-nums; }
   a { color: var(--accent); }
   .empty { padding: 30px; text-align: center; color: var(--muted); }
+  .views { display: flex; gap: 6px; margin-bottom: 10px; }
+  .views button { padding: 6px 14px; border: 1px solid var(--line); border-radius: 7px;
+                  background: var(--card); color: var(--muted); font: inherit; font-size: 14px; cursor: pointer; }
+  .views button.on { color: var(--fg); font-weight: 600; border-color: var(--muted); }
+  #map { height: 62vh; min-height: 340px; border: 1px solid var(--line); border-radius: 10px; }
+  .leaflet-container { background: var(--card); font: inherit; }
+  .maphint { margin-top: 8px; font-size: 12px; color: var(--muted); }
   details { margin-top: 22px; font-size: 13px; color: var(--muted); }
   summary { cursor: pointer; }
   .status { margin-top: 10px; display: grid; gap: 5px; }
@@ -61,7 +69,15 @@
     <label class="check"><input type="checkbox" id="f-open" checked> 빈자리만</label>
   </div>
 
-  <div class="tablewrap">
+  <div class="views">
+    <button id="view-table" class="on">표</button>
+    <button id="view-map">지도</button>
+  </div>
+
+  <div id="map" hidden></div>
+  <div class="maphint" id="maphint" hidden></div>
+
+  <div class="tablewrap" id="tablewrap">
     <table>
       <thead><tr>
         <th>날짜</th><th>출항</th><th>선사</th><th>배</th><th>항구</th>
@@ -81,7 +97,7 @@
 <script>
 const LABEL = { open: '예약가능', few: '잔여 적음', closed: '마감', off: '휴항', unknown: '확인필요' };
 const WEEK = ['일','월','화','수','목','금','토'];
-let DATA = { trips: [], sites: {}, generatedAt: null };
+let DATA = { trips: [], sites: {}, ports: {}, generatedAt: null };
 
 const $ = (id) => document.getElementById(id);
 const won = (n) => n == null ? '' : n.toLocaleString('ko-KR') + '원';
@@ -97,15 +113,20 @@ function fillOptions(sel, values) {
   }
 }
 
-function render() {
+// 표와 지도가 같은 기준을 보도록 필터는 한 군데서만 겁니다.
+function visibleTrips() {
   const site = $('f-site').value, port = $('f-port').value, species = $('f-species').value;
   const date = $('f-date').value, q = $('f-q').value.trim(), openOnly = $('f-open').checked;
 
-  const rows = DATA.trips.filter((t) =>
+  return DATA.trips.filter((t) =>
     (!site || t.siteName === site || (t.sources ?? []).some((x) => x.siteName === site)) && (!port || t.port === port) &&
     (!species || t.species === species) && (!date || t.date === date) &&
     (!q || (t.boat ?? '').includes(q)) &&
     (!openOnly || t.status === 'open' || t.status === 'few'));
+}
+
+function render() {
+  const rows = visibleTrips();
 
   const tbody = $('rows');
   tbody.textContent = '';
@@ -182,8 +203,76 @@ fetch('data.json?t=' + Date.now())
   })
   .catch((e) => { $('meta').textContent = 'data.json을 못 읽었습니다: ' + e.message; });
 
-for (const id of ['f-site', 'f-port', 'f-species', 'f-date', 'f-open']) $(id).addEventListener('change', render);
-$('f-q').addEventListener('input', render);
+const refresh = () => { render(); drawMap(); };
+for (const id of ['f-site', 'f-port', 'f-species', 'f-date', 'f-open']) $(id).addEventListener('change', refresh);
+$('f-q').addEventListener('input', refresh);
+
+// ── 지도 ──────────────────────────────────────────────────────────────────
+// 항구 좌표는 data.json의 ports로 들어옵니다(sites/ports.json에서 옵니다).
+// 마커는 "지금 필터에 걸린" 출조 기준이라, 어종·날짜를 좁히면 지도도 같이 좁혀집니다.
+let map = null;
+let markers = null;
+
+const css = (name) => getComputedStyle(document.body).getPropertyValue(name).trim() || '#888';
+
+function ensureMap() {
+  if (map || !window.L) return;
+  map = L.map('map', { scrollWheelZoom: false }).setView([36.9, 126.6], 8);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 17,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  }).addTo(map);
+  markers = L.layerGroup().addTo(map);
+}
+
+function drawMap() {
+  if (!map || !markers) return;
+  markers.clearLayers();
+
+  const byPort = new Map();
+  for (const t of visibleTrips()) {
+    if (!t.port || !DATA.ports?.[t.port]) continue;
+    const cur = byPort.get(t.port) ?? { trips: 0, open: 0 };
+    cur.trips += 1;
+    if (t.status === 'open' || t.status === 'few') cur.open += 1;
+    byPort.set(t.port, cur);
+  }
+
+  const bounds = [];
+  for (const [port, count] of byPort) {
+    const { lat, lng, approx } = DATA.ports[port];
+    const color = count.open ? css('--open') : css('--closed');
+    bounds.push([lat, lng]);
+    L.circleMarker([lat, lng], {
+      radius: Math.min(9 + count.open * 1.6, 26),
+      color, fillColor: color, fillOpacity: 0.35, weight: 2,
+    })
+      .bindTooltip(`${port}${approx ? ' (대략 위치)' : ''}<br>출조 ${count.trips}건 · 빈자리 ${count.open}건`)
+      .on('click', () => { $('f-port').value = port; refresh(); })
+      .addTo(markers);
+  }
+
+  $('maphint').textContent = Object.keys(DATA.ports ?? {}).length
+    ? `항구 ${byPort.size}곳 · 마커를 누르면 그 항구만 봅니다. 좌표는 대략값이라 실제 선착장과 다를 수 있습니다.`
+    : '항구 좌표가 없습니다 — sites/ports.json을 채우세요.';
+  if (bounds.length) map.fitBounds(bounds, { padding: [40, 40], maxZoom: 10 });
+}
+
+function switchView(toMap) {
+  $('view-map').classList.toggle('on', toMap);
+  $('view-table').classList.toggle('on', !toMap);
+  $('map').hidden = !toMap;
+  $('maphint').hidden = !toMap;
+  $('tablewrap').hidden = toMap;
+  if (!toMap) return;
+  ensureMap();
+  // 숨겨진 채로 만들어진 지도는 자기 크기를 모릅니다.
+  setTimeout(() => { map?.invalidateSize(); drawMap(); }, 0);
+}
+
+$('view-map').addEventListener('click', () => switchView(true));
+$('view-table').addEventListener('click', () => switchView(false));
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
 </body>
 </html>

@@ -1,14 +1,15 @@
 {
-  "generatedAt": "2026-09-02T06:09:20.890Z",
+  "generatedAt": "2026-09-02T08:09:22.996Z",
   "sites": {
     "mock": {
       "ok": true,
-      "at": "2026-09-02T06:09:20.890Z",
+      "at": "2026-09-02T08:09:22.996Z",
       "count": 4,
       "name": "예시 데이터",
       "platform": "예시"
     }
   },
+  "ports": {},
   "trips": [
     {
       "siteId": "mock",
