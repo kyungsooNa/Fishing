@@ -4,6 +4,7 @@ import { readFile } from 'node:fs/promises';
 import { mergeDuplicates } from './merge.js';
 import { platformOf } from './platform.js';
 import { kstDate } from './when.js';
+import { loadPorts, usedPorts } from './ports.js';
 import { closeBrowser } from './fetcher.js';
 import { load, save } from './store.js';
 import { findOpenings } from './diff.js';
@@ -33,7 +34,7 @@ export async function collectSite(site) {
  * 등록된 사이트를 모두 돌고 data.json을 갱신합니다.
  * 실패한 사이트는 직전 수집 결과를 그대로 남겨둡니다 — 화면이 갑자기 비지 않도록.
  */
-export async function runAll({ only = null, days = 21, registryPath, dataPath, dryRun = false } = {}) {
+export async function runAll({ only = null, days = 21, registryPath, dataPath, portsPath, dryRun = false } = {}) {
   const registry = await loadRegistry(registryPath);
   const targets = registry.filter((s) => (only ? s.id === only : s.enabled !== false));
 
@@ -77,7 +78,12 @@ export async function runAll({ only = null, days = 21, registryPath, dataPath, d
 
   const trips = sortTrips(mergeDuplicates(pruneOld(collected, days)));
   const openings = findOpenings(prev.trips ?? [], trips, failed);
-  const data = { generatedAt: startedAt.toISOString(), sites: status, trips };
+
+  // 지도에 찍을 항구. 좌표가 없는 항구는 지도에서 빠지므로 로그로 알려줍니다.
+  const { places, missing } = usedPorts(trips, await loadPorts(portsPath));
+  if (missing.length) console.warn(`  좌표 없는 항구: ${missing.join(', ')} — sites/ports.json에 추가하세요`);
+
+  const data = { generatedAt: startedAt.toISOString(), sites: status, ports: places, trips };
 
   if (!dryRun) await save(data, dataPath);
   return { data, openings, failed: [...failed] };

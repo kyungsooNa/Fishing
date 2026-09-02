@@ -18,6 +18,7 @@ core/diff.js      이전 결과와 비교해 "새로 난 자리"만 추출
 core/merge.js     같은 출조·같은 배 합치기 (신원은 이름+출항지+전화번호)
 core/platform.js  사이트 계열(선상24/더피싱/자체). 어댑터에서 자동
 core/when.js      날짜 기준. 러너가 UTC여도 전부 한국시간으로 셉니다
+core/ports.js     항구 좌표(지도용). sites/ports.json에서 읽습니다
 core/notify.js    텔레그램/디스코드. 토큰 없으면 조용히 건너뜀
 core/runner.js    전체 순회, 실패 격리, 지난 날짜 정리
 adapters/         사이트 유형별 파서. collect(site) 하나만 내보내면 됩니다
