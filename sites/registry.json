@@ -84,7 +84,7 @@
       "port": "충남 보령 오천항",
       "source": "index",
       "windowDays": 7,
-      "seatsTotal": 22,
+      "seatsTotal": 20,
       "enabled": true,
       "prices": {
         "우럭": 120000,
@@ -94,7 +94,7 @@
         "열기": 100000,
         "볼락": 80000
       },
-      "note": "22인승. 승선료는 사이트 안내 기준이라 시즌마다 확인 필요. index 방식은 어종이 안 나와 가격이 빈 칸으로 보입니다 — 가격까지 보려면 source를 detail로 바꾸세요(seatsTotal 22 확인 필요)."
+      "note": "20인승(선사 확인). 승선료는 사이트 안내 기준이라 시즌마다 확인 필요. index 방식은 어종이 안 나와 가격이 빈 칸으로 보입니다 — 가격까지 보려면 source를 detail로 바꾸세요."
     },
     {
       "id": "seohae",
