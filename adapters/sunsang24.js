@@ -9,6 +9,7 @@
 
 import { fetchHtml } from '../core/fetcher.js';
 import { parseRows } from './_rows.js';
+import { kstDate, kstYm } from '../core/when.js';
 
 const CALENDAR_PATH = 'schedule_fleet_simple_top';
 
@@ -64,8 +65,7 @@ async function collectByDay(site) {
   const seenDates = new Set();
 
   for (let i = 0; i < days; i++) {
-    const day = new Date(Date.now() + i * 86400e3);
-    const url = joinUrl(site.url, fillDate(template, day));
+    const url = joinUrl(site.url, fillDate(template, kstDate(i)));
     const html = await fetchHtml(url, { mode: site.mode ?? 'js', waitFor: site.waitFor });
     const rows = parseRows(site, html, url);
     trips.push(...rows);
@@ -87,22 +87,19 @@ async function collectByDay(site) {
 
 // ── 잡동사니 ────────────────────────────────────────────────────────────────
 function monthsInRange(days, now = new Date()) {
+  const last = kstDate(days, now).slice(0, 7).replace('-', '');
   const out = [];
-  const cur = new Date(now);
-  const end = new Date(now.getTime() + days * 86400e3);
-  while (cur <= end) {
-    out.push(`${cur.getFullYear()}${String(cur.getMonth() + 1).padStart(2, '0')}`);
-    cur.setDate(1);
-    cur.setMonth(cur.getMonth() + 1);
+  for (let i = 0; i < 12; i++) {
+    const ym = kstYm(i, now);
+    out.push(ym);
+    if (ym >= last) break;
   }
   return out;
 }
 
-function fillDate(template, day) {
-  const y = day.getFullYear();
-  const m = String(day.getMonth() + 1).padStart(2, '0');
-  const d = String(day.getDate()).padStart(2, '0');
-  return template.replace('{ymd}', `${y}${m}${d}`).replace('{date}', `${y}-${m}-${d}`);
+// date는 "2026-09-04" 꼴입니다.
+function fillDate(template, date) {
+  return template.replace('{ymd}', date.replaceAll('-', '')).replace('{date}', date);
 }
 
 function joinUrl(base, path) {

@@ -14,6 +14,7 @@
 
 import { fetchHtml } from '../core/fetcher.js';
 import { parseRows } from './_rows.js';
+import { kstDate } from '../core/when.js';
 
 export async function collect(site) {
   const trips = [];
@@ -35,20 +36,17 @@ export async function collect(site) {
 
 export function pageUrls(site, now = new Date()) {
   if (site.datePath) {
-    return Array.from({ length: site.days ?? 14 }, (_, i) => {
-      const day = new Date(now.getTime() + i * 86400e3);
-      return absolute(site.url, fillDate(site.datePath, day));
-    });
+    return Array.from({ length: site.days ?? 14 }, (_, i) =>
+      absolute(site.url, fillDate(site.datePath, kstDate(i, now))),
+    );
   }
   if (site.pages?.length) return site.pages.map((p) => absolute(site.url, p));
   return [site.url];
 }
 
-function fillDate(template, day) {
-  const y = day.getFullYear();
-  const m = String(day.getMonth() + 1).padStart(2, '0');
-  const d = String(day.getDate()).padStart(2, '0');
-  return template.replace('{ymd}', `${y}${m}${d}`).replace('{date}', `${y}-${m}-${d}`);
+// date는 "2026-09-04" 꼴입니다.
+function fillDate(template, date) {
+  return template.replace('{ymd}', date.replaceAll('-', '')).replace('{date}', date);
 }
 
 const absolute = (base, path) => (/^https?:\/\//.test(path) ? path : new URL(path, base).toString());

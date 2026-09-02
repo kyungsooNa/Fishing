@@ -1,6 +1,8 @@
 // 통합 스키마 + 표기 정규화.
 // 어댑터는 사이트 원문 텍스트와 숫자만 넘기고, 정리는 여기서 합니다.
 
+import { kstNow } from './when.js';
+
 export const STATUS = {
   OPEN: 'open',       // 예약 가능
   FEW: 'few',         // 잔여석 적음 (1~2)
@@ -41,8 +43,9 @@ export function parseSeats(rawText) {
   return Number.isFinite(n) ? n : null;
 }
 
-/** 여러 형식의 날짜를 YYYY-MM-DD로. 연도가 없으면 기준일로 보충합니다. */
-export function toDate(raw, base = new Date()) {
+/** 여러 형식의 날짜를 YYYY-MM-DD로. 연도가 없으면 한국 기준 오늘로 보충합니다. */
+export function toDate(raw, now = new Date()) {
+  const base = kstNow(now);
   if (!raw) return null;
   const t = String(raw).replace(/\s+/g, '');
 
