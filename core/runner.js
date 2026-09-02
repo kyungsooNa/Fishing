@@ -3,6 +3,7 @@
 import { readFile } from 'node:fs/promises';
 import { mergeDuplicates } from './merge.js';
 import { platformOf } from './platform.js';
+import { kstDate } from './when.js';
 import { closeBrowser } from './fetcher.js';
 import { load, save } from './store.js';
 import { findOpenings } from './diff.js';
@@ -82,15 +83,12 @@ export async function runAll({ only = null, days = 21, dataPath, dryRun = false 
   return { data, openings, failed: [...failed] };
 }
 
-// 오늘 이전과 수집 범위 밖의 날짜를 떨궈냅니다.
-function pruneOld(trips, days) {
-  const today = new Date();
-  const from = iso(today);
-  const to = iso(new Date(today.getTime() + days * 86400e3));
+// 오늘 이전과 수집 범위 밖의 날짜를 떨궈냅니다. 기준은 한국 날짜입니다.
+export function pruneOld(trips, days, now = new Date()) {
+  const from = kstDate(0, now);
+  const to = kstDate(days, now);
   return trips.filter((t) => t.date >= from && t.date <= to);
 }
-
-const iso = (d) => d.toISOString().slice(0, 10);
 
 function sortTrips(trips) {
   return trips.sort(

@@ -1,9 +1,9 @@
 // 가장 짧은 어댑터 예시. 네트워크 없이 파이프라인을 확인할 때 씁니다.
 
 import { makeTrip } from '../core/schema.js';
+import { kstDate } from '../core/when.js';
 
 export async function collect(site) {
-  const today = new Date();
   const rows = [
     { d: 0, boat: '모형호', time: '05:30', species: '우럭', seats: 6, raw: '남은자리 6명' },
     { d: 1, boat: '모형호', time: '05:30', species: '광어', seats: 0, raw: '예약마감' },
@@ -14,7 +14,7 @@ export async function collect(site) {
   return rows.map((r) =>
     makeTrip(site, {
       boat: r.boat,
-      date: new Date(today.getTime() + r.d * 86400e3).toISOString().slice(0, 10),
+      date: kstDate(r.d),
       departAt: r.time,
       species: r.species,
       tide: '7물',
