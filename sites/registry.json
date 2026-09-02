@@ -109,6 +109,19 @@
       "note": "20인승(선사 확인). 승선료는 사이트 안내 기준이라 시즌마다 확인 필요. index 방식은 어종이 안 나와 가격이 빈 칸으로 보입니다 — 가격까지 보려면 source를 detail로 바꾸세요. 전화번호는 사이트 안내에서 옮긴 값이고, 다른 사이트에 같은 배가 올라왔을 때 같은 배로 알아보는 데 씁니다."
     },
     {
+      "id": "mansu",
+      "name": "영흥도 만수피싱",
+      "adapter": "thefishing",
+      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk",
+      "port": "인천 옹진 영흥도",
+      "phone": "010-5472-1856",
+      "source": "index",
+      "windowDays": 7,
+      "seatsTotal": 22,
+      "enabled": true,
+      "note": "만수피싱.kr (구 만수배낚시 만수1호). 쭈꾸미·갑오징어·참돔·백조기·외수질·우럭·광어. 승선은 영흥대교 밑. seatsTotal 22는 사이트 소개(2022 신조선 22인승)에서 옮긴 값이라 미확인 — index 방식에서는 안 쓰이지만 detail로 바꾸려면 먼저 대조하세요. 같은 항에 팀만수(teammansu.kr)도 있는데 다른 배입니다."
+    },
+    {
       "id": "seohae",
       "name": "평택항 서해피싱",
       "adapter": "thefishing",
