@@ -135,6 +135,18 @@
       "note": "오천루어스쿨.com. 백조기·쭈꾸미·광어·우럭·갑오징어. 출입항 04:30~15:00. 받은 주소는 mid=index(메인)였는데 예약모듈은 mid=bk라 바꿔 적었습니다. seatsTotal 22는 사이트 소개에서 옮긴 값이라 미확인 — 유진호도 검색으로는 22였지만 실제 20이었습니다. lures.myhomes.co.kr 로도 같은 선사가 뜹니다."
     },
     {
+      "id": "jstar",
+      "name": "전곡항 스타피싱",
+      "adapter": "thefishing",
+      "url": "https://jstar.thefishing.kr/index.php?mid=bk",
+      "port": "경기 화성 전곡항",
+      "phone": "010-8070-0150",
+      "source": "index",
+      "windowDays": 7,
+      "enabled": true,
+      "note": "더피싱이 직접 호스팅하는 서브도메인입니다(선사 자체 도메인이 아님). 받은 주소가 루트라 예약모듈도 루트 기준으로 적었습니다 — /m/ 아래에만 있으면 url을 https://jstar.thefishing.kr/m/index.php?mid=bk 로 바꾸세요. 정원 미확인이라 seatsTotal은 비웠습니다(index 방식에서는 안 씁니다)."
+    },
+    {
       "id": "blueseaho",
       "name": "오천항 푸른바다낚시",
       "adapter": "generic",
