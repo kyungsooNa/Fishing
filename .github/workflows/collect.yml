@@ -29,8 +29,16 @@ jobs:
 
       - run: npm ci --no-audit --no-fund
 
-      # mode:"js" 사이트가 하나도 없으면 이 단계를 지우세요. 실행이 1~2분 빨라집니다.
-      - run: npx playwright install --with-deps chromium
+      # 브라우저는 필요할 때만 받습니다. registry가 전부 static이 되면 이 단계는
+      # 저절로 건너뛰어져서 1~2분 빨라집니다. "js"뿐 아니라 "auto"도 본문이 비면
+      # 브라우저로 넘어가므로 같이 셉니다.
+      - name: 브라우저가 필요한지 확인
+        id: browser
+        run: echo "needed=$(npm run -s needs-browser)" >> "$GITHUB_OUTPUT"
+
+      - name: playwright chromium
+        if: steps.browser.outputs.needed == 'true'
+        run: npx playwright install --with-deps chromium
 
       - run: node collect.js
         env:

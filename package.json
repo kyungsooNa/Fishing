@@ -8,7 +8,8 @@
     "collect": "node collect.js",
     "debug": "node debug.js",
     "serve": "node serve.js",
-    "test": "node --test test/*.test.js"
+    "test": "node --test test/*.test.js",
+    "needs-browser": "node --input-type=module -e \"import {loadRegistry} from './core/runner.js'; import {needsBrowser} from './core/platform.js'; process.stdout.write(String(needsBrowser(await loadRegistry())))\""
   },
   "dependencies": {
     "cheerio": "^1.0.0"
