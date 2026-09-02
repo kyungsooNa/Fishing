@@ -250,6 +250,18 @@ TELEGRAM_CHAT_ID=...
 
 통합 플랫폼은 개별 선사 사이트보다 봇 차단이 빡빡할 가능성이 높습니다. 요청 간격을 넉넉히 잡으세요.
 
+## 고칠 때
+
+변경 하나마다 브랜치를 따고, 푸시한 다음 바로 PR을 엽니다. `main`에 직접 밀지 않습니다.
+GitHub Pages가 `main`의 `/docs`를 보기 때문에 PR이 머지돼야 화면이 바뀝니다.
+
+```bash
+git checkout -b add-<사이트id>
+node debug.js <사이트id>      # 파싱 확인
+npm test
+git commit -m "feat: ○○ 추가" && git push -u origin add-<사이트id>
+```
+
 ## 알아둘 것
 
 - **러너 IP는 해외 데이터센터**입니다. 국내 사이트가 차단하면 그 사이트만 국내 서버(Oracle Cloud 서울 리전 등)로 옮기면 됩니다.
