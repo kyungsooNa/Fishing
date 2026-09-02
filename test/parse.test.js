@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { parseRows } from '../adapters/sunsang24.js';
+import { parseRows, monthUrls } from '../adapters/sunsang24.js';
 import { parseDetail, indexUrl, detailUrl } from '../adapters/thefishing.js';
 import { findOpenings } from '../core/diff.js';
 import { mergeDuplicates } from '../core/merge.js';
@@ -181,4 +181,29 @@ test('diff: 본체 사이트가 바뀌어도 알림이 끊기지 않는다', () 
   const next = [trip({ siteId: 'thefishing', status: STATUS.OPEN, seatsLeft: 2 })];
   const [opening] = findOpenings(prev, next);
   assert.equal(opening?.reason, 'reopened', '신원이 같으면 같은 배로 본다');
+});
+
+// ── sunsang24 월 페이지 주소 ────────────────────────────────────────────────
+test('sunsang24: 기본은 경로 하나만 부른다', () => {
+  // 실제 사이트들이 쓰는 주소는 /ship/schedule_fleet 입니다. 뒤에 붙는 숫자는
+  // 연월이 아니라 배 번호로 보여서, 월을 임의로 붙이지 않습니다.
+  const urls = monthUrls({ url: 'https://akbari.sunsang24.com', days: 21 }, new Date(2026, 8, 2));
+  assert.deepEqual(urls, ['https://akbari.sunsang24.com/ship/schedule_fleet']);
+});
+
+test('sunsang24: monthPath를 적어준 사이트만 달을 넘겨가며 받는다', () => {
+  const site = {
+    url: 'https://akbari.sunsang24.com',
+    monthPath: '/ship/schedule_fleet/{ym}',
+    days: 40,
+  };
+  assert.deepEqual(monthUrls(site, new Date(2026, 8, 2)), [
+    'https://akbari.sunsang24.com/ship/schedule_fleet/202609',
+    'https://akbari.sunsang24.com/ship/schedule_fleet/202610',
+  ]);
+});
+
+test('sunsang24: path에 배 번호를 붙여도 그대로 따른다', () => {
+  const urls = monthUrls({ url: 'https://seojin.sunsang24.com', path: 'schedule_fleet/1359' }, new Date(2026, 8, 2));
+  assert.deepEqual(urls, ['https://seojin.sunsang24.com/ship/schedule_fleet/1359']);
 });

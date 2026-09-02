@@ -26,33 +26,41 @@ export async function collect(site) {
 
 // ── 목록형: 한 달치를 요청 한 번에. 2주를 보려고 14번 요청하지 않습니다. ──────────
 async function collectByMonth(site) {
-  const path = site.path ?? 'schedule_fleet';
   const trips = [];
 
-  for (const [i, ym] of monthsInRange(site.days ?? 21).entries()) {
-    // 월을 붙인 주소가 안 먹는 사이트가 있습니다. 이번 달은 경로만으로도 같은 목록이
-    // 나오므로 한 번 더 시도해봅니다. 다음 달부터는 폴백할 주소가 없습니다.
-    const urls = i === 0
-      ? [joinUrl(site.url, `/ship/${path}/${ym}`), joinUrl(site.url, `/ship/${path}/`)]
-      : [joinUrl(site.url, `/ship/${path}/${ym}`)];
-
-    let lastErr;
-    for (const url of urls) {
-      try {
-        const html = await fetchHtml(url, { mode: site.mode ?? 'static', waitFor: site.waitFor });
-        const rows = parseRows(site, html, url);
-        if (rows.length) { trips.push(...rows); lastErr = null; break; }
-        lastErr = new Error(`${url} 에서 출조 행을 못 찾았습니다`);
-      } catch (err) {
-        lastErr = err;
-      }
+  for (const [i, url] of monthUrls(site).entries()) {
+    try {
+      const html = await fetchHtml(url, { mode: site.mode ?? 'static', waitFor: site.waitFor });
+      trips.push(...parseRows(site, html, url));
+    } catch (err) {
+      // 첫 페이지가 죽으면 그 사이트는 못 읽는 겁니다. 다음 달 페이지가 없는 건 흔합니다.
+      if (i === 0) throw err;
     }
-    // 이번 달이 통째로 실패하면 그대로 알립니다. 다음 달이 비는 건 흔한 일이라 넘어갑니다.
-    if (lastErr && i === 0) throw lastErr;
   }
 
   if (!trips.length) throw new Error('출조 행을 못 찾았습니다 — 레이아웃이 바뀌었는지 확인하세요 (--dump)');
   return trips;
+}
+
+/**
+ * 받아올 주소 목록.
+ *
+ * 실제 사이트들이 쓰는 주소는 `/ship/schedule_fleet` 하나뿐이고, 뒤에 숫자가 붙은
+ * 경우(`/ship/schedule_fleet/1359`, `/0`)도 연월이 아니라 배 번호로 보입니다.
+ * 그래서 월을 임의로 붙이지 않고 경로 하나만 부릅니다 — 요청도 한 번이면 끝납니다.
+ *
+ * 다음 달 일정까지 주소로 넘길 수 있는 사이트를 찾으면 registry에 monthPath를 적으세요.
+ * ({ym}=202609, {year}=2026, {month}=09)
+ * 배가 여러 척이라 배별 페이지를 봐야 하면 path에 번호까지 적으면 됩니다
+ * (예: "path": "schedule_fleet/1359").
+ */
+export function monthUrls(site, now = new Date()) {
+  const path = site.path ?? 'schedule_fleet';
+  if (!site.monthPath) return [joinUrl(site.url, `/ship/${path}`)];
+
+  return monthsInRange(site.days ?? 21, now).map((ym) =>
+    joinUrl(site.url, site.monthPath.replace('{ym}', ym).replace('{year}', ym.slice(0, 4)).replace('{month}', ym.slice(4))),
+  );
 }
 
 // ── 달력형: 페이지에 선택된 하루치만 나오므로 주소로 날짜를 바꿔가며 받습니다. ────
@@ -158,10 +166,10 @@ function after(text, marker) {
 // ── 잡동사니 ────────────────────────────────────────────────────────────────
 const squash = (s) => String(s ?? '').replace(/\s+/g, ' ').trim();
 
-function monthsInRange(days) {
+function monthsInRange(days, now = new Date()) {
   const out = [];
-  const cur = new Date();
-  const end = new Date(Date.now() + days * 86400e3);
+  const cur = new Date(now);
+  const end = new Date(now.getTime() + days * 86400e3);
   while (cur <= end) {
     out.push(`${cur.getFullYear()}${String(cur.getMonth() + 1).padStart(2, '0')}`);
     cur.setDate(1);
