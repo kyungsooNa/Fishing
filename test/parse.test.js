@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { parseRows } from '../adapters/sunsang24.js';
 import { parseDetail, indexUrl, detailUrl } from '../adapters/thefishing.js';
 import { findOpenings } from '../core/diff.js';
+import { mergeDuplicates } from '../core/merge.js';
 import { toStatus, toDate, toTime, parseSeats, pickPrice, STATUS } from '../core/schema.js';
 import * as fx from './fixtures.js';
 
@@ -103,4 +104,81 @@ test('thefishing: 예약 주소에서 메인 요약과 날짜별 주소를 만�
     detailUrl(bk, new Date(2026, 8, 5)),
     'https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=5',
   );
+});
+
+// ── 중복 합치기 ────────────────────────────────────────────────────────────
+const 은가비 = { boat: '은가비호', port: '충남 홍성 남당항', phone: '010-2495-2060' };
+
+const trip = (over) => ({
+  siteId: 'a', siteName: 'A', date: '2026-09-05', departAt: '05:30',
+  status: STATUS.OPEN, statusText: '남은자리 3명', seatsLeft: 3,
+  species: null, tide: null, price: null, url: 'https://a',
+  ...은가비, ...over,
+});
+
+test('merge: 이름·출항지·전화번호가 다 같으면 한 줄로 합친다', () => {
+  const merged = mergeDuplicates([
+    trip({ siteId: 'sunsang', siteName: '선상24', seatsLeft: 3, url: 'https://s' }),
+    trip({ siteId: 'thefishing', siteName: '더피싱', seatsLeft: 5, species: '광어', url: 'https://t' }),
+  ]);
+
+  assert.equal(merged.length, 1);
+  const [m] = merged;
+  assert.equal(m.species, '광어', '정보가 많은 쪽이 본체가 된다');
+  assert.equal(m.seatsLeft, 5, '플랫폼마다 배정이 다를 수 있어 큰 쪽을 쓴다');
+  assert.deepEqual(m.sources.map((s) => [s.siteName, s.seatsLeft]), [['선상24', 3], ['더피싱', 5]]);
+});
+
+test('merge: 이름이 같아도 지역이나 전화번호가 다르면 남남이다', () => {
+  const 다른지역 = mergeDuplicates([
+    trip({ siteId: 'a' }),
+    trip({ siteId: 'b', port: '경남 통영항' }),
+  ]);
+  assert.equal(다른지역.length, 2, '다른 지역의 같은 이름 배는 합치면 안 된다');
+
+  const 다른번호 = mergeDuplicates([
+    trip({ siteId: 'a' }),
+    trip({ siteId: 'b', phone: '010-9999-0000' }),
+  ]);
+  assert.equal(다른번호.length, 2);
+});
+
+test('merge: 전화번호가 없으면 합치지 않는다', () => {
+  const out = mergeDuplicates([
+    trip({ siteId: 'a', phone: null }),
+    trip({ siteId: 'b', phone: null }),
+  ]);
+  assert.equal(out.length, 2, '확신이 없으면 두 줄로 두는 쪽이 안전하다');
+});
+
+test('merge: 표기가 달라도 전화번호는 숫자로 맞춘다', () => {
+  const out = mergeDuplicates([
+    trip({ siteId: 'a', phone: '010-2495-2060' }),
+    trip({ siteId: 'b', phone: '010.2495.2060' }),
+  ]);
+  assert.equal(out.length, 1);
+});
+
+test('merge: 한 곳이라도 휴항이면 휴항이다', () => {
+  const [m] = mergeDuplicates([
+    trip({ siteId: 'a', seatsLeft: 4 }),
+    trip({ siteId: 'b', status: STATUS.OFF, statusText: '기상악화 휴항', seatsLeft: null }),
+  ]);
+  assert.equal(m.status, STATUS.OFF, '자리가 남아도 배가 안 뜨면 휴항');
+});
+
+test('merge: 같은 사이트에서 두 번 들어온 출조는 정보가 많은 쪽만 남는다', () => {
+  const out = mergeDuplicates([
+    trip({ seatsLeft: null, statusText: '예약가능' }),
+    trip({ seatsLeft: 3, species: '우럭' }),
+  ]);
+  assert.equal(out.length, 1);
+  assert.equal(out[0].seatsLeft, 3);
+});
+
+test('diff: 본체 사이트가 바뀌어도 알림이 끊기지 않는다', () => {
+  const prev = [trip({ siteId: 'sunsang', status: STATUS.CLOSED, seatsLeft: 0 })];
+  const next = [trip({ siteId: 'thefishing', status: STATUS.OPEN, seatsLeft: 2 })];
+  const [opening] = findOpenings(prev, next);
+  assert.equal(opening?.reason, 'reopened', '신원이 같으면 같은 배로 본다');
 });

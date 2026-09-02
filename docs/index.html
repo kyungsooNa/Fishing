@@ -102,7 +102,7 @@ function render() {
   const date = $('f-date').value, q = $('f-q').value.trim(), openOnly = $('f-open').checked;
 
   const rows = DATA.trips.filter((t) =>
-    (!site || t.siteName === site) && (!port || t.port === port) &&
+    (!site || t.siteName === site || (t.sources ?? []).some((x) => x.siteName === site)) && (!port || t.port === port) &&
     (!species || t.species === species) && (!date || t.date === date) &&
     (!q || (t.boat ?? '').includes(q)) &&
     (!openOnly || t.status === 'open' || t.status === 'few'));
@@ -126,10 +126,18 @@ function render() {
         b.className = 'badge ' + t.status;
         b.textContent = LABEL[t.status] ?? t.status;
         td.append(b);
-      } else if (i === 2 && t.url) {
-        const a = document.createElement('a');
-        a.href = t.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.textContent = v;
-        td.append(a);
+      } else if (i === 2) {
+        // 여러 사이트에 같은 배가 올라와 있으면 둘 다 걸어줍니다. 어디서 잡든 상관없으니까요.
+        const sources = t.sources?.length ? t.sources : [{ siteName: t.siteName, url: t.url }];
+        sources.forEach((src, n) => {
+          if (n) td.append(' · ');
+          if (!src.url) { td.append(src.siteName ?? ''); return; }
+          const a = document.createElement('a');
+          a.href = src.url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+          a.textContent = src.siteName ?? '';
+          if (Number.isFinite(src.seatsLeft)) a.title = `이 사이트 기준 잔여 ${src.seatsLeft}`;
+          td.append(a);
+        });
       } else {
         td.textContent = v;
       }

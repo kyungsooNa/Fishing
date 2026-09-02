@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-09-02T02:51:51.120Z",
+  "generatedAt": "2026-09-02T04:38:26.541Z",
   "sites": {
     "mock": {
       "ok": true,
-      "at": "2026-09-02T02:51:51.120Z",
+      "at": "2026-09-02T04:38:26.541Z",
       "count": 4,
       "name": "예시 데이터"
     }
@@ -14,6 +14,7 @@
       "siteName": "예시 데이터",
       "boat": "모형호",
       "port": "테스트",
+      "phone": null,
       "date": "2026-09-02",
       "departAt": "05:30",
       "species": "우럭",
@@ -30,6 +31,7 @@
       "siteName": "예시 데이터",
       "boat": "모형호",
       "port": "테스트",
+      "phone": null,
       "date": "2026-09-03",
       "departAt": "05:30",
       "species": "광어",
@@ -46,6 +48,7 @@
       "siteName": "예시 데이터",
       "boat": "모형2호",
       "port": "테스트",
+      "phone": null,
       "date": "2026-09-04",
       "departAt": "13:00",
       "species": "주꾸미",
@@ -62,6 +65,7 @@
       "siteName": "예시 데이터",
       "boat": "모형2호",
       "port": "테스트",
+      "phone": null,
       "date": "2026-09-05",
       "departAt": "13:00",
       "species": "갑오징어",

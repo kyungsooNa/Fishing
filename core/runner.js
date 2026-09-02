@@ -1,7 +1,7 @@
 // 전체 순회. 한 사이트가 죽어도 나머지는 그대로 수집합니다.
 
 import { readFile } from 'node:fs/promises';
-import { tripKey } from './schema.js';
+import { mergeDuplicates } from './merge.js';
 import { closeBrowser } from './fetcher.js';
 import { load, save } from './store.js';
 import { findOpenings } from './diff.js';
@@ -72,7 +72,7 @@ export async function runAll({ only = null, days = 21, dataPath, dryRun = false 
 
   await closeBrowser();
 
-  const trips = sortTrips(dedupe(pruneOld(collected, days)));
+  const trips = sortTrips(mergeDuplicates(pruneOld(collected, days)));
   const openings = findOpenings(prev.trips ?? [], trips, failed);
   const data = { generatedAt: startedAt.toISOString(), sites: status, trips };
 
@@ -89,17 +89,6 @@ function pruneOld(trips, days) {
 }
 
 const iso = (d) => d.toISOString().slice(0, 10);
-
-// 같은 출조가 두 경로로 들어오면 잔여석 정보가 있는 쪽을 남깁니다.
-function dedupe(trips) {
-  const byKey = new Map();
-  for (const t of trips) {
-    const k = tripKey(t);
-    const cur = byKey.get(k);
-    if (!cur || (!Number.isFinite(cur.seatsLeft) && Number.isFinite(t.seatsLeft))) byKey.set(k, t);
-  }
-  return [...byKey.values()];
-}
 
 function sortTrips(trips) {
   return trips.sort(

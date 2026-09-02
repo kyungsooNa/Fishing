@@ -1,5 +1,5 @@
 {
-  "$comment": "사이트 목록. 여기만 손대면 됩니다. note는 사람이 읽는 메모라 수집에는 안 씁니다.",
+  "$comment": "사이트 목록. 여기만 손대면 됩니다. note는 사람이 읽는 메모라 수집에는 안 씁니다. phone은 다른 사이트에 올라온 같은 배를 알아보는 데 씁니다 — 이름·출항지(port)·전화번호가 셋 다 같아야 한 줄로 합칩니다.",
   "sites": [
     {
       "id": "mock",
@@ -49,9 +49,10 @@
       "adapter": "sunsang24",
       "url": "https://eungabi.sunsang24.com",
       "port": "충남 홍성 남당항",
+      "phone": "010-2495-2060",
       "mode": "static",
       "enabled": true,
-      "note": "광어·우럭·쭈꾸미. 목록형(schedule_fleet)으로 잡았습니다. 달력이 위에 있고 아래가 JS로 그려지면 path를 schedule_fleet_simple_top, mode를 js로 바꾸세요. 같은 선사가 eungabiho.com(더피싱 예약모듈)도 씁니다 — 둘 다 켜면 같은 출조가 두 줄로 보입니다."
+      "note": "광어·우럭·쭈꾸미. 목록형(schedule_fleet)으로 잡았습니다. 달력이 위에 있고 아래가 JS로 그려지면 path를 schedule_fleet_simple_top, mode를 js로 바꾸세요. 같은 선사가 eungabiho.com(더피싱 예약모듈)도 씁니다 — 둘 다 켜도 이름·출항지·전화번호가 같으면 한 줄로 합쳐집니다(eungabiho.com에도 같은 port/phone을 적어야 합니다). 전화번호는 사이트 안내에서 옮긴 값이고, 다른 사이트에 같은 배가 올라왔을 때 같은 배로 알아보는 데 씁니다."
     },
     {
       "id": "monster",
@@ -92,6 +93,7 @@
       "adapter": "thefishing",
       "url": "https://www.eugeneho.kr/m/index.php?mid=bk",
       "port": "충남 보령 오천항",
+      "phone": "010-4849-5072",
       "source": "index",
       "windowDays": 7,
       "seatsTotal": 20,
@@ -104,7 +106,7 @@
         "열기": 100000,
         "볼락": 80000
       },
-      "note": "20인승(선사 확인). 승선료는 사이트 안내 기준이라 시즌마다 확인 필요. index 방식은 어종이 안 나와 가격이 빈 칸으로 보입니다 — 가격까지 보려면 source를 detail로 바꾸세요."
+      "note": "20인승(선사 확인). 승선료는 사이트 안내 기준이라 시즌마다 확인 필요. index 방식은 어종이 안 나와 가격이 빈 칸으로 보입니다 — 가격까지 보려면 source를 detail로 바꾸세요. 전화번호는 사이트 안내에서 옮긴 값이고, 다른 사이트에 같은 배가 올라왔을 때 같은 배로 알아보는 데 씁니다."
     },
     {
       "id": "seohae",

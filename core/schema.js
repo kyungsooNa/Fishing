@@ -111,6 +111,34 @@ export function pickPort(site, boat) {
   return site.boats?.[boat]?.port ?? site.port ?? null;
 }
 
+/** 배별 연락처가 따로 적혀 있으면 그걸, 없으면 사이트 기본값을 씁니다. */
+export function pickPhone(site, boat) {
+  return site.boats?.[boat]?.phone ?? site.phone ?? null;
+}
+
+/** 전화번호는 표기가 제각각(010-1234-5678 / 010.1234.5678)이라 숫자만 남겨 비교합니다. */
+export function normPhone(raw) {
+  if (!raw) return null;
+  const digits = String(raw).replace(/\D/g, '');
+  return digits.length >= 9 ? digits : null;
+}
+
+const normText = (raw) => (raw ? String(raw).replace(/\s+/g, '') : null);
+
+/**
+ * 서로 다른 예약 사이트에 올라온 "같은 배"를 알아보는 키입니다.
+ * 배 이름만으로는 안 됩니다 — 다른 지역에 같은 이름의 배가 있습니다.
+ * 이름·출항지·전화번호가 셋 다 있고 셋 다 같을 때만 같은 배로 봅니다.
+ * 하나라도 비어 있으면 null을 돌려 합치지 않습니다(합쳐서 틀리는 것보다 두 줄이 낫습니다).
+ */
+export function identityKey(t) {
+  const boat = normText(t.boat);
+  const port = normText(t.port);
+  const phone = normPhone(t.phone);
+  if (!boat || !port || !phone || !t.date) return null;
+  return [boat, port, phone, t.date, t.departAt ?? ''].join('|');
+}
+
 /** 같은 출조를 두 번 수집해도 같은 키가 나오도록. 알림 비교의 기준입니다. */
 export function tripKey(t) {
   return [t.siteId, t.boat ?? '', t.date ?? '', t.departAt ?? ''].join('|');
@@ -143,6 +171,7 @@ export function makeTrip(site, fields) {
     siteName: site.name ?? site.id,
     boat: boatName,
     port: pickPort(site, boatName),
+    phone: pickPhone(site, boatName),
     date: resolvedDate,
     departAt: departAt ?? toTime(rawTime),
     species: species ? String(species).trim() : null,
