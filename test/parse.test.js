@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { parseRows, monthUrls } from '../adapters/sunsang24.js';
+import { monthUrls } from '../adapters/sunsang24.js';
+import { parseRows } from '../adapters/_rows.js';
+import { pageUrls } from '../adapters/generic.js';
 import { parseDetail, indexUrl, detailUrl } from '../adapters/thefishing.js';
 import { findOpenings } from '../core/diff.js';
 import { mergeDuplicates } from '../core/merge.js';
@@ -206,4 +208,38 @@ test('sunsang24: monthPath를 적어준 사이트만 달을 넘겨가며 받는�
 test('sunsang24: path에 배 번호를 붙여도 그대로 따른다', () => {
   const urls = monthUrls({ url: 'https://seojin.sunsang24.com', path: 'schedule_fleet/1359' }, new Date(2026, 8, 2));
   assert.deepEqual(urls, ['https://seojin.sunsang24.com/ship/schedule_fleet/1359']);
+});
+
+// ── 자체 사이트(generic) ───────────────────────────────────────────────────
+test('generic: 표기만 같으면 자체 사이트도 같은 파서로 읽는다', () => {
+  const site = {
+    id: 'blueseaho', name: '오천항 푸른바다낚시', url: 'https://www.blueseaho.com/reservation',
+    port: '충남 보령 오천항', phone: '010-5402-0521',
+    boats: { 푸른바다3호: {}, 은갈매기호: {} },
+  };
+  const trips = parseRows(site, fx.GENERIC_RESERVATION, site.url);
+
+  assert.deepEqual(trips.map((t) => [t.boat, t.seatsLeft, t.status]), [
+    ['푸른바다3호', 7, STATUS.OPEN],
+    ['은갈매기호', 0, STATUS.CLOSED],
+  ]);
+  assert.equal(trips[0].date, '2026-09-08');
+  assert.equal(trips[0].departAt, '06:00');
+  assert.equal(trips[0].tide, '10물');
+  assert.equal(trips[0].phone, '010-5402-0521', '합치기용 신원이 실려야 한다');
+});
+
+test('generic: 주소만 적으면 그 한 장, 날짜별 사이트면 날짜만큼', () => {
+  const base = 'https://www.blueseaho.com/reservation';
+  assert.deepEqual(pageUrls({ url: base }), [base]);
+
+  assert.deepEqual(pageUrls({ url: base, pages: ['/reservation', '/reservation?type=2'] }), [
+    'https://www.blueseaho.com/reservation',
+    'https://www.blueseaho.com/reservation?type=2',
+  ]);
+
+  assert.deepEqual(pageUrls({ url: base, datePath: '/reservation?date={date}', days: 2 }, new Date(2026, 8, 5)), [
+    'https://www.blueseaho.com/reservation?date=2026-09-05',
+    'https://www.blueseaho.com/reservation?date=2026-09-06',
+  ]);
 });

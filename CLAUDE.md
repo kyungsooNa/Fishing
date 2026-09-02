@@ -19,6 +19,8 @@ core/merge.js     같은 출조·같은 배 합치기 (신원은 이름+출항�
 core/notify.js    텔레그램/디스코드. 토큰 없으면 조용히 건너뜀
 core/runner.js    전체 순회, 실패 격리, 지난 날짜 정리
 adapters/         사이트 유형별 파서. collect(site) 하나만 내보내면 됩니다
+adapters/_rows.js 출조 행 읽는 부분. 사이트에 안 얽혀 있어 어댑터들이 같이 씁니다
+adapters/generic.js 자체 사이트용. 주소만 적으면 본문 표기로 읽어봅니다
 sites/registry.json  ★ 사이트 목록. 보통은 여기만 고칩니다
 test/             가상 HTML로 파서 로직만 검증 (npm test)
 ```

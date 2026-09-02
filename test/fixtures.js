@@ -42,3 +42,15 @@ export const THEFISHING_DETAIL = `
   <p>대기자: 박영희님(3명/3,4,5)</p>
   <p>취소: 이민호님(1명/7)</p>
 </div>`;
+
+// sunsang24도 더피싱도 아닌 자체 사이트. 표기만 같으면 같은 파서로 읽힙니다.
+export const GENERIC_RESERVATION = `
+<table>
+  <tr><th>날짜</th><th>물때</th><th>선박</th><th>출항</th><th>어종</th><th>잔여</th></tr>
+  <tr>
+    <td>2026-09-08</td><td>10물</td><td>푸른바다3호</td><td>운항시간 06:00</td><td>쭈꾸미</td><td>남은자리 7명</td>
+  </tr>
+  <tr>
+    <td>2026-09-08</td><td>10물</td><td>은갈매기호</td><td>운항시간 06:30</td><td>광어</td><td>예약마감</td>
+  </tr>
+</table>`;

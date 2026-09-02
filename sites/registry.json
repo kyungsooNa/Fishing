@@ -122,6 +122,23 @@
       "note": "만수피싱.kr (구 만수배낚시 만수1호). 쭈꾸미·갑오징어·참돔·백조기·외수질·우럭·광어. 승선은 영흥대교 밑. seatsTotal 22는 사이트 소개(2022 신조선 22인승)에서 옮긴 값이라 미확인 — index 방식에서는 안 쓰이지만 detail로 바꾸려면 먼저 대조하세요. 같은 항에 팀만수(teammansu.kr)도 있는데 다른 배입니다."
     },
     {
+      "id": "blueseaho",
+      "name": "오천항 푸른바다낚시",
+      "adapter": "generic",
+      "url": "https://www.blueseaho.com/reservation",
+      "port": "충남 보령 오천항",
+      "phone": "010-5402-0521",
+      "mode": "auto",
+      "enabled": true,
+      "boats": {
+        "푸른바다3호": {},
+        "푸른바다5호": {},
+        "푸른바다7호": {},
+        "은갈매기호": {}
+      },
+      "note": "sunsang24도 더피싱도 아닌 자체 사이트라 generic 어댑터로 잡았습니다. 예약 목록이 /reservation 한 장에 다 나오는지 확인이 필요합니다 — 날짜별로 나뉘어 있으면 datePath를, 페이지가 여러 장이면 pages를 적으세요. 안 읽히면 --dump로 원본을 보고 전용 어댑터가 필요합니다. 배 목록(푸른바다3·5·7호, 은갈매기호)은 조황글에서 본 것이라 빠진 배가 있을 수 있습니다."
+    },
+    {
       "id": "seohae",
       "name": "평택항 서해피싱",
       "adapter": "thefishing",

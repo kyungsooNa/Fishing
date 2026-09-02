@@ -146,6 +146,34 @@ npm run serve                     # http://localhost:8080
 
 오전배·오후배는 별개 출조로 잡힙니다.
 
+## 자체 사이트 추가하기 (generic)
+
+sunsang24도 더피싱도 아닌 선사 홈페이지는 `generic` 어댑터로 주소만 적어보면 됩니다.
+파싱을 클래스명이 아니라 "운항시간 / 남은자리 / 예약마감" 같은 본문 표기로 하기 때문에,
+표기가 흔한 형태면 그대로 읽힙니다.
+
+```jsonc
+{
+  "id": "blueseaho",
+  "name": "오천항 푸른바다낚시",
+  "adapter": "generic",
+  "url": "https://www.blueseaho.com/reservation",   // 예약 목록이 있는 주소
+  "port": "충남 보령 오천항",
+  "phone": "010-5402-0521",
+  "enabled": true
+}
+```
+
+목록이 여러 장으로 나뉘어 있으면 둘 중 하나를 더 적습니다.
+
+```jsonc
+"pages": ["/reservation", "/reservation?type=2"],   // 정해진 몇 장
+"datePath": "/reservation?date={date}"              // 날짜별 ({date}=2026-09-05, {ymd}=20260905)
+```
+
+`node debug.js <id>`로 0건이 나오면 표기가 다른 사이트입니다. `--dump`로 원본을 보고
+`adapters/`에 전용 파일을 하나 만드는 게 맞습니다.
+
 ## 그 밖의 사이트 추가하는 법
 
 대부분은 `registry.json`에 한 덩어리만 추가하면 끝납니다.
@@ -234,6 +262,7 @@ TELEGRAM_CHAT_ID=...
 | `hifishing` | 대천항 하이피싱 | thefishing (index) | 켜짐 |
 | `eugeneho` | 오천항 유진호 | thefishing (index) | 켜짐 — 20인승, 승선료 registry에 기록 |
 | `mansu` | 영흥도 만수피싱 | thefishing (index) | 켜짐 — 만수피싱.kr, 정원 미확인 |
+| `blueseaho` | 오천항 푸른바다낚시 | generic | 켜짐 — 자체 사이트, 파싱 미확인 |
 | `seohae` | 평택항 서해피싱 | thefishing | 꺼짐 — 예약모듈 형식 미확인 |
 | `mock` | 예시 데이터 | _mock | 꺼짐 — 네트워크 없이 확인용 |
 
