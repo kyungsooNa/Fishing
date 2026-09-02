@@ -122,6 +122,19 @@
       "note": "만수피싱.kr (구 만수배낚시 만수1호). 쭈꾸미·갑오징어·참돔·백조기·외수질·우럭·광어. 승선은 영흥대교 밑. seatsTotal 22는 사이트 소개(2022 신조선 22인승)에서 옮긴 값이라 미확인 — index 방식에서는 안 쓰이지만 detail로 바꾸려면 먼저 대조하세요. 같은 항에 팀만수(teammansu.kr)도 있는데 다른 배입니다."
     },
     {
+      "id": "lureschool",
+      "name": "오천항 루어스쿨 발키리호",
+      "adapter": "thefishing",
+      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk",
+      "port": "충남 보령 오천항",
+      "phone": "010-8019-8282",
+      "source": "index",
+      "windowDays": 7,
+      "seatsTotal": 22,
+      "enabled": true,
+      "note": "오천루어스쿨.com. 백조기·쭈꾸미·광어·우럭·갑오징어. 출입항 04:30~15:00. 받은 주소는 mid=index(메인)였는데 예약모듈은 mid=bk라 바꿔 적었습니다. seatsTotal 22는 사이트 소개에서 옮긴 값이라 미확인 — 유진호도 검색으로는 22였지만 실제 20이었습니다. lures.myhomes.co.kr 로도 같은 선사가 뜹니다."
+    },
+    {
       "id": "blueseaho",
       "name": "오천항 푸른바다낚시",
       "adapter": "generic",

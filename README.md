@@ -279,6 +279,7 @@ generic으로 잡았지만 실은 알려진 솔루션이면 `"platform": "서로
 | `hifishing` | 대천항 하이피싱 | thefishing (index) | 켜짐 |
 | `eugeneho` | 오천항 유진호 | thefishing (index) | 켜짐 — 20인승, 승선료 registry에 기록 |
 | `mansu` | 영흥도 만수피싱 | thefishing (index) | 켜짐 — 만수피싱.kr, 정원 미확인 |
+| `lureschool` | 오천항 루어스쿨 발키리호 | thefishing (index) | 켜짐 — 정원 미확인 |
 | `blueseaho` | 오천항 푸른바다낚시 | generic | 켜짐 — 자체 사이트, 파싱 미확인 |
 | `seohae` | 평택항 서해피싱 | thefishing | 꺼짐 — 예약모듈 형식 미확인 |
 | `mock` | 예시 데이터 | _mock | 꺼짐 — 네트워크 없이 확인용 |

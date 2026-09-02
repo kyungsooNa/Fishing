@@ -211,6 +211,9 @@ export function indexUrl(bookingUrl) {
 
 export function detailUrl(bookingUrl, day) {
   const u = new URL(bookingUrl);
+  // 선사 홈페이지 주소를 그대로 복사해오면 mid=index(메인)인 경우가 많습니다.
+  // 예약 페이지는 mid=bk라, 여기서 맞춰줍니다.
+  u.searchParams.set('mid', 'bk');
   u.searchParams.set('year', String(day.getFullYear()));
   u.searchParams.set('month', String(day.getMonth() + 1));
   u.searchParams.set('day', String(day.getDate()));
