@@ -268,3 +268,13 @@ test('platform: registry에 적어둔 값이 있으면 그걸 따른다', () => 
 test('platform: 모르는 어댑터는 이름을 그대로 쓴다', () => {
   assert.deepEqual(platformOf({ adapter: 'newsite' }), { id: 'newsite', label: 'newsite' });
 });
+
+test('파서가 바깥 컨테이너까지 두 번 잡아도 중복 정리가 접는다', () => {
+  // 사이트마다 마크업이 달라서 li 안에 div.row 가 또 있는 식이면 같은 행이 두 번 나옵니다.
+  // 파서를 사이트마다 좁히는 대신, 중복 정리에 맡깁니다.
+  const html = '<ul><li><div class="row">2026-09-05 악바리호 운항시간 05:30 남은자리 4명</div></li></ul>';
+  const trips = parseRows({ id: 'akbari', name: '악바리' }, html, 'https://x');
+
+  assert.equal(trips.length, 2, '파서 단계에서는 두 번 잡힌다');
+  assert.equal(mergeDuplicates(trips).length, 1, '정리 후에는 한 줄');
+});
