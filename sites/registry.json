@@ -44,6 +44,16 @@
       "note": "sunsang24 호스팅 선사. 첫 수집에서 배 이름·출항지를 확인하고 boats에 채우세요."
     },
     {
+      "id": "eungabi",
+      "name": "남당항 은가비호",
+      "adapter": "sunsang24",
+      "url": "https://eungabi.sunsang24.com",
+      "port": "충남 홍성 남당항",
+      "mode": "static",
+      "enabled": true,
+      "note": "광어·우럭·쭈꾸미. 목록형(schedule_fleet)으로 잡았습니다. 달력이 위에 있고 아래가 JS로 그려지면 path를 schedule_fleet_simple_top, mode를 js로 바꾸세요. 같은 선사가 eungabiho.com(더피싱 예약모듈)도 씁니다 — 둘 다 켜면 같은 출조가 두 줄로 보입니다."
+    },
+    {
       "id": "monster",
       "name": "오이도 몬스터호",
       "adapter": "thefishing",

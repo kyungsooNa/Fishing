@@ -29,10 +29,26 @@ async function collectByMonth(site) {
   const path = site.path ?? 'schedule_fleet';
   const trips = [];
 
-  for (const ym of monthsInRange(site.days ?? 21)) {
-    const url = joinUrl(site.url, `/ship/${path}/${ym}`);
-    const html = await fetchHtml(url, { mode: site.mode ?? 'static', waitFor: site.waitFor });
-    trips.push(...parseRows(site, html, url));
+  for (const [i, ym] of monthsInRange(site.days ?? 21).entries()) {
+    // 월을 붙인 주소가 안 먹는 사이트가 있습니다. 이번 달은 경로만으로도 같은 목록이
+    // 나오므로 한 번 더 시도해봅니다. 다음 달부터는 폴백할 주소가 없습니다.
+    const urls = i === 0
+      ? [joinUrl(site.url, `/ship/${path}/${ym}`), joinUrl(site.url, `/ship/${path}/`)]
+      : [joinUrl(site.url, `/ship/${path}/${ym}`)];
+
+    let lastErr;
+    for (const url of urls) {
+      try {
+        const html = await fetchHtml(url, { mode: site.mode ?? 'static', waitFor: site.waitFor });
+        const rows = parseRows(site, html, url);
+        if (rows.length) { trips.push(...rows); lastErr = null; break; }
+        lastErr = new Error(`${url} 에서 출조 행을 못 찾았습니다`);
+      } catch (err) {
+        lastErr = err;
+      }
+    }
+    // 이번 달이 통째로 실패하면 그대로 알립니다. 다음 달이 비는 건 흔한 일이라 넘어갑니다.
+    if (lastErr && i === 0) throw lastErr;
   }
 
   if (!trips.length) throw new Error('출조 행을 못 찾았습니다 — 레이아웃이 바뀌었는지 확인하세요 (--dump)');

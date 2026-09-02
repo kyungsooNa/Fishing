@@ -54,7 +54,9 @@ npm test                   # 가상 HTML로 파서 회귀 확인
 진짜 사이트에서 되는지는 별개입니다. **각 사이트를 처음 켤 때 `node debug.js <id>`로
 한 번씩 대조하세요.** 특히:
 
-- sunsang24 목록형의 월 페이지 주소(`/ship/schedule_fleet/{ym}`)가 맞는지
+- sunsang24 목록형의 월 페이지 주소(`/ship/schedule_fleet/{ym}`)가 맞는지.
+  경로 자체(`/ship/schedule_fleet/`)는 다른 선사 사이트에서 확인했지만 `{ym}`을 붙인 형태는 미확인이라,
+  이번 달은 월 없는 주소로 한 번 더 시도합니다
 - 더피싱 index 방식에서 메인 요약표를 실제로 찾는지 (못 찾으면 detail로 자동 폴백)
 - detail 방식은 `seatsTotal`이 정확해야 잔여석이 맞습니다
 
