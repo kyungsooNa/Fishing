@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>낚시 출조 예약 현황판</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f7f7f5; --card: #fff; --fg: #1c1b19; --muted: #6b6862; --line: #e3e1dc;
+    --open: #1a7f4b; --few: #b06a00; --closed: #8b8781; --off: #a03030;
+    --accent: #245a8d;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #17171a; --card: #201f23; --fg: #e9e7e2; --muted: #9a968e; --line: #33323a;
+      --open: #4cc487; --few: #e0a33c; --closed: #7d7a74; --off: #e07070; --accent: #7fb0e0;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg);
+         font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 20px 16px 60px; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: 13px; margin-bottom: 18px; }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  select, input[type=search] { padding: 7px 10px; border: 1px solid var(--line); border-radius: 7px;
+                               background: var(--card); color: var(--fg); font: inherit; font-size: 14px; }
+  label.check { display: inline-flex; align-items: center; gap: 6px; padding: 7px 10px;
+                border: 1px solid var(--line); border-radius: 7px; background: var(--card); font-size: 14px; }
+  .tablewrap { overflow-x: auto; background: var(--card); border: 1px solid var(--line); border-radius: 10px; }
+  table { border-collapse: collapse; width: 100%; min-width: 720px; }
+  th, td { padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th { font-size: 12px; color: var(--muted); font-weight: 600; position: sticky; top: 0; background: var(--card); }
+  tbody tr:last-child td { border-bottom: 0; }
+  tr.daystart td { border-top: 2px solid var(--line); }
+  .badge { font-weight: 600; }
+  .open { color: var(--open); } .few { color: var(--few); }
+  .closed { color: var(--closed); } .off { color: var(--off); } .unknown { color: var(--muted); }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  a { color: var(--accent); }
+  .empty { padding: 30px; text-align: center; color: var(--muted); }
+  details { margin-top: 22px; font-size: 13px; color: var(--muted); }
+  summary { cursor: pointer; }
+  .status { margin-top: 10px; display: grid; gap: 5px; }
+  .status div { display: flex; gap: 8px; }
+  .fail { color: var(--off); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>낚시 출조 예약 현황판</h1>
+  <div class="sub" id="meta">불러오는 중…</div>
+
+  <div class="filters">
+    <select id="f-site"><option value="">전체 선사</option></select>
+    <select id="f-port"><option value="">전체 항구</option></select>
+    <select id="f-species"><option value="">전체 어종</option></select>
+    <select id="f-date"><option value="">전체 날짜</option></select>
+    <input type="search" id="f-q" placeholder="배 이름 검색">
+    <label class="check"><input type="checkbox" id="f-open" checked> 빈자리만</label>
+  </div>
+
+  <div class="tablewrap">
+    <table>
+      <thead><tr>
+        <th>날짜</th><th>출항</th><th>선사</th><th>배</th><th>항구</th>
+        <th>어종</th><th>물때</th><th>상태</th><th class="num">잔여</th><th class="num">승선료</th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <div class="empty" id="empty" hidden>조건에 맞는 출조가 없습니다.</div>
+  </div>
+
+  <details>
+    <summary>수집 상태</summary>
+    <div class="status" id="status"></div>
+  </details>
+</div>
+
+<script>
+const LABEL = { open: '예약가능', few: '잔여 적음', closed: '마감', off: '휴항', unknown: '확인필요' };
+const WEEK = ['일','월','화','수','목','금','토'];
+let DATA = { trips: [], sites: {}, generatedAt: null };
+
+const $ = (id) => document.getElementById(id);
+const won = (n) => n == null ? '' : n.toLocaleString('ko-KR') + '원';
+
+function dayLabel(d) {
+  const [y, m, dd] = d.split('-').map(Number);
+  return `${m}/${dd}(${WEEK[new Date(y, m - 1, dd).getDay()]})`;
+}
+
+function fillOptions(sel, values) {
+  for (const v of [...new Set(values.filter(Boolean))].sort()) {
+    sel.append(new Option(sel.id === 'f-date' ? dayLabel(v) : v, v));
+  }
+}
+
+function render() {
+  const site = $('f-site').value, port = $('f-port').value, species = $('f-species').value;
+  const date = $('f-date').value, q = $('f-q').value.trim(), openOnly = $('f-open').checked;
+
+  const rows = DATA.trips.filter((t) =>
+    (!site || t.siteName === site) && (!port || t.port === port) &&
+    (!species || t.species === species) && (!date || t.date === date) &&
+    (!q || (t.boat ?? '').includes(q)) &&
+    (!openOnly || t.status === 'open' || t.status === 'few'));
+
+  const tbody = $('rows');
+  tbody.textContent = '';
+  let prevDate = null;
+
+  for (const t of rows) {
+    const tr = document.createElement('tr');
+    if (t.date !== prevDate) { tr.className = 'daystart'; prevDate = t.date; }
+    const cells = [
+      dayLabel(t.date), t.departAt ?? '', t.siteName ?? '', t.boat ?? '', t.port ?? '',
+      t.species ?? '', t.tide ?? '', null,
+      Number.isFinite(t.seatsLeft) ? String(t.seatsLeft) : '', won(t.price),
+    ];
+    cells.forEach((v, i) => {
+      const td = document.createElement('td');
+      if (i === 7) {
+        const b = document.createElement('span');
+        b.className = 'badge ' + t.status;
+        b.textContent = LABEL[t.status] ?? t.status;
+        td.append(b);
+      } else if (i === 2 && t.url) {
+        const a = document.createElement('a');
+        a.href = t.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.textContent = v;
+        td.append(a);
+      } else {
+        td.textContent = v;
+      }
+      if (i >= 8) td.className = 'num';
+      tr.append(td);
+    });
+    tbody.append(tr);
+  }
+
+  $('empty').hidden = rows.length > 0;
+}
+
+function renderStatus() {
+  const box = $('status');
+  box.textContent = '';
+  for (const [id, s] of Object.entries(DATA.sites)) {
+    const div = document.createElement('div');
+    if (!s.ok) div.className = 'fail';
+    const when = s.at ? new Date(s.at).toLocaleString('ko-KR') : '';
+    div.textContent = s.ok
+      ? `✓ ${s.name ?? id} — ${s.count}건 · ${when}`
+      : `✗ ${s.name ?? id} — 갱신 실패(${s.error}) · 직전 ${s.count}건 유지`;
+    box.append(div);
+  }
+}
+
+fetch('data.json?t=' + Date.now())
+  .then((r) => r.json())
+  .then((d) => {
+    DATA = d;
+    const failed = Object.values(d.sites).filter((s) => !s.ok).length;
+    $('meta').textContent =
+      `출조 ${d.trips.length}건 · 갱신 ${d.generatedAt ? new Date(d.generatedAt).toLocaleString('ko-KR') : '-'}` +
+      (failed ? ` · 갱신 실패 ${failed}곳` : '');
+    fillOptions($('f-site'), d.trips.map((t) => t.siteName));
+    fillOptions($('f-port'), d.trips.map((t) => t.port));
+    fillOptions($('f-species'), d.trips.map((t) => t.species));
+    fillOptions($('f-date'), d.trips.map((t) => t.date));
+    renderStatus();
+    render();
+  })
+  .catch((e) => { $('meta').textContent = 'data.json을 못 읽었습니다: ' + e.message; });
+
+for (const id of ['f-site', 'f-port', 'f-species', 'f-date', 'f-open']) $(id).addEventListener('change', render);
+$('f-q').addEventListener('input', render);
+</script>
+</body>
+</html>

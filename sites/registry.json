@@ -1,0 +1,82 @@
+{
+  "$comment": "사이트 목록. 여기만 손대면 됩니다. note는 사람이 읽는 메모라 수집에는 안 씁니다.",
+  "sites": [
+    {
+      "id": "mock",
+      "name": "예시 데이터",
+      "adapter": "_mock",
+      "url": "https://example.invalid",
+      "port": "테스트",
+      "enabled": false,
+      "note": "네트워크 없이 파이프라인만 확인할 때 enabled:true로 켜세요."
+    },
+
+    {
+      "id": "akbari",
+      "name": "구매항 악바리호",
+      "adapter": "sunsang24",
+      "url": "https://akbari.sunsang24.com",
+      "port": "충남 태안 구매항",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "악바리호": { "prices": { "주꾸미": 100000, "갑오징어": 100000, "광어": 150000 } },
+        "레드맨호": { "price": 90000 },
+        "맥가이버호": { "port": "영목항" }
+      }
+    },
+    {
+      "id": "sunsang24ho",
+      "name": "선상24호",
+      "adapter": "sunsang24",
+      "url": "https://sunsang24ho.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "note": "sunsang24 호스팅 선사. 첫 수집에서 배 이름·출항지를 확인하고 boats에 채우세요."
+    },
+
+    {
+      "id": "monster",
+      "name": "오이도 몬스터호",
+      "adapter": "thefishing",
+      "url": "http://www.yusungho.kr/m/index.php?mid=bk",
+      "port": "경기 시흥 시화방조제 중간선착장",
+      "source": "index",
+      "windowDays": 7,
+      "seatsTotal": 20,
+      "enabled": true
+    },
+    {
+      "id": "ssfish",
+      "name": "무창포 선상낚시",
+      "adapter": "thefishing",
+      "url": "https://www.ssfish.kr/index.php?mid=bk",
+      "port": "충남 보령 무창포항",
+      "source": "index",
+      "windowDays": 7,
+      "enabled": true,
+      "note": "index 방식이라 seatsTotal 없이 동작합니다. detail로 바꾸려면 정원을 먼저 확인하세요."
+    },
+    {
+      "id": "hifishing",
+      "name": "대천항 하이피싱",
+      "adapter": "thefishing",
+      "url": "https://www.hifishing.net/m/index.php?mid=bk",
+      "port": "충남 보령 대천항",
+      "source": "index",
+      "windowDays": 7,
+      "enabled": true,
+      "note": "쭈꾸미·갑오징어 시즌 예약현황이 메인에 요약으로 뜹니다."
+    },
+
+    {
+      "id": "seohae",
+      "name": "평택항 서해피싱",
+      "adapter": "thefishing",
+      "url": "https://xn--2i4bo7ap3xqzcc7bmivb.com/",
+      "port": "경기 평택항",
+      "enabled": false,
+      "note": "예약모듈 형식 미확인. node debug.js seohae --dump 로 확인한 뒤 켜세요."
+    }
+  ]
+}

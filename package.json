@@ -1,0 +1,22 @@
+{
+  "name": "fishing-board",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "낚시 출조 예약 현황판 — 여러 예약 사이트를 긁어 한 페이지에서 빈자리를 봅니다.",
+  "scripts": {
+    "collect": "node collect.js",
+    "debug": "node debug.js",
+    "serve": "node serve.js",
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0"
+  },
+  "optionalDependencies": {
+    "playwright": "^1.47.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

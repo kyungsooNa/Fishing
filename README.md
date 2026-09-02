@@ -12,7 +12,10 @@ adapters/                       사이트 유형별 파서
 core/schema.js                  통합 스키마 + 표기 정규화
 core/fetcher.js                 HTTP / Playwright, 호스트별 요청 간격 제어
 core/store.js                   data.json 읽기·쓰기
+core/diff.js                    이전 결과와 비교해 새로 난 자리만 추출
+core/notify.js                  텔레그램 / 디스코드 알림
 core/runner.js                  전체 순회, 실패 격리
+test/                           가상 HTML로 파서 회귀 확인 (npm test)
 docs/index.html                 화면
 docs/data.json                  수집 결과 (지금 든 건 예시 데이터)
 ```
@@ -37,6 +40,7 @@ node debug.js                     # 등록된 사이트 id 목록
 node debug.js akbari              # 한 곳만 돌려보기
 node debug.js akbari --dump       # 실패 시 원본 HTML을 tmp/ 에 저장
 node collect.js                   # 전체
+npm test                          # 파서 회귀 확인 (네트워크 불필요)
 npm run serve                     # http://localhost:8080
 ```
 
@@ -191,6 +195,36 @@ TELEGRAM_CHAT_ID=...
 
 **주기 얘기.** 취소석은 몇 분 단위 경쟁입니다. GitHub Actions cron은 최소 5분이지만 실제로는
 10~30분씩 밀리므로, 알림을 진지하게 쓸 거면 상시 서버(Oracle Cloud 등)에서 5분 주기로 돌리는 게 맞습니다.
+
+## 지금 등록된 사이트
+
+| id | 선사 | 어댑터 | 상태 |
+|---|---|---|---|
+| `akbari` | 구매항 악바리호 | sunsang24 | 켜짐 |
+| `sunsang24ho` | 선상24호 | sunsang24 | 켜짐 |
+| `monster` | 오이도 몬스터호 | thefishing (index) | 켜짐 |
+| `ssfish` | 무창포 선상낚시 | thefishing (index) | 켜짐 |
+| `hifishing` | 대천항 하이피싱 | thefishing (index) | 켜짐 |
+| `seohae` | 평택항 서해피싱 | thefishing | 꺼짐 — 예약모듈 형식 미확인 |
+| `mock` | 예시 데이터 | _mock | 꺼짐 — 네트워크 없이 확인용 |
+
+**이 목록은 국내 IP에서 검증되지 않았습니다.** 개발 환경에서 해당 도메인이 전부 차단돼
+실제 HTML을 못 봤습니다. 처음 켤 때 `node debug.js <id>`로 한 번씩 대조하세요.
+안 맞으면 그 사이트만 "갱신 실패"로 뜨고 나머지는 정상 동작합니다.
+
+## 붙일 만한 후보
+
+개별 선사를 하나씩 넣는 것보다, 여러 선사가 한 페이지에 모이는 곳이 값쌉니다.
+
+| 후보 | 성격 | 예상 난이도 |
+|---|---|---|
+| [더피싱 예약검색](https://thefishing.kr/reservation/list.php) | 더피싱 계열 통합 목록. `?page=N`, `?sa[]=지역` | 중 — 목록에 잔여석 숫자가 있는지부터 확인 |
+| [선상24 통합 검색](https://www.sunsang24.com/) | 제휴 1,000척+ | 중 — JS 렌더링/로그인 여부 확인 필요 |
+| [물반고기반](https://www.moolban.com/), [어바웃피싱](https://booking.aboutfishing.kr/), [어신](https://us-in.io/) | 앱 우선 플랫폼 | 상 — 웹이 SPA일 가능성. 앱 API를 찾으면 오히려 깔끔 |
+| [피싱고](https://fishingogo.com/), [낚시앱](https://www.fishapp.co.kr/) | 예약 플랫폼 | 미확인 |
+| 서로피싱 등 솔루션 고객사 | 템플릿 하나로 여러 선사 | sunsang24처럼 어댑터 하나로 다 붙습니다 |
+
+통합 플랫폼은 개별 선사 사이트보다 봇 차단이 빡빡할 가능성이 높습니다. 요청 간격을 넉넉히 잡으세요.
 
 ## 알아둘 것
 
