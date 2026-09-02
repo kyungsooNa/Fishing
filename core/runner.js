@@ -2,6 +2,7 @@
 
 import { readFile } from 'node:fs/promises';
 import { mergeDuplicates } from './merge.js';
+import { platformOf } from './platform.js';
 import { closeBrowser } from './fetcher.js';
 import { load, save } from './store.js';
 import { findOpenings } from './diff.js';
@@ -52,7 +53,7 @@ export async function runAll({ only = null, days = 21, dataPath, dryRun = false 
     try {
       const trips = await collectSite({ days, ...site });
       collected.push(...trips);
-      status[site.id] = { ok: true, at, count: trips.length, name: site.name ?? site.id };
+      status[site.id] = { ok: true, at, count: trips.length, name: site.name ?? site.id, platform: platformOf(site).label };
       console.log(`  ${site.id.padEnd(14)} ${String(trips.length).padStart(4)}건`);
     } catch (err) {
       failed.add(site.id);
@@ -65,6 +66,7 @@ export async function runAll({ only = null, days = 21, dataPath, dryRun = false 
         count: kept.length,
         keptFrom: prev.sites?.[site.id]?.at ?? prev.generatedAt ?? null,
         name: site.name ?? site.id,
+        platform: platformOf(site).label,
       };
       console.warn(`  ${site.id.padEnd(14)} 실패: ${status[site.id].error}`);
     }

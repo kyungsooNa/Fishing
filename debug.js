@@ -7,6 +7,7 @@
 
 import { mkdir, writeFile } from 'node:fs/promises';
 import { loadRegistry, collectSite } from './core/runner.js';
+import { platformOf } from './core/platform.js';
 import { fetchHtml, closeBrowser } from './core/fetcher.js';
 
 const [id, ...flags] = process.argv.slice(2);
@@ -18,7 +19,7 @@ if (!id) {
   console.log('등록된 사이트:\n');
   for (const s of registry) {
     const mark = s.enabled === false ? '  ' : '✓ ';
-    console.log(`${mark}${s.id.padEnd(14)} ${(s.name ?? '').padEnd(18)} ${s.adapter}`);
+    console.log(`${mark}${s.id.padEnd(14)} ${(s.name ?? '').padEnd(18)} [${platformOf(s).label}]`);
   }
   console.log('\n사용법: node debug.js <id> [--dump]');
   process.exit(0);
@@ -30,7 +31,7 @@ if (!site) {
   process.exit(1);
 }
 
-console.log(`${site.name ?? site.id} (${site.adapter}) — ${site.url}\n`);
+console.log(`${site.name ?? site.id} [${platformOf(site).label}] ${site.adapter} — ${site.url}\n`);
 
 try {
   const trips = await collectSite({ ...site, days });

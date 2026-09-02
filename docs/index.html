@@ -157,9 +157,10 @@ function renderStatus() {
     const div = document.createElement('div');
     if (!s.ok) div.className = 'fail';
     const when = s.at ? new Date(s.at).toLocaleString('ko-KR') : '';
+    const kind = s.platform ? ` [${s.platform}]` : '';
     div.textContent = s.ok
-      ? `✓ ${s.name ?? id} — ${s.count}건 · ${when}`
-      : `✗ ${s.name ?? id} — 갱신 실패(${s.error}) · 직전 ${s.count}건 유지`;
+      ? `✓ ${s.name ?? id}${kind} — ${s.count}건 · ${when}`
+      : `✗ ${s.name ?? id}${kind} — 갱신 실패(${s.error}) · 직전 ${s.count}건 유지`;
     box.append(div);
   }
 }

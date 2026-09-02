@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { monthUrls } from '../adapters/sunsang24.js';
 import { parseRows } from '../adapters/_rows.js';
 import { pageUrls } from '../adapters/generic.js';
+import { platformOf } from '../core/platform.js';
 import { parseDetail, indexUrl, detailUrl } from '../adapters/thefishing.js';
 import { findOpenings } from '../core/diff.js';
 import { mergeDuplicates } from '../core/merge.js';
@@ -242,4 +243,28 @@ test('generic: 주소만 적으면 그 한 장, 날짜별 사이트면 날짜만
     'https://www.blueseaho.com/reservation?date=2026-09-05',
     'https://www.blueseaho.com/reservation?date=2026-09-06',
   ]);
+});
+
+// ── 플랫폼 종류 ────────────────────────────────────────────────────────────
+test('platform: 어댑터에서 계열을 알아본다', () => {
+  assert.deepEqual(platformOf({ adapter: 'sunsang24' }), { id: 'sunsang24', label: '선상24' });
+  assert.deepEqual(platformOf({ adapter: 'thefishing' }), { id: 'thefishing', label: '더피싱' });
+  assert.deepEqual(platformOf({ adapter: 'generic' }), { id: 'generic', label: '자체' });
+});
+
+test('platform: 더피싱은 수집 방식까지 구분한다', () => {
+  // index는 메인 요약 한 번, detail은 날짜별. 요청 수가 달라서 구분이 값어치 있습니다.
+  assert.equal(platformOf({ adapter: 'thefishing' }).label, '더피싱');
+  assert.equal(platformOf({ adapter: 'thefishing', source: 'detail' }).label, '더피싱(상세)');
+});
+
+test('platform: registry에 적어둔 값이 있으면 그걸 따른다', () => {
+  // generic으로 잡아뒀지만 실은 알려진 솔루션이더라 하는 경우.
+  assert.deepEqual(platformOf({ adapter: 'generic', platform: '서로피싱' }), {
+    id: 'generic', label: '서로피싱',
+  });
+});
+
+test('platform: 모르는 어댑터는 이름을 그대로 쓴다', () => {
+  assert.deepEqual(platformOf({ adapter: 'newsite' }), { id: 'newsite', label: 'newsite' });
 });
