@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { monthUrls } from '../adapters/sunsang24.js';
 import { parseRows } from '../adapters/_rows.js';
 import { pageUrls } from '../adapters/generic.js';
-import { platformOf } from '../core/platform.js';
+import { platformOf, needsBrowser } from '../core/platform.js';
 import { parseDetail, indexUrl, detailUrl } from '../adapters/thefishing.js';
 import { findOpenings } from '../core/diff.js';
 import { mergeDuplicates } from '../core/merge.js';
@@ -277,4 +277,17 @@ test('파서가 바깥 컨테이너까지 두 번 잡아도 중복 정리가 접
 
   assert.equal(trips.length, 2, '파서 단계에서는 두 번 잡힌다');
   assert.equal(mergeDuplicates(trips).length, 1, '정리 후에는 한 줄');
+});
+
+// ── 브라우저가 필요한 사이트가 있는지 ──────────────────────────────────────
+test('needsBrowser: mode에 따라 브라우저 설치가 필요한지 가른다', () => {
+  assert.equal(needsBrowser([{ adapter: 'sunsang24', mode: 'static' }]), false);
+  assert.equal(needsBrowser([{ adapter: 'thefishing' }]), false, 'thefishing 기본은 static');
+  assert.equal(needsBrowser([{ adapter: 'sunsang24', mode: 'js' }]), true);
+  assert.equal(needsBrowser([{ adapter: 'generic' }]), true, 'generic 기본은 auto — 본문이 비면 브라우저로 넘어간다');
+  assert.equal(needsBrowser([{ adapter: 'sunsang24', path: 'schedule_fleet_simple_top' }]), true, '달력형 기본은 js');
+});
+
+test('needsBrowser: 꺼둔 사이트는 세지 않는다', () => {
+  assert.equal(needsBrowser([{ adapter: 'generic', enabled: false }, { adapter: 'thefishing' }]), false);
 });
