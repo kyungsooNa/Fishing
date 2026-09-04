@@ -93,6 +93,15 @@
       "note": "충남 태안군 안면읍 중장리, 내포항(나암도항) 출항. 선상24 계열이라 목록형 파서가 그대로 먹습니다."
     },
     {
+      "id": "blueocean2",
+      "name": "블루오션2",
+      "adapter": "sunsang24",
+      "url": "https://blueocean2.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "note": "sunsang24 호스팅 선사. 개발 환경에서 도메인이 막혀 실제 HTML을 못 봤습니다. 첫 수집에서 확인할 것: (1) 목록형(schedule_fleet)인지 — 달력이 위에 있고 아래가 JS로 그려지면 path를 schedule_fleet_simple_top, mode를 js로 바꾸고 waitFor/dayPath를 적으세요. (2) 실제 선사 이름·출항지·전화번호 — 이름은 서브도메인에서 임시로 붙인 값입니다. 출항지와 전화가 비어 있으면 같은 배가 다른 사이트에 올라와도 합쳐지지 않습니다. 셋 다 관리 페이지에서 고칠 수 있습니다."
+    },
+    {
       "id": "monster",
       "name": "오이도 몬스터호",
       "adapter": "thefishing",
