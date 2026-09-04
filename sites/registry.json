@@ -188,6 +188,17 @@
       "note": "sunsang24도 더피싱도 아닌 자체 사이트라 generic 어댑터로 잡았습니다. 예약 목록이 /reservation 한 장에 다 나오는지 확인이 필요합니다 — 날짜별로 나뉘어 있으면 datePath를, 페이지가 여러 장이면 pages를 적으세요. 안 읽히면 --dump로 원본을 보고 전용 어댑터가 필요합니다. 배 목록(푸른바다3·5·7호, 은갈매기호)은 조황글에서 본 것이라 빠진 배가 있을 수 있습니다."
     },
     {
+      "id": "teamhanpro",
+      "name": "오천항 팀한프로",
+      "adapter": "thefishing",
+      "url": "https://teamhanpro.com/m/index.php?mid=bk",
+      "port": "충남 보령 오천항",
+      "source": "index",
+      "windowDays": 7,
+      "enabled": true,
+      "note": "흑돼지호가 이 선단 소속입니다. blackpigho.kr과 여기 둘 다 켜져 있으면 흑돼지호가 두 줄로 보일 수 있습니다 — 합치려면 두 항목에 같은 phone을 적어야 합니다(둘 다 미확인이라 비워둠). 정원은 배마다 달라 안 적었습니다."
+    },
+    {
       "id": "blackpig",
       "name": "오천항 흑돼지호",
       "adapter": "thefishing",
