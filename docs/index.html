@@ -131,6 +131,10 @@ let FAVS = loadFavs();
 
 const $ = (id) => document.getElementById(id);
 const won = (n) => n == null ? '' : n.toLocaleString('ko-KR') + '원';
+const seatsLabel = (t) => {
+  if (!Number.isFinite(t.seatsLeft)) return '';
+  return Number.isFinite(t.seatsTotal) ? `${t.seatsLeft}/${t.seatsTotal}` : String(t.seatsLeft);
+};
 
 // 04:00 출항해서 17:00 들어오면 "04:00~17:00". 끝 시각을 모르면 시작만.
 const runLabel = (t) => (t.departAt ? (t.returnAt ? `${t.departAt}~${t.returnAt}` : t.departAt) : '');
@@ -201,7 +205,7 @@ function render() {
     const cells = [
       dayLabel(t.date), runLabel(t), sessionLabel(t), t.siteName ?? '', t.boat ?? '', t.port ?? '',
       t.species ?? '', t.tide ?? '', null,
-      Number.isFinite(t.seatsLeft) ? String(t.seatsLeft) : '', won(t.price),
+      seatsLabel(t), won(t.price),
     ];
     cells.forEach((v, i) => {
       const td = document.createElement('td');
