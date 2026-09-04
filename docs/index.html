@@ -284,7 +284,7 @@ const css = (name) => getComputedStyle(document.body).getPropertyValue(name).tri
 
 function ensureMap() {
   if (map || !window.L) return;
-  map = L.map('map', { scrollWheelZoom: false }).setView([36.9, 126.6], 8);
+  map = L.map('map', { scrollWheelZoom: true }).setView([36.9, 126.6], 8);
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 17,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
