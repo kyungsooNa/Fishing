@@ -221,3 +221,8 @@ export function detailUrl(bookingUrl, day) {
 }
 
 const squash = (s) => String(s ?? '').replace(/\s+/g, ' ').trim();
+
+/** 이 어댑터가 실제로 받아오는 주소. index 방식이 기본이라 메인 요약이 먼저입니다. */
+export function targets(site) {
+  return [indexUrl(site.url), detailUrl(site.url, new Date())];
+}

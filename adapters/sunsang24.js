@@ -105,3 +105,11 @@ function fillDate(template, date) {
 function joinUrl(base, path) {
   return String(base).replace(/\/+$/, '') + (path.startsWith('/') ? path : `/${path}`);
 }
+
+/** 이 어댑터가 실제로 받아오는 주소. debug.js가 같은 페이지를 보도록 씁니다. */
+export function targets(site) {
+  const path = site.path ?? 'schedule_fleet';
+  if (path !== CALENDAR_PATH) return monthUrls(site);
+  const template = site.dayPath ?? `/ship/${CALENDAR_PATH}/{ymd}`;
+  return [joinUrl(site.url, fillDate(template, kstDate(0)))];
+}

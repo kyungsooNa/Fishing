@@ -50,3 +50,8 @@ function fillDate(template, date) {
 }
 
 const absolute = (base, path) => (/^https?:\/\//.test(path) ? path : new URL(path, base).toString());
+
+/** 이 어댑터가 실제로 받아오는 주소. */
+export function targets(site) {
+  return pageUrls(site);
+}

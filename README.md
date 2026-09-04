@@ -38,7 +38,8 @@ npx playwright install chromium   # JS 렌더링 사이트가 있을 때만
 
 node debug.js                     # 등록된 사이트 id 목록
 node debug.js akbari              # 한 곳만 돌려보기
-node debug.js akbari --dump       # 실패 시 원본 HTML을 tmp/ 에 저장
+node debug.js akbari --dump       # 원본 HTML을 tmp/ 에 저장
+node debug.js akbari --peek       # 페이지가 어떻게 생겼는지 요약 (로그로)
 node collect.js                   # 전체
 npm test                          # 파서 회귀 확인 (네트워크 불필요)
 npm run serve                     # http://localhost:8080

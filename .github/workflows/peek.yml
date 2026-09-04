@@ -1,0 +1,51 @@
+name: peek
+
+# 사이트 하나를 받아와 "어떻게 생겼는지"를 로그로 찍습니다.
+#
+# 개발 환경에서 국내 낚시 도메인이 막혀 있어 실제 HTML을 볼 수 없습니다.
+# 러너는 닿으므로, 파서가 0건일 때 여기서 페이지 모양을 확인합니다.
+# Actions 탭 → peek → Run workflow → 사이트 id 입력.
+
+on:
+  workflow_dispatch:
+    inputs:
+      site:
+        description: 'registry의 사이트 id (예: akbari)'
+        required: true
+        type: string
+
+jobs:
+  peek:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci --no-audit --no-fund
+
+      - name: 브라우저가 필요한지 확인
+        id: browser
+        run: echo "needed=$(npm run -s needs-browser)" >> "$GITHUB_OUTPUT"
+
+      - name: playwright chromium
+        if: steps.browser.outputs.needed == 'true'
+        run: npx playwright install --with-deps chromium
+
+      # 입력값은 셸에 직접 끼워 넣지 않고 환경변수로 넘깁니다.
+      - name: 페이지 요약
+        env:
+          SITE: ${{ inputs.site }}
+        run: node debug.js "$SITE" --peek --dump
+
+      - name: 원본 HTML 올리기
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: html-${{ inputs.site }}
+          path: tmp/
+          if-no-files-found: ignore
+          retention-days: 7
