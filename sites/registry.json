@@ -65,6 +65,20 @@
       "note": "sunsang24 호스팅. 전화번호를 확인 못 해 비웠습니다 — 같은 배가 다른 사이트에도 올라와 있어도 합쳐지지 않습니다(합치려면 phone을 채우세요). 배 이름과 승선료는 첫 수집에서 확인하고 boats에 채우면 됩니다."
     },
     {
+      "id": "supernova",
+      "name": "인천 팀슈퍼노바",
+      "adapter": "sunsang24",
+      "url": "https://supernova.sunsang24.com",
+      "port": "인천 중구 남항 유어선부두",
+      "phone": "010-3005-4004",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "슈퍼노바호": {}
+      },
+      "note": "인천 남항 유어선부두(축항대로 150). 광어·쭈꾸미. 지금 선상24 계열은 파서가 0건이라 이 사이트도 수집되기 전까지는 실패로 뜹니다."
+    },
+    {
       "id": "monster",
       "name": "오이도 몬스터호",
       "adapter": "thefishing",
