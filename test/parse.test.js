@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { monthUrls } from '../adapters/sunsang24.js';
+import { monthUrls, parseFleet } from '../adapters/sunsang24.js';
 import { parseRows } from '../adapters/_rows.js';
 import { pageUrls } from '../adapters/generic.js';
 import { platformOf, needsBrowser } from '../core/platform.js';
@@ -34,29 +34,31 @@ test('schema: 승선료는 배별 → 사이트 공통 순으로 고른다', () 
   assert.equal(pickPrice({ ...sunsangSite, price: 80000 }, '맥가이버호', '광어'), 80000);
 });
 
-test('sunsang24: 목록형 — 날짜 머리글이 뒤따르는 행에 붙는다', () => {
-  const trips = parseRows(sunsangSite, fx.SUNSANG24_LIST, 'https://x');
-  const key = (t) => `${t.date}/${t.boat}`;
+test('sunsang24: 목록형 — 하루 행 안의 배마다 한 줄씩 나온다', () => {
+  const trips = parseFleet(sunsangSite, fx.SUNSANG24_LIST, 'https://x');
 
-  assert.deepEqual(trips.map(key), [
-    '2026-09-05/악바리호',
-    '2026-09-05/레드맨호',
-    '2026-09-06/맥가이버호',
-  ], '전화예약 0명 행은 버려야 한다');
+  assert.deepEqual(trips.map((t) => `${t.date}/${t.boat}`), [
+    '2026-09-04/악바리호',
+    '2026-09-04/레드맨호',
+    '2026-09-05/맥가이버호',
+  ]);
 
   const [akbari, redman, macgyver] = trips;
-  assert.equal(akbari.seatsLeft, 4);
-  assert.equal(akbari.departAt, '05:30');
+  assert.equal(akbari.departAt, '04:00');
   assert.equal(akbari.species, '주꾸미');
-  assert.equal(akbari.tide, '12물');
-  assert.equal(akbari.price, 100000);
-  assert.equal(akbari.status, STATUS.OPEN);
+  assert.equal(akbari.tide, '조금', '물때는 하루 행에 있고 그 날 배들이 나눠 씁니다');
+  assert.equal(akbari.seatsLeft, 0, '예약마감');
+  assert.equal(akbari.status, STATUS.CLOSED);
+  assert.equal(akbari.price, 100000, '어종별 승선료가 붙는다');
 
-  assert.equal(redman.seatsLeft, 0);
-  assert.equal(redman.status, STATUS.CLOSED);
+  assert.equal(redman.seatsLeft, 15, '20명 정원에 5명 예약');
+  assert.equal(redman.status, STATUS.OPEN);
+  assert.equal(redman.tide, '조금');
 
-  assert.equal(macgyver.port, '영목항', '배별 출항지가 사이트 기본값을 덮는다');
+  assert.equal(macgyver.tide, '1물');
+  assert.equal(macgyver.seatsLeft, 1, '20명 정원에 19명 예약');
   assert.equal(macgyver.status, STATUS.FEW);
+  assert.equal(macgyver.port, '영목항', '배별 출항지가 사이트 기본값을 덮는다');
 });
 
 test('sunsang24: 달력형 — 날짜가 행 안 첫 칸에 있어도 잡는다', () => {
