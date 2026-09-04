@@ -105,6 +105,8 @@ npm test                   # 가상 HTML로 파서 회귀 확인
 
 - GitHub Actions 러너는 해외 IP입니다. 국내 사이트가 차단하면 그 사이트만 국내 서버로 옮기세요.
 - 요청 간격은 호스트당 3초(`core/fetcher.js`의 `MIN_GAP_MS`). 사이트가 민감하면 늘리세요.
+- **연결 제한시간은 30초**(`CONNECT_TIMEOUT_MS`). Node 기본값 10초로는 해외 러너에서 국내
+  호스트에 붙다가 `UND_ERR_CONNECT_TIMEOUT`이 무더기로 납니다. 실제로 한 번 겪었습니다.
 - 워크플로는 브라우저가 필요할 때만 playwright를 받습니다(`core/platform.js`의 `needsBrowser`).
   `"auto"`도 본문이 비면 브라우저로 넘어가므로 같이 셉니다 — `"js"`가 없다고 안전한 게 아닙니다.
 - 취소석은 몇 분 단위 경쟁입니다. 알림을 진지하게 쓸 거면 상시 서버에서 5분 주기로 도는 게 맞습니다.

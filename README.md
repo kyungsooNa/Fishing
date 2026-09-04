@@ -376,6 +376,8 @@ git commit -m "feat: ○○ 추가" && git push -u origin add-<사이트id>
 ## 알아둘 것
 
 - **러너 IP는 해외 데이터센터**입니다. 국내 사이트가 차단하면 그 사이트만 국내 서버(Oracle Cloud 서울 리전 등)로 옮기면 됩니다.
+  연결 제한시간은 30초로 잡아뒀습니다. Node 기본값 10초로는 멀쩡한 사이트도 `UND_ERR_CONNECT_TIMEOUT`으로 떨어집니다.
+  그래도 계속 timeout이면 그 사이트가 해외 IP를 막는 것이니 국내 서버로 옮기세요.
 - 워크플로는 브라우저가 필요한 사이트가 있을 때만 playwright를 받습니다(`npm run needs-browser`).
   registry가 전부 `static`이 되면 저절로 건너뛰어져서 1~2분 빨라집니다. `"js"`뿐 아니라
   `"auto"`도 본문이 비면 브라우저로 넘어가므로 같이 셉니다.
