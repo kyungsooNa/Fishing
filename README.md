@@ -377,11 +377,16 @@ PR과 `main` 푸시마다 CI(`ci` 워크플로)가 `npm test`와 registry 유효
 변경 하나마다 브랜치를 따고, 푸시한 다음 바로 PR을 엽니다. `main`에 직접 밀지 않습니다.
 GitHub Pages가 `main`의 `/docs`를 보기 때문에 PR이 머지돼야 화면이 바뀝니다.
 
+**CI가 초록이면 머지하고 `main`을 pull까지 합니다.** 빨간 PR은 고쳐서 다시 푸시하고,
+초록이 된 다음에 머지합니다.
+
 ```bash
 git checkout -b add-<사이트id>
 node debug.js <사이트id>      # 파싱 확인
 npm test
 git commit -m "feat: ○○ 추가" && git push -u origin add-<사이트id>
+# PR 생성 → CI 초록 확인 → 머지
+git checkout main && git pull origin main
 ```
 
 ## 알아둘 것
