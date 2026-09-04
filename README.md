@@ -218,6 +218,27 @@ sunsang24도 더피싱도 아닌 선사 홈페이지는 `generic` 어댑터로 �
 `node debug.js <id>`로 0건이 나오면 표기가 다른 사이트입니다. `--dump`로 원본을 보고
 `adapters/`에 전용 파일을 하나 만드는 게 맞습니다.
 
+## 선사를 자동으로 찾기 (discover)
+
+하나씩 검색해서 등록하는 데는 한계가 있어서, 후보를 모으고 시험 수집하는 도구를 따로 뒀습니다.
+
+```bash
+node discover.js ct sunsang24.com     # 인증서 로그에서 선상24 계열 서브도메인 전부 뽑기
+node discover.js links <목록 페이지>    # 페이지에 걸린 선사 홈페이지 도메인 뽑기
+node discover.js probe --from tmp/candidates.json --limit 20   # 어댑터로 실제 돌려보기
+```
+
+`probe`는 후보마다 계열을 추측해(선상24 서브도메인이면 sunsang24, 아니면 더피싱 예약모듈 →
+자체 사이트 순서) 돌려보고, **출조가 실제로 읽힌 곳만** registry 조각으로 만들어
+`tmp/found.json`에 남깁니다. `--add`를 붙이면 `sites/registry.json`에 바로 붙입니다.
+
+집(개발 환경)에서 crt.sh와 국내 도메인이 막혀 있으면 **Actions 탭 → discover → Run workflow**로
+돌리세요. `open_pr`을 켜면 읽히는 후보를 붙인 PR까지 열어줍니다.
+
+배 이름·출항지·전화번호는 자동으로 채우지 않거나(애매할 때) 후보만 note에 적습니다.
+이 셋은 다른 사이트에 올라온 같은 배를 한 줄로 합칠지 정하는 값이라, 틀리면 남의 배가
+섞입니다. PR을 머지하기 전에 눈으로 확인하세요.
+
 ## 그 밖의 사이트 추가하는 법
 
 대부분은 `registry.json`에 한 덩어리만 추가하면 끝납니다.
