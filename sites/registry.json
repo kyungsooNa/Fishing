@@ -174,6 +174,25 @@
       "note": "sunsang24도 더피싱도 아닌 자체 사이트라 generic 어댑터로 잡았습니다. 예약 목록이 /reservation 한 장에 다 나오는지 확인이 필요합니다 — 날짜별로 나뉘어 있으면 datePath를, 페이지가 여러 장이면 pages를 적으세요. 안 읽히면 --dump로 원본을 보고 전용 어댑터가 필요합니다. 배 목록(푸른바다3·5·7호, 은갈매기호)은 조황글에서 본 것이라 빠진 배가 있을 수 있습니다."
     },
     {
+      "id": "chungma",
+      "name": "영종도 청마피싱",
+      "adapter": "thefishing",
+      "url": "https://www.chungmafishing.com/m/index.php?mid=bk",
+      "port": "인천 중구 거잠포선착장",
+      "phone": "010-2251-3237",
+      "source": "index",
+      "windowDays": 7,
+      "enabled": true,
+      "boats": {
+        "청마호": {},
+        "아트호": {},
+        "제우스호": {},
+        "고강호": {},
+        "백마호": {}
+      },
+      "note": "인천 영종도 거잠포 선착장, 배 5척. 받은 주소는 조황 갤러리(mid=gall&ca_name=고강호)라 예약모듈(mid=bk)로 바꿔 적었습니다. index 방식이라 고강호만이 아니라 5척이 한 번에 들어옵니다. 정원은 배마다 달라 안 적었습니다 — detail로 바꾸려면 배별 seatsTotal이 필요합니다."
+    },
+    {
       "id": "uijiho",
       "name": "의지호",
       "adapter": "generic",
