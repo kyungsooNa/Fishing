@@ -54,7 +54,8 @@ npm run serve                     # http://localhost:8080
 어댑터를 고칠 때는 `debug.js`가 훨씬 빠릅니다. 파싱 결과를 표로 보여주고,
 잔여석이 전부 비었다거나 날짜가 하루뿐이라거나 하는 흔한 증상을 짚어줍니다.
 
-작업 맥락은 `CLAUDE.md`에 정리해뒀습니다. Claude Code로 이어서 작업할 때 그 파일부터 읽히면 됩니다.
+작업 맥락은 `AGENTS.md`에 정리해뒀습니다. Codex든 Claude Code든 이어서 작업할 때 그 파일부터 읽히면 됩니다.
+(`CLAUDE.md`는 `AGENTS.md`를 가리키기만 합니다. 지침은 한 곳에서만 고칩니다.)
 
 ## sunsang24 선사 추가하기
 
