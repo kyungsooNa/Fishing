@@ -48,6 +48,11 @@
   #map { height: 62vh; min-height: 340px; border: 1px solid var(--line); border-radius: 10px; }
   .leaflet-container { background: var(--card); font: inherit; }
   .maphint { margin-top: 8px; font-size: 12px; color: var(--muted); }
+  .star { border: 0; background: none; cursor: pointer; font-size: 15px; line-height: 1;
+          padding: 0 2px; color: var(--line); }
+  .star.on { color: var(--few); }
+  .star:hover { color: var(--few); }
+  td.starcell, th.starcell { width: 1%; padding-right: 4px; }
   details { margin-top: 22px; font-size: 13px; color: var(--muted); }
   summary { cursor: pointer; }
   .status { margin-top: 10px; display: grid; gap: 5px; }
@@ -67,6 +72,7 @@
     <select id="f-date"><option value="">전체 날짜</option></select>
     <input type="search" id="f-q" placeholder="배 이름 검색">
     <label class="check"><input type="checkbox" id="f-open" checked> 빈자리만</label>
+    <label class="check"><input type="checkbox" id="f-fav"> <span id="f-fav-label">★ 즐겨찾기만</span></label>
   </div>
 
   <div class="views">
@@ -80,7 +86,7 @@
   <div class="tablewrap" id="tablewrap">
     <table>
       <thead><tr>
-        <th>날짜</th><th>출항</th><th>선사</th><th>배</th><th>항구</th>
+        <th class="starcell"></th><th>날짜</th><th>출항</th><th>선사</th><th>배</th><th>항구</th>
         <th>어종</th><th>물때</th><th>상태</th><th class="num">잔여</th><th class="num">승선료</th>
       </tr></thead>
       <tbody id="rows"></tbody>
@@ -98,6 +104,26 @@
 const LABEL = { open: '예약가능', few: '잔여 적음', closed: '마감', off: '휴항', unknown: '확인필요' };
 const WEEK = ['일','월','화','수','목','금','토'];
 let DATA = { trips: [], sites: {}, ports: {}, generatedAt: null };
+
+// ── 즐겨찾기 ──────────────────────────────────────────────────────────────
+// 브라우저에만 저장합니다. 서버가 없으니 기기마다 따로 남습니다.
+// 배 이름만으로는 안 됩니다 — 다른 지역에 같은 이름의 배가 있어서, 출항지까지 묶습니다.
+const FAV_KEY = 'fishing:favorites';
+const favKey = (t) => `${t.boat ?? ''}|${t.port ?? ''}`;
+
+function loadFavs() {
+  try { return new Set(JSON.parse(localStorage.getItem(FAV_KEY) ?? '[]')); } catch { return new Set(); }
+}
+function saveFavs() {
+  try { localStorage.setItem(FAV_KEY, JSON.stringify([...FAVS])); } catch { /* 저장이 막혀도 이번 세션은 됩니다 */ }
+}
+function toggleFav(t) {
+  const k = favKey(t);
+  if (!FAVS.delete(k)) FAVS.add(k);
+  saveFavs();
+  refresh();
+}
+let FAVS = loadFavs();
 
 const $ = (id) => document.getElementById(id);
 const won = (n) => n == null ? '' : n.toLocaleString('ko-KR') + '원';
@@ -117,8 +143,10 @@ function fillOptions(sel, values) {
 function visibleTrips() {
   const site = $('f-site').value, port = $('f-port').value, species = $('f-species').value;
   const date = $('f-date').value, q = $('f-q').value.trim(), openOnly = $('f-open').checked;
+  const favOnly = $('f-fav').checked;
 
   return DATA.trips.filter((t) =>
+    (!favOnly || FAVS.has(favKey(t))) &&
     (!site || t.siteName === site || (t.sources ?? []).some((x) => x.siteName === site)) && (!port || t.port === port) &&
     (!species || t.species === species) && (!date || t.date === date) &&
     (!q || (t.boat ?? '').includes(q)) &&
@@ -135,6 +163,18 @@ function render() {
   for (const t of rows) {
     const tr = document.createElement('tr');
     if (t.date !== prevDate) { tr.className = 'daystart'; prevDate = t.date; }
+    const starCell = document.createElement('td');
+    starCell.className = 'starcell';
+    const star = document.createElement('button');
+    const on = FAVS.has(favKey(t));
+    star.className = 'star' + (on ? ' on' : '');
+    star.textContent = on ? '★' : '☆';
+    star.title = on ? '즐겨찾기에서 빼기' : '즐겨찾기에 넣기';
+    star.setAttribute('aria-label', star.title);
+    star.addEventListener('click', () => toggleFav(t));
+    starCell.append(star);
+    tr.append(starCell);
+
     const cells = [
       dayLabel(t.date), t.departAt ?? '', t.siteName ?? '', t.boat ?? '', t.port ?? '',
       t.species ?? '', t.tide ?? '', null,
@@ -169,6 +209,7 @@ function render() {
   }
 
   $('empty').hidden = rows.length > 0;
+  $('f-fav-label').textContent = FAVS.size ? `★ 즐겨찾기만 (${FAVS.size})` : '★ 즐겨찾기만';
 }
 
 function renderStatus() {
@@ -204,7 +245,7 @@ fetch('data.json?t=' + Date.now())
   .catch((e) => { $('meta').textContent = 'data.json을 못 읽었습니다: ' + e.message; });
 
 const refresh = () => { render(); drawMap(); };
-for (const id of ['f-site', 'f-port', 'f-species', 'f-date', 'f-open']) $(id).addEventListener('change', refresh);
+for (const id of ['f-site', 'f-port', 'f-species', 'f-date', 'f-open', 'f-fav']) $(id).addEventListener('change', refresh);
 $('f-q').addEventListener('input', refresh);
 
 // ── 지도 ──────────────────────────────────────────────────────────────────
