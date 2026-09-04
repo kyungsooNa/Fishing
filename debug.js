@@ -168,12 +168,14 @@ async function peekPages(site) {
     if (anchor.length) {
       console.log('  "운항시간"에서 위로 올라가며 (층: 태그.클래스 · 글자수 · 내용):');
       let cur = anchor;
-      for (let up = 0; up < 6 && cur.length; up++) {
+      for (let up = 0; up < 11 && cur.length; up++) {
         const tag = cur.prop('tagName')?.toLowerCase() ?? '?';
         const cls = (cur.attr('class') ?? '').split(/\s+/).filter(Boolean).slice(0, 3).join('.');
         const t = cur.text().replace(/\s+/g, ' ').trim();
+        const prev = cur.prev().text().replace(/\s+/g, ' ').trim();
         console.log(`    [${up}] ${tag}${cls ? '.' + cls : ''} · ${t.length}자`);
-        console.log(`        ${t.slice(0, 300)}`);
+        console.log(`        ${t.slice(0, 200)}`);
+        if (prev) console.log(`        (앞 형제) ${prev.slice(0, 120)}`);
         cur = cur.parent();
       }
     }
