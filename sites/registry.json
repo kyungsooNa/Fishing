@@ -79,6 +79,20 @@
       "note": "인천 남항 유어선부두(축항대로 150). 광어·쭈꾸미. 지금 선상24 계열은 파서가 0건이라 이 사이트도 수집되기 전까지는 실패로 뜹니다."
     },
     {
+      "id": "goldenbaek",
+      "name": "안면도 황금백호",
+      "adapter": "sunsang24",
+      "url": "https://golden.sunsang24.com",
+      "port": "충남 태안 내포항",
+      "phone": "010-5761-9080",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "황금백호": {}
+      },
+      "note": "충남 태안군 안면읍 중장리, 내포항(나암도항) 출항. 선상24 계열이라 목록형 파서가 그대로 먹습니다."
+    },
+    {
       "id": "monster",
       "name": "오이도 몬스터호",
       "adapter": "thefishing",

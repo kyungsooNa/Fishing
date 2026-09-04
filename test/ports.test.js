@@ -38,3 +38,33 @@ test('좌표가 하나도 없으면 지도를 비운다', () => {
   assert.deepEqual(places, {});
   assert.equal(missing.length, 3);
 });
+
+// registry에 적은 항구가 ports.json에 없으면 지도에서만 조용히 사라집니다.
+// 실제로 홍원항·내포항이 좌표 없이 머지된 적이 있어 테스트로 막습니다.
+test('켜져 있는 사이트의 항구는 모두 좌표가 있다', async () => {
+  const { loadRegistry } = await import('../core/runner.js');
+  const { loadPorts } = await import('../core/ports.js');
+
+  const ports = await loadPorts();
+  const missing = (await loadRegistry())
+    .filter((s) => s.enabled !== false && s.port)
+    .map((s) => s.port)
+    .filter((port) => !ports[port]);
+
+  assert.deepEqual([...new Set(missing)], [], 'sites/ports.json에 좌표를 추가하세요');
+});
+
+test('배별로 다른 출항지도 좌표가 있어야 한다', async () => {
+  const { loadRegistry } = await import('../core/runner.js');
+  const { loadPorts } = await import('../core/ports.js');
+
+  const ports = await loadPorts();
+  const missing = [];
+  for (const site of await loadRegistry()) {
+    if (site.enabled === false) continue;
+    for (const boat of Object.values(site.boats ?? {})) {
+      if (boat.port && !ports[boat.port]) missing.push(boat.port);
+    }
+  }
+  assert.deepEqual([...new Set(missing)], []);
+});
