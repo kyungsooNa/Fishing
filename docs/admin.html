@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>시스템 관리 · 낚시 출조 예약 현황판</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f7f7f5; --card: #fff; --fg: #1c1b19; --muted: #6b6862; --line: #e3e1dc;
+    --open: #1a7f4b; --few: #b06a00; --closed: #8b8781; --off: #a03030;
+    --accent: #245a8d;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #17171a; --card: #201f23; --fg: #e9e7e2; --muted: #9a968e; --line: #33323a;
+      --open: #4cc487; --few: #e0a33c; --closed: #7d7a74; --off: #e07070; --accent: #7fb0e0;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg);
+         font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; }
+  .wrap { max-width: 1400px; margin: 0 auto; padding: 20px 16px 60px; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: 13px; margin-bottom: 18px; }
+  a { color: var(--accent); }
+  .banner { padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px;
+            background: var(--card); font-size: 13px; margin-bottom: 14px; }
+  .banner.warn { border-color: var(--few); color: var(--few); }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 14px; }
+  button { padding: 7px 14px; border: 1px solid var(--line); border-radius: 7px;
+           background: var(--card); color: var(--fg); font: inherit; font-size: 14px; cursor: pointer; }
+  button:disabled { color: var(--muted); cursor: not-allowed; }
+  button.primary { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+  button.danger { border-color: var(--off); color: var(--off); }
+  .tablewrap { overflow-x: auto; background: var(--card); border: 1px solid var(--line); border-radius: 10px; }
+  table { border-collapse: collapse; width: 100%; min-width: 1000px; table-layout: fixed; }
+  th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  th { font-size: 12px; color: var(--muted); font-weight: 600; white-space: nowrap; }
+  /* 칸 폭을 못박아 둡니다. 안 그러면 표기·항구가 눌려서 글자가 잘립니다. */
+  th:nth-child(1), td:nth-child(1) { width: 48px; }
+  th:nth-child(2), td:nth-child(2) { width: 116px; }
+  th:nth-child(3), td:nth-child(3) { width: 200px; }
+  th:nth-child(4), td:nth-child(4) { width: 76px; }
+  th:nth-child(5), td:nth-child(5) { width: 190px; }
+  th:nth-child(6), td:nth-child(6) { width: 150px; }
+  th:nth-child(7), td:nth-child(7) { width: 220px; }
+  tbody tr:last-child td { border-bottom: 0; }
+  tr.off td { opacity: 0.55; }
+  td.id { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; white-space: nowrap; }
+  td input[type=text] { width: 100%; min-width: 0; padding: 5px 7px; border: 1px solid transparent;
+                        border-radius: 6px; background: transparent; color: var(--fg); font: inherit; font-size: 14px; }
+  td input[type=text]:hover { border-color: var(--line); }
+  td input[type=text]:focus { border-color: var(--accent); outline: none; background: var(--bg); }
+  tr.dirty { background: color-mix(in srgb, var(--few) 12%, transparent); }
+  .kind { font-size: 12px; color: var(--muted); white-space: nowrap; }
+  .ok { color: var(--open); } .fail { color: var(--off); } .muted { color: var(--muted); }
+  td.url { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  /* 실패 사유가 길어서 한 줄로 두면 표가 옆으로 삐져나갑니다. 남는 폭 안에서 접습니다. */
+  .last { font-size: 13px; }
+  .log { margin-top: 14px; background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+         padding: 12px; font: 12px/1.55 ui-monospace, SFMono-Regular, Menlo, monospace;
+         white-space: pre-wrap; max-height: 320px; overflow-y: auto; }
+  .log:empty { display: none; }
+  .toast { margin-left: auto; font-size: 13px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>시스템 관리</h1>
+  <div class="sub"><a href="index.html">← 현황판으로</a> · <span id="meta">불러오는 중…</span></div>
+
+  <div class="banner" id="banner" hidden></div>
+
+  <div class="actions">
+    <button id="save" class="primary" disabled>변경 저장</button>
+    <button id="collect">수집 다시 실행</button>
+    <button id="quit" class="danger">서버 종료</button>
+    <span class="toast" id="toast"></span>
+  </div>
+
+  <div class="tablewrap">
+    <table>
+      <thead><tr>
+        <th>켜짐</th><th>id</th><th>선사 표기</th><th>계열</th><th>항구</th><th>전화</th>
+        <th>주소</th><th>최근 수집</th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+
+  <div class="log" id="log"></div>
+</div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const HEAD = { 'X-Admin': '1' };
+
+let LOCAL = false;      // 로컬 서버(/api/*)가 있으면 true. GitHub Pages에서는 false
+let SITES = [];         // registry의 사이트 목록 (정적 모드에서는 data.json으로 흉내)
+let STATUS = {};        // 사이트별 마지막 수집 결과
+const DIRTY = new Map(); // id -> 바뀐 값들
+
+const api = (path, opt = {}) => fetch(path, { ...opt, headers: { ...HEAD, ...(opt.headers ?? {}) } });
+
+function toast(text) {
+  $('toast').textContent = text;
+  if (text) setTimeout(() => { if ($('toast').textContent === text) $('toast').textContent = ''; }, 4000);
+}
+
+function when(at) {
+  return at ? new Date(at).toLocaleString('ko-KR') : '';
+}
+
+function markDirty(id, key, value) {
+  const bag = DIRTY.get(id) ?? {};
+  bag[key] = value;
+  DIRTY.set(id, bag);
+  document.querySelector(`tr[data-id="${id}"]`)?.classList.add('dirty');
+  $('save').disabled = DIRTY.size === 0;
+  $('save').textContent = DIRTY.size ? `변경 저장 (${DIRTY.size}곳)` : '변경 저장';
+}
+
+function textCell(site, key) {
+  const td = document.createElement('td');
+  if (!LOCAL) {
+    td.textContent = site[key] ?? '';
+    if (!site[key]) td.className = 'muted';
+    return td;
+  }
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.value = site[key] ?? '';
+  input.placeholder = '-';
+  input.addEventListener('input', () => markDirty(site.id, key, input.value.trim()));
+  td.append(input);
+  return td;
+}
+
+function render() {
+  const box = $('rows');
+  box.textContent = '';
+  for (const site of SITES) {
+    const st = STATUS[site.id];
+    const tr = document.createElement('tr');
+    tr.dataset.id = site.id;
+    const on = site.enabled !== false;
+    if (!on) tr.classList.add('off');
+
+    const tdOn = document.createElement('td');
+    const cb = document.createElement('input');
+    cb.type = 'checkbox';
+    cb.checked = on;
+    cb.disabled = !LOCAL;
+    cb.addEventListener('change', () => {
+      markDirty(site.id, 'enabled', cb.checked);
+      tr.classList.toggle('off', !cb.checked);
+    });
+    tdOn.append(cb);
+
+    const tdId = document.createElement('td');
+    tdId.className = 'id';
+    tdId.textContent = site.id;
+
+    const tdKind = document.createElement('td');
+    tdKind.className = 'kind';
+    tdKind.textContent = site.platformLabel ?? site.adapter ?? '';
+
+    const tdUrl = document.createElement('td');
+    tdUrl.className = 'url';
+    if (site.url) {
+      const a = document.createElement('a');
+      a.href = site.url;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.textContent = site.url.replace(/^https?:\/\//, '');
+      a.title = site.url;
+      tdUrl.append(a);
+    }
+
+    const tdLast = document.createElement('td');
+    tdLast.className = 'last';
+    if (!st) tdLast.innerHTML = '<span class="muted">수집 기록 없음</span>';
+    else if (st.ok) tdLast.innerHTML = `<span class="ok">✓ ${st.count}건</span> <span class="muted">${when(st.at)}</span>`;
+    else tdLast.innerHTML = `<span class="fail">✗ ${st.error ?? '실패'}</span> <span class="muted">직전 ${st.count ?? 0}건 유지</span>`;
+
+    tr.append(tdOn, tdId, textCell(site, 'name'), tdKind, textCell(site, 'port'),
+              textCell(site, 'phone'), tdUrl, tdLast);
+    box.append(tr);
+  }
+}
+
+async function save() {
+  $('save').disabled = true;
+  const failed = [];
+  for (const [id, body] of DIRTY) {
+    try {
+      const res = await api('api/sites/' + id, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+      if (!res.ok) failed.push(`${id}: ${(await res.json()).error ?? res.status}`);
+    } catch (err) {
+      failed.push(`${id}: ${err.message}`);
+    }
+  }
+  DIRTY.clear();
+  $('save').textContent = '변경 저장';
+  document.querySelectorAll('tr.dirty').forEach((tr) => tr.classList.remove('dirty'));
+  toast(failed.length ? '일부 실패: ' + failed.join(', ') : '저장했습니다');
+  await load();
+}
+
+let polling = null;
+async function pollCollect() {
+  const job = await api('api/collect').then((r) => r.json());
+  $('log').textContent = job.log.join('\n');
+  $('log').scrollTop = $('log').scrollHeight;
+  if (job.running) return;
+  clearInterval(polling);
+  polling = null;
+  $('collect').disabled = false;
+  $('collect').textContent = '수집 다시 실행';
+  toast(job.code === 0 ? '수집이 끝났습니다' : `수집이 코드 ${job.code}로 끝났습니다`);
+  await load();
+}
+
+async function collect() {
+  $('collect').disabled = true;
+  $('collect').textContent = '수집 중…';
+  const res = await api('api/collect', { method: 'POST' });
+  if (!res.ok) {
+    toast((await res.json()).error ?? '시작하지 못했습니다');
+    $('collect').disabled = false;
+    $('collect').textContent = '수집 다시 실행';
+    return;
+  }
+  polling = setInterval(pollCollect, 1500);
+}
+
+async function quit() {
+  if (!confirm('서버를 종료합니다. 화면도 같이 닫힙니다. 계속할까요?')) return;
+  await api('api/shutdown', { method: 'POST' }).catch(() => {});
+  document.body.innerHTML =
+    '<div class="wrap"><h1>서버를 종료했습니다</h1>' +
+    '<div class="sub">이 탭은 닫으셔도 됩니다. 다시 켜려면 run.bat을 실행하세요.</div></div>';
+}
+
+function staticMode(reason) {
+  LOCAL = false;
+  $('banner').hidden = false;
+  $('banner').className = 'banner warn';
+  $('banner').textContent =
+    `읽기 전용입니다 (${reason}). 켜고 끄기·표기 수정·수집 재실행·종료는 로컬에서 run.bat으로 띄웠을 때만 됩니다.`;
+  for (const id of ['save', 'collect', 'quit']) $(id).disabled = true;
+}
+
+async function load() {
+  if (LOCAL) {
+    const d = await api('api/sites').then((r) => r.json());
+    SITES = d.sites;
+    STATUS = d.status;
+    $('meta').textContent =
+      `사이트 ${SITES.length}곳 (켜짐 ${SITES.filter((s) => s.enabled !== false).length}) · ` +
+      `출조 ${d.trips}건 · 갱신 ${when(d.generatedAt) || '-'}`;
+  } else {
+    const d = await fetch('data.json?t=' + Date.now()).then((r) => r.json());
+    STATUS = d.sites ?? {};
+    // 정적 모드에서는 registry를 못 읽으므로 수집 결과에 남은 사이트만 보여줍니다.
+    SITES = Object.entries(STATUS).map(([id, s]) => ({ id, name: s.name, platformLabel: s.platform }));
+    $('meta').textContent =
+      `사이트 ${SITES.length}곳 · 출조 ${d.trips?.length ?? 0}건 · 갱신 ${when(d.generatedAt) || '-'}`;
+  }
+  render();
+}
+
+(async () => {
+  try {
+    const res = await api('api/sites');
+    if (res.ok) {
+      LOCAL = true;
+    } else if (res.status === 403) {
+      staticMode('서버가 이 요청을 거절했습니다');
+    } else {
+      staticMode('관리 API가 없습니다');
+    }
+  } catch {
+    staticMode('관리 API가 없습니다');
+  }
+  await load();
+})();
+
+$('save').addEventListener('click', save);
+$('collect').addEventListener('click', collect);
+$('quit').addEventListener('click', quit);
+</script>
+</body>
+</html>
