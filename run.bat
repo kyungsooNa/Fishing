@@ -8,6 +8,7 @@ rem
 rem   run.bat            의존성 설치 + 화면 띄우기 + 브라우저 열기 (기본)
 rem   run.bat admin      같은 서버를 띄우고 시스템 관리 페이지를 엽니다
 rem   run.bat noupdate   시작할 때 git pull 을 건너뜁니다
+rem                      (KEEP_DATA=1 이면 로컬 수집 결과를 버리지 않습니다)
 rem   run.bat collect    전체 수집. docs\data.json 을 갱신합니다
 rem   run.bat all        수집한 다음 화면 띄우기
 rem   run.bat test       파서 회귀 테스트. 네트워크 불필요
@@ -25,9 +26,26 @@ where git >nul 2>nul
 if errorlevel 1 goto :skip_update
 git rev-parse --is-inside-work-tree >nul 2>nul
 if errorlevel 1 goto :skip_update
+rem 수집 결과(docs\data.json)는 봇도 커밋합니다. 로컬에서 수집을 한 번이라도 돌렸으면
+rem 이 파일이 양쪽에서 바뀌어 pull 할 때마다 충돌합니다. 이 파일은 다음 수집 때
+rem 다시 만들어지는 결과물이라, 받기 전에 버립니다. KEEP_DATA=1 이면 그대로 둡니다.
+if "%KEEP_DATA%"=="1" goto :pull
+git diff --quiet HEAD -- docs/data.json
+if errorlevel 1 (
+  echo [최신화] 로컬 수집 결과를 버리고 받습니다. 받은 뒤 다시 수집하면 됩니다.
+  git checkout HEAD -- docs/data.json
+)
+
+:pull
 echo [최신화] git pull ...
 git pull --ff-only
-if errorlevel 1 echo [알림] 최신화를 건너뜁니다. 손댄 파일이 있거나 네트워크가 안 됩니다.
+if errorlevel 1 (
+  echo.
+  echo [알림] 최신화를 건너뜁니다. 앱은 그대로 돕니다.
+  echo        걸린 파일:
+  git status --porcelain
+  echo        아무것도 안 나오면 로컬 커밋이 원격과 갈라진 것입니다.
+)
 echo.
 :skip_update
 
