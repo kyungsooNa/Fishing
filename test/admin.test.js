@@ -19,7 +19,7 @@ const REG = {
   ],
 };
 
-async function withServer(run, { collectArgs } = {}) {
+async function withServer(run, opts = {}) {
   const dir = await mkdtemp(join(tmpdir(), 'admin-'));
   const registry = join(dir, 'registry.json');
   await writeFile(registry, JSON.stringify(REG, null, 2));
@@ -29,7 +29,7 @@ async function withServer(run, { collectArgs } = {}) {
     trips: [{ date: '2026-09-04' }],
   }));
 
-  const server = createApp({ root: dir, registry, collectArgs });
+  const server = createApp({ root: dir, registry, restartable: false, ...opts });
   await new Promise((r) => server.listen(0, '127.0.0.1', r));
   const base = `http://127.0.0.1:${server.address().port}`;
   try {
@@ -185,4 +185,63 @@ test('관리 화면 스크립트에 문법 오류가 없고, 쓰는 요소가 �
   const used = [...inline.matchAll(/\$\('([\w-]+)'\)/g)].map((m) => m[1]);
   const missing = [...new Set(used)].filter((id) => !html.includes(`id="${id}"`));
   assert.deepEqual(missing, [], 'id가 바뀌면 그 부분이 조용히 안 돕니다');
+});
+
+// --- 최신화(git pull) + 재시작 ---
+//
+// 진짜 git을 부르면 테스트가 네트워크와 레포 상태를 타므로, 명령을 갈아끼워
+// "해시가 바뀌었나 / 실패했나 / 재시작할 수 있나"만 봅니다.
+
+const fakeCmd = (out, code = 0) => ({
+  file: process.execPath,
+  args: ['-e', `process.stdout.write(${JSON.stringify(out)}); process.exit(${code});`],
+});
+
+test('최신화: 해시가 바뀌면 changed', async () => {
+  await withServer(async ({ base }) => {
+    const d = await admin(base, '/api/update', { method: 'POST' }).then((r) => r.json());
+    assert.equal(d.ok, true);
+    assert.equal(d.changed, true);
+    assert.equal(d.log, '한 파일 바뀜');
+    // run.bat으로 띄운 게 아니면 재시작은 안 합니다.
+    assert.equal(d.restartable, false);
+    assert.equal(d.willRestart, false);
+  }, {
+    updateCmd: fakeCmd('한 파일 바뀜'),
+    // 앞뒤로 다른 해시를 돌려줍니다.
+    revisionCmd: { file: process.execPath, args: ['-e', 'process.stdout.write(String(Date.now()) + Math.random())'] },
+  });
+});
+
+test('최신화: 해시가 그대로면 changed=false', async () => {
+  await withServer(async ({ base }) => {
+    const d = await admin(base, '/api/update', { method: 'POST' }).then((r) => r.json());
+    assert.equal(d.ok, true);
+    assert.equal(d.changed, false, '"이미 최신"을 문구가 아니라 해시로 판단해야 합니다');
+    assert.equal(d.willRestart, false);
+  }, { updateCmd: fakeCmd('Already up to date.'), revisionCmd: fakeCmd('abc123') });
+});
+
+test('최신화: git이 실패하면 500과 로그', async () => {
+  await withServer(async ({ base }) => {
+    const res = await admin(base, '/api/update', { method: 'POST' });
+    assert.equal(res.status, 500);
+    const d = await res.json();
+    assert.equal(d.ok, false);
+    assert.equal(d.changed, false);
+    assert.match(d.log, /빨리감기가 안 됩니다/);
+  }, { updateCmd: fakeCmd('빨리감기가 안 됩니다', 1), revisionCmd: fakeCmd('abc123') });
+});
+
+test('최신화: X-Admin이 없으면 403', async () => {
+  await withServer(async ({ base }) => {
+    assert.equal((await fetch(base + '/api/update', { method: 'POST' })).status, 403);
+  });
+});
+
+test('restartable이면 사이트 목록에 그렇게 나온다', async () => {
+  await withServer(async ({ base }) => {
+    const d = await admin(base, '/api/sites').then((r) => r.json());
+    assert.equal(d.restartable, true, '화면이 버튼 문구를 이걸로 정합니다');
+  }, { restartable: true });
 });

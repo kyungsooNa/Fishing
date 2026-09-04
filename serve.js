@@ -4,6 +4,10 @@
 // 관리 페이지(docs/admin.html)가 쓰는 /api/* 도 같이 답합니다. registry를 고치고
 // 수집 프로세스를 띄우는 입구라 **로컬 전용**입니다. GitHub Pages에는 이 서버가
 // 없으므로 관리 페이지는 거기선 읽기 전용으로 돕니다.
+//
+// 종료 코드 75는 "최신 코드로 다시 띄워달라"는 뜻입니다. run.bat이 이 코드를 보고
+// 서버를 다시 실행합니다. 자기 자신을 새로 spawn하지 않는 건, 그러면 run.bat 창이
+// 주인을 잃고 서버만 백그라운드에 남기 때문입니다.
 
 import { createServer } from 'node:http';
 import { readFile, writeFile } from 'node:fs/promises';
@@ -22,6 +26,8 @@ const TYPES = {
 // 관리 페이지에서 고칠 수 있는 값. 표기와 켜짐/꺼짐만입니다.
 // url·adapter·seatsTotal처럼 잘못 넣으면 수집이 통째로 죽는 값은 registry에서 직접 고칩니다.
 const EDITABLE = { enabled: 'boolean', name: 'string', port: 'string', phone: 'string', note: 'string' };
+
+export const RESTART_EXIT_CODE = 75;
 
 const LOOPBACK = ['127.0.0.1', '::1', '::ffff:127.0.0.1'];
 const LOCAL_HOSTS = ['localhost', '127.0.0.1', '::1', '[::1]'];
@@ -60,9 +66,24 @@ export function createApp({
   root = 'docs',
   registry = 'sites/registry.json',
   collectArgs = ['collect.js'],
+  // 최신화에 쓸 명령. 테스트에서 갈아끼웁니다.
+  updateCmd = { file: 'git', args: ['pull', '--ff-only'] },
+  revisionCmd = { file: 'git', args: ['rev-parse', 'HEAD'] },
+  // run.bat처럼 종료 코드를 보고 다시 띄워주는 실행기가 있을 때만 재시작이 됩니다.
+  restartable = process.env.RESTARTABLE === '1',
 } = {}) {
   // 수집 작업은 한 번에 하나만. 로그는 화면에서 보려고 들고 있습니다.
   let job = null;
+
+  // 명령 하나를 돌리고 출력과 종료 코드를 돌려줍니다.
+  const run = ({ file, args }) => new Promise((resolve) => {
+    const child = spawn(file, args, { env: process.env });
+    let out = '';
+    child.stdout.on('data', (b) => { out += b; });
+    child.stderr.on('data', (b) => { out += b; });
+    child.on('error', (err) => resolve({ code: -1, out: `${file} 실행 실패: ${err.message}` }));
+    child.on('close', (code) => resolve({ code, out }));
+  });
 
   const readRegistry = async () => JSON.parse(await readFile(registry, 'utf8'));
 
@@ -82,6 +103,7 @@ export function createApp({
         status: data.sites ?? {},
         generatedAt: data.generatedAt ?? null,
         trips: data.trips?.length ?? 0,
+        restartable,
       });
     }
 
@@ -123,6 +145,23 @@ export function createApp({
 
     if (path === '/api/collect' && req.method === 'GET') {
       return json(res, 200, job ?? { running: false, log: [], code: null, startedAt: null });
+    }
+
+    if (path === '/api/update' && req.method === 'POST') {
+      // 커밋 해시를 앞뒤로 비교합니다. "Already up to date" 문구는 로케일마다 달라서 못 믿습니다.
+      const before = (await run(revisionCmd)).out.trim();
+      const pull = await run(updateCmd);
+      const after = (await run(revisionCmd)).out.trim();
+      const ok = pull.code === 0;
+      const changed = ok && before !== after && after !== '';
+      const willRestart = changed && restartable;
+
+      json(res, ok ? 200 : 500, { ok, changed, willRestart, restartable, log: pull.out.trim(), before, after });
+      if (willRestart) {
+        // 응답이 나간 뒤에 내려갑니다. run.bat이 75를 보고 새 코드로 다시 띄웁니다.
+        setTimeout(() => process.exit(RESTART_EXIT_CODE), 100).unref();
+      }
+      return;
     }
 
     if (path === '/api/shutdown' && req.method === 'POST') {

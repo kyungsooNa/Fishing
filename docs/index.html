@@ -41,7 +41,8 @@
   .num { text-align: right; font-variant-numeric: tabular-nums; }
   a { color: var(--accent); }
   .empty { padding: 30px; text-align: center; color: var(--muted); }
-  .views { display: flex; gap: 6px; margin-bottom: 10px; }
+  .views { display: flex; gap: 6px; margin-bottom: 10px; align-items: center; }
+  .views a { margin-left: auto; font-size: 13px; }
   .views button { padding: 6px 14px; border: 1px solid var(--line); border-radius: 7px;
                   background: var(--card); color: var(--muted); font: inherit; font-size: 14px; cursor: pointer; }
   .views button.on { color: var(--fg); font-weight: 600; border-color: var(--muted); }
@@ -79,6 +80,7 @@
   <div class="views">
     <button id="view-table" class="on">표</button>
     <button id="view-map">지도</button>
+    <a href="admin.html">시스템 관리 →</a>
   </div>
 
   <div id="map" hidden></div>
@@ -98,7 +100,6 @@
   <details>
     <summary>수집 상태</summary>
     <div class="status" id="status"></div>
-    <div class="maphint"><a href="admin.html">시스템 관리 →</a></div>
   </details>
 </div>
 
