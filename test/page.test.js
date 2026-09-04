@@ -21,6 +21,13 @@ test('스크립트가 쓰는 요소가 화면에 다 있다', () => {
   assert.deepEqual(missing, [], 'id가 바뀌면 그 부분이 조용히 안 돕니다');
 });
 
+test('주요 필터는 다중 선택 메뉴다', () => {
+  for (const id of ['f-site', 'f-region', 'f-port', 'f-species', 'f-session', 'f-date']) {
+    assert.match(html, new RegExp(`<details class="multi" id="${id}"[\\s\\S]*?<div class="multi-menu"></div>`));
+  }
+  assert.match(inline, /selectedValues\('f-site'\)/);
+});
+
 test('data.json은 화면이 기대하는 모양이다', async () => {
   const data = JSON.parse(await readFile('docs/data.json', 'utf8'));
   for (const key of ['generatedAt', 'sites', 'trips']) {

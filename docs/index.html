@@ -25,8 +25,20 @@
   h1 { font-size: 20px; margin: 0 0 4px; }
   .sub { color: var(--muted); font-size: 13px; margin-bottom: 18px; }
   .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
-  select, input[type=search] { padding: 7px 10px; border: 1px solid var(--line); border-radius: 7px;
-                               background: var(--card); color: var(--fg); font: inherit; font-size: 14px; }
+  input[type=search] { padding: 7px 10px; border: 1px solid var(--line); border-radius: 7px;
+                       background: var(--card); color: var(--fg); font: inherit; font-size: 14px; }
+  .multi { position: relative; margin: 0; color: var(--fg); font-size: 14px; }
+  .multi summary { min-width: 118px; padding: 7px 28px 7px 10px; border: 1px solid var(--line);
+                   border-radius: 7px; background: var(--card); cursor: pointer; list-style: none; }
+  .multi summary::-webkit-details-marker { display: none; }
+  .multi summary::after { content: '▾'; position: absolute; top: 50%; right: 10px;
+                           transform: translateY(-50%); color: var(--muted); }
+  .multi[open] summary { border-color: var(--muted); }
+  .multi-menu { position: absolute; z-index: 1000; top: calc(100% + 4px); left: 0; min-width: 220px;
+                max-height: 300px; overflow: auto; padding: 6px; border: 1px solid var(--line);
+                border-radius: 7px; background: var(--card); box-shadow: 0 8px 24px rgba(0,0,0,.14); }
+  .multi-menu label { display: flex; align-items: center; gap: 7px; padding: 5px 6px; white-space: nowrap; }
+  .multi-menu label:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); }
   label.check { display: inline-flex; align-items: center; gap: 6px; padding: 7px 10px;
                 border: 1px solid var(--line); border-radius: 7px; background: var(--card); font-size: 14px; }
   .tablewrap { overflow-x: auto; background: var(--card); border: 1px solid var(--line); border-radius: 10px; }
@@ -67,12 +79,12 @@
   <div class="sub" id="meta">불러오는 중…</div>
 
   <div class="filters">
-    <select id="f-site"><option value="">전체 선사</option></select>
-    <select id="f-region"><option value="">전체 지역</option></select>
-    <select id="f-port"><option value="">전체 항구</option></select>
-    <select id="f-species"><option value="">전체 어종</option></select>
-    <select id="f-session"><option value="">오전·오후·종일</option></select>
-    <select id="f-date"><option value="">전체 날짜</option></select>
+    <details class="multi" id="f-site" data-label="선사" data-all="전체 선사"><summary>전체 선사</summary><div class="multi-menu"></div></details>
+    <details class="multi" id="f-region" data-label="지역" data-all="전체 지역"><summary>전체 지역</summary><div class="multi-menu"></div></details>
+    <details class="multi" id="f-port" data-label="항구" data-all="전체 항구"><summary>전체 항구</summary><div class="multi-menu"></div></details>
+    <details class="multi" id="f-species" data-label="어종" data-all="전체 어종"><summary>전체 어종</summary><div class="multi-menu"></div></details>
+    <details class="multi" id="f-session" data-label="운항" data-all="오전·오후·종일"><summary>오전·오후·종일</summary><div class="multi-menu"></div></details>
+    <details class="multi" id="f-date" data-label="날짜" data-all="전체 날짜"><summary>전체 날짜</summary><div class="multi-menu"></div></details>
     <input type="search" id="f-q" placeholder="배 이름 검색">
     <label class="check"><input type="checkbox" id="f-open" checked> 빈자리만</label>
     <label class="check"><input type="checkbox" id="f-fav"> <span id="f-fav-label">★ 즐겨찾기만</span></label>
@@ -151,12 +163,6 @@ function dayLabel(d) {
   return `${m}/${dd}(${WEEK[new Date(y, m - 1, dd).getDay()]})`;
 }
 
-function fillOptions(sel, values) {
-  for (const v of [...new Set(values.filter(Boolean))].sort()) {
-    sel.append(new Option(sel.id === 'f-date' ? dayLabel(v) : v, v));
-  }
-}
-
 function regionOf(port) {
   const parts = String(port ?? '').trim().split(/\s+/);
   if (parts.length >= 3) return `${parts[0]} ${parts[1]}`;
@@ -164,18 +170,60 @@ function regionOf(port) {
   return parts[0] ?? '';
 }
 
+function fillOptions(control, values) {
+  const menu = control.querySelector('.multi-menu');
+  menu.textContent = '';
+  for (const v of [...new Set(values.filter(Boolean))].sort()) {
+    const label = document.createElement('label');
+    const input = document.createElement('input');
+    input.type = 'checkbox';
+    input.value = v;
+    input.dataset.text = control.id === 'f-date' ? dayLabel(v) : v;
+    input.addEventListener('change', () => { updateMultiLabel(control); refresh(); });
+    label.append(input, input.dataset.text);
+    menu.append(label);
+  }
+  updateMultiLabel(control);
+}
+
+function selectedValues(id) {
+  return new Set([...$(id).querySelectorAll('input:checked')].map((input) => input.value));
+}
+
+function hasSelection(values, value) {
+  return !values.size || values.has(value);
+}
+
+function updateMultiLabel(control) {
+  const checked = [...control.querySelectorAll('input:checked')];
+  const summary = control.querySelector('summary');
+  if (!checked.length) {
+    summary.textContent = control.dataset.all;
+  } else if (checked.length === 1) {
+    summary.textContent = checked[0].dataset.text;
+  } else {
+    summary.textContent = `${control.dataset.label} ${checked.length}개`;
+  }
+}
+
+function setOnlyFilterValue(id, value) {
+  for (const input of $(id).querySelectorAll('input')) input.checked = input.value === value;
+  updateMultiLabel($(id));
+}
+
 // 표와 지도가 같은 기준을 보도록 필터는 한 군데서만 겁니다.
 function visibleTrips() {
-  const site = $('f-site').value, region = $('f-region').value, port = $('f-port').value, species = $('f-species').value;
-  const date = $('f-date').value, q = $('f-q').value.trim(), openOnly = $('f-open').checked;
-  const favOnly = $('f-fav').checked, session = $('f-session').value;
+  const site = selectedValues('f-site'), region = selectedValues('f-region'), port = selectedValues('f-port');
+  const species = selectedValues('f-species'), date = selectedValues('f-date'), session = selectedValues('f-session');
+  const q = $('f-q').value.trim(), openOnly = $('f-open').checked;
+  const favOnly = $('f-fav').checked;
 
   return DATA.trips.filter((t) =>
     (!favOnly || FAVS.has(favKey(t))) &&
-    (!site || t.siteName === site || (t.sources ?? []).some((x) => x.siteName === site)) &&
-    (!region || regionOf(t.port) === region) && (!port || t.port === port) &&
-    (!species || t.species === species) && (!date || t.date === date) &&
-    (!session || t.session === session) &&
+    (!site.size || site.has(t.siteName) || (t.sources ?? []).some((x) => site.has(x.siteName))) &&
+    hasSelection(region, regionOf(t.port)) && hasSelection(port, t.port) &&
+    hasSelection(species, t.species) && hasSelection(date, t.date) &&
+    hasSelection(session, t.session) &&
     (!q || (t.boat ?? '').includes(q)) &&
     (!openOnly || t.status === 'open' || t.status === 'few'));
 }
@@ -274,7 +322,7 @@ fetch('data.json?t=' + Date.now())
   .catch((e) => { $('meta').textContent = 'data.json을 못 읽었습니다: ' + e.message; });
 
 const refresh = () => { render(); drawMap(); };
-for (const id of ['f-site', 'f-region', 'f-port', 'f-species', 'f-session', 'f-date', 'f-open', 'f-fav']) $(id).addEventListener('change', refresh);
+for (const id of ['f-open', 'f-fav']) $(id).addEventListener('change', refresh);
 $('f-q').addEventListener('input', refresh);
 
 // ── 지도 ──────────────────────────────────────────────────────────────────
@@ -320,8 +368,8 @@ function drawMap() {
     })
       .bindTooltip(`${port}${approx ? ' (대략 위치)' : ''}<br>출조 ${count.trips}건 · 빈자리 ${count.open}건`)
       .on('click', () => {
-        $('f-region').value = regionOf(port);
-        $('f-port').value = '';
+        setOnlyFilterValue('f-region', regionOf(port));
+        setOnlyFilterValue('f-port', null);
         refresh();
       })
       .addTo(markers);
