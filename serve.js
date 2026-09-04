@@ -124,6 +124,8 @@ export function createApp({
   upstreamCmd = { file: 'git', args: ['rev-parse', '--abbrev-ref', '--symbolic-full-name', '@{u}'] },
   // run.bat처럼 종료 코드를 보고 다시 띄워주는 실행기가 있을 때만 재시작이 됩니다.
   restartable = process.env.RESTARTABLE === '1',
+  exitProcess = process.exit,
+  restartDelayMs = 100,
 } = {}) {
   // 수집 작업은 한 번에 하나만. 로그는 화면에서 보려고 들고 있습니다.
   let job = null;
@@ -139,6 +141,10 @@ export function createApp({
   });
 
   const readRegistry = async () => JSON.parse(await readFile(registry, 'utf8'));
+
+  function restartAfterResponse() {
+    setTimeout(() => exitProcess(RESTART_EXIT_CODE), restartDelayMs).unref();
+  }
 
   async function handleApi(req, res, path) {
     if (!adminAllowed(req)) {
@@ -226,8 +232,21 @@ export function createApp({
       });
       if (willRestart) {
         // 응답이 나간 뒤에 내려갑니다. run.bat이 75를 보고 새 코드로 다시 띄웁니다.
-        setTimeout(() => process.exit(RESTART_EXIT_CODE), 100).unref();
+        restartAfterResponse();
       }
+      return;
+    }
+
+    if (path === '/api/restart' && req.method === 'POST') {
+      if (!restartable) {
+        return json(res, 409, {
+          ok: false,
+          restartable,
+          error: 'run.bat으로 띄운 서버가 아니라 자동 재실행할 수 없습니다',
+        });
+      }
+      json(res, 202, { ok: true, restartable, willRestart: true });
+      restartAfterResponse();
       return;
     }
 

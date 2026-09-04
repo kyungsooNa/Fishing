@@ -126,6 +126,7 @@ test('X-Admin 헤더가 없으면 전부 403', async () => {
     for (const [path, opt] of [
       ['/api/sites', {}],
       ['/api/collect', { method: 'POST' }],
+      ['/api/restart', { method: 'POST' }],
       ['/api/shutdown', { method: 'POST' }],
       ['/api/sites/aaa', { method: 'PATCH', body: '{"name":"x"}' }],
     ]) {
@@ -277,4 +278,35 @@ test('restartable이면 사이트 목록에 그렇게 나온다', async () => {
     const d = await admin(base, '/api/sites').then((r) => r.json());
     assert.equal(d.restartable, true, '화면이 버튼 문구를 이걸로 정합니다');
   }, { restartable: true });
+});
+
+test('앱 재실행: run.bat이 아니면 거절한다', async () => {
+  await withServer(async ({ base }) => {
+    const res = await admin(base, '/api/restart', { method: 'POST' });
+    assert.equal(res.status, 409);
+    const d = await res.json();
+    assert.equal(d.ok, false);
+    assert.equal(d.restartable, false);
+    assert.match(d.error, /run\.bat/);
+  });
+});
+
+test('앱 재실행: restartable이면 종료 코드 75로 내려간다', async () => {
+  let exitCode = null;
+  await withServer(async ({ base }) => {
+    const res = await admin(base, '/api/restart', { method: 'POST' });
+    assert.equal(res.status, 202);
+    const d = await res.json();
+    assert.equal(d.ok, true);
+    assert.equal(d.willRestart, true);
+
+    for (let i = 0; i < 20 && exitCode === null; i++) {
+      await new Promise((r) => setTimeout(r, 10));
+    }
+    assert.equal(exitCode, 75);
+  }, {
+    restartable: true,
+    restartDelayMs: 0,
+    exitProcess: (code) => { exitCode = code; },
+  });
 });
