@@ -141,9 +141,14 @@ export function parseFleet(site, html, url) {
 
     const tide = toTide(squash(cells.eq(1).text())) ?? toTide(squash($row.text()));
 
-    $row.find('table').each((__, unit) => {
+    // 하루 안에는 출조 table 말고 껍데기 table도 섞여 있습니다.
+    // 운항시간이나 좌석 표기가 있어야 출조로 봅니다.
+    const units = $row.find('table').toArray().filter((el) => isUnit(squash($(el).text())));
+    // 출조 table 안에 또 table이 있으면 바깥 것만 씁니다.
+    const outer = units.filter((el) => !$(el).parents('table').toArray().some((p) => units.includes(p)));
+
+    outer.forEach((unit) => {
       const text = squash($(unit).text());
-      if (!text) return;
 
       const trip = makeTrip(site, {
         boat: pickBoat(site, text),
@@ -162,6 +167,10 @@ export function parseFleet(site, html, url) {
   return trips;
 }
 
+// 출조 한 덩어리인지. 배 이름만 있는 껍데기를 걸러냅니다.
+const SEATS = /(\d{1,3})\s*명\s*예약\s*\/\s*(\d{1,3})\s*명/;
+const isUnit = (text) => text.includes('운항시간') || SEATS.test(text);
+
 /**
  * 좌석 표기는 남은 수가 아니라 "찬 수 / 정원"입니다.
  *   "예약마감 21명 예약/21명"  → 0
@@ -169,7 +178,7 @@ export function parseFleet(site, html, url) {
  * 이걸 그냥 숫자로 읽으면 만석을 21자리 남은 것으로 착각합니다.
  */
 export function pickSeats(text) {
-  const m = text.match(/(\d{1,3})\s*명\s*예약\s*\/\s*(\d{1,3})\s*명/);
+  const m = text.match(SEATS);
   if (m) {
     const [, taken, total] = m.map(Number);
     return Math.max(0, total - taken);

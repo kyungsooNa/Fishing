@@ -41,7 +41,7 @@ test('sunsang24: 목록형 — 하루 행 안의 배마다 한 줄씩 나온다'
     '2026-09-04/악바리호',
     '2026-09-04/레드맨호',
     '2026-09-05/맥가이버호',
-  ]);
+  ], '시간도 좌석 표기도 없는 껍데기 table은 출조가 아닙니다');
 
   const [akbari, redman, macgyver] = trips;
   assert.equal(akbari.departAt, '04:00');

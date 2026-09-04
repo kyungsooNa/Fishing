@@ -47,6 +47,9 @@ export const SUNSANG24_LIST = `
         <td><ul><li>어종 : 광어</li><li class="shiptime">운항시간 : 06:00 ~ 15:00</li></ul></td>
         <td>19명 예약/20명</td>
       </tr></tbody></table>
+
+      <!-- 시간도 좌석 표기도 없는 껍데기. 실제 페이지에 날마다 하나씩 있습니다 -->
+      <table class="ship_unit"><tbody><tr><td>맥가이버호 예약마감</td></tr></tbody></table>
     </td>
   </tr>
 </table>`;
