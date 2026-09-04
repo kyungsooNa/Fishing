@@ -188,6 +188,22 @@
       "note": "sunsang24도 더피싱도 아닌 자체 사이트라 generic 어댑터로 잡았습니다. 예약 목록이 /reservation 한 장에 다 나오는지 확인이 필요합니다 — 날짜별로 나뉘어 있으면 datePath를, 페이지가 여러 장이면 pages를 적으세요. 안 읽히면 --dump로 원본을 보고 전용 어댑터가 필요합니다. 배 목록(푸른바다3·5·7호, 은갈매기호)은 조황글에서 본 것이라 빠진 배가 있을 수 있습니다."
     },
     {
+      "id": "raraho",
+      "name": "오천항 라라호",
+      "adapter": "thefishing",
+      "url": "https://raraho.kr/m/index.php?mid=bk",
+      "port": "충남 보령 오천항",
+      "phone": "010-9008-7564",
+      "source": "index",
+      "windowDays": 7,
+      "seatsTotal": 22,
+      "enabled": true,
+      "boats": {
+        "라라호": {}
+      },
+      "note": "충남 보령 오천면 소성리. 광어·우럭·문어·갑오징어·백조기. seatsTotal 22는 선박소개(9.77톤 22인승)에서 옮긴 값이라 미확인 — index 방식에서는 안 씁니다. 오천항 여섯 번째 선사입니다."
+    },
+    {
       "id": "chungma",
       "name": "영종도 청마피싱",
       "adapter": "thefishing",
