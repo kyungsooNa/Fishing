@@ -17,6 +17,7 @@ core/notify.js                  텔레그램 / 디스코드 알림
 core/runner.js                  전체 순회, 실패 격리
 test/                           파서·수집·화면 회귀 확인 (npm test)
 docs/index.html                 화면
+docs/admin.html                 시스템 관리 (사이트 켜고 끄기·표기 수정·수집 재실행·종료)
 docs/data.json                  수집 결과 (지금 든 건 예시 데이터)
 ```
 
@@ -33,8 +34,8 @@ docs/data.json                  수집 결과 (지금 든 건 예시 데이터)
 로컬 확인:
 
 윈도우는 `run.bat`을 더블클릭하면 됩니다. 의존성 설치 → 화면 띄우기 → 브라우저 열기까지 한 번에 갑니다.
-명령 프롬프트에서 `run.bat collect`(수집), `run.bat all`(수집 후 화면), `run.bat test`,
-`run.bat debug <id>`도 됩니다. 포트를 바꾸려면 `set PORT=3000` 후 실행하세요.
+명령 프롬프트에서 `run.bat admin`(관리 페이지), `run.bat collect`(수집), `run.bat all`(수집 후 화면),
+`run.bat test`, `run.bat debug <id>`도 됩니다. 포트를 바꾸려면 `set PORT=3000` 후 실행하세요.
 
 직접 명령을 쓸 때:
 
@@ -48,7 +49,7 @@ node debug.js akbari --dump       # 원본 HTML을 tmp/ 에 저장
 node debug.js akbari --peek       # 페이지가 어떻게 생겼는지 요약 (로그로)
 node collect.js                   # 전체
 npm test                          # 파서·수집 회귀 확인 (네트워크 불필요)
-npm run serve                     # http://localhost:8080
+npm run serve                     # http://localhost:8080 (관리는 /admin.html)
 ```
 
 어댑터를 고칠 때는 `debug.js`가 훨씬 빠릅니다. 파싱 결과를 표로 보여주고,
@@ -56,6 +57,31 @@ npm run serve                     # http://localhost:8080
 
 작업 맥락은 `AGENTS.md`에 정리해뒀습니다. Codex든 Claude Code든 이어서 작업할 때 그 파일부터 읽히면 됩니다.
 (`CLAUDE.md`는 `AGENTS.md`를 가리키기만 합니다. 지침은 한 곳에서만 고칩니다.)
+
+## 시스템 관리 페이지
+
+`http://localhost:8080/admin.html` — `run.bat admin` 으로 바로 열 수 있습니다.
+
+- **등록된 사이트가 한 표에** 나옵니다. 계열, 항구, 전화번호, 마지막 수집 결과(건수·시각·실패 사유)까지 같이 봅니다.
+- **켜고 끄기**를 체크박스로 합니다. `registry.json`의 `enabled`를 고칩니다.
+- **표기 수정** — 선사 이름·항구·전화번호를 그 자리에서 고칩니다. 이 셋은 [같은 배 합치기](#같은-배가-여러-사이트에-올라와-있을-때)의 기준값이라 손볼 일이 잦습니다.
+- **수집 다시 실행** — `node collect.js`를 띄우고 로그를 그대로 보여줍니다.
+- **서버 종료** — 로컬 서버를 내립니다. `run.bat` 창도 같이 끝납니다.
+
+`url`·`adapter`·`seatsTotal`처럼 **잘못 넣으면 수집이 통째로 죽는 값은 여기서 못 고칩니다.** `registry.json`에서 직접 고치세요.
+
+### GitHub Pages에서는 읽기 전용입니다
+
+파일을 고치고 프로세스를 띄우려면 서버가 있어야 하는데, Pages에는 없습니다. 배포된 주소로 열면
+`docs/data.json`에 남은 수집 결과만 표로 보여주고 편집·버튼은 잠깁니다.
+
+### 로컬 전용으로 잠가둔 것
+
+`/api/*`는 registry를 쓰고 프로세스를 띄우는 입구라, 로컬 밖으로 새지 않게 세 겹으로 막았습니다.
+
+- 서버가 **`127.0.0.1`에만 바인딩**됩니다(예전에는 모든 인터페이스였습니다). 같은 공유기의 다른 기기에서 열어야 하면 `set HOST=0.0.0.0` 인데, 그러면 그 기기들도 관리 API를 쓸 수 있게 되니 신뢰하는 망에서만 하세요.
+- **Host 헤더**가 localhost 계열일 때만 답합니다 (DNS 리바인딩).
+- **`X-Admin: 1` 헤더**를 요구합니다. 다른 사이트의 스크립트가 `localhost:8080`으로 요청을 밀어넣으려 하면 커스텀 헤더 때문에 프리플라이트가 뜨고, CORS 헤더를 안 주므로 브라우저가 막습니다 (CSRF).
 
 ## sunsang24 선사 추가하기
 

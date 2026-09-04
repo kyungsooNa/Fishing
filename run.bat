@@ -6,6 +6,7 @@ cd /d "%~dp0"
 rem 낚시 출조 현황판 - 한 번에 실행
 rem
 rem   run.bat            의존성 설치 + 화면 띄우기 + 브라우저 열기 (기본)
+rem   run.bat admin      같은 서버를 띄우고 시스템 관리 페이지를 엽니다
 rem   run.bat collect    전체 수집. docs\data.json 을 갱신합니다
 rem   run.bat all        수집한 다음 화면 띄우기
 rem   run.bat test       파서 회귀 테스트. 네트워크 불필요
@@ -31,6 +32,7 @@ set "CMD=%~1"
 if "%CMD%"=="" set "CMD=serve"
 
 if /i "%CMD%"=="serve"   goto :serve
+if /i "%CMD%"=="admin"   goto :admin
 if /i "%CMD%"=="collect" goto :collect
 if /i "%CMD%"=="all"     goto :all
 if /i "%CMD%"=="test"    goto :test
@@ -41,11 +43,17 @@ goto :usage
 call :do_collect
 echo.
 
+:admin
+set "OPENPATH=/admin.html"
+
 :serve
-echo [실행] 화면을 띄웁니다 -^> http://localhost:%PORT%
+if "%OPENPATH%"=="" set "OPENPATH=/"
+echo [실행] 현황판  http://localhost:%PORT%
+echo        관리    http://localhost:%PORT%/admin.html
 echo        잠시 뒤 브라우저가 자동으로 열립니다. 끄려면 Ctrl+C.
+echo        관리 페이지의 "서버 종료" 버튼으로도 끌 수 있습니다.
 echo.
-start "" /b cmd /c "timeout /t 2 /nobreak >nul & explorer http://localhost:%PORT%"
+start "" /b cmd /c "timeout /t 2 /nobreak >nul & explorer http://localhost:%PORT%%OPENPATH%"
 node serve.js
 goto :end
 
@@ -80,6 +88,7 @@ goto :end
 :usage
 echo 사용법:
 echo   run.bat                기본. 설치 + 화면 띄우기
+echo   run.bat admin          시스템 관리 페이지 열기
 echo   run.bat collect        전체 수집
 echo   run.bat all            수집 후 화면 띄우기
 echo   run.bat test           테스트

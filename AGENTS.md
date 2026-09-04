@@ -14,7 +14,8 @@
 ```
 collect.js        전체 수집 진입점 (Actions가 이걸 부릅니다)
 debug.js          어댑터 고칠 때 쓰는 도구. 한 사이트만 돌려보고 표로 보여줍니다
-serve.js          docs/ 로컬 서빙
+serve.js          docs/ 로컬 서빙 + 관리 API(/api/*). 루프백 전용, createApp()으로 테스트합니다
+docs/admin.html   시스템 관리 화면. 서버가 없으면(Pages) 읽기 전용으로 떨어집니다
 core/schema.js    통합 스키마 + 표기 정규화. 어댑터는 원문 텍스트만 넘기면 됩니다
 core/fetcher.js   HTTP/Playwright, 호스트당 3초 간격, EUC-KR 디코딩
 core/store.js     docs/data.json 읽기·쓰기
@@ -48,6 +49,10 @@ test/             파서·수집·화면 회귀 확인 (npm test). 네트워크�
   세 값은 전부 registry에서 오므로 합칠지 말지는 사람이 정하는 셈입니다.
 - **날짜는 전부 한국시간입니다**(`core/when.js`). Actions 러너가 UTC라 그냥 두면
   06:10 수집 때 "오늘"이 어제가 됩니다. 새 코드에서 `new Date()`로 날짜를 만들지 마세요.
+- **관리 API는 로컬 밖으로 새면 안 됩니다.** `/api/*`는 registry를 고치고 프로세스를 띄웁니다.
+  루프백 바인딩 + Host 검사 + `X-Admin` 헤더 세 겹으로 막아뒀고(`serve.js`의 `adminAllowed`),
+  `test/admin.test.js`가 이걸 지킵니다. 편집 가능한 필드도 표기·켜짐만입니다(`EDITABLE`) —
+  `url`이나 `adapter`가 화면에서 바뀌면 수집이 통째로 죽습니다.
 - **한글에는 `\b` 단어경계가 없습니다.** 배 이름 정규식은 `(?![가-힣])`로 끊습니다.
   이거 때문에 한 번 틀렸으니 정규식 고칠 때 조심하세요.
 
