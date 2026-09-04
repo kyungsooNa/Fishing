@@ -87,6 +87,45 @@ export function toTime(raw) {
   return `${String(h).padStart(2, '0')}:${String(min).padStart(2, '0')}`;
 }
 
+
+/**
+ * "운항시간 : 04:00 ~ 17:00" 처럼 범위로 적힌 시각을 시작·끝으로 나눕니다.
+ * 끝이 없으면 시작만 돌려줍니다.
+ */
+export function toTimeRange(raw) {
+  const text = String(raw ?? '');
+  const m = text.match(/(\d{1,2}\s*[:시]\s*\d{0,2})\s*[~\-–—]\s*(\d{1,2}\s*[:시]\s*\d{0,2})/);
+  if (m) return { from: toTime(m[1]), to: toTime(m[2]) };
+  return { from: toTime(text), to: null };
+}
+
+const HHMM = (t) => {
+  const [h, m] = String(t).split(':').map(Number);
+  return h * 60 + m;
+};
+
+/**
+ * 오전배냐 오후배냐 종일배냐, 그리고 몇 시간짜리인지.
+ *
+ * 시작 시각만 보면 "04:00 출항"이 오전배처럼 보이는데 실제로는 17시에 들어오는
+ * 종일배인 경우가 많습니다. 끝 시각이 있으면 길이로 가릅니다.
+ * 밤에 나가는 배(문어·갈치)는 자정을 넘기므로 따로 셉니다.
+ */
+export function sessionOf(departAt, returnAt) {
+  if (!departAt) return { session: null, hours: null };
+
+  const start = HHMM(departAt);
+  let hours = null;
+  if (returnAt) {
+    const end = HHMM(returnAt);
+    hours = Math.round(((end >= start ? end - start : end + 1440 - start) / 60) * 10) / 10;
+  }
+
+  if (start >= 18 * 60) return { session: '야간', hours };
+  if (hours !== null && hours >= 8) return { session: '종일', hours };
+  return { session: start < 12 * 60 ? '오전' : '오후', hours };
+}
+
 /** 물때 표기(12물, 조금, 무시)를 그대로 살려 뽑습니다. */
 export function toTide(raw) {
   if (!raw) return null;
@@ -154,6 +193,7 @@ export function makeTrip(site, fields) {
     date,
     rawDate = null,
     departAt = null,
+    returnAt = null,
     rawTime = null,
     species = null,
     tide = null,
@@ -166,6 +206,10 @@ export function makeTrip(site, fields) {
   } = fields;
 
   const resolvedDate = date ?? toDate(rawDate);
+  const range = toTimeRange(rawTime ?? '');
+  const depart = departAt ?? range.from;
+  const back = returnAt ?? range.to;
+  const { session, hours } = sessionOf(depart, back);
   const seats = Number.isFinite(seatsLeft) ? seatsLeft : parseSeats(rawStatus);
   const boatName = boat ? String(boat).trim() : null;
 
@@ -176,7 +220,10 @@ export function makeTrip(site, fields) {
     port: pickPort(site, boatName),
     phone: pickPhone(site, boatName),
     date: resolvedDate,
-    departAt: departAt ?? toTime(rawTime),
+    departAt: depart,
+    returnAt: back,
+    session,
+    hours,
     species: species ? String(species).trim() : null,
     tide: tide ?? toTide(rawTide),
     status: toStatus(rawStatus, seats),

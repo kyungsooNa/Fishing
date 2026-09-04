@@ -10,7 +10,7 @@
 import { fetchHtml } from '../core/fetcher.js';
 import * as cheerio from 'cheerio';
 import { parseRows, SPECIES, BOAT_NAME } from './_rows.js';
-import { makeTrip, toDate, toTime, toTide } from '../core/schema.js';
+import { makeTrip, toDate, toTide } from '../core/schema.js';
 import { kstDate, kstYm } from '../core/when.js';
 
 const CALENDAR_PATH = 'schedule_fleet_simple_top';
@@ -153,7 +153,7 @@ export function parseFleet(site, html, url) {
       const trip = makeTrip(site, {
         boat: pickBoat(site, text),
         date,
-        departAt: toTime(after(text, '운항시간')),
+        rawTime: after(text, '운항시간'),
         species: pickSpecies(text),
         tide,
         status: text,
@@ -202,7 +202,7 @@ function pickBoat(site, text) {
 
 function after(text, marker) {
   const i = text.indexOf(marker);
-  return i < 0 ? null : text.slice(i + marker.length, i + marker.length + 20);
+  return i < 0 ? null : text.slice(i + marker.length, i + marker.length + 24);
 }
 
 const squash = (t) => String(t ?? '').replace(/\s+/g, ' ').trim();
