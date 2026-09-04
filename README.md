@@ -15,7 +15,7 @@ core/store.js                   data.json 읽기·쓰기
 core/diff.js                    이전 결과와 비교해 새로 난 자리만 추출
 core/notify.js                  텔레그램 / 디스코드 알림
 core/runner.js                  전체 순회, 실패 격리
-test/                           가상 HTML로 파서 회귀 확인 (npm test)
+test/                           파서·수집·화면 회귀 확인 (npm test)
 docs/index.html                 화면
 docs/data.json                  수집 결과 (지금 든 건 예시 데이터)
 ```
