@@ -9,6 +9,10 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import { loadRegistry, collectSite } from './core/runner.js';
 import { platformOf } from './core/platform.js';
+import * as cheerio from 'cheerio';
+
+// 최상위에서 바로 쓰이므로 함수보다 위에 있어야 합니다(const는 호이스팅돼도 초기화 전엔 못 씁니다).
+const MARKERS = ['운항시간', '남은자리', '예약마감', '잔여', '출조', '물때', '예약', '출항', '마감'];
 import { fetchHtml, closeBrowser, describeError } from './core/fetcher.js';
 
 const [id, ...flags] = process.argv.slice(2);
@@ -106,8 +110,6 @@ async function dumpHtml(site) {
   }
 }
 
-const MARKERS = ['운항시간', '남은자리', '예약마감', '잔여', '출조', '물때', '예약', '출항', '마감'];
-
 /**
  * 페이지가 어떻게 생겼는지 로그로 요약합니다.
  * 도메인이 막힌 곳에서는 HTML을 직접 볼 수 없어서, Actions 로그로 대신 봅니다.
@@ -136,13 +138,25 @@ async function peekPages(site) {
     const found = MARKERS.filter((m) => html.includes(m));
     console.log(`  표기: ${found.length ? found.join(', ') : '하나도 없음 — 표기가 다르거나 JS로 그립니다'}`);
 
-    const hits = lines.filter((l) => MARKERS.some((m) => l.includes(m))).slice(0, 25);
+    const hits = lines.filter((l) => MARKERS.some((m) => l.includes(m))).slice(0, 20);
     if (hits.length) {
       console.log('  표기가 있는 줄:');
       for (const l of hits) console.log(`    | ${l.slice(0, 160)}`);
     }
-    console.log('  본문 앞부분:');
-    for (const l of lines.slice(0, 30)) console.log(`    · ${l.slice(0, 120)}`);
+
+    // 파서가 보는 것과 같은 후보 행을 직접 찍습니다. 왜 0건인지는 여기서 갈립니다.
+    const $ = cheerio.load(html);
+    const rows = $('tr, li, .row, .list_item').toArray()
+      .filter((el) => !$(el).find('tr, li').length)
+      .map((el) => $(el).text().replace(/\s+/g, ' ').trim())
+      .filter(Boolean);
+    const withMarker = rows.filter((t) => MARKERS.some((m) => t.includes(m)));
+    console.log(`  후보 행 ${rows.length}개 중 표기 있는 행 ${withMarker.length}개`);
+    for (const t of withMarker.slice(0, 12)) console.log(`    > ${t.slice(0, 200)}`);
+    if (!withMarker.length) {
+      console.log('  (표기 있는 행이 없어 아무 행이나 보여줍니다)');
+      for (const t of rows.slice(0, 12)) console.log(`    > ${t.slice(0, 200)}`);
+    }
   }
   console.log('');
 }
