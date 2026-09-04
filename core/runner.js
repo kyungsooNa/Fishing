@@ -45,6 +45,16 @@ export async function runAll({ only = null, days = 21, registryPath, dataPath, p
   const prev = await load(dataPath);
   const prevBySite = groupBy(prev.trips ?? [], (t) => t.siteId);
 
+  // 사이트별로 같이 남기는 값. 화면(특히 서버 없는 GitHub Pages의 관리 페이지)은
+  // registry를 못 읽으므로, 주소·항구·전화를 여기 실어 보내야 표에 나옵니다.
+  const meta = (site) => ({
+    name: site.name ?? site.id,
+    platform: platformOf(site).label,
+    url: site.url ?? null,
+    port: site.port ?? null,
+    phone: site.phone ?? null,
+  });
+
   const status = {};
   const failed = new Set();
   const collected = [];
@@ -55,7 +65,7 @@ export async function runAll({ only = null, days = 21, registryPath, dataPath, p
     try {
       const trips = await collectSite({ days, ...site });
       collected.push(...trips);
-      status[site.id] = { ok: true, at, count: trips.length, name: site.name ?? site.id, platform: platformOf(site).label };
+      status[site.id] = { ok: true, at, count: trips.length, ...meta(site) };
       console.log(`  ${site.id.padEnd(14)} ${String(trips.length).padStart(4)}건`);
     } catch (err) {
       failed.add(site.id);
@@ -67,8 +77,7 @@ export async function runAll({ only = null, days = 21, registryPath, dataPath, p
         error: describeError(err).slice(0, 300),
         count: kept.length,
         keptFrom: prev.sites?.[site.id]?.at ?? prev.generatedAt ?? null,
-        name: site.name ?? site.id,
-        platform: platformOf(site).label,
+        ...meta(site),
       };
       console.warn(`  ${site.id.padEnd(14)} 실패: ${status[site.id].error}`);
     }
