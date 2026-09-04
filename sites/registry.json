@@ -374,6 +374,15 @@
       "port": "경기 평택항",
       "enabled": false,
       "note": "예약모듈 형식 미확인. node debug.js seohae --dump 로 확인한 뒤 켜세요."
+    },
+    {
+      "id": "nature",
+      "name": "네이처",
+      "adapter": "sunsang24",
+      "url": "https://nature.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "note": "선상24 호스팅. 목록형(/ship/schedule_fleet)이라 기본 경로 그대로입니다. 배 이름·출항지·전화번호는 아직 확인 못 했습니다 — 첫 수집(peek) 결과를 보고 채우세요. port/phone이 비어 있으면 다른 사이트에 같은 배가 올라와도 합쳐지지 않습니다."
     }
   ]
 }
