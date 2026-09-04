@@ -74,6 +74,7 @@
 
   <div class="actions">
     <button id="save" class="primary" disabled>변경 저장</button>
+    <button id="update">최신 코드 받기</button>
     <button id="collect">수집 다시 실행</button>
     <button id="quit" class="danger">서버 종료</button>
     <span class="toast" id="toast"></span>
@@ -97,6 +98,7 @@ const $ = (id) => document.getElementById(id);
 const HEAD = { 'X-Admin': '1' };
 
 let LOCAL = false;      // 로컬 서버(/api/*)가 있으면 true. GitHub Pages에서는 false
+let RESTARTABLE = false; // run.bat처럼 종료 코드를 보고 다시 띄워주는 실행기로 켰는지
 let SITES = [];         // registry의 사이트 목록 (정적 모드에서는 data.json으로 흉내)
 let STATUS = {};        // 사이트별 마지막 수집 결과
 const DIRTY = new Map(); // id -> 바뀐 값들
@@ -239,6 +241,48 @@ async function collect() {
   polling = setInterval(pollCollect, 1500);
 }
 
+async function update() {
+  $('update').disabled = true;
+  const label = $('update').textContent;
+  $('update').textContent = '받는 중…';
+  let d;
+  try {
+    d = await api('api/update', { method: 'POST' }).then((r) => r.json());
+  } catch (err) {
+    toast('최신화 실패: ' + err.message);
+    $('update').disabled = false;
+    $('update').textContent = label;
+    return;
+  }
+  $('log').textContent = d.log || '(출력 없음)';
+
+  if (!d.ok) {
+    toast('git pull이 실패했습니다. 로그를 보세요');
+  } else if (!d.changed) {
+    toast('이미 최신입니다');
+  } else if (d.willRestart) {
+    toast('새 코드로 다시 띄우는 중…');
+    return waitForRestart();
+  } else {
+    toast('받았습니다. 반영하려면 서버를 다시 띄우세요');
+  }
+  $('update').disabled = false;
+  $('update').textContent = label;
+  await load();
+}
+
+// 서버가 내려갔다 같은 포트로 다시 올라옵니다. 응답이 돌아오면 화면을 새로 읽습니다.
+async function waitForRestart() {
+  for (let i = 0; i < 60; i++) {
+    await new Promise((r) => setTimeout(r, 500));
+    try {
+      const res = await fetch('data.json?t=' + Date.now(), { cache: 'no-store' });
+      if (res.ok) return location.reload();
+    } catch { /* 아직 안 올라왔습니다 */ }
+  }
+  $('log').textContent += '\n서버가 다시 올라오지 않았습니다. run.bat 창을 확인하세요.';
+}
+
 async function quit() {
   if (!confirm('서버를 종료합니다. 화면도 같이 닫힙니다. 계속할까요?')) return;
   await api('api/shutdown', { method: 'POST' }).catch(() => {});
@@ -253,7 +297,7 @@ function staticMode(reason) {
   $('banner').className = 'banner warn';
   $('banner').textContent =
     `읽기 전용입니다 (${reason}). 켜고 끄기·표기 수정·수집 재실행·종료는 로컬에서 run.bat으로 띄웠을 때만 됩니다.`;
-  for (const id of ['save', 'collect', 'quit']) $(id).disabled = true;
+  for (const id of ['save', 'update', 'collect', 'quit']) $(id).disabled = true;
 }
 
 async function load() {
@@ -261,6 +305,11 @@ async function load() {
     const d = await api('api/sites').then((r) => r.json());
     SITES = d.sites;
     STATUS = d.status;
+    RESTARTABLE = d.restartable;
+    $('update').textContent = RESTARTABLE ? '최신 코드 받고 재시작' : '최신 코드 받기';
+    $('update').title = RESTARTABLE
+      ? 'git pull 후 서버를 다시 띄웁니다'
+      : 'git pull만 합니다. run.bat으로 띄운 게 아니라 자동 재시작은 안 됩니다';
     $('meta').textContent =
       `사이트 ${SITES.length}곳 (켜짐 ${SITES.filter((s) => s.enabled !== false).length}) · ` +
       `출조 ${d.trips}건 · 갱신 ${when(d.generatedAt) || '-'}`;
@@ -292,6 +341,7 @@ async function load() {
 })();
 
 $('save').addEventListener('click', save);
+$('update').addEventListener('click', update);
 $('collect').addEventListener('click', collect);
 $('quit').addEventListener('click', quit);
 </script>
