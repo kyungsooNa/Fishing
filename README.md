@@ -41,7 +41,7 @@ node debug.js akbari              # 한 곳만 돌려보기
 node debug.js akbari --dump       # 원본 HTML을 tmp/ 에 저장
 node debug.js akbari --peek       # 페이지가 어떻게 생겼는지 요약 (로그로)
 node collect.js                   # 전체
-npm test                          # 파서 회귀 확인 (네트워크 불필요)
+npm test                          # 파서·수집 회귀 확인 (네트워크 불필요)
 npm run serve                     # http://localhost:8080
 ```
 
@@ -362,6 +362,10 @@ generic으로 잡았지만 실은 알려진 솔루션이면 `"platform": "서로
 통합 플랫폼은 개별 선사 사이트보다 봇 차단이 빡빡할 가능성이 높습니다. 요청 간격을 넉넉히 잡으세요.
 
 ## 고칠 때
+
+PR과 `main` 푸시마다 CI(`ci` 워크플로)가 `npm test`와 registry 유효성을 확인합니다.
+`core/fetcher.js`를 고쳤다면 머지 전에 `peek`도 한 번 돌리세요 — 테스트는 네트워크를
+타지 않아서, 실제 요청이 깨지는 변경은 수집에서만 드러납니다.
 
 변경 하나마다 브랜치를 따고, 푸시한 다음 바로 PR을 엽니다. `main`에 직접 밀지 않습니다.
 GitHub Pages가 `main`의 `/docs`를 보기 때문에 PR이 머지돼야 화면이 바뀝니다.

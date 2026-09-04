@@ -1,0 +1,37 @@
+name: ci
+
+# PR과 main 푸시마다 테스트를 돌립니다.
+# 이게 없어서 "모든 요청이 깨지는" 변경이 그대로 머지된 적이 있습니다.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci --no-audit --no-fund
+
+      - name: 테스트
+        run: npm test
+
+      # registry가 깨지면 수집이 통째로 죽습니다. JSON 문법과 id 중복을 여기서 잡습니다.
+      - name: registry 확인
+        run: |
+          node --input-type=module -e "
+            import { loadRegistry } from './core/runner.js';
+            import { platformOf } from './core/platform.js';
+            const sites = await loadRegistry();
+            const on = sites.filter((s) => s.enabled !== false);
+            console.log(\`사이트 \${sites.length}곳 (켜짐 \${on.length})\`);
+            for (const s of on) console.log(\`  \${s.id.padEnd(12)} [\${platformOf(s).label}] \${s.url}\`);
+          "
