@@ -52,6 +52,9 @@ test('수집 결과를 파일로 남긴다', async () => {
   const saved = JSON.parse(await readFile(dataPath, 'utf8'));
   assert.ok(saved.generatedAt);
   assert.equal(saved.sites.mock.platform, '예시', '계열 꼬리표가 같이 저장된다');
+  // 서버 없는 GitHub Pages의 관리 페이지는 registry를 못 읽습니다. 여기 실려야 표에 나옵니다.
+  assert.equal(saved.sites.mock.url, mockSite.url, '주소가 같이 저장된다');
+  assert.ok('port' in saved.sites.mock && 'phone' in saved.sites.mock, '항구·전화 자리는 없어도 키는 있어야 한다');
   assert.ok(saved.trips.every((t) => t.date >= saved.trips[0].date), '날짜순으로 정렬된다');
 });
 

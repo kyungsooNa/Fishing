@@ -317,7 +317,9 @@ async function load() {
     const d = await fetch('data.json?t=' + Date.now()).then((r) => r.json());
     STATUS = d.sites ?? {};
     // 정적 모드에서는 registry를 못 읽으므로 수집 결과에 남은 사이트만 보여줍니다.
-    SITES = Object.entries(STATUS).map(([id, s]) => ({ id, name: s.name, platformLabel: s.platform }));
+    SITES = Object.entries(STATUS).map(([id, s]) => ({
+      id, name: s.name, platformLabel: s.platform, url: s.url, port: s.port, phone: s.phone,
+    }));
     $('meta').textContent =
       `사이트 ${SITES.length}곳 · 출조 ${d.trips?.length ?? 0}건 · 갱신 ${when(d.generatedAt) || '-'}`;
   }
