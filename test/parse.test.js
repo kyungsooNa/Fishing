@@ -8,6 +8,7 @@ import { describeError } from '../core/fetcher.js';
 import { parseDetail, indexUrl, detailUrl } from '../adapters/thefishing.js';
 import { findOpenings } from '../core/diff.js';
 import { mergeDuplicates } from '../core/merge.js';
+import { kstDate } from '../core/when.js';
 import { toStatus, toDate, toTime, toTimeRange, sessionOf, parseSeats, pickPrice, STATUS } from '../core/schema.js';
 import * as fx from './fixtures.js';
 
@@ -430,7 +431,8 @@ test('targets: 진단 도구가 어댑터와 같은 주소를 본다', async () 
     url: 'https://fishinggate.sunsang24.com',
     path: 'schedule_fleet_simple_top',
     dayPath: '/ship/schedule_fleet/{date}/0/simple_day',
-  }), ['https://fishinggate.sunsang24.com/ship/schedule_fleet/2026-09-04/0/simple_day']);
+    // 날짜를 박아두면 그 날이 지나는 순간 테스트가 저절로 깨집니다. 어댑터와 같은 기준으로 셉니다.
+  }), [`https://fishinggate.sunsang24.com/ship/schedule_fleet/${kstDate(0)}/0/simple_day`]);
 
   const fishing = await import('../adapters/thefishing.js');
   const t = fishing.targets({ url: 'https://raraho.kr/m/index.php?mid=bk' });
