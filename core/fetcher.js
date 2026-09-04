@@ -110,6 +110,23 @@ function looksEmpty(html) {
   return body.replace(/\s+/g, '').length < 400;
 }
 
+
+/**
+ * Node의 fetch는 DNS·TLS·연결 거부를 전부 "fetch failed" 한 줄로 감쌉니다.
+ * 그대로 두면 화면의 "수집 상태"에 원인이 안 남아 손쓸 수가 없습니다.
+ * cause를 따라가며 코드와 메시지를 붙여 돌려줍니다.
+ */
+export function describeError(err) {
+  const head = String(err?.message ?? err);
+  const parts = [];
+  for (let cur = err?.cause, depth = 0; cur && depth < 4; cur = cur.cause, depth++) {
+    const code = cur.code ? `${cur.code}: ` : '';
+    const msg = String(cur.message ?? cur);
+    if (msg && msg !== head) parts.push(`${code}${msg}`);
+  }
+  return parts.length ? `${head} (${parts.join(' ← ')})` : head;
+}
+
 export async function closeBrowser() {
   if (browser) {
     await browser.close().catch(() => {});

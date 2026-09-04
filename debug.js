@@ -3,15 +3,17 @@
 //
 //   node debug.js                 등록된 사이트 id 목록
 //   node debug.js akbari          한 곳만 돌려보기
-//   node debug.js akbari --dump   실패 시 원본 HTML을 tmp/ 에 저장
+//   node debug.js akbari --dump   원본 HTML을 tmp/ 에 저장
+//   node debug.js akbari --peek   페이지가 어떻게 생겼는지 로그로 요약 (원격에서 볼 때)
 
 import { mkdir, writeFile } from 'node:fs/promises';
 import { loadRegistry, collectSite } from './core/runner.js';
 import { platformOf } from './core/platform.js';
-import { fetchHtml, closeBrowser } from './core/fetcher.js';
+import { fetchHtml, closeBrowser, describeError } from './core/fetcher.js';
 
 const [id, ...flags] = process.argv.slice(2);
 const dump = flags.includes('--dump');
+const peek = flags.includes('--peek');
 const days = Number(process.env.DAYS ?? 7);
 const registry = await loadRegistry();
 
@@ -21,7 +23,7 @@ if (!id) {
     const mark = s.enabled === false ? '  ' : '✓ ';
     console.log(`${mark}${s.id.padEnd(14)} ${(s.name ?? '').padEnd(18)} [${platformOf(s).label}]`);
   }
-  console.log('\n사용법: node debug.js <id> [--dump]');
+  console.log('\n사용법: node debug.js <id> [--dump] [--peek]');
   process.exit(0);
 }
 
@@ -34,10 +36,11 @@ if (!site) {
 console.log(`${site.name ?? site.id} [${platformOf(site).label}] ${site.adapter} — ${site.url}\n`);
 
 try {
+  if (peek) await peekPages(site);
   const trips = await collectSite({ ...site, days });
   report(trips);
 } catch (err) {
-  console.error(`실패: ${err.message}\n`);
+  console.error(`실패: ${describeError(err)}\n`);
   if (dump) await dumpHtml(site);
   else console.error('원본 HTML을 보려면 --dump 를 붙이세요.');
   process.exitCode = 1;
@@ -77,14 +80,69 @@ function report(trips) {
   for (const w of warn) console.log(`  ⚠ ${w}`);
 }
 
-async function dumpHtml(site) {
+// site.url이 아니라 어댑터가 실제로 긁는 주소를 봅니다.
+// sunsang24는 메인이 아니라 /ship/schedule_fleet 에 일정이 있습니다.
+async function targetUrls(site) {
   try {
-    const html = await fetchHtml(site.url, { mode: site.mode ?? 'auto', waitFor: site.waitFor });
-    await mkdir('tmp', { recursive: true });
-    const path = `tmp/${site.id}.html`;
-    await writeFile(path, html, 'utf8');
-    console.error(`원본을 ${path} 에 저장했습니다 (${html.length.toLocaleString()}자).`);
-  } catch (err) {
-    console.error(`원본도 못 받았습니다: ${err.message}`);
+    const { targets } = await import(`./adapters/${site.adapter}.js`);
+    return targets?.(site) ?? [site.url];
+  } catch {
+    return [site.url];
   }
+}
+
+async function dumpHtml(site) {
+  const urls = await targetUrls(site);
+  await mkdir('tmp', { recursive: true });
+  for (const [i, url] of urls.entries()) {
+    try {
+      const html = await fetchHtml(url, { mode: site.mode ?? 'auto', waitFor: site.waitFor });
+      const path = `tmp/${site.id}${i ? `-${i}` : ''}.html`;
+      await writeFile(path, html, 'utf8');
+      console.error(`${url}\n  → ${path} (${html.length.toLocaleString()}자)`);
+    } catch (err) {
+      console.error(`${url}\n  → 못 받았습니다: ${describeError(err)}`);
+    }
+  }
+}
+
+const MARKERS = ['운항시간', '남은자리', '예약마감', '잔여', '출조', '물때', '예약', '출항', '마감'];
+
+/**
+ * 페이지가 어떻게 생겼는지 로그로 요약합니다.
+ * 도메인이 막힌 곳에서는 HTML을 직접 볼 수 없어서, Actions 로그로 대신 봅니다.
+ */
+async function peekPages(site) {
+  for (const url of await targetUrls(site)) {
+    console.log(`\n─── ${url}`);
+    let html;
+    try {
+      html = await fetchHtml(url, { mode: site.mode ?? 'auto', waitFor: site.waitFor });
+    } catch (err) {
+      console.log(`  못 받았습니다: ${describeError(err)}`);
+      continue;
+    }
+
+    const scripts = (html.match(/<script/gi) ?? []).length;
+    const bare = html.replace(/<script[\s\S]*?<\/script>/gi, ' ').replace(/<style[\s\S]*?<\/style>/gi, ' ');
+    const text = bare.replace(/<[^>]+>/g, '\n').replace(/&nbsp;/g, ' ');
+    const lines = text.split('\n').map((l) => l.replace(/\s+/g, ' ').trim()).filter(Boolean);
+
+    console.log(`  ${html.length.toLocaleString()}자 · <table> ${(html.match(/<table/gi) ?? []).length}` +
+      ` · <tr> ${(html.match(/<tr/gi) ?? []).length} · <li> ${(html.match(/<li[ >]/gi) ?? []).length}` +
+      ` · <script> ${scripts}`);
+    console.log(`  제목: ${html.match(/<title[^>]*>([^<]*)/i)?.[1]?.trim() ?? '(없음)'}`);
+
+    const found = MARKERS.filter((m) => html.includes(m));
+    console.log(`  표기: ${found.length ? found.join(', ') : '하나도 없음 — 표기가 다르거나 JS로 그립니다'}`);
+
+    const hits = lines.filter((l) => MARKERS.some((m) => l.includes(m))).slice(0, 25);
+    if (hits.length) {
+      console.log('  표기가 있는 줄:');
+      for (const l of hits) console.log(`    | ${l.slice(0, 160)}`);
+    }
+    console.log('  본문 앞부분:');
+    for (const l of lines.slice(0, 30)) console.log(`    · ${l.slice(0, 120)}`);
+  }
+  console.log('');
 }

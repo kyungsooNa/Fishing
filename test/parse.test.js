@@ -4,6 +4,7 @@ import { monthUrls } from '../adapters/sunsang24.js';
 import { parseRows } from '../adapters/_rows.js';
 import { pageUrls } from '../adapters/generic.js';
 import { platformOf, needsBrowser } from '../core/platform.js';
+import { describeError } from '../core/fetcher.js';
 import { parseDetail, indexUrl, detailUrl } from '../adapters/thefishing.js';
 import { findOpenings } from '../core/diff.js';
 import { mergeDuplicates } from '../core/merge.js';
@@ -301,4 +302,46 @@ test('thefishing: 예약모듈이 아닌 주소를 적어도 예약 페이지를
     detailUrl(main, new Date(2026, 8, 5)),
     'http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=5',
   );
+});
+
+// ── 수집 실패 원인 ─────────────────────────────────────────────────────────
+test('describeError: fetch failed 뒤에 숨은 진짜 원인을 꺼낸다', () => {
+  // Node의 fetch는 DNS·TLS·연결 거부를 전부 "fetch failed"로 감쌉니다.
+  // 그 한 줄만 남기면 수집 상태 화면에서 손쓸 방법이 없습니다.
+  const dns = new TypeError('fetch failed');
+  dns.cause = Object.assign(new Error('getaddrinfo ENOTFOUND uijiho.com'), { code: 'ENOTFOUND' });
+  assert.equal(describeError(dns), 'fetch failed (ENOTFOUND: getaddrinfo ENOTFOUND uijiho.com)');
+
+  const tls = new TypeError('fetch failed');
+  tls.cause = Object.assign(new Error('certificate has expired'), { code: 'CERT_HAS_EXPIRED' });
+  assert.match(describeError(tls), /CERT_HAS_EXPIRED/);
+});
+
+test('describeError: 원인이 없으면 메시지를 그대로 둔다', () => {
+  assert.equal(describeError(new Error('HTTP 403 Forbidden')), 'HTTP 403 Forbidden');
+});
+
+test('describeError: 원인이 겹겹이 쌓여 있어도 따라간다', () => {
+  const inner = Object.assign(new Error('connect ECONNREFUSED 1.2.3.4:443'), { code: 'ECONNREFUSED' });
+  const mid = Object.assign(new Error('socket hang up'), { cause: inner });
+  const outer = Object.assign(new TypeError('fetch failed'), { cause: mid });
+  const out = describeError(outer);
+  assert.match(out, /socket hang up/);
+  assert.match(out, /ECONNREFUSED/);
+});
+
+// ── 어댑터가 실제로 받는 주소 ──────────────────────────────────────────────
+test('targets: 진단 도구가 어댑터와 같은 주소를 본다', async () => {
+  // --dump가 site.url을 받으면 sunsang24는 일정이 없는 메인만 저장됩니다.
+  const sunsang = await import('../adapters/sunsang24.js');
+  assert.deepEqual(sunsang.targets({ url: 'https://akbari.sunsang24.com' }),
+    ['https://akbari.sunsang24.com/ship/schedule_fleet']);
+
+  const fishing = await import('../adapters/thefishing.js');
+  const t = fishing.targets({ url: 'https://raraho.kr/m/index.php?mid=bk' });
+  assert.equal(t[0], 'https://raraho.kr/m/', 'index 방식은 메인 요약을 본다');
+  assert.match(t[1], /mid=bk&year=/, 'detail 방식 주소도 같이 보여준다');
+
+  const generic = await import('../adapters/generic.js');
+  assert.deepEqual(generic.targets({ url: 'http://uijiho.com/' }), ['http://uijiho.com/']);
 });

@@ -5,7 +5,7 @@ import { mergeDuplicates } from './merge.js';
 import { platformOf } from './platform.js';
 import { kstDate } from './when.js';
 import { loadPorts, usedPorts } from './ports.js';
-import { closeBrowser } from './fetcher.js';
+import { closeBrowser, describeError } from './fetcher.js';
 import { load, save } from './store.js';
 import { findOpenings } from './diff.js';
 
@@ -64,7 +64,7 @@ export async function runAll({ only = null, days = 21, registryPath, dataPath, p
       status[site.id] = {
         ok: false,
         at,
-        error: String(err?.message ?? err).slice(0, 300),
+        error: describeError(err).slice(0, 300),
         count: kept.length,
         keptFrom: prev.sites?.[site.id]?.at ?? prev.generatedAt ?? null,
         name: site.name ?? site.id,
