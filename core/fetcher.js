@@ -1,17 +1,16 @@
 // HTTP / Playwright. 호스트별 요청 간격을 지킵니다.
 
-import { Agent } from 'undici';
 
 const MIN_GAP_MS = 3000;        // 같은 호스트에 연속 요청할 때 최소 간격
 const TIMEOUT_MS = 25000;
-// 러너는 해외에 있고 상대는 전부 국내 호스트입니다. Node 기본 연결 제한시간(10초)이
-// 빠듯해서 멀쩡한 사이트가 UND_ERR_CONNECT_TIMEOUT으로 무더기로 떨어졌습니다.
-const CONNECT_TIMEOUT_MS = 30000;
+// 러너는 해외에 있고 상대는 전부 국내 호스트라, Node 기본 연결 제한시간(10초)이
+// 빠듯합니다. 멀쩡한 사이트가 UND_ERR_CONNECT_TIMEOUT으로 떨어지는 걸 봤습니다.
+// undici Agent로 늘려봤다가 내장 fetch와 버전이 안 맞아 모든 요청이 깨졌습니다
+// (UND_ERR_INVALID_ARG). 지금은 재시도(아래 retries)로 버팁니다.
 const UA =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36';
 
 const lastHit = new Map();      // host -> timestamp
-const dispatcher = new Agent({ connect: { timeout: CONNECT_TIMEOUT_MS } });
 let browser = null;             // playwright 브라우저는 한 번만 띄웁니다
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -28,7 +27,6 @@ async function getStatic(url, { referer } = {}) {
   const timer = setTimeout(() => ac.abort(), TIMEOUT_MS);
   try {
     const res = await fetch(url, {
-      dispatcher,
       signal: ac.signal,
       redirect: 'follow',
       headers: {
