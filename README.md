@@ -32,6 +32,12 @@ docs/data.json                  수집 결과 (지금 든 건 예시 데이터)
 
 로컬 확인:
 
+윈도우는 `run.bat`을 더블클릭하면 됩니다. 의존성 설치 → 화면 띄우기 → 브라우저 열기까지 한 번에 갑니다.
+명령 프롬프트에서 `run.bat collect`(수집), `run.bat all`(수집 후 화면), `run.bat test`,
+`run.bat debug <id>`도 됩니다. 포트를 바꾸려면 `set PORT=3000` 후 실행하세요.
+
+직접 명령을 쓸 때:
+
 ```bash
 npm install
 npx playwright install chromium   # JS 렌더링 사이트가 있을 때만
