@@ -25,7 +25,7 @@ adapters/         사이트 유형별 파서. collect(site) 하나만 내보내�
 adapters/_rows.js 출조 행 읽는 부분. 사이트에 안 얽혀 있어 어댑터들이 같이 씁니다
 adapters/generic.js 자체 사이트용. 주소만 적으면 본문 표기로 읽어봅니다
 sites/registry.json  ★ 사이트 목록. 보통은 여기만 고칩니다
-test/             가상 HTML로 파서 로직만 검증 (npm test)
+test/             파서·수집·화면 회귀 확인 (npm test). 네트워크는 로컬 서버로 대신합니다
 ```
 
 ## 설계에서 지킨 것
