@@ -136,6 +136,38 @@ test('thefishing: detail — 입금 명단의 좌석번호를 세서 잔여석�
   assert.equal(trip.species, '우럭');
 });
 
+test('thefishing: detail — 남은자리 예약완료는 시즌 숫자를 잔여석으로 보지 않는다', () => {
+  const site = { id: 'mansu', name: '영흥도 만수피싱', seatsTotal: 22, url: 'https://x?mid=bk' };
+  const html = `
+    <h3>2026년 09월 19일(토요일) 무시</h3>
+    <div>만수피싱</div>
+    <div>남은자리: 예약완료</div>
+    <div>26시즌 쭈꾸미+갑오징어</div>
+    <div>입금자 Y*H님(6명/5,6,7,8,9,10) / P*S님(5명/1,2,3,19,20)</div>
+  `;
+  const [trip] = parseDetail(site, html, 'https://x');
+
+  assert.equal(trip.seatsLeft, 0);
+  assert.equal(trip.seatsTotal, 22);
+  assert.equal(trip.status, STATUS.CLOSED);
+});
+
+test('thefishing: detail — 남은자리 예약하기 뒤 시즌 숫자는 잔여석이 아니다', () => {
+  const site = { id: 'mansu', name: '영흥도 만수피싱', seatsTotal: 22, url: 'https://x?mid=bk' };
+  const html = `
+    <h3>2026년 09월 20일(일요일) 1물</h3>
+    <div>만수피싱</div>
+    <div>남은자리: 예약하기</div>
+    <div>26시즌 쭈꾸미+갑오징어</div>
+    <div>입금자 A님(5명/1,2,3,4,5)</div>
+  `;
+  const [trip] = parseDetail(site, html, 'https://x');
+
+  assert.equal(trip.seatsLeft, 17);
+  assert.equal(trip.seatsTotal, 22);
+  assert.equal(trip.status, STATUS.OPEN);
+});
+
 test('diff: 취소석과 자리 늘어남만 알린다', () => {
   const base = { siteId: 's', boat: '가호', date: '2026-09-05', departAt: '05:00' };
   const prev = [

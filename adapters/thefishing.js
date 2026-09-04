@@ -10,7 +10,7 @@
 
 import * as cheerio from 'cheerio';
 import { fetchHtml } from '../core/fetcher.js';
-import { makeTrip, toDate, toTime, toTide, parseSeats } from '../core/schema.js';
+import { makeTrip, toDate, toTime, toTide } from '../core/schema.js';
 
 const SPECIES = [
   '주꾸미', '쭈꾸미', '갑오징어', '한치', '문어', '광어', '우럭', '참돔', '감성돔',
@@ -111,7 +111,7 @@ export function parseDetail(site, html, url) {
 
     const filled = countTakenSeats(text);
     const seatsTotal = site.seatsTotal ?? maxSeatNumber(text);
-    const explicit = /남은자리|잔여/.test(text) ? parseSeats(text) : null;
+    const explicit = detailSeats(text);
 
     let seatsLeft = explicit;
     if (seatsLeft === null && Number.isFinite(seatsTotal)) seatsLeft = Math.max(0, seatsTotal - filled);
@@ -151,6 +151,14 @@ function countTakenSeats(text) {
     }
   }
   return seats.size;
+}
+
+function detailSeats(text) {
+  if (!/남은자리|잔여|여석|잔여석/.test(text)) return null;
+  const compact = text.replace(/\s+/g, '');
+  if (/(?:남은자리|잔여|여석|잔여석)[:：]?(?:★)?(?:독배)?(?:예약완료|예약마감|마감|만석|매진)/.test(compact)) return 0;
+  const m = text.match(/(?:남은자리|잔여|여석|잔여석)\s*[:：]?\s*(\d{1,3})(?:\s*(?:명|석|자리)|(?=\s|$))/);
+  return m ? Number(m[1]) : null;
 }
 
 // seatsTotal을 안 적었을 때의 추정값. 배가 안 찼으면 틀리므로 registry에 적는 게 맞습니다.
