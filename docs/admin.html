@@ -82,6 +82,7 @@
     <button id="save" class="primary" disabled>변경 저장</button>
     <button id="update">최신 코드 받기</button>
     <button id="collect">수집 다시 실행</button>
+    <button id="restart">앱 재실행</button>
     <button id="quit" class="danger">서버 종료</button>
     <span class="toast" id="toast"></span>
   </div>
@@ -294,6 +295,27 @@ async function update() {
   await load();
 }
 
+async function restart() {
+  if (DIRTY.size && !confirm('저장하지 않은 변경이 있습니다. 그래도 재실행할까요?')) return;
+  $('restart').disabled = true;
+  $('restart').textContent = '재실행 중…';
+  let d;
+  try {
+    const res = await api('api/restart', { method: 'POST' });
+    d = await res.json();
+    if (!res.ok) throw new Error(d.error ?? '재실행할 수 없습니다');
+  } catch (err) {
+    toast('재실행 실패: ' + err.message);
+    $('restart').disabled = !RESTARTABLE;
+    $('restart').textContent = '앱 재실행';
+    return;
+  }
+  if (d.willRestart) {
+    toast('앱을 다시 띄우는 중…');
+    return waitForRestart();
+  }
+}
+
 // 서버가 내려갔다 같은 포트로 다시 올라옵니다. 응답이 돌아오면 화면을 새로 읽습니다.
 async function waitForRestart() {
   for (let i = 0; i < 60; i++) {
@@ -385,7 +407,7 @@ function staticMode(reason) {
   $('banner').className = 'banner warn';
   $('banner').textContent =
     `읽기 전용입니다 (${reason}). 켜고 끄기·표기 수정·수집 재실행·종료는 로컬에서 run.bat으로 띄웠을 때만 됩니다.`;
-  for (const id of ['save', 'update', 'collect', 'quit']) $(id).disabled = true;
+  for (const id of ['save', 'update', 'collect', 'restart', 'quit']) $(id).disabled = true;
 }
 
 async function load() {
@@ -403,6 +425,10 @@ async function load() {
     $('update').title = RESTARTABLE
       ? 'git pull 후 서버를 다시 띄웁니다'
       : 'git pull만 합니다. run.bat으로 띄운 게 아니라 자동 재시작은 안 됩니다';
+    $('restart').disabled = !RESTARTABLE;
+    $('restart').title = RESTARTABLE
+      ? '현재 코드를 그대로 다시 띄웁니다'
+      : 'run.bat으로 띄운 게 아니라 자동 재실행은 안 됩니다';
     $('meta').textContent =
       `사이트 ${SITES.length}곳 (켜짐 ${SITES.filter((s) => s.enabled !== false).length}) · ` +
       `출조 ${d.trips}건 · 갱신 ${when(d.generatedAt) || '-'}`;
@@ -439,6 +465,7 @@ async function load() {
 $('save').addEventListener('click', save);
 $('update').addEventListener('click', update);
 $('collect').addEventListener('click', collect);
+$('restart').addEventListener('click', restart);
 $('quit').addEventListener('click', quit);
 </script>
 </body>
