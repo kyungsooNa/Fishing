@@ -68,6 +68,7 @@
 
   <div class="filters">
     <select id="f-site"><option value="">전체 선사</option></select>
+    <select id="f-region"><option value="">전체 지역</option></select>
     <select id="f-port"><option value="">전체 항구</option></select>
     <select id="f-species"><option value="">전체 어종</option></select>
     <select id="f-session"><option value="">오전·오후·종일</option></select>
@@ -152,15 +153,23 @@ function fillOptions(sel, values) {
   }
 }
 
+function regionOf(port) {
+  const parts = String(port ?? '').trim().split(/\s+/);
+  if (parts.length >= 3) return `${parts[0]} ${parts[1]}`;
+  if (parts.length >= 2 && /(?:시|군|구)$/.test(parts[1])) return `${parts[0]} ${parts[1]}`;
+  return parts[0] ?? '';
+}
+
 // 표와 지도가 같은 기준을 보도록 필터는 한 군데서만 겁니다.
 function visibleTrips() {
-  const site = $('f-site').value, port = $('f-port').value, species = $('f-species').value;
+  const site = $('f-site').value, region = $('f-region').value, port = $('f-port').value, species = $('f-species').value;
   const date = $('f-date').value, q = $('f-q').value.trim(), openOnly = $('f-open').checked;
   const favOnly = $('f-fav').checked, session = $('f-session').value;
 
   return DATA.trips.filter((t) =>
     (!favOnly || FAVS.has(favKey(t))) &&
-    (!site || t.siteName === site || (t.sources ?? []).some((x) => x.siteName === site)) && (!port || t.port === port) &&
+    (!site || t.siteName === site || (t.sources ?? []).some((x) => x.siteName === site)) &&
+    (!region || regionOf(t.port) === region) && (!port || t.port === port) &&
     (!species || t.species === species) && (!date || t.date === date) &&
     (!session || t.session === session) &&
     (!q || (t.boat ?? '').includes(q)) &&
@@ -250,6 +259,7 @@ fetch('data.json?t=' + Date.now())
       `출조 ${d.trips.length}건 · 갱신 ${d.generatedAt ? new Date(d.generatedAt).toLocaleString('ko-KR') : '-'}` +
       (failed ? ` · 갱신 실패 ${failed}곳` : '');
     fillOptions($('f-site'), d.trips.map((t) => t.siteName));
+    fillOptions($('f-region'), d.trips.map((t) => regionOf(t.port)));
     fillOptions($('f-port'), d.trips.map((t) => t.port));
     fillOptions($('f-species'), d.trips.map((t) => t.species));
     fillOptions($('f-session'), d.trips.map((t) => t.session));
@@ -260,12 +270,13 @@ fetch('data.json?t=' + Date.now())
   .catch((e) => { $('meta').textContent = 'data.json을 못 읽었습니다: ' + e.message; });
 
 const refresh = () => { render(); drawMap(); };
-for (const id of ['f-site', 'f-port', 'f-species', 'f-session', 'f-date', 'f-open', 'f-fav']) $(id).addEventListener('change', refresh);
+for (const id of ['f-site', 'f-region', 'f-port', 'f-species', 'f-session', 'f-date', 'f-open', 'f-fav']) $(id).addEventListener('change', refresh);
 $('f-q').addEventListener('input', refresh);
 
 // ── 지도 ──────────────────────────────────────────────────────────────────
 // 항구 좌표는 data.json의 ports로 들어옵니다(sites/ports.json에서 옵니다).
 // 마커는 "지금 필터에 걸린" 출조 기준이라, 어종·날짜를 좁히면 지도도 같이 좁혀집니다.
+// 마커를 누르면 같은 시·군·구 지역의 항구를 한 번에 봅니다.
 let map = null;
 let markers = null;
 
@@ -304,12 +315,16 @@ function drawMap() {
       color, fillColor: color, fillOpacity: 0.35, weight: 2,
     })
       .bindTooltip(`${port}${approx ? ' (대략 위치)' : ''}<br>출조 ${count.trips}건 · 빈자리 ${count.open}건`)
-      .on('click', () => { $('f-port').value = port; refresh(); })
+      .on('click', () => {
+        $('f-region').value = regionOf(port);
+        $('f-port').value = '';
+        refresh();
+      })
       .addTo(markers);
   }
 
   $('maphint').textContent = Object.keys(DATA.ports ?? {}).length
-    ? `항구 ${byPort.size}곳 · 마커를 누르면 그 항구만 봅니다. 좌표는 대략값이라 실제 선착장과 다를 수 있습니다.`
+    ? `항구 ${byPort.size}곳 · 마커를 누르면 같은 지역 항구만 봅니다. 좌표는 대략값이라 실제 선착장과 다를 수 있습니다.`
     : '항구 좌표가 없습니다 — sites/ports.json을 채우세요.';
   if (bounds.length) map.fitBounds(bounds, { padding: [40, 40], maxZoom: 10 });
 }
