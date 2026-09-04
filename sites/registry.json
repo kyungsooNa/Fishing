@@ -105,6 +105,15 @@
       }
     },
     {
+      "id": "daehan",
+      "name": "대한호",
+      "adapter": "sunsang24",
+      "url": "https://daehan.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "note": "sunsang24 호스팅 선사. 목록형(schedule_fleet)으로 잡았습니다. 이름은 서브도메인에서 임시로 붙인 값이고 출항지·전화·승선료는 미확인입니다 — peek 결과로 채웁니다."
+    },
+    {
       "id": "monster",
       "name": "오이도 몬스터호",
       "adapter": "thefishing",
