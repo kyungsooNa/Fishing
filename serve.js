@@ -32,6 +32,57 @@ export const RESTART_EXIT_CODE = 75;
 const LOOPBACK = ['127.0.0.1', '::1', '::ffff:127.0.0.1'];
 const LOCAL_HOSTS = ['localhost', '127.0.0.1', '::1', '[::1]'];
 
+export function explainPullFailure(log, upstream = '', branch = 'main') {
+  const text = `${log}\n${upstream}`.toLowerCase();
+  if (branch === 'main' && upstream && !/^(origin\/main|origin\/master)$/.test(upstream)) {
+    return {
+      reason: 'wrong-upstream',
+      message: `현재 브랜치가 ${upstream}을 받도록 설정되어 있습니다`,
+      hint: 'main은 origin/main을 추적해야 합니다. git branch --set-upstream-to=origin/main main 후 다시 최신화하세요.',
+    };
+  }
+  if (/not possible to fast-forward|divergent branches|need to specify how to reconcile|빨리감기/.test(text)) {
+    return {
+      reason: 'diverged',
+      message: '로컬 커밋과 원격 커밋이 갈라져 빨리감기로 받을 수 없습니다',
+      hint: '작업 커밋을 PR로 정리하거나 main을 origin/main에 맞춘 뒤 다시 받으세요.',
+    };
+  }
+  if (/your local changes[\s\S]*would be overwritten|please commit your changes|commit your changes or stash/.test(text)) {
+    return {
+      reason: 'local-changes',
+      message: '아직 저장하지 않은 로컬 변경이 원격 변경과 겹칩니다',
+      hint: '변경을 커밋하거나 따로 보관한 뒤 다시 최신화하세요.',
+    };
+  }
+  if (/^conflict |\nconflict |automatic merge failed|fix conflicts/.test(text)) {
+    return {
+      reason: 'merge-conflict',
+      message: '같은 파일을 양쪽에서 고쳐 자동 병합이 멈췄습니다',
+      hint: '충돌 파일을 정리한 뒤 커밋하거나, 필요하면 git merge --abort로 pull 전 상태로 돌아가세요.',
+    };
+  }
+  if (/could not resolve host|failed to connect|unable to access|authentication failed|repository not found/.test(text)) {
+    return {
+      reason: 'network-or-auth',
+      message: 'GitHub에 접속하지 못했거나 권한 확인에 실패했습니다',
+      hint: '인터넷 연결, GitHub 로그인, 저장소 권한을 확인한 뒤 다시 시도하세요.',
+    };
+  }
+  if (/실행 실패|not recognized|not found|enoent/.test(text)) {
+    return {
+      reason: 'git-missing',
+      message: 'git 명령을 실행하지 못했습니다',
+      hint: 'Git이 설치되어 있고 PATH에서 git을 찾을 수 있는지 확인하세요.',
+    };
+  }
+  return {
+    reason: 'unknown',
+    message: 'git pull이 실패했습니다',
+    hint: '아래 로그의 첫 오류 줄을 확인하세요.',
+  };
+}
+
 /**
  * /api/* 를 받아줄지. 이 API는 파일을 고치고 프로세스를 띄우므로 세 겹으로 막습니다.
  *
@@ -69,6 +120,8 @@ export function createApp({
   // 최신화에 쓸 명령. 테스트에서 갈아끼웁니다.
   updateCmd = { file: 'git', args: ['pull', '--ff-only'] },
   revisionCmd = { file: 'git', args: ['rev-parse', 'HEAD'] },
+  branchCmd = { file: 'git', args: ['branch', '--show-current'] },
+  upstreamCmd = { file: 'git', args: ['rev-parse', '--abbrev-ref', '--symbolic-full-name', '@{u}'] },
   // run.bat처럼 종료 코드를 보고 다시 띄워주는 실행기가 있을 때만 재시작이 됩니다.
   restartable = process.env.RESTARTABLE === '1',
 } = {}) {
@@ -150,13 +203,27 @@ export function createApp({
     if (path === '/api/update' && req.method === 'POST') {
       // 커밋 해시를 앞뒤로 비교합니다. "Already up to date" 문구는 로케일마다 달라서 못 믿습니다.
       const before = (await run(revisionCmd)).out.trim();
+      const branch = (await run(branchCmd)).out.trim();
+      const upstream = (await run(upstreamCmd)).out.trim();
       const pull = await run(updateCmd);
       const after = (await run(revisionCmd)).out.trim();
       const ok = pull.code === 0;
       const changed = ok && before !== after && after !== '';
       const willRestart = changed && restartable;
+      const error = ok ? null : explainPullFailure(pull.out, upstream, branch);
 
-      json(res, ok ? 200 : 500, { ok, changed, willRestart, restartable, log: pull.out.trim(), before, after });
+      json(res, ok ? 200 : 500, {
+        ok,
+        changed,
+        willRestart,
+        restartable,
+        log: pull.out.trim(),
+        before,
+        after,
+        branch,
+        upstream,
+        error,
+      });
       if (willRestart) {
         // 응답이 나간 뒤에 내려갑니다. run.bat이 75를 보고 새 코드로 다시 띄웁니다.
         setTimeout(() => process.exit(RESTART_EXIT_CODE), 100).unref();
@@ -176,18 +243,28 @@ export function createApp({
 
   return createServer(async (req, res) => {
     const url = new URL(req.url, 'http://x');
-    const rel = normalize(decodeURIComponent(url.pathname)).replace(/^(\.\.[/\\])+/, '');
+    let rel;
+    try {
+      rel = normalize(decodeURIComponent(url.pathname))
+        .replace(/^[/\\]+/, '')
+        .replace(/^(\.\.[/\\])+/, '');
+    } catch {
+      res.writeHead(400, { 'Content-Type': 'text/plain; charset=utf-8' });
+      res.end('bad request');
+      return;
+    }
+    const apiPath = '/' + rel.replace(/\\/g, '/');
 
-    if (rel.startsWith('/api/')) {
+    if (apiPath.startsWith('/api/')) {
       try {
-        await handleApi(req, res, rel);
+        await handleApi(req, res, apiPath);
       } catch (err) {
         json(res, 400, { error: err.message });
       }
       return;
     }
 
-    const path = join(root, rel === '/' || rel === '\\' ? 'index.html' : rel);
+    const path = join(root, rel === '' ? 'index.html' : rel);
     try {
       const body = await readFile(path);
       res.writeHead(200, { 'Content-Type': TYPES[extname(path)] ?? 'application/octet-stream', 'Cache-Control': 'no-store' });
