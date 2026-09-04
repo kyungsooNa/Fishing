@@ -297,6 +297,7 @@ generic으로 잡았지만 실은 알려진 솔루션이면 `"platform": "서로
 | `sunsang24ho` | 선상24호 | sunsang24 | 켜짐 |
 | `eungabi` | 남당항 은가비호 | sunsang24 | 켜짐 — 레이아웃(목록형/달력형) 미확인 |
 | `ocpro` | 오천항 프로낚시 | sunsang24 | 켜짐 — 전화번호 미확인 |
+| `supernova` | 인천 팀슈퍼노바 | sunsang24 | 켜짐 — 선상24 파서 수리 대기 |
 | `monster` | 오이도 몬스터호 | thefishing (index) | 켜짐 |
 | `ssfish` | 무창포 선상낚시 | thefishing (index) | 켜짐 |
 | `hifishing` | 대천항 하이피싱 | thefishing (index) | 켜짐 |
@@ -305,6 +306,7 @@ generic으로 잡았지만 실은 알려진 솔루션이면 `"platform": "서로
 | `lureschool` | 오천항 루어스쿨 발키리호 | thefishing (index) | 켜짐 — 정원 미확인 |
 | `jstar` | 전곡항 스타피싱 | thefishing (index) | 켜짐 — 더피싱 서브도메인 |
 | `blueseaho` | 오천항 푸른바다낚시 | generic | 켜짐 — 자체 사이트, 파싱 미확인 |
+| `chungma` | 영종도 청마피싱 | thefishing (index) | 켜짐 — 배 5척 |
 | `uijiho` | 의지호 | generic | 켜짐 — 계열·출항지 미확인 |
 | `seohae` | 평택항 서해피싱 | thefishing | 꺼짐 — 예약모듈 형식 미확인 |
 | `mock` | 예시 데이터 | _mock | 꺼짐 — 네트워크 없이 확인용 |
