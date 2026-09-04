@@ -4,7 +4,7 @@
 // 템플릿이 개편돼도 표기가 남아있는 한 버팁니다.
 
 import * as cheerio from 'cheerio';
-import { makeTrip, toDate, toTime, toTide, parseSeats } from '../core/schema.js';
+import { makeTrip, toDate, toTide, parseSeats } from '../core/schema.js';
 
 export const SPECIES = [
   '주꾸미', '쭈꾸미', '갑오징어', '한치', '문어', '광어', '우럭', '참돔', '감성돔', '돌돔',
@@ -50,7 +50,7 @@ export function parseRows(site, html, url) {
       makeTrip(site, {
         boat,
         date,
-        departAt: toTime(after(text, '운항시간') ?? text),
+        rawTime: after(text, '운항시간') ?? text,
         species: SPECIES.find((s) => text.includes(s)) ?? null,
         tide: toTide(text),
         status: text,

@@ -8,7 +8,7 @@ import { describeError } from '../core/fetcher.js';
 import { parseDetail, indexUrl, detailUrl } from '../adapters/thefishing.js';
 import { findOpenings } from '../core/diff.js';
 import { mergeDuplicates } from '../core/merge.js';
-import { toStatus, toDate, toTime, parseSeats, pickPrice, STATUS } from '../core/schema.js';
+import { toStatus, toDate, toTime, toTimeRange, sessionOf, parseSeats, pickPrice, STATUS } from '../core/schema.js';
 import * as fx from './fixtures.js';
 
 const sunsangSite = {
@@ -41,6 +41,7 @@ test('sunsang24: 목록형 — 하루 행 안의 배마다 한 줄씩 나온다'
     '2026-09-04/악바리호',
     '2026-09-04/레드맨호',
     '2026-09-05/맥가이버호',
+    '2026-09-05/오후호',
   ], '시간도 좌석 표기도 없는 껍데기 table은 출조가 아닙니다');
 
   const [akbari, redman, macgyver] = trips;
@@ -59,6 +60,17 @@ test('sunsang24: 목록형 — 하루 행 안의 배마다 한 줄씩 나온다'
   assert.equal(macgyver.seatsLeft, 1, '20명 정원에 19명 예약');
   assert.equal(macgyver.status, STATUS.FEW);
   assert.equal(macgyver.port, '영목항', '배별 출항지가 사이트 기본값을 덮는다');
+
+  // 시작 시각만 보면 04:00은 오전배 같지만 17시에 들어오는 종일배입니다.
+  assert.equal(akbari.returnAt, '17:00');
+  assert.equal(akbari.session, '종일');
+  assert.equal(akbari.hours, 13);
+  assert.equal(macgyver.session, '종일', '06:00~15:00 = 9시간');
+
+  const afternoon = trips.at(-1);
+  assert.equal(afternoon.boat, '오후호');
+  assert.equal(afternoon.session, '오후');
+  assert.equal(afternoon.hours, 5);
 });
 
 test('sunsang24: 달력형 — 날짜가 행 안 첫 칸에 있어도 잡는다', () => {
@@ -346,4 +358,30 @@ test('targets: 진단 도구가 어댑터와 같은 주소를 본다', async () 
 
   const generic = await import('../adapters/generic.js');
   assert.deepEqual(generic.targets({ url: 'http://uijiho.com/' }), ['http://uijiho.com/']);
+});
+
+// ── 오전/오후/종일 구분과 운항 시간 ────────────────────────────────────────
+test('toTimeRange: 시작과 끝을 같이 읽는다', () => {
+  assert.deepEqual(toTimeRange('운항시간 : 04:00 ~ 17:00'), { from: '04:00', to: '17:00' });
+  assert.deepEqual(toTimeRange('05:30~16:00 출항'), { from: '05:30', to: '16:00' });
+  assert.deepEqual(toTimeRange('오전 5시 출항'), { from: '05:00', to: null }, '끝이 없으면 시작만');
+  assert.deepEqual(toTimeRange('안내문자 발송'), { from: null, to: null });
+});
+
+test('sessionOf: 몇 시간짜리 어떤 배인지', () => {
+  assert.deepEqual(sessionOf('04:00', '17:00'), { session: '종일', hours: 13 });
+  assert.deepEqual(sessionOf('05:30', '11:30'), { session: '오전', hours: 6 });
+  assert.deepEqual(sessionOf('13:00', '18:00'), { session: '오후', hours: 5 });
+  assert.deepEqual(sessionOf('05:00', '12:30'), { session: '오전', hours: 7.5 }, '30분도 센다');
+});
+
+test('sessionOf: 밤에 나가는 배는 야간, 자정을 넘겨도 시간이 맞는다', () => {
+  assert.deepEqual(sessionOf('20:00', '04:00'), { session: '야간', hours: 8 });
+  assert.deepEqual(sessionOf('19:00', null), { session: '야간', hours: null });
+});
+
+test('sessionOf: 끝 시각이 없으면 시작으로만 가른다', () => {
+  assert.deepEqual(sessionOf('05:30', null), { session: '오전', hours: null });
+  assert.deepEqual(sessionOf('13:00', null), { session: '오후', hours: null });
+  assert.deepEqual(sessionOf(null, null), { session: null, hours: null });
 });

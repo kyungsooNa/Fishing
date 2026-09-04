@@ -30,7 +30,7 @@
   label.check { display: inline-flex; align-items: center; gap: 6px; padding: 7px 10px;
                 border: 1px solid var(--line); border-radius: 7px; background: var(--card); font-size: 14px; }
   .tablewrap { overflow-x: auto; background: var(--card); border: 1px solid var(--line); border-radius: 10px; }
-  table { border-collapse: collapse; width: 100%; min-width: 720px; }
+  table { border-collapse: collapse; width: 100%; min-width: 820px; }
   th, td { padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--line); white-space: nowrap; }
   th { font-size: 12px; color: var(--muted); font-weight: 600; position: sticky; top: 0; background: var(--card); }
   tbody tr:last-child td { border-bottom: 0; }
@@ -69,6 +69,7 @@
     <select id="f-site"><option value="">전체 선사</option></select>
     <select id="f-port"><option value="">전체 항구</option></select>
     <select id="f-species"><option value="">전체 어종</option></select>
+    <select id="f-session"><option value="">오전·오후·종일</option></select>
     <select id="f-date"><option value="">전체 날짜</option></select>
     <input type="search" id="f-q" placeholder="배 이름 검색">
     <label class="check"><input type="checkbox" id="f-open" checked> 빈자리만</label>
@@ -86,7 +87,7 @@
   <div class="tablewrap" id="tablewrap">
     <table>
       <thead><tr>
-        <th class="starcell"></th><th>날짜</th><th>출항</th><th>선사</th><th>배</th><th>항구</th>
+        <th class="starcell"></th><th>날짜</th><th>운항</th><th>구분</th><th>선사</th><th>배</th><th>항구</th>
         <th>어종</th><th>물때</th><th>상태</th><th class="num">잔여</th><th class="num">승선료</th>
       </tr></thead>
       <tbody id="rows"></tbody>
@@ -128,6 +129,16 @@ let FAVS = loadFavs();
 const $ = (id) => document.getElementById(id);
 const won = (n) => n == null ? '' : n.toLocaleString('ko-KR') + '원';
 
+// 04:00 출항해서 17:00 들어오면 "04:00~17:00". 끝 시각을 모르면 시작만.
+const runLabel = (t) => (t.departAt ? (t.returnAt ? `${t.departAt}~${t.returnAt}` : t.departAt) : '');
+
+// "종일 13시간" — 몇 시간짜리인지가 오전배냐 종일배냐만큼 중요합니다.
+function sessionLabel(t) {
+  if (!t.session) return '';
+  const h = t.hours == null ? '' : ` ${String(t.hours).replace(/\.0$/, '')}시간`;
+  return t.session + h;
+}
+
 function dayLabel(d) {
   const [y, m, dd] = d.split('-').map(Number);
   return `${m}/${dd}(${WEEK[new Date(y, m - 1, dd).getDay()]})`;
@@ -143,12 +154,13 @@ function fillOptions(sel, values) {
 function visibleTrips() {
   const site = $('f-site').value, port = $('f-port').value, species = $('f-species').value;
   const date = $('f-date').value, q = $('f-q').value.trim(), openOnly = $('f-open').checked;
-  const favOnly = $('f-fav').checked;
+  const favOnly = $('f-fav').checked, session = $('f-session').value;
 
   return DATA.trips.filter((t) =>
     (!favOnly || FAVS.has(favKey(t))) &&
     (!site || t.siteName === site || (t.sources ?? []).some((x) => x.siteName === site)) && (!port || t.port === port) &&
     (!species || t.species === species) && (!date || t.date === date) &&
+    (!session || t.session === session) &&
     (!q || (t.boat ?? '').includes(q)) &&
     (!openOnly || t.status === 'open' || t.status === 'few'));
 }
@@ -176,18 +188,18 @@ function render() {
     tr.append(starCell);
 
     const cells = [
-      dayLabel(t.date), t.departAt ?? '', t.siteName ?? '', t.boat ?? '', t.port ?? '',
+      dayLabel(t.date), runLabel(t), sessionLabel(t), t.siteName ?? '', t.boat ?? '', t.port ?? '',
       t.species ?? '', t.tide ?? '', null,
       Number.isFinite(t.seatsLeft) ? String(t.seatsLeft) : '', won(t.price),
     ];
     cells.forEach((v, i) => {
       const td = document.createElement('td');
-      if (i === 7) {
+      if (i === 8) {
         const b = document.createElement('span');
         b.className = 'badge ' + t.status;
         b.textContent = LABEL[t.status] ?? t.status;
         td.append(b);
-      } else if (i === 2) {
+      } else if (i === 3) {
         // 여러 사이트에 같은 배가 올라와 있으면 둘 다 걸어줍니다. 어디서 잡든 상관없으니까요.
         const sources = t.sources?.length ? t.sources : [{ siteName: t.siteName, url: t.url }];
         sources.forEach((src, n) => {
@@ -202,7 +214,7 @@ function render() {
       } else {
         td.textContent = v;
       }
-      if (i >= 8) td.className = 'num';
+      if (i >= 9) td.className = 'num';
       tr.append(td);
     });
     tbody.append(tr);
@@ -238,6 +250,7 @@ fetch('data.json?t=' + Date.now())
     fillOptions($('f-site'), d.trips.map((t) => t.siteName));
     fillOptions($('f-port'), d.trips.map((t) => t.port));
     fillOptions($('f-species'), d.trips.map((t) => t.species));
+    fillOptions($('f-session'), d.trips.map((t) => t.session));
     fillOptions($('f-date'), d.trips.map((t) => t.date));
     renderStatus();
     render();
@@ -245,7 +258,7 @@ fetch('data.json?t=' + Date.now())
   .catch((e) => { $('meta').textContent = 'data.json을 못 읽었습니다: ' + e.message; });
 
 const refresh = () => { render(); drawMap(); };
-for (const id of ['f-site', 'f-port', 'f-species', 'f-date', 'f-open', 'f-fav']) $(id).addEventListener('change', refresh);
+for (const id of ['f-site', 'f-port', 'f-species', 'f-session', 'f-date', 'f-open', 'f-fav']) $(id).addEventListener('change', refresh);
 $('f-q').addEventListener('input', refresh);
 
 // ── 지도 ──────────────────────────────────────────────────────────────────
