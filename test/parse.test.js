@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { monthUrls, parseFleet } from '../adapters/sunsang24.js';
+import { monthUrls, parseFleet, parseSimpleDay } from '../adapters/sunsang24.js';
 import { parseRows } from '../adapters/_rows.js';
 import { pageUrls } from '../adapters/generic.js';
 import { platformOf, needsBrowser } from '../core/platform.js';
@@ -78,6 +78,50 @@ test('sunsang24: 달력형 — 날짜가 행 안 첫 칸에 있어도 잡는다'
   assert.equal(trips.length, 1);
   assert.equal(trips[0].date, '2026-09-07');
   assert.equal(trips[0].seatsLeft, 8);
+});
+
+test('sunsang24: simple_day 조각은 table.ship_unit 단위로 읽는다', () => {
+  const html = `
+    <table id="d2026-09-04" class="shipsinfo_daywarp">
+      <tr>
+        <td class="date_info2">조금</td>
+        <td class="ships_warp">
+          <table class="ship_unit">
+            <tr>
+              <td class="ship_info"><div class="title">피싱게이트 선단</div></td>
+              <td><ul class="reservation_detail" data-sdate="2026-09-04"><li>공지사항 남은자리 0명</li></ul></td>
+            </tr>
+          </table>
+          <table class="ship_unit">
+            <tr>
+              <td class="ship_info"><div class="title">아우라호</div></td>
+              <td>
+                <ul class="reservation_detail" data-sdate="2026-09-04">
+                  <li class="fishspecies"><strong>어종 : </strong><div>주꾸미,시즌어종</div></li>
+                  <li class="shiptime"><strong>운항시간 : </strong><div>06:00 ~ 15:00</div></li>
+                </ul>
+              </td>
+              <td class="ship_info2"><span class="shipping_status">예약마감</span><br><span>21명</span> 예약/<span>21명</span></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>`;
+
+  const trips = parseSimpleDay(
+    { ...sunsangSite, boats: { 아우라호: {} } },
+    html,
+    'https://fishinggate.sunsang24.com/ship/schedule_fleet/2026-09-04/0/simple_day',
+  );
+
+  assert.equal(trips.length, 1, '공지용 선단 행은 버립니다');
+  assert.equal(trips[0].boat, '아우라호');
+  assert.equal(trips[0].date, '2026-09-04');
+  assert.equal(trips[0].departAt, '06:00');
+  assert.equal(trips[0].returnAt, '15:00');
+  assert.equal(trips[0].species, '주꾸미');
+  assert.equal(trips[0].tide, '조금');
+  assert.equal(trips[0].seatsLeft, 0);
 });
 
 test('thefishing: detail — 입금 명단의 좌석번호를 세서 잔여석을 구한다', () => {
@@ -350,6 +394,11 @@ test('targets: 진단 도구가 어댑터와 같은 주소를 본다', async () 
   const sunsang = await import('../adapters/sunsang24.js');
   assert.deepEqual(sunsang.targets({ url: 'https://akbari.sunsang24.com' }),
     ['https://akbari.sunsang24.com/ship/schedule_fleet']);
+  assert.deepEqual(sunsang.targets({
+    url: 'https://fishinggate.sunsang24.com',
+    path: 'schedule_fleet_simple_top',
+    dayPath: '/ship/schedule_fleet/{date}/0/simple_day',
+  }), ['https://fishinggate.sunsang24.com/ship/schedule_fleet/2026-09-04/0/simple_day']);
 
   const fishing = await import('../adapters/thefishing.js');
   const t = fishing.targets({ url: 'https://raraho.kr/m/index.php?mid=bk' });

@@ -71,7 +71,7 @@ async function collectByDay(site) {
   for (let i = 0; i < days; i++) {
     const url = joinUrl(site.url, fillDate(template, kstDate(i)));
     const html = await fetchHtml(url, { mode: site.mode ?? 'js', waitFor: site.waitFor });
-    const rows = parseRows(site, html, url);
+    const rows = parseSimpleDay(site, html, url);
     trips.push(...rows);
 
     // 돌아온 페이지에 적힌 날짜를 그대로 쓰기 때문에, 주소가 날짜를 반영하지 않으면
@@ -167,9 +167,52 @@ export function parseFleet(site, html, url) {
   return trips;
 }
 
+export function parseSimpleDay(site, html, url) {
+  const $ = cheerio.load(html);
+  const trips = [];
+
+  $('.shipsinfo_daywarp').each((_, day) => {
+    const $day = $(day);
+    const date = dateOf($day);
+    if (!date) return;
+    const tide = toTide(squash($day.children('.date_info2').first().text())) ?? toTide(squash($day.text()));
+
+    $day.find('table.ship_unit').each((__, unit) => {
+      const $unit = $(unit);
+      const boat = pickBoat(site, squash($unit.find('.ship_info .title').first().text()));
+      if (!boat) return;
+
+      const text = squash($unit.text());
+      if (!isUnit(text)) return;
+
+      const trip = makeTrip(site, {
+        boat,
+        date,
+        rawTime: after(text, '운항시간'),
+        species: pickSpecies(text),
+        tide,
+        status: text,
+        seatsLeft: pickSeats(text),
+        url,
+      });
+      trips.push(trip);
+    });
+  });
+
+  return trips.length ? trips : parseRows(site, html, url);
+}
+
 // 출조 한 덩어리인지. 배 이름만 있는 껍데기를 걸러냅니다.
 const SEATS = /(\d{1,3})\s*명\s*예약\s*\/\s*(\d{1,3})\s*명/;
 const isUnit = (text) => text.includes('운항시간') || SEATS.test(text);
+
+function dateOf($day) {
+  const id = $day.attr('id') ?? '';
+  const fromId = id.match(/^d(\d{4}-\d{2}-\d{2})$/)?.[1];
+  if (fromId) return fromId;
+  const fromData = $day.find('[data-sdate]').first().attr('data-sdate');
+  return toDate(fromData);
+}
 
 /**
  * 좌석 표기는 남은 수가 아니라 "찬 수 / 정원"입니다.
