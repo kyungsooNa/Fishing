@@ -9,7 +9,7 @@ import { mkdtemp, writeFile, readFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { request } from 'node:http';
-import { createApp } from '../serve.js';
+import { createApp, explainPullFailure } from '../serve.js';
 
 const REG = {
   $comment: '테스트용',
@@ -110,6 +110,13 @@ test('없는 id는 404', async () => {
       body: JSON.stringify({ name: 'x' }),
     });
     assert.equal(res.status, 404);
+  });
+});
+
+test('잘못 인코딩된 주소 하나로 서버가 죽지 않는다', async () => {
+  await withServer(async ({ base }) => {
+    assert.equal((await admin(base, '/%')).status, 400);
+    assert.equal((await admin(base, '/api/sites')).status, 200);
   });
 });
 
@@ -230,7 +237,33 @@ test('최신화: git이 실패하면 500과 로그', async () => {
     assert.equal(d.ok, false);
     assert.equal(d.changed, false);
     assert.match(d.log, /빨리감기가 안 됩니다/);
+    assert.equal(d.error.reason, 'diverged');
   }, { updateCmd: fakeCmd('빨리감기가 안 됩니다', 1), revisionCmd: fakeCmd('abc123') });
+});
+
+test('최신화: main upstream이 엉뚱하면 이유를 따로 알려준다', async () => {
+  await withServer(async ({ base }) => {
+    const res = await admin(base, '/api/update', { method: 'POST' });
+    assert.equal(res.status, 500);
+    const d = await res.json();
+    assert.equal(d.ok, false);
+    assert.equal(d.upstream, 'origin/claude/code-review-d0f4jm');
+    assert.equal(d.error.reason, 'wrong-upstream');
+    assert.match(d.error.message, /origin\/claude\/code-review-d0f4jm/);
+    assert.match(d.error.hint, /origin\/main/);
+  }, {
+    updateCmd: fakeCmd('fatal: Not possible to fast-forward, aborting.', 1),
+    revisionCmd: fakeCmd('abc123'),
+    branchCmd: fakeCmd('main'),
+    upstreamCmd: fakeCmd('origin/claude/code-review-d0f4jm'),
+  });
+});
+
+test('최신화 실패 이유를 로그 문구로 분류한다', () => {
+  assert.equal(explainPullFailure('fatal: Not possible to fast-forward, aborting.').reason, 'diverged');
+  assert.equal(explainPullFailure('error: Your local changes to the following files would be overwritten').reason, 'local-changes');
+  assert.equal(explainPullFailure('CONFLICT (add/add): Merge conflict in package.json').reason, 'merge-conflict');
+  assert.equal(explainPullFailure('fatal: unable to access https://example: Could not resolve host').reason, 'network-or-auth');
 });
 
 test('최신화: X-Admin이 없으면 403', async () => {

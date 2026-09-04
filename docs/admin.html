@@ -276,7 +276,11 @@ async function update() {
   $('log').textContent = d.log || '(출력 없음)';
 
   if (!d.ok) {
-    toast('git pull이 실패했습니다. 로그를 보세요');
+    if (d.error) {
+      $('log').textContent =
+        `원인: ${d.error.message}\n해결: ${d.error.hint}\n\n${$('log').textContent}`;
+    }
+    toast(d.error?.message ?? 'git pull이 실패했습니다');
   } else if (!d.changed) {
     toast('이미 최신입니다');
   } else if (d.willRestart) {
