@@ -63,6 +63,12 @@
          white-space: pre-wrap; max-height: 320px; overflow-y: auto; }
   .log:empty { display: none; }
   .toast { margin-left: auto; font-size: 13px; color: var(--muted); }
+  h2.sec { font-size: 16px; margin: 30px 0 4px; }
+  .empty { padding: 22px; text-align: center; color: var(--muted); font-size: 14px; }
+  /* 즐겨찾기 표는 칸이 넷뿐이라 사이트 표의 폭 고정을 물려받으면 안 됩니다. */
+  table.favtable { table-layout: auto; min-width: 520px; }
+  table.favtable th, table.favtable td { width: auto; }
+  button.small { padding: 4px 10px; font-size: 13px; }
 </style>
 </head>
 <body>
@@ -88,6 +94,19 @@
       </tr></thead>
       <tbody id="rows"></tbody>
     </table>
+  </div>
+
+  <h2 class="sec">즐겨찾기</h2>
+  <div class="sub" id="favmeta">불러오는 중…</div>
+  <div class="tablewrap">
+    <table class="favtable">
+      <thead><tr><th>배</th><th>항구</th><th>상태</th><th></th></tr></thead>
+      <tbody id="favrows"></tbody>
+    </table>
+    <div class="empty" id="favempty" hidden>즐겨찾기가 없습니다. 현황판에서 배 왼쪽 ☆ 를 누르면 여기 담깁니다.</div>
+  </div>
+  <div class="actions" style="margin-top: 10px;">
+    <button id="favclear" class="danger">전체 비우기</button>
   </div>
 
   <div class="log" id="log"></div>
@@ -291,6 +310,71 @@ async function quit() {
     '<div class="sub">이 탭은 닫으셔도 됩니다. 다시 켜려면 run.bat을 실행하세요.</div></div>';
 }
 
+// 현황판(index.html)과 똑같은 형식이어야 합니다. 같은 오리진이라 같은 localStorage를 봅니다.
+const FAV_KEY = 'fishing:favorites';
+const favKey = (t) => `${t.boat ?? ''}|${t.port ?? ''}`;
+
+function loadFavs() {
+  try { return JSON.parse(localStorage.getItem(FAV_KEY) ?? '[]'); } catch { return []; }
+}
+function saveFavs(list) {
+  try { localStorage.setItem(FAV_KEY, JSON.stringify(list)); return true; } catch { return false; }
+}
+
+function renderFavs(trips) {
+  const favs = loadFavs();
+  const live = new Set(trips.map(favKey));
+  const box = $('favrows');
+  box.textContent = '';
+  $('favempty').hidden = favs.length > 0;
+  $('favclear').disabled = favs.length === 0;
+
+  const stale = favs.filter((k) => !live.has(k)).length;
+  $('favmeta').textContent = favs.length
+    ? `${favs.length}개 · 이 브라우저에만 저장됩니다` + (stale ? ` · 지금 목록에 없는 것 ${stale}개` : '')
+    : '이 브라우저에만 저장됩니다. 기기를 바꾸면 따라오지 않습니다.';
+
+  for (const key of favs) {
+    const [boat, port] = [key.slice(0, key.indexOf('|')), key.slice(key.indexOf('|') + 1)];
+    const tr = document.createElement('tr');
+    const tdBoat = document.createElement('td');
+    tdBoat.textContent = boat || '(이름 없음)';
+    const tdPort = document.createElement('td');
+    tdPort.textContent = port || '';
+    if (!port) tdPort.className = 'muted';
+
+    const tdState = document.createElement('td');
+    if (live.has(key)) tdState.innerHTML = '<span class="ok">현황판에 있음</span>';
+    else {
+      // 배 이름이 바뀌었거나 그 사이트가 계속 실패하면 현황판에서 ☆ 를 못 누릅니다.
+      tdState.innerHTML = '<span class="muted">지금 목록에 없음</span>';
+      tr.classList.add('off');
+    }
+
+    const tdDel = document.createElement('td');
+    const btn = document.createElement('button');
+    btn.className = 'small';
+    btn.textContent = '지우기';
+    btn.addEventListener('click', () => {
+      const next = loadFavs().filter((k) => k !== key);
+      if (!saveFavs(next)) return toast('브라우저가 저장을 막고 있습니다');
+      renderFavs(trips);
+      toast('지웠습니다');
+    });
+    tdDel.append(btn);
+
+    tr.append(tdBoat, tdPort, tdState, tdDel);
+    box.append(tr);
+  }
+
+  $('favclear').onclick = () => {
+    if (!confirm(`즐겨찾기 ${loadFavs().length}개를 전부 지웁니다. 계속할까요?`)) return;
+    if (!saveFavs([])) return toast('브라우저가 저장을 막고 있습니다');
+    renderFavs(trips);
+    toast('전부 지웠습니다');
+  };
+}
+
 function staticMode(reason) {
   LOCAL = false;
   $('banner').hidden = false;
@@ -301,6 +385,11 @@ function staticMode(reason) {
 }
 
 async function load() {
+  // 즐겨찾기 대조에 출조 목록이 필요합니다. 읽기 전용 모드에서는 사이트 표도 여기서 만듭니다.
+  const data = await fetch('data.json?t=' + Date.now())
+    .then((r) => r.json())
+    .catch(() => ({ sites: {}, trips: [] }));
+
   if (LOCAL) {
     const d = await api('api/sites').then((r) => r.json());
     SITES = d.sites;
@@ -314,7 +403,7 @@ async function load() {
       `사이트 ${SITES.length}곳 (켜짐 ${SITES.filter((s) => s.enabled !== false).length}) · ` +
       `출조 ${d.trips}건 · 갱신 ${when(d.generatedAt) || '-'}`;
   } else {
-    const d = await fetch('data.json?t=' + Date.now()).then((r) => r.json());
+    const d = data;
     STATUS = d.sites ?? {};
     // 정적 모드에서는 registry를 못 읽으므로 수집 결과에 남은 사이트만 보여줍니다.
     SITES = Object.entries(STATUS).map(([id, s]) => ({
@@ -324,6 +413,7 @@ async function load() {
       `사이트 ${SITES.length}곳 · 출조 ${d.trips?.length ?? 0}건 · 갱신 ${when(d.generatedAt) || '-'}`;
   }
   render();
+  renderFavs(data.trips ?? []);
 }
 
 (async () => {
