@@ -369,7 +369,7 @@ generic으로 잡았지만 실은 알려진 솔루션이면 `"platform": "서로
 | id | 선사 | 어댑터 | 상태 |
 |---|---|---|---|
 | `akbari` | 구매항 악바리호 | sunsang24 | 켜짐 |
-| `sunsang24ho` | 선상24호 | sunsang24 | 켜짐 |
+| `sunsang24ho` | 선상24호 | sunsang24 | **꺼짐** — 선사가 아니라 sunsang24 업체 홈페이지(peek 확인) |
 | `eungabi` | 남당항 은가비호 | sunsang24 | 켜짐 — 레이아웃(목록형/달력형) 미확인 |
 | `ocpro` | 오천항 프로낚시 | sunsang24 | 켜짐 — 전화번호 미확인 |
 | `supernova` | 인천 팀슈퍼노바 | sunsang24 | 켜짐 — 선상24 파서 수리 대기 |
@@ -382,7 +382,7 @@ generic으로 잡았지만 실은 알려진 솔루션이면 `"platform": "서로
 | `mansu` | 영흥도 만수피싱 | thefishing (index) | 켜짐 — 만수피싱.kr, 정원 미확인 |
 | `lureschool` | 오천항 루어스쿨 발키리호 | thefishing (index) | 켜짐 — 정원 미확인 |
 | `jstar` | 전곡항 스타피싱 | thefishing (index) | 켜짐 — 더피싱 서브도메인 |
-| `blueseaho` | 오천항 푸른바다낚시 | generic | 켜짐 — 자체 사이트, 파싱 미확인 |
+| `blueseaho` | 오천항 푸른바다낚시 | generic | **꺼짐** — 주소가 다른 선사 호스트를 가리킴. 현재 주소 확인 필요 |
 | `teamhanpro` | 오천항 팀한프로 | thefishing (index) | 켜짐 — 흑돼지호와 겹칠 수 있음 |
 | `blackpig` | 오천항 흑돼지호 | thefishing (index) | 켜짐 |
 | `healing` | 무창포 힐링호 | thefishing (index) | 켜짐 |

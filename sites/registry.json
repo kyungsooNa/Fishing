@@ -40,8 +40,8 @@
       "adapter": "sunsang24",
       "url": "https://sunsang24ho.sunsang24.com",
       "mode": "static",
-      "enabled": true,
-      "note": "sunsang24 호스팅 선사. 첫 수집에서 배 이름·출항지를 확인하고 boats에 채우세요."
+      "enabled": false,
+      "note": "선사가 아니라 sunsang24 업체 자기 홈페이지입니다. peek(러너)으로 확인: 페이지는 정상(59,151자)인데 출조가 0건, \"출항지: -\", 오시는길이 충남 아산시(내륙), 푸터가 \"Design by SUNSANG24\". 수집할 게 없어 껐습니다. 실수로 등록된 것으로 보입니다."
     },
     {
       "id": "eungabi",
@@ -204,14 +204,14 @@
       "port": "충남 보령 오천항",
       "phone": "010-5402-0521",
       "mode": "auto",
-      "enabled": true,
+      "enabled": false,
       "boats": {
         "푸른바다3호": {},
         "푸른바다5호": {},
         "푸른바다7호": {},
         "은갈매기호": {}
       },
-      "note": "sunsang24도 더피싱도 아닌 자체 사이트라 generic 어댑터로 잡았습니다. www를 붙이면 인증서가 안 맞습니다(ERR_TLS_CERT_ALTNAME_INVALID) — 그래서 apex 도메인으로 적었습니다. 예약 목록이 /reservation 한 장에 다 나오는지 확인이 필요합니다. 배 목록(푸른바다3·5·7호, 은갈매기호)은 조황글에서 본 것이라 빠진 배가 있을 수 있습니다."
+      "note": "주소가 죽었습니다. blueseaho.com이 내주는 TLS 인증서가 \"남당항수나2호.com\"(xn--2-9u7erb60n943anq0ayfb.com) 것이라, 인증서만 어긋난 게 아니라 아예 다른 선사 호스트를 가리킵니다. 그 도메인으로 바꾸면 엉뚱한 선사를 긁게 됩니다. 푸른바다낚시의 현재 주소를 찾으면 url을 고치고 enabled를 다시 켜세요. 배 목록(푸른바다3·5·7호, 은갈매기호)과 전화는 확인되면 그대로 쓸 수 있게 남겨뒀습니다."
     },
     {
       "id": "teamhanpro",
