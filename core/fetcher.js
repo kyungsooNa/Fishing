@@ -110,6 +110,19 @@ async function getRendered(url, { waitFor, referer } = {}) {
   }
 }
 
+
+// 다시 걸어봐야 소용없는 실패들. 붙지도 않는 곳에 세 번 매달리면 수집이 몇 분씩
+// 길어지고, 상대 서버 입장에서는 그저 두들기는 셈입니다.
+const HOPELESS = /ENOTFOUND|ECONNREFUSED|EHOSTUNREACH|ENETUNREACH|ETIMEDOUT|CERT_|ERR_TLS/;
+
+function isHopeless(err) {
+  if (/안에 응답이 없습니다/.test(String(err?.message ?? ''))) return true;
+  for (let cur = err, depth = 0; cur && depth < 4; cur = cur.cause, depth++) {
+    if (HOPELESS.test(cur.code ?? '') || HOPELESS.test(String(cur.message ?? ''))) return true;
+  }
+  return false;
+}
+
 /**
  * 한 페이지를 받아옵니다.
  * mode: "static"(HTTP) | "js"(브라우저 렌더링) | "auto"(static 먼저, 본문이 비면 js)
@@ -126,6 +139,7 @@ export async function fetchHtml(url, { mode = 'auto', waitFor, referer, retries 
       return html;
     } catch (err) {
       lastErr = err;
+      if (isHopeless(err)) break;   // 연결 자체가 안 되면 재시도해도 같습니다
     }
   }
   throw lastErr;
