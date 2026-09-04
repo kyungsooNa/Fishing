@@ -69,3 +69,45 @@ test('auto 모드도 본문이 있으면 브라우저를 띄우지 않는다', a
     await site.close();
   }
 });
+
+test('응답이 안 오면 정해둔 시간에 끊고, 얼마나 기다렸는지 알려준다', async () => {
+  // 러너는 해외, 상대는 국내 호스트입니다. 기본값(10초)이 빠듯해서 멀쩡한
+  // 사이트가 무더기로 떨어진 적이 있습니다. 값을 우리가 정할 수 있어야 합니다.
+  const site = await serve(() => { /* 영원히 응답하지 않습니다 */ });
+  try {
+    const started = Date.now();
+    await assert.rejects(
+      fetchHtml(site.url, { mode: 'static', retries: 0, timeoutMs: 300 }),
+      (err) => /300ms|시간/.test(describeError(err)),
+    );
+    assert.ok(Date.now() - started < 3000, '기본값(10초)까지 기다리면 안 됩니다');
+  } finally {
+    await site.close();
+  }
+});
+
+test('리다이렉트를 따라간다', async () => {
+  const target = await serve((_, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end('<html><body>운항시간 : 06:00 ~ 15:00</body></html>');
+  });
+  const entry = await serve((_, res) => { res.writeHead(302, { Location: target.url }); res.end(); });
+  try {
+    const html = await fetchHtml(entry.url, { mode: 'static', retries: 0 });
+    assert.match(html, /운항시간/);
+  } finally {
+    await entry.close();
+    await target.close();
+  }
+});
+
+test('리다이렉트가 끝없이 돌면 포기한다', async () => {
+  let self;
+  const site = await serve((_, res) => { res.writeHead(302, { Location: self }); res.end(); });
+  self = site.url;
+  try {
+    await assert.rejects(fetchHtml(site.url, { mode: 'static', retries: 0 }), /리다이렉트/);
+  } finally {
+    await site.close();
+  }
+});

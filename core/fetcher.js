@@ -1,15 +1,18 @@
 // HTTP / Playwright. 호스트별 요청 간격을 지킵니다.
 
+import http from 'node:http';
+import https from 'node:https';
+
 
 const MIN_GAP_MS = 3000;        // 같은 호스트에 연속 요청할 때 최소 간격
-const TIMEOUT_MS = 25000;
-// 러너는 해외에 있고 상대는 전부 국내 호스트라, Node 기본 연결 제한시간(10초)이
-// 빠듯합니다. 멀쩡한 사이트가 UND_ERR_CONNECT_TIMEOUT으로 떨어지는 걸 봤습니다.
-// undici Agent로 늘려봤다가 내장 fetch와 버전이 안 맞아 모든 요청이 깨졌습니다
-// (UND_ERR_INVALID_ARG). 지금은 재시도(아래 retries)로 버팁니다.
+// 러너는 해외에 있고 상대는 전부 국내 호스트입니다. Node fetch의 기본 연결 제한시간
+// 10초로는 멀쩡한 사이트가 UND_ERR_CONNECT_TIMEOUT으로 무더기로 떨어집니다.
+// undici Agent로 늘려보려다 내장 fetch와 버전이 안 맞아 모든 요청을 깨뜨린 적이 있어,
+// 지금은 node:http/https로 직접 받아옵니다. 붙는 시간과 기다리는 시간을 다 덮습니다.
+const TIMEOUT_MS = 30000;
+const MAX_REDIRECTS = 5;
 const UA =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36';
-
 const lastHit = new Map();      // host -> timestamp
 let browser = null;             // playwright 브라우저는 한 번만 띄웁니다
 
@@ -22,26 +25,45 @@ async function pace(url) {
   lastHit.set(host, Date.now());
 }
 
-async function getStatic(url, { referer } = {}) {
-  const ac = new AbortController();
-  const timer = setTimeout(() => ac.abort(), TIMEOUT_MS);
-  try {
-    const res = await fetch(url, {
-      signal: ac.signal,
-      redirect: 'follow',
-      headers: {
-        'User-Agent': UA,
-        'Accept-Language': 'ko-KR,ko;q=0.9',
-        Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-        ...(referer ? { Referer: referer } : {}),
+function getStatic(url, { referer, timeoutMs = TIMEOUT_MS, redirects = MAX_REDIRECTS } = {}) {
+  return new Promise((resolve, reject) => {
+    const lib = url.startsWith('https:') ? https : http;
+    const req = lib.get(
+      url,
+      {
+        headers: {
+          'User-Agent': UA,
+          'Accept-Language': 'ko-KR,ko;q=0.9',
+          Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+          ...(referer ? { Referer: referer } : {}),
+        },
       },
-    });
-    if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
-    const buf = Buffer.from(await res.arrayBuffer());
-    return decode(buf, res.headers.get('content-type') ?? '');
-  } finally {
-    clearTimeout(timer);
-  }
+      (res) => {
+        const { statusCode, statusMessage, headers } = res;
+
+        if ([301, 302, 303, 307, 308].includes(statusCode) && headers.location) {
+          res.resume();
+          if (redirects <= 0) return reject(new Error('리다이렉트가 너무 많습니다'));
+          const next = new URL(headers.location, url).toString();
+          return resolve(getStatic(next, { referer, timeoutMs, redirects: redirects - 1 }));
+        }
+
+        if (statusCode >= 400) {
+          res.resume();
+          return reject(new Error(`HTTP ${statusCode} ${statusMessage ?? ''}`.trim()));
+        }
+
+        const chunks = [];
+        res.on('data', (chunk) => chunks.push(chunk));
+        res.on('end', () => resolve(decode(Buffer.concat(chunks), headers['content-type'] ?? '')));
+        res.on('error', reject);
+      },
+    );
+
+    // 붙는 동안에도 도는 시계입니다. 국내 호스트에 해외에서 붙을 때 이게 관건입니다.
+    req.setTimeout(timeoutMs, () => req.destroy(new Error(`${timeoutMs}ms 안에 응답이 없습니다`)));
+    req.on('error', reject);
+  });
 }
 
 // 국내 예약 사이트는 아직 EUC-KR이 흔합니다. 잘못 읽으면 파싱이 통째로 깨집니다.
@@ -92,14 +114,14 @@ async function getRendered(url, { waitFor, referer } = {}) {
  * 한 페이지를 받아옵니다.
  * mode: "static"(HTTP) | "js"(브라우저 렌더링) | "auto"(static 먼저, 본문이 비면 js)
  */
-export async function fetchHtml(url, { mode = 'auto', waitFor, referer, retries = 2 } = {}) {
+export async function fetchHtml(url, { mode = 'auto', waitFor, referer, retries = 2, timeoutMs } = {}) {
   let lastErr;
   for (let attempt = 0; attempt <= retries; attempt++) {
     if (attempt > 0) await sleep(1000 * 2 ** attempt);
     await pace(url);
     try {
       if (mode === 'js') return await getRendered(url, { waitFor, referer });
-      const html = await getStatic(url, { referer });
+      const html = await getStatic(url, { referer, timeoutMs });
       if (mode === 'auto' && looksEmpty(html)) return await getRendered(url, { waitFor, referer });
       return html;
     } catch (err) {
