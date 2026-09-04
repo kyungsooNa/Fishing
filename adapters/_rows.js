@@ -67,7 +67,7 @@ const TRIP_MARKERS = ['운항시간', '남은자리', '예약마감', '출항', 
 const hasTripMarker = (text) => TRIP_MARKERS.some((m) => text.includes(m));
 
 // 한글에는 \b 단어경계가 없습니다. "○○호" 뒤에 한글이 이어지지 않는 것으로 끊습니다.
-const BOAT_NAME = /([가-힣A-Za-z0-9]{1,12}호)(?![가-힣])/;
+export const BOAT_NAME = /([가-힣A-Za-z0-9]{1,12}호)(?![가-힣])/;
 
 function pickBoat(site, cells, text) {
   const known = Object.keys(site.boats ?? {});

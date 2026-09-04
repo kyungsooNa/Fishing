@@ -8,7 +8,9 @@
 //   schedule_fleet_simple_top  — 달력 + 그 아래 하루치 목록(JS). 날짜별로 한 번씩 받아옵니다.
 
 import { fetchHtml } from '../core/fetcher.js';
-import { parseRows } from './_rows.js';
+import * as cheerio from 'cheerio';
+import { parseRows, SPECIES, BOAT_NAME } from './_rows.js';
+import { makeTrip, toDate, toTime, toTide } from '../core/schema.js';
 import { kstDate, kstYm } from '../core/when.js';
 
 const CALENDAR_PATH = 'schedule_fleet_simple_top';
@@ -25,7 +27,9 @@ async function collectByMonth(site) {
   for (const [i, url] of monthUrls(site).entries()) {
     try {
       const html = await fetchHtml(url, { mode: site.mode ?? 'static', waitFor: site.waitFor });
-      trips.push(...parseRows(site, html, url));
+      // 실제 목록형 구조로 먼저 읽고, 안 잡히면 예전 방식(본문 표기 행)으로 물러섭니다.
+      const rows = parseFleet(site, html, url);
+      trips.push(...(rows.length ? rows : parseRows(site, html, url)));
     } catch (err) {
       // 첫 페이지가 죽으면 그 사이트는 못 읽는 겁니다. 다음 달 페이지가 없는 건 흔합니다.
       if (i === 0) throw err;
@@ -113,3 +117,92 @@ export function targets(site) {
   const template = site.dayPath ?? `/ship/${CALENDAR_PATH}/{ymd}`;
   return [joinUrl(site.url, fillDate(template, kstDate(0)))];
 }
+
+/**
+ * 목록형 파싱.
+ *
+ * 실제 구조는 이렇습니다(peek으로 확인).
+ *   바깥 tr = 하루   — 첫 칸이 "9월 4일(금)", 둘째 칸이 물때
+ *   그 안의 table = 출조 하나 — 배 이름, "어종 : ○○", "운항시간 : 04:00 ~ 17:00",
+ *                              그리고 "예약마감 21명 예약/21명" 같은 좌석 표기
+ *
+ * 한 출조의 정보가 li로 잘게 쪼개져 있어서, 행을 "더 안 쪼개지는 잎"으로 잡으면
+ * 조각만 잡히고 날짜도 못 붙습니다. 그래서 날짜가 있는 하루 행부터 내려갑니다.
+ */
+export function parseFleet(site, html, url) {
+  const $ = cheerio.load(html);
+  const trips = [];
+
+  $('tr').each((_, row) => {
+    const $row = $(row);
+    const cells = $row.children('td, th');
+    const date = toDate(squash(cells.eq(0).text()));
+    if (!date) return;                       // 하루 행이 아닙니다
+
+    const tide = toTide(squash(cells.eq(1).text())) ?? toTide(squash($row.text()));
+
+    // 하루 안에는 출조 table 말고 껍데기 table도 섞여 있습니다.
+    // 운항시간이나 좌석 표기가 있어야 출조로 봅니다.
+    const units = $row.find('table').toArray().filter((el) => isUnit(squash($(el).text())));
+    // 출조 table 안에 또 table이 있으면 바깥 것만 씁니다.
+    const outer = units.filter((el) => !$(el).parents('table').toArray().some((p) => units.includes(p)));
+
+    outer.forEach((unit) => {
+      const text = squash($(unit).text());
+
+      const trip = makeTrip(site, {
+        boat: pickBoat(site, text),
+        date,
+        departAt: toTime(after(text, '운항시간')),
+        species: pickSpecies(text),
+        tide,
+        status: text,
+        seatsLeft: pickSeats(text),
+        url,
+      });
+      if (trip.boat) trips.push(trip);
+    });
+  });
+
+  return trips;
+}
+
+// 출조 한 덩어리인지. 배 이름만 있는 껍데기를 걸러냅니다.
+const SEATS = /(\d{1,3})\s*명\s*예약\s*\/\s*(\d{1,3})\s*명/;
+const isUnit = (text) => text.includes('운항시간') || SEATS.test(text);
+
+/**
+ * 좌석 표기는 남은 수가 아니라 "찬 수 / 정원"입니다.
+ *   "예약마감 21명 예약/21명"  → 0
+ *   "5명 예약/20명"            → 15
+ * 이걸 그냥 숫자로 읽으면 만석을 21자리 남은 것으로 착각합니다.
+ */
+export function pickSeats(text) {
+  const m = text.match(SEATS);
+  if (m) {
+    const [, taken, total] = m.map(Number);
+    return Math.max(0, total - taken);
+  }
+  const left = text.match(/남은자리\D{0,4}(\d{1,3})/);
+  if (left) return Number(left[1]);
+  if (/예약마감|마감|만석/.test(text)) return 0;
+  return null;
+}
+
+function pickSpecies(text) {
+  const m = text.match(/어종\s*:\s*([^/\n]{1,20}?)(?:\/|운항시간|예약|$)/);
+  const named = m && SPECIES.find((sp) => m[1].includes(sp));
+  return named ?? SPECIES.find((sp) => text.includes(sp)) ?? null;
+}
+
+function pickBoat(site, text) {
+  const known = Object.keys(site.boats ?? {}).find((b) => text.includes(b));
+  return known ?? text.match(BOAT_NAME)?.[1] ?? null;
+}
+
+function after(text, marker) {
+  const i = text.indexOf(marker);
+  return i < 0 ? null : text.slice(i + marker.length, i + marker.length + 20);
+}
+
+const squash = (t) => String(t ?? '').replace(/\s+/g, ' ').trim();

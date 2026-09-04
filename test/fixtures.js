@@ -2,21 +2,55 @@
 // 실제 마크업이 아니라 "본문 표기"만 흉내 낸 것이라, 이 테스트가 통과해도
 // 진짜 사이트에서 되는지는 node debug.js <id> 로 따로 확인해야 합니다.
 
+// 실제 sunsang24 목록형 구조입니다(peek으로 확인).
+//   바깥 tr = 하루   (첫 칸 날짜, 둘째 칸 물때)
+//   그 안의 table.ship_unit = 출조 하나
+// 한 출조의 정보가 여러 조각(li)으로 쪼개져 있어서, 행을 "잎 노드"로 잡으면 다 놓칩니다.
 export const SUNSANG24_LIST = `
 <table>
-  <tr><td>2026-09-05</td></tr>
   <tr>
-    <td>악바리호</td><td>운항시간 05:30</td><td>주꾸미</td><td>12물</td><td>남은자리 4명</td>
+    <td>9월 4일(금)</td>
+    <td>조금</td>
+    <td class="ships_warp">
+      <table class="ship_unit_ship_no_1976 ship_unit"><tbody><tr>
+        <td>악바리호 <a>대기하기</a></td>
+        <td>
+          <ul class="list-unstyled reservation_detail no-read">
+            <li>공지사항 : 쭈꾸미 나오면 안나올때까지</li>
+            <li>어종 : 주꾸미 / 루어</li>
+            <li class="shiptime"><div class="title"><strong>운항시간 :</strong></div> 04:00 ~ 17:00</li>
+            <li>예약완료 입금대기 취소대기 취소완료 예약대기 출조대기</li>
+          </ul>
+        </td>
+        <td>예약마감 21명 예약/21명</td>
+      </tr></tbody></table>
+
+      <table class="ship_unit_ship_no_1977 ship_unit"><tbody><tr>
+        <td>레드맨호 <a>예약하기</a></td>
+        <td>
+          <ul class="list-unstyled reservation_detail">
+            <li>어종 : 갑오징어</li>
+            <li class="shiptime"><div class="title"><strong>운항시간 :</strong></div> 05:30 ~ 16:00</li>
+          </ul>
+        </td>
+        <td>5명 예약/20명</td>
+      </tr></tbody></table>
+    </td>
   </tr>
+
   <tr>
-    <td>레드맨호</td><td>운항시간 13:00</td><td>갑오징어</td><td>12물</td><td>예약마감</td>
-  </tr>
-  <tr>
-    <td>홍보호</td><td>운항시간 06:00</td><td>우럭</td><td>조금</td><td>전화예약 0명</td>
-  </tr>
-  <tr><td>2026-09-06</td></tr>
-  <tr>
-    <td>맥가이버호</td><td>운항시간 06:00</td><td>광어</td><td>조금</td><td>남은자리 1명</td>
+    <td>9월 5일(토)</td>
+    <td>1물</td>
+    <td class="ships_warp">
+      <table class="ship_unit"><tbody><tr>
+        <td>맥가이버호</td>
+        <td><ul><li>어종 : 광어</li><li class="shiptime">운항시간 : 06:00 ~ 15:00</li></ul></td>
+        <td>19명 예약/20명</td>
+      </tr></tbody></table>
+
+      <!-- 시간도 좌석 표기도 없는 껍데기. 실제 페이지에 날마다 하나씩 있습니다 -->
+      <table class="ship_unit"><tbody><tr><td>맥가이버호 예약마감</td></tr></tbody></table>
+    </td>
   </tr>
 </table>`;
 

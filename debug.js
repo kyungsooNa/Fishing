@@ -157,6 +157,28 @@ async function peekPages(site) {
       console.log('  (표기 있는 행이 없어 아무 행이나 보여줍니다)');
       for (const t of rows.slice(0, 12)) console.log(`    > ${t.slice(0, 200)}`);
     }
+
+    // 한 출조가 여러 조각으로 쪼개져 있으면, 날짜·배·잔여석이 몇 층 위에서 만납니다.
+    // "운항시간"을 기준으로 조상들을 올라가며 어느 층이 한 출조 한 덩어리인지 봅니다.
+    const anchor = $('*').filter((_, el) => {
+      const t = $(el).text();
+      return t.includes('운항시간') && $(el).children().length === 0;
+    }).first();
+
+    if (anchor.length) {
+      console.log('  "운항시간"에서 위로 올라가며 (층: 태그.클래스 · 글자수 · 내용):');
+      let cur = anchor;
+      for (let up = 0; up < 11 && cur.length; up++) {
+        const tag = cur.prop('tagName')?.toLowerCase() ?? '?';
+        const cls = (cur.attr('class') ?? '').split(/\s+/).filter(Boolean).slice(0, 3).join('.');
+        const t = cur.text().replace(/\s+/g, ' ').trim();
+        const prev = cur.prev().text().replace(/\s+/g, ' ').trim();
+        console.log(`    [${up}] ${tag}${cls ? '.' + cls : ''} · ${t.length}자`);
+        console.log(`        ${t.slice(0, 200)}`);
+        if (prev) console.log(`        (앞 형제) ${prev.slice(0, 120)}`);
+        cur = cur.parent();
+      }
+    }
   }
   console.log('');
 }
