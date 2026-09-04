@@ -370,7 +370,7 @@ generic으로 잡았지만 실은 알려진 솔루션이면 `"platform": "서로
 | `ocpro` | 오천항 프로낚시 | sunsang24 | 켜짐 — 전화번호 미확인 |
 | `supernova` | 인천 팀슈퍼노바 | sunsang24 | 켜짐 — 선상24 파서 수리 대기 |
 | `goldenbaek` | 안면도 황금백호 | sunsang24 | 켜짐 |
-| `blueocean2` | 블루오션2 | sunsang24 | 켜짐 — 선사명·출항지·전화 미확인 |
+| `blueocean2` | 블루오션2호 | sunsang24 | 켜짐 — peek으로 파싱 확인(27건). 출항지·전화·승선료 미확인 |
 | `monster` | 오이도 몬스터호 | thefishing (index) | 켜짐 |
 | `ssfish` | 무창포 선상낚시 | thefishing (index) | 켜짐 |
 | `hifishing` | 대천항 하이피싱 | thefishing (index) | 켜짐 |
