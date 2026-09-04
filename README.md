@@ -318,6 +318,8 @@ generic으로 잡았지만 실은 알려진 솔루션이면 `"platform": "서로
 | `lureschool` | 오천항 루어스쿨 발키리호 | thefishing (index) | 켜짐 — 정원 미확인 |
 | `jstar` | 전곡항 스타피싱 | thefishing (index) | 켜짐 — 더피싱 서브도메인 |
 | `blueseaho` | 오천항 푸른바다낚시 | generic | 켜짐 — 자체 사이트, 파싱 미확인 |
+| `teamhanpro` | 오천항 팀한프로 | thefishing (index) | 켜짐 — 흑돼지호와 겹칠 수 있음 |
+| `blackpig` | 오천항 흑돼지호 | thefishing (index) | 켜짐 |
 | `raraho` | 오천항 라라호 | thefishing (index) | 켜짐 |
 | `chungma` | 영종도 청마피싱 | thefishing (index) | 켜짐 — 배 5척 |
 | `uijiho` | 의지호 | generic | 켜짐 — 계열·출항지 미확인 |
