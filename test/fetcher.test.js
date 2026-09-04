@@ -111,3 +111,34 @@ test('리다이렉트가 끝없이 돌면 포기한다', async () => {
     await site.close();
   }
 });
+
+test('연결이 안 되면 재시도하지 않는다', async () => {
+  // 붙지도 않는 곳에 세 번 매달리면 수집이 몇 분씩 길어지고, 상대에겐 그저
+  // 두들기는 셈입니다. 한 번 안 되면 접습니다.
+  const site = await serve(() => { /* 영원히 응답하지 않습니다 */ });
+  try {
+    const started = Date.now();
+    await assert.rejects(fetchHtml(site.url, { mode: 'static', retries: 2, timeoutMs: 400 }));
+    const spent = Date.now() - started;
+    assert.ok(spent < 1200, `한 번만 시도해야 합니다 (${spent}ms 걸림)`);
+  } finally {
+    await site.close();
+  }
+});
+
+test('일시적인 오류(HTTP 500)는 재시도한다', async () => {
+  let hits = 0;
+  const site = await serve((_, res) => {
+    hits += 1;
+    if (hits < 2) { res.writeHead(500); res.end(); return; }
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end('<html><body>운항시간 : 05:00 ~ 12:00</body></html>');
+  });
+  try {
+    const html = await fetchHtml(site.url, { mode: 'static', retries: 2, paceKey: 'test-500' });
+    assert.match(html, /운항시간/);
+    assert.equal(hits, 2, '한 번 실패하고 다시 시도해서 받아옵니다');
+  } finally {
+    await site.close();
+  }
+});
