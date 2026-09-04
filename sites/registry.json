@@ -93,6 +93,18 @@
       "note": "충남 태안군 안면읍 중장리, 내포항(나암도항) 출항. 선상24 계열이라 목록형 파서가 그대로 먹습니다."
     },
     {
+      "id": "blueocean2",
+      "name": "블루오션2호",
+      "adapter": "sunsang24",
+      "url": "https://blueocean2.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "note": "sunsang24 호스팅. peek(러너)으로 확인: 목록형(schedule_fleet), 배 1척 \"블루오션2호\", 27일치 27건, 주꾸미·갑오징어, 운항 05:30~14:30, 정원 20명, 물때 정상. 출항지와 전화번호는 아직 못 찾았습니다 — 비어 있으면 같은 배가 다른 사이트에 올라와도 합쳐지지 않습니다. 승선료도 일정표에 없으니 확인되면 boats.블루오션2호.prices에 어종별로 적으세요. 셋 다 관리 페이지에서 고칠 수 있습니다.",
+      "boats": {
+        "블루오션2호": {}
+      }
+    },
+    {
       "id": "monster",
       "name": "오이도 몬스터호",
       "adapter": "thefishing",
