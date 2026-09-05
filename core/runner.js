@@ -5,7 +5,7 @@ import { mergeDuplicates } from './merge.js';
 import { platformOf } from './platform.js';
 import { kstDate } from './when.js';
 import { loadPorts, usedPorts } from './ports.js';
-import { closeBrowser, describeError } from './fetcher.js';
+import { closeBrowser, describeError, gapKey } from './fetcher.js';
 import { load, save } from './store.js';
 import { findOpenings } from './diff.js';
 
@@ -57,35 +57,51 @@ export async function runAll({ only = null, days = 21, registryPath, dataPath, p
     addedBy: site.addedBy ?? null,
   });
 
-  const status = {};
   const failed = new Set();
-  const collected = [];
   const startedAt = new Date();
+  const tripsById = new Map();
+  const statusById = new Map();
 
-  for (const site of targets) {
+  const collectOne = async (site) => {
     const at = new Date().toISOString();
     try {
       const trips = await collectSite({ days, ...site });
-      collected.push(...trips);
-      status[site.id] = { ok: true, at, count: trips.length, ...meta(site) };
+      tripsById.set(site.id, trips);
+      statusById.set(site.id, { ok: true, at, count: trips.length, ...meta(site) });
       console.log(`  ${site.id.padEnd(14)} ${String(trips.length).padStart(4)}건`);
     } catch (err) {
       failed.add(site.id);
       const kept = prevBySite.get(site.id) ?? [];
-      collected.push(...kept);
-      status[site.id] = {
+      tripsById.set(site.id, kept);
+      statusById.set(site.id, {
         ok: false,
         at,
         error: describeError(err).slice(0, 300),
         count: kept.length,
         keptFrom: prev.sites?.[site.id]?.at ?? prev.generatedAt ?? null,
         ...meta(site),
-      };
-      console.warn(`  ${site.id.padEnd(14)} 실패: ${status[site.id].error}`);
+      });
+      console.warn(`  ${site.id.padEnd(14)} 실패: ${describeError(err).slice(0, 300)}`);
     }
-  }
+  };
+
+  // 서버가 다르면 동시에 받습니다. 한 줄로 세우면 사이트 수만큼 대기가 쌓입니다 —
+  // 284곳이 되자 한 바퀴가 한 시간을 넘겼습니다. 같은 서버(도메인)에 묶인 사이트는
+  // 한 줄로 두고, 그 안에서는 fetcher가 3초 간격을 지킵니다. 상대에게 가는 부담은
+  // 그대로고 기다리는 시간만 겹칩니다.
+  const groups = [...groupBy(targets, serverOf).values()];
+  await inParallel(groups, Number(process.env.PARALLEL ?? 6), async (group) => {
+    for (const site of group) await collectOne(site);
+  });
 
   await closeBrowser();
+
+  // 저장은 registry 순서로. 동시에 받으면 끝나는 순서가 매번 달라지는데, 그대로 쓰면
+  // data.json이 실행마다 통째로 뒤집혀 커밋 diff가 쓸모없어집니다.
+  const collected = targets.flatMap((site) => tripsById.get(site.id) ?? []);
+  const status = Object.fromEntries(
+    targets.filter((site) => statusById.has(site.id)).map((site) => [site.id, statusById.get(site.id)]),
+  );
 
   const trips = sortTrips(mergeDuplicates(pruneOld(collected, days)));
   const openings = findOpenings(prev.trips ?? [], trips, failed);
@@ -115,6 +131,24 @@ function sortTrips(trips) {
       (a.siteName ?? '').localeCompare(b.siteName ?? '') ||
       (a.boat ?? '').localeCompare(b.boat ?? ''),
   );
+}
+
+/** 같은 서버에 얹힌 사이트끼리 묶는 키. 주소가 없으면(예시 어댑터) 저 혼자 한 무리입니다. */
+function serverOf(site) {
+  try {
+    return gapKey(site.url);
+  } catch {
+    return `site:${site.id}`;
+  }
+}
+
+/** 동시에 최대 limit개씩. 한 무리가 죽어도 나머지는 계속합니다(collectOne이 다 삼킵니다). */
+async function inParallel(items, limit, work) {
+  const queue = [...items];
+  const workers = Array.from({ length: Math.max(1, Math.min(limit, queue.length)) }, async () => {
+    while (queue.length) await work(queue.shift());
+  });
+  await Promise.all(workers);
 }
 
 function groupBy(list, keyOf) {

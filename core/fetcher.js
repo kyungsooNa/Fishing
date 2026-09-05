@@ -15,6 +15,7 @@ const UA =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36';
 const lastHit = new Map();      // 서버(=도메인) -> 마지막 요청 시각
 let browser = null;             // playwright 브라우저는 한 번만 띄웁니다
+let launching = null;           // 동시에 여러 사이트를 받을 때 브라우저가 둘 뜨지 않도록
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -119,15 +120,26 @@ function decode(buf, contentType) {
   return buf.toString('utf8');
 }
 
+async function launchBrowser() {
+  let chromium;
+  try {
+    ({ chromium } = await import('playwright'));
+  } catch {
+    throw new Error('mode:"js" 사이트를 쓰려면 playwright가 필요합니다 — npx playwright install chromium');
+  }
+  return chromium.launch({ args: ['--no-sandbox'] });
+}
+
 async function getRendered(url, { waitFor, referer } = {}) {
+  // 사이트를 동시에 받으면 여기 둘이 같이 들어옵니다. 띄우는 중인 약속을 나눠 갖지
+  // 않으면 브라우저가 두 개 뜨고, closeBrowser가 한쪽만 닫아 프로세스가 안 끝납니다.
   if (!browser) {
-    let chromium;
+    launching ??= launchBrowser();
     try {
-      ({ chromium } = await import('playwright'));
-    } catch {
-      throw new Error('mode:"js" 사이트를 쓰려면 playwright가 필요합니다 — npx playwright install chromium');
+      browser = await launching;
+    } finally {
+      launching = null;
     }
-    browser = await chromium.launch({ args: ['--no-sandbox'] });
   }
   const ctx = await browser.newContext({
     userAgent: UA,
