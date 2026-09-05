@@ -417,6 +417,2142 @@
         "만선호": {}
       },
       "note": "선상24 목록형(/ship/schedule_fleet). peek으로 확인했습니다 — 52건 / 26일 / 배 2척(자연피싱호·만선호), 주꾸미·갑오징어. 출항지와 전화번호는 아직 확인 못 해 비웠습니다. 비어 있으면 다른 사이트에 같은 배가 올라와도 합쳐지지 않습니다(그게 안전한 기본값입니다). 승선료도 페이지에 없어 prices가 비어 있습니다."
+    },
+    {
+      "id": "2018miracle",
+      "name": "미라클호",
+      "adapter": "sunsang24",
+      "url": "https://2018miracle.sunsang24.com",
+      "phone": "010-9308-1507",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "미라클호": {}
+      },
+      "note": "자동 발견(https://2018miracle.sunsang24.com) — 시험 수집 27건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 신봉항"
+    },
+    {
+      "id": "7",
+      "name": "K세븐호",
+      "adapter": "sunsang24",
+      "url": "https://7.sunsang24.com",
+      "phone": "010-7550-3577",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "K세븐호": {},
+        "세븐호": {},
+        "황금사자호": {}
+      },
+      "note": "자동 발견(https://7.sunsang24.com) — 시험 수집 74건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항"
+    },
+    {
+      "id": "ace",
+      "name": "에이스호",
+      "adapter": "sunsang24",
+      "url": "https://ace.sunsang24.com",
+      "phone": "010-9033-9377",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "에이스호": {}
+      },
+      "note": "자동 발견(https://ace.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항"
+    },
+    {
+      "id": "alice",
+      "name": "엘리스호",
+      "adapter": "sunsang24",
+      "url": "https://alice.sunsang24.com",
+      "phone": "010-3128-1782",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "엘리스호": {}
+      },
+      "note": "자동 발견(https://alice.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 비응항"
+    },
+    {
+      "id": "aqua",
+      "name": "아쿠아호",
+      "adapter": "sunsang24",
+      "url": "https://aqua.sunsang24.com",
+      "phone": "010-9058-5311",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "아쿠아호": {}
+      },
+      "note": "자동 발견(https://aqua.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 안골항"
+    },
+    {
+      "id": "arakhaeng",
+      "name": "어락행호",
+      "adapter": "sunsang24",
+      "url": "https://arakhaeng.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "어락행호": {},
+        "코리아호": {},
+        "아레나호": {}
+      },
+      "note": "자동 발견(https://arakhaeng.sunsang24.com) — 시험 수집 61건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 비응항 전화 후보: 063-467-7266, 010-2207-9599, 010-8644-7350, 010-5836-0990, 010-9477-4573"
+    },
+    {
+      "id": "arirang",
+      "name": "아리랑1호",
+      "adapter": "sunsang24",
+      "url": "https://arirang.sunsang24.com",
+      "phone": "010-5152-4226",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "아리랑1호": {},
+        "아리랑2호": {}
+      },
+      "note": "자동 발견(https://arirang.sunsang24.com) — 시험 수집 52건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 오천항, 출조항"
+    },
+    {
+      "id": "art",
+      "name": "뉴아트호",
+      "adapter": "sunsang24",
+      "url": "https://art.sunsang24.com",
+      "phone": "010-5772-7783",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "뉴아트호": {}
+      },
+      "note": "자동 발견(https://art.sunsang24.com) — 시험 수집 38건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 양화항"
+    },
+    {
+      "id": "asiaho",
+      "name": "아시아호",
+      "adapter": "sunsang24",
+      "url": "https://asiaho.sunsang24.com",
+      "phone": "010-5375-5255",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "아시아호": {}
+      },
+      "note": "자동 발견(https://asiaho.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 안내출항, 출조항, 비응항"
+    },
+    {
+      "id": "badalove",
+      "name": "바다사랑호",
+      "adapter": "sunsang24",
+      "url": "https://badalove.sunsang24.com",
+      "phone": "010-3459-4086",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "바다사랑호": {}
+      },
+      "note": "자동 발견(https://badalove.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 안내사항, 출조항, 마검포항"
+    },
+    {
+      "id": "baekya",
+      "name": "백야호",
+      "adapter": "sunsang24",
+      "url": "https://baekya.sunsang24.com",
+      "phone": "010-7447-0120",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "백야호": {}
+      },
+      "note": "자동 발견(https://baekya.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 한림항"
+    },
+    {
+      "id": "bigboss24",
+      "name": "빅보스호",
+      "adapter": "sunsang24",
+      "url": "https://bigboss24.sunsang24.com",
+      "phone": "010-2933-3029",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "빅보스호": {}
+      },
+      "note": "자동 발견(https://bigboss24.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 세부사항, 출항문자출항, 안내사항, 입항시간출항"
+    },
+    {
+      "id": "bluefc",
+      "name": "테슬란호",
+      "adapter": "sunsang24",
+      "url": "https://bluefc.sunsang24.com",
+      "phone": "010-8654-1714",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "테슬란호": {}
+      },
+      "note": "자동 발견(https://bluefc.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 인천남항, 출조항"
+    },
+    {
+      "id": "boas",
+      "name": "보아스호",
+      "adapter": "sunsang24",
+      "url": "https://boas.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "보아스호": {}
+      },
+      "note": "자동 발견(https://boas.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 대박입항, 출조항 전화 후보: 010-9329-4830, 010-4841-6235"
+    },
+    {
+      "id": "boss",
+      "name": "녹동보스호",
+      "adapter": "sunsang24",
+      "url": "https://boss.sunsang24.com",
+      "phone": "010-4282-6667",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "녹동보스호": {},
+        "몬스터호": {},
+        "충만호": {}
+      },
+      "note": "자동 발견(https://boss.sunsang24.com) — 시험 수집 92건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 문의사항, 출조항, 녹동항"
+    },
+    {
+      "id": "busung",
+      "name": "7호",
+      "adapter": "sunsang24",
+      "url": "https://busung.sunsang24.com",
+      "phone": "010-9766-5912",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "7호": {}
+      },
+      "note": "자동 발견(https://busung.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 역시출항, 출조항, 영운항"
+    },
+    {
+      "id": "chambada",
+      "name": "참바다호",
+      "adapter": "sunsang24",
+      "url": "https://chambada.sunsang24.com",
+      "phone": "010-2614-4656",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "참바다호": {}
+      },
+      "note": "자동 발견(https://chambada.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 야미도항"
+    },
+    {
+      "id": "cherryfish",
+      "name": "체리피쉬호",
+      "adapter": "sunsang24",
+      "url": "https://cherryfish.sunsang24.com",
+      "phone": "010-6552-2724",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "체리피쉬호": {}
+      },
+      "note": "자동 발견(https://cherryfish.sunsang24.com) — 시험 수집 23건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항"
+    },
+    {
+      "id": "chf",
+      "name": "맛도리호",
+      "adapter": "sunsang24",
+      "url": "https://chf.sunsang24.com",
+      "phone": "010-9336-3421",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "맛도리호": {},
+        "대꾸리호": {},
+        "보따리호": {},
+        "나이키호": {}
+      },
+      "note": "자동 발견(https://chf.sunsang24.com) — 시험 수집 104건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 월계속출항"
+    },
+    {
+      "id": "cjh",
+      "name": "뉴패밀리호",
+      "adapter": "sunsang24",
+      "url": "https://cjh.sunsang24.com",
+      "phone": "010-4345-0004",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "뉴패밀리호": {},
+        "플라이호": {}
+      },
+      "note": "자동 발견(https://cjh.sunsang24.com) — 시험 수집 52건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 마검포항"
+    },
+    {
+      "id": "d",
+      "name": "드래곤호",
+      "adapter": "sunsang24",
+      "url": "https://d.sunsang24.com",
+      "phone": "010-7123-5359",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "드래곤호": {}
+      },
+      "note": "자동 발견(https://d.sunsang24.com) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 임원항, 출조항"
+    },
+    {
+      "id": "daebak",
+      "name": "뉴항구호",
+      "adapter": "sunsang24",
+      "url": "https://daebak.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "뉴항구호": {},
+        "뉴항구1호": {},
+        "레전드호": {}
+      },
+      "note": "자동 발견(https://daebak.sunsang24.com) — 시험 수집 78건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 삼길포항 전화 후보: 010-4214-8119, 010-6424-8119, 010-2155-5269"
+    },
+    {
+      "id": "daejinvictory",
+      "name": "승리호",
+      "adapter": "sunsang24",
+      "url": "https://daejinvictory.sunsang24.com",
+      "phone": "010-2769-0713",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "승리호": {}
+      },
+      "note": "자동 발견(https://daejinvictory.sunsang24.com) — 시험 수집 50건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 대진항, 출조항"
+    },
+    {
+      "id": "daon",
+      "name": "다온호",
+      "adapter": "sunsang24",
+      "url": "https://daon.sunsang24.com",
+      "phone": "010-7756-2264",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "다온호": {},
+        "루미호": {},
+        "강프로호": {},
+        "토르호": {}
+      },
+      "note": "자동 발견(https://daon.sunsang24.com) — 시험 수집 104건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 비응항"
+    },
+    {
+      "id": "dasol",
+      "name": "다솔호",
+      "adapter": "sunsang24",
+      "url": "https://dasol.sunsang24.com",
+      "phone": "010-8893-9090",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "다솔호": {}
+      },
+      "note": "자동 발견(https://dasol.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 신전항"
+    },
+    {
+      "id": "dragonfishing",
+      "name": "청룡호",
+      "adapter": "sunsang24",
+      "url": "https://dragonfishing.sunsang24.com",
+      "phone": "010-5694-1230",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "청룡호": {}
+      },
+      "note": "자동 발견(https://dragonfishing.sunsang24.com) — 시험 수집 52건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 아야진항"
+    },
+    {
+      "id": "dream",
+      "name": "꿈에그린호",
+      "adapter": "sunsang24",
+      "url": "https://dream.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "꿈에그린호": {}
+      },
+      "note": "자동 발견(https://dream.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 구매항 전화 후보: 010-5685-0182, 010-6520-4999"
+    },
+    {
+      "id": "eagles",
+      "name": "블랙이글스호",
+      "adapter": "sunsang24",
+      "url": "https://eagles.sunsang24.com",
+      "phone": "010-7172-1302",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "블랙이글스호": {},
+        "안슨장호": {}
+      },
+      "note": "자동 발견(https://eagles.sunsang24.com) — 시험 수집 104건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 대구라바조항, 공현진항, 출조항"
+    },
+    {
+      "id": "ebada",
+      "name": "이바다호",
+      "adapter": "sunsang24",
+      "url": "https://ebada.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "이바다호": {},
+        "해모수호": {}
+      },
+      "note": "자동 발견(https://ebada.sunsang24.com) — 시험 수집 49건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 오천항, 출조항 전화 후보: 010-5151-2431, 010-7934-5856"
+    },
+    {
+      "id": "ebeda",
+      "name": "이배다호",
+      "adapter": "sunsang24",
+      "url": "https://ebeda.sunsang24.com",
+      "phone": "010-6270-1519",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "이배다호": {},
+        "행복호": {}
+      },
+      "note": "자동 발견(https://ebeda.sunsang24.com) — 시험 수집 52건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 비응항"
+    },
+    {
+      "id": "emerald",
+      "name": "에메랄드호",
+      "adapter": "sunsang24",
+      "url": "https://emerald.sunsang24.com",
+      "phone": "010-9659-8252",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "에메랄드호": {}
+      },
+      "note": "자동 발견(https://emerald.sunsang24.com) — 시험 수집 27건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 경남통영궁항"
+    },
+    {
+      "id": "enjoy",
+      "name": "엔조이호",
+      "adapter": "sunsang24",
+      "url": "https://enjoy.sunsang24.com",
+      "phone": "010-7434-0058",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "엔조이호": {}
+      },
+      "note": "자동 발견(https://enjoy.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 무창포항"
+    },
+    {
+      "id": "eunhasuho",
+      "name": "은하수호",
+      "adapter": "sunsang24",
+      "url": "https://eunhasuho.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "은하수호": {},
+        "효성호": {}
+      },
+      "note": "자동 발견(https://eunhasuho.sunsang24.com) — 시험 수집 102건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 신월항 전화 후보: 010-9203-9988, 010-2090-9188"
+    },
+    {
+      "id": "f1",
+      "name": "에프원호",
+      "adapter": "sunsang24",
+      "url": "https://f1.sunsang24.com",
+      "phone": "010-9330-0040",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "에프원호": {},
+        "어비스호": {}
+      },
+      "note": "자동 발견(https://f1.sunsang24.com) — 시험 수집 51건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 야미도항"
+    },
+    {
+      "id": "fishbank",
+      "name": "피쉬뱅크호",
+      "adapter": "sunsang24",
+      "url": "https://fishbank.sunsang24.com",
+      "phone": "010-7562-2235",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "피쉬뱅크호": {},
+        "이슬호": {}
+      },
+      "note": "자동 발견(https://fishbank.sunsang24.com) — 시험 수집 87건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 구매항"
+    },
+    {
+      "id": "fishhunter",
+      "name": "흑룡호",
+      "adapter": "sunsang24",
+      "url": "https://fishhunter.sunsang24.com",
+      "phone": "010-3666-0622",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "흑룡호": {}
+      },
+      "note": "자동 발견(https://fishhunter.sunsang24.com) — 시험 수집 13건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 녹동항"
+    },
+    {
+      "id": "gagaho",
+      "name": "가가호",
+      "adapter": "sunsang24",
+      "url": "https://gagaho.sunsang24.com",
+      "phone": "010-2036-2003",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "가가호": {},
+        "여명호": {},
+        "스페이스호": {}
+      },
+      "note": "자동 발견(https://gagaho.sunsang24.com) — 시험 수집 77건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 마검포항"
+    },
+    {
+      "id": "galchiho",
+      "name": "갈치호",
+      "adapter": "sunsang24",
+      "url": "https://galchiho.sunsang24.com",
+      "phone": "010-8417-8255",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "갈치호": {}
+      },
+      "note": "자동 발견(https://galchiho.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 중요사항, 도두항, 입출항, 출조항"
+    },
+    {
+      "id": "gdcompany",
+      "name": "지디1호",
+      "adapter": "sunsang24",
+      "url": "https://gdcompany.sunsang24.com",
+      "phone": "010-4780-6092",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "지디1호": {},
+        "지디3호": {},
+        "지디2호": {},
+        "지디4호": {}
+      },
+      "note": "자동 발견(https://gdcompany.sunsang24.com) — 시험 수집 28건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항"
+    },
+    {
+      "id": "genieyonghan",
+      "name": "지니호",
+      "adapter": "sunsang24",
+      "url": "https://genieyonghan.sunsang24.com",
+      "phone": "010-7113-8020",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "지니호": {},
+        "용한호": {}
+      },
+      "note": "자동 발견(https://genieyonghan.sunsang24.com) — 시험 수집 52건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 공현진항"
+    },
+    {
+      "id": "giant",
+      "name": "자이언트호",
+      "adapter": "sunsang24",
+      "url": "https://giant.sunsang24.com",
+      "phone": "010-9496-9367",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "자이언트호": {},
+        "닉스2호": {}
+      },
+      "note": "자동 발견(https://giant.sunsang24.com) — 시험 수집 52건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 비응항"
+    },
+    {
+      "id": "glutton",
+      "name": "먹깨비호",
+      "adapter": "sunsang24",
+      "url": "https://glutton.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "먹깨비호": {},
+        "에르메스호": {}
+      },
+      "note": "자동 발견(https://glutton.sunsang24.com) — 시험 수집 52건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 비응항 전화 후보: 010-9855-7570, 063-445-0510, 010-4666-9195, 010-9007-9464"
+    },
+    {
+      "id": "goaraho",
+      "name": "아라호",
+      "adapter": "sunsang24",
+      "url": "https://goaraho.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "아라호": {},
+        "아라2호": {}
+      },
+      "note": "자동 발견(https://goaraho.sunsang24.com) — 시험 수집 52건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 문의사항, 필독사항, 출조항, 회변항 전화 후보: 010-5409-9262, 010-9236-6125"
+    },
+    {
+      "id": "goldatsr",
+      "name": "금성호",
+      "adapter": "sunsang24",
+      "url": "https://goldatsr.sunsang24.com",
+      "phone": "010-5376-4829",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "금성호": {}
+      },
+      "note": "자동 발견(https://goldatsr.sunsang24.com) — 시험 수집 2건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 임원항, 출조항"
+    },
+    {
+      "id": "gonghyeonjin",
+      "name": "돌핀호",
+      "adapter": "sunsang24",
+      "url": "https://gonghyeonjin.sunsang24.com",
+      "phone": "010-3352-6692",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "돌핀호": {},
+        "돌핀3호": {},
+        "미르호": {}
+      },
+      "note": "자동 발견(https://gonghyeonjin.sunsang24.com) — 시험 수집 128건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 공현진항"
+    },
+    {
+      "id": "gosu",
+      "name": "고수호",
+      "adapter": "sunsang24",
+      "url": "https://gosu.sunsang24.com",
+      "phone": "010-5624-1340",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "고수호": {},
+        "팀루비나2호": {}
+      },
+      "note": "자동 발견(https://gosu.sunsang24.com) — 시험 수집 65건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 비응항"
+    },
+    {
+      "id": "gsseven",
+      "name": "뉴세븐호",
+      "adapter": "sunsang24",
+      "url": "https://gsseven.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "뉴세븐호": {},
+        "썬크루즈호": {}
+      },
+      "note": "자동 발견(https://gsseven.sunsang24.com) — 시험 수집 78건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 비응항 전화 후보: 010-8121-2777, 010-2973-1575"
+    },
+    {
+      "id": "gudiho",
+      "name": "구디호",
+      "adapter": "sunsang24",
+      "url": "https://gudiho.sunsang24.com",
+      "phone": "010-4619-8358",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "구디호": {}
+      },
+      "note": "자동 발견(https://gudiho.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 출조항, 영운항"
+    },
+    {
+      "id": "gukbo",
+      "name": "신출항호",
+      "adapter": "sunsang24",
+      "url": "https://gukbo.sunsang24.com",
+      "phone": "010-4186-6380",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "신출항호": {}
+      },
+      "note": "자동 발견(https://gukbo.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 마검포항, 신출항, 출조항"
+    },
+    {
+      "id": "gull",
+      "name": "갈매기호",
+      "adapter": "sunsang24",
+      "url": "https://gull.sunsang24.com",
+      "phone": "010-9527-6265",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "갈매기호": {},
+        "홈런호": {}
+      },
+      "note": "자동 발견(https://gull.sunsang24.com) — 시험 수집 77건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 비응항"
+    },
+    {
+      "id": "gundam",
+      "name": "건담호",
+      "adapter": "sunsang24",
+      "url": "https://gundam.sunsang24.com",
+      "phone": "010-5162-8978",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "건담호": {}
+      },
+      "note": "자동 발견(https://gundam.sunsang24.com) — 시험 수집 25건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 팔포항"
+    },
+    {
+      "id": "gunsannaksi",
+      "name": "챔피언호",
+      "adapter": "sunsang24",
+      "url": "https://gunsannaksi.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "챔피언호": {},
+        "나드리호": {},
+        "임마누엘호": {},
+        "스마트호": {},
+        "범고래호": {},
+        "포세이돈호": {},
+        "포세이돈2호": {},
+        "창성호": {},
+        "그랜드호": {},
+        "월명호": {},
+        "뉴라이브호": {},
+        "인해호": {}
+      },
+      "note": "자동 발견(https://gunsannaksi.sunsang24.com) — 시험 수집 490건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 요청사항, 출조항, 비응항 전화 후보: 010-9453-4046, 010-9477-4046"
+    },
+    {
+      "id": "gyeongjuho",
+      "name": "경주호",
+      "adapter": "sunsang24",
+      "url": "https://gyeongjuho.sunsang24.com",
+      "phone": "010-9380-5114",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "경주호": {}
+      },
+      "note": "자동 발견(https://gyeongjuho.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 임원항, 임윈항, 출조항"
+    },
+    {
+      "id": "haemaho",
+      "name": "해마호",
+      "adapter": "sunsang24",
+      "url": "https://haemaho.sunsang24.com",
+      "phone": "010-2574-4277",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "해마호": {}
+      },
+      "note": "자동 발견(https://haemaho.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 출조항, 오천항"
+    },
+    {
+      "id": "haemosoo",
+      "name": "해모수호",
+      "adapter": "sunsang24",
+      "url": "https://haemosoo.sunsang24.com",
+      "phone": "010-7934-5856",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "해모수호": {}
+      },
+      "note": "자동 발견(https://haemosoo.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 오천항, 출조항"
+    },
+    {
+      "id": "hanareum",
+      "name": "한아름호",
+      "adapter": "sunsang24",
+      "url": "https://hanareum.sunsang24.com",
+      "phone": "010-3856-2107",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "한아름호": {}
+      },
+      "note": "자동 발견(https://hanareum.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 격포항"
+    },
+    {
+      "id": "hanbada",
+      "name": "2호",
+      "adapter": "sunsang24",
+      "url": "https://hanbada.sunsang24.com",
+      "phone": "010-7608-7016",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "2호": {}
+      },
+      "note": "자동 발견(https://hanbada.sunsang24.com) — 시험 수집 52건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 마음을담아항, 출조항, 제덕항"
+    },
+    {
+      "id": "harmony",
+      "name": "하모니호",
+      "adapter": "sunsang24",
+      "url": "https://harmony.sunsang24.com",
+      "phone": "010-9654-1715",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "하모니호": {}
+      },
+      "note": "자동 발견(https://harmony.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 지세포항"
+    },
+    {
+      "id": "healingho",
+      "name": "힐링호",
+      "adapter": "sunsang24",
+      "url": "https://healingho.sunsang24.com",
+      "phone": "010-4906-5444",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "힐링호": {}
+      },
+      "note": "자동 발견(https://healingho.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항"
+    },
+    {
+      "id": "heeyoung",
+      "name": "희영호",
+      "adapter": "sunsang24",
+      "url": "https://heeyoung.sunsang24.com",
+      "phone": "010-2775-9109",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "희영호": {}
+      },
+      "note": "자동 발견(https://heeyoung.sunsang24.com) — 시험 수집 55건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 취소출항, 출조항, 유촌항"
+    },
+    {
+      "id": "hunterfishing",
+      "name": "헌터호",
+      "adapter": "sunsang24",
+      "url": "https://hunterfishing.sunsang24.com",
+      "phone": "010-8294-8882",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "헌터호": {}
+      },
+      "note": "자동 발견(https://hunterfishing.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 국동항"
+    },
+    {
+      "id": "jangbogo",
+      "name": "장보고호",
+      "adapter": "sunsang24",
+      "url": "https://jangbogo.sunsang24.com",
+      "phone": "010-6286-0014",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "장보고호": {}
+      },
+      "note": "자동 발견(https://jangbogo.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 남당항, 출조항"
+    },
+    {
+      "id": "jangbogofishing",
+      "name": "장보고호",
+      "adapter": "sunsang24",
+      "url": "https://jangbogofishing.sunsang24.com",
+      "phone": "010-3626-2841",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "장보고호": {}
+      },
+      "note": "자동 발견(https://jangbogofishing.sunsang24.com) — 시험 수집 15건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 금진항"
+    },
+    {
+      "id": "janggofish",
+      "name": "태풍호",
+      "adapter": "sunsang24",
+      "url": "https://janggofish.sunsang24.com",
+      "phone": "010-9194-0015",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "태풍호": {}
+      },
+      "note": "자동 발견(https://janggofish.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 장고항, 일조항, 일주꾸미조항, 출조항"
+    },
+    {
+      "id": "janggohangfishing",
+      "name": "해안선호",
+      "adapter": "sunsang24",
+      "url": "https://janggohangfishing.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "해안선호": {}
+      },
+      "note": "자동 발견(https://janggohangfishing.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 시출항, 장고항, 출조항 전화 후보: 010-8883-9522, 010-5402-1473, 010-4149-1757, 010-8814-3466, 010-8637-4708"
+    },
+    {
+      "id": "jeilfishing",
+      "name": "제일피싱호",
+      "adapter": "sunsang24",
+      "url": "https://jeilfishing.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "제일피싱호": {}
+      },
+      "note": "자동 발견(https://jeilfishing.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 마검포항 전화 후보: 010-3015-9001, 041-675-2338"
+    },
+    {
+      "id": "jeilho",
+      "name": "제일호",
+      "adapter": "sunsang24",
+      "url": "https://jeilho.sunsang24.com",
+      "phone": "010-3115-8172",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "제일호": {}
+      },
+      "note": "자동 발견(https://jeilho.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 비응항"
+    },
+    {
+      "id": "jejutv",
+      "name": "제주갈치TV호",
+      "adapter": "sunsang24",
+      "url": "https://jejutv.sunsang24.com",
+      "phone": "010-6525-7074",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "제주갈치TV호": {}
+      },
+      "note": "자동 발견(https://jejutv.sunsang24.com) — 시험 수집 24건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 도두항"
+    },
+    {
+      "id": "jh",
+      "name": "정환호",
+      "adapter": "sunsang24",
+      "url": "https://jh.sunsang24.com",
+      "phone": "010-8752-6325",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "정환호": {}
+      },
+      "note": "자동 발견(https://jh.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 불출항, 남당항, 출조항"
+    },
+    {
+      "id": "jinpro",
+      "name": "1호",
+      "adapter": "sunsang24",
+      "url": "https://jinpro.sunsang24.com",
+      "phone": "010-5775-5594",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "1호": {},
+        "3호": {}
+      },
+      "note": "자동 발견(https://jinpro.sunsang24.com) — 시험 수집 52건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 국동항"
+    },
+    {
+      "id": "jjanggu",
+      "name": "짱구호",
+      "adapter": "sunsang24",
+      "url": "https://jjanggu.sunsang24.com",
+      "phone": "010-2603-4833",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "짱구호": {}
+      },
+      "note": "자동 발견(https://jjanggu.sunsang24.com) — 시험 수집 24건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 국동항"
+    },
+    {
+      "id": "juliana",
+      "name": "줄리아나호",
+      "adapter": "sunsang24",
+      "url": "https://juliana.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "줄리아나호": {}
+      },
+      "note": "자동 발견(https://juliana.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 대야도항, 출조항 전화 후보: 010-9336-8207, 010-8717-6061"
+    },
+    {
+      "id": "jungwonho",
+      "name": "정원호",
+      "adapter": "sunsang24",
+      "url": "https://jungwonho.sunsang24.com",
+      "phone": "010-3608-0844",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "정원호": {}
+      },
+      "note": "자동 발견(https://jungwonho.sunsang24.com) — 시험 수집 23건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 신월항"
+    },
+    {
+      "id": "kangnam",
+      "name": "강남호",
+      "adapter": "sunsang24",
+      "url": "https://kangnam.sunsang24.com",
+      "phone": "010-3684-5249",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "강남호": {}
+      },
+      "note": "자동 발견(https://kangnam.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 비응항"
+    },
+    {
+      "id": "kangpro",
+      "name": "강프로호",
+      "adapter": "sunsang24",
+      "url": "https://kangpro.sunsang24.com",
+      "phone": "010-7156-0555",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "강프로호": {}
+      },
+      "note": "자동 발견(https://kangpro.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 비응항"
+    },
+    {
+      "id": "keoyang",
+      "name": "거양호",
+      "adapter": "sunsang24",
+      "url": "https://keoyang.sunsang24.com",
+      "phone": "010-5436-9009",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "거양호": {}
+      },
+      "note": "자동 발견(https://keoyang.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 오천항, 봐주세요오천항, 판장입구오천항, 출조항"
+    },
+    {
+      "id": "kingstar",
+      "name": "킹스타호",
+      "adapter": "sunsang24",
+      "url": "https://kingstar.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "킹스타호": {}
+      },
+      "note": "자동 발견(https://kingstar.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항 전화 후보: 010-5411-4989, 010-7189-4980"
+    },
+    {
+      "id": "kingstarho",
+      "name": "킹스타호",
+      "adapter": "sunsang24",
+      "url": "https://kingstarho.sunsang24.com",
+      "phone": "010-3684-6310",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "킹스타호": {}
+      },
+      "note": "자동 발견(https://kingstarho.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 주의사항, 출조항, 비응항"
+    },
+    {
+      "id": "ksnaksi",
+      "name": "리더호",
+      "adapter": "sunsang24",
+      "url": "https://ksnaksi.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "리더호": {},
+        "제일호": {}
+      },
+      "note": "자동 발견(https://ksnaksi.sunsang24.com) — 시험 수집 50건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 비응항 전화 후보: 010-8959-0810, 010-3115-8172"
+    },
+    {
+      "id": "ktg",
+      "name": "강태공호",
+      "adapter": "sunsang24",
+      "url": "https://ktg.sunsang24.com",
+      "phone": "010-4633-7272",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "강태공호": {}
+      },
+      "note": "자동 발견(https://ktg.sunsang24.com) — 시험 수집 52건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 목포북항"
+    },
+    {
+      "id": "lubina",
+      "name": "팀루비나2호",
+      "adapter": "sunsang24",
+      "url": "https://lubina.sunsang24.com",
+      "phone": "010-5644-0681",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "팀루비나2호": {},
+        "고수호": {}
+      },
+      "note": "자동 발견(https://lubina.sunsang24.com) — 시험 수집 65건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 출조항, 비응항"
+    },
+    {
+      "id": "lucy",
+      "name": "루시호",
+      "adapter": "sunsang24",
+      "url": "https://lucy.sunsang24.com",
+      "phone": "010-5711-4455",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "루시호": {}
+      },
+      "note": "자동 발견(https://lucy.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 안내출항, 출조항, 비응항"
+    },
+    {
+      "id": "lukina",
+      "name": "5호",
+      "adapter": "sunsang24",
+      "url": "https://lukina.sunsang24.com",
+      "phone": "010-9076-8858",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "5호": {},
+        "2호": {},
+        "루키나호": {}
+      },
+      "note": "자동 발견(https://lukina.sunsang24.com) — 시험 수집 78건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항"
+    },
+    {
+      "id": "luna",
+      "name": "루나호",
+      "adapter": "sunsang24",
+      "url": "https://luna.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "루나호": {}
+      },
+      "note": "자동 발견(https://luna.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 물개항 전화 후보: 010-8259-5553, 010-4876-5557"
+    },
+    {
+      "id": "madoross",
+      "name": "마도로스호",
+      "adapter": "sunsang24",
+      "url": "https://madoross.sunsang24.com",
+      "phone": "010-9968-9745",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "마도로스호": {},
+        "유림호": {}
+      },
+      "note": "자동 발견(https://madoross.sunsang24.com) — 시험 수집 52건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 텐야텐빈출항, 출조항, 신촌항"
+    },
+    {
+      "id": "manmul",
+      "name": "VIP만물호",
+      "adapter": "sunsang24",
+      "url": "https://manmul.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "VIP만물호": {}
+      },
+      "note": "자동 발견(https://manmul.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 벌포항 전화 후보: 010-4402-8175, 010-8580-8175"
+    },
+    {
+      "id": "mansour",
+      "name": "만수르호",
+      "adapter": "sunsang24",
+      "url": "https://mansour.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "만수르호": {}
+      },
+      "note": "자동 발견(https://mansour.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 비응항 전화 후보: 010-7925-1336, 010-5571-3609"
+    },
+    {
+      "id": "mansunho",
+      "name": "만선호",
+      "adapter": "sunsang24",
+      "url": "https://mansunho.sunsang24.com",
+      "phone": "010-9323-7457",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "만선호": {}
+      },
+      "note": "자동 발견(https://mansunho.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 문의사항, 마검포항, 출조항"
+    },
+    {
+      "id": "marineho",
+      "name": "뉴마린호",
+      "adapter": "sunsang24",
+      "url": "https://marineho.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "뉴마린호": {},
+        "무야호": {},
+        "진주만호": {},
+        "빅토리호": {}
+      },
+      "note": "자동 발견(https://marineho.sunsang24.com) — 시험 수집 104건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 백사장항, 준수사항, 출조항 전화 후보: 010-4468-1115, 010-4315-3317, 010-8723-8458, 010-3094-7787"
+    },
+    {
+      "id": "mfish",
+      "name": "순영호",
+      "adapter": "sunsang24",
+      "url": "https://mfish.sunsang24.com",
+      "phone": "010-5234-9476",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "순영호": {},
+        "현주호": {},
+        "현성호": {},
+        "평안호": {},
+        "신성호": {},
+        "장안호": {}
+      },
+      "note": "자동 발견(https://mfish.sunsang24.com) — 시험 수집 156건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항"
+    },
+    {
+      "id": "mir",
+      "name": "미르호",
+      "adapter": "sunsang24",
+      "url": "https://mir.sunsang24.com",
+      "phone": "010-3352-6692",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "미르호": {}
+      },
+      "note": "자동 발견(https://mir.sunsang24.com) — 시험 수집 75건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 공현진항"
+    },
+    {
+      "id": "miracle",
+      "name": "미라클호",
+      "adapter": "sunsang24",
+      "url": "https://miracle.sunsang24.com",
+      "phone": "010-4562-8981",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "미라클호": {}
+      },
+      "note": "자동 발견(https://miracle.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 신전항"
+    },
+    {
+      "id": "muldori",
+      "name": "물돌이호",
+      "adapter": "sunsang24",
+      "url": "https://muldori.sunsang24.com",
+      "phone": "010-5496-0084",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "물돌이호": {}
+      },
+      "note": "자동 발견(https://muldori.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 오천항, 출조항"
+    },
+    {
+      "id": "myway",
+      "name": "마이웨이호",
+      "adapter": "sunsang24",
+      "url": "https://myway.sunsang24.com",
+      "phone": "010-8539-9436",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "마이웨이호": {}
+      },
+      "note": "자동 발견(https://myway.sunsang24.com) — 시험 수집 2건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 진두항"
+    },
+    {
+      "id": "nara",
+      "name": "나라2호",
+      "adapter": "sunsang24",
+      "url": "https://nara.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "나라2호": {}
+      },
+      "note": "자동 발견(https://nara.sunsang24.com) — 시험 수집 29건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 문어출항, 갈치입항, 출조항, 국동항 전화 후보: 010-4658-0007, 010-8601-1474"
+    },
+    {
+      "id": "newhanlyo",
+      "name": "뉴한려피싱호",
+      "adapter": "sunsang24",
+      "url": "https://newhanlyo.sunsang24.com",
+      "phone": "010-8746-2994",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "뉴한려피싱호": {},
+        "뉴한려피싱2호": {}
+      },
+      "note": "자동 발견(https://newhanlyo.sunsang24.com) — 시험 수집 52건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 국동항"
+    },
+    {
+      "id": "newsky",
+      "name": "뉴스카이호",
+      "adapter": "sunsang24",
+      "url": "https://newsky.sunsang24.com",
+      "phone": "010-4102-5415",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "뉴스카이호": {}
+      },
+      "note": "자동 발견(https://newsky.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 진행됩니다항, 변경사항, 경안내문의사항, 출조항"
+    },
+    {
+      "id": "newtaejinho",
+      "name": "뉴태진호",
+      "adapter": "sunsang24",
+      "url": "https://newtaejinho.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "뉴태진호": {}
+      },
+      "note": "자동 발견(https://newtaejinho.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 정상출항, 내평항 전화 후보: 010-9440-0689, 010-3836-8453, 010-2959-8453, 070-8891-8452"
+    },
+    {
+      "id": "ninedragon",
+      "name": "구룡호",
+      "adapter": "sunsang24",
+      "url": "https://ninedragon.sunsang24.com",
+      "phone": "010-2890-5744",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "구룡호": {}
+      },
+      "note": "자동 발견(https://ninedragon.sunsang24.com) — 시험 수집 21건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항"
+    },
+    {
+      "id": "np",
+      "name": "뉴피닉스호",
+      "adapter": "sunsang24",
+      "url": "https://np.sunsang24.com",
+      "phone": "010-7178-3800",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "뉴피닉스호": {}
+      },
+      "note": "자동 발견(https://np.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 첫출항, 일입항, 정상출항, 출조항"
+    },
+    {
+      "id": "nurifish",
+      "name": "뉴바이킹호",
+      "adapter": "sunsang24",
+      "url": "https://nurifish.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "뉴바이킹호": {}
+      },
+      "note": "자동 발견(https://nurifish.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 오천항, 변동사항, 만선입항, 출조항 전화 후보: 010-3588-0304, 010-5422-1352"
+    },
+    {
+      "id": "orion",
+      "name": "오리온1호",
+      "adapter": "sunsang24",
+      "url": "https://orion.sunsang24.com",
+      "phone": "010-9664-0033",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "오리온1호": {},
+        "오리온2호": {}
+      },
+      "note": "자동 발견(https://orion.sunsang24.com) — 시험 수집 52건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항"
+    },
+    {
+      "id": "pacific",
+      "name": "태평양호",
+      "adapter": "sunsang24",
+      "url": "https://pacific.sunsang24.com",
+      "phone": "010-3388-8152",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "태평양호": {}
+      },
+      "note": "자동 발견(https://pacific.sunsang24.com) — 시험 수집 4건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출항및입항, 임원항, 출조항"
+    },
+    {
+      "id": "parkpro",
+      "name": "박프로호",
+      "adapter": "sunsang24",
+      "url": "https://parkpro.sunsang24.com",
+      "phone": "010-9149-8200",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "박프로호": {}
+      },
+      "note": "자동 발견(https://parkpro.sunsang24.com) — 시험 수집 38건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항"
+    },
+    {
+      "id": "pigho",
+      "name": "꽃돼지호",
+      "adapter": "sunsang24",
+      "url": "https://pigho.sunsang24.com",
+      "phone": "010-9371-0741",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "꽃돼지호": {}
+      },
+      "note": "자동 발견(https://pigho.sunsang24.com) — 시험 수집 20건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 오천항"
+    },
+    {
+      "id": "poseidon",
+      "name": "포세이돈호",
+      "adapter": "sunsang24",
+      "url": "https://poseidon.sunsang24.com",
+      "phone": "010-8539-9436",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "포세이돈호": {}
+      },
+      "note": "자동 발견(https://poseidon.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항"
+    },
+    {
+      "id": "princeho",
+      "name": "프린스호",
+      "adapter": "sunsang24",
+      "url": "https://princeho.sunsang24.com",
+      "phone": "010-3667-5556",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "프린스호": {}
+      },
+      "note": "자동 발견(https://princeho.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 오천항"
+    },
+    {
+      "id": "pro",
+      "name": "샤크호",
+      "adapter": "sunsang24",
+      "url": "https://pro.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "샤크호": {},
+        "슈퍼마린호": {},
+        "킹마린호": {},
+        "프로호": {},
+        "해무니호": {},
+        "신성호": {},
+        "먹깨비호": {},
+        "에르메스호": {},
+        "아리랑호": {}
+      },
+      "note": "자동 발견(https://pro.sunsang24.com) — 시험 수집 225건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 비응항 전화 후보: 063-445-0510, 010-9475-6936, 010-3132-9007, 010-7247-7510, 010-9052-0757"
+    },
+    {
+      "id": "redfox",
+      "name": "레드폭스호",
+      "adapter": "sunsang24",
+      "url": "https://redfox.sunsang24.com",
+      "phone": "010-4439-3400",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "레드폭스호": {}
+      },
+      "note": "자동 발견(https://redfox.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 국동항"
+    },
+    {
+      "id": "redpulsegs",
+      "name": "뉴미라클호",
+      "adapter": "sunsang24",
+      "url": "https://redpulsegs.sunsang24.com",
+      "phone": "063-471-0070",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "뉴미라클호": {}
+      },
+      "note": "자동 발견(https://redpulsegs.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항"
+    },
+    {
+      "id": "redpulsehs",
+      "name": "스마트호",
+      "adapter": "sunsang24",
+      "url": "https://redpulsehs.sunsang24.com",
+      "phone": "010-3356-2973",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "스마트호": {}
+      },
+      "note": "자동 발견(https://redpulsehs.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 영목항, 출조항"
+    },
+    {
+      "id": "richard",
+      "name": "리차드호",
+      "adapter": "sunsang24",
+      "url": "https://richard.sunsang24.com",
+      "phone": "010-7584-7932",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "리차드호": {}
+      },
+      "note": "자동 발견(https://richard.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 신봉항"
+    },
+    {
+      "id": "rise",
+      "name": "라이즈호",
+      "adapter": "sunsang24",
+      "url": "https://rise.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "라이즈호": {}
+      },
+      "note": "자동 발견(https://rise.sunsang24.com) — 시험 수집 52건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 장고항, 출조항 전화 후보: 010-3634-5070, 010-4915-7914"
+    },
+    {
+      "id": "rkclgh",
+      "name": "자이언트호",
+      "adapter": "sunsang24",
+      "url": "https://rkclgh.sunsang24.com",
+      "phone": "010-5410-2027",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "자이언트호": {}
+      },
+      "note": "자동 발견(https://rkclgh.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 오천항"
+    },
+    {
+      "id": "rosemary",
+      "name": "로즈마리호",
+      "adapter": "sunsang24",
+      "url": "https://rosemary.sunsang24.com",
+      "phone": "010-8635-9886",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "로즈마리호": {}
+      },
+      "note": "자동 발견(https://rosemary.sunsang24.com) — 시험 수집 78건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 모슬포항"
+    },
+    {
+      "id": "samdeok",
+      "name": "삼덕레저호",
+      "adapter": "sunsang24",
+      "url": "https://samdeok.sunsang24.com",
+      "phone": "010-4586-6960",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "삼덕레저호": {}
+      },
+      "note": "자동 발견(https://samdeok.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 소수인워느출항, 시출항, 출조항, 삼덕항"
+    },
+    {
+      "id": "seamanho",
+      "name": "해맨호",
+      "adapter": "sunsang24",
+      "url": "https://seamanho.sunsang24.com",
+      "port": "방포항",
+      "phone": "010-6753-8114",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "해맨호": {}
+      },
+      "note": "자동 발견(https://seamanho.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다."
+    },
+    {
+      "id": "seo",
+      "name": "닥스호",
+      "adapter": "sunsang24",
+      "url": "https://seo.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "닥스호": {},
+        "뚱스호": {},
+        "포인트호": {},
+        "태헌호": {},
+        "해룡호": {}
+      },
+      "note": "자동 발견(https://seo.sunsang24.com) — 시험 수집 123건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 비응항 전화 후보: 010-9774-1551, 010-3166-4923, 063-466-6565"
+    },
+    {
+      "id": "seongyeon",
+      "name": "성연호",
+      "adapter": "sunsang24",
+      "url": "https://seongyeon.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "성연호": {}
+      },
+      "note": "자동 발견(https://seongyeon.sunsang24.com) — 시험 수집 6건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 임원항, 출조항 전화 후보: 010-4818-4804, 010-2390-8559"
+    },
+    {
+      "id": "sharkmarine",
+      "name": "샤크마린호",
+      "adapter": "sunsang24",
+      "url": "https://sharkmarine.sunsang24.com",
+      "phone": "010-8505-8321",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "샤크마린호": {}
+      },
+      "note": "자동 발견(https://sharkmarine.sunsang24.com) — 시험 수집 52건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 공현진항"
+    },
+    {
+      "id": "ship",
+      "name": "초월호",
+      "adapter": "sunsang24",
+      "url": "https://ship.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "초월호": {}
+      },
+      "note": "자동 발견(https://ship.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 모항항, 어은돌항 전화 후보: 010-6266-2918, 010-6477-5746"
+    },
+    {
+      "id": "sinara",
+      "name": "신아라호",
+      "adapter": "sunsang24",
+      "url": "https://sinara.sunsang24.com",
+      "phone": "010-3596-9157",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "신아라호": {}
+      },
+      "note": "자동 발견(https://sinara.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 속천항"
+    },
+    {
+      "id": "sinjinho",
+      "name": "신진호",
+      "adapter": "sunsang24",
+      "url": "https://sinjinho.sunsang24.com",
+      "phone": "010-2058-1883",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "신진호": {}
+      },
+      "note": "자동 발견(https://sinjinho.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항"
+    },
+    {
+      "id": "sky",
+      "name": "스카이호",
+      "adapter": "sunsang24",
+      "url": "https://sky.sunsang24.com",
+      "phone": "010-7130-7134",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "스카이호": {}
+      },
+      "note": "자동 발견(https://sky.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 상세사항, 기본사항, 주의사항, 출조항"
+    },
+    {
+      "id": "skyho",
+      "name": "스카이호",
+      "adapter": "sunsang24",
+      "url": "https://skyho.sunsang24.com",
+      "phone": "010-8898-4913",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "스카이호": {}
+      },
+      "note": "자동 발견(https://skyho.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 백야항"
+    },
+    {
+      "id": "smgfishing",
+      "name": "행복호",
+      "adapter": "sunsang24",
+      "url": "https://smgfishing.sunsang24.com",
+      "phone": "010-8898-0611",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "행복호": {},
+        "이배다호": {},
+        "히트호": {}
+      },
+      "note": "자동 발견(https://smgfishing.sunsang24.com) — 시험 수집 78건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 출조항, 비응항"
+    },
+    {
+      "id": "specialdream",
+      "name": "8호",
+      "adapter": "sunsang24",
+      "url": "https://specialdream.sunsang24.com",
+      "phone": "010-5079-3352",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "8호": {},
+        "5호": {},
+        "6호": {},
+        "7호": {}
+      },
+      "note": "자동 발견(https://specialdream.sunsang24.com) — 시험 수집 79건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 일입항, 출조항, 녹동항"
+    },
+    {
+      "id": "sseondeo",
+      "name": "뉴썬더호",
+      "adapter": "sunsang24",
+      "url": "https://sseondeo.sunsang24.com",
+      "phone": "010-8598-5965",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "뉴썬더호": {}
+      },
+      "note": "자동 발견(https://sseondeo.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 문어조항, 출조항, 마량항"
+    },
+    {
+      "id": "stallone",
+      "name": "스텔론1호",
+      "adapter": "sunsang24",
+      "url": "https://stallone.sunsang24.com",
+      "phone": "010-6534-6812",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "스텔론1호": {},
+        "스텔론2호": {},
+        "스텔론3호": {},
+        "넘버원1호": {}
+      },
+      "note": "자동 발견(https://stallone.sunsang24.com) — 시험 수집 104건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 진두항"
+    },
+    {
+      "id": "star",
+      "name": "파티호",
+      "adapter": "sunsang24",
+      "url": "https://star.sunsang24.com",
+      "phone": "010-3334-7777",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "파티호": {},
+        "아라온피싱호": {},
+        "태양호": {},
+        "뉴해성호": {}
+      },
+      "note": "자동 발견(https://star.sunsang24.com) — 시험 수집 94건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 영목항, 초전항, 출조항"
+    },
+    {
+      "id": "stealth",
+      "name": "스텔스호",
+      "adapter": "sunsang24",
+      "url": "https://stealth.sunsang24.com",
+      "phone": "010-5629-3878",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "스텔스호": {}
+      },
+      "note": "자동 발견(https://stealth.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 비응항"
+    },
+    {
+      "id": "sunghoon",
+      "name": "성훈호",
+      "adapter": "sunsang24",
+      "url": "https://sunghoon.sunsang24.com",
+      "phone": "010-7942-3389",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "성훈호": {}
+      },
+      "note": "자동 발견(https://sunghoon.sunsang24.com) — 시험 수집 50건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 강릉항"
+    },
+    {
+      "id": "sunstarho",
+      "name": "썬스타호",
+      "adapter": "sunsang24",
+      "url": "https://sunstarho.sunsang24.com",
+      "phone": "010-9030-0819",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "썬스타호": {},
+        "은아3호": {}
+      },
+      "note": "자동 발견(https://sunstarho.sunsang24.com) — 시험 수집 76건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항"
+    },
+    {
+      "id": "taeanfishing",
+      "name": "어해루호",
+      "adapter": "sunsang24",
+      "url": "https://taeanfishing.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "어해루호": {},
+        "신진자연호": {},
+        "어해루2호": {}
+      },
+      "note": "자동 발견(https://taeanfishing.sunsang24.com) — 시험 수집 71건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 전달사항, 출조항, 신진도항 전화 후보: 010-3040-2781, 010-9172-0140, 010-8754-9858, 010-8007-1323"
+    },
+    {
+      "id": "taebaekho",
+      "name": "태백8호",
+      "adapter": "sunsang24",
+      "url": "https://taebaekho.sunsang24.com",
+      "phone": "010-5189-2653",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "태백8호": {},
+        "대한호": {}
+      },
+      "note": "자동 발견(https://taebaekho.sunsang24.com) — 시험 수집 52건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 준비사항, 출조항, 마검포항"
+    },
+    {
+      "id": "taegeukho",
+      "name": "태극호",
+      "adapter": "sunsang24",
+      "url": "https://taegeukho.sunsang24.com",
+      "phone": "010-3433-4109",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "태극호": {},
+        "태극1호": {}
+      },
+      "note": "자동 발견(https://taegeukho.sunsang24.com) — 시험 수집 52건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항"
+    },
+    {
+      "id": "taesung",
+      "name": "태성호",
+      "adapter": "sunsang24",
+      "url": "https://taesung.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "태성호": {}
+      },
+      "note": "자동 발견(https://taesung.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항 전화 후보: 01025998908, 010-2599-8908"
+    },
+    {
+      "id": "tamra",
+      "name": "탐라호",
+      "adapter": "sunsang24",
+      "url": "https://tamra.sunsang24.com",
+      "phone": "010-4431-1050",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "탐라호": {}
+      },
+      "note": "자동 발견(https://tamra.sunsang24.com) — 시험 수집 11건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 임원항, 출조항"
+    },
+    {
+      "id": "thales",
+      "name": "탈레스호",
+      "adapter": "sunsang24",
+      "url": "https://thales.sunsang24.com",
+      "phone": "010-4690-4850",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "탈레스호": {}
+      },
+      "note": "자동 발견(https://thales.sunsang24.com) — 시험 수집 52건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 두모항"
+    },
+    {
+      "id": "town",
+      "name": "스텔스호",
+      "adapter": "sunsang24",
+      "url": "https://town.sunsang24.com",
+      "phone": "010-9224-3878",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "스텔스호": {}
+      },
+      "note": "자동 발견(https://town.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 비응항"
+    },
+    {
+      "id": "tpho",
+      "name": "태평호",
+      "adapter": "sunsang24",
+      "url": "https://tpho.sunsang24.com",
+      "phone": "010-6225-4570",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "태평호": {}
+      },
+      "note": "자동 발견(https://tpho.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 전곡항, 출조항"
+    },
+    {
+      "id": "tsl",
+      "name": "테슬란호",
+      "adapter": "sunsang24",
+      "url": "https://tsl.sunsang24.com",
+      "phone": "010-8654-1714",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "테슬란호": {}
+      },
+      "note": "자동 발견(https://tsl.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 인천남항, 출조항"
+    },
+    {
+      "id": "twin",
+      "name": "트윈스타호",
+      "adapter": "sunsang24",
+      "url": "https://twin.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "트윈스타호": {}
+      },
+      "note": "자동 발견(https://twin.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 기상악화로출항, 매일출항, 시출항, 출조항 전화 후보: 01086368723, 010-8636-8723"
+    },
+    {
+      "id": "urbis",
+      "name": "어비스호",
+      "adapter": "sunsang24",
+      "url": "https://urbis.sunsang24.com",
+      "phone": "010-2835-8683",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "어비스호": {},
+        "에프원호": {},
+        "바다하리호": {}
+      },
+      "note": "자동 발견(https://urbis.sunsang24.com) — 시험 수집 77건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 신시도항, 출조항"
+    },
+    {
+      "id": "vancouver",
+      "name": "뉴벤쿠버호",
+      "adapter": "sunsang24",
+      "url": "https://vancouver.sunsang24.com",
+      "phone": "010-4818-2397",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "뉴벤쿠버호": {}
+      },
+      "note": "자동 발견(https://vancouver.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 구조라항"
+    },
+    {
+      "id": "venice",
+      "name": "베니스호",
+      "adapter": "sunsang24",
+      "url": "https://venice.sunsang24.com",
+      "phone": "010-3202-3448",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "베니스호": {},
+        "럭키호": {},
+        "모비딕호": {}
+      },
+      "note": "자동 발견(https://venice.sunsang24.com) — 시험 수집 84건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 비응항, 해경비응항, 출조항"
+    },
+    {
+      "id": "veteranfishing",
+      "name": "뉴베테랑호",
+      "adapter": "sunsang24",
+      "url": "https://veteranfishing.sunsang24.com",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "뉴베테랑호": {}
+      },
+      "note": "자동 발견(https://veteranfishing.sunsang24.com) — 시험 수집 28건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 진두항 전화 후보: 010-3036-5368, 010-8570-5368"
+    },
+    {
+      "id": "viking",
+      "name": "바이킹호",
+      "adapter": "sunsang24",
+      "url": "https://viking.sunsang24.com",
+      "phone": "010-5405-7732",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "바이킹호": {}
+      },
+      "note": "자동 발견(https://viking.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 오천항, 출조항"
+    },
+    {
+      "id": "vtrfishing",
+      "name": "가디언호",
+      "adapter": "sunsang24",
+      "url": "https://vtrfishing.sunsang24.com",
+      "phone": "010-4405-2690",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "가디언호": {},
+        "대양호": {},
+        "베테랑호": {}
+      },
+      "note": "자동 발견(https://vtrfishing.sunsang24.com) — 시험 수집 56건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 규정안내출항, 시입항, 출조항, 무창포항"
+    },
+    {
+      "id": "wangnuni",
+      "name": "왕눈이호",
+      "adapter": "sunsang24",
+      "url": "https://wangnuni.sunsang24.com",
+      "phone": "010-3602-6096",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "왕눈이호": {}
+      },
+      "note": "자동 발견(https://wangnuni.sunsang24.com) — 시험 수집 32건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 잠두항"
+    },
+    {
+      "id": "welcome",
+      "name": "왔어호",
+      "adapter": "sunsang24",
+      "url": "https://welcome.sunsang24.com",
+      "phone": "010-2853-8252",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "왔어호": {}
+      },
+      "note": "자동 발견(https://welcome.sunsang24.com) — 시험 수집 52건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 한림항"
+    },
+    {
+      "id": "whitefox",
+      "name": "레드폭스호",
+      "adapter": "sunsang24",
+      "url": "https://whitefox.sunsang24.com",
+      "phone": "010-2486-7771",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "레드폭스호": {}
+      },
+      "note": "자동 발견(https://whitefox.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 국동항"
+    },
+    {
+      "id": "yejiqueen",
+      "name": "예지퀸호",
+      "adapter": "sunsang24",
+      "url": "https://yejiqueen.sunsang24.com",
+      "phone": "010-3026-3425",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "예지퀸호": {}
+      },
+      "note": "자동 발견(https://yejiqueen.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 전곡항, 출조항"
+    },
+    {
+      "id": "yeongjae",
+      "name": "영재호",
+      "adapter": "sunsang24",
+      "url": "https://yeongjae.sunsang24.com",
+      "phone": "010-9855-2676",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "영재호": {}
+      },
+      "note": "자동 발견(https://yeongjae.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 묵호항"
+    },
+    {
+      "id": "yong",
+      "name": "용성호",
+      "adapter": "sunsang24",
+      "url": "https://yong.sunsang24.com",
+      "phone": "010-7634-0990",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "용성호": {}
+      },
+      "note": "자동 발견(https://yong.sunsang24.com) — 시험 수집 30건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 조항사항, 쭈꾸미조항, 출조항, 장곰포항"
+    },
+    {
+      "id": "yongma",
+      "name": "용마호",
+      "adapter": "sunsang24",
+      "url": "https://yongma.sunsang24.com",
+      "phone": "010-7711-7889",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "용마호": {}
+      },
+      "note": "자동 발견(https://yongma.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 공현진항"
+    },
+    {
+      "id": "ysoceanstar",
+      "name": "오션스타1호",
+      "adapter": "sunsang24",
+      "url": "https://ysoceanstar.sunsang24.com",
+      "phone": "010-7381-5882",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "오션스타1호": {},
+        "오션스타2호": {},
+        "오션스타3호": {}
+      },
+      "note": "자동 발견(https://ysoceanstar.sunsang24.com) — 시험 수집 78건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 국동항"
+    },
+    {
+      "id": "yurim",
+      "name": "유림호",
+      "adapter": "sunsang24",
+      "url": "https://yurim.sunsang24.com",
+      "phone": "010-3686-3388",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "유림호": {}
+      },
+      "note": "자동 발견(https://yurim.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 내일출항, 출조항, 견내량항"
+    },
+    {
+      "id": "yurimho",
+      "name": "유림호",
+      "adapter": "sunsang24",
+      "url": "https://yurimho.sunsang24.com",
+      "phone": "010-9347-2635",
+      "mode": "static",
+      "enabled": true,
+      "boats": {
+        "유림호": {}
+      },
+      "note": "자동 발견(https://yurimho.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 미수항"
     }
   ]
 }
