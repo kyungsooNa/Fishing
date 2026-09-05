@@ -418,6 +418,17 @@ test('generic: 표기만 같으면 자체 사이트도 같은 파서로 읽는�
   assert.equal(trips[0].phone, '010-5402-0521', '합치기용 신원이 실려야 한다');
 });
 
+test('generic: 푸른바다의 마성호·뉴마성호를 선박명으로 읽는다', () => {
+  const site = {
+    id: 'blueseaho', name: '오천항 푸른바다낚시',
+    boats: { 마성호: {}, 뉴마성호: {} },
+  };
+  const trips = parseRows(site, `
+    <table><tr><td>9/6(일)</td><td>뉴마성호</td><td>쭈꾸미</td><td>남은자리 2명</td></tr>
+      <tr><td>9/6(일)</td><td>마성호</td><td>쭈꾸미</td><td>남은자리 4명</td></tr></table>`, 'https://x');
+  assert.deepEqual(trips.map((t) => t.boat), ['뉴마성호', '마성호']);
+});
+
 test('generic: 주소만 적으면 그 한 장, 날짜별 사이트면 날짜만큼', () => {
   const base = 'https://www.blueseaho.com/reservation';
   assert.deepEqual(pageUrls({ url: base }), [base]);
