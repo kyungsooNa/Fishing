@@ -343,6 +343,7 @@
       "phone": "010-4008-1622",
       "source": "detail",
       "windowDays": 7,
+      "seatsTotal": 21,
       "enabled": true,
       "note": "청광호 예약현황 페이지. 사이트 하단 안내의 출조항·대표전화 기준으로 등록했습니다."
     },
