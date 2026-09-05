@@ -180,6 +180,19 @@ test('thefishing: detail — 입금 명단의 좌석번호를 세서 잔여석�
   assert.equal(trip.species, '우럭');
 });
 
+test('thefishing: 청광호는 등록된 21석을 사용하고 예약완료를 마감으로 읽는다', () => {
+  const site = { id: 'chungkwang', name: '영목항 청광호', seatsTotal: 21 };
+  const html = `
+    <h3>2026년 09월 06일(일요일)</h3>
+    <div>남은자리 청광호 쭈갑출조합니다 예약 강가현님(3) / 윤진형님(2)
+      / 김프로님(2) / 임성현님(4) / 김태훈님(4) / 조성범님(4)
+      / 윤석희님(1) / 강병진님(1) 예약완료</div>`;
+  const [trip] = parseDetail(site, html, 'https://x');
+  assert.equal(trip.seatsLeft, 0);
+  assert.equal(trip.seatsTotal, 21);
+  assert.equal(trip.status, STATUS.CLOSED);
+});
+
 test('thefishing: 플랫폼 이름은 배로 등록하지 않는다', () => {
   const site = {
     id: 'ssfish', name: '무창포 선상낚시', excludeBoats: ['무창포 선상낚시'],

@@ -1836,10 +1836,10 @@
       "hours": null,
       "species": "주꾸미",
       "tide": null,
-      "status": "open",
+      "status": "closed",
       "statusText": "선박명 예 약 현 황 남은자리 청광호 쭈갑출조합니다 낚시종류 쭈갑출조 예약 강가현님(3) / 윤진형님(2) / 김프로님(2) / 임성현님(4) / 김태훈님(4) / 조성범님(4) / 윤석희님(1) / 강병진님(1) 대기자 곽윤태님(1) / 김형진님(2) / 김우시님(1) / 조범준님(1) / 연철흠님(3) / 방기원님(1) / 장원영님(1) / 양철민님(2",
-      "seatsLeft": 9,
-      "seatsTotal": 9,
+      "seatsLeft": 0,
+      "seatsTotal": 21,
       "price": null,
       "url": "http://chungkwangho.net/index.php?mid=bk&year=2026&month=9&day=5"
     },
