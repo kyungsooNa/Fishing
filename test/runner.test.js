@@ -20,6 +20,21 @@ async function fixture(sites, prevData = null) {
 const mockSite = { id: 'mock', name: '예시', adapter: '_mock', url: 'https://example.invalid' };
 const brokenSite = { id: 'broken', name: '깨진곳', adapter: '_nonexistent', url: 'https://example.invalid' };
 
+test('서버가 다른 사이트는 동시에 받고, 결과 순서는 registry 그대로다', async () => {
+  // 한 줄로 세우면 사이트 수만큼 대기가 쌓입니다(284곳에서 한 바퀴가 한 시간을 넘겼습니다).
+  // 동시에 받되 저장 순서는 실행마다 뒤집히면 안 됩니다 — diff가 매번 통째로 바뀝니다.
+  const sites = [
+    { ...mockSite, id: 'a', url: 'https://a.example.com' },
+    { ...mockSite, id: 'b', url: 'https://b.otherhost.com' },
+    { ...mockSite, id: 'c', url: 'https://c.example.com' },
+  ];
+  const { registryPath, dataPath } = await fixture(sites);
+  const { data } = await runAll({ registryPath, dataPath, days: 21 });
+
+  assert.deepEqual(Object.keys(data.sites), ['a', 'b', 'c'], 'registry 순서 그대로여야 합니다');
+  assert.ok(data.trips.length > 0);
+});
+
 test('수집 결과에 등록 출처를 실어 보낸다 — 서버 없는 화면도 수동/자동을 안다', async () => {
   const { registryPath, dataPath } = await fixture([
     { ...mockSite, addedBy: 'discover' },
