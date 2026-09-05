@@ -333,6 +333,29 @@
       "note": "월별 예약현황(month_view.php)을 날짜별 바깥 행 기준으로 읽습니다. 홍원항 출항, 의지호 정원 15명, 예약문의 010-6422-2497."
     },
     {
+      "id": "chungkwang",
+      "name": "영목항 청광호",
+      "adapter": "thefishing",
+      "url": "http://chungkwangho.net/index.php?mid=bk",
+      "port": "영목항",
+      "phone": "010-4008-1622",
+      "source": "detail",
+      "windowDays": 7,
+      "enabled": true,
+      "note": "청광호 예약현황 페이지. 사이트 하단 안내의 출조항·대표전화 기준으로 등록했습니다."
+    },
+    {
+      "id": "chungnamho",
+      "name": "충남호",
+      "adapter": "thefishing",
+      "url": "http://www.chungnamho.com/index.php?mid=bk",
+      "phone": "010-8820-6514",
+      "source": "detail",
+      "windowDays": 7,
+      "enabled": true,
+      "note": "충남호 예약현황 페이지. 예약 표에서 정원과 잔여 상태를 읽고, 출항항구 표기가 확인되면 port를 추가합니다."
+    },
+    {
       "id": "fishinggate",
       "name": "안면도 피싱게이트",
       "adapter": "sunsang24",
