@@ -250,11 +250,18 @@ function dayLabel(d) {
 // 필터는 하나씩 걸어야 하니 나눠서 봅니다 — 쭈갑 출조는 주꾸미로도, 갑오징어로도 잡힙니다.
 const speciesOf = (t) => String(t.species ?? '').split('·').filter(Boolean);
 
+// 항구는 registry에 사람이 적습니다. 지금은 사이트 288곳 중 262곳이 비어 있어서
+// 출조 대부분에 항구가 없습니다. 그냥 두면 지역·항구 필터를 거는 순간 그 배들이
+// 이유 없이 사라집니다. 골라서 볼 수 있게 한 칸으로 모읍니다.
+const NO_PORT = '(항구 미상)';
+const portOf = (t) => t.port ?? NO_PORT;
+
 function regionOf(port) {
-  const parts = String(port ?? '').trim().split(/\s+/);
+  if (!port) return NO_PORT;
+  const parts = String(port).trim().split(/\s+/);
   if (parts.length >= 3) return `${parts[0]} ${parts[1]}`;
   if (parts.length >= 2 && /(?:시|군|구)$/.test(parts[1])) return `${parts[0]} ${parts[1]}`;
-  return parts[0] ?? '';
+  return parts[0] ?? NO_PORT;
 }
 
 function fillOptions(control, values, defaults = []) {
@@ -311,7 +318,7 @@ function visibleTrips() {
   return DATA.trips.filter((t) =>
     (!favOnly || FAVS.has(favKey(t))) &&
     (!site.size || site.has(t.siteName) || (t.sources ?? []).some((x) => site.has(x.siteName))) &&
-    hasSelection(region, regionOf(t.port)) && hasSelection(port, t.port) &&
+    hasSelection(region, regionOf(t.port)) && hasSelection(port, portOf(t)) &&
     (!species.size || speciesOf(t).some((s) => species.has(s))) && hasSelection(date, t.date) &&
     hasSelection(session, t.session) &&
     (!q || (t.boat ?? '').includes(q)) &&
@@ -420,7 +427,7 @@ function loadData() { return fetch('data.json?t=' + Date.now(), { cache: 'no-sto
     migrateFavs(d.trips);
     fillOptions($('f-site'), d.trips.map((t) => t.siteName));
     fillOptions($('f-region'), d.trips.map((t) => regionOf(t.port)));
-    fillOptions($('f-port'), d.trips.map((t) => t.port));
+    fillOptions($('f-port'), d.trips.map(portOf));
     fillOptions($('f-species'), d.trips.flatMap(speciesOf), ['갑오징어', '주꾸미']);
     fillOptions($('f-session'), d.trips.map((t) => t.session));
     fillOptions($('f-date'), d.trips.map((t) => t.date));
@@ -515,8 +522,14 @@ function drawMap() {
       .addTo(markers);
   }
 
+  // 지도에 못 찍은 배를 말없이 빼면 "왜 이 배가 안 보이지"가 됩니다. 몇 건이 왜 빠졌는지 적습니다.
+  const hidden = visibleTrips().filter((t) => !t.port || !DATA.ports?.[t.port]);
+  const noPort = hidden.filter((t) => !t.port).length;
+  const noCoord = new Set(hidden.filter((t) => t.port).map((t) => t.port));
   $('maphint').textContent = Object.keys(DATA.ports ?? {}).length
     ? `항구 ${byPort.size}곳 · 마커를 누르면 같은 지역 항구만 봅니다. 좌표는 대략값이라 실제 선착장과 다를 수 있습니다.`
+      + (noPort ? ` · 항구를 모르는 출조 ${noPort}건은 지도에 없습니다(시스템 관리에서 항구를 적으면 나옵니다).` : '')
+      + (noCoord.size ? ` · 좌표 없는 항구 ${noCoord.size}곳은 sites/ports.json에 넣어야 찍힙니다.` : '')
     : '항구 좌표가 없습니다 — sites/ports.json을 채우세요.';
   if (bounds.length) map.fitBounds(bounds, { padding: [40, 40], maxZoom: 10 });
 }
