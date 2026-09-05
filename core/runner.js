@@ -3,7 +3,7 @@
 import { readFile } from 'node:fs/promises';
 import { mergeDuplicates } from './merge.js';
 import { platformOf } from './platform.js';
-import { kstDate } from './when.js';
+import { kstDate, kstMinutes } from './when.js';
 import { loadPorts, usedPorts } from './ports.js';
 import { closeBrowser, describeError, gapKey } from './fetcher.js';
 import { load, save } from './store.js';
@@ -34,7 +34,7 @@ export async function collectSite(site) {
  * 등록된 사이트를 모두 돌고 data.json을 갱신합니다.
  * 실패한 사이트는 직전 수집 결과를 그대로 남겨둡니다 — 화면이 갑자기 비지 않도록.
  */
-export async function runAll({ only = null, days = 21, registryPath, dataPath, portsPath, dryRun = false } = {}) {
+export async function runAll({ only = null, days = 21, registryPath, dataPath, portsPath, dryRun = false, now = new Date() } = {}) {
   const registry = await loadRegistry(registryPath);
   const targets = registry.filter((s) => (only ? s.id === only : s.enabled !== false));
 
@@ -103,7 +103,7 @@ export async function runAll({ only = null, days = 21, registryPath, dataPath, p
     targets.filter((site) => statusById.has(site.id)).map((site) => [site.id, statusById.get(site.id)]),
   );
 
-  const trips = sortTrips(mergeDuplicates(pruneOld(collected, days)));
+  const trips = sortTrips(mergeDuplicates(pruneOld(collected, days, now)));
   const openings = findOpenings(prev.trips ?? [], trips, failed);
 
   // 지도에 찍을 항구. 좌표가 없는 항구는 지도에서 빠지므로 로그로 알려줍니다.
@@ -120,7 +120,17 @@ export async function runAll({ only = null, days = 21, registryPath, dataPath, p
 export function pruneOld(trips, days, now = new Date()) {
   const from = kstDate(0, now);
   const to = kstDate(days, now);
-  return trips.filter((t) => t.date >= from && t.date <= to);
+  const minutes = kstMinutes(now);
+  return trips.filter((t) =>
+    t.date >= from &&
+    t.date <= to &&
+    !(t.date === from && t.departAt && toMinutes(t.departAt) <= minutes),
+  );
+}
+
+function toMinutes(value) {
+  const match = String(value).match(/^(\d{1,2}):(\d{2})/);
+  return match ? Number(match[1]) * 60 + Number(match[2]) : Infinity;
 }
 
 function sortTrips(trips) {

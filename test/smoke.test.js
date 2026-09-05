@@ -63,7 +63,9 @@ test('수집 한 바퀴 — 받아오고, 읽고, 합치고, 저장한다', asyn
   }));
 
   try {
-    const { data, failed } = await runAll({ registryPath, dataPath, days: 21 });
+    const { data, failed } = await runAll({
+      registryPath, dataPath, days: 21, now: new Date('2026-09-03T15:00:00Z'),
+    });
 
     assert.deepEqual(failed, [], '실패한 사이트가 없어야 한다');
     assert.equal(data.trips.length, 2);
@@ -114,7 +116,9 @@ test('수집 한 바퀴 — 자리가 나면 알림거리로 잡힌다', async (
   }));
 
   try {
-    const { openings } = await runAll({ registryPath, dataPath, days: 21 });
+    const { openings } = await runAll({
+      registryPath, dataPath, days: 21, now: new Date('2026-09-03T15:00:00Z'),
+    });
     assert.equal(openings.length, 1, '마감이던 배에 자리가 났으면 알린다');
     assert.equal(openings[0].reason, 'reopened');
     assert.equal(openings[0].seatsLeft, 3);

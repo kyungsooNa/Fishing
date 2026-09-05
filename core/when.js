@@ -17,6 +17,12 @@ export function kstDate(offsetDays = 0, now = new Date()) {
   return shifted(offsetDays, now).toISOString().slice(0, 10);
 }
 
+/** 한국시간의 현재 시각을 분 단위로 반환합니다. 출항 시각 비교에 씁니다. */
+export function kstMinutes(now = new Date()) {
+  const d = shifted(0, now);
+  return d.getUTCHours() * 60 + d.getUTCMinutes();
+}
+
 /** 한국 기준 연월. "202609" */
 export function kstYm(offsetMonths = 0, now = new Date()) {
   const d = shifted(0, now);

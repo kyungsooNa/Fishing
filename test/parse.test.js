@@ -180,6 +180,16 @@ test('thefishing: detail — 입금 명단의 좌석번호를 세서 잔여석�
   assert.equal(trip.species, '우럭');
 });
 
+test('thefishing: 플랫폼 이름은 배로 등록하지 않는다', () => {
+  const site = {
+    id: 'ssfish', name: '무창포 선상낚시', excludeBoats: ['무창포 선상낚시'],
+  };
+  const html = `
+    <h3>2026년 09월 05일(토요일)</h3>
+    <div>운항시간 23:00 예약하기 무창포 선상낚시 쭈꾸미</div>`;
+  assert.deepEqual(parseDetail(site, html, 'https://x'), []);
+});
+
 test('thefishing: detail — 남은자리 예약완료는 시즌 숫자를 잔여석으로 보지 않는다', () => {
   const site = { id: 'mansu', name: '영흥도 만수피싱', seatsTotal: 22, url: 'https://x?mid=bk' };
   const html = `
