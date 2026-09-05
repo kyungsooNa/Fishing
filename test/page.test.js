@@ -28,6 +28,11 @@ test('주요 필터는 다중 선택 메뉴다', () => {
   assert.match(inline, /selectedValues\('f-site'\)/);
 });
 
+test('어종 필터는 갑오징어·주꾸미·쭈꾸미를 기본 선택한다', () => {
+  assert.match(inline, /fillOptions\(\$\('f-species'\),[\s\S]*\['갑오징어', '주꾸미', '쭈꾸미'\]\)/);
+  assert.match(inline, /input\.checked = defaults\.includes\(v\)/);
+});
+
 test('data.json은 화면이 기대하는 모양이다', async () => {
   const data = JSON.parse(await readFile('docs/data.json', 'utf8'));
   for (const key of ['generatedAt', 'sites', 'trips']) {
