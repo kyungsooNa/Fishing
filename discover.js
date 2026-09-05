@@ -178,7 +178,14 @@ export function adapterPlan(url) {
 // 아예 "probe"라는 배가 생겼습니다). 눈에 띄는 값을 넣고 나중에 걸러냅니다.
 const PLACEHOLDER = '(이름미상)';
 
-export async function probe(url, { days = 7 } = {}) {
+/**
+ * days를 짧게 잡는 이유: 여기서 알고 싶은 건 "이 주소가 우리 어댑터로 읽히느냐"
+ * 하나뿐입니다. 그런데 더피싱 상세 방식은 날짜마다 요청을 하나씩 보내고 호스트당
+ * 3초를 쉬므로, 7일치면 사이트 하나에 20초가 넘습니다(242곳이면 한 시간이 넘습니다).
+ * 이틀이면 읽히는지 아닌지는 똑같이 알 수 있습니다. 실제 수집은 registry에 올라간
+ * 뒤 collect.js가 제 날짜 수(21일)로 합니다.
+ */
+export async function probe(url, { days = 2 } = {}) {
   const tried = [];
 
   for (const plan of adapterPlan(url)) {
