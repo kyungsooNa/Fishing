@@ -46,6 +46,14 @@ test('수집 결과에 등록 출처를 실어 보낸다 — 서버 없는 화�
   assert.equal(data.sites.byhand.addedBy, null, '손으로 넣은 곳은 비어 있습니다');
 });
 
+test('수집 결과에서 registry 제외 배 이름을 제거한다', async () => {
+  const { registryPath, dataPath } = await fixture([
+    { ...mockSite, id: 'ssfish', excludeBoats: ['모형호'] },
+  ]);
+  const { data } = await runAll({ registryPath, dataPath, days: 21 });
+  assert.ok(data.trips.every((trip) => trip.boat !== '모형호'));
+});
+
 test('한 사이트가 죽어도 나머지는 수집된다', async () => {
   const { registryPath, dataPath } = await fixture([mockSite, brokenSite]);
   const { data, failed } = await runAll({ registryPath, dataPath, days: 21 });

@@ -27,7 +27,8 @@ export async function collectSite(site) {
   const { collect } = await import(`../adapters/${site.adapter}.js`);
   const trips = (await collect(site)) ?? [];
   // 날짜 없는 행은 화면에서 정렬도 비교도 안 되므로 버립니다.
-  return trips.filter((t) => t && t.date);
+  // 사이트 제목이나 플랫폼명이 배 이름으로 섞여 들어오는 경우도 여기서 한 번 더 거릅니다.
+  return trips.filter((t) => t && t.date && !site.excludeBoats?.includes(t.boat));
 }
 
 /**
