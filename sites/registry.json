@@ -272,6 +272,21 @@
       "note": "무창포힐링호.kr. 충남 보령시 웅천읍 무챙이2길 24, 무창포항 입구 해양경찰서 출장소 옆. 출조점 010-6480-0115 / 선장 010-3321-3342. 정원 미확인이라 seatsTotal은 비웠습니다."
     },
     {
+      "id": "daejinmcp",
+      "name": "무창포 대진피싱",
+      "adapter": "thefishing",
+      "url": "https://xn--vk1b951az7etxm.com/index.php?mid=bk",
+      "port": "충남 보령 무창포항",
+      "phone": "010-8348-0305",
+      "source": "detail",
+      "windowDays": 7,
+      "enabled": true,
+      "boats": {
+        "대진피싱": {}
+      },
+      "note": "무창포 대진피싱&펜션 예약 페이지에서 확인했습니다. 대진피싱 정원은 확인되지 않아 seatsTotal은 비웠습니다."
+    },
+    {
       "id": "hanpro",
       "name": "한프로피싱",
       "adapter": "thefishing",
