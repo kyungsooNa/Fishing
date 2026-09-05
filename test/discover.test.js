@@ -3,7 +3,7 @@
 
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { subdomainsFromCrt, linksFrom, adapterPlan, pickPhone, pickPort, idFor, entryFor } from '../discover.js';
+import { subdomainsFromCrt, hostsFromCdx, linksFrom, adapterPlan, pickPhone, pickPort, idFor, entryFor } from '../discover.js';
 
 test('인증서 로그에서 선사 서브도메인만 추린다', () => {
   const rows = [
@@ -15,6 +15,25 @@ test('인증서 로그에서 선사 서브도메인만 추린다', () => {
     { name_value: 'sunsang24.com.evil.example' },   // 도메인이 다릅니다
   ];
   assert.deepEqual(subdomainsFromCrt(rows, 'sunsang24.com'), [
+    'akbari.sunsang24.com',
+    'nature.sunsang24.com',
+  ]);
+});
+
+test('웹 아카이브가 긁어둔 주소에서 선사 서브도메인만 추린다', () => {
+  // 인증서 로그가 와일드카드뿐이라 아무것도 못 줄 때 쓰는 소스입니다.
+  // 첫 줄은 머리글이고, 같은 호스트가 수백 줄씩 반복됩니다.
+  const rows = [
+    ['original'],
+    ['http://akbari.sunsang24.com/ship/schedule_fleet'],
+    ['https://akbari.sunsang24.com/'],
+    ['http://NATURE.sunsang24.com:80/ship/schedule_fleet'],
+    ['http://assets.sunsang24.com/css/style.css'],   // 플랫폼 설비
+    ['http://sunsang24.com/'],                       // 서브도메인이 아닙니다
+    ['http://other.example.com/'],
+    ['깨진 주소'],
+  ];
+  assert.deepEqual(hostsFromCdx(rows, 'sunsang24.com'), [
     'akbari.sunsang24.com',
     'nature.sunsang24.com',
   ]);

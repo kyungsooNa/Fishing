@@ -119,7 +119,8 @@ git checkout main && git pull origin main
 후보를 모으는 일과 그 후보가 우리 어댑터로 읽히는지 확인하는 일을 대신합니다.
 
 ```bash
-node discover.js ct sunsang24.com     # 인증서 로그(crt.sh)에서 선상24 계열 서브도메인 전부
+node discover.js wayback sunsang24.com  # 웹 아카이브에 남은 그 플랫폼 서브도메인 전부
+node discover.js ct sunsang24.com     # 인증서 로그(crt.sh) — 와일드카드 인증서를 쓰는 플랫폼에는 안 통합니다
 node discover.js links <목록 페이지>    # 그 페이지에 걸린 선사 홈페이지 도메인
 node discover.js probe --from tmp/candidates.json        # 어댑터로 실제 돌려보기
 node discover.js probe --from tmp/candidates.json --add  # 읽히는 곳만 registry에 붙이기
