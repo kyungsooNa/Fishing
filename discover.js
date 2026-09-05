@@ -81,12 +81,37 @@ export function hostsFromCdx(rows, domain) {
 }
 
 async function fromWayback(domain) {
-  const res = await fetch(CDX_URL(domain), {
-    headers: { 'user-agent': 'fishing-board discover (+https://github.com)' },
-    signal: AbortSignal.timeout(120_000),
-  });
-  if (!res.ok) throw new Error(`web.archive.org ${res.status}`);
+  // 아카이브는 붐비면 503/429를 돌려줍니다(실제로 한 번 받았습니다). 잠깐 쉬면 됩니다.
+  // 뒤에 이어지는 시험 수집이 10분짜리라, 첫 요청 한 번 실패로 접기엔 아깝습니다.
+  const res = await retrying(() =>
+    fetch(CDX_URL(domain), {
+      headers: { 'user-agent': 'fishing-board discover (+https://github.com)' },
+      signal: AbortSignal.timeout(120_000),
+    }),
+  );
   return hostsFromCdx(await res.json(), domain).map((h) => `https://${h}`);
+}
+
+const RETRY_STATUS = [429, 500, 502, 503, 504];
+const WAITS_MS = [10_000, 30_000, 60_000];
+
+async function retrying(request) {
+  let last;
+  for (const [i, wait] of [...WAITS_MS, null].entries()) {
+    try {
+      const res = await request();
+      if (res.ok) return res;
+      last = new Error(`web.archive.org ${res.status}`);
+      if (!RETRY_STATUS.includes(res.status)) throw last;
+    } catch (err) {
+      last = err;
+      if (err.name === 'AbortError') throw err;   // 시간이 다 된 건 기다려도 같습니다
+    }
+    if (wait === null) break;
+    console.warn(`  ${last.message} — ${wait / 1000}초 쉬고 다시 (${i + 1}/${WAITS_MS.length})`);
+    await new Promise((r) => setTimeout(r, wait));
+  }
+  throw last;
 }
 
 async function fromCrt(domain) {
