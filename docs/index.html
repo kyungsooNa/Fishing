@@ -170,7 +170,7 @@ function regionOf(port) {
   return parts[0] ?? '';
 }
 
-function fillOptions(control, values) {
+function fillOptions(control, values, defaults = []) {
   const menu = control.querySelector('.multi-menu');
   menu.textContent = '';
   for (const v of [...new Set(values.filter(Boolean))].sort()) {
@@ -178,6 +178,7 @@ function fillOptions(control, values) {
     const input = document.createElement('input');
     input.type = 'checkbox';
     input.value = v;
+    input.checked = defaults.includes(v);
     input.dataset.text = control.id === 'f-date' ? dayLabel(v) : v;
     input.addEventListener('change', () => { updateMultiLabel(control); refresh(); });
     label.append(input, input.dataset.text);
@@ -313,7 +314,7 @@ fetch('data.json?t=' + Date.now())
     fillOptions($('f-site'), d.trips.map((t) => t.siteName));
     fillOptions($('f-region'), d.trips.map((t) => regionOf(t.port)));
     fillOptions($('f-port'), d.trips.map((t) => t.port));
-    fillOptions($('f-species'), d.trips.map((t) => t.species));
+    fillOptions($('f-species'), d.trips.map((t) => t.species), ['갑오징어', '주꾸미', '쭈꾸미']);
     fillOptions($('f-session'), d.trips.map((t) => t.session));
     fillOptions($('f-date'), d.trips.map((t) => t.date));
     renderStatus();

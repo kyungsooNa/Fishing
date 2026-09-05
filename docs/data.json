@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-09-04T23:00:49.252Z",
+  "generatedAt": "2026-09-04T23:54:51.139Z",
   "sites": {
     "akbari": {
       "ok": true,
-      "at": "2026-09-04T23:00:49.252Z",
+      "at": "2026-09-04T23:54:51.139Z",
       "count": 78,
       "name": "구매항 악바리호",
       "platform": "선상24",
@@ -13,7 +13,7 @@
     },
     "eungabi": {
       "ok": true,
-      "at": "2026-09-04T23:00:51.571Z",
+      "at": "2026-09-04T23:54:52.358Z",
       "count": 26,
       "name": "남당항 은가비호",
       "platform": "선상24",
@@ -23,7 +23,7 @@
     },
     "ocpro": {
       "ok": true,
-      "at": "2026-09-04T23:00:53.196Z",
+      "at": "2026-09-04T23:54:52.556Z",
       "count": 52,
       "name": "오천항 프로낚시",
       "platform": "선상24",
@@ -33,7 +33,7 @@
     },
     "supernova": {
       "ok": true,
-      "at": "2026-09-04T23:00:55.313Z",
+      "at": "2026-09-04T23:54:52.787Z",
       "count": 26,
       "name": "인천 팀슈퍼노바",
       "platform": "선상24",
@@ -43,7 +43,7 @@
     },
     "goldenbaek": {
       "ok": true,
-      "at": "2026-09-04T23:00:57.154Z",
+      "at": "2026-09-04T23:54:52.960Z",
       "count": 51,
       "name": "안면도 황금백호",
       "platform": "선상24",
@@ -53,7 +53,7 @@
     },
     "blueocean2": {
       "ok": true,
-      "at": "2026-09-04T23:00:58.988Z",
+      "at": "2026-09-04T23:54:53.143Z",
       "count": 26,
       "name": "블루오션2호",
       "platform": "선상24",
@@ -63,7 +63,7 @@
     },
     "daehan": {
       "ok": true,
-      "at": "2026-09-04T23:01:00.597Z",
+      "at": "2026-09-04T23:54:53.280Z",
       "count": 52,
       "name": "대한호",
       "platform": "선상24",
@@ -73,7 +73,7 @@
     },
     "monster": {
       "ok": true,
-      "at": "2026-09-04T23:01:02.668Z",
+      "at": "2026-09-04T23:54:53.475Z",
       "count": 27,
       "name": "오이도 몬스터호",
       "platform": "더피싱",
@@ -83,8 +83,8 @@
     },
     "ssfish": {
       "ok": true,
-      "at": "2026-09-04T23:01:12.504Z",
-      "count": 24,
+      "at": "2026-09-04T23:55:02.952Z",
+      "count": 22,
       "name": "무창포 선상낚시",
       "platform": "더피싱",
       "url": "https://www.ssfish.kr/index.php?mid=bk",
@@ -93,8 +93,8 @@
     },
     "hifishing": {
       "ok": true,
-      "at": "2026-09-04T23:01:23.280Z",
-      "count": 29,
+      "at": "2026-09-04T23:55:13.669Z",
+      "count": 24,
       "name": "대천항 하이피싱",
       "platform": "더피싱",
       "url": "https://www.hifishing.net/m/index.php?mid=bk",
@@ -103,8 +103,8 @@
     },
     "eugeneho": {
       "ok": true,
-      "at": "2026-09-04T23:01:33.801Z",
-      "count": 47,
+      "at": "2026-09-04T23:55:23.951Z",
+      "count": 48,
       "name": "오천항 유진호",
       "platform": "더피싱",
       "url": "https://www.eugeneho.kr/m/index.php?mid=bk",
@@ -113,8 +113,8 @@
     },
     "mansu": {
       "ok": true,
-      "at": "2026-09-04T23:01:43.447Z",
-      "count": 27,
+      "at": "2026-09-04T23:55:33.332Z",
+      "count": 24,
       "name": "영흥도 만수피싱",
       "platform": "더피싱",
       "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk",
@@ -123,8 +123,8 @@
     },
     "lureschool": {
       "ok": true,
-      "at": "2026-09-04T23:01:53.229Z",
-      "count": 27,
+      "at": "2026-09-04T23:55:42.577Z",
+      "count": 24,
       "name": "오천항 루어스쿨 발키리호",
       "platform": "더피싱",
       "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk",
@@ -133,8 +133,8 @@
     },
     "jstar": {
       "ok": true,
-      "at": "2026-09-04T23:02:02.996Z",
-      "count": 33,
+      "at": "2026-09-04T23:55:52.230Z",
+      "count": 28,
       "name": "전곡항 스타피싱",
       "platform": "더피싱",
       "url": "https://jstar.thefishing.kr/index.php?mid=bk",
@@ -143,7 +143,7 @@
     },
     "teamhanpro": {
       "ok": true,
-      "at": "2026-09-04T23:02:12.963Z",
+      "at": "2026-09-04T23:56:02.008Z",
       "count": 24,
       "name": "오천항 팀한프로",
       "platform": "더피싱",
@@ -153,7 +153,7 @@
     },
     "blackpig": {
       "ok": true,
-      "at": "2026-09-04T23:02:23.075Z",
+      "at": "2026-09-04T23:56:11.893Z",
       "count": 96,
       "name": "오천항 흑돼지호",
       "platform": "더피싱",
@@ -163,8 +163,8 @@
     },
     "healing": {
       "ok": true,
-      "at": "2026-09-04T23:02:33.112Z",
-      "count": 27,
+      "at": "2026-09-04T23:56:21.723Z",
+      "count": 24,
       "name": "무창포 힐링호",
       "platform": "더피싱",
       "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk",
@@ -173,7 +173,7 @@
     },
     "hanpro": {
       "ok": true,
-      "at": "2026-09-04T23:02:42.696Z",
+      "at": "2026-09-04T23:56:31.119Z",
       "count": 24,
       "name": "한프로피싱",
       "platform": "더피싱",
@@ -183,7 +183,7 @@
     },
     "raraho": {
       "ok": true,
-      "at": "2026-09-04T23:02:52.298Z",
+      "at": "2026-09-04T23:56:40.511Z",
       "count": 24,
       "name": "오천항 라라호",
       "platform": "더피싱",
@@ -193,8 +193,8 @@
     },
     "chungma": {
       "ok": true,
-      "at": "2026-09-04T23:03:01.898Z",
-      "count": 21,
+      "at": "2026-09-04T23:56:49.747Z",
+      "count": 12,
       "name": "영종도 청마피싱",
       "platform": "더피싱",
       "url": "https://www.chungmafishing.com/m/index.php?mid=bk",
@@ -203,10 +203,10 @@
     },
     "uijiho": {
       "ok": false,
-      "at": "2026-09-04T23:03:12.013Z",
-      "error": "30000ms 안에 응답이 없습니다",
+      "at": "2026-09-04T23:56:59.727Z",
+      "error": "출조 행을 못 찾았습니다 — 예약 목록이 있는 주소가 맞는지 확인하세요 (--dump)",
       "count": 0,
-      "keptFrom": "2026-09-04T16:18:12.972Z",
+      "keptFrom": "2026-09-04T14:21:19.778Z",
       "name": "의지호",
       "platform": "자체",
       "url": "http://uijiho.com/",
@@ -215,7 +215,7 @@
     },
     "fishinggate": {
       "ok": true,
-      "at": "2026-09-04T23:03:17.261Z",
+      "at": "2026-09-04T23:56:59.826Z",
       "count": 357,
       "name": "안면도 피싱게이트",
       "platform": "선상24",
@@ -229,43 +229,50 @@
       "lat": 36.23,
       "lng": 126.52,
       "approx": true,
-      "trips": 40,
-      "open": 40
+      "trips": 41,
+      "open": 23
     },
     "인천 옹진 영흥도": {
       "lat": 37.24,
       "lng": 126.49,
       "approx": true,
-      "trips": 23,
-      "open": 22
+      "trips": 24,
+      "open": 1
+    },
+    "경기 시흥 시화방조제 중간선착장": {
+      "lat": 37.3,
+      "lng": 126.63,
+      "approx": true,
+      "trips": 25,
+      "open": 11
     },
     "충남 보령 오천항": {
       "lat": 36.41,
       "lng": 126.5,
       "approx": true,
-      "trips": 152,
-      "open": 98
+      "trips": 154,
+      "open": 51
     },
     "경기 화성 전곡항": {
       "lat": 37.19,
       "lng": 126.68,
       "approx": true,
       "trips": 25,
-      "open": 21
+      "open": 20
     },
     "충남 보령 대천항": {
       "lat": 36.32,
       "lng": 126.51,
       "approx": true,
-      "trips": 23,
-      "open": 5
+      "trips": 24,
+      "open": 6
     },
     "충남 태안 구매항": {
       "lat": 36.51,
       "lng": 126.33,
       "approx": true,
-      "trips": 44,
-      "open": 6
+      "trips": 63,
+      "open": 17
     },
     "인천 중구 남항 유어선부두": {
       "lat": 37.44,
@@ -273,13 +280,6 @@
       "approx": true,
       "trips": 22,
       "open": 0
-    },
-    "경기 시흥 시화방조제 중간선착장": {
-      "lat": 37.3,
-      "lng": 126.63,
-      "approx": true,
-      "trips": 23,
-      "open": 10
     },
     "영목항": {
       "lat": 36.4,
@@ -299,22 +299,22 @@
       "lat": 36.58,
       "lng": 126.32,
       "approx": true,
-      "trips": 357,
-      "open": 166
+      "trips": 325,
+      "open": 151
     },
     "인천 중구 거잠포선착장": {
       "lat": 37.43,
       "lng": 126.44,
       "approx": true,
-      "trips": 13,
-      "open": 11
+      "trips": 12,
+      "open": 0
     },
     "충남 태안 내포항": {
       "lat": 36.5,
       "lng": 126.31,
       "approx": true,
-      "trips": 43,
-      "open": 12
+      "trips": 56,
+      "open": 16
     }
   },
   "trips": [
@@ -331,12 +331,12 @@
       "hours": null,
       "species": null,
       "tide": "무시",
-      "status": "open",
-      "statusText": "무시 ◈공지사항◈ 남은자리 힐링호 남은자리 예약 박용철님(2) / 김학영님(1) / 김은기님(1) / 김민경님(3) / 유부곤님(2) / 최정미님(3) / 쟁이님(4) / 이근환님(3) / 이강균님(2)",
-      "seatsLeft": 4,
+      "status": "closed",
+      "statusText": "무시 ◈공지사항◈ 남은자리 힐링호 남은자리 예약마감 예약 박용철님(2) / 김학영님(1) / 김은기님(1) / 김민경님(3) / 유부곤님(2) / 최정미님(3) / 쟁이님(4) / 이근환님(3) / 이강균님(2)",
+      "seatsLeft": 0,
       "seatsTotal": 4,
       "price": null,
-      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "mansu",
@@ -356,7 +356,27 @@
       "seatsLeft": 22,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
+    },
+    {
+      "siteId": "monster",
+      "siteName": "오이도 몬스터호",
+      "boat": "몬스터호",
+      "port": "경기 시흥 시화방조제 중간선착장",
+      "phone": null,
+      "date": "2026-09-05",
+      "departAt": null,
+      "returnAt": null,
+      "session": null,
+      "hours": null,
+      "species": "쭈꾸미",
+      "tide": null,
+      "status": "open",
+      "statusText": "날짜선택 닫기 ▲ function m_calenda_dis1() { if($('#m-calenda-table1').css('display') == 'none') { $('#m-calenda-table1').show(); $('#m-calenda-open1').html('날짜선택 닫기 ▲'); } else { $('#m-calenda-table1').hide",
+      "seatsLeft": 20,
+      "seatsTotal": 20,
+      "price": null,
+      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "lureschool",
@@ -371,12 +391,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "무시",
-      "status": "open",
-      "statusText": "무시 공지사항 남은자리 ☆발키리호☆ 남은자리 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 채수창님(1) / 김승태님(1) / 김영우님(1) / 남기준님(2) / 양승광님(2) / 김진우님(2) / 김미원님(2) / 신봉근.설님(2) / 김형태님(2) / 홍용기님(2) / 빅병일님(1) / 윤똘님(1) / 아임미트님(2) 신용범님(3) / 박실장님(3) / 최관신님(",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "무시 공지사항 남은자리 ☆발키리호☆ 남은자리 예약완료 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 채수창님(1) / 김승태님(1) / 김영우님(1) / 남기준님(2) / 양승광님(2) / 김진우님(2) / 김미원님(2) / 신봉근.설님(2) / 김형태님(2) / 홍용기님(2) / 빅병일님(1) / 윤똘님(1) / 아임미트님(2) 신용범님(3) / 박실장님(3) /",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "jstar",
@@ -396,7 +416,7 @@
       "seatsLeft": 6,
       "seatsTotal": 6,
       "price": null,
-      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "hanpro",
@@ -416,7 +436,7 @@
       "seatsLeft": 0,
       "seatsTotal": 7,
       "price": null,
-      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "akbari",
@@ -456,7 +476,7 @@
       "seatsLeft": 0,
       "seatsTotal": 5,
       "price": null,
-      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "supernova",
@@ -496,7 +516,7 @@
       "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
-      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "akbari",
@@ -536,7 +556,7 @@
       "seatsLeft": 21,
       "seatsTotal": 21,
       "price": null,
-      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "eugeneho",
@@ -556,7 +576,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "akbari",
@@ -651,12 +671,12 @@
       "hours": null,
       "species": null,
       "tide": "무시",
-      "status": "open",
-      "statusText": "무시 청마_호 남은자리 대기하기 출항시간 : 05시 00분 양병용(2) / 강기종(1) / 고동수(2) / 정준택(2) / 박귀남(2) / 황호준(2) / 조용민(1) / 이상범(2) / 배상기(3) / 김종선(1) / 이상민(2) 김민유(2) / 김정희(2) / 정철기(3) / 이남렬(3) / 이승준(2) / 이상운(3) / 이수훈(4) / 박진태(3)",
-      "seatsLeft": 4,
+      "status": "closed",
+      "statusText": "무시 청마_호 남은자리 예약완료 대기하기 출항시간 : 05시 00분 양병용(2) / 강기종(1) / 고동수(2) / 정준택(2) / 박귀남(2) / 황호준(2) / 조용민(1) / 이상범(2) / 배상기(3) / 김종선(1) / 이상민(2) 김민유(2) / 김정희(2) / 정철기(3) / 이남렬(3) / 이승준(2) / 이상운(3) / 이수훈(4) / 박진",
+      "seatsLeft": 0,
       "seatsTotal": 4,
       "price": null,
-      "url": "https://www.chungmafishing.com/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://www.chungmafishing.com/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "ocpro",
@@ -691,12 +711,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "무시",
-      "status": "open",
-      "statusText": "무시 흑돼지호 남은자리 공지 출항:05시( 출항 30분 전 배에 탑승바랍니다.(※명부는 배에서 작성) 출항 공지는 전날 문자발송 ★이벤트 공지는 흑돼지호 카페에서 확인 ▶ 카페바로가기 낚시종류 쭈꾸미 예약 강*팀님(20)",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "무시 흑돼지호 남은자리 예약완료 공지 출항:05시( 출항 30분 전 배에 탑승바랍니다.(※명부는 배에서 작성) 출항 공지는 전날 문자발송 ★이벤트 공지는 흑돼지호 카페에서 확인 ▶ 카페바로가기 낚시종류 쭈꾸미 예약 강*팀님(20)",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "daehan",
@@ -862,7 +882,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "바하호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 구매항",
       "phone": "010-4757-4753",
       "date": "2026-09-05",
       "departAt": "06:00",
@@ -962,7 +982,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "아우라호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 내포항",
       "phone": "010-4757-4753",
       "date": "2026-09-05",
       "departAt": "06:00",
@@ -1159,6 +1179,26 @@
       "url": "https://golden.sunsang24.com/ship/schedule_fleet"
     },
     {
+      "siteId": "jstar",
+      "siteName": "전곡항 스타피싱",
+      "boat": "전곡항 스타피싱",
+      "port": "경기 화성 전곡항",
+      "phone": "010-8070-0150",
+      "date": "2026-09-05",
+      "departAt": "12:00",
+      "returnAt": null,
+      "session": "오후",
+      "hours": null,
+      "species": null,
+      "tide": "무시",
+      "status": "open",
+      "statusText": "1 2 3 4 5 6 7 15 30 function reservation_list_won(num) { var data = \"list_won=\"+num; $.ajax({ type: \"POST\", url: \"/_core/module/reservation_boat_v5.2_seat1/admin.ajax.list.won.php\", data: data, succes",
+      "seatsLeft": null,
+      "seatsTotal": null,
+      "price": null,
+      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=5"
+    },
+    {
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "그랜드호",
@@ -1222,7 +1262,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "바하호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 구매항",
       "phone": "010-4757-4753",
       "date": "2026-09-05",
       "departAt": "13:00",
@@ -1482,7 +1522,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "아우라호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 내포항",
       "phone": "010-4757-4753",
       "date": "2026-09-05",
       "departAt": "15:30",
@@ -1591,12 +1631,32 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "15물",
-      "status": "open",
-      "statusText": "15물 라라 남은자리 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 1 2 3 4,5,6 7,8 9,10 11,1",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "15물 라라 남은자리 예약완료 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 1 2 3 4,5,6 7,8 9,10",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
+    },
+    {
+      "siteId": "ssfish",
+      "siteName": "무창포 선상낚시",
+      "boat": "무창포 선상낚시",
+      "port": "충남 보령 무창포항",
+      "phone": null,
+      "date": "2026-09-05",
+      "departAt": "23:00",
+      "returnAt": null,
+      "session": "야간",
+      "hours": null,
+      "species": "쭈꾸미",
+      "tide": null,
+      "status": "open",
+      "statusText": "1 2 3 4 5 6 7 15 30 function reservation_list_won(num) { var data = \"list_won=\"+num; $.ajax({ type: \"POST\", url: \"/_core/module/reservation_boat_v5.2_seat1/admin.ajax.list.won.php\", data: data, succes",
+      "seatsLeft": null,
+      "seatsTotal": null,
+      "price": null,
+      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "healing",
@@ -1611,12 +1671,12 @@
       "hours": null,
       "species": null,
       "tide": "1물",
-      "status": "open",
-      "statusText": "1물 ◈공지사항◈ 남은자리 힐링호 남은자리 예약 김기환님(2) / 이강균님(1) / 오진영님(5) / 김민경님(4) / 김장호님(1) / 이효상님(3) / 쟁이님(1) / 유부곤님(2) / 김도순님(2)",
-      "seatsLeft": 5,
+      "status": "closed",
+      "statusText": "1물 ◈공지사항◈ 남은자리 힐링호 남은자리 예약마감 예약 김기환님(2) / 이강균님(1) / 오진영님(5) / 김민경님(4) / 김장호님(1) / 이효상님(3) / 쟁이님(1) / 유부곤님(2) / 김도순님(2)",
+      "seatsLeft": 0,
       "seatsTotal": 5,
       "price": null,
-      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "mansu",
@@ -1631,12 +1691,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": null,
-      "status": "open",
-      "statusText": "만수피싱 남은자리: 26시즌 쭈꾸미+갑오징어 1,2,3,4,5,6,7,8,9,10,11,12 17,18,19,20 13,14 15,16",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "만수피싱 남은자리: 예약완료 26시즌 쭈꾸미+갑오징어 1,2,3,4,5,6,7,8,9,10,11,12 17,18,19,20 13,14 15,16",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "lureschool",
@@ -1651,12 +1711,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "1물",
-      "status": "open",
-      "statusText": "1물 공지사항 남은자리 ☆발키리호☆ 남은자리 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 맹진호님(2) / 유병진님(2) / 박정수님(2) / 신희영님(1) / 서관수.님(1) / 희야님(3) / 박천기님(4) / 박정수님(3) / 알봉이님(2) / 뽕스텝님(1) 성정환님(2) / 희야s님(1) / 최관신님(1) / 이강동님(1) / 우정일님(1) / 윤석준님(2)",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "1물 공지사항 남은자리 ☆발키리호☆ 남은자리 예약완료 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 맹진호님(2) / 유병진님(2) / 박정수님(2) / 신희영님(1) / 서관수.님(1) / 희야님(3) / 박천기님(4) / 박정수님(3) / 알봉이님(2) / 뽕스텝님(1) 성정환님(2) / 희야s님(1) / 최관신님(1) / 이강동님(1) / 우정일님(1) / 윤석",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "jstar",
@@ -1676,7 +1736,7 @@
       "seatsLeft": 4,
       "seatsTotal": 4,
       "price": null,
-      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "hanpro",
@@ -1696,7 +1756,7 @@
       "seatsLeft": 0,
       "seatsTotal": 16,
       "price": null,
-      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "akbari",
@@ -1756,7 +1816,7 @@
       "seatsLeft": 0,
       "seatsTotal": 5,
       "price": null,
-      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "supernova",
@@ -1796,7 +1856,7 @@
       "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
-      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "ssfish",
@@ -1816,7 +1876,7 @@
       "seatsLeft": 21,
       "seatsTotal": 21,
       "price": null,
-      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "akbari",
@@ -1891,12 +1951,12 @@
       "hours": null,
       "species": null,
       "tide": "1물",
-      "status": "open",
-      "statusText": "1물 청마_호 남은자리 대기하기 출항시간 : 05시 00분 김영호(1) / 홍성표(1) / 김나현(2) / 김준호(1) / 엄윤정(2) / 김광출(2) / 저격이(2) / 배기봉(3) / 최민(3) / 배종석(1) / 김종선(1) / 남광우(1) 이길용(2) / 김인영(2) / 박범열(3) / 김선민(4) / 이종범(1) / 김태환(2) / 김종영(3) /",
-      "seatsLeft": 4,
+      "status": "closed",
+      "statusText": "1물 청마_호 남은자리 예약완료 대기하기 출항시간 : 05시 00분 김영호(1) / 홍성표(1) / 김나현(2) / 김준호(1) / 엄윤정(2) / 김광출(2) / 저격이(2) / 배기봉(3) / 최민(3) / 배종석(1) / 김종선(1) / 남광우(1) 이길용(2) / 김인영(2) / 박범열(3) / 김선민(4) / 이종범(1) / 김태환(2) / 김종영",
+      "seatsLeft": 0,
       "seatsTotal": 4,
       "price": null,
-      "url": "https://www.chungmafishing.com/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://www.chungmafishing.com/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "ocpro",
@@ -1931,12 +1991,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "1물",
-      "status": "open",
-      "statusText": "1물 흑돼지호 남은자리 공지 출항:05시( 출항 30분 전 배에 탑승바랍니다.(※명부는 배에서 작성) 출항 공지는 전날 문자발송 ★이벤트 공지는 흑돼지호 카페에서 확인 ▶ 카페바로가기 낚시종류 쭈꾸미 예약 송*호님(9) / 우*용님(2) / 김*성님(2) / 김*태님(1) / 박*향님(3) / 단*님(1) / 단*님(2)",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "1물 흑돼지호 남은자리 예약완료 공지 출항:05시( 출항 30분 전 배에 탑승바랍니다.(※명부는 배에서 작성) 출항 공지는 전날 문자발송 ★이벤트 공지는 흑돼지호 카페에서 확인 ▶ 카페바로가기 낚시종류 쭈꾸미 예약 송*호님(9) / 우*용님(2) / 김*성님(2) / 김*태님(1) / 박*향님(3) / 단*님(1) / 단*님(2)",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "daehan",
@@ -2142,7 +2202,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "바하호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 구매항",
       "phone": "010-4757-4753",
       "date": "2026-09-06",
       "departAt": "06:00",
@@ -2242,7 +2302,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "아우라호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 내포항",
       "phone": "010-4757-4753",
       "date": "2026-09-06",
       "departAt": "06:00",
@@ -2462,7 +2522,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "바하호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 구매항",
       "phone": "010-4757-4753",
       "date": "2026-09-06",
       "departAt": "13:00",
@@ -2632,7 +2692,7 @@
       "species": "주꾸미",
       "tide": "1물",
       "status": "closed",
-      "statusText": "리치호 대기하기 공지사항 : ★내포항 출항★★쭈꾸미★ 오후 3시간 출항! ※ 낚싯대 채비 유무 상관없이 4만원 ※ (주꾸미, 시즌어종)낚시대 + 채비 + 미끼 포함된 가격! 어종 : 주꾸미,시즌어종 / 다운샷,루어,선상 운항시간 : 15:30 ~ 18:30 예약완료 박*미님(2) / 장*태님(3) / 한*훈님(3) / 박*혜님(2) / 최*훈님(2) 입금대기 김*석님(1) 취소대기 취소완료 예약대기 출조대기 예약마감 13명 예약/13명",
+      "statusText": "리치호 대기하기 공지사항 : ★내포항 출항★★쭈꾸미★ 오후 3시간 출항! ※ 낚싯대 채비 유무 상관없이 4만원 ※ (주꾸미, 시즌어종)낚시대 + 채비 + 미끼 포함된 가격! 어종 : 주꾸미,시즌어종 / 다운샷,루어,선상 운항시간 : 15:30 ~ 18:30 예약완료 박*미님(2) / 장*태님(3) / 한*훈님(3) / 박*혜님(2) / 최*훈님(2) / 김*석님(1) 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 13명 예약/13명",
       "seatsLeft": 0,
       "seatsTotal": null,
       "price": null,
@@ -2662,7 +2722,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "아우라호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 내포항",
       "phone": "010-4757-4753",
       "date": "2026-09-06",
       "departAt": "15:30",
@@ -2811,12 +2871,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "1물",
-      "status": "open",
-      "statusText": "1물 라라 남은자리 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 1,2,3 4,5,6 7,8 9,10 11,12",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "1물 라라 남은자리 예약완료 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 1,2,3 4,5,6 7,8 9,10",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "eugeneho",
@@ -2836,7 +2896,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "healing",
@@ -2851,12 +2911,12 @@
       "hours": null,
       "species": null,
       "tide": "2물",
-      "status": "open",
-      "statusText": "2물 ◈공지사항◈ 남은자리 힐링호 남은자리 대기하기 예약 윤여덕님(1) / 김종섭님(4) / 허만복님(2) / 오진영님(5) / 황진명님(2) / 김종욱님(2) / 이우진님(2) / 임채춘님(1) 입금대기 유태헌님(2) 대기자 석태원님(4) / 허만복님(1) / 김한식님(1) / 박요셉님(3) / 김인국님(1) / 김명찬님(2) / 갑돌이님(1) / 이테호",
-      "seatsLeft": 5,
+      "status": "closed",
+      "statusText": "2물 ◈공지사항◈ 남은자리 힐링호 남은자리 예약완료 대기하기 예약 윤여덕님(1) / 김종섭님(4) / 허만복님(2) / 오진영님(5) / 황진명님(2) / 김종욱님(2) / 이우진님(2) / 임채춘님(1) 입금대기 유태헌님(2) 대기자 석태원님(4) / 허만복님(1) / 김한식님(1) / 박요셉님(3) / 김인국님(1) / 김명찬님(2) / 갑돌이님(1)",
+      "seatsLeft": 0,
       "seatsTotal": 5,
       "price": null,
-      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "mansu",
@@ -2872,11 +2932,11 @@
       "species": "쭈꾸미",
       "tide": null,
       "status": "closed",
-      "statusText": "만수피싱 남은자리: ★ 독 배 예 약 완 료 ★ 26시즌 쭈꾸미+갑오징어 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+      "statusText": "만수피싱 남은자리: 예약완료 ★ 독 배 예 약 완 료 ★ 26시즌 쭈꾸미+갑오징어 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
       "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "lureschool",
@@ -2891,12 +2951,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "2물",
-      "status": "open",
-      "statusText": "2물 공지사항 남은자리 ☆발키리호☆ 남은자리 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 정승화님(2) / 김영태님(1) / 박병규님(4) / 진재규님(4) / 박동호님(3) / 강현우님(1) / 김귀태님(1) / 박성찬님(1) / 정해철님(1) / 엄기철님(1) / 김용덕님(1) / 윤호용님(1) 김용권님(2) / 정진만님(2) / 이재선님(1) / 윤석준님(1)",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "2물 공지사항 남은자리 ☆발키리호☆ 남은자리 예약완료 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 정승화님(2) / 김영태님(1) / 박병규님(4) / 진재규님(4) / 박동호님(3) / 강현우님(1) / 김귀태님(1) / 박성찬님(1) / 정해철님(1) / 엄기철님(1) / 김용덕님(1) / 윤호용님(1) 김용권님(2) / 정진만님(2) / 이재선님(1) / 윤석",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "jstar",
@@ -2911,12 +2971,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": null,
-      "status": "unknown",
-      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 9 20 19 8 12,13,14 18 15,16,17 탑1,2,3 탑11 10 7 6 5 4 탑11 미입금취소 20 탑1,2,3 탑1,2,3 레인보우 대기하기 쭈꾸미 .갑오징어 .출조 탑1,2,3,8,9,1",
+      "status": "closed",
+      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 9 20 19 8 12,13,14 18 15,16,17 탑1,2,3 탑11 10 7 6 5 4 탑11 미입금취소 20 탑1,2,3 탑1,2,3 예약완료 레인보우 대기하기 쭈꾸미 .갑오징어 .출조 탑1,2,3,",
       "seatsLeft": null,
       "seatsTotal": null,
       "price": null,
-      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "hanpro",
@@ -2936,7 +2996,7 @@
       "seatsLeft": 0,
       "seatsTotal": 4,
       "price": null,
-      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "akbari",
@@ -2996,7 +3056,7 @@
       "seatsLeft": 0,
       "seatsTotal": 3,
       "price": null,
-      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "supernova",
@@ -3036,7 +3096,7 @@
       "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
-      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "ssfish",
@@ -3056,7 +3116,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "akbari",
@@ -3131,12 +3191,12 @@
       "hours": null,
       "species": null,
       "tide": "2물",
-      "status": "open",
-      "statusText": "2물 청마_호 남은자리 대기하기 출항시간 : 05시 00분 박귀남(2) / 박윤수(3) / 정덕진(1) / 이재원(4) / 양승도(4) / 노동진(1) / 김성희(2) / 김진형(2) / 임상훈(1) 손영철(4) / 홍성준(4) / 유양희(3) / 방장훈(2) / 김상훈(1) / 이정수(1) / 강만석(2) / 서상혁(1) / 조홍래(2) / 한은희(2)",
-      "seatsLeft": 4,
+      "status": "closed",
+      "statusText": "2물 청마_호 남은자리 예약완료 대기하기 출항시간 : 05시 00분 박귀남(2) / 박윤수(3) / 정덕진(1) / 이재원(4) / 양승도(4) / 노동진(1) / 김성희(2) / 김진형(2) / 임상훈(1) 손영철(4) / 홍성준(4) / 유양희(3) / 방장훈(2) / 김상훈(1) / 이정수(1) / 강만석(2) / 서상혁(1) / 조홍래(2) / 한은",
+      "seatsLeft": 0,
       "seatsTotal": 4,
       "price": null,
-      "url": "https://www.chungmafishing.com/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://www.chungmafishing.com/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "ocpro",
@@ -3171,12 +3231,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "2물",
-      "status": "open",
-      "statusText": "2물 흑돼지호 남은자리 공지 출항:05시( 출항 30분 전 배에 탑승바랍니다.(※명부는 배에서 작성) 출항 공지는 전날 문자발송 ★이벤트 공지는 흑돼지호 카페에서 확인 ▶ 카페바로가기 낚시종류 쭈꾸미 예약 윤*선님(2) / 이*주님(4) / 이*명님(2) / 이*성님(2) / 김*화님(2) / 박*수님(1) / 김*중님(1) / 정*영님(1) / 심*우님(",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "2물 흑돼지호 남은자리 예약완료 공지 출항:05시( 출항 30분 전 배에 탑승바랍니다.(※명부는 배에서 작성) 출항 공지는 전날 문자발송 ★이벤트 공지는 흑돼지호 카페에서 확인 ▶ 카페바로가기 낚시종류 쭈꾸미 예약 윤*선님(2) / 이*주님(4) / 이*명님(2) / 이*성님(2) / 김*화님(2) / 박*수님(1) / 김*중님(1) / 정*영님(1) /",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "daehan",
@@ -3362,7 +3422,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "바하호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 구매항",
       "phone": "010-4757-4753",
       "date": "2026-09-07",
       "departAt": "06:00",
@@ -3462,7 +3522,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "아우라호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 내포항",
       "phone": "010-4757-4753",
       "date": "2026-09-07",
       "departAt": "06:00",
@@ -3742,7 +3802,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "바하호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 구매항",
       "phone": "010-4757-4753",
       "date": "2026-09-07",
       "departAt": "13:00",
@@ -3911,12 +3971,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "2물",
-      "status": "open",
-      "statusText": "2물 라라 남은자리 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 1 2 19,20 11,12 5,6,7 3,4",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "2물 라라 남은자리 예약완료 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 1 2 19,20 11,12 5,6,7",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "eugeneho",
@@ -3936,7 +3996,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "healing",
@@ -3951,12 +4011,12 @@
       "hours": null,
       "species": null,
       "tide": "3물",
-      "status": "open",
-      "statusText": "3물 ◈공지사항◈ 남은자리 힐링호 남은자리 대기하기 예약 박용철님(1) / 이강균님(5) / 황진명님(1) / 지선정님(2) / 정경락님(1) / 이희식님(1) / 채종혁님(3) / 임석남님(3) / 손경아님(1) / 이성권님(1) 입금대기 정재우님(2) 대기자 조현용님(1) / 장우용님(2) / 김대문님(1) / 이승재님(2) / 홍남기님(2) / 이승진",
-      "seatsLeft": 5,
+      "status": "closed",
+      "statusText": "3물 ◈공지사항◈ 남은자리 힐링호 남은자리 예약완료 대기하기 예약 박용철님(1) / 이강균님(5) / 황진명님(1) / 지선정님(2) / 정경락님(1) / 이희식님(1) / 채종혁님(3) / 임석남님(3) / 손경아님(1) / 이성권님(1) 입금대기 정재우님(2) 대기자 조현용님(1) / 장우용님(2) / 김대문님(1) / 이승재님(2) / 홍남기님(2)",
+      "seatsLeft": 0,
       "seatsTotal": 5,
       "price": null,
-      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "mansu",
@@ -3971,12 +4031,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": null,
-      "status": "open",
-      "statusText": "만수피싱 남은자리: 26시즌 쭈꾸미+갑오징어 8,9,10,19,20 1 2 13 11,12 17,18 3,4 14,15,16 7 5 6 5,6",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "만수피싱 남은자리: 예약완료 26시즌 쭈꾸미+갑오징어 8,9,10,19,20 1 2 13 11,12 17,18 3,4 14,15,16 7 5 6 5,6",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "lureschool",
@@ -3991,12 +4051,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "3물",
-      "status": "open",
-      "statusText": "3물 공지사항 남은자리 ☆발키리호☆ 남은자리 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 이정빈님(4) / 최건님(2) / 권건택님(4) / 엄윤호님(2) / 김상구님(3) / 박재혁님(1) / 이시열님(1) / 변민욱님(1) / 류자용님(2) / 윤석민님(1) 권건택님(1) / 정진만님(2) / 윤석준님(1) ☆발키리7호☆ 남은자리 대기하기 ♡쭈꾸미낚시&갑오징어낚",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "3물 공지사항 남은자리 ☆발키리호☆ 남은자리 예약완료 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 이정빈님(4) / 최건님(2) / 권건택님(4) / 엄윤호님(2) / 김상구님(3) / 박재혁님(1) / 이시열님(1) / 변민욱님(1) / 류자용님(2) / 윤석민님(1) 권건택님(1) / 정진만님(2) / 윤석준님(1) ☆발키리7호☆ 남은자리 예약완료 대기하기 ♡쭈",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "jstar",
@@ -4012,11 +4072,11 @@
       "species": "쭈꾸미",
       "tide": null,
       "status": "few",
-      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 10 탑11 2 탑1 12,13,14 18 8,9 4,5,6 3 17 15,16 20 7,19 15,16 미입금취소 17 19 7 레인보우 대기하기 쭈꾸미 .갑오징어 .출조 7 12 탑1 5 19,20 10",
+      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 10 탑11 2 탑1 12,13,14 18 8,9 4,5,6 3 17 15,16 20 7,19 15,16 미입금취소 17 19 7 예약완료 레인보우 대기하기 쭈꾸미 .갑오징어 .출조 7 12 탑1 5 19,2",
       "seatsLeft": 2,
       "seatsTotal": 2,
       "price": null,
-      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "hanpro",
@@ -4036,7 +4096,7 @@
       "seatsLeft": 0,
       "seatsTotal": 4,
       "price": null,
-      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "akbari",
@@ -4096,7 +4156,7 @@
       "seatsLeft": 0,
       "seatsTotal": 3,
       "price": null,
-      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "supernova",
@@ -4136,7 +4196,7 @@
       "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
-      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "ssfish",
@@ -4156,7 +4216,7 @@
       "seatsLeft": 17,
       "seatsTotal": 17,
       "price": null,
-      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "akbari",
@@ -4219,6 +4279,26 @@
       "url": "https://daehan.sunsang24.com/ship/schedule_fleet"
     },
     {
+      "siteId": "chungma",
+      "siteName": "영종도 청마피싱",
+      "boat": "한재호",
+      "port": "인천 중구 거잠포선착장",
+      "phone": "010-2251-3237",
+      "date": "2026-09-08",
+      "departAt": "05:00",
+      "returnAt": null,
+      "session": "오전",
+      "hours": null,
+      "species": null,
+      "tide": "3물",
+      "status": "closed",
+      "statusText": "3물 청마_호 남은자리 예약완료 대기하기 출항시간 : 05시 00분 박귀남(2) / 김봉균(2) / 김성희(2) / 김석겸(4) / 조민주(2) / 이현복(2) / 신원섭(3) / 이승우(3) 이강수(4) / 유영(1) / 강만석(2) / 김상훈(1) / 한은희(2) / 이진형(1) / 송은희(3) / 배안식(1) / 이승용(1) / 하홍식(2) / 조민주",
+      "seatsLeft": 0,
+      "seatsTotal": 4,
+      "price": null,
+      "url": "https://www.chungmafishing.com/m/index.php?mid=bk&year=2026&month=9&day=5"
+    },
+    {
       "siteId": "ocpro",
       "siteName": "오천항 프로낚시",
       "boat": "가즈아호",
@@ -4251,12 +4331,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "3물",
-      "status": "open",
-      "statusText": "3물 흑돼지호 남은자리 공지 출항:05시( 출항 30분 전 배에 탑승바랍니다.(※명부는 배에서 작성) 출항 공지는 전날 문자발송 ★이벤트 공지는 흑돼지호 카페에서 확인 ▶ 카페바로가기 낚시종류 쭈꾸미 예약 윤*선님(2) / 김*수님(4) / 김*수님(4) / 박*수님(1) / 이*한님(3) / 김*명님(2) / 유*도님(1) / 광*님(1) / 빨**아님(",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "3물 흑돼지호 남은자리 예약완료 공지 출항:05시( 출항 30분 전 배에 탑승바랍니다.(※명부는 배에서 작성) 출항 공지는 전날 문자발송 ★이벤트 공지는 흑돼지호 카페에서 확인 ▶ 카페바로가기 낚시종류 쭈꾸미 예약 윤*선님(2) / 김*수님(4) / 김*수님(4) / 박*수님(1) / 이*한님(3) / 김*명님(2) / 유*도님(1) / 광*님(1) / 빨",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "daehan",
@@ -4462,7 +4542,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "바하호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 구매항",
       "phone": "010-4757-4753",
       "date": "2026-09-08",
       "departAt": "06:00",
@@ -4562,7 +4642,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "아우라호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 내포항",
       "phone": "010-4757-4753",
       "date": "2026-09-08",
       "departAt": "06:00",
@@ -4822,7 +4902,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "바하호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 구매항",
       "phone": "010-4757-4753",
       "date": "2026-09-08",
       "departAt": "13:00",
@@ -4991,12 +5071,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "3물",
-      "status": "open",
-      "statusText": "3물 라라 남은자리 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 1 2 8,9,10 17,18,19,20 11",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "3물 라라 남은자리 예약완료 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 1 2 8,9,10 17,18,19,2",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "eugeneho",
@@ -5016,7 +5096,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "healing",
@@ -5031,12 +5111,12 @@
       "hours": null,
       "species": null,
       "tide": "4물",
-      "status": "few",
-      "statusText": "4물 ◈공지사항◈ 남은자리 힐링호 남은자리 대기하기 예약 지선정님(2) / 허만복님(2) / 정경락님(1) / 이희식님(1) / 허만복님(1) / 이은희님(1) / 이승공님(2) / 김철환님(1) / 최인규님(2) / 이태안님(1) / 성호병님(1) / 이순용님(1) / 신은수님(1) / 이상음님(1) / 황록제님(1) / 박상근님(2) 대기자 홍남기님(2",
-      "seatsLeft": 2,
+      "status": "closed",
+      "statusText": "4물 ◈공지사항◈ 남은자리 힐링호 남은자리 예약완료 대기하기 예약 지선정님(2) / 허만복님(2) / 정경락님(1) / 이희식님(1) / 허만복님(1) / 이은희님(1) / 이승공님(2) / 김철환님(1) / 최인규님(2) / 이태안님(1) / 성호병님(1) / 이순용님(1) / 신은수님(1) / 이상음님(1) / 황록제님(1) / 박상근님(2) 대기자 홍",
+      "seatsLeft": 0,
       "seatsTotal": 2,
       "price": null,
-      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "mansu",
@@ -5051,12 +5131,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": null,
-      "status": "open",
-      "statusText": "만수피싱 남은자리: 26시즌 쭈꾸미+갑오징어 10,19,20 1,2 11,12 7,8,9 13 3 4,5 16 14,15 17 18 6 15,16 14 17 18 미입금취소 15,16,17,18 3",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "만수피싱 남은자리: 예약완료 26시즌 쭈꾸미+갑오징어 10,19,20 1,2 11,12 7,8,9 13 3 4,5 16 14,15 17 18 6 15,16 14 17 18 미입금취소 15,16,17,18 3",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "lureschool",
@@ -5071,12 +5151,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "4물",
-      "status": "open",
-      "statusText": "4물 공지사항 남은자리 ☆발키리호☆ 남은자리 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 신희영님(3) / 하정연님(4) / 김미애님(3) / 박경훈님(4) / 양인정님(1) / 세종중수조사님(2) / 홍정민님(1) / 한신형님(2) / 홍정민님(1) 입금대기 최효진님(1) / 강만송님(2) / 황선영님(3) / 안병백님(3) / 김민수님(2) 유재영님(2) / 김",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "4물 공지사항 남은자리 ☆발키리호☆ 남은자리 예약완료 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 신희영님(3) / 하정연님(4) / 김미애님(3) / 박경훈님(4) / 양인정님(1) / 세종중수조사님(2) / 홍정민님(1) / 한신형님(2) / 홍정민님(1) 입금대기 최효진님(1) / 강만송님(2) / 황선영님(3) / 안병백님(3) / 김민수님(2) 유재영님(2",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "jstar",
@@ -5096,7 +5176,7 @@
       "seatsLeft": 3,
       "seatsTotal": 3,
       "price": null,
-      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "hanpro",
@@ -5116,7 +5196,7 @@
       "seatsLeft": 11,
       "seatsTotal": 11,
       "price": null,
-      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "akbari",
@@ -5176,7 +5256,7 @@
       "seatsLeft": 0,
       "seatsTotal": 3,
       "price": null,
-      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "supernova",
@@ -5216,7 +5296,7 @@
       "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
-      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "ssfish",
@@ -5236,7 +5316,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "akbari",
@@ -5331,12 +5411,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "4물",
-      "status": "open",
-      "statusText": "4물 흑돼지호 남은자리 공지 출항:05시( 출항 30분 전 배에 탑승바랍니다.(※명부는 배에서 작성) 출항 공지는 전날 문자발송 ★이벤트 공지는 흑돼지호 카페에서 확인 ▶ 카페바로가기 낚시종류 쭈꾸미 예약 한*수님(2) / 김*열님(5) / 손*탁님(2) / 김*종님(4) / 방*윤님(1) / 권*인님(2) / 김*선님(2) / 이*수님(1) / 이*택님(",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "4물 흑돼지호 남은자리 예약완료 공지 출항:05시( 출항 30분 전 배에 탑승바랍니다.(※명부는 배에서 작성) 출항 공지는 전날 문자발송 ★이벤트 공지는 흑돼지호 카페에서 확인 ▶ 카페바로가기 낚시종류 쭈꾸미 예약 한*수님(2) / 김*열님(5) / 손*탁님(2) / 김*종님(4) / 방*윤님(1) / 권*인님(2) / 김*선님(2) / 이*수님(1) /",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "daehan",
@@ -5542,7 +5622,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "바하호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 구매항",
       "phone": "010-4757-4753",
       "date": "2026-09-09",
       "departAt": "06:00",
@@ -5642,7 +5722,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "아우라호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 내포항",
       "phone": "010-4757-4753",
       "date": "2026-09-09",
       "departAt": "06:00",
@@ -5882,7 +5962,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "바하호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 구매항",
       "phone": "010-4757-4753",
       "date": "2026-09-09",
       "departAt": "13:00",
@@ -6111,12 +6191,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "4물",
-      "status": "open",
-      "statusText": "4물 라라 남은자리 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 12,13 2 3 14,15 4 6,7,8,9",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "4물 라라 남은자리 예약완료 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 12,13 2 3 14,15 4 6,7",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "eugeneho",
@@ -6136,7 +6216,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "healing",
@@ -6151,12 +6231,12 @@
       "hours": null,
       "species": null,
       "tide": "5물",
-      "status": "open",
-      "statusText": "5물 ◈공지사항◈ 남은자리 힐링호 남은자리 대기하기 예약 윤상준님(4) / 박프로님(2) / 원영식님(3) / 구철영님(1) / 산바다님(2) / 최정용님(1) / 김성진님(1) / 최정용님(1) / 이종수님(1) / 차원철님(1) / 엄진우님(1) / 이상주님(3)",
-      "seatsLeft": 4,
+      "status": "closed",
+      "statusText": "5물 ◈공지사항◈ 남은자리 힐링호 남은자리 예약완료 대기하기 예약 윤상준님(4) / 박프로님(2) / 원영식님(3) / 구철영님(1) / 산바다님(2) / 최정용님(1) / 김성진님(1) / 최정용님(1) / 이종수님(1) / 차원철님(1) / 엄진우님(1) / 이상주님(3)",
+      "seatsLeft": 0,
       "seatsTotal": 4,
       "price": null,
-      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "mansu",
@@ -6171,12 +6251,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": null,
-      "status": "open",
-      "statusText": "만수피싱 남은자리: 26시즌 쭈꾸미+갑오징어 20 13,14 18,19 17 1,2 11 12 5,6 3,4 10 9 7,8 15,16 10 8,9 7 미입금취소 17,18,19,20 11 20 11,1,2 1,2 15 16 16 15,16 10",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "만수피싱 남은자리: 예약완료 26시즌 쭈꾸미+갑오징어 20 13,14 18,19 17 1,2 11 12 5,6 3,4 10 9 7,8 15,16 10 8,9 7 미입금취소 17,18,19,20 11 20 11,1,2 1,2 15 16 16 15,16 10",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "lureschool",
@@ -6191,12 +6271,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "5물",
-      "status": "open",
-      "statusText": "5물 공지사항 남은자리 ☆발키리호☆ 남은자리 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 조대표수석비서.님(2) / 고락경님(1) / 박행훈님(1) / 이우필님(1) / 이진수님(3) / 강시현님(2) / 신현석님(1) / 쭌이님(3) / 전동희님(1) / 강진영님(2) / 김주원님(1) / 박상조님(1) / 한병찬님(1) / 배도희님(1) ☆발키리7호☆ 남은자리",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "5물 공지사항 남은자리 ☆발키리호☆ 남은자리 예약완료 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 조대표수석비서.님(2) / 고락경님(1) / 박행훈님(1) / 이우필님(1) / 이진수님(3) / 강시현님(2) / 신현석님(1) / 쭌이님(3) / 전동희님(1) / 강진영님(2) / 김주원님(1) / 박상조님(1) / 한병찬님(1) / 배도희님(1) ☆발키리7호☆",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "jstar",
@@ -6212,11 +6292,11 @@
       "species": "쭈꾸미",
       "tide": null,
       "status": "open",
-      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 20 7 9 8 15,16,17 2,14 13 10,탑11 6 4 탑1 3 18,19 12 5 탑11,12,13 미입금취소 10 10 4 12 레인보우 대기하기 쭈꾸미 .갑오징어 .출조 10 20 19 8,9",
+      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 20 7 9 8 15,16,17 2,14 13 10,탑11 6 4 탑1 3 18,19 12 5 탑11,12,13 미입금취소 10 10 4 12 예약완료 레인보우 예약하기 쭈꾸미 .갑오징어 .출조 10 20 1",
       "seatsLeft": 3,
       "seatsTotal": 3,
       "price": null,
-      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "hanpro",
@@ -6236,7 +6316,7 @@
       "seatsLeft": 3,
       "seatsTotal": 3,
       "price": null,
-      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "akbari",
@@ -6296,7 +6376,7 @@
       "seatsLeft": 4,
       "seatsTotal": 4,
       "price": null,
-      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "supernova",
@@ -6332,11 +6412,31 @@
       "species": "쭈꾸미",
       "tide": "5물",
       "status": "open",
-      "statusText": "5물 남은자리 예약하기 공지 04:20 리더낚시에서 버스출발합니다. 시흥시 서해안로81-44 옥상주차장 낚시종류 쭈꾸미 갑오징어 입금자 11,10 1,2,3 20,19,18 남은자리 예약하기 공지 09:30 리더낚시에서 버스출발합니다. 시흥시 서해안로81-44 옥상주차장 낚시종류 쭈꾸미 갑오징어 입금자 11 9,10 입금대기 13,12",
+      "statusText": "5물 남은자리 예약하기 공지 04:20 리더낚시에서 버스출발합니다. 시흥시 서해안로81-44 옥상주차장 낚시종류 쭈꾸미 갑오징어 입금자 11,10 1,2,3 20,19,18 입금대기 17 남은자리 예약하기 공지 09:30 리더낚시에서 버스출발합니다. 시흥시 서해안로81-44 옥상주차장 낚시종류 쭈꾸미 갑오징어 입금자 11 9,10 입금대기 13,12",
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
+    },
+    {
+      "siteId": "ssfish",
+      "siteName": "무창포 선상낚시",
+      "boat": "피싱마린호",
+      "port": "충남 보령 무창포항",
+      "phone": null,
+      "date": "2026-09-10",
+      "departAt": "04:30",
+      "returnAt": null,
+      "session": "오전",
+      "hours": null,
+      "species": "쭈꾸미",
+      "tide": null,
+      "status": "open",
+      "statusText": "선박명 예 약 현 황 남은자리 ◈공지사항◈ 공지 ▷ 출조 예약후 출조비는 바로 입금 부탁드립니다. (예약하신 당일에 출조비 전액 미입금시 예약을 취소합니다.) - ▷ 출항시간은 출조어종, 물때 및 각 선박마다 다를 수 있습니다. (출조일 전날 발송하는 출조안내문자 확인해주세요.) - ▷ 승선위치 및 자리배정은 공지사항 참고하세요. ( https://www.",
+      "seatsLeft": 6,
+      "seatsTotal": 6,
+      "price": null,
+      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "akbari",
@@ -6436,7 +6536,7 @@
       "seatsLeft": 22,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "daehan",
@@ -6602,7 +6702,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "바하호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 구매항",
       "phone": "010-4757-4753",
       "date": "2026-09-10",
       "departAt": "06:00",
@@ -6702,7 +6802,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "아우라호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 내포항",
       "phone": "010-4757-4753",
       "date": "2026-09-10",
       "departAt": "06:00",
@@ -7042,7 +7142,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "바하호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 구매항",
       "phone": "010-4757-4753",
       "date": "2026-09-10",
       "departAt": "13:00",
@@ -7271,12 +7371,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "5물",
-      "status": "open",
-      "statusText": "5물 라라 남은자리 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 10 5 11 1 19 2 3 8,9 12,13",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "5물 라라 남은자리 예약완료 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 10 5 11 1 19 2 3 8,9",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "eugeneho",
@@ -7296,7 +7396,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "healing",
@@ -7311,32 +7411,12 @@
       "hours": null,
       "species": null,
       "tide": "7물",
-      "status": "open",
-      "statusText": "7물 ◈공지사항◈ 남은자리 힐링호 남은자리 대기하기 예약 김태민님(5) / 이용환님(2) / 전금환님(1) / 김민석님(2) / 최상대님(1) / 이수진님(1) 입금대기 심영민님(2) / 김남정님(3) / 엄용섭님(1) / 안상희님(1) / 손경아님(2) var mlistIsLoading = false; var mlistCanLoad = true; var",
-      "seatsLeft": 5,
+      "status": "closed",
+      "statusText": "7물 ◈공지사항◈ 남은자리 힐링호 남은자리 예약완료 대기하기 예약 김태민님(5) / 이용환님(2) / 전금환님(1) / 김민석님(2) / 최상대님(1) / 이수진님(1) 입금대기 심영민님(2) / 김남정님(3) / 엄용섭님(1) / 안상희님(1) / 손경아님(2)",
+      "seatsLeft": 0,
       "seatsTotal": 5,
       "price": null,
-      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
-    },
-    {
-      "siteId": "chungma",
-      "siteName": "영종도 청마피싱",
-      "boat": "영종도 청마피싱",
-      "port": "인천 중구 거잠포선착장",
-      "phone": "010-2251-3237",
-      "date": "2026-09-11",
-      "departAt": null,
-      "returnAt": null,
-      "session": null,
-      "hours": null,
-      "species": "열기",
-      "tide": null,
-      "status": "unknown",
-      "statusText": "날짜선택 닫기 ▲ function m_calenda_dis1() { if($('#m-calenda-table1').css('display') == 'none') { $('#m-calenda-table1').show(); $('#m-calenda-open1').html('날짜선택 닫기 ▲'); } else { $('#m-calenda-table1').hide",
-      "seatsLeft": null,
-      "seatsTotal": null,
-      "price": null,
-      "url": "https://www.chungmafishing.com/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "mansu",
@@ -7351,52 +7431,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": null,
-      "status": "open",
-      "statusText": "날짜선택 닫기 ▲ function m_calenda_dis1() { if($('#m-calenda-table1').css('display') == 'none') { $('#m-calenda-table1').show(); $('#m-calenda-open1').html('날짜선택 닫기 ▲'); } else { $('#m-calenda-table1').hide",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "만수피싱 남은자리: 예약완료 26시즌 쭈꾸미+갑오징어 10 8,9 3 20 6,7,16,17,18,19 4,5 12,13 14 15 11 1 2 11 1,2,11 미입금취소 19,20 12,13,14,15 12,13,14,15",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
-    },
-    {
-      "siteId": "mansu",
-      "siteName": "영흥도 만수피싱",
-      "boat": "입금계좌번호",
-      "port": "인천 옹진 영흥도",
-      "phone": "010-5472-1856",
-      "date": "2026-09-11",
-      "departAt": null,
-      "returnAt": null,
-      "session": null,
-      "hours": null,
-      "species": "쭈꾸미",
-      "tide": null,
-      "status": "open",
-      "statusText": "만수피싱 남은자리: 26시즌 쭈꾸미+갑오징어 10 8,9 3 20 6,7,16,17,18,19 4,5 12,13 14 15 11 1 2 11 1,2,11 미입금취소 19,20 12,13,14,15 12,13,14,15 $(document).ready(function() { var isLoad = false; $(window).scroll(function()",
-      "seatsLeft": 22,
-      "seatsTotal": 22,
-      "price": null,
-      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
-    },
-    {
-      "siteId": "monster",
-      "siteName": "오이도 몬스터호",
-      "boat": "몬스터호",
-      "port": "경기 시흥 시화방조제 중간선착장",
-      "phone": null,
-      "date": "2026-09-11",
-      "departAt": null,
-      "returnAt": null,
-      "session": null,
-      "hours": null,
-      "species": "쭈꾸미",
-      "tide": null,
-      "status": "open",
-      "statusText": "날짜선택 닫기 ▲ function m_calenda_dis1() { if($('#m-calenda-table1').css('display') == 'none') { $('#m-calenda-table1').show(); $('#m-calenda-open1').html('날짜선택 닫기 ▲'); } else { $('#m-calenda-table1').hide",
-      "seatsLeft": 20,
-      "seatsTotal": 20,
-      "price": null,
-      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "lureschool",
@@ -7411,32 +7451,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "7물",
-      "status": "open",
-      "statusText": "7물 공지사항 남은자리 ☆발키리호☆ 남은자리 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 안광보님(1) / 오광식님(3) / 김현수님(2) / 김효동님(2) / 정국영님(3) / 황근철님(3) / 심효인님(2) / 이승욱님(1) / 황선호님(2) / 신승남님(1) / 이옥순님(1) ☆발키리7호☆ 남은자리 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 최봉훈님(4) / 최봉훈님",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "7물 공지사항 남은자리 ☆발키리호☆ 남은자리 예약완료 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 안광보님(1) / 오광식님(3) / 김현수님(2) / 김효동님(2) / 정국영님(3) / 황근철님(3) / 심효인님(2) / 이승욱님(1) / 황선호님(2) / 신승남님(1) / 이옥순님(1) ☆발키리7호☆ 남은자리 예약완료 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 최봉훈님",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=4"
-    },
-    {
-      "siteId": "lureschool",
-      "siteName": "오천항 루어스쿨 발키리호",
-      "boat": "오천항발키리호",
-      "port": "충남 보령 오천항",
-      "phone": "010-8019-8282",
-      "date": "2026-09-11",
-      "departAt": null,
-      "returnAt": null,
-      "session": null,
-      "hours": null,
-      "species": "열기",
-      "tide": null,
-      "status": "open",
-      "statusText": "날짜선택 닫기 ▲ function m_calenda_dis1() { if($('#m-calenda-table1').css('display') == 'none') { $('#m-calenda-table1').show(); $('#m-calenda-open1').html('날짜선택 닫기 ▲'); } else { $('#m-calenda-table1').hide",
-      "seatsLeft": 22,
-      "seatsTotal": 22,
-      "price": null,
-      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "jstar",
@@ -7452,31 +7472,11 @@
       "species": "쭈꾸미",
       "tide": null,
       "status": "open",
-      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 10 19,20 2,3 4 7,8,9 14 탑11 12 6 13 17 5 15,16 탑1 18 이*우님(3) 미입금취소 탑1 14 17 15,16,17 17 5 18 레인보우 대기하기 쭈꾸미 .갑오징어 .출조",
+      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 10 19,20 2,3 4 7,8,9 14 탑11 12 6 13 17 5 15,16 탑1 18 이*우님(3) 미입금취소 탑1 14 17 15,16,17 17 5 18 예약완료 레인보우 대기하기 쭈꾸미 .갑오징",
       "seatsLeft": 3,
       "seatsTotal": 3,
       "price": null,
-      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=11"
-    },
-    {
-      "siteId": "hanpro",
-      "siteName": "한프로피싱",
-      "boat": "입금계좌번호",
-      "port": "충남 보령 대천항",
-      "phone": "010-3530-7103",
-      "date": "2026-09-11",
-      "departAt": null,
-      "returnAt": null,
-      "session": null,
-      "hours": null,
-      "species": null,
-      "tide": "7물",
-      "status": "unknown",
-      "statusText": "7물 공지 남은자리 남은자리 예약하기 낚시종류 쭈&갑 출조합니다 var mlistIsLoading = false; var mlistCanLoad = true; var mlistScrollTimer = null; var layerDayScrollTimer = null; $(document).ready(function() { $(window).on('scrol",
-      "seatsLeft": null,
-      "seatsTotal": null,
-      "price": null,
-      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "hanpro",
@@ -7496,7 +7496,7 @@
       "seatsLeft": null,
       "seatsTotal": null,
       "price": null,
-      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "akbari",
@@ -7556,7 +7556,7 @@
       "seatsLeft": 3,
       "seatsTotal": 3,
       "price": null,
-      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "supernova",
@@ -7592,31 +7592,11 @@
       "species": "쭈꾸미",
       "tide": "7물",
       "status": "open",
-      "statusText": "7물 남은자리 예약하기 공지 04:20 리더낚시에서 버스출발합니다. 시흥시 서해안로81-44 옥상주차장 낚시종류 쭈꾸미 갑오징어 입금자 20,19,18,17,16 10 1,2 8,9 입금대기 11 남은자리 예약하기 공지 09:30 리더낚시에서 버스출발합니다. 시흥시 서해안로81-44 옥상주차장 낚시종류 쭈꾸미 갑오징어 var mlistIsLoading =",
+      "statusText": "7물 남은자리 예약하기 공지 04:20 리더낚시에서 버스출발합니다. 시흥시 서해안로81-44 옥상주차장 낚시종류 쭈꾸미 갑오징어 입금자 20,19,18,17,16 10 1,2 8,9 입금대기 11 남은자리 예약하기 공지 09:30 리더낚시에서 버스출발합니다. 시흥시 서해안로81-44 옥상주차장 낚시종류 쭈꾸미 갑오징어",
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
-    },
-    {
-      "siteId": "ssfish",
-      "siteName": "무창포 선상낚시",
-      "boat": "피싱마린호",
-      "port": "충남 보령 무창포항",
-      "phone": null,
-      "date": "2026-09-11",
-      "departAt": "04:30",
-      "returnAt": null,
-      "session": "오전",
-      "hours": null,
-      "species": "쭈꾸미",
-      "tide": null,
-      "status": "open",
-      "statusText": "선박명 예 약 현 황 남은자리 ◈공지사항◈ 공지 ▷ 출조 예약후 출조비는 바로 입금 부탁드립니다. (예약하신 당일에 출조비 전액 미입금시 예약을 취소합니다.) - ▷ 출항시간은 출조어종, 물때 및 각 선박마다 다를 수 있습니다. (출조일 전날 발송하는 출조안내문자 확인해주세요.) - ▷ 승선위치 및 자리배정은 공지사항 참고하세요. ( https://www.",
-      "seatsLeft": 17,
-      "seatsTotal": 17,
-      "price": null,
-      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "akbari",
@@ -7679,26 +7659,6 @@
       "url": "https://daehan.sunsang24.com/ship/schedule_fleet"
     },
     {
-      "siteId": "chungma",
-      "siteName": "영종도 청마피싱",
-      "boat": "이광호",
-      "port": "인천 중구 거잠포선착장",
-      "phone": "010-2251-3237",
-      "date": "2026-09-11",
-      "departAt": "05:00",
-      "returnAt": null,
-      "session": "오전",
-      "hours": null,
-      "species": null,
-      "tide": "7물",
-      "status": "open",
-      "statusText": "7물 청마_호 남은자리 대기하기 출항시간 : 05시 00분 김복수(2) / 박홍영(1) / 장갑성(2) / 엄찬욱(4) / 고승환(4) / 정하나(3) / 최길순(2) / 김완태(1) / 이광호(1) 정태민(3) / 송은희(3) / 박상제(1) / 윤춘호(1) / 김재훈(1) / 이병환(1) / 김현진(2) 아트_호 남은자리 대기하기 출항시간 : 05시 0",
-      "seatsLeft": 4,
-      "seatsTotal": 4,
-      "price": null,
-      "url": "https://www.chungmafishing.com/m/index.php?mid=bk&year=2026&month=9&day=11"
-    },
-    {
       "siteId": "ocpro",
       "siteName": "오천항 프로낚시",
       "boat": "가즈아호",
@@ -7736,7 +7696,7 @@
       "seatsLeft": 22,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "daehan",
@@ -7962,7 +7922,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "아우라호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 내포항",
       "phone": "010-4757-4753",
       "date": "2026-09-11",
       "departAt": "06:00",
@@ -8122,7 +8082,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "바하호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 구매항",
       "phone": "010-4757-4753",
       "date": "2026-09-11",
       "departAt": "07:00",
@@ -8217,46 +8177,6 @@
       "seatsTotal": null,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet"
-    },
-    {
-      "siteId": "jstar",
-      "siteName": "전곡항 스타피싱",
-      "boat": "전곡항 스타피싱",
-      "port": "경기 화성 전곡항",
-      "phone": "010-8070-0150",
-      "date": "2026-09-11",
-      "departAt": "08:00",
-      "returnAt": null,
-      "session": "오전",
-      "hours": null,
-      "species": "쭈꾸미",
-      "tide": null,
-      "status": "open",
-      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 10 19,20 2,3 4 7,8,9 14 탑11 12 6 13 17 5 15,16 탑1 18 이*우님(3) 미입금취소 탑1 14 17 15,16,17 17 5 18 레인보우 대기하기 쭈꾸미 .갑오징어 .출조",
-      "seatsLeft": 3,
-      "seatsTotal": 3,
-      "price": null,
-      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=4"
-    },
-    {
-      "siteId": "jstar",
-      "siteName": "전곡항 스타피싱",
-      "boat": "전곡항 스타피싱",
-      "port": "경기 화성 전곡항",
-      "phone": "010-8070-0150",
-      "date": "2026-09-11",
-      "departAt": "12:00",
-      "returnAt": null,
-      "session": "오후",
-      "hours": null,
-      "species": null,
-      "tide": "무시",
-      "status": "open",
-      "statusText": "1 2 3 4 5 6 7 15 30 function reservation_list_won(num) { var data = \"list_won=\"+num; $.ajax({ type: \"POST\", url: \"/_core/module/reservation_boat_v5.2_seat1/admin.ajax.list.won.php\", data: data, succes",
-      "seatsLeft": null,
-      "seatsTotal": null,
-      "price": null,
-      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=11"
     },
     {
       "siteId": "fishinggate",
@@ -8382,7 +8302,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "바하호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 구매항",
       "phone": "010-4757-4753",
       "date": "2026-09-11",
       "departAt": "13:00",
@@ -8616,7 +8536,7 @@
       "seatsLeft": 22,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "eugeneho",
@@ -8636,27 +8556,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
-    },
-    {
-      "siteId": "ssfish",
-      "siteName": "무창포 선상낚시",
-      "boat": "무창포 선상낚시",
-      "port": "충남 보령 무창포항",
-      "phone": null,
-      "date": "2026-09-11",
-      "departAt": "23:00",
-      "returnAt": null,
-      "session": "야간",
-      "hours": null,
-      "species": "쭈꾸미",
-      "tide": null,
-      "status": "open",
-      "statusText": "1 2 3 4 5 6 7 15 30 function reservation_list_won(num) { var data = \"list_won=\"+num; $.ajax({ type: \"POST\", url: \"/_core/module/reservation_boat_v5.2_seat1/admin.ajax.list.won.php\", data: data, succes",
-      "seatsLeft": null,
-      "seatsTotal": null,
-      "price": null,
-      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "healing",
@@ -8671,12 +8571,12 @@
       "hours": null,
       "species": null,
       "tide": "8물",
-      "status": "open",
-      "statusText": "8물 ◈공지사항◈ 남은자리 힐링호 남은자리 대기하기 예약 쟁이님(1) / 이규상님(4) / 양일석님(2) / 구본훈님(3) / 심상진님(2) / 박수용님(1) / 백성일님(4) / 이용선님(1) / 김세현님(1) / 구길영님(2) 대기자 장지오님(5) / 이진희님(2) / 이관노님(4) / 최종옥님(2)",
-      "seatsLeft": 5,
+      "status": "closed",
+      "statusText": "8물 ◈공지사항◈ 남은자리 힐링호 남은자리 예약완료 대기하기 예약 쟁이님(1) / 이규상님(4) / 양일석님(2) / 구본훈님(3) / 심상진님(2) / 박수용님(1) / 백성일님(4) / 이용선님(1) / 김세현님(1) / 구길영님(2) 대기자 장지오님(5) / 이진희님(2) / 이관노님(4) / 최종옥님(2) var mlistIsLoading = fal",
+      "seatsLeft": 0,
       "seatsTotal": 5,
       "price": null,
-      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "mansu",
@@ -8691,12 +8591,52 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": null,
-      "status": "open",
-      "statusText": "만수피싱 남은자리: 26시즌 쭈꾸미+갑오징어 11,12,13,14 18,19,20 10 1,2,3 15,16,17 4,5 8,9 6,7 미입금취소 4,5,6,7,8,9 6,7,8,9",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "만수피싱 남은자리: 예약완료 26시즌 쭈꾸미+갑오징어 11,12,13,14 18,19,20 10 1,2,3 15,16,17 4,5 8,9 6,7 미입금취소 4,5,6,7,8,9 6,7,8,9",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
+    },
+    {
+      "siteId": "mansu",
+      "siteName": "영흥도 만수피싱",
+      "boat": "입금계좌번호",
+      "port": "인천 옹진 영흥도",
+      "phone": "010-5472-1856",
+      "date": "2026-09-12",
+      "departAt": null,
+      "returnAt": null,
+      "session": null,
+      "hours": null,
+      "species": "쭈꾸미",
+      "tide": null,
+      "status": "closed",
+      "statusText": "만수피싱 남은자리: 예약완료 26시즌 쭈꾸미+갑오징어 11,12,13,14 18,19,20 10 1,2,3 15,16,17 4,5 8,9 6,7 미입금취소 4,5,6,7,8,9 6,7,8,9 $(document).ready(function() { var isLoad = false; $(window).scroll(function(){ if(isLoad) re",
+      "seatsLeft": 0,
+      "seatsTotal": 22,
+      "price": null,
+      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
+    },
+    {
+      "siteId": "monster",
+      "siteName": "오이도 몬스터호",
+      "boat": "몬스터호",
+      "port": "경기 시흥 시화방조제 중간선착장",
+      "phone": null,
+      "date": "2026-09-12",
+      "departAt": null,
+      "returnAt": null,
+      "session": null,
+      "hours": null,
+      "species": "쭈꾸미",
+      "tide": null,
+      "status": "open",
+      "statusText": "날짜선택 닫기 ▲ function m_calenda_dis1() { if($('#m-calenda-table1').css('display') == 'none') { $('#m-calenda-table1').show(); $('#m-calenda-open1').html('날짜선택 닫기 ▲'); } else { $('#m-calenda-table1').hide",
+      "seatsLeft": 20,
+      "seatsTotal": 20,
+      "price": null,
+      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "lureschool",
@@ -8711,12 +8651,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "8물",
-      "status": "open",
-      "statusText": "8물 공지사항 남은자리 ☆발키리호☆ 남은자리 ♡쭈꾸미낚시&갑오징어낚시♡ 정관영님(21) ☆발키리7호☆ 남은자리 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 윤경희님(2) / 박천기님(4) / 임성재님(4) / 최은주님(4) / 최용흠님(3) / 김진일님(2) / 주상하님(2) 고종현님(2) / 이시현님(2)",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "8물 공지사항 남은자리 ☆발키리호☆ 남은자리 예약마감 ♡쭈꾸미낚시&갑오징어낚시♡ 정관영님(21) ☆발키리7호☆ 남은자리 예약완료 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 윤경희님(2) / 박천기님(4) / 임성재님(4) / 최은주님(4) / 최용흠님(3) / 김진일님(2) / 주상하님(2) 고종현님(2) / 이시현님(2) var mlistIsLoading = f",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "jstar",
@@ -8731,12 +8671,32 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": null,
-      "status": "unknown",
-      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 탑1 20 10 4 9 18,19 17 8 12 2 13 5,6 14,15 16 3 탑11 7 7 15,16 14 레인보우 대기하기 쭈꾸미 .갑오징어 .출조 (중식미제공) 10 19,20 탑1,2 15,16,",
+      "status": "closed",
+      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 탑1 20 10 4 9 18,19 17 8 12 2 13 5,6 14,15 16 3 탑11 7 7 15,16 14 예약완료 레인보우 대기하기 쭈꾸미 .갑오징어 .출조 (중식미제공) 10 19,20 탑1,2 1",
       "seatsLeft": null,
       "seatsTotal": null,
       "price": null,
-      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=12"
+    },
+    {
+      "siteId": "hanpro",
+      "siteName": "한프로피싱",
+      "boat": "입금계좌번호",
+      "port": "충남 보령 대천항",
+      "phone": "010-3530-7103",
+      "date": "2026-09-12",
+      "departAt": null,
+      "returnAt": null,
+      "session": null,
+      "hours": null,
+      "species": null,
+      "tide": "8물",
+      "status": "closed",
+      "statusText": "8물 공지 남은자리 남은자리 예약완료 낚시종류 쭈&갑 출조합니다 입금자 김*실님(21) 부가상품 김*실님(낚시대 임대(로드+릴) 10개) var mlistIsLoading = false; var mlistCanLoad = true; var mlistScrollTimer = null; var layerDayScrollTimer = null; $(documen",
+      "seatsLeft": 0,
+      "seatsTotal": 21,
+      "price": null,
+      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "hanpro",
@@ -8756,7 +8716,7 @@
       "seatsLeft": 0,
       "seatsTotal": 21,
       "price": null,
-      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "akbari",
@@ -8816,7 +8776,7 @@
       "seatsLeft": 0,
       "seatsTotal": 8,
       "price": null,
-      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "supernova",
@@ -8856,7 +8816,7 @@
       "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
-      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "ssfish",
@@ -8876,7 +8836,7 @@
       "seatsLeft": 21,
       "seatsTotal": 21,
       "price": null,
-      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "akbari",
@@ -8971,12 +8931,12 @@
       "hours": null,
       "species": null,
       "tide": "8물",
-      "status": "open",
-      "statusText": "8물 청마_호 남은자리 대기하기 출항시간 : 05시 00분 황정은(2) / 김수민(2) / 오세준(2) / 이추용(2) / 고동수(2) / 정준택(2) / 엄윤정(2) / 김광출(2) / 고금법(2) / 안홍석(1) / 최종호(1) 허재준(4) / 윤지연(3) / 류정욱(1) / 김경한(2) / 송재일(1) / 고현기(1) / 최종호(2) / 강전웅(1)",
-      "seatsLeft": 4,
+      "status": "closed",
+      "statusText": "8물 청마_호 남은자리 예약완료 대기하기 출항시간 : 05시 00분 황정은(2) / 김수민(2) / 오세준(2) / 이추용(2) / 고동수(2) / 정준택(2) / 엄윤정(2) / 김광출(2) / 고금법(2) / 안홍석(1) / 최종호(1) 허재준(4) / 윤지연(3) / 류정욱(1) / 김경한(2) / 송재일(1) / 고현기(1) / 최종호(2) / 강전",
+      "seatsLeft": 0,
       "seatsTotal": 4,
       "price": null,
-      "url": "https://www.chungmafishing.com/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://www.chungmafishing.com/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "ocpro",
@@ -9011,12 +8971,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "8물",
-      "status": "open",
-      "statusText": "8물 흑돼지호 남은자리 공지 출항:05시( 출항 30분 전 배에 탑승바랍니다.(※명부는 배에서 작성) 출항 공지는 전날 문자발송 ★이벤트 공지는 흑돼지호 카페에서 확인 ▶ 카페바로가기 낚시종류 쭈꾸미 예약 한*식님(5) / 김*재님(3) / 이*규님(3) / 이*협님(6) / 육*기님(2) / 조*희님(1)",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "8물 흑돼지호 남은자리 예약완료 공지 출항:05시( 출항 30분 전 배에 탑승바랍니다.(※명부는 배에서 작성) 출항 공지는 전날 문자발송 ★이벤트 공지는 흑돼지호 카페에서 확인 ▶ 카페바로가기 낚시종류 쭈꾸미 예약 한*식님(5) / 김*재님(3) / 이*규님(3) / 이*협님(6) / 육*기님(2) / 조*희님(1)",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "blueocean2",
@@ -9162,7 +9122,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "바하호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 구매항",
       "phone": "010-4757-4753",
       "date": "2026-09-12",
       "departAt": "06:00",
@@ -9262,7 +9222,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "아우라호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 내포항",
       "phone": "010-4757-4753",
       "date": "2026-09-12",
       "departAt": "06:00",
@@ -9479,6 +9439,26 @@
       "url": "https://golden.sunsang24.com/ship/schedule_fleet"
     },
     {
+      "siteId": "jstar",
+      "siteName": "전곡항 스타피싱",
+      "boat": "전곡항 스타피싱",
+      "port": "경기 화성 전곡항",
+      "phone": "010-8070-0150",
+      "date": "2026-09-12",
+      "departAt": "08:00",
+      "returnAt": null,
+      "session": "오전",
+      "hours": null,
+      "species": "쭈꾸미",
+      "tide": null,
+      "status": "closed",
+      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 탑1 20 10 4 9 18,19 17 8 12 2 13 5,6 14,15 16 3 탑11 7 7 15,16 14 예약완료 레인보우 대기하기 쭈꾸미 .갑오징어 .출조 (중식미제공) 10 19,20 탑1,2 1",
+      "seatsLeft": null,
+      "seatsTotal": null,
+      "price": null,
+      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=5"
+    },
+    {
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "그랜드호",
@@ -9622,7 +9602,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "바하호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 구매항",
       "phone": "010-4757-4753",
       "date": "2026-09-12",
       "departAt": "13:00",
@@ -9862,7 +9842,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "아우라호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 내포항",
       "phone": "010-4757-4753",
       "date": "2026-09-12",
       "departAt": "15:30",
@@ -9911,12 +9891,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "8물",
-      "status": "open",
-      "statusText": "8물 라라 남은자리 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 9,10 3 18,19,20 5,6,7,8 11",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "8물 라라 남은자리 예약완료 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 9,10 3 18,19,20 5,6,7",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "eugeneho",
@@ -9936,7 +9916,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "healing",
@@ -9951,12 +9931,12 @@
       "hours": null,
       "species": null,
       "tide": "9물",
-      "status": "open",
-      "statusText": "9물 ◈공지사항◈ 남은자리 힐링호 남은자리 대기하기 예약 쟁이님(1) / 김민경님(2) / 이효상님(6) / 김용기님(2) / 여민식님(2) / 안해균님(4) / 박민지님(2) / 채수득님(1) / 노흔효님(1) 대기자 김명찬님(2) / 복수현님(1) / 김용기님(1) / 김용이님(2)",
-      "seatsLeft": 6,
+      "status": "closed",
+      "statusText": "9물 ◈공지사항◈ 남은자리 힐링호 남은자리 예약완료 대기하기 예약 쟁이님(1) / 김민경님(2) / 이효상님(6) / 김용기님(2) / 여민식님(2) / 안해균님(4) / 박민지님(2) / 채수득님(1) / 노흔효님(1) 대기자 김명찬님(2) / 복수현님(1) / 김용기님(1) / 김용이님(2)",
+      "seatsLeft": 0,
       "seatsTotal": 6,
       "price": null,
-      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "mansu",
@@ -9971,12 +9951,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": null,
-      "status": "open",
-      "statusText": "만수피싱 남은자리: 26시즌 쭈꾸미+갑오징어 9,10 1,2,3,4,5 7,8 19,20 11,12,13,14 15,16,17 18 6 18",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "만수피싱 남은자리: 예약완료 26시즌 쭈꾸미+갑오징어 9,10 1,2,3,4,5 7,8 19,20 11,12,13,14 15,16,17 18 6 18",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "lureschool",
@@ -9991,12 +9971,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "9물",
-      "status": "open",
-      "statusText": "9물 공지사항 남은자리 ☆발키리호☆ 남은자리 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 이찬우님(2) / 박정수님(2) / 유기철님(3) / 최건님(2) / 오택곤님(1) / 최운성님(2) / 강영안님(1) / 정낙영님(2) / 노제도님(2) / 이슬이님(2) / 진님(2) ☆발키리7호☆ 남은자리 예약하기 ♡쭈꾸미낚시&갑오징어낚시♡ 최용흠님(3) / 강경임님(4)",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "9물 공지사항 남은자리 ☆발키리호☆ 남은자리 예약완료 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 이찬우님(2) / 박정수님(2) / 유기철님(3) / 최건님(2) / 오택곤님(1) / 최운성님(2) / 강영안님(1) / 정낙영님(2) / 노제도님(2) / 이슬이님(2) / 진님(2) ☆발키리7호☆ 남은자리 예약완료 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 최용흠님(3)",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "jstar",
@@ -10012,11 +9992,11 @@
       "species": "쭈꾸미",
       "tide": null,
       "status": "few",
-      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 10 탑1 9 19 2 7,8 12,13,14 3 5 4 17 18 20 6 탑11 15 16 15,16,17 미입금취소 18 탑11 레인보우 대기하기 쭈꾸미 .갑오징어 .출조 (중식미제공) 탑11 19 3,",
+      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 10 탑1 9 19 2 7,8 12,13,14 3 5 4 17 18 20 6 탑11 15 16 15,16,17 미입금취소 18 탑11 예약완료 레인보우 대기하기 쭈꾸미 .갑오징어 .출조 (중식미제공) 탑11",
       "seatsLeft": 2,
       "seatsTotal": 2,
       "price": null,
-      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "hanpro",
@@ -10036,7 +10016,7 @@
       "seatsLeft": 0,
       "seatsTotal": 5,
       "price": null,
-      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "akbari",
@@ -10096,7 +10076,7 @@
       "seatsLeft": 0,
       "seatsTotal": 8,
       "price": null,
-      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "supernova",
@@ -10136,7 +10116,7 @@
       "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
-      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "ssfish",
@@ -10156,7 +10136,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "akbari",
@@ -10251,12 +10231,12 @@
       "hours": null,
       "species": null,
       "tide": "9물",
-      "status": "open",
-      "statusText": "9물 청마_호 남은자리 대기하기 출항시간 : 05시 00분 최은엽(1) / 엄윤정(2) / 김광출(2) / 김현수(4) / 김기영(1) / 엄윤정(4) / 박종남(1) / 류정욱(1) / 최정(2) / 홍성표(1) / 신동성(1) 윤지현(4) / 김필중(3) / 서미선(3) / 류정욱(1) / 강환구(1) / 박종남(1) / 김학연(1) / 신동성(1) /",
-      "seatsLeft": 4,
+      "status": "closed",
+      "statusText": "9물 청마_호 남은자리 예약완료 대기하기 출항시간 : 05시 00분 최은엽(1) / 엄윤정(2) / 김광출(2) / 김현수(4) / 김기영(1) / 엄윤정(4) / 박종남(1) / 류정욱(1) / 최정(2) / 홍성표(1) / 신동성(1) 윤지현(4) / 김필중(3) / 서미선(3) / 류정욱(1) / 강환구(1) / 박종남(1) / 김학연(1) / 신동성",
+      "seatsLeft": 0,
       "seatsTotal": 4,
       "price": null,
-      "url": "https://www.chungmafishing.com/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://www.chungmafishing.com/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "ocpro",
@@ -10291,12 +10271,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "9물",
-      "status": "open",
-      "statusText": "9물 흑돼지호 남은자리 공지 출항:05시( 출항 30분 전 배에 탑승바랍니다.(※명부는 배에서 작성) 출항 공지는 전날 문자발송 ★이벤트 공지는 흑돼지호 카페에서 확인 ▶ 카페바로가기 낚시종류 쭈꾸미 예약 김*휘님(2) / 이*민님(3) / 서*하님(3) / 조*희님(1) / 투*이님(1) / 단*님(1) / 서*식님(1) / 정*옥님(2) / 신*현님(3",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "9물 흑돼지호 남은자리 예약완료 공지 출항:05시( 출항 30분 전 배에 탑승바랍니다.(※명부는 배에서 작성) 출항 공지는 전날 문자발송 ★이벤트 공지는 흑돼지호 카페에서 확인 ▶ 카페바로가기 낚시종류 쭈꾸미 예약 김*휘님(2) / 이*민님(3) / 서*하님(3) / 조*희님(1) / 투*이님(1) / 단*님(1) / 서*식님(1) / 정*옥님(2) / 신",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "blueocean2",
@@ -10442,7 +10422,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "바하호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 구매항",
       "phone": "010-4757-4753",
       "date": "2026-09-13",
       "departAt": "06:00",
@@ -10542,7 +10522,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "아우라호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 내포항",
       "phone": "010-4757-4753",
       "date": "2026-09-13",
       "departAt": "06:00",
@@ -11091,12 +11071,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "9물",
-      "status": "open",
-      "statusText": "9물 라라 남은자리 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 2 19,20,9,10 5,6,7,8 12 17",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "9물 라라 남은자리 예약완료 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 2 19,20,9,10 5,6,7,8",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "eugeneho",
@@ -11116,7 +11096,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "healing",
@@ -11136,7 +11116,7 @@
       "seatsLeft": 3,
       "seatsTotal": 3,
       "price": null,
-      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "mansu",
@@ -11151,12 +11131,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": null,
-      "status": "open",
-      "statusText": "만수피싱 남은자리: 26시즌 쭈꾸미+갑오징어 1,2 20 8,9,10 19 3,4 6,7,11,12,13,14,15,16,17,18 5 미입금취소 5",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "만수피싱 남은자리: 예약완료 26시즌 쭈꾸미+갑오징어 1,2 20 8,9,10 19 3,4 6,7,11,12,13,14,15,16,17,18 5 미입금취소 5",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "lureschool",
@@ -11176,7 +11156,7 @@
       "seatsLeft": 22,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "jstar",
@@ -11192,11 +11172,11 @@
       "species": "쭈꾸미",
       "tide": null,
       "status": "few",
-      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 20 12,13 19 탑11 10 3,4 16,17,18 2 탑1 9 14,15 8 6 5 7 탑1,2 14,15 미입금취소 10 탑11 5,6 6,7,8 6,7,8 14,15 14,15 6,7 7 레인보우",
+      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 20 12,13 19 탑11 10 3,4 16,17,18 2 탑1 9 14,15 8 6 5 7 탑1,2 14,15 미입금취소 10 탑11 5,6 6,7,8 6,7,8 14,15 14,15 6,7 7 예약완료",
       "seatsLeft": 1,
       "seatsTotal": 1,
       "price": null,
-      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "hanpro",
@@ -11216,7 +11196,7 @@
       "seatsLeft": null,
       "seatsTotal": null,
       "price": null,
-      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "akbari",
@@ -11276,7 +11256,7 @@
       "seatsLeft": 4,
       "seatsTotal": 4,
       "price": null,
-      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "supernova",
@@ -11316,7 +11296,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "ssfish",
@@ -11336,7 +11316,7 @@
       "seatsLeft": 6,
       "seatsTotal": 6,
       "price": null,
-      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "akbari",
@@ -11431,12 +11411,12 @@
       "hours": null,
       "species": null,
       "tide": "10물",
-      "status": "open",
-      "statusText": "10물 청마_호 남은자리 대기하기 출항시간 : 05시 00분 김정희(2) / 한승우(2) / 정승연(4) / 오진창(2) / 옥명순(1) / 황현승(1) / 조래홍(2) / 조중건(1) / 배홍열(1) / 조홍석(1) / 이경향(1) / 김병춘(1) / 강채구(1) 김성배(2) / 배병준(1) / 전영제(2) / 송은경(2) 아트_호 남은자리 예약하기 출항",
-      "seatsLeft": 4,
+      "status": "closed",
+      "statusText": "10물 청마_호 남은자리 예약완료 대기하기 출항시간 : 05시 00분 김정희(2) / 한승우(2) / 정승연(4) / 오진창(2) / 옥명순(1) / 황현승(1) / 조래홍(2) / 조중건(1) / 배홍열(1) / 조홍석(1) / 이경향(1) / 김병춘(1) / 강채구(1) 김성배(2) / 배병준(1) / 전영제(2) / 송은경(2) 아트_호 남은자리 예약",
+      "seatsLeft": 0,
       "seatsTotal": 4,
       "price": null,
-      "url": "https://www.chungmafishing.com/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://www.chungmafishing.com/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "ocpro",
@@ -11476,7 +11456,7 @@
       "seatsLeft": 22,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "blueocean2",
@@ -11622,7 +11602,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "바하호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 구매항",
       "phone": "010-4757-4753",
       "date": "2026-09-14",
       "departAt": "06:00",
@@ -11722,7 +11702,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "아우라호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 내포항",
       "phone": "010-4757-4753",
       "date": "2026-09-14",
       "departAt": "06:00",
@@ -12062,7 +12042,7 @@
       "siteId": "fishinggate",
       "siteName": "안면도 피싱게이트",
       "boat": "바하호",
-      "port": "충남 태안 백사장항",
+      "port": "충남 태안 구매항",
       "phone": "010-4757-4753",
       "date": "2026-09-14",
       "departAt": "13:00",
@@ -12291,12 +12271,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "10물",
-      "status": "open",
-      "statusText": "10물 라라 남은자리 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 10 19,20 8,9 7 12,13,14 1",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "10물 라라 남은자리 예약완료 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 10 19,20 8,9 7 12,13",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "eugeneho",
@@ -12316,7 +12296,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "healing",
@@ -12336,7 +12316,7 @@
       "seatsLeft": 3,
       "seatsTotal": 3,
       "price": null,
-      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "mansu",
@@ -12351,12 +12331,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": null,
-      "status": "open",
-      "statusText": "만수피싱 남은자리: 26시즌 쭈꾸미+갑오징어 18,19,20 10 9 11 1 2 6 12,13,14 7,8 15,16,17 3,4,5",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "만수피싱 남은자리: 예약완료 26시즌 쭈꾸미+갑오징어 18,19,20 10 9 11 1 2 6 12,13,14 7,8 15,16,17 3,4,5",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "lureschool",
@@ -12376,7 +12356,7 @@
       "seatsLeft": 22,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "jstar",
@@ -12396,7 +12376,7 @@
       "seatsLeft": null,
       "seatsTotal": null,
       "price": null,
-      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "hanpro",
@@ -12416,7 +12396,7 @@
       "seatsLeft": null,
       "seatsTotal": null,
       "price": null,
-      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "akbari",
@@ -12476,7 +12456,7 @@
       "seatsLeft": 4,
       "seatsTotal": 4,
       "price": null,
-      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "supernova",
@@ -12516,7 +12496,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "ssfish",
@@ -12536,7 +12516,7 @@
       "seatsLeft": 5,
       "seatsTotal": 5,
       "price": null,
-      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "akbari",
@@ -12619,6 +12599,26 @@
       "url": "https://daehan.sunsang24.com/ship/schedule_fleet"
     },
     {
+      "siteId": "chungma",
+      "siteName": "영종도 청마피싱",
+      "boat": "15박연호",
+      "port": "인천 중구 거잠포선착장",
+      "phone": "010-2251-3237",
+      "date": "2026-09-15",
+      "departAt": "05:00",
+      "returnAt": null,
+      "session": "오전",
+      "hours": null,
+      "species": null,
+      "tide": "11물",
+      "status": "closed",
+      "statusText": "11물 청마_호 남은자리 예약완료 대기하기 출항시간 : 05시 00분 김용철(1) / 이진형(3) / 이영원(2) / 김병억(3) / 조선동(4) / 조선동(1) / 황인덕(2) / 9.15박연호(1) / 백원진(2) / 이영길(1) 이훈희(3) 아트_호 남은자리 예약하기 출항시간 : 05시 00분 조권행(1) / 김광중(2) / 박대식(2) / 유선택(4",
+      "seatsLeft": 0,
+      "seatsTotal": 4,
+      "price": null,
+      "url": "https://www.chungmafishing.com/m/index.php?mid=bk&year=2026&month=9&day=12"
+    },
+    {
       "siteId": "ocpro",
       "siteName": "오천항 프로낚시",
       "boat": "가즈아호",
@@ -12656,7 +12656,7 @@
       "seatsLeft": 22,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "blueocean2",
@@ -12756,7 +12756,7 @@
       "seatsLeft": 22,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "eugeneho",
@@ -12776,7 +12776,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "healing",
@@ -12796,7 +12796,7 @@
       "seatsLeft": 9,
       "seatsTotal": 9,
       "price": null,
-      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "mansu",
@@ -12811,12 +12811,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": null,
-      "status": "open",
-      "statusText": "만수피싱 남은자리: 26시즌 쭈꾸미+갑오징어 17,18,19,20 15,16 1,2,3,11,12,13 10 7,8,9 5,6 4 14 10 미입금취소 7,8,9 8,9 1,2",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "만수피싱 남은자리: 예약완료 26시즌 쭈꾸미+갑오징어 17,18,19,20 15,16 1,2,3,11,12,13 10 7,8,9 5,6 4 14 10 미입금취소 7,8,9 8,9 1,2",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "lureschool",
@@ -12831,12 +12831,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": null,
-      "status": "open",
-      "statusText": "한객기 공지사항 남은자리 ☆발키리호☆ 남은자리 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 송찬호님(2) / 신희영님(1) / 장민태님(3) / 이상범님(1) / 원종훈님(3) / 이영헌님(3) / 최준태님(1) / 태공이님(3) / 박승우님(2) / 김광식님(2) 입금대기 강상수님(1) 정유원님(1) ☆발키리7호☆ 남은자리 예약하기 ♡쭈꾸미낚시&갑오징어낚시♡ 지선",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "한객기 공지사항 남은자리 ☆발키리호☆ 남은자리 예약완료 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 송찬호님(2) / 신희영님(1) / 장민태님(3) / 이상범님(1) / 원종훈님(3) / 이영헌님(3) / 최준태님(1) / 태공이님(3) / 박승우님(2) / 김광식님(2) 입금대기 강상수님(1) 정유원님(1) ☆발키리7호☆ 남은자리 예약하기 ♡쭈꾸미낚시&갑오징어낚",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "jstar",
@@ -12851,12 +12851,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": null,
-      "status": "unknown",
-      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 20 10 탑1,2,3 16,17,18 탑11 7 8 13,14 5 15 6 12 9 19 4 10 미입금취소 탑11 12,13,14 15 14 6,8 8 15 9,19 레인보우 대기하기 쭈꾸미 .갑오징어 .",
+      "status": "closed",
+      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 20 10 탑1,2,3 16,17,18 탑11 7 8 13,14 5 15 6 12 9 19 4 10 미입금취소 탑11 12,13,14 15 14 6,8 8 15 9,19 예약완료 레인보우 예약하기 쭈꾸미 .갑",
       "seatsLeft": null,
       "seatsTotal": null,
       "price": null,
-      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "hanpro",
@@ -12876,7 +12876,7 @@
       "seatsLeft": null,
       "seatsTotal": null,
       "price": null,
-      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "akbari",
@@ -12916,7 +12916,7 @@
       "seatsLeft": 3,
       "seatsTotal": 3,
       "price": null,
-      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "supernova",
@@ -12956,7 +12956,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "akbari",
@@ -12996,7 +12996,7 @@
       "seatsLeft": 9,
       "seatsTotal": 9,
       "price": null,
-      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "akbari",
@@ -13116,7 +13116,7 @@
       "seatsLeft": 22,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "blueocean2",
@@ -13216,7 +13216,7 @@
       "seatsLeft": 22,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "eugeneho",
@@ -13236,7 +13236,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "healing",
@@ -13251,12 +13251,12 @@
       "hours": null,
       "species": null,
       "tide": null,
-      "status": "open",
-      "statusText": "대객기 ◈공지사항◈ 남은자리 힐링호 남은자리 대기하기 예약 김지숙님(2) / 공경원님(7) / 최종팔님(1) / 박수홍님(4) / 문성재님(1) / 김윤태님(1) / 이동현님(3) / 김귀태님(1) 입금대기 윤재갑님(1) 대기자 손경아님(1)",
-      "seatsLeft": 7,
+      "status": "closed",
+      "statusText": "대객기 ◈공지사항◈ 남은자리 힐링호 남은자리 예약완료 대기하기 예약 김지숙님(2) / 공경원님(7) / 최종팔님(1) / 박수홍님(4) / 문성재님(1) / 김윤태님(1) / 이동현님(3) / 김귀태님(1) 입금대기 윤재갑님(1) 대기자 손경아님(1)",
+      "seatsLeft": 0,
       "seatsTotal": 7,
       "price": null,
-      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "mansu",
@@ -13271,12 +13271,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": null,
-      "status": "open",
-      "statusText": "만수피싱 남은자리: 26시즌 쭈꾸미+갑오징어 10 9 20 1 11 18,19 2,3,4,5,6,7,8,12,13,16,17 14 15",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "만수피싱 남은자리: 예약완료 26시즌 쭈꾸미+갑오징어 10 9 20 1 11 18,19 2,3,4,5,6,7,8,12,13,16,17 14 15",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "lureschool",
@@ -13291,12 +13291,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": null,
-      "status": "open",
-      "statusText": "대객기 공지사항 남은자리 ☆발키리호☆ 남은자리 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 이상범님(1) / 고락경님(1) / 김태용님(4) / 오짱님(4) / 신성수님(4) / 람온님(4) / 강대중님(1) / 강서현님(2) ☆발키리7호☆ 남은자리 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 김준화님(2) / 박정욱님(1) / 김경진님(4) / 이창신님(4) / 박승휘님(",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "대객기 공지사항 남은자리 ☆발키리호☆ 남은자리 예약완료 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 이상범님(1) / 고락경님(1) / 김태용님(4) / 오짱님(4) / 신성수님(4) / 람온님(4) / 강대중님(1) / 강서현님(2) ☆발키리7호☆ 남은자리 예약완료 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 김준화님(2) / 박정욱님(1) / 김경진님(4) / 이창신님(",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "jstar",
@@ -13312,11 +13312,11 @@
       "species": "쭈꾸미",
       "tide": null,
       "status": "open",
-      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 20 10 8 18,19 14,15 13 2 9 3,4,5 6 탑11 7 탑1 12 17 16 배*지님(1) / 김*섭님(3) / 천*태님(1) 미입금취소 9 탑1 레인보우 대기하기 쭈꾸미 .갑오징어 .출조",
+      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 20 10 8 18,19 14,15 13 2 9 3,4,5 6 탑11 7 탑1 12 17 16 배*지님(1) / 김*섭님(3) / 천*태님(1) 미입금취소 9 탑1 예약완료 레인보우 대기하기 쭈꾸미 .갑오징어",
       "seatsLeft": 3,
       "seatsTotal": 3,
       "price": null,
-      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "hanpro",
@@ -13336,7 +13336,7 @@
       "seatsLeft": 1,
       "seatsTotal": 1,
       "price": null,
-      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "teamhanpro",
@@ -13356,7 +13356,7 @@
       "seatsLeft": 0,
       "seatsTotal": 5,
       "price": null,
-      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "supernova",
@@ -13396,7 +13396,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "akbari",
@@ -13417,6 +13417,26 @@
       "seatsTotal": null,
       "price": null,
       "url": "https://akbari.sunsang24.com/ship/schedule_fleet"
+    },
+    {
+      "siteId": "ssfish",
+      "siteName": "무창포 선상낚시",
+      "boat": "피싱마린호",
+      "port": "충남 보령 무창포항",
+      "phone": null,
+      "date": "2026-09-17",
+      "departAt": "04:30",
+      "returnAt": null,
+      "session": "오전",
+      "hours": null,
+      "species": "쭈꾸미",
+      "tide": null,
+      "status": "open",
+      "statusText": "선박명 예 약 현 황 남은자리 ◈공지사항◈ 공지 ▷ 출조 예약후 출조비는 바로 입금 부탁드립니다. (예약하신 당일에 출조비 전액 미입금시 예약을 취소합니다.) - ▷ 출항시간은 출조어종, 물때 및 각 선박마다 다를 수 있습니다. (출조일 전날 발송하는 출조안내문자 확인해주세요.) - ▷ 승선위치 및 자리배정은 공지사항 참고하세요. ( https://www.",
+      "seatsLeft": 17,
+      "seatsTotal": 17,
+      "price": null,
+      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "akbari",
@@ -13556,7 +13576,7 @@
       "seatsLeft": 22,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "blueocean2",
@@ -13651,12 +13671,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "13물",
-      "status": "open",
-      "statusText": "13물 라라 남은자리 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 10 8,9 17,18,19,20 2,3,4",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "13물 라라 남은자리 예약완료 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 10 8,9 17,18,19,20 2",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "eugeneho",
@@ -13676,7 +13696,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "healing",
@@ -13691,32 +13711,12 @@
       "hours": null,
       "species": null,
       "tide": "조금",
-      "status": "open",
-      "statusText": "조금 ◈공지사항◈ 남은자리 힐링호 남은자리 대기하기 예약 이강균님(1) / 황진명님(1) / 김성진님(3) / 방보윤님(1) / 이천일님(3) / 김정우님(2) / 송양헌님(3) / 김성진님(1) / 김윤태님(1) / 김진우님(2) / 김철환님(1) / 남궁윤님(1) / 장혁님(1) 대기자 이찬영님(2) / 양혜영님(3) / 하홍섭님(2) / 권오경님(1)",
-      "seatsLeft": 3,
+      "status": "closed",
+      "statusText": "조금 ◈공지사항◈ 남은자리 힐링호 남은자리 예약완료 대기하기 예약 이강균님(1) / 황진명님(1) / 김성진님(3) / 방보윤님(1) / 이천일님(3) / 김정우님(2) / 송양헌님(3) / 김성진님(1) / 김윤태님(1) / 김진우님(2) / 김철환님(1) / 남궁윤님(1) / 장혁님(1) 대기자 이찬영님(2) / 양혜영님(3) / 하홍섭님(2) / 권오",
+      "seatsLeft": 0,
       "seatsTotal": 3,
       "price": null,
-      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
-    },
-    {
-      "siteId": "chungma",
-      "siteName": "영종도 청마피싱",
-      "boat": "영종도 청마피싱",
-      "port": "인천 중구 거잠포선착장",
-      "phone": "010-2251-3237",
-      "date": "2026-09-18",
-      "departAt": null,
-      "returnAt": null,
-      "session": null,
-      "hours": null,
-      "species": "열기",
-      "tide": null,
-      "status": "unknown",
-      "statusText": "날짜선택 닫기 ▲ function m_calenda_dis1() { if($('#m-calenda-table1').css('display') == 'none') { $('#m-calenda-table1').show(); $('#m-calenda-open1').html('날짜선택 닫기 ▲'); } else { $('#m-calenda-table1').hide",
-      "seatsLeft": null,
-      "seatsTotal": null,
-      "price": null,
-      "url": "https://www.chungmafishing.com/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "mansu",
@@ -13731,52 +13731,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": null,
-      "status": "open",
-      "statusText": "날짜선택 닫기 ▲ function m_calenda_dis1() { if($('#m-calenda-table1').css('display') == 'none') { $('#m-calenda-table1').show(); $('#m-calenda-open1').html('날짜선택 닫기 ▲'); } else { $('#m-calenda-table1').hide",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "만수피싱 남은자리: 예약완료 26시즌 쭈꾸미+갑오징어 1,2 3,9,10,19,20 11 7,8 17,18 4 5 13 15,16 6 12 14 6,15,16 14 미입금취소 12,13,14",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
-    },
-    {
-      "siteId": "mansu",
-      "siteName": "영흥도 만수피싱",
-      "boat": "입금계좌번호",
-      "port": "인천 옹진 영흥도",
-      "phone": "010-5472-1856",
-      "date": "2026-09-18",
-      "departAt": null,
-      "returnAt": null,
-      "session": null,
-      "hours": null,
-      "species": "쭈꾸미",
-      "tide": null,
-      "status": "open",
-      "statusText": "만수피싱 남은자리: 26시즌 쭈꾸미+갑오징어 1,2 3,9,10,19,20 11 7,8 17,18 4 5 13 15,16 6 12 14 6,15,16 14 미입금취소 12,13,14 $(document).ready(function() { var isLoad = false; $(window).scroll(function(){ if(isLoad) return;",
-      "seatsLeft": 22,
-      "seatsTotal": 22,
-      "price": null,
-      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
-    },
-    {
-      "siteId": "monster",
-      "siteName": "오이도 몬스터호",
-      "boat": "몬스터호",
-      "port": "경기 시흥 시화방조제 중간선착장",
-      "phone": null,
-      "date": "2026-09-18",
-      "departAt": null,
-      "returnAt": null,
-      "session": null,
-      "hours": null,
-      "species": "쭈꾸미",
-      "tide": null,
-      "status": "open",
-      "statusText": "날짜선택 닫기 ▲ function m_calenda_dis1() { if($('#m-calenda-table1').css('display') == 'none') { $('#m-calenda-table1').show(); $('#m-calenda-open1').html('날짜선택 닫기 ▲'); } else { $('#m-calenda-table1').hide",
-      "seatsLeft": 20,
-      "seatsTotal": 20,
-      "price": null,
-      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "lureschool",
@@ -13791,32 +13751,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "조금",
-      "status": "open",
-      "statusText": "조금 공지사항 남은자리 ☆발키리호☆ 남은자리 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 안광보님(1) / 정병윤님(2) / 강승렬님(2) / 민형욱님(4) / 진진님(4) / 장지훈님(1) / 임상철님(2) / 강은경님(1) / 이종식님(1) / 서학범님(1) / 송석호님(1) / 하기동님(1) 입금대기 김언님(1) / 권오현님(1) 왕한준님(1) ☆발키리7호☆",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "조금 공지사항 남은자리 ☆발키리호☆ 남은자리 예약완료 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 안광보님(1) / 정병윤님(2) / 강승렬님(2) / 민형욱님(4) / 진진님(4) / 장지훈님(1) / 임상철님(2) / 강은경님(1) / 이종식님(1) / 서학범님(1) / 송석호님(1) / 하기동님(1) 입금대기 김언님(1) / 권오현님(1) 왕한준님(1) ☆발키",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=11"
-    },
-    {
-      "siteId": "lureschool",
-      "siteName": "오천항 루어스쿨 발키리호",
-      "boat": "오천항발키리호",
-      "port": "충남 보령 오천항",
-      "phone": "010-8019-8282",
-      "date": "2026-09-18",
-      "departAt": null,
-      "returnAt": null,
-      "session": null,
-      "hours": null,
-      "species": "열기",
-      "tide": null,
-      "status": "open",
-      "statusText": "날짜선택 닫기 ▲ function m_calenda_dis1() { if($('#m-calenda-table1').css('display') == 'none') { $('#m-calenda-table1').show(); $('#m-calenda-open1').html('날짜선택 닫기 ▲'); } else { $('#m-calenda-table1').hide",
-      "seatsLeft": 22,
-      "seatsTotal": 22,
-      "price": null,
-      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "jstar",
@@ -13836,27 +13776,7 @@
       "seatsLeft": 3,
       "seatsTotal": 3,
       "price": null,
-      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=18"
-    },
-    {
-      "siteId": "hanpro",
-      "siteName": "한프로피싱",
-      "boat": "입금계좌번호",
-      "port": "충남 보령 대천항",
-      "phone": "010-3530-7103",
-      "date": "2026-09-18",
-      "departAt": null,
-      "returnAt": null,
-      "session": null,
-      "hours": null,
-      "species": null,
-      "tide": "조금",
-      "status": "closed",
-      "statusText": "조금 공지 남은자리 남은자리 예약완료 낚시종류 쭈&갑 출조합니다 입금자 김*실님(4) / 양*주님(4) / 김*엽님(3) / 윤*일님(2) / 남*정님(2) / 민*복님(2) / 김*기님(1) / 켜*님(2) / 김*기님(1) var mlistIsLoading = false; var mlistCanLoad = true; var mlistScrollTimer",
-      "seatsLeft": 0,
-      "seatsTotal": 4,
-      "price": null,
-      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "hanpro",
@@ -13876,7 +13796,7 @@
       "seatsLeft": 0,
       "seatsTotal": 4,
       "price": null,
-      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "teamhanpro",
@@ -13896,7 +13816,7 @@
       "seatsLeft": 0,
       "seatsTotal": 5,
       "price": null,
-      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "supernova",
@@ -13936,27 +13856,7 @@
       "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
-      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
-    },
-    {
-      "siteId": "ssfish",
-      "siteName": "무창포 선상낚시",
-      "boat": "피싱마린호",
-      "port": "충남 보령 무창포항",
-      "phone": null,
-      "date": "2026-09-18",
-      "departAt": "04:30",
-      "returnAt": null,
-      "session": "오전",
-      "hours": null,
-      "species": "쭈꾸미",
-      "tide": null,
-      "status": "open",
-      "statusText": "선박명 예 약 현 황 남은자리 ◈공지사항◈ 공지 ▷ 출조 예약후 출조비는 바로 입금 부탁드립니다. (예약하신 당일에 출조비 전액 미입금시 예약을 취소합니다.) - ▷ 출항시간은 출조어종, 물때 및 각 선박마다 다를 수 있습니다. (출조일 전날 발송하는 출조안내문자 확인해주세요.) - ▷ 승선위치 및 자리배정은 공지사항 참고하세요. ( https://www.",
-      "seatsLeft": 20,
-      "seatsTotal": 20,
-      "price": null,
-      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "akbari",
@@ -14079,26 +13979,6 @@
       "url": "https://daehan.sunsang24.com/ship/schedule_fleet"
     },
     {
-      "siteId": "chungma",
-      "siteName": "영종도 청마피싱",
-      "boat": "정현호",
-      "port": "인천 중구 거잠포선착장",
-      "phone": "010-2251-3237",
-      "date": "2026-09-18",
-      "departAt": "05:00",
-      "returnAt": null,
-      "session": "오전",
-      "hours": null,
-      "species": null,
-      "tide": "조금",
-      "status": "open",
-      "statusText": "조금 청마_호 남은자리 대기하기 출항시간 : 05시 00분 배홍열(3) / 박귀남(2) / 조용민(1) / 저격이(2) / 최익환(1) / 최현규(4) / 김지훈(2) / 방덕만(2) / 김용규(2) / 김기창(1) 김낙권(2) / 김상혁(4) / 배홍열(1) / 김종성(1) / 박상원(3) / 김재훈(1) / 신갑철(2) / 송태구(2) / 남광우(1)",
-      "seatsLeft": 4,
-      "seatsTotal": 4,
-      "price": null,
-      "url": "https://www.chungmafishing.com/m/index.php?mid=bk&year=2026&month=9&day=18"
-    },
-    {
       "siteId": "ocpro",
       "siteName": "오천항 프로낚시",
       "boat": "가즈아호",
@@ -14131,12 +14011,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "조금",
-      "status": "open",
-      "statusText": "조금 흑돼지호 남은자리 공지 출항:05시( 출항 30분 전 배에 탑승바랍니다.(※명부는 배에서 작성) 출항 공지는 전날 문자발송 ★이벤트 공지는 흑돼지호 카페에서 확인 ▶ 카페바로가기 낚시종류 쭈꾸미 예약 이***팀님(20)",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "조금 흑돼지호 남은자리 예약완료 공지 출항:05시( 출항 30분 전 배에 탑승바랍니다.(※명부는 배에서 작성) 출항 공지는 전날 문자발송 ★이벤트 공지는 흑돼지호 카페에서 확인 ▶ 카페바로가기 낚시종류 쭈꾸미 예약 이***팀님(20)",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "blueocean2",
@@ -14199,46 +14079,6 @@
       "url": "https://golden.sunsang24.com/ship/schedule_fleet"
     },
     {
-      "siteId": "jstar",
-      "siteName": "전곡항 스타피싱",
-      "boat": "전곡항 스타피싱",
-      "port": "경기 화성 전곡항",
-      "phone": "010-8070-0150",
-      "date": "2026-09-18",
-      "departAt": "08:00",
-      "returnAt": null,
-      "session": "오전",
-      "hours": null,
-      "species": "쭈꾸미",
-      "tide": null,
-      "status": "open",
-      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 탑11 20 10 탑1 9 19 18 14 4,5,6 12,13 16,17 8 15 7 3 2 문*우님(2) / 고*석님(1) / 이*님(1) / 김*호님(1) / 이*욱님(1) / 박*훈님(3) / 이*욱님",
-      "seatsLeft": 3,
-      "seatsTotal": 3,
-      "price": null,
-      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=11"
-    },
-    {
-      "siteId": "jstar",
-      "siteName": "전곡항 스타피싱",
-      "boat": "전곡항 스타피싱",
-      "port": "경기 화성 전곡항",
-      "phone": "010-8070-0150",
-      "date": "2026-09-18",
-      "departAt": "12:00",
-      "returnAt": null,
-      "session": "오후",
-      "hours": null,
-      "species": null,
-      "tide": "무시",
-      "status": "open",
-      "statusText": "1 2 3 4 5 6 7 15 30 function reservation_list_won(num) { var data = \"list_won=\"+num; $.ajax({ type: \"POST\", url: \"/_core/module/reservation_boat_v5.2_seat1/admin.ajax.list.won.php\", data: data, succes",
-      "seatsLeft": null,
-      "seatsTotal": null,
-      "price": null,
-      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=18"
-    },
-    {
       "siteId": "goldenbaek",
       "siteName": "안면도 황금백호",
       "boat": "황금백호",
@@ -14271,12 +14111,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "14물",
-      "status": "open",
-      "statusText": "14물 라라 남은자리 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 2 10 17,18 3 1 4,5 11 8,9",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "14물 라라 남은자리 예약완료 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 2 10 17,18 3 1 4,5 1",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
+      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "eugeneho",
@@ -14296,27 +14136,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=11"
-    },
-    {
-      "siteId": "ssfish",
-      "siteName": "무창포 선상낚시",
-      "boat": "무창포 선상낚시",
-      "port": "충남 보령 무창포항",
-      "phone": null,
-      "date": "2026-09-18",
-      "departAt": "23:00",
-      "returnAt": null,
-      "session": "야간",
-      "hours": null,
-      "species": "쭈꾸미",
-      "tide": null,
-      "status": "open",
-      "statusText": "1 2 3 4 5 6 7 15 30 function reservation_list_won(num) { var data = \"list_won=\"+num; $.ajax({ type: \"POST\", url: \"/_core/module/reservation_boat_v5.2_seat1/admin.ajax.list.won.php\", data: data, succes",
-      "seatsLeft": null,
-      "seatsTotal": null,
-      "price": null,
-      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "healing",
@@ -14331,12 +14151,12 @@
       "hours": null,
       "species": null,
       "tide": "무시",
-      "status": "open",
-      "statusText": "무시 ◈공지사항◈ 남은자리 힐링호 남은자리 대기하기 예약 박용철님(2) / 유태헌님(2) / 김민경님(3) / 이강균님(3) / 쟁이님(1) / 이근환님(2) / 이규상님(4) / 유부곤님(2) / 황진명님(2) 대기자 복수현님(1) / 김보람님(9) / 임경숙님(9) / 변은정님(9) / 김도현님(5) / 박성진님(4) / 성현승님(4) / 최세영님(3)",
-      "seatsLeft": 9,
+      "status": "closed",
+      "statusText": "무시 ◈공지사항◈ 남은자리 힐링호 남은자리 예약완료 대기하기 예약 박용철님(2) / 유태헌님(2) / 김민경님(3) / 이강균님(3) / 쟁이님(1) / 이근환님(2) / 이규상님(4) / 유부곤님(2) / 황진명님(2) 대기자 복수현님(1) / 김보람님(9) / 임경숙님(9) / 변은정님(9) / 김도현님(5) / 박성진님(4) / 성현승님(4) / 최세",
+      "seatsLeft": 0,
       "seatsTotal": 9,
       "price": null,
-      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "mansu",
@@ -14351,12 +14171,52 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": null,
-      "status": "open",
-      "statusText": "만수피싱 남은자리: 26시즌 쭈꾸미+갑오징어 5,6,7,8,9,10 1,2,3,19,20 11,12 15,16,17,18 13,14 4",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "만수피싱 남은자리: 예약완료 26시즌 쭈꾸미+갑오징어 5,6,7,8,9,10 1,2,3,19,20 11,12 15,16,17,18 13,14 4",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
+    },
+    {
+      "siteId": "mansu",
+      "siteName": "영흥도 만수피싱",
+      "boat": "입금계좌번호",
+      "port": "인천 옹진 영흥도",
+      "phone": "010-5472-1856",
+      "date": "2026-09-19",
+      "departAt": null,
+      "returnAt": null,
+      "session": null,
+      "hours": null,
+      "species": "쭈꾸미",
+      "tide": null,
+      "status": "closed",
+      "statusText": "만수피싱 남은자리: 예약완료 26시즌 쭈꾸미+갑오징어 5,6,7,8,9,10 1,2,3,19,20 11,12 15,16,17,18 13,14 4 $(document).ready(function() { var isLoad = false; $(window).scroll(function(){ if(isLoad) return; // ajax 호출 중일경우 중지 v",
+      "seatsLeft": 0,
+      "seatsTotal": 22,
+      "price": null,
+      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
+    },
+    {
+      "siteId": "monster",
+      "siteName": "오이도 몬스터호",
+      "boat": "몬스터호",
+      "port": "경기 시흥 시화방조제 중간선착장",
+      "phone": null,
+      "date": "2026-09-19",
+      "departAt": null,
+      "returnAt": null,
+      "session": null,
+      "hours": null,
+      "species": "쭈꾸미",
+      "tide": null,
+      "status": "open",
+      "statusText": "날짜선택 닫기 ▲ function m_calenda_dis1() { if($('#m-calenda-table1').css('display') == 'none') { $('#m-calenda-table1').show(); $('#m-calenda-open1').html('날짜선택 닫기 ▲'); } else { $('#m-calenda-table1').hide",
+      "seatsLeft": 20,
+      "seatsTotal": 20,
+      "price": null,
+      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "lureschool",
@@ -14371,12 +14231,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "무시",
-      "status": "open",
-      "statusText": "무시 공지사항 남은자리 ☆발키리호☆ 남은자리 ♡쭈꾸미낚시&갑오징어낚시♡ 도청님(21) ☆발키리7호☆ 남은자리 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 김승태님(1) / 김영우님(1) / 이찬우님(2) / 백수연님(2) / 양승광님(2) / 김진우님(2) / 신봉근님(1) / 김미원님(2) / 김형태님(2) / 홍용기님(2) / 윤이노님(2) / 정승화님(2) 황",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "무시 공지사항 남은자리 ☆발키리호☆ 남은자리 예약마감 ♡쭈꾸미낚시&갑오징어낚시♡ 도청님(21) ☆발키리7호☆ 남은자리 예약완료 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 김승태님(1) / 김영우님(1) / 이찬우님(2) / 백수연님(2) / 양승광님(2) / 김진우님(2) / 신봉근님(1) / 김미원님(2) / 김형태님(2) / 홍용기님(2) / 윤이노님(2) /",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "jstar",
@@ -14392,11 +14252,31 @@
       "species": "쭈꾸미",
       "tide": null,
       "status": "open",
-      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 탑1 20 10 탑11 8 19 9 12 4 14 18 3 7 13 17 15 2 6 5 16 16 미입금취소 9,10 9,10 20 레인보우 대기하기 쭈꾸미 .갑오징어 .출조 (중식미제공) 8,9,10 18",
+      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 탑1 20 10 탑11 8 19 9 12 4 14 18 3 7 13 17 15 2 6 5 16 16 미입금취소 9,10 9,10 20 예약완료 레인보우 대기하기 쭈꾸미 .갑오징어 .출조 (중식미제공) 8,9,",
       "seatsLeft": 6,
       "seatsTotal": 6,
       "price": null,
-      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=19"
+    },
+    {
+      "siteId": "hanpro",
+      "siteName": "한프로피싱",
+      "boat": "입금계좌번호",
+      "port": "충남 보령 대천항",
+      "phone": "010-3530-7103",
+      "date": "2026-09-19",
+      "departAt": null,
+      "returnAt": null,
+      "session": null,
+      "hours": null,
+      "species": null,
+      "tide": "무시",
+      "status": "closed",
+      "statusText": "무시 공지 남은자리 남은자리 예약완료 낚시종류 쭈&갑 출조합니다 입금자 이*히님(6) / 김*실님(8) / 서*오님(1) / 차*조님(1) 입금대기 이*록님(5) var mlistIsLoading = false; var mlistCanLoad = true; var mlistScrollTimer = null; var layerDayScrollTimer = n",
+      "seatsLeft": 0,
+      "seatsTotal": 8,
+      "price": null,
+      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "hanpro",
@@ -14416,7 +14296,7 @@
       "seatsLeft": 0,
       "seatsTotal": 8,
       "price": null,
-      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "teamhanpro",
@@ -14436,7 +14316,7 @@
       "seatsLeft": 0,
       "seatsTotal": 4,
       "price": null,
-      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "supernova",
@@ -14476,7 +14356,7 @@
       "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
-      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "ssfish",
@@ -14496,7 +14376,7 @@
       "seatsLeft": 21,
       "seatsTotal": 21,
       "price": null,
-      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "akbari",
@@ -14631,12 +14511,12 @@
       "hours": null,
       "species": null,
       "tide": "무시",
-      "status": "open",
-      "statusText": "무시 청마_호 남은자리 대기하기 출항시간 : 05시 00분 오세준(2) / 양병용(2) / 강기종(1) / 김준호(1) / 박귀남(2) / 엄윤정(2) / 오태석(4) / 강환구(2) / 조용현(2) / 황호준(2) 이도규(4) / 이시현(4) / 손위택(2) / 김대웅(4) / 유호용(1) / 이동준(2) / 김종영(3) / 유호용(1) / 구우성(2)",
-      "seatsLeft": 4,
+      "status": "closed",
+      "statusText": "무시 청마_호 남은자리 예약완료 대기하기 출항시간 : 05시 00분 오세준(2) / 양병용(2) / 강기종(1) / 김준호(1) / 박귀남(2) / 엄윤정(2) / 오태석(4) / 강환구(2) / 조용현(2) / 황호준(2) 이도규(4) / 이시현(4) / 손위택(2) / 김대웅(4) / 유호용(1) / 이동준(2) / 김종영(3) / 유호용(1) / 구우",
+      "seatsLeft": 0,
       "seatsTotal": 4,
       "price": null,
-      "url": "https://www.chungmafishing.com/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://www.chungmafishing.com/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "ocpro",
@@ -14671,12 +14551,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "무시",
-      "status": "open",
-      "statusText": "무시 흑돼지호 남은자리 공지 출항:05시( 출항 30분 전 배에 탑승바랍니다.(※명부는 배에서 작성) 출항 공지는 전날 문자발송 ★이벤트 공지는 흑돼지호 카페에서 확인 ▶ 카페바로가기 낚시종류 쭈꾸미 예약 심*우님(4) / 김*재님(3) / 이*웅님(2) / 이*규님(3) / 소*중님(6) / 이*재님(1) / 백*하님(1)",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "무시 흑돼지호 남은자리 예약완료 공지 출항:05시( 출항 30분 전 배에 탑승바랍니다.(※명부는 배에서 작성) 출항 공지는 전날 문자발송 ★이벤트 공지는 흑돼지호 카페에서 확인 ▶ 카페바로가기 낚시종류 쭈꾸미 예약 심*우님(4) / 김*재님(3) / 이*웅님(2) / 이*규님(3) / 소*중님(6) / 이*재님(1) / 백*하님(1)",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "blueocean2",
@@ -14739,6 +14619,26 @@
       "url": "https://golden.sunsang24.com/ship/schedule_fleet"
     },
     {
+      "siteId": "jstar",
+      "siteName": "전곡항 스타피싱",
+      "boat": "전곡항 스타피싱",
+      "port": "경기 화성 전곡항",
+      "phone": "010-8070-0150",
+      "date": "2026-09-19",
+      "departAt": "08:00",
+      "returnAt": null,
+      "session": "오전",
+      "hours": null,
+      "species": "쭈꾸미",
+      "tide": null,
+      "status": "open",
+      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 탑1 20 10 탑11 8 19 9 12 4 14 18 3 7 13 17 15 2 6 5 16 16 미입금취소 9,10 9,10 20 예약완료 레인보우 대기하기 쭈꾸미 .갑오징어 .출조 (중식미제공) 8,9,",
+      "seatsLeft": 6,
+      "seatsTotal": 6,
+      "price": null,
+      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=12"
+    },
+    {
       "siteId": "goldenbaek",
       "siteName": "안면도 황금백호",
       "boat": "황금백호",
@@ -14771,12 +14671,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "15물",
-      "status": "open",
-      "statusText": "15물 라라 남은자리 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 1,11 2,3 4,5 8 12,13 14,1",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "15물 라라 남은자리 예약완료 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 1,11 2,3 4,5 8 12,13",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "eugeneho",
@@ -14796,7 +14696,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=12"
     },
     {
       "siteId": "healing",
@@ -14811,12 +14711,12 @@
       "hours": null,
       "species": null,
       "tide": "1물",
-      "status": "open",
-      "statusText": "1물 ◈공지사항◈ 남은자리 힐링호 남은자리 대기하기 예약 김장호님(1) / 김민경님(3) / 유부곤님(4) / 최정미님(5) / 쟁이님(1) / 이강균님(6) / 이효상님(1) 대기자 김동욱님(4) / 이재근님(5) / 박수용님(1) / 박동훈님(2) / 김성만님(1) / 김병수님(2) / 김영민님(2) / 조판준님(2) / 김유진님(3) / 박규현님(1)",
-      "seatsLeft": 6,
+      "status": "closed",
+      "statusText": "1물 ◈공지사항◈ 남은자리 힐링호 남은자리 예약완료 대기하기 예약 김장호님(1) / 김민경님(3) / 유부곤님(4) / 최정미님(5) / 쟁이님(1) / 이강균님(6) / 이효상님(1) 대기자 김동욱님(4) / 이재근님(5) / 박수용님(1) / 박동훈님(2) / 김성만님(1) / 김병수님(2) / 김영민님(2) / 조판준님(2) / 김유진님(3) / 박규",
+      "seatsLeft": 0,
       "seatsTotal": 6,
       "price": null,
-      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "mansu",
@@ -14831,12 +14731,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": null,
-      "status": "open",
-      "statusText": "만수피싱 남은자리: 26시즌 쭈꾸미+갑오징어 1,2,3,4,5,6,7,8,9,10 18,19,20 11,12,13,14 15,16,17",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "만수피싱 남은자리: 예약완료 26시즌 쭈꾸미+갑오징어 1,2,3,4,5,6,7,8,9,10 18,19,20 11,12,13,14 15,16,17",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "lureschool",
@@ -14851,12 +14751,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "1물",
-      "status": "open",
-      "statusText": "1물 공지사항 남은자리 ☆발키리호☆ 남은자리 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 이수현님(2) / 채수창님(1) / 윤설희님(2) / 윤이노님(2) / 김미라님(2) / 유병진님(2) / 박정수님(3) / 김미원님(2) / 정승화님(2) / 서관수.님(1) / 이정빈님(1) / 피쉬님(1) 장동훈님(2) / 정일용님(3) / 이청송님(1) / 이한준님(3)",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "1물 공지사항 남은자리 ☆발키리호☆ 남은자리 예약완료 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 이수현님(2) / 채수창님(1) / 윤설희님(2) / 윤이노님(2) / 김미라님(2) / 유병진님(2) / 박정수님(3) / 김미원님(2) / 정승화님(2) / 서관수.님(1) / 이정빈님(1) / 피쉬님(1) 장동훈님(2) / 정일용님(3) / 이청송님(1) / 이한",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "jstar",
@@ -14876,7 +14776,7 @@
       "seatsLeft": 4,
       "seatsTotal": 4,
       "price": null,
-      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "hanpro",
@@ -14896,7 +14796,7 @@
       "seatsLeft": 0,
       "seatsTotal": 5,
       "price": null,
-      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "teamhanpro",
@@ -14916,7 +14816,7 @@
       "seatsLeft": 0,
       "seatsTotal": 6,
       "price": null,
-      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "supernova",
@@ -14956,7 +14856,7 @@
       "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
-      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "ssfish",
@@ -14976,7 +14876,7 @@
       "seatsLeft": 21,
       "seatsTotal": 21,
       "price": null,
-      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "akbari",
@@ -15111,12 +15011,12 @@
       "hours": null,
       "species": null,
       "tide": "1물",
-      "status": "open",
-      "statusText": "1물 청마_호 남은자리 대기하기 출항시간 : 05시 00분 김영호(1) / 김광출(1) / 권기윤(2) / 김준호(1) / 유선택(2) / 김승옥(2) / 엄윤정(2) / 박윤수(3) / 김승호(4) / 서민안(1) / 서운석(1) 김민정(3) / 이상구(4) / 김선민(2) / 조항서(2) / 이종범(1) / 김경배(1) / 서창익(2) / 오태석(4)",
-      "seatsLeft": 4,
+      "status": "closed",
+      "statusText": "1물 청마_호 남은자리 예약완료 대기하기 출항시간 : 05시 00분 김영호(1) / 김광출(1) / 권기윤(2) / 김준호(1) / 유선택(2) / 김승옥(2) / 엄윤정(2) / 박윤수(3) / 김승호(4) / 서민안(1) / 서운석(1) 김민정(3) / 이상구(4) / 김선민(2) / 조항서(2) / 이종범(1) / 김경배(1) / 서창익(2) / 오태",
+      "seatsLeft": 0,
       "seatsTotal": 4,
       "price": null,
-      "url": "https://www.chungmafishing.com/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://www.chungmafishing.com/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "ocpro",
@@ -15151,12 +15051,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "1물",
-      "status": "open",
-      "statusText": "1물 흑돼지호 남은자리 공지 출항:05시( 출항 30분 전 배에 탑승바랍니다.(※명부는 배에서 작성) 출항 공지는 전날 문자발송 ★이벤트 공지는 흑돼지호 카페에서 확인 ▶ 카페바로가기 낚시종류 쭈꾸미 예약 해*님(20)",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "1물 흑돼지호 남은자리 예약완료 공지 출항:05시( 출항 30분 전 배에 탑승바랍니다.(※명부는 배에서 작성) 출항 공지는 전날 문자발송 ★이벤트 공지는 흑돼지호 카페에서 확인 ▶ 카페바로가기 낚시종류 쭈꾸미 예약 해*님(20)",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "blueocean2",
@@ -15251,12 +15151,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "1물",
-      "status": "open",
-      "statusText": "1물 라라 남은자리 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 1,2,3 4,5,6 7,8,9 10 11,14",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "1물 라라 남은자리 예약완료 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 1,2,3 4,5,6 7,8,9 10",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "eugeneho",
@@ -15276,7 +15176,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "healing",
@@ -15291,12 +15191,12 @@
       "hours": null,
       "species": null,
       "tide": "2물",
-      "status": "open",
-      "statusText": "2물 ◈공지사항◈ 남은자리 힐링호 남은자리 대기하기 예약 유태헌님(2) / 윤여덕님(2) / 김성진님(5) / 이윤호님(2) / 이희식님(1) / 윤준정님(3) / 박진오님(1) / 조성철님(4) / 이강래님(1) 대기자 김명수님(1) / 이현종님(2) / 정진선님(1)",
-      "seatsLeft": 5,
+      "status": "closed",
+      "statusText": "2물 ◈공지사항◈ 남은자리 힐링호 남은자리 예약완료 대기하기 예약 유태헌님(2) / 윤여덕님(2) / 김성진님(5) / 이윤호님(2) / 이희식님(1) / 윤준정님(3) / 박진오님(1) / 조성철님(4) / 이강래님(1) 대기자 김명수님(1) / 이현종님(2) / 정진선님(1)",
+      "seatsLeft": 0,
       "seatsTotal": 5,
       "price": null,
-      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "mansu",
@@ -15311,12 +15211,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": null,
-      "status": "open",
-      "statusText": "만수피싱 남은자리: 26시즌 쭈꾸미+갑오징어 9,10 20 17,18,19 11,12 5,6,7,8 2 1 13,14 15,16 3,4 3,4 미입금취소 1,2 13,14,15,16",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "만수피싱 남은자리: 예약완료 26시즌 쭈꾸미+갑오징어 9,10 20 17,18,19 11,12 5,6,7,8 2 1 13,14 15,16 3,4 3,4 미입금취소 1,2 13,14,15,16",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "lureschool",
@@ -15331,12 +15231,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "2물",
-      "status": "open",
-      "statusText": "2물 공지사항 남은자리 ☆발키리호☆ 남은자리 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 박천기님(2) / 김영태님(1) / 진재규님(2) / 이성재님(4) / 박동호님(3) / 김태영님(3) / 박재혁님(1) / 배남혁님(1) / 민석기님(2) / 신기환님(2) 윤성문님(2) ☆발키리7호☆ 남은자리 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 어윤영님(2) / 이봉준님(1",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "2물 공지사항 남은자리 ☆발키리호☆ 남은자리 예약완료 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 박천기님(2) / 김영태님(1) / 진재규님(2) / 이성재님(4) / 박동호님(3) / 김태영님(3) / 박재혁님(1) / 배남혁님(1) / 민석기님(2) / 신기환님(2) 윤성문님(2) ☆발키리7호☆ 남은자리 예약완료 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 어윤영님(2",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "jstar",
@@ -15352,11 +15252,11 @@
       "species": "쭈꾸미",
       "tide": null,
       "status": "open",
-      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 탑1 20 8 18,19 17 2,3,4 16 12 9 5,15 13,14 탑11 6,7 10 20 미입금취소 19,20 5,6 15 레인보우 대기하기 쭈꾸미 .갑오징어 .출조 10 18,19,20 9 탑1,",
+      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 탑1 20 8 18,19 17 2,3,4 16 12 9 5,15 13,14 탑11 6,7 10 20 미입금취소 19,20 5,6 15 예약완료 레인보우 대기하기 쭈꾸미 .갑오징어 .출조 10 18,19,20",
       "seatsLeft": 3,
       "seatsTotal": 3,
       "price": null,
-      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "hanpro",
@@ -15376,7 +15276,7 @@
       "seatsLeft": 0,
       "seatsTotal": 5,
       "price": null,
-      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "teamhanpro",
@@ -15396,7 +15296,7 @@
       "seatsLeft": 5,
       "seatsTotal": 5,
       "price": null,
-      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "supernova",
@@ -15436,7 +15336,7 @@
       "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
-      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "ssfish",
@@ -15456,7 +15356,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "akbari",
@@ -15591,12 +15491,12 @@
       "hours": null,
       "species": null,
       "tide": "2물",
-      "status": "open",
-      "statusText": "2물 청마_호 남은자리 대기하기 출항시간 : 05시 00분 김나현(2) / 정덕진(1) / 이승태(4) / 강성환(3) / 김성일(1) / 김의섭(2) / 최종석(1) / 최종석(1) / 배용우(1) / 김정원(1) / 박승철(1) / 박승철(1) / 박각규(1) 김광근(4) / 김복수(2) / 박성국(2) / 김정원(1) / 박각규(1) / 조홍래(2)",
-      "seatsLeft": 4,
+      "status": "closed",
+      "statusText": "2물 청마_호 남은자리 예약완료 대기하기 출항시간 : 05시 00분 김나현(2) / 정덕진(1) / 이승태(4) / 강성환(3) / 김성일(1) / 김의섭(2) / 최종석(1) / 최종석(1) / 배용우(1) / 김정원(1) / 박승철(1) / 박승철(1) / 박각규(1) 김광근(4) / 김복수(2) / 박성국(2) / 김정원(1) / 박각규(1) / 조홍",
+      "seatsLeft": 0,
       "seatsTotal": 4,
       "price": null,
-      "url": "https://www.chungmafishing.com/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://www.chungmafishing.com/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "ocpro",
@@ -15631,12 +15531,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "2물",
-      "status": "open",
-      "statusText": "2물 흑돼지호 남은자리 공지 출항:05시( 출항 30분 전 배에 탑승바랍니다.(※명부는 배에서 작성) 출항 공지는 전날 문자발송 ★이벤트 공지는 흑돼지호 카페에서 확인 ▶ 카페바로가기 낚시종류 쭈꾸미 예약 서*욱님(4) / 이*한님(2) / 홍*호님(3) / 신*규님(1) / 이*윤님(2) / 이*근님(3) / 이*노님(2) / 조*호님(3)",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "2물 흑돼지호 남은자리 예약완료 공지 출항:05시( 출항 30분 전 배에 탑승바랍니다.(※명부는 배에서 작성) 출항 공지는 전날 문자발송 ★이벤트 공지는 흑돼지호 카페에서 확인 ▶ 카페바로가기 낚시종류 쭈꾸미 예약 서*욱님(4) / 이*한님(2) / 홍*호님(3) / 신*규님(1) / 이*윤님(2) / 이*근님(3) / 이*노님(2) / 조*호님(3)",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "blueocean2",
@@ -15731,12 +15631,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "2물",
-      "status": "open",
-      "statusText": "2물 라라 남은자리 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 1 10 18,19,20 2,3,4,5 11,1",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "2물 라라 남은자리 예약완료 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 1 10 18,19,20 2,3,4,5",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "eugeneho",
@@ -15756,7 +15656,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "healing",
@@ -15771,12 +15671,12 @@
       "hours": null,
       "species": null,
       "tide": "3물",
-      "status": "open",
-      "statusText": "3물 ◈공지사항◈ 남은자리 힐링호 남은자리 대기하기 예약 이강균님(5) / 정재우님(2) / 김성진님(2) / 김성진님(2) / 이희식님(1) / 정경락님(1) / 박현철님(2) / 장양일님(1) / 꼬기사랑님(1) / 박종민님(3) / 최상대님(1) 대기자 이교민님(2)",
-      "seatsLeft": 5,
+      "status": "closed",
+      "statusText": "3물 ◈공지사항◈ 남은자리 힐링호 남은자리 예약완료 대기하기 예약 이강균님(5) / 정재우님(2) / 김성진님(2) / 김성진님(2) / 이희식님(1) / 정경락님(1) / 박현철님(2) / 장양일님(1) / 꼬기사랑님(1) / 박종민님(3) / 최상대님(1) 대기자 이교민님(2)",
+      "seatsLeft": 0,
       "seatsTotal": 5,
       "price": null,
-      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "mansu",
@@ -15791,12 +15691,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": null,
-      "status": "open",
-      "statusText": "만수피싱 남은자리: 26시즌 쭈꾸미+갑오징어 10 16,17,18,19,20 1 8,9 11,12,13,14 2,3,4,5 7 15 6",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "만수피싱 남은자리: 예약완료 26시즌 쭈꾸미+갑오징어 10 16,17,18,19,20 1 8,9 11,12,13,14 2,3,4,5 7 15 6",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "lureschool",
@@ -15811,12 +15711,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "3물",
-      "status": "open",
-      "statusText": "3물 공지사항 남은자리 ☆발키리호☆ 남은자리 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 최건님(2) / 조형원수석비서.님(2) / 윤성진님(2) / 이시열님(1) / 김병기님(4) / 윤용섭님(3) / 농어귀신님(2) / 박동탄님(1) / 이용준님(2) / 전명수님(1) / 김병기님(1) ☆발키리7호☆ 남은자리 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 양승현님(3) /",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "3물 공지사항 남은자리 ☆발키리호☆ 남은자리 예약완료 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 최건님(2) / 조형원수석비서.님(2) / 윤성진님(2) / 이시열님(1) / 김병기님(4) / 윤용섭님(3) / 농어귀신님(2) / 박동탄님(1) / 이용준님(2) / 전명수님(1) / 김병기님(1) ☆발키리7호☆ 남은자리 예약완료 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "jstar",
@@ -15836,7 +15736,7 @@
       "seatsLeft": 2,
       "seatsTotal": 2,
       "price": null,
-      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "hanpro",
@@ -15856,7 +15756,7 @@
       "seatsLeft": 0,
       "seatsTotal": 16,
       "price": null,
-      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "teamhanpro",
@@ -15876,7 +15776,7 @@
       "seatsLeft": 0,
       "seatsTotal": 4,
       "price": null,
-      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "supernova",
@@ -15916,7 +15816,7 @@
       "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
-      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "ssfish",
@@ -15936,7 +15836,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "akbari",
@@ -16059,6 +15959,26 @@
       "url": "https://daehan.sunsang24.com/ship/schedule_fleet"
     },
     {
+      "siteId": "chungma",
+      "siteName": "영종도 청마피싱",
+      "boat": "이병호",
+      "port": "인천 중구 거잠포선착장",
+      "phone": "010-2251-3237",
+      "date": "2026-09-22",
+      "departAt": "05:00",
+      "returnAt": null,
+      "session": "오전",
+      "hours": null,
+      "species": null,
+      "tide": "3물",
+      "status": "closed",
+      "statusText": "3물 청마_호 남은자리 예약완료 대기하기 출항시간 : 05시 00분 저격이(3) / 지니(3) / 임용택(4) / 심재민(3) / 윤홍석(2) / 김재근(1) / 구월수(1) / 김종성(1) / 강현모(2) 김영하(2) / 유영(1) / 이정수(1) / 김훈(1) / 배안식(2) / 임승묵(1) / 최경행(1) / 김용민(2) / 이진순(4) / 허귀순(4",
+      "seatsLeft": 0,
+      "seatsTotal": 4,
+      "price": null,
+      "url": "https://www.chungmafishing.com/m/index.php?mid=bk&year=2026&month=9&day=19"
+    },
+    {
       "siteId": "ocpro",
       "siteName": "오천항 프로낚시",
       "boat": "가즈아호",
@@ -16096,7 +16016,7 @@
       "seatsLeft": 22,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "blueocean2",
@@ -16191,12 +16111,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "3물",
-      "status": "open",
-      "statusText": "3물 라라 남은자리 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 1 2 10 17,18,19,20 16 9 13",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "3물 라라 남은자리 예약완료 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 1 2 10 17,18,19,20 16",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "eugeneho",
@@ -16216,7 +16136,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "healing",
@@ -16231,12 +16151,12 @@
       "hours": null,
       "species": null,
       "tide": "4물",
-      "status": "open",
-      "statusText": "4물 ◈공지사항◈ 남은자리 힐링호 남은자리 대기하기 예약 박용철님(1) / 한현희님(5) / 한현희님(1) / 박종민님(1) / 김창배님(1) / 바람의낙엽님(1) / 김대박님(1) / 이덕구님(1) / 최복동님(3) / 수원서진님(6) 대기자 양일석님(1)",
-      "seatsLeft": 6,
+      "status": "closed",
+      "statusText": "4물 ◈공지사항◈ 남은자리 힐링호 남은자리 예약완료 대기하기 예약 박용철님(1) / 한현희님(5) / 한현희님(1) / 박종민님(1) / 김창배님(1) / 바람의낙엽님(1) / 김대박님(1) / 이덕구님(1) / 최복동님(3) / 수원서진님(6) 대기자 양일석님(1)",
+      "seatsLeft": 0,
       "seatsTotal": 6,
       "price": null,
-      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "mansu",
@@ -16251,12 +16171,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": null,
-      "status": "open",
-      "statusText": "만수피싱 남은자리: 26시즌 쭈꾸미+갑오징어 20 10 1,2 11,12 13 9 18,19 3 4,5 14,15 8 6,7 17 16 6 미입금취소 9 3 8 6 6 조*혁님(쭈꾸미 장비 대여 [낚시대+릴set] 2개)",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "만수피싱 남은자리: 예약완료 26시즌 쭈꾸미+갑오징어 20 10 1,2 11,12 13 9 18,19 3 4,5 14,15 8 6,7 17 16 6 미입금취소 9 3 8 6 6 조*혁님(쭈꾸미 장비 대여 [낚시대+릴set] 2개)",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "lureschool",
@@ -16271,12 +16191,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "4물",
-      "status": "open",
-      "statusText": "4물 공지사항 남은자리 ☆발키리호☆ 남은자리 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 이정빈님(1) / 시조님(2) / 진재규님(2) / 이성국님(2) / 윤성진님(2) / 소형섭님(1) / 소형섭님(1) / 소형섭님(2) / 이정빈님(1) / 김정재님(2) / 이회춘님(2) / 김병호님(1) / 오윤규님(2) 김용진님(1) ☆발키리7호☆ 남은자리 대기하기 ♡쭈",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "4물 공지사항 남은자리 ☆발키리호☆ 남은자리 예약완료 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 이정빈님(1) / 시조님(2) / 진재규님(2) / 이성국님(2) / 윤성진님(2) / 소형섭님(1) / 소형섭님(1) / 소형섭님(2) / 이정빈님(1) / 김정재님(2) / 이회춘님(2) / 김병호님(1) / 오윤규님(2) 김용진님(1) ☆발키리7호☆ 남은자리 예약",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "jstar",
@@ -16296,7 +16216,7 @@
       "seatsLeft": 3,
       "seatsTotal": 3,
       "price": null,
-      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "hanpro",
@@ -16316,7 +16236,7 @@
       "seatsLeft": 2,
       "seatsTotal": 2,
       "price": null,
-      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "teamhanpro",
@@ -16336,7 +16256,7 @@
       "seatsLeft": 0,
       "seatsTotal": 6,
       "price": null,
-      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "supernova",
@@ -16376,7 +16296,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "ssfish",
@@ -16396,7 +16316,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "akbari",
@@ -16556,7 +16476,7 @@
       "seatsLeft": 22,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "blueocean2",
@@ -16656,7 +16576,7 @@
       "seatsLeft": 22,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "eugeneho",
@@ -16676,7 +16596,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "healing",
@@ -16691,12 +16611,12 @@
       "hours": null,
       "species": null,
       "tide": "5물",
-      "status": "open",
-      "statusText": "5물 ◈공지사항◈ 남은자리 힐링호 남은자리 대기하기 예약 유부곤님(2) / 윤세나님(2) / 이재민 민물쏨뱅이님(1) / 박종민님(1) / 장현호님(2) / 김광웅님(5) / 김대박님(1) / 이병국님(2) / 여영철님(1) / 김용국님(3) / 김영수님(1) 대기자 원영식님(1) / 임유리님(2)",
-      "seatsLeft": 5,
+      "status": "closed",
+      "statusText": "5물 ◈공지사항◈ 남은자리 힐링호 남은자리 예약완료 대기하기 예약 유부곤님(2) / 윤세나님(2) / 이재민 민물쏨뱅이님(1) / 박종민님(1) / 장현호님(2) / 김광웅님(5) / 김대박님(1) / 이병국님(2) / 여영철님(1) / 김용국님(3) / 김영수님(1) 대기자 원영식님(1) / 임유리님(2)",
+      "seatsLeft": 0,
       "seatsTotal": 5,
       "price": null,
-      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "mansu",
@@ -16711,12 +16631,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": null,
-      "status": "open",
-      "statusText": "만수피싱 남은자리: 26시즌 쭈꾸미+갑오징어 8,9,10 19,20 11,12,13 18 3 1 16,17 4,5 14,15 2 7 6 6 미입금취소 6,7 6",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "만수피싱 남은자리: 예약완료 26시즌 쭈꾸미+갑오징어 8,9,10 19,20 11,12,13 18 3 1 16,17 4,5 14,15 2 7 6 6 미입금취소 6,7 6",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "lureschool",
@@ -16731,12 +16651,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "5물",
-      "status": "open",
-      "statusText": "5물 공지사항 남은자리 ☆발키리호☆ 남은자리 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 백수연.님(2) / 서관수.님(1) / 김봉기님(3) / 강성용님(3) / 김형래님(1) / 김미애님(2) / 김현수님(2) / 조성윤님(1) / 이광우님(2) / 신현석님(1) / 이준희님(1) / 김영미님(2) ☆발키리7호☆ 남은자리 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 엄선",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "5물 공지사항 남은자리 ☆발키리호☆ 남은자리 예약완료 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 백수연.님(2) / 서관수.님(1) / 김봉기님(3) / 강성용님(3) / 김형래님(1) / 김미애님(2) / 김현수님(2) / 조성윤님(1) / 이광우님(2) / 신현석님(1) / 이준희님(1) / 김영미님(2) ☆발키리7호☆ 남은자리 예약완료 대기하기 ♡쭈꾸미낚시&",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "jstar",
@@ -16752,11 +16672,11 @@
       "species": "쭈꾸미",
       "tide": null,
       "status": "open",
-      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 탑1 10 20 8 탑11 9 2 19 18 14 15 17 3 6 16 13 4 12 7 5 5 4 레인보우 대기하기 쭈꾸미 .갑오징어 .출조 탑1,탑11 9,10,19,20 2 18 12 7,8 3 17",
+      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 탑1 10 20 8 탑11 9 2 19 18 14 15 17 3 6 16 13 4 12 7 5 5 4 예약완료 레인보우 대기하기 쭈꾸미 .갑오징어 .출조 탑1,탑11 9,10,19,20 2 18 12 7,8",
       "seatsLeft": 3,
       "seatsTotal": 3,
       "price": null,
-      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "hanpro",
@@ -16776,7 +16696,7 @@
       "seatsLeft": 2,
       "seatsTotal": 2,
       "price": null,
-      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "teamhanpro",
@@ -16796,7 +16716,7 @@
       "seatsLeft": 0,
       "seatsTotal": 4,
       "price": null,
-      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "supernova",
@@ -16836,7 +16756,27 @@
       "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
-      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
+    },
+    {
+      "siteId": "ssfish",
+      "siteName": "무창포 선상낚시",
+      "boat": "피싱마린호",
+      "port": "충남 보령 무창포항",
+      "phone": null,
+      "date": "2026-09-24",
+      "departAt": "04:30",
+      "returnAt": null,
+      "session": "오전",
+      "hours": null,
+      "species": "쭈꾸미",
+      "tide": null,
+      "status": "open",
+      "statusText": "추석연휴 선박명 예 약 현 황 남은자리 ◈공지사항◈ 공지 ▷ 출조 예약후 출조비는 바로 입금 부탁드립니다. (예약하신 당일에 출조비 전액 미입금시 예약을 취소합니다.) - ▷ 출항시간은 출조어종, 물때 및 각 선박마다 다를 수 있습니다. (출조일 전날 발송하는 출조안내문자 확인해주세요.) - ▷ 승선위치 및 자리배정은 공지사항 참고하세요. ( https:/",
+      "seatsLeft": 10,
+      "seatsTotal": 10,
+      "price": null,
+      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "akbari",
@@ -16991,12 +16931,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "5물",
-      "status": "open",
-      "statusText": "5물 흑돼지호 남은자리 공지 출항:05시( 출항 30분 전 배에 탑승바랍니다.(※명부는 배에서 작성) 출항 공지는 전날 문자발송 ★이벤트 공지는 흑돼지호 카페에서 확인 ▶ 카페바로가기 낚시종류 쭈꾸미 예약 육*기님(3) / 김*술님(1) / 투*이님(1) / 낙**수님(1) / 이*영님(4) / 오*경님(2) / 낙**수님(1) / 김*술님(1) / 이*락",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "5물 흑돼지호 남은자리 예약완료 공지 출항:05시( 출항 30분 전 배에 탑승바랍니다.(※명부는 배에서 작성) 출항 공지는 전날 문자발송 ★이벤트 공지는 흑돼지호 카페에서 확인 ▶ 카페바로가기 낚시종류 쭈꾸미 예약 육*기님(3) / 김*술님(1) / 투*이님(1) / 낙**수님(1) / 이*영님(4) / 오*경님(2) / 낙**수님(1) / 김*술님(1)",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "blueocean2",
@@ -17091,12 +17031,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "5물",
-      "status": "open",
-      "statusText": "5물 라라 남은자리 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 11,1,2 19,20 10 12,13 17,1",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "5물 라라 남은자리 예약완료 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 11,1,2 19,20 10 12,13",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "eugeneho",
@@ -17116,7 +17056,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "healing",
@@ -17132,16 +17072,16 @@
       "species": null,
       "tide": "6물",
       "status": "open",
-      "statusText": "6물 ◈공지사항◈ 남은자리 힐링호 남은자리 예약하기 예약 윤세나님(2) / 김남규님(1) / 이병국님(2) / 원영식님(1) / 김종국님(1) 입금대기 정순택님(1) / 이경하님(1) / 유태헌님(3) / 유태헌님(1) / 유태헌님(1) / 오홍열님(1) var mlistIsLoading = false; var mlistCanLoad = true; var",
+      "statusText": "6물 ◈공지사항◈ 남은자리 힐링호 남은자리 예약하기 예약 윤세나님(2) / 김남규님(1) / 이병국님(2) / 원영식님(1) / 김종국님(1) 입금대기 정순택님(1) / 이경하님(1) / 유태헌님(3) / 유태헌님(1) / 유태헌님(1) / 오홍열님(1)",
       "seatsLeft": 3,
       "seatsTotal": 3,
       "price": null,
-      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "mansu",
       "siteName": "영흥도 만수피싱",
-      "boat": "입금계좌번호",
+      "boat": "영흥도 만수피싱",
       "port": "인천 옹진 영흥도",
       "phone": "010-5472-1856",
       "date": "2026-09-25",
@@ -17151,12 +17091,12 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": null,
-      "status": "open",
-      "statusText": "만수피싱 남은자리: 26시즌 쭈꾸미+갑오징어 17,18 2,3 19,20 10 1 9 15 4,5,6,7,11 13,14 8,16 12 9,10,19,20 12 10 8 미입금취소 1,2 3,4 2,3 9,10,19,20 11 $(document).ready(function() { var isLoad = false; $(window).scroll(funct",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "만수피싱 남은자리: 예약완료 26시즌 쭈꾸미+갑오징어 17,18 2,3 19,20 10 1 9 15 4,5,6,7,11 13,14 8,16 12 9,10,19,20 12 10 8 미입금취소 1,2 3,4 2,3 9,10,19,20 11",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "lureschool",
@@ -17171,17 +17111,37 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": "6물",
-      "status": "open",
-      "statusText": "6물 공지사항 남은자리 ☆발키리호☆ 남은자리 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 윤설희님(4) / 백수연.님(2) / 신희영.님(1) / 서관수.님(1) / 이상석님(4) / 박경아님(4) / 김현주님(2) / 깨비님(1) / 정기연님(2) ☆발키리7호☆ 남은자리 예약하기 ♡쭈꾸미낚시&갑오징어낚시♡ 김문주님(2) / 승광.님(1) / 이지안님(4) / 채유",
-      "seatsLeft": 22,
+      "status": "closed",
+      "statusText": "6물 공지사항 남은자리 ☆발키리호☆ 남은자리 예약완료 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 윤설희님(4) / 백수연.님(2) / 신희영.님(1) / 서관수.님(1) / 이상석님(4) / 박경아님(4) / 김현주님(2) / 깨비님(1) / 정기연님(2) ☆발키리7호☆ 남은자리 예약하기 ♡쭈꾸미낚시&갑오징어낚시♡ 김문주님(2) / 승광.님(1) / 이지안님(4)",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=19"
+    },
+    {
+      "siteId": "jstar",
+      "siteName": "전곡항 스타피싱",
+      "boat": "전곡항 스타피싱",
+      "port": "경기 화성 전곡항",
+      "phone": "010-8070-0150",
+      "date": "2026-09-25",
+      "departAt": null,
+      "returnAt": null,
+      "session": null,
+      "hours": null,
+      "species": "쭈꾸미",
+      "tide": null,
+      "status": "few",
+      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 10 14 9 18,19 8 2,3 탑1,탑11 4 12,13 5,6,7 20 15 16,17 이*희(수원94주니))님(1) 미입금취소 19,20 탑1 탑1 12 8 12 2,3 20 20 20 예약완료 레인",
+      "seatsLeft": 1,
+      "seatsTotal": 1,
+      "price": null,
+      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "hanpro",
       "siteName": "한프로피싱",
-      "boat": "입금계좌번호",
+      "boat": "한프로피싱",
       "port": "충남 보령 대천항",
       "phone": "010-3530-7103",
       "date": "2026-09-25",
@@ -17192,11 +17152,11 @@
       "species": null,
       "tide": "6물",
       "status": "unknown",
-      "statusText": "6물 공지 남은자리 남은자리 예약하기 낚시종류 쭈&갑 출조합니다 var mlistIsLoading = false; var mlistCanLoad = true; var mlistScrollTimer = null; var layerDayScrollTimer = null; $(document).ready(function() { $(window).on('scrol",
+      "statusText": "6물 공지 남은자리 남은자리 예약하기 낚시종류 쭈&갑 출조합니다",
       "seatsLeft": null,
       "seatsTotal": null,
       "price": null,
-      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "teamhanpro",
@@ -17216,7 +17176,7 @@
       "seatsLeft": 0,
       "seatsTotal": 5,
       "price": null,
-      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "supernova",
@@ -17256,7 +17216,7 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "akbari",
@@ -17416,7 +17376,7 @@
       "seatsLeft": 22,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "blueocean2",
@@ -17479,26 +17439,6 @@
       "url": "https://golden.sunsang24.com/ship/schedule_fleet"
     },
     {
-      "siteId": "jstar",
-      "siteName": "전곡항 스타피싱",
-      "boat": "전곡항 스타피싱",
-      "port": "경기 화성 전곡항",
-      "phone": "010-8070-0150",
-      "date": "2026-09-25",
-      "departAt": "08:00",
-      "returnAt": null,
-      "session": "오전",
-      "hours": null,
-      "species": "쭈꾸미",
-      "tide": null,
-      "status": "few",
-      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 10 14 9 18,19 8 2,3 탑1,탑11 4 12,13 5,6,7 20 15 16,17 이*희(수원94주니))님(1) 미입금취소 19,20 탑1 탑1 12 8 12 2,3 20 20 20 레인보우 예약",
-      "seatsLeft": 1,
-      "seatsTotal": 1,
-      "price": null,
-      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=18"
-    },
-    {
       "siteId": "goldenbaek",
       "siteName": "안면도 황금백호",
       "boat": "황금백호",
@@ -17536,7 +17476,7 @@
       "seatsLeft": 22,
       "seatsTotal": 22,
       "price": null,
-      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "eugeneho",
@@ -17556,7 +17496,107 @@
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
-      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=18"
+      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
+    },
+    {
+      "siteId": "healing",
+      "siteName": "무창포 힐링호",
+      "boat": "힐링호",
+      "port": "충남 보령 무창포항",
+      "phone": "010-6480-0115",
+      "date": "2026-09-26",
+      "departAt": null,
+      "returnAt": null,
+      "session": null,
+      "hours": null,
+      "species": null,
+      "tide": "7물",
+      "status": "closed",
+      "statusText": "7물 ◈공지사항◈ 남은자리 힐링호 남은자리 예약완료 대기하기 예약 김용희님(5) / 정연미님(2) / 문용철님(3) / 성란영님(2) / 김승하님(2) / 원영식님(1) / 서욱덕님(2) / 이후승님(1) 입금대기 정순택님(1) / 꼬장식찌님(2) var mlistIsLoading = false; var mlistCanLoad = true; var mlis",
+      "seatsLeft": 0,
+      "seatsTotal": 5,
+      "price": null,
+      "url": "https://xn--9y2bn0a278a2hhb2c6sc.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
+    },
+    {
+      "siteId": "mansu",
+      "siteName": "영흥도 만수피싱",
+      "boat": "입금계좌번호",
+      "port": "인천 옹진 영흥도",
+      "phone": "010-5472-1856",
+      "date": "2026-09-26",
+      "departAt": null,
+      "returnAt": null,
+      "session": null,
+      "hours": null,
+      "species": "쭈꾸미",
+      "tide": null,
+      "status": "closed",
+      "statusText": "만수피싱 남은자리: 예약완료 26시즌 쭈꾸미+갑오징어 10 19,20 9 11,12,13 16,17,18 4 7,8 1,2 15 14 3 5,6 5,6 미입금취소 1,2 7,8 14,15 한*연님(쭈꾸미 장비 대여 [낚시대+릴set] 1개) $(document).ready(function() { var isLoad = false; $(window).scro",
+      "seatsLeft": 0,
+      "seatsTotal": 22,
+      "price": null,
+      "url": "https://xn--lz2bu5mvsau18c.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
+    },
+    {
+      "siteId": "lureschool",
+      "siteName": "오천항 루어스쿨 발키리호",
+      "boat": "발키리호",
+      "port": "충남 보령 오천항",
+      "phone": "010-8019-8282",
+      "date": "2026-09-26",
+      "departAt": null,
+      "returnAt": null,
+      "session": null,
+      "hours": null,
+      "species": "쭈꾸미",
+      "tide": "7물",
+      "status": "closed",
+      "statusText": "7물 공지사항 남은자리 ☆발키리호☆ 남은자리 예약완료 대기하기 ♡쭈꾸미낚시&갑오징어낚시♡ 서관수.님(1) / 이준복님(2) / 이성국님(3) / 홍사민님(2) / 홍사민님(1) / 김수경님(2) / 안진형님(2) / 임상원님(2) / 이흥석님(1) / 서관수.님(1) / 전승수님(2) / 정덕수님(2) 입금대기 전일국님(1) / 정완영님(1) ☆발키리7호☆",
+      "seatsLeft": 0,
+      "seatsTotal": 22,
+      "price": null,
+      "url": "http://www.xn--2s2b21pgpc0m80y16e.com/m/index.php?mid=bk&year=2026&month=9&day=19"
+    },
+    {
+      "siteId": "hanpro",
+      "siteName": "한프로피싱",
+      "boat": "봉돌16호18호20호",
+      "port": "충남 보령 대천항",
+      "phone": "010-3530-7103",
+      "date": "2026-09-26",
+      "departAt": null,
+      "returnAt": null,
+      "session": null,
+      "hours": null,
+      "species": "갑오징어",
+      "tide": "7물",
+      "status": "open",
+      "statusText": "7물 공지 남은자리 남은자리 예약하기 낚시종류 쭈&갑 출조합니다 공지 갑오징어 -5인 이상 출항합니다 - 합사1호이상 - 봉돌16호18호20호 어종변경 및 문의 010-3530-7103 입금자 김*실님(3) / 김*수님(1) var mlistIsLoading = false; var mlistCanLoad = true; var mlistScrollTimer",
+      "seatsLeft": 3,
+      "seatsTotal": 3,
+      "price": 90000,
+      "url": "http://hanprofishing.com/m/index.php?mid=bk&year=2026&month=9&day=19"
+    },
+    {
+      "siteId": "teamhanpro",
+      "siteName": "오천항 팀한프로",
+      "boat": "16호",
+      "port": "충남 보령 오천항",
+      "phone": null,
+      "date": "2026-09-26",
+      "departAt": "04:00",
+      "returnAt": null,
+      "session": "오전",
+      "hours": null,
+      "species": "갑오징어",
+      "tide": "7물",
+      "status": "closed",
+      "statusText": "7물 공지 남은자리 팀한프로[한프로선장] 남은자리 예약완료 공지 ▲ 갑오징어 출조 ▲ ▷ 출항 04:00 ~ 06:30 ▶ 봉돌 16호 ~ 20호 ※ 자세한 출항 시간 및 봉돌 호수는 출조 문자 입금대기 고*봉님(5) / 최*덕님(3) / 현*환님(4) / 지*호님(2) / ㅇ님(2) / 김*산님(1) / 카**스님(2) / 송*섭님(1) 흑돼지호[흑돼지선",
+      "seatsLeft": 0,
+      "seatsTotal": 5,
+      "price": null,
+      "url": "https://teamhanpro.com/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "supernova",
@@ -17577,6 +17617,26 @@
       "seatsTotal": null,
       "price": null,
       "url": "https://supernova.sunsang24.com/ship/schedule_fleet"
+    },
+    {
+      "siteId": "monster",
+      "siteName": "오이도 몬스터호",
+      "boat": "오이도 몬스터호",
+      "port": "경기 시흥 시화방조제 중간선착장",
+      "phone": null,
+      "date": "2026-09-26",
+      "departAt": "04:20",
+      "returnAt": null,
+      "session": "오전",
+      "hours": null,
+      "species": "쭈꾸미",
+      "tide": "7물",
+      "status": "closed",
+      "statusText": "7물 남은자리 예약완료 대기하기 공지 04:20 리더낚시에서 버스출발합니다. 시흥시 서해안로81-44 옥상주차장 낚시종류 쭈꾸미 갑오징어 입금자 13,12,11,10 14 20,19 18,17,16,15,5,6 입금대기 9 1,2,3,4 7,8 남은자리 예약완료 대기하기 공지 09:30 리더낚시에서 버스출발합니다. 시흥시 서해안로81-44 옥상주차장 낚시종",
+      "seatsLeft": 0,
+      "seatsTotal": 20,
+      "price": null,
+      "url": "http://www.yusungho.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     },
     {
       "siteId": "akbari",
@@ -17736,7 +17796,7 @@
       "seatsLeft": 22,
       "seatsTotal": 22,
       "price": null,
-      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=4"
+      "url": "http://blackpigho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
       "siteId": "blueocean2",
@@ -17799,6 +17859,26 @@
       "url": "https://golden.sunsang24.com/ship/schedule_fleet"
     },
     {
+      "siteId": "jstar",
+      "siteName": "전곡항 스타피싱",
+      "boat": "전곡항 스타피싱",
+      "port": "경기 화성 전곡항",
+      "phone": "010-8070-0150",
+      "date": "2026-09-26",
+      "departAt": "08:00",
+      "returnAt": null,
+      "session": "오전",
+      "hours": null,
+      "species": "쭈꾸미",
+      "tide": null,
+      "status": "open",
+      "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 19,20 10 9 4 18 2 탑11 12 17 7 13,14 16 5 3 탑1 6 8 15 6 5 미입금취소 3 6 탑1 탑1 탑1 탑1 예약완료 레인보우 대기하기 쭈꾸미 .갑오징어 .출조 (중식 미제공)",
+      "seatsLeft": 3,
+      "seatsTotal": 3,
+      "price": null,
+      "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=19"
+    },
+    {
       "siteId": "goldenbaek",
       "siteName": "안면도 황금백호",
       "boat": "황금백호",
@@ -17817,6 +17897,46 @@
       "seatsTotal": null,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet"
+    },
+    {
+      "siteId": "raraho",
+      "siteName": "오천항 라라호",
+      "boat": "라라호",
+      "port": "충남 보령 오천항",
+      "phone": "010-9008-7564",
+      "date": "2026-09-26",
+      "departAt": "16:00",
+      "returnAt": null,
+      "session": "오후",
+      "hours": null,
+      "species": "쭈꾸미",
+      "tide": "7물",
+      "status": "open",
+      "statusText": "7물 라라 남은자리 예약하기 공지 라라호 카페 ◀ 바로가기 라라호 밴드 ◀ 바로가기 ● 낚시종류 : 쭈꾸미 / 갑오징어 장비 - 쭈꾸미, 갑오징어 전용 낚식대 + 14~20호 봉돌 + 직결 및 가지 채비 + 에기 ● 출조 안내 문자 - 출항 전날 오후 3~4시 사이 출항 문자 전달 해드리겠습니다. 낚시종류 쭈갑 입금자 11,12 5,6,7,8 1,4 10",
+      "seatsLeft": 22,
+      "seatsTotal": 22,
+      "price": null,
+      "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
+    },
+    {
+      "siteId": "eugeneho",
+      "siteName": "오천항 유진호",
+      "boat": "오천항 유진호",
+      "port": "충남 보령 오천항",
+      "phone": "010-4849-5072",
+      "date": "2026-09-26",
+      "departAt": "20:00",
+      "returnAt": null,
+      "session": "야간",
+      "hours": null,
+      "species": null,
+      "tide": "7물",
+      "status": "open",
+      "statusText": "7물 공지사항 남은자리 공지 ◈ 팀유진 카페(공지,조행기) 바로가기 ◈ ◈ 팀유진 밴드(실시간) 바로가기 ◈ 20시 안내문자 발송예정 20시 안내문자 발송예정 - 장비 :",
+      "seatsLeft": 20,
+      "seatsTotal": 20,
+      "price": null,
+      "url": "https://www.eugeneho.kr/m/index.php?mid=bk&year=2026&month=9&day=19"
     }
   ]
 }

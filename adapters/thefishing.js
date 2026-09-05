@@ -104,10 +104,18 @@ export function parseDetail(site, html, url) {
   const $ = cheerio.load(html);
   const trips = [];
 
+  // 예약 상태를 글자 대신 이미지로 표시하는 예약판도 있습니다.
+  $('img[alt]').each((_, el) => {
+    const label = squash($(el).attr('alt'));
+    if (/^(예약완료|예약마감|마감|만석|매진|예약하기)$/.test(label)) {
+      $(el).replaceWith($('<span>').text(label));
+    }
+  });
+
   // 날짜 머리글로 페이지를 하루씩 끊습니다. 오전배·오후배는 별개 출조로 잡힙니다.
   for (const block of splitByDate($)) {
     const { date, text } = block;
-    if (!date) continue;
+    if (!date || !/남은자리|잔여|여석|입금|예약확정/.test(text)) continue;
 
     const filled = countTakenSeats(text);
     const seatsTotal = site.seatsTotal ?? maxSeatNumber(text);

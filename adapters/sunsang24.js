@@ -149,6 +149,7 @@ export function parseFleet(site, html, url) {
 
     outer.forEach((unit) => {
       const text = stripNotice(squash($(unit).text()));
+      const seats = pickSeatInfo(text);
 
       const trip = makeTrip(site, {
         boat: pickBoat(site, text),
@@ -157,7 +158,8 @@ export function parseFleet(site, html, url) {
         species: pickSpecies(text),
         tide,
         status: text,
-        seatsLeft: pickSeats(text),
+        seatsLeft: seats.left,
+        seatsTotal: seats.total,
         url,
       });
       if (trip.boat) trips.push(trip);
@@ -184,6 +186,7 @@ export function parseSimpleDay(site, html, url) {
 
       const text = stripNotice(squash($unit.text()));
       if (!isUnit(text)) return;
+      const seats = pickSeatInfo(text);
 
       const trip = makeTrip(site, {
         boat,
@@ -192,7 +195,8 @@ export function parseSimpleDay(site, html, url) {
         species: pickSpecies(text),
         tide,
         status: text,
-        seatsLeft: pickSeats(text),
+        seatsLeft: seats.left,
+        seatsTotal: seats.total,
         url,
       });
       trips.push(trip);
@@ -257,6 +261,15 @@ export function pickSeats(text) {
   if (left) return Number(left[1]);
   if (/예약마감|마감|만석/.test(text)) return 0;
   return null;
+}
+
+function pickSeatInfo(text) {
+  const m = text.match(SEATS);
+  if (m) {
+    const [, taken, total] = m.map(Number);
+    return { left: Math.max(0, total - taken), total };
+  }
+  return { left: pickSeats(text), total: null };
 }
 
 function pickSpecies(text) {
