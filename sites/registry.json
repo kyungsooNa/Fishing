@@ -204,10 +204,11 @@
       "url": "https://jstar.thefishing.kr/index.php?mid=bk",
       "port": "경기 화성 전곡항",
       "phone": "010-8070-0150",
-      "source": "index",
       "windowDays": 7,
+      "seatsTotal": 20,
+      "source": "detail",
       "enabled": true,
-      "note": "더피싱이 직접 호스팅하는 서브도메인입니다(선사 자체 도메인이 아님). 받은 주소가 루트라 예약모듈도 루트 기준으로 적었습니다 — /m/ 아래에만 있으면 url을 https://jstar.thefishing.kr/m/index.php?mid=bk 로 바꾸세요. 정원 미확인이라 seatsTotal은 비웠습니다(index 방식에서는 안 씁니다)."
+      "note": "더피싱 예약표의 남은자리 머리글과 예약완료 상태 이미지를 함께 읽습니다. 스타피싱은 좌석 1~20번 예약판 기준 20석으로 등록했습니다."
     },
     {
       "id": "blueseaho",

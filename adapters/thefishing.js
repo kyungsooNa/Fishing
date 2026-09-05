@@ -166,6 +166,8 @@ function detailSeats(text) {
   if (!/남은자리|잔여|여석|잔여석/.test(text)) return null;
   const compact = text.replace(/\s+/g, '');
   if (/(?:남은자리|잔여|여석|잔여석)[:：]?(?:★)?(?:독배)?(?:예약완료|예약마감|마감|만석|매진)/.test(compact)) return 0;
+  // 일부 예약판은 머리글의 "남은자리"와 상태 이미지가 멀리 떨어져 있습니다.
+  if (/(?:남은자리|잔여|여석|잔여석)[\s\S]{0,3000}(?:예약완료|예약마감)/.test(text)) return 0;
   const m = text.match(/(?:남은자리|잔여|여석|잔여석)\s*[:：]?\s*(\d{1,3})(?:\s*(?:명|석|자리)|(?=\s|$))/);
   return m ? Number(m[1]) : null;
 }

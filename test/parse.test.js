@@ -213,6 +213,19 @@ test('thefishing: detail — 이미지로 표시한 예약완료도 잔여 0석�
   assert.equal(trip.status, STATUS.CLOSED);
 });
 
+test('thefishing: detail — 머리글과 예약완료 이미지가 떨어져 있어도 마감으로 읽는다', () => {
+  const site = { id: 'jstar', name: '전곡항 스타피싱', seatsTotal: 20 };
+  const html = `
+    <h1>2026년 09월 06일(일요일) 1물</h1>
+    <table><tr><th>선박명</th><th>예 약 현 황</th><th>남은자리</th></tr>
+      <tr><td>스타피싱</td><td>예약자 A님(1명/4) B님(1명/5)</td>
+      <td><img src="/r_x_0.gif" alt="예약완료"></td></tr></table>`;
+  const [trip] = parseDetail(site, html, 'https://x');
+  assert.equal(trip.seatsLeft, 0);
+  assert.equal(trip.seatsTotal, 20);
+  assert.equal(trip.status, STATUS.CLOSED);
+});
+
 test('thefishing: detail — 남은자리 예약하기 뒤 시즌 숫자는 잔여석이 아니다', () => {
   const site = { id: 'mansu', name: '영흥도 만수피싱', seatsTotal: 22, url: 'https://x?mid=bk' };
   const html = `
