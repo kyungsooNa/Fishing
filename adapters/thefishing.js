@@ -36,12 +36,20 @@ export async function collect(site) {
 async function collectFromIndex(site) {
   const url = indexUrl(site.url);
   const html = await fetchHtml(url, { mode: site.mode ?? 'static' });
+  return parseIndex(site, html, url);
+}
+
+/** 메인 요약표 파싱. 네트워크를 안 타므로 실제 표기로 회귀 확인이 됩니다. */
+export function parseIndex(site, html, url) {
   const $ = cheerio.load(html);
   const trips = [];
 
   $('table').each((_, table) => {
     const $t = $(table);
-    if (!/예약현황|선박예약/.test(squash($t.text()))) return;
+    // 표기 사이에 공백을 넣는 사이트가 많습니다("선박명 예 약 현 황 남은자리").
+    // 공백을 남겨둔 채 찾다가 요약표를 놓치고, 날짜별로 21번씩 받아오고 있었습니다
+    // (더피싱 99곳이 그래서 한 바퀴에 한 시간을 넘겼습니다).
+    if (!/예약현황|선박예약|선상예약/.test(squash($t.text()).replace(/\s/g, ''))) return;
 
     // 머리행에서 날짜를, 각 행 첫 칸에서 배 이름을 읽습니다.
     const rows = $t.find('tr').toArray().map((tr) => $(tr).find('th, td').map((__, c) => squash($(c).text())).get());

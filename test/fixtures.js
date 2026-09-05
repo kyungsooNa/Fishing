@@ -85,6 +85,15 @@ export const THEFISHING_INDEX = `
   <tr><td>몬스터2호</td><td>3</td><td>7</td><td>휴항</td></tr>
 </table>`;
 
+// 실제 사이트 상당수가 표기 사이에 공백을 넣습니다(peek으로 확인: angel.thefishing.kr).
+// 이걸 못 알아보면 요약표를 놓치고 날짜별로 21번씩 받아오게 됩니다.
+export const THEFISHING_INDEX_SPACED = `
+<table>
+  <tr><th>선박명</th><th>예 약 현 황</th><th>남은자리</th></tr>
+  <tr><th>선박</th><th>9/5</th><th>9/6</th><th>9/7</th></tr>
+  <tr><td>엔젤피싱호</td><td>20</td><td>3</td><td>마감</td></tr>
+</table>`;
+
 export const THEFISHING_DETAIL = `
 <div>
   <p>2026-09-05</p>
