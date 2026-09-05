@@ -81,6 +81,11 @@ jobs:
 
       # 자동으로 머지하지 않습니다. 이름·출항지·전화번호는 사람이 확인해야 하고,
       # 특히 출항지·전화번호는 다른 사이트의 같은 배와 합칠지를 정하는 값입니다.
+      #
+      # 레포 설정에서 Actions에 PR 생성 권한이 없으면(Settings → Actions → General →
+      # "Allow GitHub Actions to create and approve pull requests") gh가 거절당합니다.
+      # 그때도 브랜치는 이미 올라가 있으므로 실패로 끝내지 않고 주소만 알려줍니다 —
+      # 10분 걸린 시험 수집 결과를 마지막 한 줄 때문에 버리지 않으려는 겁니다.
       - name: registry PR 열기
         if: inputs.open_pr
         env:
@@ -102,4 +107,5 @@ jobs:
               "- 소스: \`${{ inputs.source }} ${{ inputs.target }}\`" \
               '- 각 항목의 note에 시험 수집 건수와, 자동으로는 못 정한 출항지·전화번호 후보가 적혀 있습니다.' \
               '' \
-              '**머지 전에 확인할 것**: 이름·출항지·전화번호. 셋이 다 맞아야 다른 사이트에 올라온 같은 배와 한 줄로 합쳐집니다(`core/merge.js`). 애매하면 비워두세요 — 합쳐서 틀리는 것보다 두 줄이 낫습니다.')"
+              '**머지 전에 확인할 것**: 이름·출항지·전화번호. 셋이 다 맞아야 다른 사이트에 올라온 같은 배와 한 줄로 합쳐집니다(`core/merge.js`). 애매하면 비워두세요 — 합쳐서 틀리는 것보다 두 줄이 낫습니다.')" \
+            || echo "PR은 못 열었습니다(Actions에 PR 생성 권한이 없을 수 있습니다). 브랜치는 올라가 있으니 여기서 여세요: ${{ github.server_url }}/${{ github.repository }}/compare/$branch?expand=1"
