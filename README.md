@@ -223,7 +223,8 @@ sunsang24도 더피싱도 아닌 선사 홈페이지는 `generic` 어댑터로 �
 하나씩 검색해서 등록하는 데는 한계가 있어서, 후보를 모으고 시험 수집하는 도구를 따로 뒀습니다.
 
 ```bash
-node discover.js ct sunsang24.com     # 인증서 로그에서 선상24 계열 서브도메인 전부 뽑기
+node discover.js wayback sunsang24.com  # 웹 아카이브에 남은 그 플랫폼 서브도메인 전부
+node discover.js ct sunsang24.com     # 인증서 로그 (와일드카드 인증서를 쓰면 안 나옵니다)
 node discover.js links <목록 페이지>    # 페이지에 걸린 선사 홈페이지 도메인 뽑기
 node discover.js probe --from tmp/candidates.json --limit 20   # 어댑터로 실제 돌려보기
 ```

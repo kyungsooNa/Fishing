@@ -6,8 +6,9 @@ name: discover
 # 러너는 닿으므로 발견은 여기서 돌립니다 — peek 워크플로와 같은 이유입니다.
 #
 # Actions 탭 → discover → Run workflow
-#   source=ct,    target=sunsang24.com     인증서 로그에서 선상24 계열 서브도메인 전부
-#   source=links, target=<목록 페이지 주소>  그 페이지에 걸린 선사 홈페이지들
+#   source=wayback, target=sunsang24.com     웹 아카이브에 남은 그 플랫폼 서브도메인 전부
+#   source=ct,      target=sunsang24.com     인증서 로그(플랫폼이 와일드카드 인증서면 안 나옵니다)
+#   source=links,   target=<목록 페이지 주소>  그 페이지에 걸린 선사 홈페이지들
 #
 # 요청이 적지 않습니다(후보 하나당 1~3번, 호스트당 3초 간격). limit으로 끊어서 도세요.
 
@@ -18,10 +19,10 @@ on:
         description: '후보를 어디서 모을지'
         required: true
         type: choice
-        options: [ct, links]
-        default: ct
+        options: [wayback, ct, links]
+        default: wayback
       target:
-        description: 'ct면 도메인(sunsang24.com), links면 목록 페이지 주소'
+        description: 'wayback·ct면 도메인(sunsang24.com), links면 목록 페이지 주소'
         required: true
         type: string
       limit:

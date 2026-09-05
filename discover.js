@@ -2,6 +2,7 @@
 // 선사를 손으로 찾아 등록하는 대신, 후보 주소를 자동으로 모아 시험 수집까지 해봅니다.
 //
 //   node discover.js ct sunsang24.com          인증서 로그(crt.sh)에서 서브도메인 후보를 뽑습니다
+//   node discover.js wayback sunsang24.com     웹 아카이브가 긁어둔 주소에서 서브도메인을 뽑습니다
 //   node discover.js links <주소>               페이지의 바깥 링크에서 후보 도메인을 뽑습니다
 //                                              (플랫폼 고객사 목록·지역 낚시 포털에 씁니다)
 //   node discover.js probe <주소...>            후보를 어댑터로 실제 돌려보고 등록 조각을 만듭니다
@@ -31,20 +32,61 @@ const CANDIDATES_PATH = 'tmp/candidates.json';
 const CRT_URL = (domain) => `https://crt.sh/?q=%25.${encodeURIComponent(domain)}&output=json`;
 
 // 선사가 아니라 플랫폼 자기 설비인 이름들. 시험 수집을 아껴줍니다.
-const INFRA = /^(www|mail|smtp|pop|imap|webmail|ftp|ns\d*|dns\d*|cpanel|whm|admin|test|dev|stage|staging|api|cdn|static|img|image|vpn|autodiscover|_)/;
+const INFRA = /^(www|mail|smtp|pop|imap|webmail|ftp|ns\d*|dns\d*|cpanel|whm|admin|test|dev|stage|staging|api|app|service|cdn|static|assets|files|upload|media|img|image|vpn|autodiscover|_)/;
+
+// 선사 하나에 해당하는 서브도메인인지. 소스가 뭐든 같은 잣대로 거릅니다.
+function isShipHost(host, domain) {
+  if (!host.endsWith(`.${domain}`) || host.includes('*') || host.includes(' ')) return false;
+  const label = host.slice(0, -(domain.length + 1));
+  return Boolean(label) && !label.includes('.') && !INFRA.test(label);
+}
 
 export function subdomainsFromCrt(rows, domain) {
   const out = new Set();
   for (const row of rows ?? []) {
     for (const raw of String(row?.name_value ?? '').split('\n')) {
       const host = raw.trim().toLowerCase().replace(/\.$/, '');
-      if (!host.endsWith(`.${domain}`) || host.includes('*') || host.includes(' ')) continue;
-      const label = host.slice(0, -(domain.length + 1));
-      if (!label || label.includes('.') || INFRA.test(label)) continue;
-      out.add(host);
+      if (isShipHost(host, domain)) out.add(host);
     }
   }
   return [...out].sort();
+}
+
+// ── 후보 모으기: 웹 아카이브 ────────────────────────────────────────────────
+//
+// 인증서 로그는 플랫폼이 와일드카드 인증서(*.sunsang24.com) 하나만 쓰면 아무것도
+// 못 줍니다 — 실제로 선상24가 그렇습니다(후보 3곳, 전부 플랫폼 설비였습니다).
+// 웹 아카이브는 인증서가 아니라 "실제로 돌아다닌 주소"를 모아두기 때문에, 같은
+// 플랫폼이라도 선사 서브도메인이 그대로 남아 있습니다. 국내 도메인이 막힌 데서도
+// archive.org는 닿습니다.
+const CDX_URL = (domain) =>
+  `https://web.archive.org/cdx/search/cdx?url=*.${encodeURIComponent(domain)}` +
+  '&output=json&fl=original&collapse=urlkey&limit=50000';
+
+// CDX는 첫 줄이 머리글인 배열의 배열입니다: [["original"], ["http://akbari.sunsang24.com/..."], ...]
+export function hostsFromCdx(rows, domain) {
+  const out = new Set();
+  for (const row of rows ?? []) {
+    const raw = Array.isArray(row) ? row[0] : row;
+    if (!raw || raw === 'original') continue;      // 머리글
+    let host;
+    try {
+      host = new URL(raw).hostname.toLowerCase();
+    } catch {
+      continue;
+    }
+    if (isShipHost(host, domain)) out.add(host);
+  }
+  return [...out].sort();
+}
+
+async function fromWayback(domain) {
+  const res = await fetch(CDX_URL(domain), {
+    headers: { 'user-agent': 'fishing-board discover (+https://github.com)' },
+    signal: AbortSignal.timeout(120_000),
+  });
+  if (!res.ok) throw new Error(`web.archive.org ${res.status}`);
+  return hostsFromCdx(await res.json(), domain).map((h) => `https://${h}`);
 }
 
 async function fromCrt(domain) {
@@ -235,6 +277,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
 
 async function main() {
   if (cmd === 'ct') return list(await fromCrt(need(args[0], '도메인을 적으세요 (예: sunsang24.com)')));
+  if (cmd === 'wayback') return list(await fromWayback(need(args[0], '도메인을 적으세요 (예: sunsang24.com)')));
   if (cmd === 'links') return list(await fromLinks(need(args[0], '주소를 적으세요')));
   if (cmd === 'probe') return probeAll();
   usage();
@@ -244,6 +287,7 @@ function usage() {
   console.log(`후보를 모으고 시험 수집합니다.
 
   node discover.js ct <도메인>        인증서 로그에서 서브도메인 후보
+  node discover.js wayback <도메인>    웹 아카이브에 남은 서브도메인 후보
   node discover.js links <주소>        페이지 링크에서 후보 도메인
   node discover.js probe <주소...>     후보를 어댑터로 돌려보기
   node discover.js probe --from ${CANDIDATES_PATH}
