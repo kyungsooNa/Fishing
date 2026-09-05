@@ -323,11 +323,14 @@
     {
       "id": "uijiho",
       "name": "의지호",
-      "adapter": "generic",
-      "url": "http://uijiho.com/",
-      "mode": "auto",
+      "adapter": "uijiho",
+      "url": "http://uijiho.com/month_view.php?strt=0&tb=2&tbnr=4",
+      "port": "충남 서천 홍원항",
+      "phone": "010-6422-2497",
+      "mode": "static",
       "enabled": true,
-      "note": "계열 미확인이라 generic으로 잡았습니다 — 검색으로도 선사 정보를 못 찾았습니다. 다음 수집 결과를 보고 정합니다: 0건이면 표기가 다른 사이트이고, 예약모듈(?mid=bk)이면 adapter를 thefishing으로 바꾸면 됩니다. 출항지·전화번호 미확인이라 비웠습니다 — 지도에 안 찍히고, 같은 배가 다른 사이트에 있어도 안 합쳐집니다."
+      "seatsTotal": 15,
+      "note": "월별 예약현황(month_view.php)을 날짜별 바깥 행 기준으로 읽습니다. 홍원항 출항, 의지호 정원 15명, 예약문의 010-6422-2497."
     },
     {
       "id": "fishinggate",
