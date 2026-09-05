@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { monthUrls, parseFleet, parseSimpleDay } from '../adapters/sunsang24.js';
+import { matchBoatName } from '../adapters/_rows.js';
 import { parseRows } from '../adapters/_rows.js';
 import { pageUrls } from '../adapters/generic.js';
 import { platformOf, needsBrowser } from '../core/platform.js';
@@ -74,6 +75,15 @@ test('sunsang24: 목록형 — 하루 행 안의 배마다 한 줄씩 나온다'
   assert.equal(afternoon.boat, '오후호');
   assert.equal(afternoon.session, '오후');
   assert.equal(afternoon.hours, 5);
+});
+
+test('안내문의 "상호"를 배 이름으로 읽지 않는다', () => {
+  // 예약 안내에 "상호 : ○○수산", "계좌번호 ..."가 늘 붙어 있어서, 그냥 "○○호"를
+  // 잡으면 화면에 "상호"라는 배가 뜹니다. 더피싱 계열 여러 곳에서 실제로 그랬습니다.
+  assert.equal(matchBoatName('상호 : 바다수산 예금주 홍길동'), null);
+  assert.equal(matchBoatName('계좌번호 123-456 문의번호 010-0000-0000'), null);
+  assert.equal(matchBoatName('상호 : 바다수산 / 청룡호 운항시간 05:00'), '청룡호');
+  assert.equal(matchBoatName('일출호 예약하기'), '일출호');
 });
 
 test('sunsang24: 공지사항은 상태·어종 판정에서 뺀다', () => {

@@ -9,7 +9,7 @@
 
 import { fetchHtml } from '../core/fetcher.js';
 import * as cheerio from 'cheerio';
-import { parseRows, SPECIES, BOAT_NAME } from './_rows.js';
+import { parseRows, SPECIES, matchBoatName } from './_rows.js';
 import { makeTrip, toDate, toTide } from '../core/schema.js';
 import { kstDate, kstYm } from '../core/when.js';
 
@@ -280,7 +280,7 @@ function pickSpecies(text) {
 
 function pickBoat(site, text) {
   const known = Object.keys(site.boats ?? {}).find((b) => text.includes(b));
-  return known ?? text.match(BOAT_NAME)?.[1] ?? null;
+  return known ?? matchBoatName(text);
 }
 
 function after(text, marker) {
