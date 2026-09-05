@@ -195,6 +195,23 @@ test('관리 화면 스크립트에 문법 오류가 없고, 쓰는 요소가 �
   assert.deepEqual(missing, [], 'id가 바뀌면 그 부분이 조용히 안 돕니다');
 });
 
+test('관리 화면: 사이트가 300곳 가까이 되므로 쪽 나눔과 등록 출처 구분이 있다', async () => {
+  const html = await readFile('docs/admin.html', 'utf8');
+
+  // 표가 한 화면에 다 나오면 못 씁니다. 쪽 나눔 조작줄이 있어야 합니다.
+  for (const id of ['filter', 'pagesize', 'prev', 'next', 'pageinfo']) {
+    assert.ok(html.includes(`id="${id}"`), `쪽 나눔 요소가 없습니다: ${id}`);
+  }
+  assert.match(html, /<th>등록<\/th>/, '등록 출처 열이 없습니다');
+
+  const inline = html.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
+  // 손으로 넣은 곳(addedBy 없음)과 discover가 찾은 곳을 나눠 봅니다.
+  assert.match(inline, /FILTER === 'manual'/);
+  assert.match(inline, /FILTER === 'discover'/);
+  // 저장 전에 쪽을 넘겼다 돌아와도 고친 표시가 남아야 합니다.
+  assert.match(inline, /DIRTY\.has\(site\.id\)/);
+});
+
 // --- 최신화(git pull) + 재시작 ---
 //
 // 진짜 git을 부르면 테스트가 네트워크와 레포 상태를 타므로, 명령을 갈아끼워

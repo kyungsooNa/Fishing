@@ -53,6 +53,8 @@ export async function runAll({ only = null, days = 21, registryPath, dataPath, p
     url: site.url ?? null,
     port: site.port ?? null,
     phone: site.phone ?? null,
+    // 손으로 넣은 곳인지 discover가 찾은 곳인지. 관리 화면이 서버 없이도 구분합니다.
+    addedBy: site.addedBy ?? null,
   });
 
   const status = {};

@@ -286,6 +286,8 @@ export function entryFor(result, { id, phone, port } = {}) {
     ...(phone?.value ? { phone: phone.value } : {}),
     ...(result.mode ? { mode: result.mode } : {}),
     enabled: true,
+    // 손으로 넣은 것과 구분합니다. 관리 화면이 이걸로 "수동/자동"을 나눠 보여줍니다.
+    addedBy: 'discover',
     ...(result.boats?.length ? { boats: Object.fromEntries(result.boats.map((b) => [b, {}])) } : {}),
     note: [
       `자동 발견(${result.source}) — 시험 수집 ${result.count}건.`,

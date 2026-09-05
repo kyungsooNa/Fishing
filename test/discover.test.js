@@ -106,6 +106,7 @@ test('등록 조각에는 확인이 필요하다는 표시가 남는다', () => 
   );
   assert.equal(entry.id, 'nature');
   assert.equal(entry.adapter, 'sunsang24');
+  assert.equal(entry.addedBy, 'discover', '손으로 넣은 곳과 구분할 수 있어야 합니다');
   assert.equal(entry.port, '남당항');
   assert.equal(entry.phone, undefined);          // 애매한 값은 채우지 않습니다
   assert.deepEqual(Object.keys(entry.boats), ['네이처호']);

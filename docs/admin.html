@@ -69,6 +69,13 @@
   table.favtable { table-layout: auto; min-width: 520px; }
   table.favtable th, table.favtable td { width: auto; }
   button.small { padding: 4px 10px; font-size: 13px; }
+  /* 등록 출처 배지. 자동이 압도적으로 많아서 눈에 덜 띄는 쪽을 자동으로 씁니다. */
+  .tag { display: inline-block; padding: 1px 7px; border-radius: 999px; font-size: 12px;
+         border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
+  .tag.manual { border-color: #9aa7b8; color: #46546a; font-weight: 600; }
+  .pager { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 10px 0; font-size: 13px; }
+  .pager select { padding: 3px 6px; }
+  .pager .count { color: var(--muted); }
 </style>
 </head>
 <body>
@@ -87,14 +94,37 @@
     <span class="toast" id="toast"></span>
   </div>
 
+  <!-- 사이트가 300곳 가까이 됩니다. 한 화면에 다 그리면 못 씁니다. -->
+  <div class="pager">
+    <label>등록
+      <select id="filter">
+        <option value="all">전체</option>
+        <option value="manual">수동</option>
+        <option value="discover">자동</option>
+      </select>
+    </label>
+    <label>쪽당
+      <select id="pagesize">
+        <option value="25">25곳</option>
+        <option value="50" selected>50곳</option>
+        <option value="100">100곳</option>
+        <option value="0">전체</option>
+      </select>
+    </label>
+    <button id="prev" class="small">← 이전</button>
+    <button id="next" class="small">다음 →</button>
+    <span class="count" id="pageinfo"></span>
+  </div>
+
   <div class="tablewrap">
     <table>
       <thead><tr>
-        <th>켜짐</th><th>id</th><th>선사 표기</th><th>계열</th><th>항구</th><th>전화</th>
+        <th>켜짐</th><th>id</th><th>선사 표기</th><th>계열</th><th>등록</th><th>항구</th><th>전화</th>
         <th>주소</th><th>최근 수집</th>
       </tr></thead>
       <tbody id="rows"></tbody>
     </table>
+    <div class="empty" id="rowsempty" hidden>이 조건에 맞는 사이트가 없습니다.</div>
   </div>
 
   <h2 class="sec">즐겨찾기</h2>
@@ -120,6 +150,9 @@ const HEAD = { 'X-Admin': '1' };
 let LOCAL = false;      // 로컬 서버(/api/*)가 있으면 true. GitHub Pages에서는 false
 let RESTARTABLE = false; // run.bat처럼 종료 코드를 보고 다시 띄워주는 실행기로 켰는지
 let SITES = [];         // registry의 사이트 목록 (정적 모드에서는 data.json으로 흉내)
+let PAGE = 0;           // 0부터. 목록이 바뀌면 범위를 벗어날 수 있어 그릴 때 다시 맞춥니다
+let PAGE_SIZE = 50;     // 0이면 전체
+let FILTER = 'all';     // all | manual | discover
 let STATUS = {};        // 사이트별 마지막 수집 결과
 const DIRTY = new Map(); // id -> 바뀐 값들
 
@@ -159,10 +192,45 @@ function textCell(site, key) {
   return td;
 }
 
+/** 화면에 보일 목록. 등록 출처로 거릅니다. */
+function visibleSites() {
+  if (FILTER === 'manual') return SITES.filter((s) => !s.addedBy);
+  if (FILTER === 'discover') return SITES.filter((s) => s.addedBy);
+  return SITES;
+}
+
+function addedTag(site) {
+  const td = document.createElement('td');
+  const tag = document.createElement('span');
+  const auto = Boolean(site.addedBy);
+  tag.className = auto ? 'tag' : 'tag manual';
+  tag.textContent = auto ? '자동' : '수동';
+  // 어느 소스로 찾았는지는 note에 적혀 있습니다. 표에 다 펴면 넘치니 툴팁으로만.
+  tag.title = auto ? `discover가 등록: ${site.note ?? ''}`.trim() : '사람이 registry에 직접 적었습니다';
+  td.append(tag);
+  return td;
+}
+
 function render() {
   const box = $('rows');
   box.textContent = '';
-  for (const site of SITES) {
+
+  const list = visibleSites();
+  const size = PAGE_SIZE || list.length || 1;
+  const pages = Math.max(1, Math.ceil(list.length / size));
+  if (PAGE >= pages) PAGE = pages - 1;      // 필터를 좁히면 지금 쪽이 사라질 수 있습니다
+  if (PAGE < 0) PAGE = 0;
+  const from = PAGE * size;
+  const page = list.slice(from, from + size);
+
+  $('rowsempty').hidden = list.length > 0;
+  $('pageinfo').textContent = list.length
+    ? `${from + 1}–${from + page.length} / ${list.length}곳 (${PAGE + 1}/${pages}쪽)`
+    : '0곳';
+  $('prev').disabled = PAGE === 0;
+  $('next').disabled = PAGE >= pages - 1;
+
+  for (const site of page) {
     const st = STATUS[site.id];
     const tr = document.createElement('tr');
     tr.dataset.id = site.id;
@@ -206,10 +274,19 @@ function render() {
     else if (st.ok) tdLast.innerHTML = `<span class="ok">✓ ${st.count}건</span> <span class="muted">${when(st.at)}</span>`;
     else tdLast.innerHTML = `<span class="fail">✗ ${st.error ?? '실패'}</span> <span class="muted">직전 ${st.count ?? 0}건 유지</span>`;
 
-    tr.append(tdOn, tdId, textCell(site, 'name'), tdKind, textCell(site, 'port'),
+    tr.append(tdOn, tdId, textCell(site, 'name'), tdKind, addedTag(site), textCell(site, 'port'),
               textCell(site, 'phone'), tdUrl, tdLast);
+    // 저장 전에 다른 쪽으로 넘어갔다 돌아와도 고친 표시가 남아 있어야 합니다.
+    if (DIRTY.has(site.id)) tr.classList.add('dirty');
     box.append(tr);
   }
+}
+
+function bindPager() {
+  $('filter').addEventListener('change', () => { FILTER = $('filter').value; PAGE = 0; render(); });
+  $('pagesize').addEventListener('change', () => { PAGE_SIZE = Number($('pagesize').value); PAGE = 0; render(); });
+  $('prev').addEventListener('click', () => { PAGE -= 1; render(); });
+  $('next').addEventListener('click', () => { PAGE += 1; render(); });
 }
 
 async function save() {
@@ -430,7 +507,8 @@ async function load() {
       ? '현재 코드를 그대로 다시 띄웁니다'
       : 'run.bat으로 띄운 게 아니라 자동 재실행은 안 됩니다';
     $('meta').textContent =
-      `사이트 ${SITES.length}곳 (켜짐 ${SITES.filter((s) => s.enabled !== false).length}) · ` +
+      `사이트 ${SITES.length}곳 (켜짐 ${SITES.filter((s) => s.enabled !== false).length}, ` +
+      `수동 ${SITES.filter((s) => !s.addedBy).length} · 자동 ${SITES.filter((s) => s.addedBy).length}) · ` +
       `출조 ${d.trips}건 · 갱신 ${when(d.generatedAt) || '-'}`;
   } else {
     const d = data;
@@ -438,9 +516,12 @@ async function load() {
     // 정적 모드에서는 registry를 못 읽으므로 수집 결과에 남은 사이트만 보여줍니다.
     SITES = Object.entries(STATUS).map(([id, s]) => ({
       id, name: s.name, platformLabel: s.platform, url: s.url, port: s.port, phone: s.phone,
+      addedBy: s.addedBy ?? null,
     }));
     $('meta').textContent =
-      `사이트 ${SITES.length}곳 · 출조 ${d.trips?.length ?? 0}건 · 갱신 ${when(d.generatedAt) || '-'}`;
+      `사이트 ${SITES.length}곳 (수동 ${SITES.filter((s) => !s.addedBy).length} · ` +
+      `자동 ${SITES.filter((s) => s.addedBy).length}) · ` +
+      `출조 ${d.trips?.length ?? 0}건 · 갱신 ${when(d.generatedAt) || '-'}`;
   }
   render();
   renderFavs(data.trips ?? []);
@@ -462,6 +543,7 @@ async function load() {
   await load();
 })();
 
+bindPager();
 $('save').addEventListener('click', save);
 $('update').addEventListener('click', update);
 $('collect').addEventListener('click', collect);
