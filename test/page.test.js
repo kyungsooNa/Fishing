@@ -28,9 +28,18 @@ test('주요 필터는 다중 선택 메뉴다', () => {
   assert.match(inline, /selectedValues\('f-site'\)/);
 });
 
-test('어종 필터는 갑오징어·주꾸미·쭈꾸미를 기본 선택한다', () => {
-  assert.match(inline, /fillOptions\(\$\('f-species'\),[\s\S]*\['갑오징어', '주꾸미', '쭈꾸미'\]\)/);
+test('어종 필터는 갑오징어·주꾸미를 기본 선택한다', () => {
+  assert.match(inline, /fillOptions\(\$\('f-species'\),[\s\S]*\['갑오징어', '주꾸미'\]\)/);
   assert.match(inline, /input\.checked = defaults\.includes\(v\)/);
+});
+
+test('어종이 둘인 출조는 어느 쪽으로 걸러도 나온다', () => {
+  const start = inline.indexOf('const speciesOf');
+  const speciesOf = new Function(`${inline.slice(start, inline.indexOf('\n', start))}\nreturn speciesOf;`)();
+  assert.deepEqual(speciesOf({ species: '주꾸미·갑오징어' }), ['주꾸미', '갑오징어']);
+  assert.deepEqual(speciesOf({ species: '갈치' }), ['갈치']);
+  assert.deepEqual(speciesOf({ species: null }), [], '어종을 모르는 출조는 어느 어종에도 안 걸립니다');
+  assert.match(inline, /speciesOf\(t\)\.some\(\(s\) => species\.has\(s\)\)/);
 });
 
 test('빈자리 필터는 기본으로 켜져 있다', () => {

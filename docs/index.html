@@ -246,6 +246,10 @@ function dayLabel(d) {
   return `${m}/${dd}(${WEEK[new Date(y, m - 1, dd).getDay()]})`;
 }
 
+// 어종은 '주꾸미·갑오징어'처럼 여러 개가 붙어 옵니다(core/schema.js가 그렇게 모읍니다).
+// 필터는 하나씩 걸어야 하니 나눠서 봅니다 — 쭈갑 출조는 주꾸미로도, 갑오징어로도 잡힙니다.
+const speciesOf = (t) => String(t.species ?? '').split('·').filter(Boolean);
+
 function regionOf(port) {
   const parts = String(port ?? '').trim().split(/\s+/);
   if (parts.length >= 3) return `${parts[0]} ${parts[1]}`;
@@ -308,7 +312,7 @@ function visibleTrips() {
     (!favOnly || FAVS.has(favKey(t))) &&
     (!site.size || site.has(t.siteName) || (t.sources ?? []).some((x) => site.has(x.siteName))) &&
     hasSelection(region, regionOf(t.port)) && hasSelection(port, t.port) &&
-    hasSelection(species, t.species) && hasSelection(date, t.date) &&
+    (!species.size || speciesOf(t).some((s) => species.has(s))) && hasSelection(date, t.date) &&
     hasSelection(session, t.session) &&
     (!q || (t.boat ?? '').includes(q)) &&
     (!openOnly || t.status === 'open' || t.status === 'few'));
@@ -417,7 +421,7 @@ function loadData() { return fetch('data.json?t=' + Date.now(), { cache: 'no-sto
     fillOptions($('f-site'), d.trips.map((t) => t.siteName));
     fillOptions($('f-region'), d.trips.map((t) => regionOf(t.port)));
     fillOptions($('f-port'), d.trips.map((t) => t.port));
-    fillOptions($('f-species'), d.trips.map((t) => t.species), ['갑오징어', '주꾸미', '쭈꾸미']);
+    fillOptions($('f-species'), d.trips.flatMap(speciesOf), ['갑오징어', '주꾸미']);
     fillOptions($('f-session'), d.trips.map((t) => t.session));
     fillOptions($('f-date'), d.trips.map((t) => t.date));
     renderStatus();

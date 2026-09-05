@@ -12,7 +12,7 @@ import { parseMonth as parseUijihoMonth } from '../adapters/uijiho.js';
 import { findOpenings } from '../core/diff.js';
 import { mergeDuplicates } from '../core/merge.js';
 import { kstDate } from '../core/when.js';
-import { toStatus, toDate, toTime, toTimeRange, sessionOf, parseSeats, pickPrice, STATUS } from '../core/schema.js';
+import { toStatus, toDate, toTime, toTimeRange, sessionOf, parseSeats, pickPrice, toSpecies, STATUS } from '../core/schema.js';
 import * as fx from './fixtures.js';
 
 const sunsangSite = {
@@ -36,6 +36,25 @@ test('schema: 승선료는 배별 → 사이트 공통 순으로 고른다', () 
   assert.equal(pickPrice(sunsangSite, '악바리호', '주꾸미'), 100000);
   assert.equal(pickPrice(sunsangSite, '악바리호', '광어'), null);
   assert.equal(pickPrice({ ...sunsangSite, price: 80000 }, '맥가이버호', '광어'), 80000);
+});
+
+test('schema: 어종 표기를 하나로 모은다', () => {
+  assert.equal(toSpecies('쭈꾸미'), '주꾸미', '주꾸미와 쭈꾸미가 필터에 따로 뜨면 안 됩니다');
+  assert.equal(toSpecies(' 갈치 '), '갈치');
+  assert.equal(toSpecies('쭈갑'), '주꾸미·갑오징어', '둘 다 잡는 출조는 둘 다로 잡혀야 합니다');
+  assert.equal(toSpecies('주꾸미/갑오징어'), '주꾸미·갑오징어');
+  assert.equal(toSpecies('쭈갑·주꾸미'), '주꾸미·갑오징어', '같은 어종은 한 번만');
+  assert.equal(toSpecies('열기'), '열기', '모르는 이름은 그대로 둡니다');
+  assert.equal(toSpecies(''), null);
+  assert.equal(toSpecies(null), null);
+});
+
+test('schema: 승선료는 registry 표기가 달라도 찾는다', () => {
+  const site = { id: 'x', boats: { '한바다호': { prices: { '쭈꾸미': 90000 } } }, prices: { '쭈갑': 110000 } };
+  assert.equal(pickPrice(site, '한바다호', '주꾸미'), 90000, 'registry에 쭈꾸미로 적어둬도 찾아야 합니다');
+  assert.equal(pickPrice(site, '다른호', '쭈갑'), 110000);
+  assert.equal(pickPrice(site, '한바다호', '쭈갑'), 90000, '어종이 둘이면 하나씩도 봅니다');
+  assert.equal(pickPrice(site, '다른호', '광어'), null);
 });
 
 test('sunsang24: 목록형 — 하루 행 안의 배마다 한 줄씩 나온다', () => {

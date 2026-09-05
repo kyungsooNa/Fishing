@@ -134,16 +134,55 @@ export function toTide(raw) {
 }
 
 /**
+ * 어종 표기를 하나로 모읍니다. 사이트마다 "주꾸미"와 "쭈꾸미"를 섞어 쓰고,
+ * 둘을 같이 잡는 출조를 "쭈갑"이라고 적는 곳도 있습니다. 그대로 두면 화면 필터에
+ * 주꾸미와 쭈꾸미가 따로 떠서, 하나만 고른 사람은 나머지를 통째로 못 봅니다.
+ * 여러 어종을 잡는 출조는 '·'로 잇습니다 — 화면이 이 표시로 나눠 필터를 겁니다.
+ * 모르는 이름은 건드리지 않고 그대로 둡니다(멋대로 고치면 없는 어종이 생깁니다).
+ */
+const SPECIES_ALIAS = {
+  주꾸미: ['주꾸미'],
+  쭈꾸미: ['주꾸미'],
+  쭈갑: ['주꾸미', '갑오징어'],
+  주갑: ['주꾸미', '갑오징어'],
+  갑오: ['갑오징어'],
+};
+
+export function toSpecies(raw) {
+  if (!raw) return null;
+  const names = String(raw)
+    .split(/[/,·+&]/)
+    .flatMap((part) => {
+      const name = part.replace(/\s+/g, ' ').trim();
+      if (!name) return [];
+      return SPECIES_ALIAS[name] ?? [name];
+    });
+  const uniq = [...new Set(names)];
+  return uniq.length ? uniq.join('·') : null;
+}
+
+/**
  * registry에 적어둔 승선료에서 그 날 어종에 맞는 값을 고릅니다.
  * 배별 prices → 배별 price → 사이트 공통 prices → 사이트 공통 price 순.
  * 못 찾으면 null이고, 화면에서는 가격칸이 빈 채로 보입니다.
  */
 export function pickPrice(site, boat, species) {
   const boatConf = site.boats?.[boat] ?? {};
-  const key = species && String(species).trim();
-  if (key && boatConf.prices?.[key] != null) return boatConf.prices[key];
+  // registry는 사람이 적습니다. "쭈꾸미"라고 적어둔 곳이 있어서 표기를 맞춰 놓고 찾습니다.
+  // 쭈갑처럼 어종이 둘이면 붙여 쓴 표기를 먼저, 없으면 어종 하나씩 봅니다.
+  const wanted = toSpecies(species);
+  const keys = wanted ? [wanted, ...wanted.split('·')] : [];
+  const priceIn = (table) => {
+    if (!table) return null;
+    const normalized = new Map(Object.entries(table).map(([k, v]) => [toSpecies(k), v]));
+    for (const key of keys) if (normalized.get(key) != null) return normalized.get(key);
+    return null;
+  };
+  const boatPrice = priceIn(boatConf.prices);
+  if (boatPrice != null) return boatPrice;
   if (boatConf.price != null) return boatConf.price;
-  if (key && site.prices?.[key] != null) return site.prices[key];
+  const sitePrice = priceIn(site.prices);
+  if (sitePrice != null) return sitePrice;
   if (site.price != null) return site.price;
   return null;
 }
@@ -224,7 +263,7 @@ export function makeTrip(site, fields) {
     returnAt: back,
     session,
     hours,
-    species: species ? String(species).trim() : null,
+    species: toSpecies(species),
     tide: tide ?? toTide(rawTide),
     status: toStatus(rawStatus, seats),
     statusText: rawStatus ? String(rawStatus).replace(/\s+/g, ' ').trim() : null,
