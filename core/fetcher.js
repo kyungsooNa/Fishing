@@ -1,10 +1,10 @@
-// HTTP / Playwright. 호스트별 요청 간격을 지킵니다.
+// HTTP / Playwright. 같은 서버에 연속으로 요청하지 않도록 간격을 지킵니다.
 
 import http from 'node:http';
 import https from 'node:https';
 
 
-const MIN_GAP_MS = 3000;        // 같은 호스트에 연속 요청할 때 최소 간격
+const MIN_GAP_MS = 3000;        // 같은 서버에 연속 요청할 때 최소 간격
 // 러너는 해외에 있고 상대는 전부 국내 호스트입니다. Node fetch의 기본 연결 제한시간
 // 10초로는 멀쩡한 사이트가 UND_ERR_CONNECT_TIMEOUT으로 무더기로 떨어집니다.
 // undici Agent로 늘려보려다 내장 fetch와 버전이 안 맞아 모든 요청을 깨뜨린 적이 있어,
@@ -13,16 +13,45 @@ const TIMEOUT_MS = 30000;
 const MAX_REDIRECTS = 5;
 const UA =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36';
-const lastHit = new Map();      // host -> timestamp
+const lastHit = new Map();      // 서버(=도메인) -> 마지막 요청 시각
 let browser = null;             // playwright 브라우저는 한 번만 띄웁니다
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+/**
+ * 간격을 지킬 단위. 호스트 이름이 아니라 도메인입니다.
+ *
+ * 선사 사이트는 대부분 플랫폼 서브도메인입니다(akbari.sunsang24.com,
+ * ssfish.thefishing.kr...). 호스트별로 세면 200곳이 다 다른 상대로 보이지만
+ * 실제로는 한 서버라, 3초 간격을 지킨다고 믿으면서 초당 몇 번씩 두드리게 됩니다.
+ * 실제로 그러다 더피싱 계열 242곳이 통째로 시간초과로 막혔습니다.
+ *
+ * kr 2단계 도메인(co.kr, or.kr...)은 한 칸 더 봅니다 — thefishing.kr은 그대로 쓰되
+ * xxx.co.kr에서 co.kr로 뭉뚱그리면 남남인 사이트끼리 서로 기다리게 됩니다.
+ */
+const SECOND_LEVEL = new Set(['co', 'or', 'ne', 'go', 're', 'pe', 'ac', 'com', 'net', 'org']);
+
+const IS_IP = /^\d{1,3}(\.\d{1,3}){3}$/;
+
+export function gapKey(url) {
+  const u = new URL(url);
+  const host = u.hostname.toLowerCase();
+
+  // IP나 localhost는 도메인으로 자를 게 없습니다. 포트까지 넣어 따로 셉니다 —
+  // 안 그러면 테스트용 로컬 서버들이 서로 3초씩 기다립니다.
+  if (IS_IP.test(host) || host === 'localhost' || host.includes(':')) return u.host;
+
+  const parts = host.split('.');
+  if (parts.length <= 2) return host;
+  const take = SECOND_LEVEL.has(parts.at(-2)) ? 3 : 2;
+  return parts.slice(-take).join('.');
+}
+
 async function pace(url) {
-  const host = new URL(url).host;
-  const wait = (lastHit.get(host) ?? 0) + MIN_GAP_MS - Date.now();
+  const key = gapKey(url);
+  const wait = (lastHit.get(key) ?? 0) + MIN_GAP_MS - Date.now();
   if (wait > 0) await sleep(wait);
-  lastHit.set(host, Date.now());
+  lastHit.set(key, Date.now());
 }
 
 function getStatic(url, { referer, timeoutMs = TIMEOUT_MS, redirects = MAX_REDIRECTS } = {}) {
