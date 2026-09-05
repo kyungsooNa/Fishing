@@ -2553,6 +2553,1121 @@
         "유림호": {}
       },
       "note": "자동 발견(https://yurimho.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 미수항"
+    },
+    {
+      "id": "52fish",
+      "name": "52fish",
+      "adapter": "thefishing",
+      "url": "https://52fish.thefishing.kr/index.php?mid=bk",
+      "phone": "010-6390-5555",
+      "enabled": true,
+      "note": "자동 발견(https://52fish.thefishing.kr) — 시험 수집 9건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항"
+    },
+    {
+      "id": "5sunrise",
+      "name": "일출호",
+      "adapter": "thefishing",
+      "url": "https://5sunrise.thefishing.kr/index.php?mid=bk",
+      "phone": "010-7356-1750",
+      "enabled": true,
+      "boats": {
+        "일출호": {},
+        "1호": {}
+      },
+      "note": "자동 발견(https://5sunrise.thefishing.kr) — 시험 수집 9건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 광명항"
+    },
+    {
+      "id": "acefish",
+      "name": "스마트호",
+      "adapter": "thefishing",
+      "url": "https://acefish.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "스마트호": {},
+        "골드피싱호": {}
+      },
+      "note": "자동 발견(https://acefish.thefishing.kr) — 시험 수집 16건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 문의사항, 시간조항 전화 후보: 010-9227-2266, 010-5851-0216"
+    },
+    {
+      "id": "angel",
+      "name": "엔젤피싱호",
+      "adapter": "thefishing",
+      "url": "https://angel.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "엔젤피싱호": {}
+      },
+      "note": "자동 발견(https://angel.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 홍원항, 공지사항 전화 후보: 010-9554-3127, 010-2548-3241"
+    },
+    {
+      "id": "aquamarine",
+      "name": "aquamarine",
+      "adapter": "thefishing",
+      "url": "https://aquamarine.thefishing.kr/index.php?mid=bk",
+      "phone": "010-5320-8482",
+      "enabled": true,
+      "note": "자동 발견(https://aquamarine.thefishing.kr) — 시험 수집 8건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 홍원항, 공지사항"
+    },
+    {
+      "id": "asea",
+      "name": "해성호",
+      "adapter": "thefishing",
+      "url": "https://asea.thefishing.kr/index.php?mid=bk",
+      "phone": "010-6342-5776",
+      "enabled": true,
+      "boats": {
+        "해성호": {}
+      },
+      "note": "자동 발견(https://asea.thefishing.kr) — 시험 수집 10건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항"
+    },
+    {
+      "id": "badafish",
+      "name": "경원7호",
+      "adapter": "thefishing",
+      "url": "https://badafish.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "경원7호": {}
+      },
+      "note": "자동 발견(https://badafish.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 주의사항 전화 후보: 032-888-2350, 010-9111-4782"
+    },
+    {
+      "id": "badasarang",
+      "name": "바다사랑호",
+      "adapter": "thefishing",
+      "url": "https://badasarang.thefishing.kr/index.php?mid=bk",
+      "phone": "010-8818-1612",
+      "enabled": true,
+      "boats": {
+        "바다사랑호": {}
+      },
+      "note": "자동 발견(https://badasarang.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 홍원항, 공지사항"
+    },
+    {
+      "id": "baekdusan",
+      "name": "백두산호",
+      "adapter": "thefishing",
+      "url": "https://baekdusan.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "백두산호": {}
+      },
+      "note": "자동 발견(https://baekdusan.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 홍원항, 공지사항, 주의사항, 필독사항 전화 후보: 010-4321-6006, 010-5896-0250"
+    },
+    {
+      "id": "bestho",
+      "name": "베스트호",
+      "adapter": "thefishing",
+      "url": "https://bestho.thefishing.kr/index.php?mid=bk",
+      "phone": "010-4710-7536",
+      "enabled": true,
+      "boats": {
+        "베스트호": {}
+      },
+      "note": "자동 발견(https://bestho.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 인적사항, 주의사항, 오천항"
+    },
+    {
+      "id": "bgsho",
+      "name": "벽계수호",
+      "adapter": "thefishing",
+      "url": "https://bgsho.thefishing.kr/index.php?mid=bk",
+      "phone": "010-3764-9599",
+      "enabled": true,
+      "boats": {
+        "벽계수호": {}
+      },
+      "note": "자동 발견(https://bgsho.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 청산항, 공지사항, 출조항"
+    },
+    {
+      "id": "bikini",
+      "name": "양파호",
+      "adapter": "thefishing",
+      "url": "https://bikini.thefishing.kr/index.php?mid=bk",
+      "phone": "010-5322-8738",
+      "enabled": true,
+      "boats": {
+        "양파호": {}
+      },
+      "note": "자동 발견(https://bikini.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 대천항, 회변항, 공지사항, 주의사항"
+    },
+    {
+      "id": "bless",
+      "name": "블레스호",
+      "adapter": "thefishing",
+      "url": "https://bless.thefishing.kr/index.php?mid=bk",
+      "phone": "010-3956-7016",
+      "enabled": true,
+      "boats": {
+        "블레스호": {}
+      },
+      "note": "자동 발견(https://bless.thefishing.kr) — 시험 수집 9건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 주의사항"
+    },
+    {
+      "id": "bluedragon",
+      "name": "청룡호",
+      "adapter": "thefishing",
+      "url": "https://bluedragon.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "청룡호": {}
+      },
+      "note": "자동 발견(https://bluedragon.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 장고항, 공지사항 전화 후보: 010-5427-8866, 041-353-6740"
+    },
+    {
+      "id": "cgho",
+      "name": "청길호",
+      "adapter": "thefishing",
+      "url": "https://cgho.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "청길호": {}
+      },
+      "note": "자동 발견(https://cgho.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 홍원항, 공지사항, 출조항, 배낚시홍원항 전화 후보: 010-3730-3603, 010-8735-3603"
+    },
+    {
+      "id": "champion",
+      "name": "champion",
+      "adapter": "thefishing",
+      "url": "https://champion.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "note": "자동 발견(https://champion.thefishing.kr) — 시험 수집 8건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 대천항, 공지사항, 문의사항, 변경사항, 출조항 전화 후보: 010-2480-2138, 010-2173-5152"
+    },
+    {
+      "id": "choice",
+      "name": "choice",
+      "adapter": "thefishing",
+      "url": "https://choice.thefishing.kr/index.php?mid=bk",
+      "phone": "010-5873-3984",
+      "enabled": true,
+      "note": "자동 발견(https://choice.thefishing.kr) — 시험 수집 31건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 녹동항, 대박조항, 출조항"
+    },
+    {
+      "id": "chungwoon",
+      "name": "뉴청운호",
+      "adapter": "thefishing",
+      "url": "https://chungwoon.thefishing.kr/index.php?mid=bk",
+      "phone": "010-5222-6072",
+      "enabled": true,
+      "boats": {
+        "뉴청운호": {}
+      },
+      "note": "자동 발견(https://chungwoon.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항"
+    },
+    {
+      "id": "daejin",
+      "name": "daejin",
+      "adapter": "thefishing",
+      "url": "https://daejin.thefishing.kr/index.php?mid=bk",
+      "phone": "010-8348-0305",
+      "enabled": true,
+      "note": "자동 발견(https://daejin.thefishing.kr) — 시험 수집 9건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항"
+    },
+    {
+      "id": "daeyang",
+      "name": "대박1호",
+      "adapter": "thefishing",
+      "url": "https://daeyang.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "대박1호": {}
+      },
+      "note": "자동 발견(https://daeyang.thefishing.kr) — 시험 수집 9건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 문의사항, 필독사항, 선촌항 전화 후보: 010-6395-6362, 010-2324-6362"
+    },
+    {
+      "id": "djfishing",
+      "name": "우리바다호",
+      "adapter": "thefishing",
+      "url": "https://djfishing.thefishing.kr/index.php?mid=bk",
+      "phone": "010-6232-9479",
+      "enabled": true,
+      "boats": {
+        "우리바다호": {}
+      },
+      "note": "자동 발견(https://djfishing.thefishing.kr) — 시험 수집 22건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항"
+    },
+    {
+      "id": "dolphin",
+      "name": "돌핀호",
+      "adapter": "thefishing",
+      "url": "https://dolphin.thefishing.kr/index.php?mid=bk",
+      "phone": "010-8754-2146",
+      "enabled": true,
+      "boats": {
+        "돌핀호": {}
+      },
+      "note": "자동 발견(https://dolphin.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 전곡항, 공지사항, 안전운항"
+    },
+    {
+      "id": "doublek",
+      "name": "1호",
+      "adapter": "thefishing",
+      "url": "https://doublek.thefishing.kr/index.php?mid=bk",
+      "phone": "010-4455-6222",
+      "enabled": true,
+      "boats": {
+        "1호": {}
+      },
+      "note": "자동 발견(https://doublek.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 팔포항, 출조항"
+    },
+    {
+      "id": "dragonho",
+      "name": "드래곤호",
+      "adapter": "thefishing",
+      "url": "https://dragonho.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "드래곤호": {}
+      },
+      "note": "자동 발견(https://dragonho.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 홍원항, 공지사항, 출조항 전화 후보: 010-5477-3571, 010-2811-1098"
+    },
+    {
+      "id": "eoulim",
+      "name": "어울림호",
+      "adapter": "thefishing",
+      "url": "https://eoulim.thefishing.kr/index.php?mid=bk",
+      "phone": "010-9931-9297",
+      "enabled": true,
+      "boats": {
+        "어울림호": {}
+      },
+      "note": "자동 발견(https://eoulim.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 구매항, 공지사항, 출조항"
+    },
+    {
+      "id": "flex",
+      "name": "오로라호",
+      "adapter": "thefishing",
+      "url": "https://flex.thefishing.kr/index.php?mid=bk",
+      "phone": "010-5577-2258",
+      "enabled": true,
+      "boats": {
+        "오로라호": {}
+      },
+      "note": "자동 발견(https://flex.thefishing.kr) — 시험 수집 15건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 대천항"
+    },
+    {
+      "id": "fmania",
+      "name": "피싱매니아호",
+      "adapter": "thefishing",
+      "url": "https://fmania.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "피싱매니아호": {}
+      },
+      "note": "자동 발견(https://fmania.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 홍원항, 공지사항, 문의사항 전화 후보: 010-9597-1192, 05-2889441"
+    },
+    {
+      "id": "haeduk",
+      "name": "뉴해덕호",
+      "adapter": "thefishing",
+      "url": "https://haeduk.thefishing.kr/index.php?mid=bk",
+      "phone": "010-6540-8558",
+      "enabled": true,
+      "boats": {
+        "뉴해덕호": {}
+      },
+      "note": "자동 발견(https://haeduk.thefishing.kr) — 시험 수집 31건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 시출항"
+    },
+    {
+      "id": "hanpro2",
+      "name": "한프로호",
+      "adapter": "thefishing",
+      "url": "https://hanpro.thefishing.kr/index.php?mid=bk",
+      "phone": "010-3530-7103",
+      "enabled": true,
+      "boats": {
+        "한프로호": {}
+      },
+      "note": "자동 발견(https://hanpro.thefishing.kr) — 시험 수집 9건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 대천항, 공지사항, 변경사항, 알림사항, 주의사항"
+    },
+    {
+      "id": "hansol",
+      "name": "한솔호",
+      "adapter": "thefishing",
+      "url": "https://hansol.thefishing.kr/index.php?mid=bk",
+      "phone": "010-5042-8878",
+      "enabled": true,
+      "boats": {
+        "한솔호": {}
+      },
+      "note": "자동 발견(https://hansol.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 시출항, 시경입항"
+    },
+    {
+      "id": "hhj",
+      "name": "형제피싱호",
+      "adapter": "thefishing",
+      "url": "https://hhj.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "형제피싱호": {}
+      },
+      "note": "자동 발견(https://hhj.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 홍원항, 공지사항, 출조항, 안내사항 전화 후보: 041-952-3944, 010-3213-3944, 010-8668-3944"
+    },
+    {
+      "id": "hohae",
+      "name": "호해스타호",
+      "adapter": "thefishing",
+      "url": "https://hohae.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "호해스타호": {}
+      },
+      "note": "자동 발견(https://hohae.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 홍원항, 공지사항 전화 후보: 010-9227-2266, 010-3656-3589"
+    },
+    {
+      "id": "hongwonhang",
+      "name": "돌핀호",
+      "adapter": "thefishing",
+      "url": "https://hongwonhang.thefishing.kr/index.php?mid=bk",
+      "phone": "010-4050-0411",
+      "enabled": true,
+      "boats": {
+        "돌핀호": {}
+      },
+      "note": "자동 발견(https://hongwonhang.thefishing.kr) — 시험 수집 9건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 홍원항, 공지사항, 출조항"
+    },
+    {
+      "id": "ilsin",
+      "name": "일신호",
+      "adapter": "thefishing",
+      "url": "https://ilsin.thefishing.kr/index.php?mid=bk",
+      "phone": "010-4585-9993",
+      "enabled": true,
+      "boats": {
+        "일신호": {}
+      },
+      "note": "자동 발견(https://ilsin.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 문의사항, 출조항"
+    },
+    {
+      "id": "jghstar",
+      "name": "jghstar",
+      "adapter": "thefishing",
+      "url": "https://jghstar.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "note": "자동 발견(https://jghstar.thefishing.kr) — 시험 수집 10건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 전곡항, 공지사항, 규정사항 전화 후보: 010-8070-0150, 010-2171-3361, 010-6357-8341"
+    },
+    {
+      "id": "jido",
+      "name": "정원호",
+      "adapter": "thefishing",
+      "url": "https://jido.thefishing.kr/index.php?mid=bk",
+      "phone": "010-6474-1275",
+      "enabled": true,
+      "boats": {
+        "정원호": {},
+        "지도호": {}
+      },
+      "note": "자동 발견(https://jido.thefishing.kr) — 시험 수집 10건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 안전운항, 공지사항, 천리포항, 변경사항, 모항항"
+    },
+    {
+      "id": "jinjo",
+      "name": "뉴진조호",
+      "adapter": "thefishing",
+      "url": "https://jinjo.thefishing.kr/index.php?mid=bk",
+      "phone": "010-8004-1661",
+      "enabled": true,
+      "boats": {
+        "뉴진조호": {}
+      },
+      "note": "자동 발견(https://jinjo.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 제주항, 사계항, 모슬포항"
+    },
+    {
+      "id": "joen",
+      "name": "독립좌대1호",
+      "adapter": "thefishing",
+      "url": "https://joen.thefishing.kr/index.php?mid=bk",
+      "phone": "010-8268-8644",
+      "enabled": true,
+      "boats": {
+        "독립좌대1호": {}
+      },
+      "note": "자동 발견(https://joen.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항"
+    },
+    {
+      "id": "jungwoo",
+      "name": "정우레져호",
+      "adapter": "thefishing",
+      "url": "https://jungwoo.thefishing.kr/index.php?mid=bk",
+      "phone": "010-3561-5707",
+      "enabled": true,
+      "boats": {
+        "정우레져호": {}
+      },
+      "note": "자동 발견(https://jungwoo.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 마량항, 공지사항"
+    },
+    {
+      "id": "junjin",
+      "name": "전진호",
+      "adapter": "thefishing",
+      "url": "https://junjin.thefishing.kr/index.php?mid=bk",
+      "phone": "010-7695-8879",
+      "enabled": true,
+      "boats": {
+        "전진호": {}
+      },
+      "note": "자동 발견(https://junjin.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항"
+    },
+    {
+      "id": "kkalzo",
+      "name": "깔조호",
+      "adapter": "thefishing",
+      "url": "https://kkalzo.thefishing.kr/index.php?mid=bk",
+      "phone": "010-3437-5894",
+      "enabled": true,
+      "boats": {
+        "깔조호": {}
+      },
+      "note": "자동 발견(https://kkalzo.thefishing.kr) — 시험 수집 17건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 대천항, 공지사항, 안내사항, 금지사항"
+    },
+    {
+      "id": "kzm",
+      "name": "kzm",
+      "adapter": "thefishing",
+      "url": "https://kzm.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "note": "자동 발견(https://kzm.thefishing.kr) — 시험 수집 8건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 오천항, 공지사항, 주의사항 전화 후보: 010-2446-1322, 010-7744-8246, 010-2742-9712"
+    },
+    {
+      "id": "light",
+      "name": "등대호",
+      "adapter": "thefishing",
+      "url": "https://light.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "등대호": {}
+      },
+      "note": "자동 발견(https://light.thefishing.kr) — 시험 수집 9건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 평택항, 공지사항, 기본사항, 유의사항 전화 후보: 010-5348-0855, 01053480855"
+    },
+    {
+      "id": "linkus",
+      "name": "링커스호",
+      "adapter": "thefishing",
+      "url": "https://linkus.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "링커스호": {}
+      },
+      "note": "자동 발견(https://linkus.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항 전화 후보: 010-3288-7000, 010-2774-0099"
+    },
+    {
+      "id": "lucky7",
+      "name": "lucky7",
+      "adapter": "thefishing",
+      "url": "https://lucky7.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "note": "자동 발견(https://lucky7.thefishing.kr) — 시험 수집 8건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 종일배운항, 궁평항 전화 후보: 010-9332-4567, 010-6382-0824"
+    },
+    {
+      "id": "manaru",
+      "name": "은양호",
+      "adapter": "thefishing",
+      "url": "https://manaru.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "은양호": {}
+      },
+      "note": "자동 발견(https://manaru.thefishing.kr) — 시험 수집 31건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 시출항, 신진항, 출조항 전화 후보: 010-6423-1570, 010-7437-1322, 010-2773-6758, 010-8825-3368, 010-8773-9303"
+    },
+    {
+      "id": "manseok",
+      "name": "manseok",
+      "adapter": "thefishing",
+      "url": "https://manseok.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "note": "자동 발견(https://manseok.thefishing.kr) — 시험 수집 8건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 안내사항, 삼길포항 전화 후보: 010-9292-5562, 010-9291-5562"
+    },
+    {
+      "id": "marinestar",
+      "name": "20호",
+      "adapter": "thefishing",
+      "url": "https://marinestar.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "20호": {}
+      },
+      "note": "자동 발견(https://marinestar.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 안내사항 전화 후보: 010-3650-7188, 010-9067-3646"
+    },
+    {
+      "id": "mobok",
+      "name": "뉴오복호",
+      "adapter": "thefishing",
+      "url": "https://mobok.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "뉴오복호": {}
+      },
+      "note": "자동 발견(https://mobok.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 무창포항, 출입항 전화 후보: 041-936-3447, 010-3469-0463"
+    },
+    {
+      "id": "mobum",
+      "name": "모범낚시호",
+      "adapter": "thefishing",
+      "url": "https://mobum.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "모범낚시호": {}
+      },
+      "note": "자동 발견(https://mobum.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 홍원항, 공지사항 전화 후보: 010-2567-4844, 010-4447-2143, 010-6474-5420"
+    },
+    {
+      "id": "monster2",
+      "name": "monster2",
+      "adapter": "thefishing",
+      "url": "https://monster.thefishing.kr/index.php?mid=bk",
+      "phone": "010-9009-7608",
+      "enabled": true,
+      "note": "자동 발견(https://monster.thefishing.kr) — 시험 수집 9건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 인이상출항, 출조항"
+    },
+    {
+      "id": "nadree",
+      "name": "나드리호",
+      "adapter": "thefishing",
+      "url": "https://nadree.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "나드리호": {}
+      },
+      "note": "자동 발견(https://nadree.thefishing.kr) — 시험 수집 9건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 홍원항, 공지사항 전화 후보: 010-5433-8150, 010-4478-8150, 010-4050-0411"
+    },
+    {
+      "id": "neweocheongdo",
+      "name": "어청도피싱호",
+      "adapter": "thefishing",
+      "url": "https://neweocheongdo.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "어청도피싱호": {}
+      },
+      "note": "자동 발견(https://neweocheongdo.thefishing.kr) — 시험 수집 9건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 주의사항"
+    },
+    {
+      "id": "newsj",
+      "name": "뉴신정호",
+      "adapter": "thefishing",
+      "url": "https://newsj.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "뉴신정호": {}
+      },
+      "note": "자동 발견(https://newsj.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항 전화 후보: 010-4237-9787, 041-675-1133, 041-674-1295"
+    },
+    {
+      "id": "nixx",
+      "name": "닉스호",
+      "adapter": "thefishing",
+      "url": "https://nixx.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "닉스호": {}
+      },
+      "note": "자동 발견(https://nixx.thefishing.kr) — 시험 수집 9건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항 전화 후보: 010-3480-2636, 010-9287-6456"
+    },
+    {
+      "id": "no1",
+      "name": "3호",
+      "adapter": "thefishing",
+      "url": "https://no1.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "3호": {},
+        "1호": {}
+      },
+      "note": "자동 발견(https://no1.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 안내사항, 출조항, 격포항 전화 후보: 063-584-1510, 010-6594-1511"
+    },
+    {
+      "id": "noblesse",
+      "name": "noblesse",
+      "adapter": "thefishing",
+      "url": "https://noblesse.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "note": "자동 발견(https://noblesse.thefishing.kr) — 시험 수집 8건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 대천항, 공지사항, 문의사항, 변경사항 전화 후보: 010-2173-5152, 010-7411-9365"
+    },
+    {
+      "id": "oasis",
+      "name": "오아시스호",
+      "adapter": "thefishing",
+      "url": "https://oasis.thefishing.kr/index.php?mid=bk",
+      "phone": "010-3118-6255",
+      "enabled": true,
+      "boats": {
+        "오아시스호": {}
+      },
+      "note": "자동 발견(https://oasis.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 대천항, 공지사항, 출조항"
+    },
+    {
+      "id": "obok",
+      "name": "오복호",
+      "adapter": "thefishing",
+      "url": "https://obok.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "오복호": {}
+      },
+      "note": "자동 발견(https://obok.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출입항, 조기입항, 쭈꾸미조항, 오늘조항 전화 후보: 010-7455-6044, 010-4321-6044"
+    },
+    {
+      "id": "ochbada",
+      "name": "ochbada",
+      "adapter": "thefishing",
+      "url": "https://ochbada.thefishing.kr/index.php?mid=bk",
+      "phone": "010-3930-6755",
+      "enabled": true,
+      "note": "자동 발견(https://ochbada.thefishing.kr) — 시험 수집 12건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항"
+    },
+    {
+      "id": "orange",
+      "name": "오렌지호",
+      "adapter": "thefishing",
+      "url": "https://orange.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "오렌지호": {}
+      },
+      "note": "자동 발견(https://orange.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 열기출항 전화 후보: 010-6416-6989, 010-6458-6989, 010-6479-6989"
+    },
+    {
+      "id": "plaza",
+      "name": "레이디호",
+      "adapter": "thefishing",
+      "url": "https://plaza.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "레이디호": {}
+      },
+      "note": "자동 발견(https://plaza.thefishing.kr) — 시험 수집 6건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 홍원항 전화 후보: 010-6685-7323, 041-951-8838"
+    },
+    {
+      "id": "plus",
+      "name": "플러스호",
+      "adapter": "thefishing",
+      "url": "https://plus.thefishing.kr/index.php?mid=bk",
+      "phone": "010-3304-7556",
+      "enabled": true,
+      "boats": {
+        "플러스호": {}
+      },
+      "note": "자동 발견(https://plus.thefishing.kr) — 시험 수집 9건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 무창포항"
+    },
+    {
+      "id": "pthbest",
+      "name": "스카이피싱호",
+      "adapter": "thefishing",
+      "url": "https://pthbest.thefishing.kr/index.php?mid=bk",
+      "phone": "010-3155-7567",
+      "enabled": true,
+      "boats": {
+        "스카이피싱호": {}
+      },
+      "note": "자동 발견(https://pthbest.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 평택항, 공지사항"
+    },
+    {
+      "id": "raraho2",
+      "name": "라라호",
+      "adapter": "thefishing",
+      "url": "https://raraho.thefishing.kr/index.php?mid=bk",
+      "phone": "010-9008-7564",
+      "enabled": true,
+      "boats": {
+        "라라호": {}
+      },
+      "note": "자동 발견(https://raraho.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 오천항, 공지사항, 출조항"
+    },
+    {
+      "id": "redpearl",
+      "name": "레드펄호",
+      "adapter": "thefishing",
+      "url": "https://redpearl.thefishing.kr/index.php?mid=bk",
+      "phone": "010-5793-4521",
+      "enabled": true,
+      "boats": {
+        "레드펄호": {}
+      },
+      "note": "자동 발견(https://redpearl.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 홍원항, 공지사항, 출조항, 어초다잡아조항"
+    },
+    {
+      "id": "secretbus",
+      "name": "20호",
+      "adapter": "thefishing",
+      "url": "https://secretbus.thefishing.kr/index.php?mid=bk",
+      "phone": "010-9791-4445",
+      "enabled": true,
+      "boats": {
+        "20호": {}
+      },
+      "note": "자동 발견(https://secretbus.thefishing.kr) — 시험 수집 9건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 신진도항, 국동항"
+    },
+    {
+      "id": "seohae2",
+      "name": "바로호",
+      "adapter": "thefishing",
+      "url": "https://seohae.thefishing.kr/index.php?mid=bk",
+      "phone": "010-2811-1098",
+      "enabled": true,
+      "boats": {
+        "바로호": {}
+      },
+      "note": "자동 발견(https://seohae.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 홍원항, 공지사항"
+    },
+    {
+      "id": "sindo",
+      "name": "sindo",
+      "adapter": "thefishing",
+      "url": "https://sindo.thefishing.kr/index.php?mid=bk",
+      "phone": "010-5009-8373",
+      "enabled": true,
+      "note": "자동 발견(https://sindo.thefishing.kr) — 시험 수집 8건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 오천항, 공지사항, 출조항"
+    },
+    {
+      "id": "sinil",
+      "name": "sinil",
+      "adapter": "thefishing",
+      "url": "https://sinil.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "note": "자동 발견(https://sinil.thefishing.kr) — 시험 수집 26건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 주의사항, 신진도항 전화 후보: 010-3160-4462, 010-6206-0657"
+    },
+    {
+      "id": "sinjindo",
+      "name": "뉴용궁호",
+      "adapter": "thefishing",
+      "url": "https://sinjindo.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "뉴용궁호": {}
+      },
+      "note": "자동 발견(https://sinjindo.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항 전화 후보: 010-3333-1961, 010-8311-7171"
+    },
+    {
+      "id": "sjdsamsung",
+      "name": "운진호",
+      "adapter": "thefishing",
+      "url": "https://sjdsamsung.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "운진호": {}
+      },
+      "note": "자동 발견(https://sjdsamsung.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항 전화 후보: 041-675-5412, 010-8823-5412"
+    },
+    {
+      "id": "soosung",
+      "name": "수성호",
+      "adapter": "thefishing",
+      "url": "https://soosung.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "수성호": {}
+      },
+      "note": "자동 발견(https://soosung.thefishing.kr) — 시험 수집 9건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 평택항, 공지사항, 출조항 전화 후보: 010-5329-7807, 010-7282-7807"
+    },
+    {
+      "id": "sooyoungho",
+      "name": "수영호",
+      "adapter": "thefishing",
+      "url": "https://sooyoungho.thefishing.kr/index.php?mid=bk",
+      "phone": "010-9185-0552",
+      "enabled": true,
+      "boats": {
+        "수영호": {}
+      },
+      "note": "자동 발견(https://sooyoungho.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 주의사항, 환불사항"
+    },
+    {
+      "id": "spdman7",
+      "name": "씨빙이호",
+      "adapter": "thefishing",
+      "url": "https://spdman7.thefishing.kr/index.php?mid=bk",
+      "phone": "010-9718-1703",
+      "enabled": true,
+      "boats": {
+        "씨빙이호": {}
+      },
+      "note": "자동 발견(https://spdman7.thefishing.kr) — 시험 수집 12건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 오천항, 공지사항, 주의사항, 안내사항"
+    },
+    {
+      "id": "starfishing",
+      "name": "오성스타호",
+      "adapter": "thefishing",
+      "url": "https://starfishing.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "오성스타호": {}
+      },
+      "note": "자동 발견(https://starfishing.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 회변항, 공지사항 전화 후보: 010-9254-6633, 010-8061-3250"
+    },
+    {
+      "id": "start",
+      "name": "스타트호",
+      "adapter": "thefishing",
+      "url": "https://start.thefishing.kr/index.php?mid=bk",
+      "phone": "010-7225-7225",
+      "enabled": true,
+      "boats": {
+        "스타트호": {}
+      },
+      "note": "자동 발견(https://start.thefishing.kr) — 시험 수집 10건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 진두항, 일부터신항"
+    },
+    {
+      "id": "subok",
+      "name": "수복호",
+      "adapter": "thefishing",
+      "url": "https://subok.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "수복호": {}
+      },
+      "note": "자동 발견(https://subok.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 평택항, 공지사항, 출조항 전화 후보: 010-3200-6011, 031-684-0229, 031-683-6831"
+    },
+    {
+      "id": "suji",
+      "name": "수지호",
+      "adapter": "thefishing",
+      "url": "https://suji.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "수지호": {}
+      },
+      "note": "자동 발견(https://suji.thefishing.kr) — 시험 수집 9건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출입항, 주의사항, 출조항, 무창포항 전화 후보: 010-3262-0877, 010-5449-0877"
+    },
+    {
+      "id": "sungho",
+      "name": "독립좌대1호",
+      "adapter": "thefishing",
+      "url": "https://sungho.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "독립좌대1호": {}
+      },
+      "note": "자동 발견(https://sungho.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항 전화 후보: 010-5431-0371, 010-2415-9656, 0371010-2415"
+    },
+    {
+      "id": "sunny",
+      "name": "뉴써니호",
+      "adapter": "thefishing",
+      "url": "https://sunny.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "뉴써니호": {}
+      },
+      "note": "자동 발견(https://sunny.thefishing.kr) — 시험 수집 1건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 첫출항 전화 후보: 010-3237-7789, 010-3261-1585, 010-9375-1928"
+    },
+    {
+      "id": "susung",
+      "name": "수성호",
+      "adapter": "thefishing",
+      "url": "https://susung.thefishing.kr/index.php?mid=bk",
+      "phone": "010-7408-6555",
+      "enabled": true,
+      "boats": {
+        "수성호": {}
+      },
+      "note": "자동 발견(https://susung.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 오천항, 공지사항, 출조항"
+    },
+    {
+      "id": "suyeon",
+      "name": "수연호",
+      "adapter": "thefishing",
+      "url": "https://suyeon.thefishing.kr/index.php?mid=bk",
+      "phone": "010-3425-3456",
+      "enabled": true,
+      "boats": {
+        "수연호": {}
+      },
+      "note": "자동 발견(https://suyeon.thefishing.kr) — 시험 수집 31건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항"
+    },
+    {
+      "id": "venus",
+      "name": "서완호",
+      "adapter": "thefishing",
+      "url": "https://venus.thefishing.kr/index.php?mid=bk",
+      "phone": "010-9227-2266",
+      "enabled": true,
+      "boats": {
+        "서완호": {}
+      },
+      "note": "자동 발견(https://venus.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 홍원항, 공지사항, 출조항"
+    },
+    {
+      "id": "vip",
+      "name": "VIP호",
+      "adapter": "thefishing",
+      "url": "https://vip.thefishing.kr/index.php?mid=bk",
+      "phone": "010-9047-3620",
+      "enabled": true,
+      "boats": {
+        "VIP호": {}
+      },
+      "note": "자동 발견(https://vip.thefishing.kr) — 시험 수집 9건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 오천항, 안전운항, 공지사항, 대물조항, 출조항"
+    },
+    {
+      "id": "winner",
+      "name": "30호",
+      "adapter": "thefishing",
+      "url": "https://winner.thefishing.kr/index.php?mid=bk",
+      "phone": "010-6526-6525",
+      "enabled": true,
+      "boats": {
+        "30호": {},
+        "배짱호": {}
+      },
+      "note": "자동 발견(https://winner.thefishing.kr) — 시험 수집 7건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 안내사항"
+    },
+    {
+      "id": "worldfishing",
+      "name": "피닉스호",
+      "adapter": "thefishing",
+      "url": "https://worldfishing.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "피닉스호": {},
+        "스텔론호": {}
+      },
+      "note": "자동 발견(https://worldfishing.thefishing.kr) — 시험 수집 9건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항 전화 후보: 063-242-4747, 010-4640-8326, 010-4388-8326"
+    },
+    {
+      "id": "wsd",
+      "name": "비룡호",
+      "adapter": "thefishing",
+      "url": "https://wsd.thefishing.kr/index.php?mid=bk",
+      "phone": "010-5024-7141",
+      "enabled": true,
+      "boats": {
+        "비룡호": {}
+      },
+      "note": "자동 발견(https://wsd.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출입항, 일조항, 년조항, 갑오징어조항"
+    },
+    {
+      "id": "wsdhaesin",
+      "name": "해신호",
+      "adapter": "thefishing",
+      "url": "https://wsdhaesin.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "해신호": {}
+      },
+      "note": "자동 발견(https://wsdhaesin.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항 전화 후보: 010-4761-0034, 010-8489-0037"
+    },
+    {
+      "id": "yaho",
+      "name": "야호",
+      "adapter": "thefishing",
+      "url": "https://yaho.thefishing.kr/index.php?mid=bk",
+      "phone": "010-9374-7683",
+      "enabled": true,
+      "boats": {
+        "야호": {}
+      },
+      "note": "자동 발견(https://yaho.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 문의사항, 출조항"
+    },
+    {
+      "id": "yamujin",
+      "name": "야무진2호",
+      "adapter": "thefishing",
+      "url": "https://yamujin.thefishing.kr/index.php?mid=bk",
+      "phone": "010-2549-5282",
+      "enabled": true,
+      "boats": {
+        "야무진2호": {}
+      },
+      "note": "자동 발견(https://yamujin.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 오천항, 공지사항, 출조항"
+    },
+    {
+      "id": "yayaho",
+      "name": "야야호",
+      "adapter": "thefishing",
+      "url": "https://yayaho.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "야야호": {},
+        "올림피아호": {},
+        "마돈나호": {},
+        "윤준호": {},
+        "윤청호": {},
+        "김성호": {},
+        "곽기호": {},
+        "깔조호": {},
+        "이광호": {},
+        "허재호": {}
+      },
+      "note": "자동 발견(https://yayaho.thefishing.kr) — 시험 수집 24건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 대천항, 공지사항, 출조항, 검색창에대천항, 문의사항 전화 후보: 010-7725-5311, 010-5769-4949, 01077255311"
+    },
+    {
+      "id": "yd1",
+      "name": "영동1호",
+      "adapter": "thefishing",
+      "url": "https://yd1.thefishing.kr/index.php?mid=bk",
+      "phone": "010-2253-2293",
+      "enabled": true,
+      "boats": {
+        "영동1호": {}
+      },
+      "note": "자동 발견(https://yd1.thefishing.kr) — 시험 수집 9건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항"
+    },
+    {
+      "id": "yejin",
+      "name": "예진호",
+      "adapter": "thefishing",
+      "url": "https://yejin.thefishing.kr/index.php?mid=bk",
+      "phone": "010-4664-9709",
+      "enabled": true,
+      "boats": {
+        "예진호": {}
+      },
+      "note": "자동 발견(https://yejin.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 모항항, 공지사항, 출조항, 천리포항"
+    },
+    {
+      "id": "yjin",
+      "name": "영진호",
+      "adapter": "thefishing",
+      "url": "https://yjin.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "영진호": {}
+      },
+      "note": "자동 발견(https://yjin.thefishing.kr) — 시험 수집 10건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 홍원항, 공지사항 전화 후보: 041-951-2427, 010-9422-2427, 010-6476-2427"
+    },
+    {
+      "id": "yjong",
+      "name": "원산도영종호",
+      "adapter": "thefishing",
+      "url": "https://yjong.thefishing.kr/index.php?mid=bk",
+      "phone": "010-3448-4554",
+      "enabled": true,
+      "boats": {
+        "원산도영종호": {}
+      },
+      "note": "자동 발견(https://yjong.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 주의사항, 출입항"
+    },
+    {
+      "id": "yonggung",
+      "name": "뉴용궁호",
+      "adapter": "thefishing",
+      "url": "https://yonggung.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "뉴용궁호": {}
+      },
+      "note": "자동 발견(https://yonggung.thefishing.kr) — 시험 수집 32건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항 전화 후보: 010-7303-1278, 010-8311-7171, 010-3333-1961"
+    },
+    {
+      "id": "yongsa",
+      "name": "바다용사호",
+      "adapter": "thefishing",
+      "url": "https://yongsa.thefishing.kr/index.php?mid=bk",
+      "phone": "010-3629-8605",
+      "enabled": true,
+      "boats": {
+        "바다용사호": {}
+      },
+      "note": "자동 발견(https://yongsa.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 오천항, 공지사항, 출조항, 쭈조항, 첫쭈꾸미조항"
+    },
+    {
+      "id": "ysho",
+      "name": "용신호",
+      "adapter": "thefishing",
+      "url": "https://ysho.thefishing.kr/index.php?mid=bk",
+      "enabled": true,
+      "boats": {
+        "용신호": {}
+      },
+      "note": "자동 발견(https://ysho.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 장고항, 공지사항, 시입항, 출조항 전화 후보: 010-4405-6741, 010-5427-8866, 010-3406-6741, 041-353-6740"
     }
   ]
 }
