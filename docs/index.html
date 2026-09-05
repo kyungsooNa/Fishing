@@ -71,12 +71,17 @@
   .status { margin-top: 10px; display: grid; gap: 5px; }
   .status div { display: flex; gap: 8px; }
   .fail { color: var(--off); }
+  .watch { border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--accent); padding: 5px 8px; cursor: pointer; }
+  .freshness { display: block; font-size: 11px; font-weight: normal; color: var(--muted); }
+  .freshness.stale { color: var(--few); }
 </style>
 </head>
 <body>
 <div class="wrap">
   <h1>낚시 출조 예약 현황판</h1>
   <div class="sub" id="meta">불러오는 중…</div>
+  <div class="sub" id="monitor-status" role="status">전체 목록은 약 60분 주기로 수집합니다. 관심 출조 감시는 로컬 서버에서 사용할 수 있습니다.</div>
+  <details id="watch-panel" hidden><summary>감시 중인 출조 관리</summary><div id="watch-list" class="status"></div></details>
 
   <div class="filters">
     <details class="multi" id="f-site" data-label="선사" data-all="전체 선사"><summary>전체 선사</summary><div class="multi-menu"></div></details>
@@ -103,7 +108,7 @@
     <table>
       <thead><tr>
         <th class="starcell"></th><th>날짜</th><th>운항</th><th>구분</th><th>선사</th><th>배</th><th>항구</th>
-        <th>어종</th><th>물때</th><th>상태</th><th class="num">잔여</th><th class="num">승선료</th>
+        <th>어종</th><th>물때</th><th>상태</th><th class="num">잔여</th><th class="num">승선료</th><th>관심 출조</th>
       </tr></thead>
       <tbody id="rows"></tbody>
     </table>
@@ -120,6 +125,47 @@
 const LABEL = { open: '예약가능', few: '잔여 적음', closed: '마감', off: '휴항', unknown: '확인필요' };
 const WEEK = ['일','월','화','수','목','금','토'];
 let DATA = { trips: [], sites: {}, ports: {}, generatedAt: null };
+let MONITOR = null;
+const watchKey = (t) => [t.siteId, t.boat ?? '', t.date ?? '', t.departAt ?? ''].join('|');
+const watched = (t) => MONITOR?.watches.some((w) => (t.sources ?? [t]).some((s) =>
+  watchKey({ ...t, siteId: s.siteId }) === watchKey(w)));
+
+function freshness(t) {
+  const states = (t.sources ?? [t]).map((s) => DATA.sites[s.siteId]);
+  const failed = states.some((s) => !s?.ok);
+  const times = states.map((s) => Date.parse(s?.ok ? s.at : s?.keptFrom));
+  const time = Math.min(...times);
+  if (!Number.isFinite(time)) return { text: failed ? '수집 실패 · 확인 시각 없음' : '확인 시각 없음', stale: true };
+  const minutes = Math.max(0, Math.floor((Date.now() - time) / 60000));
+  return { text: `${failed ? '수집 실패 · ' : ''}${minutes}분 전 확인`, stale: failed || minutes >= 30 };
+}
+
+function monitorMessage() {
+  if (!MONITOR) return;
+  $('monitor-status').textContent = `전체 60분 · 관심 출조 ${MONITOR.watches.length}개, 3분 목표 · 서버가 켜져 있는 동안 감시` +
+    (MONITOR.overdue ? ` · ${MONITOR.overdue}곳 확인 지연` : '') +
+    (MONITOR.notificationConfigured ? ' · 외부 알림 설정됨' : ' · 외부 알림 미설정: 텔레그램/디스코드 환경변수가 필요합니다');
+  $('watch-panel').hidden = false;
+  $('watch-list').textContent = '';
+  for (const w of MONITOR.watches) {
+    const row = document.createElement('div'), button = document.createElement('button');
+    row.append(`${w.date} ${w.departAt ?? ''} ${w.boat ?? ''} (${w.siteId}) `);
+    button.className = 'watch'; button.textContent = '감시 해제';
+    button.onclick = () => toggleWatch(w, button);
+    row.append(button); $('watch-list').append(row);
+  }
+}
+
+async function toggleWatch(t, button) {
+  button.disabled = true;
+  try {
+    const r = await fetch('/api/monitor', { method: 'POST', headers: { 'X-Admin': '1', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ key: watchKey(t), enabled: !watched(t) }) });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error ?? '감시 설정 실패');
+    MONITOR = d; monitorMessage(); render();
+  } catch (e) { $('monitor-status').textContent = e.message; button.disabled = false; }
+}
 
 // ── 즐겨찾기 ──────────────────────────────────────────────────────────────
 // 브라우저에만 저장합니다. 서버가 없으니 기기마다 따로 남습니다.
@@ -172,6 +218,8 @@ function regionOf(port) {
 
 function fillOptions(control, values, defaults = []) {
   const menu = control.querySelector('.multi-menu');
+  if (control.dataset.loaded) defaults = [...selectedValues(control.id)];
+  control.dataset.loaded = '1';
   menu.textContent = '';
   for (const v of [...new Set(values.filter(Boolean))].sort()) {
     const label = document.createElement('label');
@@ -279,8 +327,24 @@ function render() {
         td.textContent = v;
       }
       if (i >= 9) td.className = 'num';
+      if (i === 9) {
+        const age = freshness(t), hint = document.createElement('small');
+        hint.className = 'freshness' + (age.stale ? ' stale' : '');
+        hint.textContent = age.text;
+        td.append(hint);
+      }
       tr.append(td);
     });
+    const watchCell = document.createElement('td');
+    if (MONITOR) {
+      const button = document.createElement('button');
+      button.className = 'watch';
+      button.textContent = watched(t) ? '감시 해제' : '3분 감시';
+      button.setAttribute('aria-pressed', String(Boolean(watched(t))));
+      button.onclick = () => toggleWatch(t, button);
+      watchCell.append(button);
+    } else watchCell.textContent = '로컬 전용';
+    tr.append(watchCell);
     tbody.append(tr);
   }
 
@@ -303,7 +367,7 @@ function renderStatus() {
   }
 }
 
-fetch('data.json?t=' + Date.now())
+function loadData() { return fetch('data.json?t=' + Date.now(), { cache: 'no-store' })
   .then((r) => r.json())
   .then((d) => {
     DATA = d;
@@ -319,8 +383,29 @@ fetch('data.json?t=' + Date.now())
     fillOptions($('f-date'), d.trips.map((t) => t.date));
     renderStatus();
     render();
+    drawMap();
   })
-  .catch((e) => { $('meta').textContent = 'data.json을 못 읽었습니다: ' + e.message; });
+  .catch((e) => { $('meta').textContent = 'data.json을 못 읽었습니다: ' + e.message; }); }
+
+async function reload() {
+  try {
+    if (['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)) {
+      const r = await fetch('/api/monitor', { headers: { 'X-Admin': '1' } });
+      if (!r.ok) throw new Error('감시 서버 연결 실패');
+      MONITOR = await r.json();
+      monitorMessage();
+    }
+  } catch {
+    MONITOR = null;
+    $('watch-panel').hidden = true;
+    $('monitor-status').textContent = '감시 서버에 연결할 수 없습니다. 로컬 서버 실행 상태를 확인하세요.';
+  }
+  await loadData();
+}
+reload();
+// 응답이 늦어져도 화면 갱신 요청을 겹쳐 보내지 않습니다.
+async function pollData() { await reload(); setTimeout(pollData, 30000); }
+setTimeout(pollData, 30000);
 
 const refresh = () => { render(); drawMap(); };
 for (const id of ['f-open', 'f-fav']) $(id).addEventListener('change', refresh);

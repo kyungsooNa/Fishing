@@ -26,6 +26,8 @@ core/platform.js  사이트 계열(선상24/더피싱/자체). 어댑터에서 �
 core/when.js      날짜 기준. 러너가 UTC여도 전부 한국시간으로 셉니다
 core/ports.js     항구 좌표(지도용). sites/ports.json에서 읽습니다
 core/notify.js    텔레그램/디스코드. 토큰 없으면 조용히 건너뜀
+core/monitor.js   로컬 자동 수집. 전체 60분 / 관심 출조 3분, 플랫폼별 직렬·실패 시 간격 증가
+core/collector-lock.js 로컬 수집 프로세스 중복 실행 방지
 core/runner.js    전체 순회, 실패 격리, 지난 날짜 정리
 adapters/         사이트 유형별 파서. collect(site) 하나만 내보내면 됩니다
 adapters/_rows.js 출조 행 읽는 부분. 사이트에 안 얽혀 있어 어댑터들이 같이 씁니다
@@ -193,3 +195,8 @@ npm test                   # 가상 HTML로 파서 회귀 확인
 - 워크플로는 브라우저가 필요할 때만 playwright를 받습니다(`core/platform.js`의 `needsBrowser`).
   `"auto"`도 본문이 비면 브라우저로 넘어가므로 같이 셉니다 — `"js"`가 없다고 안전한 게 아닙니다.
 - 취소석은 몇 분 단위 경쟁입니다. 알림을 진지하게 쓸 거면 상시 서버에서 5분 주기로 도는 게 맞습니다.
+- 로컬 서버는 `core/monitor.js`로 전체 60분 / 관심 출조 3분 목표로 수집합니다.
+  감시 대상은 현황판에서 배·날짜·운항별로 고르고 `tmp/monitor.json`에 저장합니다.
+  로컬 수집 원문도 여기에 저장하며 `/data.json`과 관리 API는 이 결과를 제공합니다.
+  관리 화면의 수동 수집도 같은 스케줄러를 거칩니다. 별도 프로세스를 띄워 간격 제한을 우회하지 마세요.
+  GitHub Actions는 매시 10분에 전체 수집하며 기존처럼 `docs/data.json`을 커밋합니다.
