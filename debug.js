@@ -152,6 +152,21 @@ async function peekPages(site) {
       .filter(Boolean);
     const withMarker = rows.filter((t) => MARKERS.some((m) => t.includes(m)));
     console.log(`  후보 행 ${rows.length}개 중 표기 있는 행 ${withMarker.length}개`);
+
+    // 더피싱 메인 요약표는 한 번 받으면 배 전부 × 4주치가 옵니다. 못 읽으면 날짜별로
+    // 다시 받아야 해서 요청이 서너 배로 늘어납니다. 왜 못 읽는지는 표의 칸을 봐야
+    // 알 수 있어서(머리행에 날짜가 있느냐), 예약현황이 든 표를 칸 단위로 찍습니다.
+    $('table').each((_, table) => {
+      const $t = $(table);
+      const flat = $t.text().replace(/\s/g, '');
+      if (!/예약현황|선박예약|선상예약/.test(flat)) return;
+      if ($t.find('table').length) return;      // 껍데기 표는 건너뜁니다
+
+      const cells = $t.find('tr').toArray().slice(0, 5)
+        .map((tr) => $(tr).find('th, td').map((__, c) => $(c).text().replace(/\s+/g, ' ').trim()).get());
+      console.log(`  예약현황 표(행 ${$t.find('tr').length}개) 앞 ${cells.length}행:`);
+      for (const row of cells) console.log(`    [${row.map((c) => c.slice(0, 18)).join(' | ')}]`);
+    });
     for (const t of withMarker.slice(0, 12)) console.log(`    > ${t.slice(0, 200)}`);
     if (!withMarker.length) {
       console.log('  (표기 있는 행이 없어 아무 행이나 보여줍니다)');

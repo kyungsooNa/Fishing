@@ -285,6 +285,9 @@ export function entryFor(result, { id, phone, port } = {}) {
     ...(port?.value ? { port: port.value } : {}),
     ...(phone?.value ? { phone: phone.value } : {}),
     ...(result.mode ? { mode: result.mode } : {}),
+    // 더피싱은 메인 요약표를 JS로 그려서 정적 요청으로는 안 보입니다(peek으로 확인).
+    // 적어두지 않으면 수집할 때마다 헛된 요청을 한 번씩 더 보냅니다.
+    ...(result.adapter === 'thefishing' ? { source: 'detail' } : {}),
     enabled: true,
     // 손으로 넣은 것과 구분합니다. 관리 화면이 이걸로 "수동/자동"을 나눠 보여줍니다.
     addedBy: 'discover',

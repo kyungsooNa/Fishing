@@ -88,6 +88,21 @@ test('id는 서브도메인에서 뽑고 겹치면 번호를 붙인다', () => {
   assert.equal(idFor('https://nature.sunsang24.com', new Set(['nature'])), 'nature2');
 });
 
+test('더피싱은 처음부터 detail로 적는다 — 요약표가 정적 요청에는 안 보입니다', () => {
+  const entry = entryFor(
+    { source: 'https://x.thefishing.kr', url: 'https://x.thefishing.kr/index.php?mid=bk', adapter: 'thefishing', count: 8, boats: ['엔젤피싱호'] },
+    { id: 'x' },
+  );
+  assert.equal(entry.source, 'detail', '안 적으면 수집마다 헛된 요청이 한 번씩 더 갑니다');
+
+  // 선상24는 해당 없습니다 — 목록형이 요청 한 번으로 한 달치를 줍니다.
+  const sunsang = entryFor(
+    { source: 'https://y.sunsang24.com', url: 'https://y.sunsang24.com', adapter: 'sunsang24', count: 26, boats: ['가나호'] },
+    { id: 'y' },
+  );
+  assert.equal(sunsang.source, undefined);
+});
+
 test('배 이름을 못 읽었으면 boats를 비우고 그렇다고 적는다', () => {
   // 어댑터는 배 이름을 못 찾으면 site.name으로 대신합니다. 시험 수집에는 진짜 이름이
   // 없어서, 예전에는 "probe"라는 배가 registry에 실렸습니다.
