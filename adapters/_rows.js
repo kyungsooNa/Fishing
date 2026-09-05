@@ -84,7 +84,8 @@ export function matchBoatName(text) {
 }
 
 function pickBoat(site, cells, text) {
-  const known = Object.keys(site.boats ?? {});
+  // "마성호"가 "뉴마성호" 안에서 먼저 잡히지 않도록 긴 이름부터 봅니다.
+  const known = Object.keys(site.boats ?? {}).sort((a, b) => b.length - a.length);
   const hit = known.find((b) => text.includes(b));
   if (hit) return hit;
   // registry에 안 적힌 배는 "○○호" 표기를 그대로 씁니다. 한 사이트에 배가 여럿이어도 잡힙니다.
