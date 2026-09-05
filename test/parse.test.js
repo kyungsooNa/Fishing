@@ -123,6 +123,7 @@ test('sunsang24: simple_day 조각은 table.ship_unit 단위로 읽는다', () =
   assert.equal(trips[0].species, '주꾸미');
   assert.equal(trips[0].tide, '조금');
   assert.equal(trips[0].seatsLeft, 0);
+  assert.equal(trips[0].seatsTotal, 21);
 });
 
 test('thefishing: detail — 입금 명단의 좌석번호를 세서 잔여석을 구한다', () => {
