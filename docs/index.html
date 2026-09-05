@@ -187,6 +187,43 @@ function toggleFav(t) {
 }
 let FAVS = loadFavs();
 
+// 항구는 registry에서 오고 사람이 고칩니다. 고치면 키가 어긋나서 별을 눌러둔 배가
+// 조용히 사라집니다(바하호가 백사장항→구매항으로 바뀌면서 실제로 그랬습니다).
+// 같은 이름의 배가 지금 목록에 딱 하나뿐일 때만 새 키로 옮깁니다. 둘 이상이면
+// 어느 쪽인지 알 수 없으니 그냥 둡니다 — 엉뚱한 배를 즐겨찾기하느니 안 옮깁니다.
+function migrateFavs(trips) {
+  const live = new Set(), byBoat = new Map();
+  for (const t of trips) {
+    const key = favKey(t);
+    live.add(key);
+    const boat = t.boat ?? '';
+    if (!byBoat.has(boat)) byBoat.set(boat, new Set());
+    byBoat.get(boat).add(key);
+  }
+  let moved = 0;
+  for (const key of [...FAVS]) {
+    if (live.has(key)) continue;
+    const keys = byBoat.get(key.slice(0, key.indexOf('|')));
+    if (keys?.size !== 1) continue;
+    FAVS.delete(key);
+    FAVS.add([...keys][0]);
+    moved++;
+  }
+  if (moved) saveFavs();
+}
+
+// "조건에 맞는 출조가 없습니다" 한 줄로는 즐겨찾기가 비어서인지, 별 눌러둔 배가
+// 목록에서 없어져서인지, 어종·날짜 필터에 걸려서인지 알 수가 없습니다. 셋을 갈라 말합니다.
+function emptyMessage() {
+  if (!$('f-fav').checked) return '조건에 맞는 출조가 없습니다.';
+  if (!FAVS.size) return '즐겨찾기가 없습니다. 표 왼쪽 ☆를 누르면 담깁니다(이 브라우저에만 저장됩니다).';
+  if (!DATA.trips.some((t) => FAVS.has(favKey(t)))) {
+    return `즐겨찾기 ${FAVS.size}개가 지금 목록에 없습니다. 배 이름이나 항구가 바뀌었을 수 있습니다 — 시스템 관리 → 즐겨찾기에서 확인하세요.`;
+  }
+  return `즐겨찾기 ${FAVS.size}개가 다른 필터(어종·날짜·빈자리 등)에 걸려 있습니다. 필터를 풀어보세요.`;
+}
+// ── 즐겨찾기 끝 ── (test/page.test.js가 이 표시까지를 떼어내 돌려봅니다)
+
 const $ = (id) => document.getElementById(id);
 const won = (n) => n == null ? '' : n.toLocaleString('ko-KR') + '원';
 const seatsLabel = (t) => {
@@ -349,6 +386,7 @@ function render() {
   }
 
   $('empty').hidden = rows.length > 0;
+  $('empty').textContent = emptyMessage();
   $('f-fav-label').textContent = FAVS.size ? `★ 즐겨찾기만 (${FAVS.size})` : '★ 즐겨찾기만';
 }
 
@@ -375,6 +413,7 @@ function loadData() { return fetch('data.json?t=' + Date.now(), { cache: 'no-sto
     $('meta').textContent =
       `출조 ${d.trips.length}건 · 갱신 ${d.generatedAt ? new Date(d.generatedAt).toLocaleString('ko-KR') : '-'}` +
       (failed ? ` · 갱신 실패 ${failed}곳` : '');
+    migrateFavs(d.trips);
     fillOptions($('f-site'), d.trips.map((t) => t.siteName));
     fillOptions($('f-region'), d.trips.map((t) => regionOf(t.port)));
     fillOptions($('f-port'), d.trips.map((t) => t.port));
