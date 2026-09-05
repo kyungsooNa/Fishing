@@ -195,8 +195,8 @@ test('thefishing: detail — 입금 명단의 좌석번호를 세서 잔여석�
   assert.equal(trip.species, '우럭');
 });
 
-test('thefishing: 청광호는 등록된 21석을 사용하고 예약완료를 마감으로 읽는다', () => {
-  const site = { id: 'chungkwang', name: '영목항 청광호', seatsTotal: 21 };
+test('thefishing: 청광호는 예약 인원 합계로 정원을 계산하고 예약완료를 마감으로 읽는다', () => {
+  const site = { id: 'chungkwang', name: '영목항 청광호', seatCount: 'people' };
   const html = `
     <h3>2026년 09월 06일(일요일)</h3>
     <div>남은자리 청광호 쭈갑출조합니다 예약 강가현님(3) / 윤진형님(2)
@@ -206,6 +206,12 @@ test('thefishing: 청광호는 등록된 21석을 사용하고 예약완료를 �
   assert.equal(trip.seatsLeft, 0);
   assert.equal(trip.seatsTotal, 21);
   assert.equal(trip.status, STATUS.CLOSED);
+
+  const open = parseDetail(site, `
+    <h3>2026년 09월 07일(월요일)</h3>
+    <div>남은자리 청광호 쭈꾸미 출조 예약 강가현님(3) 예약하기</div>
+  `, 'https://x')[0];
+  assert.equal(open.seatsTotal, null, '열린 날은 예약자 수를 전체 정원으로 추정하지 않는다');
 });
 
 test('thefishing: 플랫폼 이름은 배로 등록하지 않는다', () => {
