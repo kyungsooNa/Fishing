@@ -102,3 +102,34 @@ test('즐겨찾기가 비었는지, 사라졌는지, 필터에 걸렸는지 갈�
   off.checks['f-fav'].checked = false;
   assert.equal(off.emptyMessage(), '조건에 맞는 출조가 없습니다.');
 });
+
+// 필터 메뉴 닫기도 떼어내 돌려봅니다. document만 가짜로 넣으면 그대로 실행됩니다.
+function menuCloser(menus) {
+  const start = inline.indexOf('function closeMenusOutside');
+  const end = inline.indexOf('document.addEventListener', start);
+  assert.ok(start >= 0 && end > start, 'closeMenusOutside를 찾지 못했습니다');
+  const doc = { querySelectorAll: (sel) => (assert.match(sel, /details\.multi\[open\]/), menus.filter((m) => m.open)) };
+  return new Function('document', `${inline.slice(start, end)}\nreturn closeMenusOutside;`)(doc);
+}
+
+test('열린 필터 메뉴는 바깥을 누르면 닫힌다', () => {
+  const 표 = {}, 메뉴안 = {};
+  const menus = [
+    { open: true, contains: (t) => t === 메뉴안 },
+    { open: false, contains: () => false },
+  ];
+  const close = menuCloser(menus);
+
+  close(메뉴안);
+  assert.equal(menus[0].open, true, '메뉴 안(체크박스·스크롤바)을 누른 건 그대로 둡니다');
+
+  close(표);
+  assert.equal(menus[0].open, false, '바깥을 누르면 닫혀야 합니다');
+});
+
+test('Esc로도 필터 메뉴가 닫힌다', () => {
+  const menus = [{ open: true, contains: () => false }];
+  menuCloser(menus)(null);
+  assert.equal(menus[0].open, false);
+  assert.match(inline, /keydown[\s\S]{0,80}Escape[\s\S]{0,40}closeMenusOutside\(null\)/);
+});

@@ -450,6 +450,17 @@ const refresh = () => { render(); drawMap(); };
 for (const id of ['f-open', 'f-fav']) $(id).addEventListener('change', refresh);
 $('f-q').addEventListener('input', refresh);
 
+// <details>는 한 번 열면 스스로 안 닫힙니다. 여섯 개를 차례로 누르면 메뉴가 겹겹이
+// 열린 채 표를 가립니다. 바깥을 누르면 닫습니다 — 다른 메뉴의 summary를 누른 것도
+// "바깥"이라 자연히 하나만 열립니다. 안쪽(체크박스·라벨·스크롤바)은 그대로 둡니다.
+function closeMenusOutside(target) {
+  for (const menu of document.querySelectorAll('details.multi[open]')) {
+    if (!menu.contains(target)) menu.open = false;
+  }
+}
+document.addEventListener('click', (e) => closeMenusOutside(e.target));
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenusOutside(null); });
+
 // ── 지도 ──────────────────────────────────────────────────────────────────
 // 항구 좌표는 data.json의 ports로 들어옵니다(sites/ports.json에서 옵니다).
 // 마커는 "지금 필터에 걸린" 출조 기준이라, 어종·날짜를 좁히면 지도도 같이 좁혀집니다.
