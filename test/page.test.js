@@ -48,3 +48,57 @@ test('data.json은 화면이 기대하는 모양이다', async () => {
     assert.ok('seatsLeft' in trip && 'status' in trip);
   }
 });
+
+// 즐겨찾기 부분만 떼어내 실제로 돌려봅니다. 화면 전체는 fetch·DOM이 필요해 못 돌리지만,
+// 이 블록은 localStorage·$·DATA만 받으면 되니 가짜로 채워 넣으면 그대로 실행됩니다.
+function favModule(saved = []) {
+  const start = inline.indexOf('// ── 즐겨찾기 ──');
+  const end = inline.indexOf('// ── 즐겨찾기 끝 ──');
+  assert.ok(start >= 0 && end > start, '즐겨찾기 블록 표시를 찾지 못했습니다');
+  const src = inline.slice(start, end);
+
+  const store = new Map(saved.length ? [['fishing:favorites', JSON.stringify(saved)]] : []);
+  const localStorage = {
+    getItem: (k) => store.get(k) ?? null,
+    setItem: (k, v) => store.set(k, v),
+  };
+  const checks = { 'f-fav': { checked: true } };
+  const DATA = { trips: [] };
+  const module = new Function('localStorage', '$', 'DATA', 'refresh',
+    `${src}\nreturn { FAVS, favKey, migrateFavs, emptyMessage, toggleFav };`,
+  )(localStorage, (id) => checks[id], DATA, () => {});
+  return { ...module, DATA, checks, stored: () => JSON.parse(store.get('fishing:favorites') ?? '[]') };
+}
+
+test('항구가 바뀐 즐겨찾기는 새 항구를 따라간다', () => {
+  const m = favModule(['바하호|충남 태안 백사장항']);
+  m.migrateFavs([{ boat: '바하호', port: '충남 태안 구매항' }]);
+  assert.deepEqual([...m.FAVS], ['바하호|충남 태안 구매항']);
+  assert.deepEqual(m.stored(), ['바하호|충남 태안 구매항'], '옮긴 결과가 저장돼야 다음에도 남습니다');
+});
+
+test('같은 이름의 배가 둘이면 즐겨찾기를 옮기지 않는다', () => {
+  const m = favModule(['한바다호|충남 보령 대천항']);
+  m.migrateFavs([
+    { boat: '한바다호', port: '인천 옹진 영흥도' },
+    { boat: '한바다호', port: '경남 통영 삼덕항' },
+  ]);
+  assert.deepEqual([...m.FAVS], ['한바다호|충남 보령 대천항'], '어느 쪽인지 모르면 그대로 둡니다');
+});
+
+test('즐겨찾기가 비었는지, 사라졌는지, 필터에 걸렸는지 갈라 말한다', () => {
+  const empty = favModule();
+  assert.match(empty.emptyMessage(), /☆/, '별을 누르라고 알려줘야 합니다');
+
+  const gone = favModule(['없는배|']);
+  gone.DATA.trips = [{ boat: '다른배', port: '' }];
+  assert.match(gone.emptyMessage(), /지금 목록에 없습니다/);
+
+  const filtered = favModule(['있는배|']);
+  filtered.DATA.trips = [{ boat: '있는배', port: '' }];
+  assert.match(filtered.emptyMessage(), /필터/);
+
+  const off = favModule(['있는배|']);
+  off.checks['f-fav'].checked = false;
+  assert.equal(off.emptyMessage(), '조건에 맞는 출조가 없습니다.');
+});
