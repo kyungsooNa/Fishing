@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { monthUrls, parseFleet, parseSimpleDay } from '../adapters/sunsang24.js';
+import { parseIndex } from '../adapters/thefishing.js';
 import { matchBoatName } from '../adapters/_rows.js';
 import { parseRows } from '../adapters/_rows.js';
 import { pageUrls } from '../adapters/generic.js';
@@ -84,6 +85,20 @@ test('안내문의 "상호"를 배 이름으로 읽지 않는다', () => {
   assert.equal(matchBoatName('계좌번호 123-456 문의번호 010-0000-0000'), null);
   assert.equal(matchBoatName('상호 : 바다수산 / 청룡호 운항시간 05:00'), '청룡호');
   assert.equal(matchBoatName('일출호 예약하기'), '일출호');
+});
+
+test('더피싱: 메인 요약표를 읽는다 — 표기 사이에 공백이 있어도', () => {
+  const site = { id: 'x', name: '테스트', adapter: 'thefishing', url: 'https://x.thefishing.kr/' };
+
+  const plain = parseIndex(site, fx.THEFISHING_INDEX, 'https://x');
+  assert.ok(plain.length >= 4, '보통 표기의 요약표는 원래 읽혔습니다');
+
+  // "선박명 예 약 현 황 남은자리"처럼 글자를 띄워 쓰는 사이트가 많습니다.
+  // 이걸 놓치면 날짜별로 21번씩 받아오게 됩니다 — 더피싱 99곳이 그래서 한 시간을 넘겼습니다.
+  const spaced = parseIndex(site, fx.THEFISHING_INDEX_SPACED, 'https://x');
+  assert.ok(spaced.length > 0, '띄어 쓴 표기도 요약표로 알아봐야 합니다');
+  assert.equal(spaced[0].boat, '엔젤피싱호');
+  assert.equal(spaced[0].seatsLeft, 20);
 });
 
 test('sunsang24: 공지사항은 상태·어종 판정에서 뺀다', () => {
