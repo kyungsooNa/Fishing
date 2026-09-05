@@ -142,3 +142,27 @@ test('Esc로도 필터 메뉴가 닫힌다', () => {
   assert.equal(menus[0].open, false);
   assert.match(inline, /keydown[\s\S]{0,80}Escape[\s\S]{0,40}closeMenusOutside\(null\)/);
 });
+
+// 항구 이름 다루는 부분도 떼어내 돌려봅니다. 바깥 것을 안 써서 그대로 실행됩니다.
+function portModule() {
+  const start = inline.indexOf("const NO_PORT");
+  const end = inline.indexOf('function fillOptions');
+  assert.ok(start >= 0 && end > start, 'NO_PORT 부분을 찾지 못했습니다');
+  return new Function(`${inline.slice(start, end)}\nreturn { NO_PORT, portOf, regionOf };`)();
+}
+
+test('항구를 모르는 출조도 골라서 볼 수 있다', () => {
+  const { NO_PORT, portOf, regionOf } = portModule();
+  assert.equal(portOf({ port: null }), NO_PORT, '항구가 없다고 필터에서 빠지면 안 됩니다');
+  assert.equal(regionOf(null), NO_PORT);
+  assert.equal(portOf({ port: '충남 보령 대천항' }), '충남 보령 대천항');
+  assert.equal(regionOf('충남 보령 대천항'), '충남 보령');
+  assert.equal(regionOf('인천 중구 거잠포선착장'), '인천 중구');
+  assert.equal(regionOf('영목항'), '영목항', '시·군을 안 적은 항구는 그대로 씁니다');
+  assert.match(inline, /hasSelection\(port, portOf\(t\)\)/);
+});
+
+test('지도에서 빠진 출조는 몇 건인지 힌트에 적는다', () => {
+  assert.match(inline, /항구를 모르는 출조 \$\{noPort\}건은 지도에 없습니다/);
+  assert.match(inline, /좌표 없는 항구 \$\{noCoord\.size\}곳/);
+});
