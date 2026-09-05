@@ -101,6 +101,23 @@ test('리다이렉트를 따라간다', async () => {
   }
 });
 
+test('Location이 주소로 안 읽히면 그 사이트만 실패한다 — 프로세스가 죽지 않는다', async () => {
+  // 한글 도메인으로 넘기면서 헤더를 인코딩 안 한 사이트가 실제로 있습니다.
+  // 예전에는 응답 콜백 안에서 new URL이 던져 수집 전체가 통째로 죽었습니다.
+  const site = await serve((_, res) => {
+    res.writeHead(302, { Location: 'http://' });   // 호스트가 없는 주소
+    res.end();
+  });
+  try {
+    await assert.rejects(
+      () => fetchHtml(site.url, { mode: 'static', retries: 0 }),
+      /리다이렉트 주소를 읽을 수 없습니다/,
+    );
+  } finally {
+    await site.close();
+  }
+});
+
 test('리다이렉트가 끝없이 돌면 포기한다', async () => {
   let self;
   const site = await serve((_, res) => { res.writeHead(302, { Location: self }); res.end(); });
