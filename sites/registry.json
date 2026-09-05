@@ -3055,13 +3055,14 @@
       "adapter": "thefishing",
       "url": "https://eoulim.thefishing.kr/index.php?mid=bk",
       "source": "detail",
+      "port": "충남 태안 구매항",
       "phone": "010-9931-9297",
       "enabled": true,
       "addedBy": "discover",
       "boats": {
         "어울림호": {}
       },
-      "note": "자동 발견(https://eoulim.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 구매항, 공지사항, 출조항"
+      "note": "사람이 확인함(2026-09) — 사이트 아래띠에 \"출조항 충남 태안군 고남면 구매항\", 전화 010-9931-9297. 정원은 예약 팝업에 14명으로 나오지만, 지금 파서가 찬 자리를 못 세는 예약판이라 seatsTotal은 아직 안 적었습니다(적으면 14/14로 잘못 보입니다)."
     },
     {
       "id": "flex",
