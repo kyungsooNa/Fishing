@@ -676,9 +676,9 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": null,
-      "status": "open",
+      "status": "closed",
       "statusText": "선박명 예 약 현 황 남은자리 ◈공지사항◈ 공지 ▷ 출조 예약후 출조비는 바로 입금 부탁드립니다. (예약하신 당일에 출조비 전액 미입금시 예약을 취소합니다.) - ▷ 출항시간은 출조어종, 물때 및 각 선박마다 다를 수 있습니다. (출조일 전날 발송하는 출조안내문자 확인해주세요.) - ▷ 승선위치 및 자리배정은 공지사항 참고하세요. ( https://www.",
-      "seatsLeft": 21,
+      "seatsLeft": 0,
       "seatsTotal": 21,
       "price": null,
       "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=5"
