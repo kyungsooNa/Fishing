@@ -15,6 +15,8 @@ import { spawn } from 'node:child_process';
 import { extname, join, normalize } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { platformOf, effectiveMode } from './core/platform.js';
+import { createMonitor } from './core/monitor.js';
+import { acquireCollectorLock } from './core/collector-lock.js';
 
 const TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -126,6 +128,7 @@ export function createApp({
   restartable = process.env.RESTARTABLE === '1',
   exitProcess = process.exit,
   restartDelayMs = 100,
+  monitor = null,
 } = {}) {
   // 수집 작업은 한 번에 하나만. 로그는 화면에서 보려고 들고 있습니다.
   let job = null;
@@ -151,10 +154,21 @@ export function createApp({
       return json(res, 403, { error: '로컬에서만 쓸 수 있습니다' });
     }
 
+    if (path === '/api/monitor' && req.method === 'GET' && monitor) {
+      return json(res, 200, monitor.status());
+    }
+    if (path === '/api/monitor' && req.method === 'POST' && monitor) {
+      const body = await readJsonBody(req);
+      if (typeof body.key !== 'string' || typeof body.enabled !== 'boolean') {
+        return json(res, 400, { error: '출조 키와 감시 여부가 필요합니다' });
+      }
+      return json(res, 200, await monitor.setWatch(body.key, body.enabled));
+    }
+
     if (path === '/api/sites' && req.method === 'GET') {
       const [reg, data] = await Promise.all([
         readRegistry(),
-        readFile(join(root, 'data.json'), 'utf8').then(JSON.parse).catch(() => ({ sites: {}, trips: [] })),
+        monitor ? monitor.data() : readFile(join(root, 'data.json'), 'utf8').then(JSON.parse).catch(() => ({ sites: {}, trips: [] })),
       ]);
       return json(res, 200, {
         // 계열·수집방식은 화면에서 다시 따지지 않게 여기서 붙입니다(core/platform.js와 같은 답).
@@ -187,6 +201,10 @@ export function createApp({
     }
 
     if (path === '/api/collect' && req.method === 'POST') {
+      if (monitor) {
+        monitor.requestFull();
+        return json(res, 202, { started: true });
+      }
       if (job?.running) return json(res, 409, { error: '이미 수집 중입니다' });
       job = { running: true, startedAt: new Date().toISOString(), log: [], code: null };
       const child = spawn(process.execPath, collectArgs, { env: process.env });
@@ -203,6 +221,7 @@ export function createApp({
     }
 
     if (path === '/api/collect' && req.method === 'GET') {
+      if (monitor) return json(res, 200, monitor.status());
       return json(res, 200, job ?? { running: false, log: [], code: null, startedAt: null });
     }
 
@@ -260,7 +279,7 @@ export function createApp({
     return json(res, 404, { error: '없는 API입니다' });
   }
 
-  return createServer(async (req, res) => {
+  const server = createServer(async (req, res) => {
     const url = new URL(req.url, 'http://x');
     let rel;
     try {
@@ -285,6 +304,7 @@ export function createApp({
 
     const path = join(root, rel === '' ? 'index.html' : rel);
     try {
+      if (rel === 'data.json' && monitor) return json(res, 200, monitor.data());
       const body = await readFile(path);
       res.writeHead(200, { 'Content-Type': TYPES[extname(path)] ?? 'application/octet-stream', 'Cache-Control': 'no-store' });
       res.end(body);
@@ -293,6 +313,8 @@ export function createApp({
       res.end('404');
     }
   });
+  server.on('close', () => { void monitor?.stop(); });
+  return server;
 }
 
 // 직접 실행했을 때만 띄웁니다. 테스트는 createApp을 가져다 씁니다.
@@ -300,8 +322,14 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   const PORT = Number(process.env.PORT ?? 8080);
   // 기본은 루프백입니다. /api/*가 파일을 고치고 프로세스를 띄우므로 밖에 열지 않습니다.
   const HOST = process.env.HOST ?? '127.0.0.1';
-  createApp().listen(PORT, HOST, () => {
+  const release = await acquireCollectorLock();
+  const monitor = createMonitor();
+  try { await monitor.init(); }
+  catch (err) { await release(); throw err; }
+  createApp({ monitor }).listen(PORT, HOST, () => {
+    monitor.start();
     console.log(`현황판  http://localhost:${PORT}`);
     console.log(`관리    http://localhost:${PORT}/admin.html`);
+    console.log('자동 수집: 전체 60분 / 관심 출조 3분 (서버가 켜져 있는 동안)');
   });
 }

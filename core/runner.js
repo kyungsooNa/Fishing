@@ -134,7 +134,7 @@ function toMinutes(value) {
   return match ? Number(match[1]) * 60 + Number(match[2]) : Infinity;
 }
 
-function sortTrips(trips) {
+export function sortTrips(trips) {
   return trips.sort(
     (a, b) =>
       (a.date ?? '').localeCompare(b.date ?? '') ||
