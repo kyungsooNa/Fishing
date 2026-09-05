@@ -11,6 +11,7 @@
 import * as cheerio from 'cheerio';
 import { fetchHtml } from '../core/fetcher.js';
 import { makeTrip, toDate, toTime, toTide } from '../core/schema.js';
+import { matchBoatName } from './_rows.js';
 
 const SPECIES = [
   '주꾸미', '쭈꾸미', '갑오징어', '한치', '문어', '광어', '우럭', '참돔', '감성돔',
@@ -203,15 +204,13 @@ function splitByDate($) {
   return blocks.filter((b) => b.text.trim());
 }
 
-// 한글에는 \b 단어경계가 없습니다. "○○호" 뒤에 한글이 이어지지 않는 것으로 끊습니다.
-const BOAT_NAME = /([가-힣A-Za-z0-9]{1,12}호)(?![가-힣])/;
-
 function pickBoat(site, text) {
   const known = Object.keys(site.boats ?? {});
   const hit = known.find((b) => text.includes(b));
   if (hit) return hit;
-  const m = text.match(BOAT_NAME);
-  if (m) return m[1];
+  // "상호" 같은 안내문 낱말은 배로 치지 않습니다(matchBoatName).
+  const named = matchBoatName(text);
+  if (named) return named;
   // 오전배·오후배만 구분되는 사이트는 그 표기를 배 이름 대신 씁니다.
   const half = text.match(/(오전배|오후배|1부|2부)/);
   return half ? `${site.name ?? site.id} ${half[1]}` : site.name ?? site.id;

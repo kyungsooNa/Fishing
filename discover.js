@@ -148,12 +148,17 @@ export function adapterPlan(url) {
   ];
 }
 
+// 어댑터는 배 이름을 못 읽으면 site.name으로 대신합니다. 시험 수집에는 진짜 이름이
+// 없으므로, 그 대체값이 배 이름으로 registry에 실리면 안 됩니다("probe호"가 아니라
+// 아예 "probe"라는 배가 생겼습니다). 눈에 띄는 값을 넣고 나중에 걸러냅니다.
+const PLACEHOLDER = '(이름미상)';
+
 export async function probe(url, { days = 7 } = {}) {
   const tried = [];
 
   for (const plan of adapterPlan(url)) {
     try {
-      const trips = await collectSite({ id: 'probe', name: 'probe', days, ...plan });
+      const trips = await collectSite({ id: 'probe', name: PLACEHOLDER, days, ...plan });
       if (trips.length) {
         return { source: url, ok: true, ...plan, count: trips.length, boats: boatsOf(trips), tried };
       }
@@ -168,7 +173,10 @@ export async function probe(url, { days = 7 } = {}) {
 
 function boatsOf(trips) {
   const names = new Set();
-  for (const t of trips) if (t.boat) names.add(t.boat);
+  for (const t of trips) {
+    // "(이름미상)", "(이름미상) 오전배"처럼 대체값이 섞여 나옵니다. 배 이름이 아닙니다.
+    if (t.boat && !t.boat.startsWith(PLACEHOLDER)) names.add(t.boat);
+  }
   return [...names].slice(0, 12);
 }
 
@@ -239,6 +247,7 @@ export function entryFor(result, { id, phone, port } = {}) {
   return {
     id: id ?? idFor(result.url ?? result.source),
     name: result.boats?.[0] ?? id ?? safeHost(result.url ?? result.source),
+    // boats가 비면 배 이름을 페이지에서 못 읽은 겁니다 — 사람이 채워야 합니다.
     adapter: result.adapter,
     url: result.url,
     ...(port?.value ? { port: port.value } : {}),
@@ -248,9 +257,10 @@ export function entryFor(result, { id, phone, port } = {}) {
     ...(result.boats?.length ? { boats: Object.fromEntries(result.boats.map((b) => [b, {}])) } : {}),
     note: [
       `자동 발견(${result.source}) — 시험 수집 ${result.count}건.`,
+      result.boats?.length ? null : '배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요.',
       '이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다.',
       ...guesses,
-    ].join(' '),
+    ].filter(Boolean).join(' '),
   };
 }
 

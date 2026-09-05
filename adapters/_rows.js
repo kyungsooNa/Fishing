@@ -69,13 +69,26 @@ const hasTripMarker = (text) => TRIP_MARKERS.some((m) => text.includes(m));
 // 한글에는 \b 단어경계가 없습니다. "○○호" 뒤에 한글이 이어지지 않는 것으로 끊습니다.
 export const BOAT_NAME = /([가-힣A-Za-z0-9]{1,12}호)(?![가-힣])/;
 
+/**
+ * "○○호"로 끝나지만 배가 아닌 낱말. 예약 안내문에 늘 붙어 있습니다.
+ * 안 거르면 화면에 "상호"라는 배가 뜹니다 — 실제로 더피싱 계열 여러 곳에서 그랬습니다.
+ */
+const NOT_BOAT = /^(상호|기호|신호|구호|암호|번호|[가-힣]{0,6}번호)$/;
+
+/** 본문에서 배 이름으로 볼 만한 첫 "○○호". 안내문 낱말은 건너뜁니다. */
+export function matchBoatName(text) {
+  for (const m of String(text ?? '').matchAll(/([가-힣A-Za-z0-9]{1,12}호)(?![가-힣])/g)) {
+    if (!NOT_BOAT.test(m[1])) return m[1];
+  }
+  return null;
+}
+
 function pickBoat(site, cells, text) {
   const known = Object.keys(site.boats ?? {});
   const hit = known.find((b) => text.includes(b));
   if (hit) return hit;
   // registry에 안 적힌 배는 "○○호" 표기를 그대로 씁니다. 한 사이트에 배가 여럿이어도 잡힙니다.
-  const m = (cells.join(' ') + ' ' + text).match(BOAT_NAME);
-  return m ? m[1] : site.name ?? null;
+  return matchBoatName(`${cells.join(' ')} ${text}`) ?? site.name ?? null;
 }
 
 function after(text, marker) {

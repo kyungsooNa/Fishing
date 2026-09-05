@@ -88,6 +88,17 @@ test('id는 서브도메인에서 뽑고 겹치면 번호를 붙인다', () => {
   assert.equal(idFor('https://nature.sunsang24.com', new Set(['nature'])), 'nature2');
 });
 
+test('배 이름을 못 읽었으면 boats를 비우고 그렇다고 적는다', () => {
+  // 어댑터는 배 이름을 못 찾으면 site.name으로 대신합니다. 시험 수집에는 진짜 이름이
+  // 없어서, 예전에는 "probe"라는 배가 registry에 실렸습니다.
+  const entry = entryFor(
+    { source: 'https://x.thefishing.kr', url: 'https://x.thefishing.kr/index.php?mid=bk', adapter: 'thefishing', count: 8, boats: [] },
+    { id: 'x' },
+  );
+  assert.equal(entry.boats, undefined);
+  assert.match(entry.note, /배 이름을 페이지에서 못 읽었습니다/);
+});
+
 test('등록 조각에는 확인이 필요하다는 표시가 남는다', () => {
   const entry = entryFor(
     { source: 'https://nature.sunsang24.com', url: 'https://nature.sunsang24.com', adapter: 'sunsang24', mode: 'static', count: 12, boats: ['네이처호'] },
