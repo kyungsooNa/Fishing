@@ -118,9 +118,13 @@ export function parseDetail(site, html, url) {
     const { date, text } = block;
     if (!date || !/남은자리|잔여|여석|입금|예약확정/.test(text)) continue;
 
-    const filled = countTakenSeats(text);
-    const seatsTotal = site.seatsTotal ?? maxSeatNumber(text);
+    const filled = countTakenSeats(text, site.seatCount);
     const explicit = detailSeats(text);
+    const seatsTotal = site.seatsTotal ?? (
+      site.seatCount === 'people'
+        ? (explicit === 0 ? filled : null)
+        : maxSeatNumber(text)
+    );
     const boat = pickBoat(site, text);
     if (site.excludeBoats?.includes(boat)) continue;
 
@@ -149,19 +153,29 @@ export function parseDetail(site, html, url) {
 const TAKEN_LINE = /(입금|예약확정|확정)/;
 const SKIP_LINE = /(대기자|취소|환불)/;
 
-function countTakenSeats(text) {
+function countTakenSeats(text, mode = 'seatNumbers') {
   const seats = new Set();
+  let people = 0;
   for (const line of text.split(/[\n·|]|(?<=\))\s+/)) {
-    if (!TAKEN_LINE.test(line)) continue;
+    if (mode === 'people') {
+      if (SKIP_LINE.test(line)) continue;
+      for (const m of line.matchAll(/\((\d+)명?\)/g)) people += Number(m[1]);
+      continue;
+    }
+    if (!TAKEN_LINE.test(line) && !(mode === 'people' && /예약/.test(line))) continue;
     if (SKIP_LINE.test(line) && !/입금대기/.test(line)) continue;
     for (const m of line.matchAll(/\((?:\d+명\s*\/\s*)?([\d,\s]+)\)/g)) {
+      if (mode === 'people' && /^\d+$/.test(m[1].trim())) {
+        people += Number(m[1].trim());
+        continue;
+      }
       for (const n of m[1].split(',')) {
         const v = Number(n.trim());
         if (Number.isFinite(v) && v > 0) seats.add(v);
       }
     }
   }
-  return seats.size;
+  return mode === 'people' ? people : seats.size;
 }
 
 function detailSeats(text) {
