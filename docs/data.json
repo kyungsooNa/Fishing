@@ -1976,10 +1976,10 @@
       "hours": null,
       "species": "쭈꾸미",
       "tide": null,
-      "status": "open",
+      "status": "closed",
       "statusText": "선박명 예 약 현 황 남은자리 스타피싱 대기하기 쭈꾸미 (메인) & 갑오징어 출조 ( 선비인하 중식미제공 그외 간식 커피 음료 등 모든 서비스유지 ) 10 탑11 탑1 4 18 12 8 2 13,14 3 5 7 15 16 17 19 20 9 6 최*배님(1) / 김*신님(2) / 김*기님(1) / 김*인님(1) / 신*호님(2) / 조*만님(1) / 김*수",
-      "seatsLeft": 4,
-      "seatsTotal": 4,
+      "seatsLeft": 0,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://jstar.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=5"
     },
