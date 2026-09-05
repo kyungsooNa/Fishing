@@ -47,11 +47,31 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
 
+      # 수집이 15~20분 걸립니다. 그 사이 main에 다른 커밋이 들어오면 push가 거부되고,
+      # 방금 받아온 결과가 통째로 버려집니다(실제로 한 번 그랬습니다). 거부되면 최신
+      # main 위에 결과만 다시 얹습니다 — data.json은 수집할 때마다 통째로 다시 쓰는
+      # 파일이라 남의 변경과 섞을 게 없습니다.
       - name: commit data.json
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           git add docs/data.json
           git diff --cached --quiet && echo "변한 게 없어 커밋하지 않습니다" && exit 0
-          git commit -m "chore: 수집 $(date -u +'%Y-%m-%d %H:%M') UTC"
-          git push
+
+          cp docs/data.json "$RUNNER_TEMP/data.json"
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp "$RUNNER_TEMP/data.json" docs/data.json
+            git add docs/data.json
+            if git diff --cached --quiet; then
+              echo "그 사이 같은 내용이 올라왔습니다 — 커밋하지 않습니다"
+              exit 0
+            fi
+            git commit -m "chore: 수집 $(date -u +'%Y-%m-%d %H:%M') UTC"
+            if git push; then exit 0; fi
+            echo "push가 거부됐습니다($attempt/3) — main을 다시 받아 얹습니다"
+          done
+          echo "세 번 시도했지만 push하지 못했습니다"
+          exit 1
