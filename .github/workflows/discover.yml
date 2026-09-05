@@ -1,0 +1,104 @@
+name: discover
+
+# 선사 후보를 모아 시험 수집하고, 읽히는 곳만 registry에 붙인 PR을 엽니다.
+#
+# 개발 환경에서는 국내 도메인도 crt.sh도 막혀 있어(HTTP 403) 후보를 모을 수 없습니다.
+# 러너는 닿으므로 발견은 여기서 돌립니다 — peek 워크플로와 같은 이유입니다.
+#
+# Actions 탭 → discover → Run workflow
+#   source=ct,    target=sunsang24.com     인증서 로그에서 선상24 계열 서브도메인 전부
+#   source=links, target=<목록 페이지 주소>  그 페이지에 걸린 선사 홈페이지들
+#
+# 요청이 적지 않습니다(후보 하나당 1~3번, 호스트당 3초 간격). limit으로 끊어서 도세요.
+
+on:
+  workflow_dispatch:
+    inputs:
+      source:
+        description: '후보를 어디서 모을지'
+        required: true
+        type: choice
+        options: [ct, links]
+        default: ct
+      target:
+        description: 'ct면 도메인(sunsang24.com), links면 목록 페이지 주소'
+        required: true
+        type: string
+      limit:
+        description: '시험 수집할 후보 수'
+        required: false
+        type: string
+        default: '20'
+      open_pr:
+        description: '읽히는 후보를 registry에 붙인 PR까지 열기'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci --no-audit --no-fund
+
+      # generic 후보는 mode가 auto라 본문이 비면 브라우저로 넘어갑니다.
+      - name: playwright chromium
+        run: npx playwright install --with-deps chromium
+
+      # 입력값은 셸에 끼워 넣지 않고 환경변수로 넘깁니다.
+      - name: 후보 모으기
+        env:
+          SOURCE: ${{ inputs.source }}
+          TARGET: ${{ inputs.target }}
+        run: node discover.js "$SOURCE" "$TARGET"
+
+      - name: 시험 수집
+        env:
+          LIMIT: ${{ inputs.limit }}
+          ADD: ${{ inputs.open_pr && '--add' || '' }}
+        run: node discover.js probe --from tmp/candidates.json --limit "$LIMIT" $ADD
+
+      - name: 결과 올리기
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: discover-${{ inputs.source }}
+          path: tmp/
+          if-no-files-found: ignore
+          retention-days: 7
+
+      # 자동으로 머지하지 않습니다. 이름·출항지·전화번호는 사람이 확인해야 하고,
+      # 특히 출항지·전화번호는 다른 사이트의 같은 배와 합칠지를 정하는 값입니다.
+      - name: registry PR 열기
+        if: inputs.open_pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git diff --quiet sites/registry.json && echo "붙일 후보가 없습니다" && exit 0
+          branch="discover/${{ inputs.source }}-${{ github.run_id }}"
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$branch"
+          git add sites/registry.json
+          git commit -m "feat(sites): 자동 발견한 선사 추가 (${{ inputs.source }} ${{ inputs.target }})"
+          git push -u origin "$branch"
+          gh pr create \
+            --title "feat(sites): 자동 발견한 선사 추가" \
+            --body "$(printf '%s\n' \
+              'discover 워크플로가 모은 후보 중 **시험 수집이 실제로 읽힌 곳**만 붙였습니다.' \
+              '' \
+              "- 소스: \`${{ inputs.source }} ${{ inputs.target }}\`" \
+              '- 각 항목의 note에 시험 수집 건수와, 자동으로는 못 정한 출항지·전화번호 후보가 적혀 있습니다.' \
+              '' \
+              '**머지 전에 확인할 것**: 이름·출항지·전화번호. 셋이 다 맞아야 다른 사이트에 올라온 같은 배와 한 줄로 합쳐집니다(`core/merge.js`). 애매하면 비워두세요 — 합쳐서 틀리는 것보다 두 줄이 낫습니다.')"

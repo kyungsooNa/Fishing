@@ -148,7 +148,7 @@ export function parseFleet(site, html, url) {
     const outer = units.filter((el) => !$(el).parents('table').toArray().some((p) => units.includes(p)));
 
     outer.forEach((unit) => {
-      const text = squash($(unit).text());
+      const text = stripNotice(squash($(unit).text()));
       const seats = pickSeatInfo(text);
 
       const trip = makeTrip(site, {
@@ -184,7 +184,7 @@ export function parseSimpleDay(site, html, url) {
       const boat = pickBoat(site, squash($unit.find('.ship_info .title').first().text()));
       if (!boat) return;
 
-      const text = squash($unit.text());
+      const text = stripNotice(squash($unit.text()));
       if (!isUnit(text)) return;
       const seats = pickSeatInfo(text);
 
@@ -209,6 +209,33 @@ export function parseSimpleDay(site, html, url) {
 // 출조 한 덩어리인지. 배 이름만 있는 껍데기를 걸러냅니다.
 const SEATS = /(\d{1,3})\s*명\s*예약\s*\/\s*(\d{1,3})\s*명/;
 const isUnit = (text) => text.includes('운항시간') || SEATS.test(text);
+
+/**
+ * 공지사항을 판정에서 뺍니다.
+ *
+ * 출조 한 칸에 선사 공지가 통째로 들어있습니다. 그 안에 "기상악화시 출조취소",
+ * "미입금시 자동취소" 같은 문구가 흔한데, 상태를 본문 표기로 읽다 보니 자리가
+ * 남은 배까지 전부 휴항(off)으로 잡혔습니다(nature: 52건 중 대부분).
+ * 공지는 배마다 늘 같은 문구라 날짜별 상태와 아무 상관이 없습니다.
+ *
+ * 어종도 같이 오염됩니다 — "쭈꾸미/갑오징어 출조합니다" 같은 공지가 있으면
+ * 그 날 무슨 배가 뜨든 앞에 나온 어종이 붙습니다.
+ *
+ * 공지 다음에 오는 실제 표기(운항시간·좌석)부터 다시 씁니다.
+ */
+const AFTER_NOTICE = ['어종', '운항시간', '예약마감', '남은자리', '명 예약', '예약완료'];
+
+export function stripNotice(text) {
+  const start = text.indexOf('공지사항');
+  if (start < 0) return text;
+
+  const rest = text.slice(start + '공지사항'.length);
+  const marks = AFTER_NOTICE.map((m) => rest.indexOf(m)).filter((i) => i >= 0);
+  // 공지 뒤에 아무 표기도 없으면 통째로 버립니다 — 그 칸의 판단 재료가 아닙니다.
+  const cut = marks.length ? Math.min(...marks) : rest.length;
+
+  return `${text.slice(0, start)} ${rest.slice(cut)}`.replace(/\s+/g, ' ').trim();
+}
 
 function dateOf($day) {
   const id = $day.attr('id') ?? '';

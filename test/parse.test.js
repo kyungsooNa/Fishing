@@ -43,6 +43,7 @@ test('sunsang24: 목록형 — 하루 행 안의 배마다 한 줄씩 나온다'
     '2026-09-04/레드맨호',
     '2026-09-05/맥가이버호',
     '2026-09-05/오후호',
+    '2026-09-05/공지많은호',
   ], '시간도 좌석 표기도 없는 껍데기 table은 출조가 아닙니다');
 
   const [akbari, redman, macgyver] = trips;
@@ -68,10 +69,22 @@ test('sunsang24: 목록형 — 하루 행 안의 배마다 한 줄씩 나온다'
   assert.equal(akbari.hours, 13);
   assert.equal(macgyver.session, '종일', '06:00~15:00 = 9시간');
 
-  const afternoon = trips.at(-1);
+  const afternoon = trips.at(-2);
   assert.equal(afternoon.boat, '오후호');
   assert.equal(afternoon.session, '오후');
   assert.equal(afternoon.hours, 5);
+});
+
+test('sunsang24: 공지사항은 상태·어종 판정에서 뺀다', () => {
+  // 공지에 "출조취소"가 들어있다고 그 날 배가 안 뜨는 게 아닙니다. 실제 사이트에서
+  // 이것 때문에 자리가 남은 출조까지 전부 휴항으로 잡혔습니다.
+  const trips = parseFleet(sunsangSite, fx.SUNSANG24_LIST, 'https://x');
+  const noisy = trips.find((t) => t.boat === '공지많은호');
+
+  assert.equal(noisy.seatsLeft, 16, '20명 정원에 4명 예약');
+  assert.equal(noisy.status, STATUS.OPEN, '공지의 "출조취소"를 휴항으로 읽으면 안 됩니다');
+  assert.equal(noisy.species, '광어', '공지의 "쭈꾸미"가 아니라 어종 칸을 봅니다');
+  assert.equal(noisy.departAt, '06:00');
 });
 
 test('sunsang24: 달력형 — 날짜가 행 안 첫 칸에 있어도 잡는다', () => {

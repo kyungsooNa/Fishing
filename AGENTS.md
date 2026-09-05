@@ -14,6 +14,7 @@
 ```
 collect.js        전체 수집 진입점 (Actions가 이걸 부릅니다)
 debug.js          어댑터 고칠 때 쓰는 도구. 한 사이트만 돌려보고 표로 보여줍니다
+discover.js       선사 후보를 자동으로 모으고 시험 수집합니다. 손으로 찾아 등록하는 대신
 serve.js          docs/ 로컬 서빙 + 관리 API(/api/*). 루프백 전용, createApp()으로 테스트합니다
 docs/admin.html   시스템 관리 화면. 서버가 없으면(Pages) 읽기 전용으로 떨어집니다
 core/schema.js    통합 스키마 + 표기 정규화. 어댑터는 원문 텍스트만 넘기면 됩니다
@@ -111,6 +112,30 @@ git checkout main && git pull origin main
 
 푸시만 하고 PR을 안 열면 `main`에 아무것도 안 들어갑니다. GitHub Pages는
 `main`의 `/docs`를 보므로, PR이 머지되기 전까지 화면은 그대로입니다.
+
+## 선사를 늘릴 때
+
+전국 선사는 수백 곳입니다. 하나씩 찾아 registry에 적는 건 오래 못 갑니다. `discover.js`가
+후보를 모으는 일과 그 후보가 우리 어댑터로 읽히는지 확인하는 일을 대신합니다.
+
+```bash
+node discover.js ct sunsang24.com     # 인증서 로그(crt.sh)에서 선상24 계열 서브도메인 전부
+node discover.js links <목록 페이지>    # 그 페이지에 걸린 선사 홈페이지 도메인
+node discover.js probe --from tmp/candidates.json        # 어댑터로 실제 돌려보기
+node discover.js probe --from tmp/candidates.json --add  # 읽히는 곳만 registry에 붙이기
+```
+
+모으는 부분(`ct`/`links`)과 확인하는 부분(`probe`)이 나뉘어 있습니다. 후보를 어디서
+얻느냐는 소스마다 다르고 자주 바뀌지만, "이 주소가 읽히느냐"는 어디서 왔든 같습니다.
+새 소스가 생기면 앞부분만 붙이면 됩니다.
+
+**개발 환경에서는 crt.sh도 국내 도메인도 막혀 있습니다.** Actions 탭 → discover →
+Run workflow로 돌리세요. `open_pr`을 켜면 읽히는 후보를 registry에 붙인 PR까지 엽니다.
+
+**자동으로 채운 값을 그대로 믿지 마세요.** 특히 `port`·`phone`은 다른 사이트에 올라온
+같은 배를 알아보는 신원입니다(`core/merge.js`). 그래서 `discover.js`는 "출항지 : ○○항"처럼
+라벨이 붙어 답이 하나일 때만 값으로 채우고, 애매하면 비운 채 후보만 note에 적습니다.
+PR을 머지하기 전에 이걸 확인하는 게 사람이 할 일입니다 — 합쳐서 틀리는 것보다 두 줄이 낫습니다.
 
 ## 어댑터 고칠 때
 

@@ -54,6 +54,18 @@ export const SUNSANG24_LIST = `
         <td>3명 예약/15명</td>
       </tr></tbody></table>
 
+      <!-- 공지에 "기상악화 출조취소", "쭈꾸미" 같은 말이 늘 들어있습니다. 날짜별 상태와는
+           상관없는 문구인데, 이걸 같이 읽으면 자리가 남아도 휴항으로 잡힙니다 -->
+      <table class="ship_unit"><tbody><tr>
+        <td>공지많은호</td>
+        <td><ul>
+          <li>공지사항 : 기상악화시 출조취소될 수 있습니다. 미입금시 자동취소 처리됩니다. 쭈꾸미 시즌 오픈!</li>
+          <li>어종 : 광어</li>
+          <li class="shiptime">운항시간 : 06:00 ~ 14:00</li>
+        </ul></td>
+        <td>4명 예약/20명</td>
+      </tr></tbody></table>
+
       <!-- 시간도 좌석 표기도 없는 껍데기. 실제 페이지에 날마다 하나씩 있습니다 -->
       <table class="ship_unit"><tbody><tr><td>맥가이버호 예약마감</td></tr></tbody></table>
     </td>
