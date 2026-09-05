@@ -6,6 +6,7 @@ import { pageUrls } from '../adapters/generic.js';
 import { platformOf, needsBrowser } from '../core/platform.js';
 import { describeError } from '../core/fetcher.js';
 import { parseDetail, indexUrl, detailUrl } from '../adapters/thefishing.js';
+import { parseMonth as parseUijihoMonth } from '../adapters/uijiho.js';
 import { findOpenings } from '../core/diff.js';
 import { mergeDuplicates } from '../core/merge.js';
 import { kstDate } from '../core/when.js';
@@ -137,6 +138,24 @@ test('sunsang24: simple_day 조각은 table.ship_unit 단위로 읽는다', () =
   assert.equal(trips[0].tide, '조금');
   assert.equal(trips[0].seatsLeft, 0);
   assert.equal(trips[0].seatsTotal, 21);
+});
+
+test('uijiho: 월별 예약현황의 날짜 행과 정원을 읽는다', () => {
+  const html = `
+    <h2>2026년 9월 예약인원현황</h2>
+    <table><tr><td>1</td><td>화</td><td>11물</td><td>
+      공지사항 쭈꾸미,갑오징어 출조
+      의지호[정원:15명] 마감 모집종료
+    </td></tr>
+    <tr><td>3</td><td>목</td><td>13물</td><td>
+      의지호[정원:15명] 1명가능 박정후님1분
+    </td></tr></table>`;
+  const trips = parseUijihoMonth({ id: 'uijiho', name: '의지호', port: '충남 서천 홍원항' }, html, 'https://uijiho.com');
+  assert.equal(trips.length, 2);
+  assert.deepEqual(trips.map((t) => [t.date, t.seatsLeft, t.seatsTotal, t.status]), [
+    ['2026-09-01', 0, 15, 'closed'],
+    ['2026-09-03', 1, 15, 'few'],
+  ]);
 });
 
 test('thefishing: detail — 입금 명단의 좌석번호를 세서 잔여석을 구한다', () => {
