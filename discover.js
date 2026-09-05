@@ -358,6 +358,10 @@ async function probeAll() {
   if (!urls.length) return usage();
 
   const limit = Number(valueOf('--limit') ?? urls.length);
+  // 상대가 우리를 막으면 전부 같은 이유로 실패합니다. 더피싱 242곳이 첫 요청부터
+  // 끝까지 시간초과로 떨어지는 걸 40분 동안 지켜본 적이 있습니다. 그럴 땐 멈춥니다.
+  const GIVE_UP_AFTER = 15;
+  let streak = 0;
   const registry = await loadRegistry();
   const known = new Set(registry.map((s) => safeHost(s.url)));
   const taken = new Set(registry.map((s) => s.id));
@@ -372,8 +376,16 @@ async function probeAll() {
     const result = await probe(url);
     if (!result.ok) {
       console.log(`✗ ${url} — ${result.tried.map((t) => `${t.adapter}:${t.error}`).join(' / ')}`);
+      if (++streak >= GIVE_UP_AFTER) {
+        console.log(
+          `\n연속 ${streak}곳이 실패했습니다. 상대가 막고 있는 것으로 보고 멈춥니다 — ` +
+            '시간을 두고 다시 돌리세요(간격은 core/fetcher.js의 MIN_GAP_MS).',
+        );
+        break;
+      }
       continue;
     }
+    streak = 0;
 
     const id = idFor(result.url, taken);
     taken.add(id);

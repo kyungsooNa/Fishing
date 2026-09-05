@@ -5,7 +5,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createServer } from 'node:http';
-import { fetchHtml, describeError } from '../core/fetcher.js';
+import { fetchHtml, describeError, gapKey } from '../core/fetcher.js';
 
 // 포트를 매번 새로 잡습니다. fetcher가 호스트별로 3초씩 쉬는데, 포트가 다르면
 // 다른 호스트로 보므로 테스트가 기다리지 않습니다.
@@ -15,6 +15,23 @@ async function serve(handler) {
   const { port } = server.address();
   return { url: `http://127.0.0.1:${port}/`, close: () => new Promise((r) => server.close(r)) };
 }
+
+test('요청 간격은 호스트가 아니라 서버(도메인) 단위로 센다', () => {
+  // 선사 사이트는 대부분 플랫폼 서브도메인이라 호스트만 다르고 서버는 하나입니다.
+  // 호스트별로 세다가 더피싱 계열 242곳이 통째로 막힌 적이 있습니다.
+  assert.equal(gapKey('https://akbari.sunsang24.com/ship/schedule_fleet'), 'sunsang24.com');
+  assert.equal(gapKey('https://ssfish.thefishing.kr/index.php?mid=bk'), 'thefishing.kr');
+  assert.equal(gapKey('https://eungabi.sunsang24.com/'), 'sunsang24.com');
+
+  // 자체 도메인끼리는 남남입니다. 서로 기다릴 이유가 없습니다.
+  assert.equal(gapKey('https://www.ssfish.kr/a'), 'ssfish.kr');
+  assert.equal(gapKey('https://blueseaho.com/reservation'), 'blueseaho.com');
+  assert.equal(gapKey('https://a.b.example.co.kr/'), 'example.co.kr');
+
+  // 로컬 서버는 포트까지 봐야 따로 셉니다(테스트가 3초씩 기다리지 않도록).
+  assert.equal(gapKey('http://127.0.0.1:3000/'), '127.0.0.1:3000');
+  assert.notEqual(gapKey('http://127.0.0.1:3000/'), gapKey('http://127.0.0.1:3001/'));
+});
 
 test('받아온 HTML을 그대로 돌려준다', async () => {
   const site = await serve((_, res) => {
