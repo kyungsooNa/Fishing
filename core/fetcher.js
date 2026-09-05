@@ -44,7 +44,17 @@ function getStatic(url, { referer, timeoutMs = TIMEOUT_MS, redirects = MAX_REDIR
         if ([301, 302, 303, 307, 308].includes(statusCode) && headers.location) {
           res.resume();
           if (redirects <= 0) return reject(new Error('리다이렉트가 너무 많습니다'));
-          const next = new URL(headers.location, url).toString();
+
+          // Location이 주소로 안 읽히는 경우가 실제로 있습니다. 한글 도메인으로 넘기면서
+          // 헤더를 인코딩하지 않은 사이트를 만났습니다(ddoli.thefishing.kr → 깨진 바이트).
+          // 여기서 new URL이 그냥 던지면 응답 콜백 안이라 아무도 못 받고 프로세스가
+          // 통째로 죽습니다 — 사이트 하나 때문에 수집 전체가 날아갔습니다.
+          let next;
+          try {
+            next = new URL(headers.location, url).toString();
+          } catch {
+            return reject(new Error(`리다이렉트 주소를 읽을 수 없습니다: ${String(headers.location).slice(0, 60)}`));
+          }
           return resolve(getStatic(next, { referer, timeoutMs, redirects: redirects - 1 }));
         }
 
