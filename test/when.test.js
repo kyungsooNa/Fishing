@@ -3,7 +3,7 @@
 
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { kstDate, kstYm } from '../core/when.js';
+import { kstDate, kstMinutes, kstYm } from '../core/when.js';
 import { pageUrls } from '../adapters/generic.js';
 import { monthUrls } from '../adapters/sunsang24.js';
 import { toDate } from '../core/schema.js';
@@ -26,6 +26,17 @@ test('지난 날짜 정리는 한국 날짜를 기준으로 한다', () => {
   const trips = ['2026-09-03', '2026-09-04', '2026-09-05'].map((date) => ({ date }));
   const kept = pruneOld(trips, 21, 새벽수집).map((t) => t.date);
   assert.deepEqual(kept, ['2026-09-04', '2026-09-05'], '한국시간으로 지난 9/3은 떨어져야 한다');
+});
+
+test('오늘 출항시간이 지난 출조는 정리한다', () => {
+  const now = new Date('2026-09-03T21:10:00Z'); // 한국시간 9/4 06:10
+  const trips = [
+    { date: '2026-09-04', departAt: '06:00' },
+    { date: '2026-09-04', departAt: '06:30' },
+    { date: '2026-09-04' },
+  ];
+  assert.equal(kstMinutes(now), 370);
+  assert.deepEqual(pruneOld(trips, 21, now), [trips[1], trips[2]]);
 });
 
 test('날짜별로 받는 사이트도 한국 날짜부터 시작한다', () => {

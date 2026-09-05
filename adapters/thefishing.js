@@ -121,13 +121,15 @@ export function parseDetail(site, html, url) {
     const filled = countTakenSeats(text);
     const seatsTotal = site.seatsTotal ?? maxSeatNumber(text);
     const explicit = detailSeats(text);
+    const boat = pickBoat(site, text);
+    if (site.excludeBoats?.includes(boat)) continue;
 
     let seatsLeft = explicit;
     if (seatsLeft === null && Number.isFinite(seatsTotal)) seatsLeft = Math.max(0, seatsTotal - filled);
 
     trips.push(
       makeTrip(site, {
-        boat: pickBoat(site, text),
+        boat,
         date,
         departAt: toTime(text),
         species: SPECIES.find((s) => text.includes(s)) ?? null,

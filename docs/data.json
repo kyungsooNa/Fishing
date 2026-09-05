@@ -1804,26 +1804,6 @@
       "url": "https://raraho.kr/m/index.php?mid=bk&year=2026&month=9&day=5"
     },
     {
-      "siteId": "ssfish",
-      "siteName": "무창포 선상낚시",
-      "boat": "무창포 선상낚시",
-      "port": "충남 보령 무창포항",
-      "phone": null,
-      "date": "2026-09-05",
-      "departAt": "23:00",
-      "returnAt": null,
-      "session": "야간",
-      "hours": null,
-      "species": "쭈꾸미",
-      "tide": null,
-      "status": "open",
-      "statusText": "1 2 3 4 5 6 7 15 30 function reservation_list_won(num) { var data = \"list_won=\"+num; $.ajax({ type: \"POST\", url: \"/_core/module/reservation_boat_v5.2_seat1/admin.ajax.list.won.php\", data: data, succes",
-      "seatsLeft": null,
-      "seatsTotal": null,
-      "price": null,
-      "url": "https://www.ssfish.kr/index.php?mid=bk&year=2026&month=9&day=5"
-    },
-    {
       "siteId": "healing",
       "siteName": "무창포 힐링호",
       "boat": "힐링호",

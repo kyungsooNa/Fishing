@@ -33,6 +33,10 @@ test('어종 필터는 갑오징어·주꾸미·쭈꾸미를 기본 선택한다
   assert.match(inline, /input\.checked = defaults\.includes\(v\)/);
 });
 
+test('빈자리 필터는 기본으로 켜져 있다', () => {
+  assert.match(html, /id="f-open" checked/);
+});
+
 test('data.json은 화면이 기대하는 모양이다', async () => {
   const data = JSON.parse(await readFile('docs/data.json', 'utf8'));
   for (const key of ['generatedAt', 'sites', 'trips']) {

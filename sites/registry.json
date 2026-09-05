@@ -136,6 +136,7 @@
       "port": "충남 보령 무창포항",
       "source": "index",
       "windowDays": 7,
+      "excludeBoats": ["무창포 선상낚시"],
       "enabled": true,
       "note": "index 방식이라 seatsTotal 없이 동작합니다. detail로 바꾸려면 정원을 먼저 확인하세요."
     },
