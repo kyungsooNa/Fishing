@@ -213,18 +213,18 @@
       "id": "blueseaho",
       "name": "오천항 푸른바다낚시",
       "adapter": "generic",
-      "url": "https://blueseaho.com/reservation",
+      "url": "http://blueseaho.com/reservation",
       "port": "충남 보령 오천항",
       "phone": "010-5402-0521",
       "mode": "auto",
-      "enabled": false,
+      "enabled": true,
       "boats": {
         "푸른바다3호": {},
         "푸른바다5호": {},
         "푸른바다7호": {},
         "은갈매기호": {}
       },
-      "note": "주소가 죽었습니다. blueseaho.com이 내주는 TLS 인증서가 \"남당항수나2호.com\"(xn--2-9u7erb60n943anq0ayfb.com) 것이라, 인증서만 어긋난 게 아니라 아예 다른 선사 호스트를 가리킵니다. 그 도메인으로 바꾸면 엉뚱한 선사를 긁게 됩니다. 푸른바다낚시의 현재 주소를 찾으면 url을 고치고 enabled를 다시 켜세요. 배 목록(푸른바다3·5·7호, 은갈매기호)과 전화는 확인되면 그대로 쓸 수 있게 남겨뒀습니다."
+      "note": "HTTPS 인증서가 다른 도메인으로 발급되어 HTTP 예약 페이지를 사용합니다. 실제 예약 페이지에서 26개 행이 확인되며, HTTPS 인증서가 정상화되면 url을 HTTPS로 되돌리세요."
     },
     {
       "id": "teamhanpro",
