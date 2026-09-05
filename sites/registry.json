@@ -426,6 +426,7 @@
       "phone": "010-9308-1507",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "미라클호": {}
       },
@@ -439,6 +440,7 @@
       "phone": "010-7550-3577",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "K세븐호": {},
         "세븐호": {},
@@ -454,6 +456,7 @@
       "phone": "010-9033-9377",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "에이스호": {}
       },
@@ -467,6 +470,7 @@
       "phone": "010-3128-1782",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "엘리스호": {}
       },
@@ -480,6 +484,7 @@
       "phone": "010-9058-5311",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "아쿠아호": {}
       },
@@ -492,6 +497,7 @@
       "url": "https://arakhaeng.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "어락행호": {},
         "코리아호": {},
@@ -507,6 +513,7 @@
       "phone": "010-5152-4226",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "아리랑1호": {},
         "아리랑2호": {}
@@ -521,6 +528,7 @@
       "phone": "010-5772-7783",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "뉴아트호": {}
       },
@@ -534,6 +542,7 @@
       "phone": "010-5375-5255",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "아시아호": {}
       },
@@ -547,6 +556,7 @@
       "phone": "010-3459-4086",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "바다사랑호": {}
       },
@@ -560,6 +570,7 @@
       "phone": "010-7447-0120",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "백야호": {}
       },
@@ -573,6 +584,7 @@
       "phone": "010-2933-3029",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "빅보스호": {}
       },
@@ -586,6 +598,7 @@
       "phone": "010-8654-1714",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "테슬란호": {}
       },
@@ -598,6 +611,7 @@
       "url": "https://boas.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "보아스호": {}
       },
@@ -611,6 +625,7 @@
       "phone": "010-4282-6667",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "녹동보스호": {},
         "몬스터호": {},
@@ -626,6 +641,7 @@
       "phone": "010-9766-5912",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "7호": {}
       },
@@ -639,6 +655,7 @@
       "phone": "010-2614-4656",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "참바다호": {}
       },
@@ -652,6 +669,7 @@
       "phone": "010-6552-2724",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "체리피쉬호": {}
       },
@@ -665,6 +683,7 @@
       "phone": "010-9336-3421",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "맛도리호": {},
         "대꾸리호": {},
@@ -681,6 +700,7 @@
       "phone": "010-4345-0004",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "뉴패밀리호": {},
         "플라이호": {}
@@ -695,6 +715,7 @@
       "phone": "010-7123-5359",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "드래곤호": {}
       },
@@ -707,6 +728,7 @@
       "url": "https://daebak.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "뉴항구호": {},
         "뉴항구1호": {},
@@ -722,6 +744,7 @@
       "phone": "010-2769-0713",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "승리호": {}
       },
@@ -735,6 +758,7 @@
       "phone": "010-7756-2264",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "다온호": {},
         "루미호": {},
@@ -751,6 +775,7 @@
       "phone": "010-8893-9090",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "다솔호": {}
       },
@@ -764,6 +789,7 @@
       "phone": "010-5694-1230",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "청룡호": {}
       },
@@ -776,6 +802,7 @@
       "url": "https://dream.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "꿈에그린호": {}
       },
@@ -789,6 +816,7 @@
       "phone": "010-7172-1302",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "블랙이글스호": {},
         "안슨장호": {}
@@ -802,6 +830,7 @@
       "url": "https://ebada.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "이바다호": {},
         "해모수호": {}
@@ -816,6 +845,7 @@
       "phone": "010-6270-1519",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "이배다호": {},
         "행복호": {}
@@ -830,6 +860,7 @@
       "phone": "010-9659-8252",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "에메랄드호": {}
       },
@@ -843,6 +874,7 @@
       "phone": "010-7434-0058",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "엔조이호": {}
       },
@@ -855,6 +887,7 @@
       "url": "https://eunhasuho.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "은하수호": {},
         "효성호": {}
@@ -869,6 +902,7 @@
       "phone": "010-9330-0040",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "에프원호": {},
         "어비스호": {}
@@ -883,6 +917,7 @@
       "phone": "010-7562-2235",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "피쉬뱅크호": {},
         "이슬호": {}
@@ -897,6 +932,7 @@
       "phone": "010-3666-0622",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "흑룡호": {}
       },
@@ -910,6 +946,7 @@
       "phone": "010-2036-2003",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "가가호": {},
         "여명호": {},
@@ -925,6 +962,7 @@
       "phone": "010-8417-8255",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "갈치호": {}
       },
@@ -938,6 +976,7 @@
       "phone": "010-4780-6092",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "지디1호": {},
         "지디3호": {},
@@ -954,6 +993,7 @@
       "phone": "010-7113-8020",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "지니호": {},
         "용한호": {}
@@ -968,6 +1008,7 @@
       "phone": "010-9496-9367",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "자이언트호": {},
         "닉스2호": {}
@@ -981,6 +1022,7 @@
       "url": "https://glutton.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "먹깨비호": {},
         "에르메스호": {}
@@ -994,6 +1036,7 @@
       "url": "https://goaraho.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "아라호": {},
         "아라2호": {}
@@ -1008,6 +1051,7 @@
       "phone": "010-5376-4829",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "금성호": {}
       },
@@ -1021,6 +1065,7 @@
       "phone": "010-3352-6692",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "돌핀호": {},
         "돌핀3호": {},
@@ -1036,6 +1081,7 @@
       "phone": "010-5624-1340",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "고수호": {},
         "팀루비나2호": {}
@@ -1049,6 +1095,7 @@
       "url": "https://gsseven.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "뉴세븐호": {},
         "썬크루즈호": {}
@@ -1063,6 +1110,7 @@
       "phone": "010-4619-8358",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "구디호": {}
       },
@@ -1076,6 +1124,7 @@
       "phone": "010-4186-6380",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "신출항호": {}
       },
@@ -1089,6 +1138,7 @@
       "phone": "010-9527-6265",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "갈매기호": {},
         "홈런호": {}
@@ -1103,6 +1153,7 @@
       "phone": "010-5162-8978",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "건담호": {}
       },
@@ -1115,6 +1166,7 @@
       "url": "https://gunsannaksi.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "챔피언호": {},
         "나드리호": {},
@@ -1139,6 +1191,7 @@
       "phone": "010-9380-5114",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "경주호": {}
       },
@@ -1152,6 +1205,7 @@
       "phone": "010-2574-4277",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "해마호": {}
       },
@@ -1165,6 +1219,7 @@
       "phone": "010-7934-5856",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "해모수호": {}
       },
@@ -1178,6 +1233,7 @@
       "phone": "010-3856-2107",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "한아름호": {}
       },
@@ -1191,6 +1247,7 @@
       "phone": "010-7608-7016",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "2호": {}
       },
@@ -1204,6 +1261,7 @@
       "phone": "010-9654-1715",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "하모니호": {}
       },
@@ -1217,6 +1275,7 @@
       "phone": "010-4906-5444",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "힐링호": {}
       },
@@ -1230,6 +1289,7 @@
       "phone": "010-2775-9109",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "희영호": {}
       },
@@ -1243,6 +1303,7 @@
       "phone": "010-8294-8882",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "헌터호": {}
       },
@@ -1256,6 +1317,7 @@
       "phone": "010-6286-0014",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "장보고호": {}
       },
@@ -1269,6 +1331,7 @@
       "phone": "010-3626-2841",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "장보고호": {}
       },
@@ -1282,6 +1345,7 @@
       "phone": "010-9194-0015",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "태풍호": {}
       },
@@ -1294,6 +1358,7 @@
       "url": "https://janggohangfishing.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "해안선호": {}
       },
@@ -1306,6 +1371,7 @@
       "url": "https://jeilfishing.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "제일피싱호": {}
       },
@@ -1319,6 +1385,7 @@
       "phone": "010-3115-8172",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "제일호": {}
       },
@@ -1332,6 +1399,7 @@
       "phone": "010-6525-7074",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "제주갈치TV호": {}
       },
@@ -1345,6 +1413,7 @@
       "phone": "010-8752-6325",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "정환호": {}
       },
@@ -1358,6 +1427,7 @@
       "phone": "010-5775-5594",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "1호": {},
         "3호": {}
@@ -1372,6 +1442,7 @@
       "phone": "010-2603-4833",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "짱구호": {}
       },
@@ -1384,6 +1455,7 @@
       "url": "https://juliana.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "줄리아나호": {}
       },
@@ -1397,6 +1469,7 @@
       "phone": "010-3608-0844",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "정원호": {}
       },
@@ -1410,6 +1483,7 @@
       "phone": "010-3684-5249",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "강남호": {}
       },
@@ -1423,6 +1497,7 @@
       "phone": "010-7156-0555",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "강프로호": {}
       },
@@ -1436,6 +1511,7 @@
       "phone": "010-5436-9009",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "거양호": {}
       },
@@ -1448,6 +1524,7 @@
       "url": "https://kingstar.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "킹스타호": {}
       },
@@ -1461,6 +1538,7 @@
       "phone": "010-3684-6310",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "킹스타호": {}
       },
@@ -1473,6 +1551,7 @@
       "url": "https://ksnaksi.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "리더호": {},
         "제일호": {}
@@ -1487,6 +1566,7 @@
       "phone": "010-4633-7272",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "강태공호": {}
       },
@@ -1500,6 +1580,7 @@
       "phone": "010-5644-0681",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "팀루비나2호": {},
         "고수호": {}
@@ -1514,6 +1595,7 @@
       "phone": "010-5711-4455",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "루시호": {}
       },
@@ -1527,6 +1609,7 @@
       "phone": "010-9076-8858",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "5호": {},
         "2호": {},
@@ -1541,6 +1624,7 @@
       "url": "https://luna.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "루나호": {}
       },
@@ -1554,6 +1638,7 @@
       "phone": "010-9968-9745",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "마도로스호": {},
         "유림호": {}
@@ -1567,6 +1652,7 @@
       "url": "https://manmul.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "VIP만물호": {}
       },
@@ -1579,6 +1665,7 @@
       "url": "https://mansour.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "만수르호": {}
       },
@@ -1592,6 +1679,7 @@
       "phone": "010-9323-7457",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "만선호": {}
       },
@@ -1604,6 +1692,7 @@
       "url": "https://marineho.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "뉴마린호": {},
         "무야호": {},
@@ -1620,6 +1709,7 @@
       "phone": "010-5234-9476",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "순영호": {},
         "현주호": {},
@@ -1638,6 +1728,7 @@
       "phone": "010-3352-6692",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "미르호": {}
       },
@@ -1651,6 +1742,7 @@
       "phone": "010-4562-8981",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "미라클호": {}
       },
@@ -1664,6 +1756,7 @@
       "phone": "010-5496-0084",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "물돌이호": {}
       },
@@ -1677,6 +1770,7 @@
       "phone": "010-8539-9436",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "마이웨이호": {}
       },
@@ -1689,6 +1783,7 @@
       "url": "https://nara.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "나라2호": {}
       },
@@ -1702,6 +1797,7 @@
       "phone": "010-8746-2994",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "뉴한려피싱호": {},
         "뉴한려피싱2호": {}
@@ -1716,6 +1812,7 @@
       "phone": "010-4102-5415",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "뉴스카이호": {}
       },
@@ -1728,6 +1825,7 @@
       "url": "https://newtaejinho.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "뉴태진호": {}
       },
@@ -1741,6 +1839,7 @@
       "phone": "010-2890-5744",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "구룡호": {}
       },
@@ -1754,6 +1853,7 @@
       "phone": "010-7178-3800",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "뉴피닉스호": {}
       },
@@ -1766,6 +1866,7 @@
       "url": "https://nurifish.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "뉴바이킹호": {}
       },
@@ -1779,6 +1880,7 @@
       "phone": "010-9664-0033",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "오리온1호": {},
         "오리온2호": {}
@@ -1793,6 +1895,7 @@
       "phone": "010-3388-8152",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "태평양호": {}
       },
@@ -1806,6 +1909,7 @@
       "phone": "010-9149-8200",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "박프로호": {}
       },
@@ -1819,6 +1923,7 @@
       "phone": "010-9371-0741",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "꽃돼지호": {}
       },
@@ -1832,6 +1937,7 @@
       "phone": "010-8539-9436",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "포세이돈호": {}
       },
@@ -1845,6 +1951,7 @@
       "phone": "010-3667-5556",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "프린스호": {}
       },
@@ -1857,6 +1964,7 @@
       "url": "https://pro.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "샤크호": {},
         "슈퍼마린호": {},
@@ -1878,6 +1986,7 @@
       "phone": "010-4439-3400",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "레드폭스호": {}
       },
@@ -1891,6 +2000,7 @@
       "phone": "063-471-0070",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "뉴미라클호": {}
       },
@@ -1904,6 +2014,7 @@
       "phone": "010-3356-2973",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "스마트호": {}
       },
@@ -1917,6 +2028,7 @@
       "phone": "010-7584-7932",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "리차드호": {}
       },
@@ -1929,6 +2041,7 @@
       "url": "https://rise.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "라이즈호": {}
       },
@@ -1942,6 +2055,7 @@
       "phone": "010-5410-2027",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "자이언트호": {}
       },
@@ -1955,6 +2069,7 @@
       "phone": "010-8635-9886",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "로즈마리호": {}
       },
@@ -1968,6 +2083,7 @@
       "phone": "010-4586-6960",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "삼덕레저호": {}
       },
@@ -1982,6 +2098,7 @@
       "phone": "010-6753-8114",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "해맨호": {}
       },
@@ -1994,6 +2111,7 @@
       "url": "https://seo.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "닥스호": {},
         "뚱스호": {},
@@ -2010,6 +2128,7 @@
       "url": "https://seongyeon.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "성연호": {}
       },
@@ -2023,6 +2142,7 @@
       "phone": "010-8505-8321",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "샤크마린호": {}
       },
@@ -2035,6 +2155,7 @@
       "url": "https://ship.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "초월호": {}
       },
@@ -2048,6 +2169,7 @@
       "phone": "010-3596-9157",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "신아라호": {}
       },
@@ -2061,6 +2183,7 @@
       "phone": "010-2058-1883",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "신진호": {}
       },
@@ -2074,6 +2197,7 @@
       "phone": "010-7130-7134",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "스카이호": {}
       },
@@ -2087,6 +2211,7 @@
       "phone": "010-8898-4913",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "스카이호": {}
       },
@@ -2100,6 +2225,7 @@
       "phone": "010-8898-0611",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "행복호": {},
         "이배다호": {},
@@ -2115,6 +2241,7 @@
       "phone": "010-5079-3352",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "8호": {},
         "5호": {},
@@ -2131,6 +2258,7 @@
       "phone": "010-8598-5965",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "뉴썬더호": {}
       },
@@ -2144,6 +2272,7 @@
       "phone": "010-6534-6812",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "스텔론1호": {},
         "스텔론2호": {},
@@ -2160,6 +2289,7 @@
       "phone": "010-3334-7777",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "파티호": {},
         "아라온피싱호": {},
@@ -2176,6 +2306,7 @@
       "phone": "010-5629-3878",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "스텔스호": {}
       },
@@ -2189,6 +2320,7 @@
       "phone": "010-7942-3389",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "성훈호": {}
       },
@@ -2202,6 +2334,7 @@
       "phone": "010-9030-0819",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "썬스타호": {},
         "은아3호": {}
@@ -2215,6 +2348,7 @@
       "url": "https://taeanfishing.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "어해루호": {},
         "신진자연호": {},
@@ -2230,6 +2364,7 @@
       "phone": "010-5189-2653",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "태백8호": {},
         "대한호": {}
@@ -2244,6 +2379,7 @@
       "phone": "010-3433-4109",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "태극호": {},
         "태극1호": {}
@@ -2257,6 +2393,7 @@
       "url": "https://taesung.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "태성호": {}
       },
@@ -2270,6 +2407,7 @@
       "phone": "010-4431-1050",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "탐라호": {}
       },
@@ -2283,6 +2421,7 @@
       "phone": "010-4690-4850",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "탈레스호": {}
       },
@@ -2296,6 +2435,7 @@
       "phone": "010-9224-3878",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "스텔스호": {}
       },
@@ -2309,6 +2449,7 @@
       "phone": "010-6225-4570",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "태평호": {}
       },
@@ -2322,6 +2463,7 @@
       "phone": "010-8654-1714",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "테슬란호": {}
       },
@@ -2334,6 +2476,7 @@
       "url": "https://twin.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "트윈스타호": {}
       },
@@ -2347,6 +2490,7 @@
       "phone": "010-2835-8683",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "어비스호": {},
         "에프원호": {},
@@ -2362,6 +2506,7 @@
       "phone": "010-4818-2397",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "뉴벤쿠버호": {}
       },
@@ -2375,6 +2520,7 @@
       "phone": "010-3202-3448",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "베니스호": {},
         "럭키호": {},
@@ -2389,6 +2535,7 @@
       "url": "https://veteranfishing.sunsang24.com",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "뉴베테랑호": {}
       },
@@ -2402,6 +2549,7 @@
       "phone": "010-5405-7732",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "바이킹호": {}
       },
@@ -2415,6 +2563,7 @@
       "phone": "010-4405-2690",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "가디언호": {},
         "대양호": {},
@@ -2430,6 +2579,7 @@
       "phone": "010-3602-6096",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "왕눈이호": {}
       },
@@ -2443,6 +2593,7 @@
       "phone": "010-2853-8252",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "왔어호": {}
       },
@@ -2456,6 +2607,7 @@
       "phone": "010-2486-7771",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "레드폭스호": {}
       },
@@ -2469,6 +2621,7 @@
       "phone": "010-3026-3425",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "예지퀸호": {}
       },
@@ -2482,6 +2635,7 @@
       "phone": "010-9855-2676",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "영재호": {}
       },
@@ -2495,6 +2649,7 @@
       "phone": "010-7634-0990",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "용성호": {}
       },
@@ -2508,6 +2663,7 @@
       "phone": "010-7711-7889",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "용마호": {}
       },
@@ -2521,6 +2677,7 @@
       "phone": "010-7381-5882",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "오션스타1호": {},
         "오션스타2호": {},
@@ -2536,6 +2693,7 @@
       "phone": "010-3686-3388",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "유림호": {}
       },
@@ -2549,6 +2707,7 @@
       "phone": "010-9347-2635",
       "mode": "static",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "유림호": {}
       },
@@ -2561,6 +2720,7 @@
       "url": "https://52fish.thefishing.kr/index.php?mid=bk",
       "phone": "010-6390-5555",
       "enabled": true,
+      "addedBy": "discover",
       "note": "자동 발견(https://52fish.thefishing.kr) — 시험 수집 9건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항"
     },
     {
@@ -2570,6 +2730,7 @@
       "url": "https://5sunrise.thefishing.kr/index.php?mid=bk",
       "phone": "010-7356-1750",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "일출호": {},
         "1호": {}
@@ -2582,6 +2743,7 @@
       "adapter": "thefishing",
       "url": "https://acefish.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "스마트호": {},
         "골드피싱호": {}
@@ -2594,6 +2756,7 @@
       "adapter": "thefishing",
       "url": "https://angel.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "엔젤피싱호": {}
       },
@@ -2606,6 +2769,7 @@
       "url": "https://aquamarine.thefishing.kr/index.php?mid=bk",
       "phone": "010-5320-8482",
       "enabled": true,
+      "addedBy": "discover",
       "note": "자동 발견(https://aquamarine.thefishing.kr) — 시험 수집 8건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 홍원항, 공지사항"
     },
     {
@@ -2615,6 +2779,7 @@
       "url": "https://asea.thefishing.kr/index.php?mid=bk",
       "phone": "010-6342-5776",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "해성호": {}
       },
@@ -2626,6 +2791,7 @@
       "adapter": "thefishing",
       "url": "https://badafish.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "경원7호": {}
       },
@@ -2638,6 +2804,7 @@
       "url": "https://badasarang.thefishing.kr/index.php?mid=bk",
       "phone": "010-8818-1612",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "바다사랑호": {}
       },
@@ -2649,6 +2816,7 @@
       "adapter": "thefishing",
       "url": "https://baekdusan.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "백두산호": {}
       },
@@ -2661,6 +2829,7 @@
       "url": "https://bestho.thefishing.kr/index.php?mid=bk",
       "phone": "010-4710-7536",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "베스트호": {}
       },
@@ -2673,6 +2842,7 @@
       "url": "https://bgsho.thefishing.kr/index.php?mid=bk",
       "phone": "010-3764-9599",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "벽계수호": {}
       },
@@ -2685,6 +2855,7 @@
       "url": "https://bikini.thefishing.kr/index.php?mid=bk",
       "phone": "010-5322-8738",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "양파호": {}
       },
@@ -2697,6 +2868,7 @@
       "url": "https://bless.thefishing.kr/index.php?mid=bk",
       "phone": "010-3956-7016",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "블레스호": {}
       },
@@ -2708,6 +2880,7 @@
       "adapter": "thefishing",
       "url": "https://bluedragon.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "청룡호": {}
       },
@@ -2719,6 +2892,7 @@
       "adapter": "thefishing",
       "url": "https://cgho.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "청길호": {}
       },
@@ -2730,6 +2904,7 @@
       "adapter": "thefishing",
       "url": "https://champion.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "note": "자동 발견(https://champion.thefishing.kr) — 시험 수집 8건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 대천항, 공지사항, 문의사항, 변경사항, 출조항 전화 후보: 010-2480-2138, 010-2173-5152"
     },
     {
@@ -2739,6 +2914,7 @@
       "url": "https://choice.thefishing.kr/index.php?mid=bk",
       "phone": "010-5873-3984",
       "enabled": true,
+      "addedBy": "discover",
       "note": "자동 발견(https://choice.thefishing.kr) — 시험 수집 31건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 녹동항, 대박조항, 출조항"
     },
     {
@@ -2748,6 +2924,7 @@
       "url": "https://chungwoon.thefishing.kr/index.php?mid=bk",
       "phone": "010-5222-6072",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "뉴청운호": {}
       },
@@ -2760,6 +2937,7 @@
       "url": "https://daejin.thefishing.kr/index.php?mid=bk",
       "phone": "010-8348-0305",
       "enabled": true,
+      "addedBy": "discover",
       "note": "자동 발견(https://daejin.thefishing.kr) — 시험 수집 9건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항"
     },
     {
@@ -2768,6 +2946,7 @@
       "adapter": "thefishing",
       "url": "https://daeyang.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "대박1호": {}
       },
@@ -2780,6 +2959,7 @@
       "url": "https://djfishing.thefishing.kr/index.php?mid=bk",
       "phone": "010-6232-9479",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "우리바다호": {}
       },
@@ -2792,6 +2972,7 @@
       "url": "https://dolphin.thefishing.kr/index.php?mid=bk",
       "phone": "010-8754-2146",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "돌핀호": {}
       },
@@ -2804,6 +2985,7 @@
       "url": "https://doublek.thefishing.kr/index.php?mid=bk",
       "phone": "010-4455-6222",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "1호": {}
       },
@@ -2815,6 +2997,7 @@
       "adapter": "thefishing",
       "url": "https://dragonho.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "드래곤호": {}
       },
@@ -2827,6 +3010,7 @@
       "url": "https://eoulim.thefishing.kr/index.php?mid=bk",
       "phone": "010-9931-9297",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "어울림호": {}
       },
@@ -2839,6 +3023,7 @@
       "url": "https://flex.thefishing.kr/index.php?mid=bk",
       "phone": "010-5577-2258",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "오로라호": {}
       },
@@ -2850,6 +3035,7 @@
       "adapter": "thefishing",
       "url": "https://fmania.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "피싱매니아호": {}
       },
@@ -2862,6 +3048,7 @@
       "url": "https://haeduk.thefishing.kr/index.php?mid=bk",
       "phone": "010-6540-8558",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "뉴해덕호": {}
       },
@@ -2874,6 +3061,7 @@
       "url": "https://hanpro.thefishing.kr/index.php?mid=bk",
       "phone": "010-3530-7103",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "한프로호": {}
       },
@@ -2886,6 +3074,7 @@
       "url": "https://hansol.thefishing.kr/index.php?mid=bk",
       "phone": "010-5042-8878",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "한솔호": {}
       },
@@ -2897,6 +3086,7 @@
       "adapter": "thefishing",
       "url": "https://hhj.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "형제피싱호": {}
       },
@@ -2908,6 +3098,7 @@
       "adapter": "thefishing",
       "url": "https://hohae.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "호해스타호": {}
       },
@@ -2920,6 +3111,7 @@
       "url": "https://hongwonhang.thefishing.kr/index.php?mid=bk",
       "phone": "010-4050-0411",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "돌핀호": {}
       },
@@ -2932,6 +3124,7 @@
       "url": "https://ilsin.thefishing.kr/index.php?mid=bk",
       "phone": "010-4585-9993",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "일신호": {}
       },
@@ -2943,6 +3136,7 @@
       "adapter": "thefishing",
       "url": "https://jghstar.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "note": "자동 발견(https://jghstar.thefishing.kr) — 시험 수집 10건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 전곡항, 공지사항, 규정사항 전화 후보: 010-8070-0150, 010-2171-3361, 010-6357-8341"
     },
     {
@@ -2952,6 +3146,7 @@
       "url": "https://jido.thefishing.kr/index.php?mid=bk",
       "phone": "010-6474-1275",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "정원호": {},
         "지도호": {}
@@ -2965,6 +3160,7 @@
       "url": "https://jinjo.thefishing.kr/index.php?mid=bk",
       "phone": "010-8004-1661",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "뉴진조호": {}
       },
@@ -2977,6 +3173,7 @@
       "url": "https://joen.thefishing.kr/index.php?mid=bk",
       "phone": "010-8268-8644",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "독립좌대1호": {}
       },
@@ -2989,6 +3186,7 @@
       "url": "https://jungwoo.thefishing.kr/index.php?mid=bk",
       "phone": "010-3561-5707",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "정우레져호": {}
       },
@@ -3001,6 +3199,7 @@
       "url": "https://junjin.thefishing.kr/index.php?mid=bk",
       "phone": "010-7695-8879",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "전진호": {}
       },
@@ -3013,6 +3212,7 @@
       "url": "https://kkalzo.thefishing.kr/index.php?mid=bk",
       "phone": "010-3437-5894",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "깔조호": {}
       },
@@ -3024,6 +3224,7 @@
       "adapter": "thefishing",
       "url": "https://kzm.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "note": "자동 발견(https://kzm.thefishing.kr) — 시험 수집 8건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 오천항, 공지사항, 주의사항 전화 후보: 010-2446-1322, 010-7744-8246, 010-2742-9712"
     },
     {
@@ -3032,6 +3233,7 @@
       "adapter": "thefishing",
       "url": "https://light.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "등대호": {}
       },
@@ -3043,6 +3245,7 @@
       "adapter": "thefishing",
       "url": "https://linkus.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "링커스호": {}
       },
@@ -3054,6 +3257,7 @@
       "adapter": "thefishing",
       "url": "https://lucky7.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "note": "자동 발견(https://lucky7.thefishing.kr) — 시험 수집 8건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 종일배운항, 궁평항 전화 후보: 010-9332-4567, 010-6382-0824"
     },
     {
@@ -3062,6 +3266,7 @@
       "adapter": "thefishing",
       "url": "https://manaru.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "은양호": {}
       },
@@ -3073,6 +3278,7 @@
       "adapter": "thefishing",
       "url": "https://manseok.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "note": "자동 발견(https://manseok.thefishing.kr) — 시험 수집 8건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 안내사항, 삼길포항 전화 후보: 010-9292-5562, 010-9291-5562"
     },
     {
@@ -3081,6 +3287,7 @@
       "adapter": "thefishing",
       "url": "https://marinestar.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "20호": {}
       },
@@ -3092,6 +3299,7 @@
       "adapter": "thefishing",
       "url": "https://mobok.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "뉴오복호": {}
       },
@@ -3103,6 +3311,7 @@
       "adapter": "thefishing",
       "url": "https://mobum.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "모범낚시호": {}
       },
@@ -3115,6 +3324,7 @@
       "url": "https://monster.thefishing.kr/index.php?mid=bk",
       "phone": "010-9009-7608",
       "enabled": true,
+      "addedBy": "discover",
       "note": "자동 발견(https://monster.thefishing.kr) — 시험 수집 9건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 인이상출항, 출조항"
     },
     {
@@ -3123,6 +3333,7 @@
       "adapter": "thefishing",
       "url": "https://nadree.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "나드리호": {}
       },
@@ -3134,6 +3345,7 @@
       "adapter": "thefishing",
       "url": "https://neweocheongdo.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "어청도피싱호": {}
       },
@@ -3145,6 +3357,7 @@
       "adapter": "thefishing",
       "url": "https://newsj.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "뉴신정호": {}
       },
@@ -3156,6 +3369,7 @@
       "adapter": "thefishing",
       "url": "https://nixx.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "닉스호": {}
       },
@@ -3167,6 +3381,7 @@
       "adapter": "thefishing",
       "url": "https://no1.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "3호": {},
         "1호": {}
@@ -3179,6 +3394,7 @@
       "adapter": "thefishing",
       "url": "https://noblesse.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "note": "자동 발견(https://noblesse.thefishing.kr) — 시험 수집 8건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 대천항, 공지사항, 문의사항, 변경사항 전화 후보: 010-2173-5152, 010-7411-9365"
     },
     {
@@ -3188,6 +3404,7 @@
       "url": "https://oasis.thefishing.kr/index.php?mid=bk",
       "phone": "010-3118-6255",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "오아시스호": {}
       },
@@ -3199,6 +3416,7 @@
       "adapter": "thefishing",
       "url": "https://obok.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "오복호": {}
       },
@@ -3211,6 +3429,7 @@
       "url": "https://ochbada.thefishing.kr/index.php?mid=bk",
       "phone": "010-3930-6755",
       "enabled": true,
+      "addedBy": "discover",
       "note": "자동 발견(https://ochbada.thefishing.kr) — 시험 수집 12건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항"
     },
     {
@@ -3219,6 +3438,7 @@
       "adapter": "thefishing",
       "url": "https://orange.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "오렌지호": {}
       },
@@ -3230,6 +3450,7 @@
       "adapter": "thefishing",
       "url": "https://plaza.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "레이디호": {}
       },
@@ -3242,6 +3463,7 @@
       "url": "https://plus.thefishing.kr/index.php?mid=bk",
       "phone": "010-3304-7556",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "플러스호": {}
       },
@@ -3254,6 +3476,7 @@
       "url": "https://pthbest.thefishing.kr/index.php?mid=bk",
       "phone": "010-3155-7567",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "스카이피싱호": {}
       },
@@ -3266,6 +3489,7 @@
       "url": "https://raraho.thefishing.kr/index.php?mid=bk",
       "phone": "010-9008-7564",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "라라호": {}
       },
@@ -3278,6 +3502,7 @@
       "url": "https://redpearl.thefishing.kr/index.php?mid=bk",
       "phone": "010-5793-4521",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "레드펄호": {}
       },
@@ -3290,6 +3515,7 @@
       "url": "https://secretbus.thefishing.kr/index.php?mid=bk",
       "phone": "010-9791-4445",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "20호": {}
       },
@@ -3302,6 +3528,7 @@
       "url": "https://seohae.thefishing.kr/index.php?mid=bk",
       "phone": "010-2811-1098",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "바로호": {}
       },
@@ -3314,6 +3541,7 @@
       "url": "https://sindo.thefishing.kr/index.php?mid=bk",
       "phone": "010-5009-8373",
       "enabled": true,
+      "addedBy": "discover",
       "note": "자동 발견(https://sindo.thefishing.kr) — 시험 수집 8건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 오천항, 공지사항, 출조항"
     },
     {
@@ -3322,6 +3550,7 @@
       "adapter": "thefishing",
       "url": "https://sinil.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "note": "자동 발견(https://sinil.thefishing.kr) — 시험 수집 26건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 주의사항, 신진도항 전화 후보: 010-3160-4462, 010-6206-0657"
     },
     {
@@ -3330,6 +3559,7 @@
       "adapter": "thefishing",
       "url": "https://sinjindo.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "뉴용궁호": {}
       },
@@ -3341,6 +3571,7 @@
       "adapter": "thefishing",
       "url": "https://sjdsamsung.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "운진호": {}
       },
@@ -3352,6 +3583,7 @@
       "adapter": "thefishing",
       "url": "https://soosung.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "수성호": {}
       },
@@ -3364,6 +3596,7 @@
       "url": "https://sooyoungho.thefishing.kr/index.php?mid=bk",
       "phone": "010-9185-0552",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "수영호": {}
       },
@@ -3376,6 +3609,7 @@
       "url": "https://spdman7.thefishing.kr/index.php?mid=bk",
       "phone": "010-9718-1703",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "씨빙이호": {}
       },
@@ -3387,6 +3621,7 @@
       "adapter": "thefishing",
       "url": "https://starfishing.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "오성스타호": {}
       },
@@ -3399,6 +3634,7 @@
       "url": "https://start.thefishing.kr/index.php?mid=bk",
       "phone": "010-7225-7225",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "스타트호": {}
       },
@@ -3410,6 +3646,7 @@
       "adapter": "thefishing",
       "url": "https://subok.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "수복호": {}
       },
@@ -3421,6 +3658,7 @@
       "adapter": "thefishing",
       "url": "https://suji.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "수지호": {}
       },
@@ -3432,6 +3670,7 @@
       "adapter": "thefishing",
       "url": "https://sungho.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "독립좌대1호": {}
       },
@@ -3443,6 +3682,7 @@
       "adapter": "thefishing",
       "url": "https://sunny.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "뉴써니호": {}
       },
@@ -3455,6 +3695,7 @@
       "url": "https://susung.thefishing.kr/index.php?mid=bk",
       "phone": "010-7408-6555",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "수성호": {}
       },
@@ -3467,6 +3708,7 @@
       "url": "https://suyeon.thefishing.kr/index.php?mid=bk",
       "phone": "010-3425-3456",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "수연호": {}
       },
@@ -3479,6 +3721,7 @@
       "url": "https://venus.thefishing.kr/index.php?mid=bk",
       "phone": "010-9227-2266",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "서완호": {}
       },
@@ -3491,6 +3734,7 @@
       "url": "https://vip.thefishing.kr/index.php?mid=bk",
       "phone": "010-9047-3620",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "VIP호": {}
       },
@@ -3503,6 +3747,7 @@
       "url": "https://winner.thefishing.kr/index.php?mid=bk",
       "phone": "010-6526-6525",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "30호": {},
         "배짱호": {}
@@ -3515,6 +3760,7 @@
       "adapter": "thefishing",
       "url": "https://worldfishing.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "피닉스호": {},
         "스텔론호": {}
@@ -3528,6 +3774,7 @@
       "url": "https://wsd.thefishing.kr/index.php?mid=bk",
       "phone": "010-5024-7141",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "비룡호": {}
       },
@@ -3539,6 +3786,7 @@
       "adapter": "thefishing",
       "url": "https://wsdhaesin.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "해신호": {}
       },
@@ -3551,6 +3799,7 @@
       "url": "https://yaho.thefishing.kr/index.php?mid=bk",
       "phone": "010-9374-7683",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "야호": {}
       },
@@ -3563,6 +3812,7 @@
       "url": "https://yamujin.thefishing.kr/index.php?mid=bk",
       "phone": "010-2549-5282",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "야무진2호": {}
       },
@@ -3574,6 +3824,7 @@
       "adapter": "thefishing",
       "url": "https://yayaho.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "야야호": {},
         "올림피아호": {},
@@ -3595,6 +3846,7 @@
       "url": "https://yd1.thefishing.kr/index.php?mid=bk",
       "phone": "010-2253-2293",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "영동1호": {}
       },
@@ -3607,6 +3859,7 @@
       "url": "https://yejin.thefishing.kr/index.php?mid=bk",
       "phone": "010-4664-9709",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "예진호": {}
       },
@@ -3618,6 +3871,7 @@
       "adapter": "thefishing",
       "url": "https://yjin.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "영진호": {}
       },
@@ -3630,6 +3884,7 @@
       "url": "https://yjong.thefishing.kr/index.php?mid=bk",
       "phone": "010-3448-4554",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "원산도영종호": {}
       },
@@ -3641,6 +3896,7 @@
       "adapter": "thefishing",
       "url": "https://yonggung.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "뉴용궁호": {}
       },
@@ -3653,6 +3909,7 @@
       "url": "https://yongsa.thefishing.kr/index.php?mid=bk",
       "phone": "010-3629-8605",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "바다용사호": {}
       },
@@ -3664,6 +3921,7 @@
       "adapter": "thefishing",
       "url": "https://ysho.thefishing.kr/index.php?mid=bk",
       "enabled": true,
+      "addedBy": "discover",
       "boats": {
         "용신호": {}
       },
