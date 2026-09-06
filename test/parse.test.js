@@ -262,6 +262,19 @@ test('thefishing: detail — 잔여석이 이미지 alt에만 있어도 읽는�
   assert.deepEqual(trips.map((t) => t.tide), ['무시', '4물', '5물', '7물']);
 });
 
+test('thefishing: detail — 공지사항 껍데기 행은 출조로 만들지 않는다', () => {
+  const site = { id: 'winner', name: '30호' };
+  const html = `<table>
+    <tr><td colspan="3"><span>2026년 09월 07일</span>, 월요일, 2물</td></tr>
+    <tr><th>선박명</th><th>예 약 현 황</th><th>남은자리</th></tr>
+    <tr><td>30호</td><td>공지사항</td><td></td></tr>
+    <tr><td>배짱호</td><td>쭈갑출조. 예약하기</td><td>7명</td></tr>
+  </table>`;
+  const trips = parseDetail(site, html, 'https://x');
+
+  assert.deepEqual(trips.map((t) => t.boat), ['배짱호']);
+});
+
 test('thefishing: 플랫폼 이름은 배로 등록하지 않는다', () => {
   const site = {
     id: 'ssfish', name: '무창포 선상낚시', excludeBoats: ['무창포 선상낚시'],

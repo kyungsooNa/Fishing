@@ -134,9 +134,14 @@ export function parseDetail(site, html, url) {
     const boat = pickBoat(site, block.boat ?? text);
     if (site.excludeBoats?.includes(boat)) continue;
 
+    const time = tripTimeRange(text);
+    const species = SPECIES.find((s) => text.includes(s)) ?? null;
     let seatsLeft = explicit;
     if (seatsLeft === null && Number.isFinite(seatsTotal)) seatsLeft = Math.max(0, seatsTotal - filled);
-    const time = tripTimeRange(text);
+    if (!species && seatsLeft === null && seatsTotal === null &&
+      !/예약하기|예약완료|예약마감|마감|만석|휴항|결항|출조취소|개인사정|입금|예약확정/.test(text)) {
+      continue;
+    }
 
     trips.push(
       makeTrip(site, {
@@ -144,7 +149,7 @@ export function parseDetail(site, html, url) {
         date,
         departAt: time.from,
         returnAt: time.to,
-        species: SPECIES.find((s) => text.includes(s)) ?? null,
+        species,
         tide: toTide(text),
         status: text.slice(0, 200),
         seatsLeft,
