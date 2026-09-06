@@ -233,6 +233,21 @@ test('thefishing: 청광호는 예약 인원 합계로 정원을 계산하고 �
   assert.equal(open.seatsTotal, null, '열린 날은 예약자 수를 전체 정원으로 추정하지 않는다');
 });
 
+test('thefishing: detail — 잔여석이 이미지 alt에만 있어도 읽는다', () => {
+  const site = { id: 'eoulim', name: '어울림호', boats: { '어울림호': {} } };
+  const trips = parseDetail(site, fx.THEFISHING_DETAIL_IMG_SEATS, 'https://x');
+
+  // 9월 9일: 남은자리 8명(이미지) + 찬 자리 6명(입금자 2+2+1, 입금대기 1) = 정원 14명.
+  // 사이트 예약 팝업의 "총인원 14명"과 같습니다. 고치기 전에는 2/2로 나왔습니다.
+  assert.deepEqual(trips.map((t) => [t.date, t.seatsLeft, t.seatsTotal, t.status]), [
+    ['2026-09-05', 0, null, STATUS.CLOSED],
+    ['2026-09-09', 8, 14, STATUS.OPEN],
+    ['2026-09-10', null, null, STATUS.OFF],
+    ['2026-09-11', 14, 14, STATUS.OPEN],
+  ]);
+  assert.equal(trips[0].seatsTotal, null, '마감된 날은 정원을 알 수 없습니다 — 지어내지 않습니다');
+});
+
 test('thefishing: 플랫폼 이름은 배로 등록하지 않는다', () => {
   const site = {
     id: 'ssfish', name: '무창포 선상낚시', excludeBoats: ['무창포 선상낚시'],

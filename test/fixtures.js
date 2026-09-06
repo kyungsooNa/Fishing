@@ -115,3 +115,140 @@ export const GENERIC_RESERVATION = `
     <td>2026-09-08</td><td>10물</td><td>은갈매기호</td><td>운항시간 06:30</td><td>광어</td><td>예약마감</td>
   </tr>
 </table>`;
+
+// 더피싱 v5.2 예약판의 진짜 마크업입니다(어울림호, node debug.js eoulim --dump).
+// 앞의 THEFISHING_DETAIL과 달리 라벨이 전부 이미지입니다 — 상태도, 입금자·대기자도,
+// 그리고 잔여석까지 `<img alt="남은자리 8명">` 하나에만 들어 있습니다.
+// 이걸 못 읽어서 9월 9일이 8자리인데 "2/2"로 나왔습니다.
+export const THEFISHING_DETAIL_IMG_SEATS = `
+<div id="new-div-20260905" class="new-divs">
+  <table class="r_mytable">
+    <tr class="jeil-panel">
+      <td colspan="2" height="44" style="padding-left:20px;">
+        <a name="20260905"></a>
+        <span style="font-weight:bold;">2026년 09월 05일</span>, 토요일, 무시      </td>
+      <td height="44"><p align="center"><a href="javascript:void(0);">▲<br>TOP</a></p></td>
+    </tr>
+    <tr><th>선박명</th><th>예 약 현 황</th><th>남은자리</th></tr>
+    <tr>
+      <td align="center"><span style="font-size:15px; font-weight:bold;">어울림호</span><div style="text-align:center;"></div></td>
+      <td>
+        <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+        <td valign="top"><img src="https://icon.myfishmap.kr/a.gif" alt="낚시종류"></td>
+        <td valign="top"><span style="color:#000000">주꾸미</span></td>
+        </tr>
+        <tr>
+        <td valign="top"><img src="https://icon.myfishmap.kr/b.gif" alt="입금자"></td>
+        <td valign="top">심*섭(6)</td>
+        </tr>
+        <tr>
+        <td valign="top"><img src="https://icon.myfishmap.kr/c.gif" alt="대기자"></td>
+        <td valign="top">송*이(5) / 박*수(1) / 오*석(3) / 홍*근(1)</td>
+        </tr>
+        </table>
+      </td>
+      <td align="center">
+        <div id="admin-right-20260905-3640-0"><img src="/_core/module/reservation_boat_v5.2_seat1/image/r_x_0.gif" border="0" alt="예약마감"></div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div id="new-div-20260909" class="new-divs">
+  <table class="r_mytable">
+    <tr class="jeil-panel">
+      <td colspan="2" height="44" style="padding-left:20px;">
+        <a name="20260909"></a>
+        <span style="font-weight:bold;">2026년 09월 09일</span>, 수요일, 4물      </td>
+      <td height="44"><p align="center"><a href="javascript:void(0);">▲<br>TOP</a></p></td>
+    </tr>
+    <tr><th>선박명</th><th>예 약 현 황</th><th>남은자리</th></tr>
+    <tr>
+      <td align="center">
+        <span style="font-size:15px; font-weight:bold;">어울림호</span>
+        <div style="text-align:center;"></div><div style="height:4px;"></div>
+        <a href="javascript:void(0);" onclick="f_popup('/_core/module/reservation_boat_v5.2_seat1/popup.step1.php?date=20260909&PA_N_UID=3640', 'bk', '1280', '1000');" class="btn_re vm mg0">예약하기</a>
+      </td>
+      <td>
+        <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+        <td valign="top"><img src="https://icon.myfishmap.kr/a.gif" alt="낚시종류"></td>
+        <td valign="top"><span style="color:#000000">주꾸미</span></td>
+        </tr>
+        <tr>
+        <td valign="top"><img src="https://icon.myfishmap.kr/b.gif" alt="입금자"></td>
+        <td valign="top">어*림(2) / 이*동(2) / 오*선(1)</td>
+        </tr>
+        <tr>
+        <td valign="top"><img src="https://icon.myfishmap.kr/d.gif" alt="입금대기"></td>
+        <td valign="top">이*태(1)</td>
+        </tr>
+        </table>
+      </td>
+      <td align="center">
+        <div id="admin-right-20260909-3640-0"><img src="/_core/module/reservation_boat_v5.2_seat1/image/r_x_8.gif" border="0" alt="남은자리 8명"></div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div id="new-div-20260910" class="new-divs">
+  <table class="r_mytable">
+    <tr class="jeil-panel">
+      <td colspan="2" height="44" style="padding-left:20px;">
+        <a name="20260910"></a>
+        <span style="font-weight:bold;">2026년 09월 10일</span>, 목요일, 5물      </td>
+      <td height="44"><p align="center"><a href="javascript:void(0);">▲<br>TOP</a></p></td>
+    </tr>
+    <tr><th>선박명</th><th>예 약 현 황</th><th>남은자리</th></tr>
+    <tr>
+      <td align="center"><span style="font-size:15px; font-weight:bold;">어울림호</span><div style="text-align:center;"></div></td>
+      <td>
+        <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+        <td valign="top"><img src="https://icon.myfishmap.kr/e.gif" alt="공지"></td>
+        <td valign="top"><span style="color:#F25A00;font-weight:bold;">개인사정으로 예약을 받지 않습니다.</span></td>
+        </tr>
+        <tr>
+        <td valign="top"><img src="https://icon.myfishmap.kr/a.gif" alt="낚시종류"></td>
+        <td valign="top"><span style="color:#000000">주꾸미</span></td>
+        </tr>
+        </table>
+      </td>
+      <td align="center">
+        <div id="admin-right-20260910-3640-0"><img src="/_core/module/reservation_boat_v5.2_seat1/image/icon_fix_9.gif" border="0" alt="개인사정"></div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div id="new-div-20260911" class="new-divs">
+  <table class="r_mytable">
+    <tr class="jeil-panel">
+      <td colspan="2" height="44" style="padding-left:20px;">
+        <a name="20260911"></a>
+        <span style="font-weight:bold;">2026년 09월 11일</span>, 금요일, 7물      </td>
+      <td height="44"><p align="center"><a href="javascript:void(0);">▲<br>TOP</a></p></td>
+    </tr>
+    <tr><th>선박명</th><th>예 약 현 황</th><th>남은자리</th></tr>
+    <tr>
+      <td align="center">
+        <span style="font-size:15px; font-weight:bold;">어울림호</span>
+        <div style="text-align:center;"></div><div style="height:4px;"></div>
+        <a href="javascript:void(0);" onclick="f_popup('/_core/module/reservation_boat_v5.2_seat1/popup.step1.php?date=20260911&PA_N_UID=3640', 'bk', '1280', '1000');" class="btn_re vm mg0">예약하기</a>
+      </td>
+      <td>
+        <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+        <td valign="top"><img src="https://icon.myfishmap.kr/a.gif" alt="낚시종류"></td>
+        <td valign="top"><span style="color:#000000">주꾸미</span></td>
+        </tr>
+        </table>
+      </td>
+      <td align="center">
+        <div id="admin-right-20260911-3640-0"><img src="/_core/module/reservation_boat_v5.2_seat1/image/r_x_14.gif" border="0" alt="남은자리 14명"></div>
+      </td>
+    </tr>
+  </table>
+</div>`;
