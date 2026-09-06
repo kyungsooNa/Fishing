@@ -79,6 +79,34 @@ test('죽은 사이트는 직전 결과를 그대로 남긴다', async () => {
   assert.equal(data.sites.broken.keptFrom, '2026-09-01T00:00:00.000Z', '언제 것을 남겼는지 알 수 있어야 한다');
 });
 
+test('죽은 사이트의 보존 행도 현재 스키마로 다시 정규화한다', async () => {
+  const 예전것 = {
+    generatedAt: '2026-09-01T00:00:00.000Z',
+    sites: { broken: { ok: true, at: '2026-09-01T00:00:00.000Z', count: 1 } },
+    trips: [{
+      siteId: 'broken',
+      siteName: '깨진곳',
+      boat: '피싱마린호',
+      date: '2026-09-07',
+      species: '쭈꾸미',
+      status: 'off',
+      statusText: '쭈꾸미 출조 << 정상출조 >> 04시30분까지 매장에 도착해주세요.',
+      seatsLeft: 12,
+    }],
+  };
+  const { registryPath, dataPath } = await fixture([brokenSite], 예전것);
+  const { data } = await runAll({
+    registryPath,
+    dataPath,
+    days: 21,
+    now: new Date('2026-09-07T00:00:00+09:00'),
+  });
+
+  assert.equal(data.trips.length, 1);
+  assert.equal(data.trips[0].species, '주꾸미');
+  assert.equal(data.trips[0].status, 'open');
+});
+
 test('수집 결과를 파일로 남긴다', async () => {
   const { registryPath, dataPath } = await fixture([mockSite]);
   await runAll({ registryPath, dataPath, days: 21 });

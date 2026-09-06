@@ -8,6 +8,7 @@ import { loadPorts, usedPorts } from './ports.js';
 import { closeBrowser, describeError, gapKey } from './fetcher.js';
 import { load, save } from './store.js';
 import { findOpenings } from './diff.js';
+import { makeTrip, STATUS } from './schema.js';
 
 export const REGISTRY_PATH = 'sites/registry.json';
 
@@ -72,7 +73,7 @@ export async function runAll({ only = null, days = 21, registryPath, dataPath, p
       console.log(`  ${site.id.padEnd(14)} ${String(trips.length).padStart(4)}건`);
     } catch (err) {
       failed.add(site.id);
-      const kept = prevBySite.get(site.id) ?? [];
+      const kept = (prevBySite.get(site.id) ?? []).map((t) => refreshKeptTrip(site, t));
       tripsById.set(site.id, kept);
       statusById.set(site.id, {
         ok: false,
@@ -127,6 +128,30 @@ export function pruneOld(trips, days, now = new Date()) {
     t.date <= to &&
     !(t.date === from && t.departAt && toMinutes(t.departAt) <= minutes),
   );
+}
+
+
+function refreshKeptTrip(site, t) {
+  const refreshed = makeTrip(site, {
+    boat: t.boat,
+    date: t.date,
+    departAt: t.departAt,
+    returnAt: t.returnAt,
+    species: t.species,
+    tide: t.tide,
+    status: t.statusText ?? t.status,
+    seatsLeft: t.seatsLeft,
+    seatsTotal: t.seatsTotal,
+    price: t.price,
+    url: t.url,
+  });
+
+  return {
+    ...t,
+    ...refreshed,
+    status: refreshed.status === STATUS.UNKNOWN && t.status ? t.status : refreshed.status,
+    statusText: refreshed.statusText ?? t.statusText ?? null,
+  };
 }
 
 function toMinutes(value) {
