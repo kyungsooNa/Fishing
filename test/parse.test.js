@@ -246,6 +246,9 @@ test('thefishing: detail — 잔여석이 이미지 alt에만 있어도 읽는�
     ['2026-09-11', 14, 14, STATUS.OPEN],
   ]);
   assert.equal(trips[0].seatsTotal, null, '마감된 날은 정원을 알 수 없습니다 — 지어내지 않습니다');
+
+  // 물때는 날짜 뒤에 ", 수요일, 4물"처럼 요소 없이 붙어 있습니다. 잎 노드만 보면 사라집니다.
+  assert.deepEqual(trips.map((t) => t.tide), ['무시', '4물', '5물', '7물']);
 });
 
 test('thefishing: 플랫폼 이름은 배로 등록하지 않는다', () => {
