@@ -26,6 +26,9 @@ test('schema: 표기 정규화', () => {
   assert.equal(toStatus('남은자리 5명', 5), STATUS.OPEN);
   assert.equal(toStatus('남은자리 1명', 1), STATUS.FEW);
   assert.equal(toStatus('휴항', 9), STATUS.OFF, '휴항은 잔여석보다 우선');
+  assert.equal(toStatus('쭈꾸미 출조 정상출조 예약하기', 12), STATUS.OPEN, '쭈꾸미출조의 "미출조" 글자 조각을 휴항으로 읽지 않습니다');
+  assert.equal(toStatus('미출조', 12), STATUS.OFF);
+  assert.equal(toStatus('오늘 미출조 합니다'), STATUS.OFF);
   assert.equal(toDate('9월 5일', new Date('2026-09-01')), '2026-09-05');
   assert.equal(toTime('오후 1시 출항'), '13:00');
   assert.equal(parseSeats('남은자리 3명'), 3);
@@ -447,6 +450,25 @@ test('merge: 같은 사이트에서 두 번 들어온 출조는 정보가 많은
   ]);
   assert.equal(out.length, 1);
   assert.equal(out[0].seatsLeft, 3);
+});
+
+test('merge: 같은 사이트의 시간 없는 그림자 행은 시간 있는 행에 접는다', () => {
+  const out = mergeDuplicates([
+    trip({ boat: '돌핀호', departAt: '05:30', seatsLeft: 0, seatsTotal: 4, species: '주꾸미', statusText: '5:30 출항 예약완료' }),
+    trip({ boat: '돌핀호', departAt: null, seatsLeft: 4, seatsTotal: 4, species: '주꾸미', statusText: '예약하기 4명' }),
+  ]);
+  assert.equal(out.length, 1);
+  assert.equal(out[0].departAt, '05:30', '알려진 출항시간은 보존합니다');
+  assert.equal(out[0].seatsLeft, 4, '좌석은 더 유리한 쪽을 보존합니다');
+  assert.equal(out[0].status, STATUS.OPEN);
+});
+
+test('merge: 같은 배라도 시간이 둘 다 있으면 다른 항차로 둔다', () => {
+  const out = mergeDuplicates([
+    trip({ departAt: '05:30', returnAt: '11:30', species: '주꾸미' }),
+    trip({ departAt: '13:00', returnAt: '17:00', species: '주꾸미' }),
+  ]);
+  assert.equal(out.length, 2);
 });
 
 test('diff: 본체 사이트가 바뀌어도 알림이 끊기지 않는다', () => {

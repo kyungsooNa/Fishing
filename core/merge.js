@@ -21,7 +21,42 @@ function dedupeSameSite(trips) {
     const cur = byKey.get(k);
     if (!cur || score(t) > score(cur)) byKey.set(k, t);
   }
-  return [...byKey.values()];
+  const exact = [...byKey.values()];
+  const byLooseKey = new Map();
+  const out = [];
+
+  for (const t of exact) {
+    const k = sameSiteLooseKey(t);
+    if (!byLooseKey.has(k)) byLooseKey.set(k, []);
+    byLooseKey.get(k).push(t);
+  }
+
+  for (const group of byLooseKey.values()) {
+    const hasKnownTime = group.some((t) => t.departAt);
+    const hasMissingTime = group.some((t) => !t.departAt);
+    if (hasKnownTime && hasMissingTime) out.push(mergeSameSiteGroup(group));
+    else out.push(...group);
+  }
+  return out;
+}
+
+function sameSiteLooseKey(t) {
+  return [t.siteId, t.boat ?? '', t.date ?? '', t.species ?? '', t.returnAt ?? ''].join('|');
+}
+
+function mergeSameSiteGroup(group) {
+  const primary = [...group].sort((a, b) => score(b) - score(a))[0];
+  const timed = group.find((t) => t.departAt);
+  const seats = group.map((t) => t.seatsLeft).filter(Number.isFinite);
+  const seatsLeft = seats.length ? Math.max(...seats) : null;
+
+  return {
+    ...primary,
+    departAt: primary.departAt ?? timed?.departAt ?? null,
+    returnAt: primary.returnAt ?? timed?.returnAt ?? null,
+    seatsLeft,
+    status: toStatus(primary.statusText, seatsLeft),
+  };
 }
 
 function mergeAcrossSites(trips) {

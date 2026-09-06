@@ -11,7 +11,8 @@ export const STATUS = {
   UNKNOWN: 'unknown',
 };
 
-const OFF_WORDS = ['휴항', '결항', '출조취소', '취소됨', '기상악화', '운휴', '미출조', '개인사정'];
+const OFF_WORDS = ['휴항', '결항', '출조취소', '취소됨', '기상악화', '운휴', '개인사정'];
+const OFF_PATTERNS = [/(?<!꾸)미출조/];
 const CLOSED_WORDS = ['마감', '만석', '완료', '매진', '예약불가', '불가', '종료'];
 const OPEN_WORDS = ['예약가능', '가능', '접수중', '모집', '여유', '○', 'ㅇ', 'O'];
 
@@ -20,7 +21,7 @@ export function toStatus(rawText, seatsLeft) {
   const t = String(rawText ?? '').replace(/\s+/g, '');
 
   // 휴항은 잔여석 숫자보다 우선합니다. 자리가 남아도 배가 안 뜹니다.
-  if (OFF_WORDS.some((w) => t.includes(w))) return STATUS.OFF;
+  if (OFF_WORDS.some((w) => t.includes(w)) || OFF_PATTERNS.some((p) => p.test(t))) return STATUS.OFF;
 
   if (Number.isFinite(seatsLeft)) {
     if (seatsLeft <= 0) return STATUS.CLOSED;
