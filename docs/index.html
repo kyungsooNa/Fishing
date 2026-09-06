@@ -232,7 +232,7 @@ const seatsLabel = (t) => {
 };
 
 // 04:00 출항해서 17:00 들어오면 "04:00~17:00". 끝 시각을 모르면 시작만.
-const runLabel = (t) => (t.departAt ? (t.returnAt ? `${t.departAt}~${t.returnAt}` : t.departAt) : '');
+const runLabel = (t) => (t.departAt ? (t.returnAt ? `${t.departAt}~${t.returnAt}` : t.departAt) : '선사 확인');
 
 // "종일 13시간" — 몇 시간짜리인지가 오전배냐 종일배냐만큼 중요합니다.
 function sessionLabel(t) {
@@ -373,6 +373,15 @@ function render() {
         });
       } else {
         td.textContent = v;
+      }
+      if (i === 1) {
+        if (!t.departAt) td.title = '예약 페이지에 출항 시각이 없습니다. 선사에 확인해 주세요.';
+        if (t.timeSource === 'notice') {
+          const note = document.createElement('small');
+          note.className = 'freshness'; note.textContent = '선사 공지 기준';
+          td.append(note);
+          td.title = '개별 예약표 대신 선사가 공지한 해당 시즌 출항 시각입니다.';
+        }
       }
       if (i >= 9) td.className = 'num';
       if (i === 9) {

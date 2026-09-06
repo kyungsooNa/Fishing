@@ -77,16 +77,20 @@ function ymd(y, m, d) {
 export function toTime(raw) {
   if (!raw) return null;
   const t = String(raw);
-  let m = t.match(/(\d{1,2})\s*[:시]\s*(\d{1,2})?/);
-  if (!m) return null;
-  let h = Number(m[1]);
-  const min = Number(m[2] ?? 0);
-  if (/오후|PM/i.test(t) && h < 12) h += 12;
-  if (/오전|AM/i.test(t) && h === 12) h = 0;
-  if (!(h >= 0 && h <= 23) || !(min >= 0 && min <= 59)) return null;
-  return `${String(h).padStart(2, '0')}:${String(min).padStart(2, '0')}`;
+  for (const token of t.matchAll(new RegExp(TIME_TOKEN, 'gi'))) {
+    const m = token[0].match(/(\d{1,2})\s*[:시]\s*(\d{1,2})?/);
+    let h = Number(m[1]);
+    const min = Number(m[2] ?? 0);
+    if (/오후|저녁|밤|PM/i.test(token[0]) && h < 12) h += 12;
+    if (/오전|새벽|아침|밤|AM/i.test(token[0]) && h === 12) h = 0;
+    if (!(h >= 0 && h <= 23) || !(min >= 0 && min <= 59)) continue;
+    return `${String(h).padStart(2, '0')}:${String(min).padStart(2, '0')}`;
+  }
+  return null;
 }
 
+// "24시간 이내 입금", "26시즌"의 숫자는 시각이 아닙니다.
+const TIME_TOKEN = '(?<!\\d)(?:(?:오전|오후|새벽|아침|저녁|밤|AM|PM)\\s*)?\\d{1,2}\\s*(?::\\s*\\d{2}|시(?!간|즌|흥)(?:\\s*\\d{1,2}\\s*분?)?)(?:\\s*분)?';
 
 /**
  * "운항시간 : 04:00 ~ 17:00" 처럼 범위로 적힌 시각을 시작·끝으로 나눕니다.
@@ -94,9 +98,28 @@ export function toTime(raw) {
  */
 export function toTimeRange(raw) {
   const text = String(raw ?? '');
-  const m = text.match(/(\d{1,2}\s*[:시]\s*\d{0,2})\s*[~\-–—]\s*(\d{1,2}\s*[:시]\s*\d{0,2})/);
+  const m = text.match(new RegExp(`(${TIME_TOKEN})\\s*[~～∼\\-–—]\\s*(${TIME_TOKEN})`, 'i'));
   if (m) return { from: toTime(m[1]), to: toTime(m[2]) };
   return { from: toTime(text), to: null };
+}
+
+/** 예약 안내의 버스·입금·일몰 시각을 배의 출항으로 쓰지 않습니다. */
+export function tripTimeRange(raw) {
+  const text = String(raw ?? '').replace(/\s+/g, ' ');
+  const timeAfter = (label) => text.match(new RegExp(`(?:${label})\\s*[:：]?\\s*(${TIME_TOKEN})`, 'i'))?.[1];
+  const from = timeAfter('출항(?:\\s*시간)?|정상출조|출조\\s*시간') ??
+    text.match(new RegExp(`(${TIME_TOKEN})\\s*(?:에\\s*)?출항`, 'i'))?.[1];
+  const to = timeAfter('입항(?:\\s*시간)?|귀항(?:\\s*시간)?') ??
+    text.match(new RegExp(`(${TIME_TOKEN})\\s*(?:에\\s*)?(?:입항|귀항)`, 'i'))?.[1];
+  if (from || to) return { from: toTime(from), to: toTime(to) };
+  const operating = text.match(/운항\s*시간\s*[:：]?\s*(.*)/)?.[1];
+  if (operating) return toTimeRange(operating.slice(0, 55));
+  for (const line of String(raw ?? '').split(/\n/)) {
+    if (/버스|셔틀|집결|도착|입금|예약|문의|일출|일몰|만조|간조/.test(line)) continue;
+    const range = toTimeRange(line);
+    if (range.to || new RegExp(`^\\s*${TIME_TOKEN}\\s*$`, 'i').test(line)) return range;
+  }
+  return { from: null, to: null };
 }
 
 const HHMM = (t) => {
@@ -246,11 +269,15 @@ export function makeTrip(site, fields) {
 
   const resolvedDate = date ?? toDate(rawDate);
   const range = toTimeRange(rawTime ?? '');
-  const depart = departAt ?? range.from;
+  const boatName = boat ? String(boat).trim() : null;
+  const guide = site.boats?.[boatName]?.timeGuide ?? site.timeGuide;
+  const guideApplies = guide?.validFrom && guide?.validThrough && resolvedDate >= guide.validFrom &&
+    resolvedDate <= guide.validThrough && guide.species?.includes(species);
+  const fromGuide = !departAt && !range.from && guideApplies ? toTime(guide.departAt) : null;
+  const depart = departAt ?? range.from ?? fromGuide;
   const back = returnAt ?? range.to;
   const { session, hours } = sessionOf(depart, back);
   const seats = Number.isFinite(seatsLeft) ? seatsLeft : parseSeats(rawStatus);
-  const boatName = boat ? String(boat).trim() : null;
 
   return {
     siteId: site.id,
@@ -260,6 +287,7 @@ export function makeTrip(site, fields) {
     phone: pickPhone(site, boatName),
     date: resolvedDate,
     departAt: depart,
+    ...(fromGuide ? { timeSource: 'notice', timeSourceUrl: guide.source } : {}),
     returnAt: back,
     session,
     hours,
