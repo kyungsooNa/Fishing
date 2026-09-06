@@ -363,6 +363,14 @@
       "source": "detail",
       "windowDays": 7,
       "seatCount": "people",
+      "timeGuide": {
+        "departAt": "05:00",
+        "species": ["주꾸미", "쭈꾸미", "갑오징어", "주꾸미·갑오징어", "쭈갑", "쭈/갑", "쭈,갑", "쭈꾸미 갑오징어"],
+        "validFrom": "2026-01-01",
+        "validThrough": "2026-12-31",
+        "source": "http://chungkwangho.net/",
+        "note": "2026-09-06 홈페이지 출조안내에서 확인: 5시출항 합니다. 예약표의 개별 시각이 있으면 그 값을 우선합니다."
+      },
       "enabled": true,
       "note": "청광호 예약현황 페이지. 사이트 하단 안내의 출조항·대표전화 기준으로 등록했습니다."
     },
