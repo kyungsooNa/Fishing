@@ -12,7 +12,7 @@ import { parseMonth as parseUijihoMonth } from '../adapters/uijiho.js';
 import { findOpenings } from '../core/diff.js';
 import { mergeDuplicates } from '../core/merge.js';
 import { kstDate } from '../core/when.js';
-import { toStatus, toDate, toTime, toTimeRange, sessionOf, parseSeats, pickPrice, toSpecies, STATUS } from '../core/schema.js';
+import { toStatus, toDate, toTime, toTimeRange, sessionOf, parseSeats, pickPrice, toSpecies, toTide, STATUS } from '../core/schema.js';
 import * as fx from './fixtures.js';
 
 const sunsangSite = {
@@ -36,6 +36,17 @@ test('schema: 승선료는 배별 → 사이트 공통 순으로 고른다', () 
   assert.equal(pickPrice(sunsangSite, '악바리호', '주꾸미'), 100000);
   assert.equal(pickPrice(sunsangSite, '악바리호', '광어'), null);
   assert.equal(pickPrice({ ...sunsangSite, price: 80000 }, '맥가이버호', '광어'), 80000);
+});
+
+test('schema: 물때는 물도 객기도 읽는다', () => {
+  assert.equal(toTide('2026년 09월 16일, 수요일, 한객기'), '한객기', '서해 쪽은 물 대신 객기로 셉니다');
+  assert.equal(toTide('일요일, 대객기'), '대객기');
+  assert.equal(toTide('수요일, 4물'), '4물');
+  assert.equal(toTide('토요일, 무시'), '무시');
+  assert.equal(toTide('조금'), '조금');
+  assert.equal(toTide('사리'), '사리');
+  assert.equal(toTide('출항시간 05:30'), null, '없는 걸 지어내지 않습니다');
+  assert.equal(toTide(null), null);
 });
 
 test('schema: 어종 표기를 하나로 모은다', () => {

@@ -149,10 +149,14 @@ export function sessionOf(departAt, returnAt) {
   return { session: start < 12 * 60 ? '오전' : '오후', hours };
 }
 
-/** 물때 표기(12물, 조금, 무시)를 그대로 살려 뽑습니다. */
+/**
+ * 물때 표기(12물, 조금, 무시)를 그대로 살려 뽑습니다.
+ * 서해 쪽은 "한객기·대객기"처럼 물 대신 객기로 세는 곳이 있습니다. 이걸 빼먹어서
+ * 293건이 물때 없이 올라오고 있었습니다(수집 데이터에서 셌습니다).
+ */
 export function toTide(raw) {
   if (!raw) return null;
-  const m = String(raw).match(/(\d{1,2}\s*물|조금|무시|사리)/);
+  const m = String(raw).match(/(\d{1,2}\s*물|[가-힣]{0,2}객기|조금|무시|사리)/);
   return m ? m[1].replace(/\s+/g, '') : null;
 }
 
