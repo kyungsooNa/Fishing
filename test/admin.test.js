@@ -327,3 +327,27 @@ test('앱 재실행: restartable이면 종료 코드 75로 내려간다', async 
     exitProcess: (code) => { exitCode = code; },
   });
 });
+
+test('관리 화면: 항구·전화가 빠진 곳만 추릴 수 있다', async () => {
+  const html = await readFile('docs/admin.html', 'utf8');
+  assert.ok(html.includes('id="missing"'), '빠진 값 필터가 없습니다');
+  assert.match(html, /<option value="port">항구 없음<\/option>/);
+
+  const inline = html.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
+  const start = inline.indexOf('// 항구는 사이트에 하나로');
+  const end = inline.indexOf('function addedTag');
+  assert.ok(start >= 0 && end > start, 'visibleSites 부분을 찾지 못했습니다');
+
+  // SITES·FILTER·MISSING만 있으면 도는 부분이라 떼어내 실제로 돌려봅니다.
+  const pick = (sites, missing) => new Function('SITES', 'FILTER', 'MISSING',
+    `${inline.slice(start, end)}\nreturn visibleSites();`)(sites, 'all', missing);
+  const sites = [
+    { id: 'a', port: '충남 보령 대천항' },
+    { id: 'b' },
+    { id: 'c', boats: { '한바다호': { port: '인천 옹진 영흥도' } } },
+    { id: 'd', phone: '010-0000-0000' },
+  ];
+  assert.deepEqual(pick(sites, 'port').map((s) => s.id), ['b', 'd'], '배별로 적어둔 항구도 항구입니다');
+  assert.deepEqual(pick(sites, 'phone').map((s) => s.id), ['a', 'b', 'c']);
+  assert.deepEqual(pick(sites, 'all').map((s) => s.id), ['a', 'b', 'c', 'd']);
+});
