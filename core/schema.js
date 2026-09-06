@@ -274,9 +274,11 @@ export function makeTrip(site, fields) {
   const resolvedDate = date ?? toDate(rawDate);
   const range = toTimeRange(rawTime ?? '');
   const boatName = boat ? String(boat).trim() : null;
+  const normalizedSpecies = toSpecies(species);
   const guide = site.boats?.[boatName]?.timeGuide ?? site.timeGuide;
+  const guideSpecies = guide?.species?.map(toSpecies).filter(Boolean) ?? [];
   const guideApplies = guide?.validFrom && guide?.validThrough && resolvedDate >= guide.validFrom &&
-    resolvedDate <= guide.validThrough && guide.species?.includes(species);
+    resolvedDate <= guide.validThrough && guideSpecies.includes(normalizedSpecies);
   const fromGuide = !departAt && !range.from && guideApplies ? toTime(guide.departAt) : null;
   const depart = departAt ?? range.from ?? fromGuide;
   const back = returnAt ?? range.to;
@@ -295,7 +297,7 @@ export function makeTrip(site, fields) {
     returnAt: back,
     session,
     hours,
-    species: toSpecies(species),
+    species: normalizedSpecies,
     tide: tide ?? toTide(rawTide),
     status: toStatus(rawStatus, seats),
     statusText: rawStatus ? String(rawStatus).replace(/\s+/g, ' ').trim() : null,

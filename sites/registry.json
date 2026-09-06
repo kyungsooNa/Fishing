@@ -365,7 +365,7 @@
       "seatCount": "people",
       "timeGuide": {
         "departAt": "05:00",
-        "species": ["주꾸미", "쭈꾸미", "갑오징어", "주꾸미·갑오징어", "쭈갑", "쭈/갑", "쭈,갑", "쭈꾸미 갑오징어"],
+        "species": ["주꾸미", "갑오징어", "주꾸미·갑오징어"],
         "validFrom": "2026-01-01",
         "validThrough": "2026-12-31",
         "source": "http://chungkwangho.net/",
@@ -384,7 +384,7 @@
       "windowDays": 7,
       "timeGuide": {
         "departAt": "05:30",
-        "species": ["주꾸미", "쭈꾸미", "갑오징어", "주꾸미·갑오징어", "쭈갑", "쭈/갑", "쭈,갑", "쭈꾸미 갑오징어"],
+        "species": ["주꾸미", "갑오징어", "주꾸미·갑오징어"],
         "validFrom": "2026-01-01",
         "validThrough": "2026-12-31",
         "source": "http://www.chungnamho.com/",

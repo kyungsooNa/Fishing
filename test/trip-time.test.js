@@ -74,6 +74,10 @@ test('선사 공지 보완은 유효기간·어종을 지키고 개별 예약 �
   const t = makeTrip(guideSite, fields);
   assert.equal(t.departAt, '05:30');
   assert.equal(t.timeSource, 'notice');
+  const aliasGuideSite = { ...site, timeGuide: { ...guideSite.timeGuide, species: ['주꾸미·갑오징어'] } };
+  const alias = makeTrip(aliasGuideSite, { ...fields, species: '쭈갑' });
+  assert.equal(alias.departAt, '05:30');
+  assert.equal(alias.species, '주꾸미·갑오징어');
   assert.equal(makeTrip(guideSite, { ...fields, date: '2027-01-01' }).departAt, null);
   assert.equal(makeTrip(guideSite, { ...fields, species: '우럭' }).departAt, null);
   const individual = makeTrip(guideSite, { ...fields, rawTime: '06:00~16:00' });
