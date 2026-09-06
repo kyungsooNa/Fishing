@@ -37,7 +37,7 @@ async function collectByMonth(site) {
   }
 
   if (!trips.length) throw new Error('출조 행을 못 찾았습니다 — 레이아웃이 바뀌었는지 확인하세요 (--dump)');
-  return trips;
+  return fillMissingSeatTotals(trips);
 }
 
 /**
@@ -86,7 +86,7 @@ async function collectByDay(site) {
   }
 
   if (!trips.length) throw new Error('출조 행을 못 찾았습니다 — waitFor/dayPath를 확인하세요 (--dump)');
-  return trips;
+  return fillMissingSeatTotals(trips);
 }
 
 // ── 잡동사니 ────────────────────────────────────────────────────────────────
@@ -203,12 +203,13 @@ export function parseSimpleDay(site, html, url) {
     });
   });
 
-  return trips.length ? trips : parseRows(site, html, url);
+  return fillMissingSeatTotals(trips.length ? trips : parseRows(site, html, url));
 }
 
 // 출조 한 덩어리인지. 배 이름만 있는 껍데기를 걸러냅니다.
-const SEATS = /(\d{1,3})\s*명\s*예약\s*\/\s*(\d{1,3})\s*명/;
-const isUnit = (text) => text.includes('운항시간') || SEATS.test(text);
+const BOOKED_TOTAL = /(\d{1,3})\s*명\s*예약\s*\/\s*(\d{1,3})\s*명/;
+const LEFT_BOOKED = /남은자리\s*(\d{1,3})\s*명\s*예약\s*\/\s*(\d{1,3})\s*명/;
+const isUnit = (text) => text.includes('운항시간') || BOOKED_TOTAL.test(text) || LEFT_BOOKED.test(text);
 
 /**
  * 공지사항을 판정에서 뺍니다.
@@ -246,30 +247,49 @@ function dateOf($day) {
 }
 
 /**
- * 좌석 표기는 남은 수가 아니라 "찬 수 / 정원"입니다.
- *   "예약마감 21명 예약/21명"  → 0
- *   "5명 예약/20명"            → 15
- * 이걸 그냥 숫자로 읽으면 만석을 21자리 남은 것으로 착각합니다.
+ * 좌석 표기는 레이아웃마다 뜻이 다릅니다.
+ *   "예약마감 21명 예약/21명"       → 찬 수 / 정원 = 0/21
+ *   "5명 예약/20명"                 → 찬 수 / 정원 = 15/20
+ *   "남은자리 1명 예약/14명"        → 잔여 / 예약 인원 = 1/15
+ * 이걸 한 가지 뜻으로만 읽으면 잔여/전체가 뒤집힙니다.
  */
 export function pickSeats(text) {
-  const m = text.match(SEATS);
-  if (m) {
-    const [, taken, total] = m.map(Number);
-    return Math.max(0, total - taken);
-  }
-  const left = text.match(/남은자리\D{0,4}(\d{1,3})/);
-  if (left) return Number(left[1]);
-  if (/예약마감|마감|만석/.test(text)) return 0;
-  return null;
+  return pickSeatInfo(text).left;
 }
 
 function pickSeatInfo(text) {
-  const m = text.match(SEATS);
-  if (m) {
-    const [, taken, total] = m.map(Number);
+  const leftBooked = text.match(LEFT_BOOKED);
+  if (leftBooked) {
+    const left = Number(leftBooked[1]);
+    const booked = Number(leftBooked[2]);
+    return { left, total: left + booked };
+  }
+
+  const bookedTotal = text.match(BOOKED_TOTAL);
+  if (bookedTotal) {
+    const taken = Number(bookedTotal[1]);
+    const total = Number(bookedTotal[2]);
     return { left: Math.max(0, total - taken), total };
   }
-  return { left: pickSeats(text), total: null };
+
+  const left = text.match(/남은자리\D{0,4}(\d{1,3})/);
+  if (left) return { left: Number(left[1]), total: null };
+  if (/예약마감|마감|만석/.test(text)) return { left: 0, total: null };
+  return { left: null, total: null };
+}
+
+function fillMissingSeatTotals(trips) {
+  const totals = new Map();
+  for (const t of trips) {
+    if (!Number.isFinite(t.seatsTotal)) continue;
+    const key = `${t.siteId}|${t.boat ?? ''}`;
+    totals.set(key, Math.max(totals.get(key) ?? 0, t.seatsTotal));
+  }
+  return trips.map((t) => {
+    if (Number.isFinite(t.seatsTotal) || !Number.isFinite(t.seatsLeft)) return t;
+    const total = totals.get(`${t.siteId}|${t.boat ?? ''}`);
+    return Number.isFinite(total) && total >= t.seatsLeft ? { ...t, seatsTotal: total } : t;
+  });
 }
 
 function pickSpecies(text) {
