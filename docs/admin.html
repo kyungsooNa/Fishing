@@ -28,6 +28,8 @@
             background: var(--card); font-size: 13px; margin-bottom: 14px; }
   .banner.warn { border-color: var(--few); color: var(--few); }
   .actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 14px; }
+  .favio { width: 100%; margin-bottom: 6px; padding: 8px; border: 1px solid var(--line); border-radius: 7px;
+           background: var(--card); color: var(--fg); font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; }
   button { padding: 7px 14px; border: 1px solid var(--line); border-radius: 7px;
            background: var(--card); color: var(--fg); font: inherit; font-size: 14px; cursor: pointer; }
   button:disabled { color: var(--muted); cursor: not-allowed; }
@@ -148,7 +150,12 @@
   </div>
   <div class="actions" style="margin-top: 10px;">
     <button id="favclear" class="danger">전체 비우기</button>
+    <button id="favexport">내보내기</button>
+    <button id="favimport">가져오기</button>
   </div>
+  <!-- 즐겨찾기는 이 브라우저에만 남습니다. 기기를 옮기는 길이 이 칸입니다. -->
+  <textarea id="favtext" class="favio" rows="3" hidden placeholder='["배이름|항구", …]'></textarea>
+  <div class="sub" id="favio"></div>
 
   <div class="log" id="log"></div>
 </div>
@@ -447,6 +454,20 @@ function saveFavs(list) {
   try { localStorage.setItem(FAV_KEY, JSON.stringify(list)); return true; } catch { return false; }
 }
 
+// ── 즐겨찾기 옮기기 ────────────────────────────────────────────────────────
+// 서버가 없어서 즐겨찾기는 브라우저에만 남습니다. 폰과 PC, Pages와 로컬 서버가
+// 각각 다른 저장소라 서로 안 보입니다. 글자로 뽑아 옮기는 게 유일한 길입니다.
+// 붙여넣은 것은 덮어쓰지 않고 합칩니다 — 양쪽에서 담아둔 걸 잃으면 안 됩니다.
+function parseFavs(text) {
+  let data;
+  try { data = JSON.parse(text); } catch { return null; }
+  if (!Array.isArray(data)) return null;
+  // 키는 "배이름|항구" 꼴입니다. 그게 아닌 것은 버립니다.
+  const keys = [...new Set(data.filter((k) => typeof k === 'string' && k.includes('|')))];
+  return keys.length ? keys : null;
+}
+// ── 즐겨찾기 옮기기 끝 ── (test/admin.test.js가 여기까지를 떼어내 돌려봅니다)
+
 function renderFavs(trips) {
   const favs = loadFavs();
   const live = new Set(trips.map(favKey));
@@ -492,6 +513,40 @@ function renderFavs(trips) {
     tr.append(tdBoat, tdPort, tdState, tdDel);
     box.append(tr);
   }
+
+  $('favexport').onclick = () => {
+    const list = loadFavs();
+    const box = $('favtext');
+    box.hidden = false;
+    box.value = JSON.stringify(list);
+    box.focus();
+    box.select();
+    $('favio').textContent = list.length
+      ? `${list.length}개를 적었습니다. 복사해서 다른 브라우저의 이 칸에 붙여넣고 [가져오기]를 누르세요.`
+      : '즐겨찾기가 비어 있습니다.';
+  };
+
+  $('favimport').onclick = () => {
+    const box = $('favtext');
+    if (box.hidden || !box.value.trim()) {
+      box.hidden = false;
+      box.focus();
+      $('favio').textContent = '내보내기로 나온 글자를 이 칸에 붙여넣고 다시 누르세요.';
+      return;
+    }
+    const keys = parseFavs(box.value);
+    if (!keys) {
+      $('favio').textContent = '읽을 수 없습니다 — 내보내기로 나온 글자를 통째로 붙여넣으세요.';
+      return;
+    }
+    const before = loadFavs();
+    const merged = [...new Set([...before, ...keys])];
+    if (!saveFavs(merged)) return toast('브라우저가 저장을 막고 있습니다');
+    const added = merged.length - before.length;
+    renderFavs(trips);
+    $('favio').textContent =
+      `${added}개를 새로 담았습니다 (이미 있던 것 ${keys.length - added}개) · 전체 ${merged.length}개.`;
+  };
 
   $('favclear').onclick = () => {
     if (!confirm(`즐겨찾기 ${loadFavs().length}개를 전부 지웁니다. 계속할까요?`)) return;
