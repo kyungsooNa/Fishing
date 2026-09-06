@@ -4,7 +4,7 @@
 // 템플릿이 개편돼도 표기가 남아있는 한 버팁니다.
 
 import * as cheerio from 'cheerio';
-import { makeTrip, toDate, toTide, parseSeats } from '../core/schema.js';
+import { makeTrip, toDate, toTide, parseSeats, tripTimeRange } from '../core/schema.js';
 
 export const SPECIES = [
   '주꾸미', '쭈꾸미', '갑오징어', '한치', '문어', '광어', '우럭', '참돔', '감성돔', '돌돔',
@@ -45,12 +45,14 @@ export function parseRows(site, html, url) {
 
     const boat = pickBoat(site, cells, text);
     const seatsLeft = /예약마감|마감|만석/.test(text) ? 0 : parseSeats(text);
+    const time = tripTimeRange(text);
 
     trips.push(
       makeTrip(site, {
         boat,
         date,
-        rawTime: after(text, '운항시간') ?? text,
+        departAt: time.from,
+        returnAt: time.to,
         species: SPECIES.find((s) => text.includes(s)) ?? null,
         tide: toTide(text),
         status: text,
@@ -90,11 +92,6 @@ function pickBoat(site, cells, text) {
   if (hit) return hit;
   // registry에 안 적힌 배는 "○○호" 표기를 그대로 씁니다. 한 사이트에 배가 여럿이어도 잡힙니다.
   return matchBoatName(`${cells.join(' ')} ${text}`) ?? site.name ?? null;
-}
-
-function after(text, marker) {
-  const i = text.indexOf(marker);
-  return i < 0 ? null : text.slice(i + marker.length, i + marker.length + 20);
 }
 
 export const squash = (s) => String(s ?? '').replace(/\s+/g, ' ').trim();

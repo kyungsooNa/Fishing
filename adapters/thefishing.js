@@ -10,7 +10,7 @@
 
 import * as cheerio from 'cheerio';
 import { fetchHtml } from '../core/fetcher.js';
-import { makeTrip, toDate, toTime, toTide } from '../core/schema.js';
+import { makeTrip, toDate, tripTimeRange, toTide } from '../core/schema.js';
 import { matchBoatName } from './_rows.js';
 
 const SPECIES = [
@@ -125,23 +125,25 @@ export function parseDetail(site, html, url) {
   // 날짜 머리글로 페이지를 하루씩 끊습니다. 오전배·오후배는 별개 출조로 잡힙니다.
   for (const block of splitByDate($)) {
     const { date, text } = block;
-    if (!date || !/남은자리|잔여|여석|입금|예약확정/.test(text)) continue;
+    if (!date || !/남은자리|잔여|여석|입금|예약확정|휴항|결항|출조취소|개인사정/.test(text)) continue;
 
     const mode = site.seatCount ?? seatMode(text);
     const filled = countTakenSeats(text, mode);
     const explicit = detailSeats(text);
     const seatsTotal = site.seatsTotal ?? guessTotal(text, mode, explicit, filled, site.seatCount);
-    const boat = pickBoat(site, text);
+    const boat = pickBoat(site, block.boat ?? text);
     if (site.excludeBoats?.includes(boat)) continue;
 
     let seatsLeft = explicit;
     if (seatsLeft === null && Number.isFinite(seatsTotal)) seatsLeft = Math.max(0, seatsTotal - filled);
+    const time = tripTimeRange(text);
 
     trips.push(
       makeTrip(site, {
         boat,
         date,
-        departAt: toTime(text),
+        departAt: time.from,
+        returnAt: time.to,
         species: SPECIES.find((s) => text.includes(s)) ?? null,
         tide: toTide(text),
         status: text.slice(0, 200),
@@ -175,11 +177,14 @@ function countTakenSeats(text, mode = 'seatNumbers') {
   // 마지막에 본 라벨을 이어서 씁니다 — "입금자" 다음 줄들은 찬 자리, "대기자" 다음은 아닙니다.
   // 인원만 적는 예약판은 라벨 없이 명단만 있는 곳이 많아 일단 세고, 대기자를 만나면 멈춥니다.
   let taking = mode === 'people';
-  for (const line of text.split(/[\n·|]|(?<=\))\s+/)) {
-    if (TAKEN_LINE.test(line)) taking = true;
-    else if (SKIP_LINE.test(line)) taking = false;
+  for (const part of text.split(/(?=입금대기|입금자|예약확정|대기자|취소자|환불)/)) {
+    if (SKIP_LINE.test(part)) {
+      taking = false;
+      continue;
+    }
+    if (TAKEN_LINE.test(part)) taking = true;
     if (!taking) continue;
-    for (const m of line.matchAll(/\((?:(\d+)명\s*\/\s*)?([\d,\s]*)\)/g)) {
+    for (const m of part.matchAll(/\((?:(\d+)명\s*\/\s*)?([\d,\s]*)\)/g)) {
       if (mode === 'people') {
         const n = Number(m[1] ?? m[2].trim());
         if (Number.isFinite(n)) people += n;
@@ -231,22 +236,47 @@ function maxSeatNumber(text) {
 }
 
 function splitByDate($) {
+  // PC 예약판은 하루 표 안의 각 행이 배·항차 하나입니다. 공지/좌석을 서로 섞지 않습니다.
+  const rows = [];
+  $('table').each((_, table) => {
+    const direct = $(table).children('tr').add($(table).children('tbody,thead').children('tr'));
+    let seatsColumn = -1;
+    if (!direct.toArray().some((r) => {
+      const labels = $(r).children('th,td').map((__, c) => squash($(c).text())).get();
+      if (labels.includes('선박명')) seatsColumn = labels.indexOf('남은자리');
+      return labels.includes('선박명') && labels.includes('남은자리');
+    })) return;
+    let date = null;
+    let tideText = '';
+    for (const row of direct.toArray()) {
+      const cells = $(row).children('th,td');
+      const heading = squash(cells.first().text());
+      if (heading.length <= 40 && /^20\d{2}/.test(heading)) {
+        date = toDate(heading);
+        tideText = heading;
+        continue;
+      }
+      if (!date || cells.length < 2 || cells.first().is('th')) continue;
+      const text = textWithBreaks($, row);
+      if (!/공지|낚시종류|입금|예약하기|예약완료|대기하기|휴항|결항|출조취소|개인사정/.test(text)) continue;
+      rows.push({ date, boat: heading, text: tideText + '\n' + text + '\n남은자리 ' + squash(cells.eq(seatsColumn).text()) });
+    }
+  });
+  if (rows.length) return rows;
+
   const blocks = [];
   let cur = null;
-
-  $('body').find('*').each((_, el) => {
-    const $el = $(el);
-    if ($el.children().length) return;                 // 잎 노드만
-    const text = squash($el.text());
-    if (!text) return;
-
-    const asDate = text.length <= 30 ? toDate(text) : null;
-    if (asDate) {
+  function visit(el) {
+    if (el.type === 'text') { if (cur) cur.text += el.data; return; }
+    if (/^(script|style|noscript)$/.test(el.name)) return;
+    const text = squash($(el).text());
+    const asDate = text.length <= 40 && /^(?:20\d{2}[-./년]|\d{1,2}[-./월]\s*\d)/.test(text) ? toDate(text) : null;
+    if (asDate && !/예약|입금|공지/.test(text)) {
       cur = { date: asDate, text: '' };
       blocks.push(cur);
       // 날짜 뒤에 ", 수요일, 4물"처럼 붙은 글자는 어느 요소에도 안 담겨 있습니다.
       // 잎 노드만 훑으면 통째로 사라져서, 더피싱 출조 2382건이 물때가 비어 있었습니다.
-      const nodes = $el.parent().contents().toArray();
+      const nodes = $(el).parent().contents().toArray();
       const tail = squash(nodes.slice(nodes.indexOf(el) + 1)
         .filter((n) => n.type === 'text')
         .map((n) => $(n).text())
@@ -254,21 +284,39 @@ function splitByDate($) {
       if (tail) cur.text += tail + '\n';
       return;
     }
-    if (cur) cur.text += text + '\n';
-  });
+    // 모바일 예약판의 항차 머리글. <h2>몬스터호<br>(오전배)</h2>도 보존합니다.
+    if (cur && /^h[1-6]$/.test(el.name) && /호|오전배|오후배/.test(text)) {
+      if (cur.boat && /남은자리|입금|예약하기/.test(cur.text)) {
+        cur = { date: cur.date, text: '' }; blocks.push(cur);
+      }
+      if (!cur.boat) cur.text = '';
+      cur.boat = text;
+    }
+    for (const child of el.children ?? []) visit(child);
+    if (cur && /^(br|p|div|li|tr|td|h[1-6])$/.test(el.name)) cur.text += '\n';
+  }
+  visit($('body')[0]);
 
   return blocks.filter((b) => b.text.trim());
+}
+
+function textWithBreaks($, el) {
+  const copy = $(el).clone();
+  copy.find('script,style').remove();
+  copy.find('br').replaceWith('\n');
+  copy.find('p,div,li,tr,td,th').append('\n');
+  return copy.text();
 }
 
 function pickBoat(site, text) {
   const known = Object.keys(site.boats ?? {});
   const hit = known.find((b) => text.includes(b));
-  if (hit) return hit;
+  const half = text.match(/(오전배|오후배|1부|2부)/);
+  if (hit) return half ? `${hit} (${half[1]})` : hit;
   // "상호" 같은 안내문 낱말은 배로 치지 않습니다(matchBoatName).
   const named = matchBoatName(text);
-  if (named) return named;
+  if (named) return half ? `${named} (${half[1]})` : named;
   // 오전배·오후배만 구분되는 사이트는 그 표기를 배 이름 대신 씁니다.
-  const half = text.match(/(오전배|오후배|1부|2부)/);
   return half ? `${site.name ?? site.id} ${half[1]}` : site.name ?? site.id;
 }
 
