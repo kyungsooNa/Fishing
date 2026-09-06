@@ -61,9 +61,16 @@ test('오후 3시 이후 오늘 출조는 화면에서 숨긴다', () => {
 
 test('물때는 날짜 그룹 줄에 한 번만 표시한다', () => {
   assert.match(html, /<th>어종<\/th><th>상태<\/th>/);
-  assert.match(inline, /function dayTideLabel/);
+  assert.match(inline, /function dayTideParts/);
   assert.match(inline, /td\.colSpan = 12/);
   assert.match(inline, /물때는 날짜별 공통 표기/);
+});
+
+test('좋은 물때는 날짜 줄에 배지로 표시한다', () => {
+  assert.match(html, /\.tidegood/);
+  assert.match(inline, /function isGoodTide/);
+  assert.match(inline, /n === 12 \|\| n === 13 \|\| n === 1 \|\| n === 2/);
+  assert.match(inline, /좋은 물때/);
 });
 
 test('data.json은 화면이 기대하는 모양이다', async () => {

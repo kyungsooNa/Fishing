@@ -56,6 +56,9 @@
     font-size: 15px;
   }
   .dayhead small { margin-left: 8px; color: var(--muted); font-size: 12px; font-weight: 600; }
+  .tidegood { display: inline-block; margin-left: 8px; padding: 2px 7px; border-radius: 999px;
+              background: color-mix(in srgb, var(--open) 14%, var(--card)); color: var(--open);
+              border: 1px solid color-mix(in srgb, var(--open) 40%, transparent); font-size: 12px; font-weight: 800; }
   .badge { font-weight: 600; }
   .open { color: var(--open); } .few { color: var(--few); }
   .closed { color: var(--closed); } .off { color: var(--off); } .unknown { color: var(--muted); }
@@ -261,9 +264,16 @@ function dayLabel(d) {
   return `${m}/${dd}(${WEEK[new Date(y, m - 1, dd).getDay()]})`;
 }
 
-function dayTideLabel(date, rows) {
+function isGoodTide(tide) {
+  if (!tide) return false;
+  if (tide === '조금' || tide === '무시') return true;
+  const n = Number(String(tide).match(/^(\d{1,2})물$/)?.[1]);
+  return n === 12 || n === 13 || n === 1 || n === 2;
+}
+
+function dayTideParts(date, rows) {
   const tides = [...new Set(rows.filter((t) => t.date === date).map((t) => t.tide).filter(Boolean))];
-  return tides.length ? `${dayLabel(date)} · ${tides.join(' / ')}` : dayLabel(date);
+  return { label: tides.length ? `${dayLabel(date)} · ${tides.join(' / ')}` : dayLabel(date), good: tides.some(isGoodTide) };
 }
 
 function kstParts(now = new Date()) {
@@ -383,7 +393,14 @@ function render() {
       day.className = 'dayhead';
       const td = document.createElement('td');
       td.colSpan = 12;
-      td.textContent = dayTideLabel(t.date, rows);
+      const tide = dayTideParts(t.date, rows);
+      td.textContent = tide.label;
+      if (tide.good) {
+        const good = document.createElement('span');
+        good.className = 'tidegood';
+        good.textContent = '좋은 물때';
+        td.append(good);
+      }
       const hint = document.createElement('small');
       hint.textContent = '물때는 날짜별 공통 표기';
       td.append(hint);
