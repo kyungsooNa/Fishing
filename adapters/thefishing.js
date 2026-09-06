@@ -244,6 +244,14 @@ function splitByDate($) {
     if (asDate) {
       cur = { date: asDate, text: '' };
       blocks.push(cur);
+      // 날짜 뒤에 ", 수요일, 4물"처럼 붙은 글자는 어느 요소에도 안 담겨 있습니다.
+      // 잎 노드만 훑으면 통째로 사라져서, 더피싱 출조 2382건이 물때가 비어 있었습니다.
+      const nodes = $el.parent().contents().toArray();
+      const tail = squash(nodes.slice(nodes.indexOf(el) + 1)
+        .filter((n) => n.type === 'text')
+        .map((n) => $(n).text())
+        .join(' '));
+      if (tail) cur.text += tail + '\n';
       return;
     }
     if (cur) cur.text += text + '\n';
