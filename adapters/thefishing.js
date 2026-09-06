@@ -113,12 +113,13 @@ export function parseDetail(site, html, url) {
   const $ = cheerio.load(html);
   const trips = [];
 
-  // 예약 상태를 글자 대신 이미지로 표시하는 예약판도 있습니다.
+  // 상태도 명단 라벨도 글자가 아니라 이미지인 예약판이 많습니다. 특히 잔여석이
+  // `<img alt="남은자리 8명">` 하나에만 들어 있는 곳이 있어서, 이걸 버리면 명단을
+  // 세서 지어내는 수밖에 없었습니다(어울림호가 8자리인데 2/2로 나왔습니다).
+  // 라벨(입금자·대기자)도 이미지라 누가 자리를 차지했는지도 구분이 안 됐습니다.
   $('img[alt]').each((_, el) => {
     const label = squash($(el).attr('alt'));
-    if (/^(예약완료|예약마감|마감|만석|매진|예약하기)$/.test(label)) {
-      $(el).replaceWith($('<span>').text(label));
-    }
+    if (ALT_LABEL.test(label)) $(el).replaceWith($('<span>').text(label));
   });
 
   // 날짜 머리글로 페이지를 하루씩 끊습니다. 오전배·오후배는 별개 출조로 잡힙니다.
@@ -126,13 +127,10 @@ export function parseDetail(site, html, url) {
     const { date, text } = block;
     if (!date || !/남은자리|잔여|여석|입금|예약확정/.test(text)) continue;
 
-    const filled = countTakenSeats(text, site.seatCount);
+    const mode = site.seatCount ?? seatMode(text);
+    const filled = countTakenSeats(text, mode);
     const explicit = detailSeats(text);
-    const seatsTotal = site.seatsTotal ?? (
-      site.seatCount === 'people'
-        ? (explicit === 0 ? filled : null)
-        : maxSeatNumber(text)
-    );
+    const seatsTotal = site.seatsTotal ?? guessTotal(text, mode, explicit, filled, site.seatCount);
     const boat = pickBoat(site, text);
     if (site.excludeBoats?.includes(boat)) continue;
 
@@ -157,33 +155,57 @@ export function parseDetail(site, html, url) {
   return trips;
 }
 
-// 입금자·입금대기 줄의 좌석번호만 셉니다. 대기자·취소자 줄은 자리를 차지하지 않습니다.
-const TAKEN_LINE = /(입금|예약확정|확정)/;
+// 글자로 남는 라벨 + 이미지로만 있던 라벨. 잔여석("남은자리 8명")도 이미지라 같이 살립니다.
+const ALT_LABEL = /^(남은자리\s*\d{1,3}\s*[명석자리]*|예약완료|예약마감|마감|만석|매진|예약하기|대기하기|개인사정|휴항|결항|출조취소|입금자|입금대기|예약자|대기자|취소자)$/;
+
+// 입금자·입금대기 명단만 셉니다. 대기자·취소자는 자리를 차지하지 않습니다.
+const TAKEN_LINE = /(입금|예약확정|확정|^예약자)/;
 const SKIP_LINE = /(대기자|취소|환불)/;
+
+// 좌석번호를 적는 예약판인지("6명/13,12,11"), 인원만 적는 예약판인지("(2)") 가릅니다.
+// 인원만 적힌 곳에서 숫자를 좌석번호로 보면 정원이 "가장 큰 일행 수"가 됩니다.
+function seatMode(text) {
+  return /\(\s*\d+\s*명\s*\/|\(\s*\d+\s*,/.test(text) ? 'seatNumbers' : 'people';
+}
 
 function countTakenSeats(text, mode = 'seatNumbers') {
   const seats = new Set();
   let people = 0;
+  // 라벨이 이미지라서 이름과 다른 칸에 있는 예약판이 있습니다. 줄마다 라벨을 찾는 대신
+  // 마지막에 본 라벨을 이어서 씁니다 — "입금자" 다음 줄들은 찬 자리, "대기자" 다음은 아닙니다.
+  // 인원만 적는 예약판은 라벨 없이 명단만 있는 곳이 많아 일단 세고, 대기자를 만나면 멈춥니다.
+  let taking = mode === 'people';
   for (const line of text.split(/[\n·|]|(?<=\))\s+/)) {
-    if (mode === 'people') {
-      if (SKIP_LINE.test(line)) continue;
-      for (const m of line.matchAll(/\((\d+)명?\)/g)) people += Number(m[1]);
-      continue;
-    }
-    if (!TAKEN_LINE.test(line) && !(mode === 'people' && /예약/.test(line))) continue;
-    if (SKIP_LINE.test(line) && !/입금대기/.test(line)) continue;
-    for (const m of line.matchAll(/\((?:\d+명\s*\/\s*)?([\d,\s]+)\)/g)) {
-      if (mode === 'people' && /^\d+$/.test(m[1].trim())) {
-        people += Number(m[1].trim());
+    if (TAKEN_LINE.test(line)) taking = true;
+    else if (SKIP_LINE.test(line)) taking = false;
+    if (!taking) continue;
+    for (const m of line.matchAll(/\((?:(\d+)명\s*\/\s*)?([\d,\s]*)\)/g)) {
+      if (mode === 'people') {
+        const n = Number(m[1] ?? m[2].trim());
+        if (Number.isFinite(n)) people += n;
         continue;
       }
-      for (const n of m[1].split(',')) {
+      for (const n of m[2].split(',')) {
         const v = Number(n.trim());
         if (Number.isFinite(v) && v > 0) seats.add(v);
       }
     }
   }
   return mode === 'people' ? people : seats.size;
+}
+
+/**
+ * registry에 정원을 안 적었을 때. 지어내지 않는 게 원칙이라 근거가 있을 때만 돌려줍니다.
+ *   남은자리가 적혀 있으면  → 남은자리 + 찬 자리 (어울림호 9/9: 8 + 6 = 14, 실제 정원과 같습니다)
+ *   좌석번호식 예약판이면    → 가장 큰 좌석번호
+ *   people을 registry에 박아둔 곳은 마감일 때 예약 인원 합계 (청광호)
+ * 그 밖에는 null입니다. 인원 명단의 최대값을 정원으로 쓰면 "2/2" 같은 헛것이 나옵니다.
+ */
+function guessTotal(text, mode, explicit, filled, configured) {
+  if (Number.isFinite(explicit) && explicit > 0) return explicit + filled;
+  if (mode === 'seatNumbers') return maxSeatNumber(text);
+  if (configured === 'people' && explicit === 0) return filled;
+  return null;
 }
 
 function detailSeats(text) {
