@@ -248,7 +248,17 @@ function dayLabel(d) {
 
 // 어종은 '주꾸미·갑오징어'처럼 여러 개가 붙어 옵니다(core/schema.js가 그렇게 모읍니다).
 // 필터는 하나씩 걸어야 하니 나눠서 봅니다 — 쭈갑 출조는 주꾸미로도, 갑오징어로도 잡힙니다.
-const speciesOf = (t) => String(t.species ?? '').split('·').filter(Boolean);
+// 값이 없는 출조를 필터에서 빼면 "왜 이 배가 안 보이지"가 됩니다(항구가 그랬습니다).
+// 어종을 모르는 출조가 656건, 운항 시각을 모르는 출조가 4019건입니다 — 시각은
+// 예약판에 아예 안 적혀 있어서(안내문자로 알려주는 곳들) 캘 수가 없습니다.
+// 없는 값도 한 칸으로 모아 골라 볼 수 있게 합니다.
+const NO_SPECIES = '(어종 미상)';
+const NO_SESSION = '(운항 미상)';
+const speciesOf = (t) => {
+  const names = String(t.species ?? '').split('·').filter(Boolean);
+  return names.length ? names : [NO_SPECIES];
+};
+const sessionOf = (t) => t.session ?? NO_SESSION;
 
 // 항구는 registry에 사람이 적습니다. 지금은 사이트 288곳 중 262곳이 비어 있어서
 // 출조 대부분에 항구가 없습니다. 그냥 두면 지역·항구 필터를 거는 순간 그 배들이
@@ -320,7 +330,7 @@ function visibleTrips() {
     (!site.size || site.has(t.siteName) || (t.sources ?? []).some((x) => site.has(x.siteName))) &&
     hasSelection(region, regionOf(t.port)) && hasSelection(port, portOf(t)) &&
     (!species.size || speciesOf(t).some((s) => species.has(s))) && hasSelection(date, t.date) &&
-    hasSelection(session, t.session) &&
+    hasSelection(session, sessionOf(t)) &&
     (!q || (t.boat ?? '').includes(q)) &&
     (!openOnly || t.status === 'open' || t.status === 'few'));
 }
@@ -438,7 +448,7 @@ function loadData() { return fetch('data.json?t=' + Date.now(), { cache: 'no-sto
     fillOptions($('f-region'), d.trips.map((t) => regionOf(t.port)));
     fillOptions($('f-port'), d.trips.map(portOf));
     fillOptions($('f-species'), d.trips.flatMap(speciesOf), ['갑오징어', '주꾸미']);
-    fillOptions($('f-session'), d.trips.map((t) => t.session));
+    fillOptions($('f-session'), d.trips.map(sessionOf));
     fillOptions($('f-date'), d.trips.map((t) => t.date));
     renderStatus();
     render();

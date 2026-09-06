@@ -33,13 +33,21 @@ test('어종 필터는 갑오징어·주꾸미를 기본 선택한다', () => {
   assert.match(inline, /input\.checked = defaults\.includes\(v\)/);
 });
 
-test('어종이 둘인 출조는 어느 쪽으로 걸러도 나온다', () => {
-  const start = inline.indexOf('const speciesOf');
-  const speciesOf = new Function(`${inline.slice(start, inline.indexOf('\n', start))}\nreturn speciesOf;`)();
-  assert.deepEqual(speciesOf({ species: '주꾸미·갑오징어' }), ['주꾸미', '갑오징어']);
-  assert.deepEqual(speciesOf({ species: '갈치' }), ['갈치']);
-  assert.deepEqual(speciesOf({ species: null }), [], '어종을 모르는 출조는 어느 어종에도 안 걸립니다');
+test('어종이 둘인 출조는 어느 쪽으로 걸러도 나오고, 값이 없는 것도 골라 볼 수 있다', () => {
+  const start = inline.indexOf('const NO_SPECIES');
+  const end = inline.indexOf('const NO_PORT');
+  assert.ok(start >= 0 && end > start, '어종·운항 부분을 찾지 못했습니다');
+  const m = new Function(`${inline.slice(start, end)}\nreturn { NO_SPECIES, NO_SESSION, speciesOf, sessionOf };`)();
+
+  assert.deepEqual(m.speciesOf({ species: '주꾸미·갑오징어' }), ['주꾸미', '갑오징어']);
+  assert.deepEqual(m.speciesOf({ species: '갈치' }), ['갈치']);
+  // 값이 없다고 필터에서 통째로 빠지면 "왜 이 배가 안 보이지"가 됩니다.
+  assert.deepEqual(m.speciesOf({ species: null }), [m.NO_SPECIES]);
+  assert.equal(m.sessionOf({ session: '오전' }), '오전');
+  assert.equal(m.sessionOf({ session: null }), m.NO_SESSION);
+
   assert.match(inline, /speciesOf\(t\)\.some\(\(s\) => species\.has\(s\)\)/);
+  assert.match(inline, /hasSelection\(session, sessionOf\(t\)\)/);
 });
 
 test('빈자리 필터는 기본으로 켜져 있다', () => {
