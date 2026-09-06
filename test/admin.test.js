@@ -351,3 +351,26 @@ test('관리 화면: 항구·전화가 빠진 곳만 추릴 수 있다', async (
   assert.deepEqual(pick(sites, 'phone').map((s) => s.id), ['a', 'b', 'c']);
   assert.deepEqual(pick(sites, 'all').map((s) => s.id), ['a', 'b', 'c', 'd']);
 });
+
+test('관리 화면: 즐겨찾기를 글자로 내보내고 합쳐 가져온다', async () => {
+  const html = await readFile('docs/admin.html', 'utf8');
+  for (const id of ['favexport', 'favimport', 'favtext', 'favio']) {
+    assert.ok(html.includes(`id="${id}"`), `즐겨찾기 옮기기 요소가 없습니다: ${id}`);
+  }
+
+  const inline = html.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
+  const start = inline.indexOf('// ── 즐겨찾기 옮기기 ──');
+  const end = inline.indexOf('// ── 즐겨찾기 옮기기 끝 ──');
+  assert.ok(start >= 0 && end > start, '즐겨찾기 옮기기 부분을 찾지 못했습니다');
+  const parseFavs = new Function(`${inline.slice(start, end)}\nreturn parseFavs;`)();
+
+  assert.deepEqual(parseFavs('["바하호|충남 태안 구매항","1호|"]'), ['바하호|충남 태안 구매항', '1호|']);
+  assert.deepEqual(parseFavs('["같은배|항구","같은배|항구"]'), ['같은배|항구'], '겹친 것은 한 번만');
+  assert.deepEqual(parseFavs('["배이름만", 3, null]'), null, '키 꼴이 아니면 버립니다');
+  assert.equal(parseFavs('{"a":1}'), null, '배열이 아니면 안 받습니다');
+  assert.equal(parseFavs('붙여넣다 만 글자'), null);
+  assert.equal(parseFavs('[]'), null);
+
+  // 덮어쓰지 않고 합쳐야 두 기기에서 각각 담아둔 게 안 사라집니다.
+  assert.match(inline, /const merged = \[\.\.\.new Set\(\[\.\.\.before, \.\.\.keys\]\)\]/);
+});
