@@ -46,7 +46,16 @@
   th, td { padding: 9px 10px; text-align: left; border-bottom: 1px solid var(--line); white-space: nowrap; }
   th { font-size: 12px; color: var(--muted); font-weight: 600; position: sticky; top: 0; background: var(--card); }
   tbody tr:last-child td { border-bottom: 0; }
-  tr.daystart td { border-top: 2px solid var(--line); }
+  tr.daystart td { border-top: 1px solid color-mix(in srgb, var(--accent) 35%, var(--line)); }
+  tr.dayhead td {
+    padding: 11px 12px;
+    border-top: 3px solid var(--accent);
+    border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, var(--line));
+    background: color-mix(in srgb, var(--accent) 9%, var(--card));
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .dayhead small { margin-left: 8px; color: var(--muted); font-size: 12px; font-weight: 600; }
   .badge { font-weight: 600; }
   .open { color: var(--open); } .few { color: var(--few); }
   .closed { color: var(--closed); } .off { color: var(--off); } .unknown { color: var(--muted); }
@@ -74,6 +83,7 @@
   .watch { border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--accent); padding: 5px 8px; cursor: pointer; }
   .freshness { display: block; font-size: 11px; font-weight: normal; color: var(--muted); }
   .freshness.stale { color: var(--few); }
+  .freshness.failed { color: var(--off); }
 </style>
 </head>
 <body>
@@ -108,7 +118,7 @@
     <table>
       <thead><tr>
         <th class="starcell"></th><th>날짜</th><th>운항</th><th>구분</th><th>선사</th><th>배</th><th>항구</th>
-        <th>어종</th><th>물때</th><th>상태</th><th class="num">잔여</th><th class="num">승선료</th><th>관심 출조</th>
+        <th>어종</th><th>상태</th><th class="num">잔여</th><th class="num">승선료</th><th>관심 출조</th>
       </tr></thead>
       <tbody id="rows"></tbody>
     </table>
@@ -135,9 +145,14 @@ function freshness(t) {
   const failed = states.some((s) => !s?.ok);
   const times = states.map((s) => Date.parse(s?.ok ? s.at : s?.keptFrom));
   const time = Math.min(...times);
-  if (!Number.isFinite(time)) return { text: failed ? '수집 실패 · 확인 시각 없음' : '확인 시각 없음', stale: true };
+  if (!Number.isFinite(time)) return { text: failed ? '수집 실패 · 확인 시각 없음' : '확인 시각 없음', stale: true, failed };
   const minutes = Math.max(0, Math.floor((Date.now() - time) / 60000));
-  return { text: `${failed ? '수집 실패 · ' : ''}${minutes}분 전 확인`, stale: failed || minutes >= 30 };
+  const age = minutes >= 1440
+    ? `${Math.floor(minutes / 1440)}일 전 확인`
+    : minutes >= 60
+      ? `${Math.floor(minutes / 60)}시간 ${minutes % 60}분 전 확인`
+      : `${minutes}분 전 확인`;
+  return { text: `${failed ? '수집 실패 · 직전 ' : ''}${age}`, stale: failed || minutes >= 30, failed };
 }
 
 function monitorMessage() {
@@ -246,6 +261,25 @@ function dayLabel(d) {
   return `${m}/${dd}(${WEEK[new Date(y, m - 1, dd).getDay()]})`;
 }
 
+function dayTideLabel(date, rows) {
+  const tides = [...new Set(rows.filter((t) => t.date === date).map((t) => t.tide).filter(Boolean))];
+  return tides.length ? `${dayLabel(date)} · ${tides.join(' / ')}` : dayLabel(date);
+}
+
+function kstParts(now = new Date()) {
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', hourCycle: 'h23',
+  }).formatToParts(now).reduce((acc, part) => (acc[part.type] = part.value, acc), {});
+  return { date: `${parts.year}-${parts.month}-${parts.day}`, minutes: Number(parts.hour) * 60 + Number(parts.minute) };
+}
+
+const HIDE_TODAY_AFTER = 15 * 60;
+function showTripByTime(t, now = new Date()) {
+  const kst = kstParts(now);
+  return !(t.date === kst.date && kst.minutes >= HIDE_TODAY_AFTER);
+}
+
 // 어종은 '주꾸미·갑오징어'처럼 여러 개가 붙어 옵니다(core/schema.js가 그렇게 모읍니다).
 // 필터는 하나씩 걸어야 하니 나눠서 봅니다 — 쭈갑 출조는 주꾸미로도, 갑오징어로도 잡힙니다.
 // 값이 없는 출조를 필터에서 빼면 "왜 이 배가 안 보이지"가 됩니다(항구가 그랬습니다).
@@ -331,6 +365,7 @@ function visibleTrips() {
     hasSelection(region, regionOf(t.port)) && hasSelection(port, portOf(t)) &&
     (!species.size || speciesOf(t).some((s) => species.has(s))) && hasSelection(date, t.date) &&
     hasSelection(session, sessionOf(t)) &&
+    showTripByTime(t) &&
     (!q || (t.boat ?? '').includes(q)) &&
     (!openOnly || t.status === 'open' || t.status === 'few'));
 }
@@ -343,8 +378,20 @@ function render() {
   let prevDate = null;
 
   for (const t of rows) {
+    if (t.date !== prevDate) {
+      const day = document.createElement('tr');
+      day.className = 'dayhead';
+      const td = document.createElement('td');
+      td.colSpan = 12;
+      td.textContent = dayTideLabel(t.date, rows);
+      const hint = document.createElement('small');
+      hint.textContent = '물때는 날짜별 공통 표기';
+      td.append(hint);
+      day.append(td);
+      tbody.append(day);
+      prevDate = t.date;
+    }
     const tr = document.createElement('tr');
-    if (t.date !== prevDate) { tr.className = 'daystart'; prevDate = t.date; }
     const starCell = document.createElement('td');
     starCell.className = 'starcell';
     const star = document.createElement('button');
@@ -359,12 +406,12 @@ function render() {
 
     const cells = [
       dayLabel(t.date), runLabel(t), sessionLabel(t), t.siteName ?? '', t.boat ?? '', t.port ?? '',
-      t.species ?? '', t.tide ?? '', null,
+      t.species ?? '', null,
       seatsLabel(t), won(t.price),
     ];
     cells.forEach((v, i) => {
       const td = document.createElement('td');
-      if (i === 8) {
+      if (i === 7) {
         const b = document.createElement('span');
         b.className = 'badge ' + t.status;
         b.textContent = LABEL[t.status] ?? t.status;
@@ -393,10 +440,10 @@ function render() {
           td.title = '개별 예약표 대신 선사가 공지한 해당 시즌 출항 시각입니다.';
         }
       }
-      if (i >= 9) td.className = 'num';
-      if (i === 9) {
+      if (i >= 8) td.className = 'num';
+      if (i === 8) {
         const age = freshness(t), hint = document.createElement('small');
-        hint.className = 'freshness' + (age.stale ? ' stale' : '');
+        hint.className = 'freshness' + (age.failed ? ' failed' : age.stale ? ' stale' : '');
         hint.textContent = age.text;
         td.append(hint);
       }

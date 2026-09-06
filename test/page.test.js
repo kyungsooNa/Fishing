@@ -54,6 +54,18 @@ test('빈자리 필터는 기본으로 켜져 있다', () => {
   assert.match(html, /id="f-open" checked/);
 });
 
+test('오후 3시 이후 오늘 출조는 화면에서 숨긴다', () => {
+  assert.match(inline, /const HIDE_TODAY_AFTER = 15 \* 60/);
+  assert.match(inline, /showTripByTime\(t\)/);
+});
+
+test('물때는 날짜 그룹 줄에 한 번만 표시한다', () => {
+  assert.match(html, /<th>어종<\/th><th>상태<\/th>/);
+  assert.match(inline, /function dayTideLabel/);
+  assert.match(inline, /td\.colSpan = 12/);
+  assert.match(inline, /물때는 날짜별 공통 표기/);
+});
+
 test('data.json은 화면이 기대하는 모양이다', async () => {
   const data = JSON.parse(await readFile('docs/data.json', 'utf8'));
   for (const key of ['generatedAt', 'sites', 'trips']) {
