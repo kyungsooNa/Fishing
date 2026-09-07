@@ -198,6 +198,63 @@ test('sunsang24: simple_day 조각은 table.ship_unit 단위로 읽는다', () =
   assert.equal(trips[0].seatsTotal, 21);
 });
 
+test('sunsang24: 남은자리와 예약 인원이 같이 있으면 잔여/전체로 읽는다', () => {
+  const html = `
+    <table id="d2026-09-10" class="shipsinfo_daywarp">
+      <tr><td class="date_info2">5물</td><td class="ships_warp">
+        <table class="ship_unit"><tr>
+          <td class="ship_info"><div class="title">나무호</div></td>
+          <td><ul class="reservation_detail" data-sdate="2026-09-10">
+            <li>어종 : 갑오징어</li><li>운항시간 : 06:00 ~ 12:00</li>
+          </ul></td>
+          <td class="ship_info2">남은자리 1명예약/14명</td>
+        </tr></table>
+      </td></tr>
+    </table>`;
+
+  const [trip] = parseSimpleDay(
+    { ...sunsangSite, id: 'fishinggate', boats: { 나무호: {} } },
+    html,
+    'https://fishinggate.sunsang24.com/ship/schedule_fleet/2026-09-10/0/simple_day',
+  );
+
+  assert.equal(trip.seatsLeft, 1);
+  assert.equal(trip.seatsTotal, 15);
+});
+
+test('sunsang24: 같은 배의 정원을 알면 잔여만 있는 빈 배에도 전체를 채운다', () => {
+  const html = `
+    <table id="d2026-09-10" class="shipsinfo_daywarp">
+      <tr><td class="date_info2">5물</td><td class="ships_warp">
+        <table class="ship_unit"><tr>
+          <td class="ship_info"><div class="title">나무호</div></td>
+          <td><ul class="reservation_detail" data-sdate="2026-09-10">
+            <li>어종 : 갑오징어</li><li>운항시간 : 06:00 ~ 12:00</li>
+          </ul></td>
+          <td class="ship_info2">예약마감 15명 예약/15명</td>
+        </tr></table>
+        <table class="ship_unit"><tr>
+          <td class="ship_info"><div class="title">나무호</div></td>
+          <td><ul class="reservation_detail" data-sdate="2026-09-10">
+            <li>어종 : 갑오징어</li><li>운항시간 : 13:00 ~ 18:00</li>
+          </ul></td>
+          <td class="ship_info2">남은자리 15명</td>
+        </tr></table>
+      </td></tr>
+    </table>`;
+
+  const trips = parseSimpleDay(
+    { ...sunsangSite, id: 'fishinggate', boats: { 나무호: {} } },
+    html,
+    'https://fishinggate.sunsang24.com/ship/schedule_fleet/2026-09-10/0/simple_day',
+  );
+
+  assert.deepEqual(trips.map((t) => [t.departAt, t.seatsLeft, t.seatsTotal]), [
+    ['06:00', 0, 15],
+    ['13:00', 15, 15],
+  ]);
+});
+
 test('uijiho: 월별 예약현황의 날짜 행과 정원을 읽는다', () => {
   const html = `
     <h2>2026년 9월 예약인원현황</h2>
