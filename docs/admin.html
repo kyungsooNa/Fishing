@@ -36,17 +36,18 @@
   button.primary { border-color: var(--accent); color: var(--accent); font-weight: 600; }
   button.danger { border-color: var(--off); color: var(--off); }
   .tablewrap { overflow-x: auto; background: var(--card); border: 1px solid var(--line); border-radius: 10px; }
-  table { border-collapse: collapse; width: 100%; min-width: 1000px; table-layout: fixed; }
+  table { border-collapse: collapse; width: 100%; min-width: 1110px; table-layout: fixed; }
   th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: middle; }
   th { font-size: 12px; color: var(--muted); font-weight: 600; white-space: nowrap; }
   /* 칸 폭을 못박아 둡니다. 안 그러면 표기·항구가 눌려서 글자가 잘립니다. */
   th:nth-child(1), td:nth-child(1) { width: 48px; }
   th:nth-child(2), td:nth-child(2) { width: 116px; }
   th:nth-child(3), td:nth-child(3) { width: 200px; }
-  th:nth-child(4), td:nth-child(4) { width: 76px; }
-  th:nth-child(5), td:nth-child(5) { width: 190px; }
-  th:nth-child(6), td:nth-child(6) { width: 150px; }
-  th:nth-child(7), td:nth-child(7) { width: 220px; }
+  th:nth-child(4), td:nth-child(4) { width: 108px; }
+  th:nth-child(5), td:nth-child(5) { width: 76px; }
+  th:nth-child(6), td:nth-child(6) { width: 190px; }
+  th:nth-child(7), td:nth-child(7) { width: 150px; }
+  th:nth-child(8), td:nth-child(8) { width: 220px; }
   tbody tr:last-child td { border-bottom: 0; }
   tr.off td { opacity: 0.55; }
   td.id { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; white-space: nowrap; }
@@ -56,6 +57,10 @@
   td input[type=text]:focus { border-color: var(--accent); outline: none; background: var(--bg); }
   tr.dirty { background: color-mix(in srgb, var(--few) 12%, transparent); }
   .kind { font-size: 12px; color: var(--muted); white-space: nowrap; }
+  .stars { white-space: nowrap; }
+  .stars button { padding: 0 1px; border: 0; border-radius: 0; background: none;
+                  color: var(--line); font-size: 16px; line-height: 1; }
+  .stars button.on, .stars button:hover { color: var(--few); }
   .ok { color: var(--open); } .fail { color: var(--off); } .muted { color: var(--muted); }
   td.url { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   /* 실패 사유가 길어서 한 줄로 두면 표가 옆으로 삐져나갑니다. 남는 폭 안에서 접습니다. */
@@ -122,10 +127,12 @@
     </label>
   </div>
 
+  <div class="sub" id="ratemeta"></div>
+
   <div class="tablewrap">
     <table>
       <thead><tr>
-        <th>켜짐</th><th>id</th><th>선사 표기</th><th>계열</th><th>등록</th><th>항구</th><th>전화</th>
+        <th>켜짐</th><th>id</th><th>선사 표기</th><th>별점</th><th>계열</th><th>등록</th><th>항구</th><th>전화</th>
         <th>주소</th><th>최근 수집</th>
       </tr></thead>
       <tbody id="rows"></tbody>
@@ -210,6 +217,69 @@ function textCell(site, key) {
   return td;
 }
 
+// ── 별점 ──────────────────────────────────────────────────────────────────
+// 선사에 매기는 개인 평가입니다. 서버로 보내지 않고 즐겨찾기처럼 이 브라우저의
+// localStorage에만 남습니다 — 그래서 registry를 못 고치는 읽기 전용 모드(Pages)에서도
+// 매길 수 있습니다. 매기는 곳은 이 화면 한 군데뿐이고, 현황판(index.html)은 같은 키를
+// 읽어 보여주기만 합니다. 형식을 바꾸려면 양쪽을 같이 고쳐야 합니다.
+const RATE_KEY = 'fishing:ratings';
+const RATE_MAX = 5;
+
+function loadRates() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(RATE_KEY) ?? '{}');
+    // 배열이나 숫자가 들어와도 화면이 죽으면 안 됩니다. 객체가 아니면 없는 셈 칩니다.
+    return raw && typeof raw === 'object' && !Array.isArray(raw) ? raw : {};
+  } catch { return {}; }
+}
+function saveRates(map) {
+  try { localStorage.setItem(RATE_KEY, JSON.stringify(map)); return true; } catch { return false; }
+}
+// 1~RATE_MAX의 정수만 별점입니다. 손으로 고친 값이 섞여도 0(안 매김)으로 봅니다.
+function rateOf(map, id) {
+  const n = Number(map?.[id]);
+  return Number.isInteger(n) && n >= 1 && n <= RATE_MAX ? n : 0;
+}
+// 지금 준 점수를 다시 누르면 지웁니다. 0점을 따로 두면 "안 매김"과 구별이 안 됩니다.
+function setRate(map, id, score) {
+  const next = rateOf(map, id) === score ? 0 : score;
+  if (next) map[id] = next;
+  else delete map[id];
+  return next;
+}
+// ── 별점 끝 ── (test/admin.test.js가 여기까지를 떼어내 돌려봅니다)
+
+let RATES = loadRates();
+
+// 별 다섯 개. 누른 자리까지 채우고, 같은 자리를 다시 누르면 지웁니다.
+function rateCell(site) {
+  const td = document.createElement('td');
+  const box = document.createElement('span');
+  box.className = 'stars';
+  const score = rateOf(RATES, site.id);
+  for (let n = 1; n <= RATE_MAX; n++) {
+    const star = document.createElement('button');
+    star.type = 'button';
+    star.className = n <= score ? 'on' : '';
+    star.textContent = n <= score ? '★' : '☆';
+    star.title = n === score ? `${n}점 — 다시 누르면 지웁니다` : `${n}점 주기`;
+    star.setAttribute('aria-label', `${site.name ?? site.id} ${star.title}`);
+    star.addEventListener('click', () => {
+      const next = setRate(RATES, site.id, n);
+      if (!saveRates(RATES)) {
+        RATES = loadRates();   // 저장이 막혔으면 화면도 원래대로 되돌립니다
+        render();
+        return toast('브라우저가 저장을 막고 있습니다');
+      }
+      render();
+      toast(next ? `${site.name ?? site.id} ★${next}` : `${site.name ?? site.id} 별점을 지웠습니다`);
+    });
+    box.append(star);
+  }
+  td.append(box);
+  return td;
+}
+
 // 항구는 사이트에 하나로 적기도 하고 배마다 따로 적기도 합니다. 둘 다 없을 때만 "없음"입니다.
 const hasPort = (s) => Boolean(s.port) || Object.values(s.boats ?? {}).some((b) => b?.port);
 
@@ -251,6 +321,11 @@ function render() {
   if (PAGE < 0) PAGE = 0;
   const from = PAGE * size;
   const page = list.slice(from, from + size);
+
+  const rated = SITES.filter((s) => rateOf(RATES, s.id)).length;
+  $('ratemeta').textContent =
+    (rated ? `별점 ${rated}곳 · ` : '') +
+    '별점은 개인 기록입니다 — 이 브라우저에만 저장되고, 현황판에는 읽기 전용으로 보입니다.';
 
   $('rowsempty').hidden = list.length > 0;
   $('pageinfo').textContent = list.length
@@ -303,8 +378,8 @@ function render() {
     else if (st.ok) tdLast.innerHTML = `<span class="ok">✓ ${st.count}건</span> <span class="muted">${when(st.at)}</span>`;
     else tdLast.innerHTML = `<span class="fail">✗ ${st.error ?? '실패'}</span> <span class="muted">직전 ${st.count ?? 0}건 유지</span>`;
 
-    tr.append(tdOn, tdId, textCell(site, 'name'), tdKind, addedTag(site), textCell(site, 'port'),
-              textCell(site, 'phone'), tdUrl, tdLast);
+    tr.append(tdOn, tdId, textCell(site, 'name'), rateCell(site), tdKind, addedTag(site),
+              textCell(site, 'port'), textCell(site, 'phone'), tdUrl, tdLast);
     // 저장 전에 다른 쪽으로 넘어갔다 돌아와도 고친 표시가 남아 있어야 합니다.
     if (DIRTY.has(site.id)) tr.classList.add('dirty');
     box.append(tr);
@@ -561,7 +636,8 @@ function staticMode(reason) {
   $('banner').hidden = false;
   $('banner').className = 'banner warn';
   $('banner').textContent =
-    `읽기 전용입니다 (${reason}). 켜고 끄기·표기 수정·수집 재실행·종료는 로컬에서 run.bat으로 띄웠을 때만 됩니다.`;
+    `읽기 전용입니다 (${reason}). 켜고 끄기·표기 수정·수집 재실행·종료는 로컬에서 run.bat으로 띄웠을 때만 됩니다.` +
+    ' 별점과 즐겨찾기는 브라우저에 저장되는 값이라 여기서도 됩니다.';
   for (const id of ['save', 'update', 'collect', 'restart', 'quit']) $(id).disabled = true;
 }
 

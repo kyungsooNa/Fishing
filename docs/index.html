@@ -73,6 +73,8 @@
   #map { height: 62vh; min-height: 340px; border: 1px solid var(--line); border-radius: 10px; }
   .leaflet-container { background: var(--card); font: inherit; }
   .maphint { margin-top: 8px; font-size: 12px; color: var(--muted); }
+  .rate { margin-left: 5px; color: var(--few); font-size: 12px; letter-spacing: -1px;
+          white-space: nowrap; cursor: default; }
   .star { border: 0; background: none; cursor: pointer; font-size: 15px; line-height: 1;
           padding: 0 2px; color: var(--line); }
   .star.on { color: var(--few); }
@@ -241,6 +243,39 @@ function emptyMessage() {
   return `즐겨찾기 ${FAVS.size}개가 다른 필터(어종·날짜·빈자리 등)에 걸려 있습니다. 필터를 풀어보세요.`;
 }
 // ── 즐겨찾기 끝 ── (test/page.test.js가 이 표시까지를 떼어내 돌려봅니다)
+
+// ── 별점 보기 ─────────────────────────────────────────────────────────────
+// 선사 별점은 시스템 관리 화면에서 매깁니다. 현황판은 **읽기만 합니다** — 표에서
+// 잘못 눌러 점수가 바뀌는 일이 없어야 해서 여기엔 저장하는 코드를 두지 않습니다.
+// 저장 형식(키·1~5점)은 admin.html과 같아야 합니다.
+const RATE_KEY = 'fishing:ratings';
+const RATE_MAX = 5;
+
+function loadRates() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(RATE_KEY) ?? '{}');
+    return raw && typeof raw === 'object' && !Array.isArray(raw) ? raw : {};
+  } catch { return {}; }
+}
+function rateOf(map, id) {
+  const n = Number(map?.[id]);
+  return Number.isInteger(n) && n >= 1 && n <= RATE_MAX ? n : 0;
+}
+const rateStars = (score) => '★'.repeat(score) + '☆'.repeat(RATE_MAX - score);
+
+// 안 매긴 선사는 아무것도 안 붙입니다. 288곳에 ☆☆☆☆☆가 깔리면 표가 안 읽힙니다.
+function rateBadge(siteId) {
+  const score = rateOf(RATES, siteId);
+  if (!score) return null;
+  const span = document.createElement('span');
+  span.className = 'rate';
+  span.textContent = rateStars(score);
+  span.title = `내 별점 ${score}점 · 시스템 관리에서 매깁니다`;
+  return span;
+}
+
+let RATES = loadRates();
+// ── 별점 보기 끝 ── (test/page.test.js가 이 표시까지를 떼어내 돌려봅니다)
 
 const $ = (id) => document.getElementById(id);
 const won = (n) => n == null ? '' : n.toLocaleString('ko-KR') + '원';
@@ -435,15 +470,19 @@ function render() {
         td.append(b);
       } else if (i === 3) {
         // 여러 사이트에 같은 배가 올라와 있으면 둘 다 걸어줍니다. 어디서 잡든 상관없으니까요.
-        const sources = t.sources?.length ? t.sources : [{ siteName: t.siteName, url: t.url }];
+        const sources = t.sources?.length ? t.sources : [{ siteId: t.siteId, siteName: t.siteName, url: t.url }];
         sources.forEach((src, n) => {
           if (n) td.append(' · ');
-          if (!src.url) { td.append(src.siteName ?? ''); return; }
-          const a = document.createElement('a');
-          a.href = src.url; a.target = '_blank'; a.rel = 'noopener noreferrer';
-          a.textContent = src.siteName ?? '';
-          if (Number.isFinite(src.seatsLeft)) a.title = `이 사이트 기준 잔여 ${src.seatsLeft}`;
-          td.append(a);
+          if (!src.url) td.append(src.siteName ?? '');
+          else {
+            const a = document.createElement('a');
+            a.href = src.url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+            a.textContent = src.siteName ?? '';
+            if (Number.isFinite(src.seatsLeft)) a.title = `이 사이트 기준 잔여 ${src.seatsLeft}`;
+            td.append(a);
+          }
+          const badge = rateBadge(src.siteId);
+          if (badge) td.append(badge);
         });
       } else {
         td.textContent = v;
@@ -503,6 +542,7 @@ function loadData() { return fetch('data.json?t=' + Date.now(), { cache: 'no-sto
   .then((r) => r.json())
   .then((d) => {
     DATA = d;
+    RATES = loadRates();   // 관리 화면에서 매긴 별점이 다음 갱신 때 따라옵니다
     const failed = Object.values(d.sites).filter((s) => !s.ok).length;
     $('meta').textContent =
       `출조 ${d.trips.length}건 · 갱신 ${d.generatedAt ? new Date(d.generatedAt).toLocaleString('ko-KR') : '-'}` +

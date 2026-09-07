@@ -193,3 +193,52 @@ test('지도에서 빠진 출조는 몇 건인지 힌트에 적는다', () => {
   assert.match(inline, /항구를 모르는 출조 \$\{noPort\}건은 지도에 없습니다/);
   assert.match(inline, /좌표 없는 항구 \$\{noCoord\.size\}곳/);
 });
+
+// 별점은 현황판에서 읽기만 합니다. 이 블록도 localStorage·document만 가짜로 넣으면 돕니다.
+function rateModule(saved) {
+  const start = inline.indexOf('// ── 별점 보기 ──');
+  const end = inline.indexOf('// ── 별점 보기 끝 ──');
+  assert.ok(start >= 0 && end > start, '별점 블록 표시를 찾지 못했습니다');
+
+  const localStorage = { getItem: () => (saved === undefined ? null : saved) };
+  const document = { createElement: () => ({}) };
+  return new Function('localStorage', 'document',
+    `${inline.slice(start, end)}\nreturn { RATES, rateOf, rateStars, rateBadge };`,
+  )(localStorage, document);
+}
+
+test('현황판은 별점을 읽기만 한다', async () => {
+  // 저장하는 코드가 여기 있으면 표를 누르다 점수가 바뀝니다. 매기는 곳은 관리 화면 한 군데입니다.
+  assert.ok(!inline.includes('setRate'), '현황판에 별점을 고치는 코드가 있습니다');
+  assert.ok(!/setItem\(\s*RATE_KEY/.test(inline), '현황판이 별점을 저장하고 있습니다');
+  // 누를 수 있는 것처럼 보이면 안 됩니다 — 버튼이 아니라 글자로 붙입니다.
+  assert.match(inline, /span\.className = 'rate'/);
+  assert.match(inline, /rateBadge\(src\.siteId\)/, '선사 칸에 붙어야 합니다');
+
+  // 저장 형식은 관리 화면과 같아야 합니다. 어긋나면 매긴 별점이 안 보입니다.
+  const adminInline = (await readFile('docs/admin.html', 'utf8')).match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
+  for (const line of ["const RATE_KEY = 'fishing:ratings';", 'const RATE_MAX = 5;']) {
+    assert.ok(inline.includes(line) && adminInline.includes(line), `양쪽이 같이 써야 합니다: ${line}`);
+  }
+});
+
+test('매기지 않은 선사에는 별점을 붙이지 않는다', () => {
+  const m = rateModule(JSON.stringify({ aaa: 4 }));
+  assert.equal(m.rateOf(m.RATES, 'aaa'), 4);
+  assert.equal(m.rateOf(m.RATES, 'bbb'), 0);
+  assert.equal(m.rateBadge('bbb'), null, '288곳에 ☆☆☆☆☆가 깔리면 표가 안 읽힙니다');
+  assert.equal(m.rateBadge('aaa').textContent, '★★★★☆');
+  assert.match(m.rateBadge('aaa').title, /시스템 관리/, '어디서 매기는지 알려줘야 합니다');
+});
+
+test('별점 저장값이 깨져 있어도 화면은 그대로 돈다', () => {
+  assert.deepEqual(rateModule('붙여넣다 만 글자').RATES, {});
+  assert.deepEqual(rateModule('[1,2,3]').RATES, {}, '객체가 아니면 없는 셈 칩니다');
+  assert.deepEqual(rateModule().RATES, {});
+
+  const m = rateModule(JSON.stringify({ a: 0, b: 6, c: 2.5, d: '3', e: null }));
+  for (const id of ['a', 'b', 'c', 'e']) assert.equal(m.rateOf(m.RATES, id), 0, `${id}는 별점이 아닙니다`);
+  assert.equal(m.rateOf(m.RATES, 'd'), 3);
+  assert.equal(m.rateStars(3), '★★★☆☆');
+  assert.equal(m.rateStars(0), '☆☆☆☆☆');
+});

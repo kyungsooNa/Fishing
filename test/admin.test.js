@@ -374,3 +374,60 @@ test('관리 화면: 즐겨찾기를 글자로 내보내고 합쳐 가져온다'
   // 덮어쓰지 않고 합쳐야 두 기기에서 각각 담아둔 게 안 사라집니다.
   assert.match(inline, /const merged = \[\.\.\.new Set\(\[\.\.\.before, \.\.\.keys\]\)\]/);
 });
+
+test('관리 화면: 선사마다 별점을 매긴다', async () => {
+  const html = await readFile('docs/admin.html', 'utf8');
+  assert.match(html, /<th>선사 표기<\/th><th>별점<\/th>/, '별점 칸이 표에 없습니다');
+  assert.ok(html.includes('id="ratemeta"'), '별점이 어디 저장되는지 알려주는 줄이 없습니다');
+
+  const inline = html.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
+  const start = inline.indexOf('// ── 별점 ──');
+  const end = inline.indexOf('// ── 별점 끝 ──');
+  assert.ok(start >= 0 && end > start, '별점 부분을 찾지 못했습니다');
+
+  // localStorage만 가짜로 넣으면 그대로 돌아갑니다.
+  const store = new Map();
+  const localStorage = {
+    getItem: (k) => store.get(k) ?? null,
+    setItem: (k, v) => store.set(k, v),
+  };
+  const m = new Function('localStorage',
+    `${inline.slice(start, end)}\nreturn { RATE_KEY, loadRates, saveRates, rateOf, setRate };`,
+  )(localStorage);
+
+  const rates = m.loadRates();
+  assert.deepEqual(rates, {}, '처음에는 아무것도 안 매겨져 있습니다');
+
+  assert.equal(m.setRate(rates, 'aaa', 4), 4);
+  assert.equal(m.setRate(rates, 'bbb', 2), 2);
+  assert.equal(m.rateOf(rates, 'aaa'), 4);
+
+  // 같은 별을 다시 누르면 지웁니다. 0점을 남기면 "안 매김"과 구별이 안 됩니다.
+  assert.equal(m.setRate(rates, 'aaa', 4), 0);
+  assert.ok(!('aaa' in rates), '지운 별점은 값이 남으면 안 됩니다');
+  assert.equal(m.rateOf(rates, 'aaa'), 0);
+  // 다른 별을 누르면 그 점수로 바뀝니다.
+  assert.equal(m.setRate(rates, 'bbb', 5), 5);
+
+  assert.ok(m.saveRates(rates));
+  assert.equal(m.RATE_KEY, 'fishing:ratings', '현황판이 이 키를 읽습니다');
+  assert.deepEqual(JSON.parse(store.get('fishing:ratings')), { bbb: 5 });
+  assert.deepEqual(m.loadRates(), { bbb: 5 }, '다시 열어도 남아 있어야 합니다');
+
+  // 저장이 막힌 브라우저(시크릿 창 등)에서도 화면이 죽으면 안 됩니다.
+  const blocked = new Function('localStorage',
+    `${inline.slice(start, end)}\nreturn { loadRates, saveRates };`,
+  )({ getItem: () => { throw new Error('막힘'); }, setItem: () => { throw new Error('막힘'); } });
+  assert.deepEqual(blocked.loadRates(), {});
+  assert.equal(blocked.saveRates({ a: 1 }), false, '실패를 알려줘야 화면이 안내할 수 있습니다');
+});
+
+test('관리 화면: 별점은 읽기 전용 모드에서도 매길 수 있다', async () => {
+  const html = await readFile('docs/admin.html', 'utf8');
+  const inline = html.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
+  // 별점은 registry가 아니라 브라우저에 남습니다. LOCAL 여부로 잠그면 Pages에서 못 씁니다.
+  const cell = inline.slice(inline.indexOf('function rateCell'), inline.indexOf('// 항구는 사이트에'));
+  assert.ok(cell.length > 100, 'rateCell을 찾지 못했습니다');
+  assert.ok(!cell.includes('LOCAL'), '별점은 로컬 서버가 없어도 매길 수 있어야 합니다');
+  assert.match(inline, /별점과 즐겨찾기는 브라우저에 저장되는 값이라 여기서도 됩니다/);
+});
