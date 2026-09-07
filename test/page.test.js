@@ -56,7 +56,67 @@ test('빈자리 필터는 기본으로 켜져 있다', () => {
 
 test('오후 3시 이후 오늘 출조는 화면에서 숨긴다', () => {
   assert.match(inline, /const HIDE_TODAY_AFTER = 15 \* 60/);
-  assert.match(inline, /showTripByTime\(t\)/);
+  assert.match(inline, /showTripByTime\(t, kst\)/);
+  assert.match(inline, /const kst = kstParts\(\);/, '기준 시각은 거르기 전에 한 번만 구합니다');
+});
+
+// 여기서 한 번 크게 데었습니다. showTripByTime이 출조마다 kstParts()를 부르고
+// kstParts()가 매번 Intl.DateTimeFormat을 새로 만들어서, 1만 건을 거르는 데 3초가 걸렸습니다.
+// 검색어 한 글자마다 그게 세 번이라 화면이 멈춘 것처럼 보였습니다.
+test('시각 포맷터는 한 번만 만든다', () => {
+  const made = inline.match(/new Intl\.DateTimeFormat/g) ?? [];
+  assert.equal(made.length, 1, '포맷터를 여러 번 만들면 거를 때마다 그 값을 다 치릅니다');
+  assert.match(inline, /const KST_FORMAT = new Intl\.DateTimeFormat/, '만드는 자리는 함수 밖이어야 합니다');
+  assert.match(inline, /KST_FORMAT\.formatToParts\(now\)/);
+
+  // 실제로 돌려봅니다. 이 블록은 바깥 것을 안 써서 그대로 실행됩니다.
+  const start = inline.indexOf('const KST_FORMAT');
+  const end = inline.indexOf('const NO_SPECIES', start);
+  assert.ok(start >= 0 && end > start, '시각 부분을 찾지 못했습니다');
+  const m = new Function(`${inline.slice(start, end)}\nreturn { kstParts, showTripByTime };`)();
+  const noon = m.kstParts(new Date('2026-09-07T03:00:00Z'));   // 한국 12:00
+  assert.equal(noon.date, '2026-09-07');
+  assert.equal(noon.minutes, 12 * 60);
+  assert.equal(m.showTripByTime({ date: '2026-09-07' }, noon), true, '정오에는 오늘 출조를 보여줍니다');
+  const late = m.kstParts(new Date('2026-09-07T07:00:00Z'));   // 한국 16:00
+  assert.equal(m.showTripByTime({ date: '2026-09-07' }, late), false);
+  assert.equal(m.showTripByTime({ date: '2026-09-08' }, late), true, '내일 출조는 그대로 둡니다');
+});
+
+// 표와 지도가 각자 거르면 같은 1만 건을 두 번(예전엔 세 번) 훑습니다.
+test('한 번 거른 결과를 표와 지도가 나눠 쓴다', () => {
+  assert.match(inline, /const refresh = \(\) => \{ const trips = visibleTrips\(\); render\(trips\); drawMap\(trips\); \}/);
+  assert.match(inline, /function render\(all = visibleTrips\(\)\)/, '혼자 부르는 자리도 있어 기본값을 둡니다');
+  assert.match(inline, /function drawMap\(trips = visibleTrips\(\)\)/);
+  assert.ok(!/const hidden = visibleTrips\(\)/.test(inline), '지도가 다시 거르면 안 됩니다');
+});
+
+// 한 쪽이 3천 줄 · 4만 노드입니다. 살아 있는 표에 하나씩 붙이면 붙일 때마다 값을 치릅니다.
+test('표의 행은 조각에 모아 한 번에 붙인다', () => {
+  assert.match(inline, /const frag = document\.createDocumentFragment\(\);/);
+  assert.match(inline, /\$\('rows'\)\.replaceChildren\(frag\);/);
+  assert.ok(!/tbody\.append/.test(inline), '살아 있는 표에 직접 붙이면 안 됩니다');
+});
+
+test('날짜별 물때는 한 번에 모은다', () => {
+  const start = inline.indexOf('function tidesByDate');
+  const end = inline.indexOf('function kstParts');
+  assert.ok(start >= 0 && end > start, 'tidesByDate를 찾지 못했습니다');
+  const src = `function dayLabel(d){return d;}\nfunction isGoodTide(t){return t === '조금';}\n${inline.slice(start, end)}`;
+  const m = new Function(`${src}\nreturn { tidesByDate, dayTideParts };`)();
+
+  const rows = [
+    { date: '2026-09-07', tide: '1물' }, { date: '2026-09-07', tide: '1물' },
+    { date: '2026-09-07', tide: '조금' }, { date: '2026-09-08', tide: null },
+  ];
+  const map = m.tidesByDate(rows);
+  assert.deepEqual([...map.get('2026-09-07')], ['1물', '조금'], '같은 물때는 한 번만 적습니다');
+  assert.equal(map.has('2026-09-08'), false);
+
+  assert.deepEqual(m.dayTideParts('2026-09-07', map.get('2026-09-07')),
+    { label: '2026-09-07 · 1물 / 조금', good: true });
+  assert.deepEqual(m.dayTideParts('2026-09-08', map.get('2026-09-08')),
+    { label: '2026-09-08', good: false }, '물때를 모르는 날도 날짜는 나옵니다');
 });
 
 test('물때는 날짜 그룹 줄에 한 번만 표시한다', () => {
@@ -300,7 +360,38 @@ test('쪽 넘기는 막대는 표 위아래에 있고, 한 쪽뿐이면 숨는�
   // 필터를 바꾸면 보던 쪽 번호는 의미가 없습니다.
   assert.match(inline, /const filtered = \(\) => \{ PAGE = 0; refresh\(\); \}/);
   assert.match(inline, /updateMultiLabel\(control\); filtered\(\);/);
-  assert.match(inline, /\$\('f-q'\)\.addEventListener\('input', filtered\)/);
+  assert.match(inline, /\$\('f-q'\)\.addEventListener\('input', queueSearch\)/);
+});
+
+// 한 글자마다 1만 건을 다시 거르면 "무적호"를 치는 동안 표를 예닐곱 번 다시 그립니다.
+// 한글은 조합 중에도 input이 떠서(ㅁ→무→뭇→무적) 디바운스만으로는 모자랍니다.
+test('검색어는 손이 멈춘 뒤에, 한글 조합이 끝난 뒤에 건다', () => {
+  const start = inline.indexOf('const SEARCH_DELAY');
+  const end = inline.indexOf('// <details>는');
+  assert.ok(start >= 0 && end > start, '검색어 디바운스 부분을 찾지 못했습니다');
+
+  const handlers = {};
+  const $ = () => ({ addEventListener: (type, fn) => { handlers[type] = fn; } });
+  let ran = 0;
+  const timers = [];
+  const setTimeout = (fn) => (timers.push(fn), timers.length);
+  const clearTimeout = (id) => { if (id) timers[id - 1] = null; };
+  new Function('$', 'filtered', 'setTimeout', 'clearTimeout', inline.slice(start, end))(
+    $, () => { ran += 1; }, setTimeout, clearTimeout);
+  const fire = () => { for (const fn of timers.splice(0)) fn?.(); };
+
+  handlers.input(); handlers.input(); handlers.input();
+  fire();
+  assert.equal(ran, 1, '연달아 친 글자는 한 번만 겁니다');
+
+  ran = 0;
+  handlers.compositionstart();
+  handlers.input();
+  fire();
+  assert.equal(ran, 0, '조합 중(ㅁ, 무)에는 그리지 않습니다');
+  handlers.compositionend();
+  fire();
+  assert.equal(ran, 1, '조합이 끝나면 겁니다');
 });
 
 test('표가 옆으로 삐져나가지 않게 긴 이름 칸만 줄이 갈린다', () => {

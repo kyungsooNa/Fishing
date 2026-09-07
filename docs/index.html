@@ -319,22 +319,38 @@ function isGoodTide(tide) {
   return n === 12 || n === 13 || n === 1 || n === 2;
 }
 
-function dayTideParts(date, rows) {
-  const tides = [...new Set(rows.filter((t) => t.date === date).map((t) => t.tide).filter(Boolean))];
-  return { label: tides.length ? `${dayLabel(date)} · ${tides.join(' / ')}` : dayLabel(date), good: tides.some(isGoodTide) };
+// 물때는 날짜별로 한 번만 모읍니다. 날짜 머리글마다 그 쪽 전체를 다시 훑으면
+// 한 쪽(3천 줄)을 그릴 때마다 2만 번씩 봅니다.
+function tidesByDate(rows) {
+  const map = new Map();
+  for (const t of rows) {
+    if (!t.tide) continue;
+    if (!map.has(t.date)) map.set(t.date, new Set());
+    map.get(t.date).add(t.tide);
+  }
+  return map;
 }
 
+function dayTideParts(date, tides) {
+  const list = [...(tides ?? [])];
+  return { label: list.length ? `${dayLabel(date)} · ${list.join(' / ')}` : dayLabel(date), good: list.some(isGoodTide) };
+}
+
+// Intl.DateTimeFormat은 만드는 데만 0.3ms쯤 듭니다. 출조마다 새로 만들면 1만 건을
+// 거르는 데 3초가 걸렸습니다(검색어 한 글자당 그게 세 번). 한 번 만들어 두고 씁니다.
+const KST_FORMAT = new Intl.DateTimeFormat('en-CA', {
+  timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit',
+  hour: '2-digit', minute: '2-digit', hourCycle: 'h23',
+});
+
 function kstParts(now = new Date()) {
-  const parts = new Intl.DateTimeFormat('en-CA', {
-    timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit',
-    hour: '2-digit', minute: '2-digit', hourCycle: 'h23',
-  }).formatToParts(now).reduce((acc, part) => (acc[part.type] = part.value, acc), {});
+  const parts = KST_FORMAT.formatToParts(now).reduce((acc, part) => (acc[part.type] = part.value, acc), {});
   return { date: `${parts.year}-${parts.month}-${parts.day}`, minutes: Number(parts.hour) * 60 + Number(parts.minute) };
 }
 
 const HIDE_TODAY_AFTER = 15 * 60;
-function showTripByTime(t, now = new Date()) {
-  const kst = kstParts(now);
+// 기준 시각은 부르는 쪽에서 한 번만 구해 넘깁니다. 출조마다 다시 구할 값이 아닙니다.
+function showTripByTime(t, kst = kstParts()) {
   return !(t.date === kst.date && kst.minutes >= HIDE_TODAY_AFTER);
 }
 
@@ -416,6 +432,7 @@ function visibleTrips() {
   const species = selectedValues('f-species'), date = selectedValues('f-date'), session = selectedValues('f-session');
   const q = $('f-q').value.trim(), openOnly = $('f-open').checked;
   const favOnly = $('f-fav').checked;
+  const kst = kstParts();
 
   return DATA.trips.filter((t) =>
     (!favOnly || FAVS.has(favKey(t))) &&
@@ -423,7 +440,7 @@ function visibleTrips() {
     hasSelection(region, regionOf(t.port)) && hasSelection(port, portOf(t)) &&
     (!species.size || speciesOf(t).some((s) => species.has(s))) && hasSelection(date, t.date) &&
     hasSelection(session, sessionOf(t)) &&
-    showTripByTime(t) &&
+    showTripByTime(t, kst) &&
     (!q || (t.boat ?? '').includes(q)) &&
     (!openOnly || t.status === 'open' || t.status === 'few'));
 }
@@ -493,14 +510,17 @@ function renderPager(view, total) {
   }
 }
 
-function render() {
-  const all = visibleTrips();
+// 표와 지도를 한 번에 다시 그릴 때는 거른 결과를 넘겨받습니다. 안 넘기면 스스로 거릅니다
+// (쪽 넘기기·지도 열기처럼 한쪽만 다시 그리는 자리).
+function render(all = visibleTrips()) {
   const view = paginate(all);
   const rows = view.rows;
   renderPager(view, all.length);
 
-  const tbody = $('rows');
-  tbody.textContent = '';
+  // 한 쪽이 3천 줄 · 4만 노드입니다. 살아 있는 표에 하나씩 붙이면 붙일 때마다 값을 치릅니다.
+  // 조각에 다 모은 다음 한 번에 갈아 끼웁니다.
+  const frag = document.createDocumentFragment();
+  const tides = tidesByDate(rows);
   let prevDate = null;
 
   for (const t of rows) {
@@ -509,7 +529,7 @@ function render() {
       day.className = 'dayhead';
       const td = document.createElement('td');
       td.colSpan = 12;
-      const tide = dayTideParts(t.date, rows);
+      const tide = dayTideParts(t.date, tides.get(t.date));
       td.textContent = tide.label;
       if (tide.good) {
         const good = document.createElement('span');
@@ -521,7 +541,7 @@ function render() {
       hint.textContent = '물때는 날짜별 공통 표기';
       td.append(hint);
       day.append(td);
-      tbody.append(day);
+      frag.append(day);
       prevDate = t.date;
     }
     const tr = document.createElement('tr');
@@ -599,8 +619,10 @@ function render() {
       watchCell.append(button);
     } else watchCell.textContent = '로컬 전용';
     tr.append(watchCell);
-    tbody.append(tr);
+    frag.append(tr);
   }
+
+  $('rows').replaceChildren(frag);
 
   $('empty').hidden = rows.length > 0;
   $('empty').textContent = emptyMessage();
@@ -639,8 +661,7 @@ function loadData() { return fetch('data.json?t=' + Date.now(), { cache: 'no-sto
     fillOptions($('f-session'), d.trips.map(sessionOf));
     fillOptions($('f-date'), d.trips.map((t) => t.date));
     renderStatus();
-    render();
-    drawMap();
+    refresh();
   })
   .catch((e) => { $('meta').textContent = 'data.json을 못 읽었습니다: ' + e.message; }); }
 
@@ -664,11 +685,24 @@ reload();
 async function pollData() { await reload(); setTimeout(pollData, 30000); }
 setTimeout(pollData, 30000);
 
-const refresh = () => { render(); drawMap(); };
+// 거르는 일은 한 번만 합니다. 표와 지도가 각자 거르면 같은 1만 건을 두 번 훑습니다.
+const refresh = () => { const trips = visibleTrips(); render(trips); drawMap(trips); };
 // 필터를 바꾸면 보던 쪽 번호는 의미가 없습니다. 첫 주부터 다시 봅니다.
 const filtered = () => { PAGE = 0; refresh(); };
 for (const id of ['f-open', 'f-fav']) $(id).addEventListener('change', filtered);
-$('f-q').addEventListener('input', filtered);
+// 배 이름 검색은 한 글자마다 걸지 않습니다. 손이 멈춘 뒤에 한 번만 겁니다 —
+// 안 그러면 "무적호"를 치는 동안 표를 예닐곱 번 다시 그립니다.
+// 한글은 조합 중에도 input이 뜹니다(ㅁ→무→뭇→무적). 조합이 끝나기 전에는 그리지 않습니다.
+const SEARCH_DELAY = 150;
+let searchTimer = null;
+let composing = false;
+function queueSearch() {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => { if (!composing) filtered(); }, SEARCH_DELAY);
+}
+$('f-q').addEventListener('input', queueSearch);
+$('f-q').addEventListener('compositionstart', () => { composing = true; });
+$('f-q').addEventListener('compositionend', () => { composing = false; queueSearch(); });
 
 // <details>는 한 번 열면 스스로 안 닫힙니다. 여섯 개를 차례로 누르면 메뉴가 겹겹이
 // 열린 채 표를 가립니다. 바깥을 누르면 닫습니다 — 다른 메뉴의 summary를 누른 것도
@@ -700,12 +734,12 @@ function ensureMap() {
   markers = L.layerGroup().addTo(map);
 }
 
-function drawMap() {
+function drawMap(trips = visibleTrips()) {
   if (!map || !markers) return;
   markers.clearLayers();
 
   const byPort = new Map();
-  for (const t of visibleTrips()) {
+  for (const t of trips) {
     if (!t.port || !DATA.ports?.[t.port]) continue;
     const cur = byPort.get(t.port) ?? { trips: 0, open: 0 };
     cur.trips += 1;
@@ -732,7 +766,7 @@ function drawMap() {
   }
 
   // 지도에 못 찍은 배를 말없이 빼면 "왜 이 배가 안 보이지"가 됩니다. 몇 건이 왜 빠졌는지 적습니다.
-  const hidden = visibleTrips().filter((t) => !t.port || !DATA.ports?.[t.port]);
+  const hidden = trips.filter((t) => !t.port || !DATA.ports?.[t.port]);
   const noPort = hidden.filter((t) => !t.port).length;
   const noCoord = new Set(hidden.filter((t) => t.port).map((t) => t.port));
   $('maphint').textContent = Object.keys(DATA.ports ?? {}).length
