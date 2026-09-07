@@ -34,9 +34,11 @@ export function parseRows(site, html, url) {
 
     if (!hasTripMarker(text)) return;
 
-    // 달력형은 날짜가 행 안 첫 칸에 들어있습니다. 둘 다 처리합니다.
+    // 달력형은 날짜가 행 안 첫 칸에 들어있습니다. rowspan 때문에 다음 형제 행에는
+    // 날짜 칸이 없을 수 있어서, 행 안 날짜를 찾으면 이후 행의 기준으로도 둡니다.
     const cells = $el.find('td, th, .cell').map((__, c) => squash($(c).text())).get();
-    const inlineDate = toDate(cells[0] ?? '') ?? toDate(text.slice(0, 24));
+    const inlineDate = toDate($el.attr('data-dn_date') ?? '') ?? toDate(cells[0] ?? '') ?? toDate(text.slice(0, 24));
+    if (inlineDate) headerDate = inlineDate;
     const date = inlineDate ?? headerDate;
     if (!date) return;
 

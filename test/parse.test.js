@@ -590,6 +590,35 @@ test('generic: 푸른바다의 마성호·뉴마성호를 선박명으로 읽는
   assert.deepEqual(trips.map((t) => t.boat), ['뉴마성호', '마성호']);
 });
 
+test('generic: rowspan으로 날짜가 빈 형제 행은 직전 날짜를 이어받는다', () => {
+  const site = {
+    id: 'blueseaho', name: '오천항 푸른바다낚시',
+    boats: { 마성호: {}, 뉴마성호: {} },
+  };
+  const trips = parseRows(site, `
+    <table>
+      <tr data-dn_date="2026-09-08">
+        <td rowspan="2">09월 08일 (화)</td><td>3물</td><td>뉴마성호 예약하기</td><td>쭈꾸미 남은자리 11명</td>
+      </tr>
+      <tr data-dn_date="2026-09-08">
+        <td>마성호 예약하기</td><td>쭈꾸미 남은자리 2명</td>
+      </tr>
+      <tr data-dn_date="2026-09-09">
+        <td rowspan="2">09월 09일 (수)</td><td>4물</td><td>뉴마성호 예약하기</td><td>쭈꾸미 남은자리 3명</td>
+      </tr>
+      <tr data-dn_date="2026-09-09">
+        <td>마성호 예약하기</td><td>쭈꾸미 남은자리 4명</td>
+      </tr>
+    </table>`, 'https://x');
+
+  assert.deepEqual(trips.map((t) => [t.date, t.boat, t.seatsLeft]), [
+    ['2026-09-08', '뉴마성호', 11],
+    ['2026-09-08', '마성호', 2],
+    ['2026-09-09', '뉴마성호', 3],
+    ['2026-09-09', '마성호', 4],
+  ]);
+});
+
 test('generic: 주소만 적으면 그 한 장, 날짜별 사이트면 날짜만큼', () => {
   const base = 'https://www.blueseaho.com/reservation';
   assert.deepEqual(pageUrls({ url: base }), [base]);
