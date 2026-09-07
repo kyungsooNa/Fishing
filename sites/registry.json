@@ -206,7 +206,7 @@
       "url": "http://blueseaho.com/reservation",
       "port": "충남 보령 오천항",
       "phone": "010-5402-0521",
-      "mode": "auto",
+      "mode": "static",
       "enabled": true,
       "boats": {
         "푸른바다3호": {},
