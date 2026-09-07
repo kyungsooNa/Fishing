@@ -111,7 +111,14 @@ test('최근 timeout 실패는 백오프 시간 동안 다시 붙잡지 않고 �
   const 이전시각 = '2026-09-07T00:00:00.000Z';
   const 어제것 = {
     generatedAt: 이전시각,
-    sites: { broken: { ok: false, at: 이전시각, error: '30000ms 안에 응답이 없습니다', count: 1 } },
+    sites: {
+      broken: {
+        ok: false,
+        at: 이전시각,
+        error: '30000ms 안에 응답이 없습니다 — 최근 timeout이라 2026-09-07T06:00:00.000Z까지 재시도 보류',
+        count: 1,
+      },
+    },
     trips: [{
       siteId: 'broken',
       siteName: '깨진곳',
@@ -135,6 +142,7 @@ test('최근 timeout 실패는 백오프 시간 동안 다시 붙잡지 않고 �
   assert.equal(data.sites.broken.skipped, 'timeout-backoff');
   assert.equal(data.sites.broken.retryAt, '2026-09-07T06:00:00.000Z');
   assert.match(data.sites.broken.error, /재시도 보류/);
+  assert.equal(data.sites.broken.error.match(/재시도 보류/g).length, 1, '보류 문구가 반복되면 안 된다');
 });
 
 test('timeout 백오프 시간이 지나면 실제 수집을 다시 시도한다', async () => {
