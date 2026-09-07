@@ -36,7 +36,16 @@ export async function collectSite(site) {
  * 등록된 사이트를 모두 돌고 data.json을 갱신합니다.
  * 실패한 사이트는 직전 수집 결과를 그대로 남겨둡니다 — 화면이 갑자기 비지 않도록.
  */
-export async function runAll({ only = null, days = 21, registryPath, dataPath, portsPath, dryRun = false, now = new Date() } = {}) {
+export async function runAll({
+  only = null,
+  days = 21,
+  registryPath,
+  dataPath,
+  portsPath,
+  dryRun = false,
+  now = new Date(),
+  timeoutBackoffHours = defaultTimeoutBackoffHours(),
+} = {}) {
   const registry = await loadRegistry(registryPath);
   const targets = registry.filter((s) => (only ? s.id === only : s.enabled !== false));
 
@@ -61,11 +70,32 @@ export async function runAll({ only = null, days = 21, registryPath, dataPath, p
 
   const failed = new Set();
   const startedAt = new Date();
+  const timeoutBackoffMs = Math.max(0, Number(timeoutBackoffHours) || 0) * 60 * 60 * 1000;
   const tripsById = new Map();
   const statusById = new Map();
 
   const collectOne = async (site) => {
     const at = new Date().toISOString();
+    const prevStatus = prev.sites?.[site.id];
+    if (!only && inTimeoutBackoff(prevStatus, timeoutBackoffMs, now)) {
+      failed.add(site.id);
+      const kept = (prevBySite.get(site.id) ?? []).map((t) => refreshKeptTrip(site, t));
+      const retryAt = new Date(Date.parse(prevStatus.at) + timeoutBackoffMs).toISOString();
+      tripsById.set(site.id, kept);
+      statusById.set(site.id, {
+        ...prevStatus,
+        ok: false,
+        error: `${prevStatus.error ?? '이전 수집 실패'} — 최근 timeout이라 ${retryAt}까지 재시도 보류`,
+        count: kept.length,
+        keptFrom: prevStatus.keptFrom ?? prevStatus.at ?? prev.generatedAt ?? null,
+        retryAt,
+        skipped: 'timeout-backoff',
+        ...meta(site),
+      });
+      console.warn(`  ${site.id.padEnd(14)} 건너뜀: 최근 timeout, ${retryAt} 이후 재시도`);
+      return;
+    }
+
     try {
       const trips = await collectSite({ days, ...site });
       tripsById.set(site.id, trips);
@@ -157,6 +187,19 @@ function refreshKeptTrip(site, t) {
 function toMinutes(value) {
   const match = String(value).match(/^(\d{1,2}):(\d{2})/);
   return match ? Number(match[1]) * 60 + Number(match[2]) : Infinity;
+}
+
+function defaultTimeoutBackoffHours() {
+  if ('TIMEOUT_BACKOFF_HOURS' in process.env) return Number(process.env.TIMEOUT_BACKOFF_HOURS);
+  return process.env.GITHUB_ACTIONS === 'true' ? 6 : 0;
+}
+
+function inTimeoutBackoff(status, backoffMs, now) {
+  if (!backoffMs || !status || status.ok !== false) return false;
+  if (!/timeout|timed out|안에 응답/i.test(String(status.error ?? ''))) return false;
+  const lastTried = Date.parse(status.at ?? '');
+  const nowMs = Number(now);
+  return Number.isFinite(lastTried) && Number.isFinite(nowMs) && nowMs >= lastTried && nowMs - lastTried < backoffMs;
 }
 
 export function sortTrips(trips) {

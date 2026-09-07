@@ -40,6 +40,7 @@ jobs:
       - run: node collect.js
         env:
           DAYS: '21'
+          TIMEOUT_BACKOFF_HOURS: '6'
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
