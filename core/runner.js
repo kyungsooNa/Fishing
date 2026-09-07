@@ -81,11 +81,12 @@ export async function runAll({
       failed.add(site.id);
       const kept = (prevBySite.get(site.id) ?? []).map((t) => refreshKeptTrip(site, t));
       const retryAt = new Date(Date.parse(prevStatus.at) + timeoutBackoffMs).toISOString();
+      const error = `${baseTimeoutError(prevStatus.error)} — 최근 timeout이라 ${retryAt}까지 재시도 보류`;
       tripsById.set(site.id, kept);
       statusById.set(site.id, {
         ...prevStatus,
         ok: false,
-        error: `${prevStatus.error ?? '이전 수집 실패'} — 최근 timeout이라 ${retryAt}까지 재시도 보류`,
+        error,
         count: kept.length,
         keptFrom: prevStatus.keptFrom ?? prevStatus.at ?? prev.generatedAt ?? null,
         retryAt,
@@ -200,6 +201,11 @@ function inTimeoutBackoff(status, backoffMs, now) {
   const lastTried = Date.parse(status.at ?? '');
   const nowMs = Number(now);
   return Number.isFinite(lastTried) && Number.isFinite(nowMs) && nowMs >= lastTried && nowMs - lastTried < backoffMs;
+}
+
+function baseTimeoutError(error) {
+  const text = String(error ?? '이전 수집 실패');
+  return text.split(/\s+—\s+최근 timeout이라\s+/)[0] || '이전 수집 실패';
 }
 
 export function sortTrips(trips) {
