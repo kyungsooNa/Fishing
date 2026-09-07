@@ -242,3 +242,72 @@ test('별점 저장값이 깨져 있어도 화면은 그대로 돈다', () => {
   assert.equal(m.rateStars(3), '★★★☆☆');
   assert.equal(m.rateStars(0), '☆☆☆☆☆');
 });
+
+// 쪽 나누기도 떼어내 돌려봅니다. 바깥 것을 안 써서 그대로 실행됩니다.
+function pager() {
+  const start = inline.indexOf('// ── 쪽 나누기 ──');
+  const end = inline.indexOf('// ── 쪽 나누기 끝 ──');
+  assert.ok(start >= 0 && end > start, '쪽 나누기 블록 표시를 찾지 못했습니다');
+  return new Function(
+    `${inline.slice(start, end)}\nreturn { DAYS_PER_PAGE, paginate, get PAGE() { return PAGE; }, set PAGE(v) { PAGE = v; } };`,
+  )();
+}
+
+const trip = (date, boat) => ({ date, boat });
+
+test('표는 일주일치씩 끊어서 보여준다', () => {
+  const m = pager();
+  assert.equal(m.DAYS_PER_PAGE, 7);
+
+  // 출조가 있는 날 10일치. 달력 주가 아니라 날짜 7개가 한 쪽입니다.
+  const days = ['09', '10', '11', '12', '13', '14', '15', '16', '17', '18'].map((d) => `2026-09-${d}`);
+  const trips = days.flatMap((d) => [trip(d, '가'), trip(d, '나')]);
+
+  const first = m.paginate(trips);
+  assert.equal(first.pages, 2);
+  assert.deepEqual(first.groups[0], days.slice(0, 7));
+  assert.deepEqual(first.groups[1], days.slice(7));
+  assert.equal(first.rows.length, 14, '한 쪽에 7일 × 2건');
+  assert.deepEqual([...new Set(first.rows.map((t) => t.date))], days.slice(0, 7));
+
+  m.PAGE = 1;
+  const second = m.paginate(trips);
+  assert.deepEqual([...new Set(second.rows.map((t) => t.date))], days.slice(7));
+  assert.equal(second.rows.length, 6, '한 날의 출조가 두 쪽에 갈리면 안 됩니다');
+});
+
+test('필터를 좁혀 쪽이 사라지면 마지막 쪽으로 당긴다', () => {
+  const m = pager();
+  m.PAGE = 5;
+  const view = m.paginate([trip('2026-09-09'), trip('2026-09-10')]);
+  assert.equal(m.PAGE, 0, '없는 쪽을 보고 있으면 표가 빈 채로 남습니다');
+  assert.equal(view.pages, 1);
+  assert.equal(view.rows.length, 2);
+
+  // 출조가 하나도 없어도 죽지 않아야 합니다.
+  m.PAGE = 3;
+  const none = m.paginate([]);
+  assert.equal(none.pages, 1);
+  assert.deepEqual(none.rows, []);
+});
+
+test('쪽 넘기는 막대는 표 위아래에 있고, 한 쪽뿐이면 숨는다', () => {
+  for (const id of ['pager-top', 'pager-bottom']) {
+    assert.ok(html.includes(`id="${id}"`), `쪽 막대가 없습니다: ${id}`);
+  }
+  assert.match(inline, /box\.hidden = view\.pages <= 1 \|\| !\$\('map'\)\.hidden/);
+  assert.match(inline, /aria-current/, '지금 보는 주가 어디인지 알려줘야 합니다');
+  // 필터를 바꾸면 보던 쪽 번호는 의미가 없습니다.
+  assert.match(inline, /const filtered = \(\) => \{ PAGE = 0; refresh\(\); \}/);
+  assert.match(inline, /updateMultiLabel\(control\); filtered\(\);/);
+  assert.match(inline, /\$\('f-q'\)\.addEventListener\('input', filtered\)/);
+});
+
+test('표가 옆으로 삐져나가지 않게 긴 이름 칸만 줄이 갈린다', () => {
+  // 모든 칸에 nowrap을 걸면 표의 자연 폭이 화면을 넘어 오른쪽 칸이 잘립니다.
+  assert.ok(!/th, td \{[^}]*white-space: nowrap/.test(html), '칸 전체에 nowrap을 걸면 안 됩니다');
+  assert.match(html, /th, td\.nowrap, td\.num, td\.starcell, td\.watchcell \{ white-space: nowrap; \}/);
+  // 날짜·운항·구분·상태는 갈리면 읽기 나쁩니다. 선사·배·항구·어종에서 폭을 법니다.
+  assert.match(inline, /if \(i <= 2 \|\| i === 7\) td\.className = 'nowrap';/);
+  assert.match(inline, /watchCell\.className = 'watchcell';/);
+});
