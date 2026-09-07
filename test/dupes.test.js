@@ -3,7 +3,7 @@
 
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { findDuplicates, disableInRegistry, activeTrips } from '../core/dupes.js';
+import { findDuplicates, disableInRegistry, activeTrips, explainPair } from '../core/dupes.js';
 
 const trip = (siteId, boat, date, extra = {}) => ({
   siteId, boat, date, departAt: '05:00', seatsLeft: 3, seatsTotal: 20, species: '주꾸미', ...extra,
@@ -164,4 +164,45 @@ test('결과에 없는 사이트를 꺼둔 건 알리지 않는다', () => {
   const rows = [trip('on', '가호', '2026-09-07')];
   const { skipped } = activeTrips(rows, [{ id: 'on', enabled: true }, { id: '수집한적없음', enabled: false }]);
   assert.deepEqual(skipped, [], '수집 결과에 없던 곳까지 늘어놓으면 매번 시끄럽습니다');
+});
+
+// ── 어디가 다른지 ───────────────────────────────────────────────────────────
+// 값이 갈린 쌍은 사람이 정해야 합니다. "다르다"만 알려주면 매번 손으로 파보게 됩니다.
+
+test('필드별로 몇 건이 다른지 센다', () => {
+  const rows = [
+    trip('a', '가호', '2026-09-07', { seatsTotal: 20, tide: '2물' }),
+    trip('b', '가호', '2026-09-07', { seatsTotal: 15, tide: '한객기' }),
+    trip('a', '가호', '2026-09-08', { seatsTotal: 20 }),
+    trip('b', '가호', '2026-09-08', { seatsTotal: 20 }),
+  ];
+  const r = explainPair(rows, 'a', 'b');
+
+  assert.equal(r.slots, 2);
+  assert.deepEqual(r.byField, { seatsTotal: 1, tide: 1 });
+  assert.deepEqual(r.boats, ['가호']);
+});
+
+test('한쪽에만 있는 자리를 따로 센다', () => {
+  const rows = [
+    trip('a', '가호', '2026-09-07'),
+    trip('a', '가호', '2026-09-08'),
+    trip('b', '가호', '2026-09-07'),
+  ];
+  const r = explainPair(rows, 'a', 'b');
+
+  assert.equal(r.slots, 1);
+  assert.equal(r.onlyA, 1);
+  assert.equal(r.onlyB, 0);
+  assert.deepEqual(r.byField, {}, '겹치는 자리만 견줍니다');
+});
+
+test('겹치는 자리의 값이 전부 같으면 다른 값이 하나도 없다', () => {
+  const rows = [trip('a', '가호', '2026-09-07'), trip('b', '가호', '2026-09-07')];
+  assert.deepEqual(explainPair(rows, 'a', 'b').diffs, []);
+});
+
+test('수집 결과에 없는 id를 물으면 알려준다', () => {
+  const rows = [trip('a', '가호', '2026-09-07')];
+  assert.throws(() => explainPair(rows, 'a', '없음'), /없습니다/);
 });

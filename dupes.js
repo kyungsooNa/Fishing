@@ -3,6 +3,7 @@
 //
 //   node dupes.js              진단만 — 무엇을 끌 수 있는지 보여줍니다
 //   node dupes.js --disable    판정이 끝난 곳을 registry에서 끕니다
+//   node dupes.js --why a b    그 두 곳이 어디가 어떻게 다른지 (값이 갈린 쌍을 가릴 때)
 //   node dupes.js --from tmp/monitor.json   다른 수집 결과로 보기
 //
 // 선상24는 배마다 서브도메인을 주는데 어느 주소로 들어가든 함대 전체가 나옵니다.
@@ -11,7 +12,7 @@
 
 import { readFile, writeFile } from 'node:fs/promises';
 import { load, DATA_PATH } from './core/store.js';
-import { findDuplicates, disableInRegistry, activeTrips } from './core/dupes.js';
+import { findDuplicates, disableInRegistry, activeTrips, explainPair } from './core/dupes.js';
 import { loadRegistry, REGISTRY_PATH } from './core/runner.js';
 
 const flags = process.argv.slice(2).filter((a) => a.startsWith('--'));
@@ -26,6 +27,17 @@ const data = await load(dataPath);
 if (!data.trips?.length) {
   console.error(`${dataPath} 에 출조가 없습니다. 먼저 수집하세요 — npm run collect`);
   process.exit(1);
+}
+
+if (flags.includes('--why')) {
+  const i = process.argv.indexOf('--why');
+  const [a, b] = [process.argv[i + 1], process.argv[i + 2]];
+  if (!a || !b) {
+    console.error('두 곳을 적으세요 — node dupes.js --why plus suji');
+    process.exit(1);
+  }
+  why(a, b);
+  process.exit(0);
 }
 
 // 이미 꺼둔 곳은 뺍니다. 끄고 나서 수집이 아직 안 돌면 결과에 그대로 남아 있어서,
@@ -94,4 +106,42 @@ function noteFor(keep, dropped, before) {
     + '날짜·출항시각·잔여석까지 같습니다. 둘 다 켜면 같은 출조가 두 줄로 뜹니다'
     + '(전화번호가 없어 core/merge.js가 못 합칩니다). 배를 더 많이 주는 쪽을 남겼습니다.'
     + (before ? ` — 원래 메모: ${before}` : '');
+}
+
+// 함수 선언이라야 why()에서 위로 올려 쓸 수 있습니다(const는 초기화 전엔 못 씁니다).
+function fmt(v) {
+  return v === null ? '-' : JSON.stringify(v);
+}
+
+function why(a, b) {
+  const r = explainPair(data.trips, a, b);
+  const total = Object.values(r.byField).reduce((sum, n) => sum + n, 0);
+
+  console.log(`${a} / ${b}`);
+  console.log(`  겹치는 자리 ${r.slots}건 · ${a}에만 ${r.onlyA}건 · ${b}에만 ${r.onlyB}건`);
+  console.log(`  겹치는 배: ${r.boats.join(', ')}`);
+
+  if (!total) {
+    console.log('\n  겹치는 자리의 값이 전부 같습니다 — 같은 일정표입니다.');
+    return;
+  }
+
+  console.log(`\n  다른 값 ${total}개:`);
+  for (const [field, n] of Object.entries(r.byField).sort((x, y) => y[1] - x[1])) {
+    console.log(`    ${field.padEnd(11)} ${n}건 / ${r.slots}`);
+  }
+
+  console.log('\n  앞 12개:');
+  for (const d of r.diffs.slice(0, 12)) {
+    const [boat, date, at] = d.slot.split('|');
+    console.log(`    ${boat} ${date} ${at || '-'}  ${d.field}: ${fmt(d.a)} vs ${fmt(d.b)}`);
+  }
+  if (r.diffs.length > 12) console.log(`    … 외 ${r.diffs.length - 12}개`);
+
+  // 어느 필드가 갈리느냐가 판정의 거의 전부입니다.
+  const churn = ['seatsLeft', 'status'];
+  const onlyParse = Object.keys(r.byField).every((f) => !churn.includes(f));
+  console.log(onlyParse
+    ? '\n  잔여석·상태는 같고 나머지만 갈립니다 — 한쪽 파싱이 덜 된 같은 배로 보입니다. peek으로 확인하세요.'
+    : '\n  잔여석이나 상태가 갈립니다 — 다른 배이거나, 두 사이트를 받은 시각이 달라 그 사이에 예약이 들어왔을 수 있습니다.');
 }
