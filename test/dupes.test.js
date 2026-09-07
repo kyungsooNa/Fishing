@@ -3,7 +3,7 @@
 
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { findDuplicates, disableInRegistry } from '../core/dupes.js';
+import { findDuplicates, disableInRegistry, activeTrips } from '../core/dupes.js';
 
 const trip = (siteId, boat, date, extra = {}) => ({
   siteId, boat, date, departAt: '05:00', seatsLeft: 3, seatsTotal: 20, species: '주꾸미', ...extra,
@@ -138,4 +138,30 @@ test('실제 registry를 끄고 다시 읽어도 JSON이 성립한다', async ()
   const after = JSON.parse(disableInRegistry(text, id, '시험'));
   assert.equal(after.sites.length, before.sites.length);
   assert.equal(after.sites.find((s) => s.id === id).enabled, false);
+});
+
+// ── 이미 꺼둔 곳 ────────────────────────────────────────────────────────────
+// 끄고 나서 수집이 아직 안 돌면 결과에 그대로 남습니다. 그걸 또 끄라고 하면
+// --disable을 다시 돌릴 때 note가 겹쳐 쌓입니다.
+
+test('꺼둔 사이트의 출조는 빼고, 뭘 뺐는지 알려준다', () => {
+  const rows = [trip('on', '가호', '2026-09-07'), trip('off', '가호', '2026-09-07')];
+  const { trips, skipped } = activeTrips(rows, [{ id: 'on', enabled: true }, { id: 'off', enabled: false }]);
+
+  assert.deepEqual(trips.map((t) => t.siteId), ['on']);
+  assert.deepEqual(skipped, ['off']);
+});
+
+test('꺼둔 곳을 빼고 나면 이미 정리한 중복은 다시 안 나온다', () => {
+  const rows = [trip('keep', '가호', '2026-09-07'), trip('keep', '나호', '2026-09-07'), trip('gone', '가호', '2026-09-07')];
+  const registry = [{ id: 'keep', enabled: true }, { id: 'gone', enabled: false }];
+
+  assert.equal(findDuplicates(rows).groups.length, 1, '끄기 전에는 잡힙니다');
+  assert.deepEqual(findDuplicates(activeTrips(rows, registry).trips).groups, [], '끄고 나면 안 잡힙니다');
+});
+
+test('결과에 없는 사이트를 꺼둔 건 알리지 않는다', () => {
+  const rows = [trip('on', '가호', '2026-09-07')];
+  const { skipped } = activeTrips(rows, [{ id: 'on', enabled: true }, { id: '수집한적없음', enabled: false }]);
+  assert.deepEqual(skipped, [], '수집 결과에 없던 곳까지 늘어놓으면 매번 시끄럽습니다');
 });

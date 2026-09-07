@@ -11,8 +11,8 @@
 
 import { readFile, writeFile } from 'node:fs/promises';
 import { load, DATA_PATH } from './core/store.js';
-import { findDuplicates, disableInRegistry } from './core/dupes.js';
-import { REGISTRY_PATH } from './core/runner.js';
+import { findDuplicates, disableInRegistry, activeTrips } from './core/dupes.js';
+import { loadRegistry, REGISTRY_PATH } from './core/runner.js';
 
 const flags = process.argv.slice(2).filter((a) => a.startsWith('--'));
 const valueOf = (f) => {
@@ -28,8 +28,16 @@ if (!data.trips?.length) {
   process.exit(1);
 }
 
-const { groups, reviews } = findDuplicates(data.trips);
-console.log(`${dataPath} — 출조 ${data.trips.length}건 / 사이트 ${Object.keys(data.sites ?? {}).length}곳\n`);
+// 이미 꺼둔 곳은 뺍니다. 끄고 나서 수집이 아직 안 돌면 결과에 그대로 남아 있어서,
+// 그냥 두면 이미 끈 곳을 또 끄라고 합니다.
+const { trips, skipped } = activeTrips(data.trips, await loadRegistry());
+
+const { groups, reviews } = findDuplicates(trips);
+console.log(`${dataPath} — 출조 ${trips.length}건 / 사이트 ${Object.keys(data.sites ?? {}).length}곳`);
+if (skipped.length) {
+  console.log(`이미 꺼둔 ${skipped.length}곳은 뺐습니다 (${skipped.join(', ')}) — 다음 수집부터 결과에서도 빠집니다.`);
+}
+console.log('');
 
 if (groups.length) {
   console.log('■ 같은 일정표 — 한 곳만 남기면 됩니다');

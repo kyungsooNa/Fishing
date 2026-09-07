@@ -159,3 +159,23 @@ export function disableInRegistry(text, id, note) {
   }
   return lines.join('\n');
 }
+
+/**
+ * 이미 꺼둔 사이트의 출조는 뺍니다.
+ *
+ * 수집 결과는 그때 켜져 있던 사이트를 그대로 담고 있어서, 끄고 나서 아직 수집이 안 돌면
+ * 껐던 곳이 결과에 남아 있습니다. 그대로 두면 이미 끈 곳을 또 끄라고 하고, `--disable`을
+ * 다시 돌리면 note가 겹쳐 쌓입니다.
+ */
+export function activeTrips(trips, sites) {
+  const off = new Set(sites.filter((s) => s.enabled === false).map((s) => s.id));
+  const stale = new Set();
+
+  const kept = trips.filter((t) => {
+    if (!off.has(t?.siteId)) return true;
+    stale.add(t.siteId);
+    return false;
+  });
+
+  return { trips: kept, skipped: [...stale].sort() };
+}
