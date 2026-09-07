@@ -269,6 +269,7 @@ export function makeTrip(site, fields) {
     seatsLeft = null,
     seatsTotal = null,
     price = null,
+    port = null,
     url = null,
   } = fields;
 
@@ -290,7 +291,7 @@ export function makeTrip(site, fields) {
     siteId: site.id,
     siteName: site.name ?? site.id,
     boat: boatName,
-    port: pickPort(site, boatName),
+    port: port ?? pickPort(site, boatName),
     phone: pickPhone(site, boatName),
     date: resolvedDate,
     departAt: depart,

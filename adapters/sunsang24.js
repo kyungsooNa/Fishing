@@ -148,7 +148,8 @@ export function parseFleet(site, html, url) {
     const outer = units.filter((el) => !$(el).parents('table').toArray().some((p) => units.includes(p)));
 
     outer.forEach((unit) => {
-      const text = stripNotice(squash($(unit).text()));
+      const rawText = squash($(unit).text());
+      const text = stripNotice(rawText);
       const seats = pickSeatInfo(text);
 
       const trip = makeTrip(site, {
@@ -160,6 +161,7 @@ export function parseFleet(site, html, url) {
         status: text,
         seatsLeft: seats.left,
         seatsTotal: seats.total,
+        port: pickNoticePort(site, rawText),
         url,
       });
       if (trip.boat) trips.push(trip);
@@ -184,7 +186,8 @@ export function parseSimpleDay(site, html, url) {
       const boat = pickBoat(site, squash($unit.find('.ship_info .title').first().text()));
       if (!boat) return;
 
-      const text = stripNotice(squash($unit.text()));
+      const rawText = squash($unit.text());
+      const text = stripNotice(rawText);
       if (!isUnit(text)) return;
       const seats = pickSeatInfo(text);
 
@@ -197,6 +200,7 @@ export function parseSimpleDay(site, html, url) {
         status: text,
         seatsLeft: seats.left,
         seatsTotal: seats.total,
+        port: pickNoticePort(site, rawText),
         url,
       });
       trips.push(trip);
@@ -290,6 +294,22 @@ function fillMissingSeatTotals(trips) {
     const total = totals.get(`${t.siteId}|${t.boat ?? ''}`);
     return Number.isFinite(total) && total >= t.seatsLeft ? { ...t, seatsTotal: total } : t;
   });
+}
+
+
+function pickNoticePort(site, text) {
+  const found = String(text ?? '').match(/([가-힣A-Za-z0-9]+항)\s*(?:에서\s*)?출항/)?.[1];
+  if (!found || found === '출조항' || found === '입출항') return null;
+  const normalized = site.portAliases?.[found] ?? found;
+  if (/\s/.test(normalized)) return normalized;
+  const prefix = portPrefix(site.port);
+  return prefix ? `${prefix} ${normalized}` : normalized;
+}
+
+function portPrefix(port) {
+  const parts = String(port ?? '').trim().split(/\s+/).filter(Boolean);
+  if (parts.length >= 3) return `${parts[0]} ${parts[1]}`;
+  return null;
 }
 
 function pickSpecies(text) {

@@ -255,6 +255,41 @@ test('sunsang24: 같은 배의 정원을 알면 잔여만 있는 빈 배에도 �
   ]);
 });
 
+test('sunsang24: 공지의 출항 항구가 사이트 기본 항구를 덮는다', () => {
+  const html = `
+    <table id="d2026-09-10" class="shipsinfo_daywarp">
+      <tr><td class="date_info2">5물</td><td class="ships_warp">
+        <table class="ship_unit"><tr>
+          <td class="ship_info"><div class="title">나무호</div></td>
+          <td><ul class="reservation_detail" data-sdate="2026-09-10">
+            <li>공지사항 ★구매항 출항★ ★쭈꾸미★ 오후 5시간 출항!</li>
+            <li>어종 : 갑오징어</li><li>운항시간 : 13:00 ~ 18:00</li>
+          </ul></td>
+          <td class="ship_info2">남은자리 15명</td>
+        </tr></table>
+        <table class="ship_unit"><tr>
+          <td class="ship_info"><div class="title">아우라호</div></td>
+          <td><ul class="reservation_detail" data-sdate="2026-09-10">
+            <li>공지사항 ★내포항 출항★ ★주꾸미, 갑오징어★ 종일배 출항!</li>
+            <li>어종 : 주꾸미</li><li>운항시간 : 06:00 ~ 15:00</li>
+          </ul></td>
+          <td class="ship_info2">예약마감 21명 예약/21명</td>
+        </tr></table>
+      </td></tr>
+    </table>`;
+
+  const trips = parseSimpleDay(
+    { ...sunsangSite, id: 'fishinggate', port: '충남 태안 백사장항', boats: { 나무호: {}, 아우라호: {} } },
+    html,
+    'https://fishinggate.sunsang24.com/ship/schedule_fleet/2026-09-10/0/simple_day',
+  );
+
+  assert.deepEqual(trips.map((t) => [t.boat, t.port]), [
+    ['나무호', '충남 태안 구매항'],
+    ['아우라호', '충남 태안 내포항'],
+  ]);
+});
+
 test('uijiho: 월별 예약현황의 날짜 행과 정원을 읽는다', () => {
   const html = `
     <h2>2026년 9월 예약인원현황</h2>
