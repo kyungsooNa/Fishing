@@ -179,3 +179,47 @@ export function activeTrips(trips, sites) {
 
   return { trips: kept, skipped: [...stale].sort() };
 }
+
+// 값이 갈려 자동으로 못 정하는 쌍은 사람이 봐야 합니다. 그때 알아야 하는 건
+// "다르다"가 아니라 "어디가 어떻게 다르냐"입니다. seatsTotal만 어긋나면 한쪽 파싱이
+// 덜 된 같은 배이고, seatsLeft·어종이 죽 다르면 다른 지역의 동명이배입니다.
+const COMPARED = ['seatsLeft', 'seatsTotal', 'status', 'species', 'tide', 'departAt', 'returnAt'];
+
+/** 두 사이트의 같은 자리를 필드별로 맞춰 봅니다. */
+export function explainPair(trips, idA, idB) {
+  const pick = (id) => {
+    const rows = new Map();
+    for (const t of trips) {
+      if (t?.siteId === id && t.boat && t.date) rows.set(slotKey(t), t);
+    }
+    return rows;
+  };
+
+  const a = pick(idA);
+  const b = pick(idB);
+  if (!a.size) throw new Error(`수집 결과에 '${idA}'가 없습니다`);
+  if (!b.size) throw new Error(`수집 결과에 '${idB}'가 없습니다`);
+
+  const shared = [...a.keys()].filter((k) => b.has(k));
+  const diffs = [];
+
+  for (const k of shared) {
+    for (const field of COMPARED) {
+      const x = a.get(k)[field] ?? null;
+      const y = b.get(k)[field] ?? null;
+      if (x !== y) diffs.push({ slot: k, field, a: x, b: y });
+    }
+  }
+
+  const byField = {};
+  for (const d of diffs) byField[d.field] = (byField[d.field] ?? 0) + 1;
+
+  return {
+    slots: shared.length,
+    onlyA: a.size - shared.length,
+    onlyB: b.size - shared.length,
+    boats: [...new Set(shared.map((k) => k.split('|')[0]))].sort(),
+    byField,
+    diffs,
+  };
+}
