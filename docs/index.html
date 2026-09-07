@@ -196,7 +196,10 @@ async function toggleWatch(t, button) {
       body: JSON.stringify({ key: watchKey(t), enabled: !watched(t) }) });
     const d = await r.json();
     if (!r.ok) throw new Error(d.error ?? '감시 설정 실패');
-    MONITOR = d; monitorMessage(); render();
+    MONITOR = d; monitorMessage();
+    // 버튼 문구 하나 바뀌자고 표를 다시 그리지 않습니다. 감시 상태만 고쳐 그립니다.
+    for (const row of ROW_BUTTONS) if (row.watch) paintWatch(row.watch, row.trip);
+    button.disabled = false;   // 표를 다시 그리지 않으니 여기서 풀어줘야 합니다
   } catch (e) { $('monitor-status').textContent = e.message; button.disabled = false; }
 }
 
@@ -212,11 +215,18 @@ function loadFavs() {
 function saveFavs() {
   try { localStorage.setItem(FAV_KEY, JSON.stringify([...FAVS])); } catch { /* 저장이 막혀도 이번 세션은 됩니다 */ }
 }
+const favLabel = () => (FAVS.size ? `★ 즐겨찾기만 (${FAVS.size})` : '★ 즐겨찾기만');
+
 function toggleFav(t) {
   const k = favKey(t);
   if (!FAVS.delete(k)) FAVS.add(k);
   saveFavs();
-  refresh();
+  $('f-fav-label').textContent = favLabel();
+  // "즐겨찾기만"이 켜져 있으면 별을 빼는 순간 그 줄이 사라져야 합니다. 그때만 다시 그립니다.
+  if ($('f-fav').checked) { refresh(); return; }
+  // 같은 배가 여러 날에 여러 줄로 나옵니다(키가 이름+출항지라서). 키가 같은 별을 다 같이 고칩니다.
+  const on = FAVS.has(k);
+  for (const row of ROW_BUTTONS) if (favKey(row.trip) === k) paintStar(row.star, on);
 }
 let FAVS = loadFavs();
 
@@ -510,6 +520,25 @@ function renderPager(view, total) {
   }
 }
 
+// 별·감시 버튼은 눌러도 표에 나오는 줄이 바뀌지 않습니다("즐겨찾기만"을 켠 때만 빼고).
+// 버튼 하나 때문에 표를 통째로 다시 그리면 누를 때마다 130ms씩 멈춥니다
+// (한 쪽이 행 1200개 · 노드 2만 개). 그래서 render()가 그리면서 버튼을 적어두고,
+// 누를 때는 그 버튼만 고쳐 그립니다.
+const ROW_BUTTONS = [];
+
+function paintStar(star, on) {
+  star.className = 'star' + (on ? ' on' : '');
+  star.textContent = on ? '★' : '☆';
+  star.title = on ? '즐겨찾기에서 빼기' : '즐겨찾기에 넣기';
+  star.setAttribute('aria-label', star.title);
+}
+
+function paintWatch(button, t) {
+  const on = Boolean(watched(t));
+  button.textContent = on ? '감시 해제' : '3분 감시';
+  button.setAttribute('aria-pressed', String(on));
+}
+
 // 표와 지도를 한 번에 다시 그릴 때는 거른 결과를 넘겨받습니다. 안 넘기면 스스로 거릅니다
 // (쪽 넘기기·지도 열기처럼 한쪽만 다시 그리는 자리).
 function render(all = visibleTrips()) {
@@ -521,6 +550,7 @@ function render(all = visibleTrips()) {
   // 조각에 다 모은 다음 한 번에 갈아 끼웁니다.
   const frag = document.createDocumentFragment();
   const tides = tidesByDate(rows);
+  ROW_BUTTONS.length = 0;
   let prevDate = null;
 
   for (const t of rows) {
@@ -548,11 +578,7 @@ function render(all = visibleTrips()) {
     const starCell = document.createElement('td');
     starCell.className = 'starcell';
     const star = document.createElement('button');
-    const on = FAVS.has(favKey(t));
-    star.className = 'star' + (on ? ' on' : '');
-    star.textContent = on ? '★' : '☆';
-    star.title = on ? '즐겨찾기에서 빼기' : '즐겨찾기에 넣기';
-    star.setAttribute('aria-label', star.title);
+    paintStar(star, FAVS.has(favKey(t)));
     star.addEventListener('click', () => toggleFav(t));
     starCell.append(star);
     tr.append(starCell);
@@ -610,23 +636,24 @@ function render(all = visibleTrips()) {
     });
     const watchCell = document.createElement('td');
     watchCell.className = 'watchcell';
+    let watch = null;
     if (MONITOR) {
-      const button = document.createElement('button');
-      button.className = 'watch';
-      button.textContent = watched(t) ? '감시 해제' : '3분 감시';
-      button.setAttribute('aria-pressed', String(Boolean(watched(t))));
-      button.onclick = () => toggleWatch(t, button);
-      watchCell.append(button);
+      watch = document.createElement('button');
+      watch.className = 'watch';
+      paintWatch(watch, t);
+      watch.onclick = () => toggleWatch(t, watch);
+      watchCell.append(watch);
     } else watchCell.textContent = '로컬 전용';
     tr.append(watchCell);
     frag.append(tr);
+    ROW_BUTTONS.push({ trip: t, star, watch });
   }
 
   $('rows').replaceChildren(frag);
 
   $('empty').hidden = rows.length > 0;
   $('empty').textContent = emptyMessage();
-  $('f-fav-label').textContent = FAVS.size ? `★ 즐겨찾기만 (${FAVS.size})` : '★ 즐겨찾기만';
+  $('f-fav-label').textContent = favLabel();
 }
 
 function renderStatus() {
