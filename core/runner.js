@@ -174,6 +174,7 @@ function refreshKeptTrip(site, t) {
     seatsLeft: t.seatsLeft,
     seatsTotal: t.seatsTotal,
     price: t.price,
+    port: t.port,
     url: t.url,
   });
 
