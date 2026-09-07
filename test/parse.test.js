@@ -308,6 +308,46 @@ test('uijiho: 월별 예약현황의 날짜 행과 정원을 읽는다', () => {
   ]);
 });
 
+// 물때는 날짜 머리글 옆에 붙는데, 붙는 방식이 판마다 다릅니다. 한쪽만 보다가 두 번 틀렸습니다 —
+// PC판은 텍스트로 붙어 2382건이 비었고(#94), 모바일판은 형제 <span>이라 /m/ 11곳 237건이 비었습니다.
+test('thefishing: detail — 모바일 예약판은 물때가 형제 요소로 붙는다', () => {
+  const site = { id: 'raraho', name: '라라호', boats: { 라라호: {} }, url: 'https://x/m/index.php?mid=bk' };
+  const html = `
+    <div class="day"><span>2026년 09월 07일 (월요일)</span><span>2물</span></div>
+    <h2>라라호</h2>
+    <ul><li>공지 ● 낚시종류 : 쭈꾸미</li><li>남은자리 3명</li></ul>`;
+
+  const [trip] = parseDetail(site, html, 'https://x');
+  assert.equal(trip.date, '2026-09-07');
+  assert.equal(trip.tide, '2물', '배 머리글이 앞 글자를 비워도 물때는 남아야 합니다');
+});
+
+test('thefishing: detail — 같은 날 다음 배도 같은 물때를 받는다', () => {
+  const site = { id: 'monster', name: '몬스터호', boats: { 몬스터호: {} }, url: 'https://x/m/index.php?mid=bk' };
+  const html = `
+    <div class="day"><span>2026년 09월 07일 (월요일)</span><span>2물</span></div>
+    <h2>몬스터호(오전배)</h2>
+    <ul><li>공지 ● 낚시종류 : 우럭</li><li>남은자리 3명</li></ul>
+    <h2>몬스터호(오후배)</h2>
+    <ul><li>공지 ● 낚시종류 : 우럭</li><li>남은자리 5명</li></ul>`;
+
+  const trips = parseDetail(site, html, 'https://x');
+  assert.equal(trips.length, 2);
+  assert.deepEqual(trips.map((t) => t.tide), ['2물', '2물']);
+});
+
+// PC판이 깨지지 않았는지 — 물때가 요소 없이 글자로만 붙어 있는 경우.
+test('thefishing: detail — PC판의 날짜 뒤 텍스트 물때도 그대로 읽는다', () => {
+  const site = { id: 'pc', name: '피시', boats: { 가호: {} }, url: 'https://x?mid=bk' };
+  const html = `
+    <div class="day"><span>2026년 09월 09일</span>, 수요일, 4물</div>
+    <h2>가호</h2>
+    <ul><li>공지 ● 낚시종류 : 우럭</li><li>남은자리 2명</li></ul>`;
+
+  const [trip] = parseDetail(site, html, 'https://x');
+  assert.equal(trip.tide, '4물');
+});
+
 test('thefishing: detail — 입금 명단의 좌석번호를 세서 잔여석을 구한다', () => {
   const site = { id: 'monster', name: '몬스터', seatsTotal: 20, url: 'https://x?mid=bk' };
   const [trip] = parseDetail(site, fx.THEFISHING_DETAIL, 'https://x');

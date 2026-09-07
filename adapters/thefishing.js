@@ -150,7 +150,8 @@ export function parseDetail(site, html, url) {
         departAt: time.from,
         returnAt: time.to,
         species,
-        tide: toTide(text),
+        // 날짜 머리글에서 집은 물때가 먼저입니다 — 본문에는 다른 날 물때가 섞일 수 있습니다.
+        tide: block.tide ?? toTide(text),
         status: text.slice(0, 200),
         seatsLeft,
         seatsTotal,
@@ -277,10 +278,14 @@ function splitByDate($) {
     const text = squash($(el).text());
     const asDate = text.length <= 40 && /^(?:20\d{2}[-./년]|\d{1,2}[-./월]\s*\d)/.test(text) ? toDate(text) : null;
     if (asDate && !/예약|입금|공지/.test(text)) {
-      cur = { date: asDate, text: '' };
+      // 물때는 날짜 머리글 옆에 붙는데, 붙는 방식이 판마다 다릅니다.
+      //   PC판   : <span>2026년 09월 09일</span>, 수요일, 4물   ← 요소 없는 텍스트
+      //   모바일판: <span>2026년 09월 07일 (월요일)</span><span>2물</span>  ← 형제 요소
+      // 그래서 둘 다 담고 있는 부모 전체 글자에서 집습니다. 하나만 보다가 두 번 틀렸습니다
+      // (#94는 텍스트 쪽, 모바일 /m/ 11곳은 형제 요소 쪽이라 237건이 통째로 비었습니다).
+      cur = { date: asDate, text: '', tide: toTide(squash($(el).parent().text())) };
       blocks.push(cur);
-      // 날짜 뒤에 ", 수요일, 4물"처럼 붙은 글자는 어느 요소에도 안 담겨 있습니다.
-      // 잎 노드만 훑으면 통째로 사라져서, 더피싱 출조 2382건이 물때가 비어 있었습니다.
+
       const nodes = $(el).parent().contents().toArray();
       const tail = squash(nodes.slice(nodes.indexOf(el) + 1)
         .filter((n) => n.type === 'text')
@@ -292,8 +297,10 @@ function splitByDate($) {
     // 모바일 예약판의 항차 머리글. <h2>몬스터호<br>(오전배)</h2>도 보존합니다.
     if (cur && /^h[1-6]$/.test(el.name) && /호|오전배|오후배/.test(text)) {
       if (cur.boat && /남은자리|입금|예약하기/.test(cur.text)) {
-        cur = { date: cur.date, text: '' }; blocks.push(cur);
+        // 물때는 날짜에 달린 값이라 같은 날의 다음 배에도 그대로 갑니다.
+        cur = { date: cur.date, tide: cur.tide, text: '' }; blocks.push(cur);
       }
+      // 배 이름 앞의 머리말은 버리지만 물때는 cur.text 밖에 있어 살아남습니다.
       if (!cur.boat) cur.text = '';
       cur.boat = text;
     }
