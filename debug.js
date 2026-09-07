@@ -194,6 +194,45 @@ async function peekPages(site) {
         cur = cur.parent();
       }
     }
+
+    // 물때·요일은 날짜 머리글에 붙어 옵니다("2026년 09월 09일, 수요일, 4물").
+    // 요소 안에 안 담겨 있는 경우가 많아, 어느 요소에 어떻게 붙어 있는지를 봐야
+    // 파서가 왜 못 읽는지 알 수 있습니다. 실제로 이것 때문에 두 번 틀렸습니다
+    // (#94 잎 노드만 훑던 것, 모바일 예약판에서 물때가 통째로 비던 것).
+    const dates = $('*').filter((_, el) => {
+      const t = squashText($(el).text());
+      return $(el).children().length === 0 && t.length <= 40 &&
+        /(20\d{2}[-./년]|\d{1,2}\s*월\s*\d{1,2}\s*일)/.test(t);
+    }).slice(0, 4);
+
+    if (dates.length) {
+      console.log('  날짜 머리글과 그 뒤에 붙은 글자:');
+      dates.each((_, el) => {
+        const $el = $(el);
+        const tag = $el.prop('tagName')?.toLowerCase() ?? '?';
+        const cls = ($el.attr('class') ?? '').split(/\s+/).filter(Boolean).slice(0, 2).join('.');
+        console.log(`    <${tag}${cls ? '.' + cls : ''}> ${squashText($el.text())}`);
+
+        // 날짜 요소 뒤의 텍스트 노드 — 여기에 물때가 있으면 요소가 아니라 글자로 붙은 것입니다.
+        const siblings = $el.parent().contents().toArray();
+        const after = siblings.slice(siblings.indexOf(el) + 1);
+        const tail = squashText(after.filter((n) => n.type === 'text').map((n) => $(n).text()).join(' '));
+        const nextEls = after.filter((n) => n.type === 'tag').slice(0, 2)
+          .map((n) => `<${n.name}> ${squashText($(n).text()).slice(0, 40)}`);
+
+        console.log(`      뒤 텍스트: ${tail || '(없음)'}`);
+        if (nextEls.length) console.log(`      뒤 요소  : ${nextEls.join(' | ')}`);
+        console.log(`      부모 전체: ${squashText($el.parent().text()).slice(0, 120)}`);
+      });
+    } else {
+      console.log('  날짜 머리글을 못 찾았습니다 — 날짜가 요소 하나에 안 담겨 있습니다.');
+    }
   }
   console.log('');
+}
+
+// peekPages()가 파일 위쪽에서 먼저 돌기 때문에 함수 선언이라야 합니다
+// (const는 호이스팅돼도 초기화 전엔 못 씁니다 — 이 파일 맨 위 MARKERS와 같은 이유).
+function squashText(s) {
+  return String(s ?? '').replace(/\s+/g, ' ').trim();
 }
