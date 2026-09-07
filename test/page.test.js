@@ -158,13 +158,50 @@ function favModule(saved = []) {
     getItem: (k) => store.get(k) ?? null,
     setItem: (k, v) => store.set(k, v),
   };
-  const checks = { 'f-fav': { checked: true } };
+  const checks = { 'f-fav': { checked: true }, 'f-fav-label': { textContent: '' } };
   const DATA = { trips: [] };
-  const module = new Function('localStorage', '$', 'DATA', 'refresh',
-    `${src}\nreturn { FAVS, favKey, migrateFavs, emptyMessage, toggleFav };`,
-  )(localStorage, (id) => checks[id], DATA, () => {});
-  return { ...module, DATA, checks, stored: () => JSON.parse(store.get('fishing:favorites') ?? '[]') };
+  // 별을 누르면 표를 통째로 다시 그리는 대신 그 별들만 고쳐 그립니다. 그 두 가지를
+  // 가짜로 넣어 실제로 어느 쪽이 도는지 봅니다.
+  const ROW_BUTTONS = [];
+  let refreshed = 0;
+  const paintStar = (star, on) => { star.on = on; };
+  const module = new Function('localStorage', '$', 'DATA', 'refresh', 'ROW_BUTTONS', 'paintStar',
+    `${src}\nreturn { FAVS, favKey, favLabel, migrateFavs, emptyMessage, toggleFav };`,
+  )(localStorage, (id) => checks[id], DATA, () => { refreshed += 1; }, ROW_BUTTONS, paintStar);
+  return { ...module, DATA, checks, ROW_BUTTONS,
+    refreshed: () => refreshed,
+    stored: () => JSON.parse(store.get('fishing:favorites') ?? '[]') };
 }
+
+// 별 하나 누를 때마다 표(행 1200개 · 노드 2만 개)를 다시 그리면 130ms씩 멈춥니다.
+// 줄이 사라져야 하는 경우가 아니면 별만 고쳐 그립니다.
+test('별을 누르면 표를 다시 그리지 않고 그 별만 고쳐 그린다', () => {
+  const m = favModule();
+  m.checks['f-fav'].checked = false;   // "즐겨찾기만"이 꺼져 있으면 나오는 줄은 그대로입니다
+  // 같은 배가 여러 날에 여러 줄로 나옵니다 — 키가 이름+출항지라서 전부 같이 켜져야 합니다.
+  const 같은배 = [{ boat: '무적호', port: '충남 보령 대천항' }, { boat: '무적호', port: '충남 보령 대천항' }];
+  const 다른배 = { boat: '한바다호', port: '인천 옹진 영흥도' };
+  for (const trip of [...같은배, 다른배]) m.ROW_BUTTONS.push({ trip, star: { on: false }, watch: null });
+
+  m.toggleFav(같은배[0]);
+  assert.equal(m.refreshed(), 0, '표를 다시 그리면 안 됩니다');
+  assert.deepEqual(m.ROW_BUTTONS.map((r) => r.star.on), [true, true, false], '같은 배는 다 같이 켜집니다');
+  assert.deepEqual(m.stored(), ['무적호|충남 보령 대천항']);
+  assert.equal(m.checks['f-fav-label'].textContent, '★ 즐겨찾기만 (1)', '개수도 같이 고쳐야 합니다');
+
+  m.toggleFav(같은배[1]);
+  assert.deepEqual(m.ROW_BUTTONS.map((r) => r.star.on), [false, false, false]);
+  assert.equal(m.refreshed(), 0);
+});
+
+test('"즐겨찾기만"을 켠 채로 별을 빼면 그 줄이 사라져야 하므로 다시 그린다', () => {
+  const m = favModule(['무적호|충남 보령 대천항']);
+  m.checks['f-fav'].checked = true;
+  m.ROW_BUTTONS.push({ trip: { boat: '무적호', port: '충남 보령 대천항' }, star: { on: true }, watch: null });
+
+  m.toggleFav({ boat: '무적호', port: '충남 보령 대천항' });
+  assert.equal(m.refreshed(), 1, '줄이 사라져야 하면 표를 다시 그립니다');
+});
 
 test('항구가 바뀐 즐겨찾기는 새 항구를 따라간다', () => {
   const m = favModule(['바하호|충남 태안 백사장항']);
@@ -392,6 +429,16 @@ test('검색어는 손이 멈춘 뒤에, 한글 조합이 끝난 뒤에 건다',
   handlers.compositionend();
   fire();
   assert.equal(ran, 1, '조합이 끝나면 겁니다');
+});
+
+test('감시를 걸고 풀 때도 표를 다시 그리지 않는다', () => {
+  // 예전엔 버튼 문구 하나 바꾸자고 render()를 통째로 불렀습니다.
+  assert.ok(!/monitorMessage\(\); render\(\);/.test(inline), '감시 토글이 표를 다시 그리면 안 됩니다');
+  assert.match(inline, /for \(const row of ROW_BUTTONS\) if \(row\.watch\) paintWatch\(row\.watch, row\.trip\);/);
+  // 표를 다시 그리지 않으니 버튼을 직접 풀어줘야 합니다. 안 그러면 영영 눌리지 않습니다.
+  assert.match(inline, /button\.disabled = false;\s+\/\/ 표를 다시 그리지 않으니/);
+  assert.match(inline, /ROW_BUTTONS\.push\(\{ trip: t, star, watch \}\);/);
+  assert.match(inline, /ROW_BUTTONS\.length = 0;/, '다시 그릴 때마다 비워야 옛 버튼이 안 남습니다');
 });
 
 test('표가 옆으로 삐져나가지 않게 긴 이름 칸만 줄이 갈린다', () => {
