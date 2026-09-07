@@ -107,6 +107,56 @@ test('죽은 사이트의 보존 행도 현재 스키마로 다시 정규화한�
   assert.equal(data.trips[0].status, 'open');
 });
 
+test('최근 timeout 실패는 백오프 시간 동안 다시 붙잡지 않고 직전 결과를 남긴다', async () => {
+  const 이전시각 = '2026-09-07T00:00:00.000Z';
+  const 어제것 = {
+    generatedAt: 이전시각,
+    sites: { broken: { ok: false, at: 이전시각, error: '30000ms 안에 응답이 없습니다', count: 1 } },
+    trips: [{
+      siteId: 'broken',
+      siteName: '깨진곳',
+      boat: '옛날호',
+      date: '2026-09-08',
+      status: '예약가능',
+      seatsLeft: 3,
+    }],
+  };
+  const { registryPath, dataPath } = await fixture([brokenSite], 어제것);
+  const { data, failed } = await runAll({
+    registryPath,
+    dataPath,
+    days: 21,
+    now: new Date('2026-09-07T02:00:00.000Z'),
+    timeoutBackoffHours: 6,
+  });
+
+  assert.deepEqual(failed, ['broken']);
+  assert.equal(data.trips.length, 1, '직전 행은 그대로 남아야 한다');
+  assert.equal(data.sites.broken.skipped, 'timeout-backoff');
+  assert.equal(data.sites.broken.retryAt, '2026-09-07T06:00:00.000Z');
+  assert.match(data.sites.broken.error, /재시도 보류/);
+});
+
+test('timeout 백오프 시간이 지나면 실제 수집을 다시 시도한다', async () => {
+  const 이전시각 = '2026-09-07T00:00:00.000Z';
+  const 어제것 = {
+    generatedAt: 이전시각,
+    sites: { broken: { ok: false, at: 이전시각, error: '30000ms 안에 응답이 없습니다', count: 0 } },
+    trips: [],
+  };
+  const { registryPath, dataPath } = await fixture([brokenSite], 어제것);
+  const { data } = await runAll({
+    registryPath,
+    dataPath,
+    days: 21,
+    now: new Date('2026-09-07T07:00:00.000Z'),
+    timeoutBackoffHours: 6,
+  });
+
+  assert.equal(data.sites.broken.skipped, undefined);
+  assert.match(data.sites.broken.error, /_nonexistent/);
+});
+
 test('수집 결과를 파일로 남긴다', async () => {
   const { registryPath, dataPath } = await fixture([mockSite]);
   await runAll({ registryPath, dataPath, days: 21 });
