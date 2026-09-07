@@ -43,7 +43,10 @@
                 border: 1px solid var(--line); border-radius: 7px; background: var(--card); font-size: 14px; }
   .tablewrap { overflow-x: auto; background: var(--card); border: 1px solid var(--line); border-radius: 10px; }
   table { border-collapse: collapse; width: 100%; min-width: 820px; }
-  th, td { padding: 9px 10px; text-align: left; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th, td { padding: 9px 10px; text-align: left; border-bottom: 1px solid var(--line); }
+  /* 칸마다 nowrap을 걸면 표의 자연 폭이 화면을 넘어 오른쪽 칸이 잘립니다.
+     줄이 갈려도 되는 건 선사·배·항구·어종뿐이라, 나머지에만 nowrap을 둡니다. */
+  th, td.nowrap, td.num, td.starcell, td.watchcell { white-space: nowrap; }
   th { font-size: 12px; color: var(--muted); font-weight: 600; position: sticky; top: 0; background: var(--card); }
   tbody tr:last-child td { border-bottom: 0; }
   tr.daystart td { border-top: 1px solid color-mix(in srgb, var(--accent) 35%, var(--line)); }
@@ -73,6 +76,14 @@
   #map { height: 62vh; min-height: 340px; border: 1px solid var(--line); border-radius: 10px; }
   .leaflet-container { background: var(--card); font: inherit; }
   .maphint { margin-top: 8px; font-size: 12px; color: var(--muted); }
+  .pager { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 10px 0; font-size: 13px; }
+  .pager button { padding: 6px 12px; border: 1px solid var(--line); border-radius: 7px;
+                  background: var(--card); color: var(--fg); font: inherit; font-size: 13px; cursor: pointer; }
+  .pager button.on { border-color: var(--accent); color: var(--accent); font-weight: 700; }
+  .pager button:disabled { color: var(--muted); cursor: not-allowed; }
+  .pager .count { margin-left: auto; color: var(--muted); }
+  .rate { margin-left: 5px; color: var(--few); font-size: 12px; letter-spacing: -1px;
+          white-space: nowrap; cursor: default; }
   .star { border: 0; background: none; cursor: pointer; font-size: 15px; line-height: 1;
           padding: 0 2px; color: var(--line); }
   .star.on { color: var(--few); }
@@ -117,6 +128,8 @@
   <div id="map" hidden></div>
   <div class="maphint" id="maphint" hidden></div>
 
+  <div class="pager" id="pager-top" hidden></div>
+
   <div class="tablewrap" id="tablewrap">
     <table>
       <thead><tr>
@@ -127,6 +140,8 @@
     </table>
     <div class="empty" id="empty" hidden>조건에 맞는 출조가 없습니다.</div>
   </div>
+
+  <div class="pager" id="pager-bottom" hidden></div>
 
   <details>
     <summary>수집 상태</summary>
@@ -242,6 +257,39 @@ function emptyMessage() {
 }
 // ── 즐겨찾기 끝 ── (test/page.test.js가 이 표시까지를 떼어내 돌려봅니다)
 
+// ── 별점 보기 ─────────────────────────────────────────────────────────────
+// 선사 별점은 시스템 관리 화면에서 매깁니다. 현황판은 **읽기만 합니다** — 표에서
+// 잘못 눌러 점수가 바뀌는 일이 없어야 해서 여기엔 저장하는 코드를 두지 않습니다.
+// 저장 형식(키·1~5점)은 admin.html과 같아야 합니다.
+const RATE_KEY = 'fishing:ratings';
+const RATE_MAX = 5;
+
+function loadRates() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(RATE_KEY) ?? '{}');
+    return raw && typeof raw === 'object' && !Array.isArray(raw) ? raw : {};
+  } catch { return {}; }
+}
+function rateOf(map, id) {
+  const n = Number(map?.[id]);
+  return Number.isInteger(n) && n >= 1 && n <= RATE_MAX ? n : 0;
+}
+const rateStars = (score) => '★'.repeat(score) + '☆'.repeat(RATE_MAX - score);
+
+// 안 매긴 선사는 아무것도 안 붙입니다. 288곳에 ☆☆☆☆☆가 깔리면 표가 안 읽힙니다.
+function rateBadge(siteId) {
+  const score = rateOf(RATES, siteId);
+  if (!score) return null;
+  const span = document.createElement('span');
+  span.className = 'rate';
+  span.textContent = rateStars(score);
+  span.title = `내 별점 ${score}점 · 시스템 관리에서 매깁니다`;
+  return span;
+}
+
+let RATES = loadRates();
+// ── 별점 보기 끝 ── (test/page.test.js가 이 표시까지를 떼어내 돌려봅니다)
+
 const $ = (id) => document.getElementById(id);
 const won = (n) => n == null ? '' : n.toLocaleString('ko-KR') + '원';
 const seatsLabel = (t) => {
@@ -330,7 +378,7 @@ function fillOptions(control, values, defaults = []) {
     input.value = v;
     input.checked = defaults.includes(v);
     input.dataset.text = control.id === 'f-date' ? dayLabel(v) : v;
-    input.addEventListener('change', () => { updateMultiLabel(control); refresh(); });
+    input.addEventListener('change', () => { updateMultiLabel(control); filtered(); });
     label.append(input, input.dataset.text);
     menu.append(label);
   }
@@ -380,8 +428,76 @@ function visibleTrips() {
     (!openOnly || t.status === 'open' || t.status === 'few'));
 }
 
+// ── 쪽 나누기 ─────────────────────────────────────────────────────────────
+// 필터를 걸어도 3주치가 한 화면에 수천 줄로 쏟아집니다. 날짜로 끊어 일주일씩 봅니다.
+// 달력 주가 아니라 **출조가 있는 날 7개**입니다 — 배가 안 뜨는 날까지 세면 어떤 쪽은
+// 텅 비고 어떤 쪽은 꽉 찹니다. 자르는 단위가 날짜라 한 날의 출조가 두 쪽에 갈리지 않습니다.
+const DAYS_PER_PAGE = 7;
+let PAGE = 0;
+
+function paginate(trips) {
+  const dates = [...new Set(trips.map((t) => t.date))].sort();
+  const groups = [];
+  for (let i = 0; i < dates.length; i += DAYS_PER_PAGE) groups.push(dates.slice(i, i + DAYS_PER_PAGE));
+  // 필터를 좁히면 보고 있던 쪽이 사라질 수 있습니다. 마지막 쪽으로 당깁니다.
+  PAGE = Math.min(Math.max(PAGE, 0), Math.max(groups.length - 1, 0));
+  const week = new Set(groups[PAGE] ?? []);
+  return { rows: trips.filter((t) => week.has(t.date)), groups, pages: Math.max(groups.length, 1) };
+}
+// ── 쪽 나누기 끝 ── (test/page.test.js가 이 표시까지를 떼어내 돌려봅니다)
+
+function goPage(n) {
+  PAGE = n;
+  render();
+  // 다음 주로 넘겼는데 지난 주의 끝을 보고 있으면 넘어간 걸 모릅니다.
+  $('tablewrap').scrollIntoView({ block: 'start', behavior: 'smooth' });
+}
+
+function renderPager(view, total) {
+  const label = (dates) => dates.length > 1
+    ? `${dayLabel(dates[0])}~${dayLabel(dates[dates.length - 1])}`
+    : dayLabel(dates[0]);
+
+  for (const id of ['pager-top', 'pager-bottom']) {
+    const box = $(id);
+    box.textContent = '';
+    // 한 쪽뿐이면 넘길 데가 없습니다. 지도를 보는 중에도 숨깁니다.
+    box.hidden = view.pages <= 1 || !$('map').hidden;
+    if (box.hidden) continue;
+
+    const prev = document.createElement('button');
+    prev.textContent = '← 이전 주';
+    prev.disabled = PAGE === 0;
+    prev.addEventListener('click', () => goPage(PAGE - 1));
+    box.append(prev);
+
+    view.groups.forEach((dates, n) => {
+      const tab = document.createElement('button');
+      tab.textContent = label(dates);
+      tab.className = n === PAGE ? 'on' : '';
+      if (n === PAGE) tab.setAttribute('aria-current', 'page');
+      tab.addEventListener('click', () => goPage(n));
+      box.append(tab);
+    });
+
+    const next = document.createElement('button');
+    next.textContent = '다음 주 →';
+    next.disabled = PAGE >= view.pages - 1;
+    next.addEventListener('click', () => goPage(PAGE + 1));
+    box.append(next);
+
+    const count = document.createElement('span');
+    count.className = 'count';
+    count.textContent = `이 쪽 ${view.rows.length}건 · 조건에 맞는 ${total}건 (${PAGE + 1}/${view.pages}쪽)`;
+    box.append(count);
+  }
+}
+
 function render() {
-  const rows = visibleTrips();
+  const all = visibleTrips();
+  const view = paginate(all);
+  const rows = view.rows;
+  renderPager(view, all.length);
 
   const tbody = $('rows');
   tbody.textContent = '';
@@ -435,15 +551,19 @@ function render() {
         td.append(b);
       } else if (i === 3) {
         // 여러 사이트에 같은 배가 올라와 있으면 둘 다 걸어줍니다. 어디서 잡든 상관없으니까요.
-        const sources = t.sources?.length ? t.sources : [{ siteName: t.siteName, url: t.url }];
+        const sources = t.sources?.length ? t.sources : [{ siteId: t.siteId, siteName: t.siteName, url: t.url }];
         sources.forEach((src, n) => {
           if (n) td.append(' · ');
-          if (!src.url) { td.append(src.siteName ?? ''); return; }
-          const a = document.createElement('a');
-          a.href = src.url; a.target = '_blank'; a.rel = 'noopener noreferrer';
-          a.textContent = src.siteName ?? '';
-          if (Number.isFinite(src.seatsLeft)) a.title = `이 사이트 기준 잔여 ${src.seatsLeft}`;
-          td.append(a);
+          if (!src.url) td.append(src.siteName ?? '');
+          else {
+            const a = document.createElement('a');
+            a.href = src.url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+            a.textContent = src.siteName ?? '';
+            if (Number.isFinite(src.seatsLeft)) a.title = `이 사이트 기준 잔여 ${src.seatsLeft}`;
+            td.append(a);
+          }
+          const badge = rateBadge(src.siteId);
+          if (badge) td.append(badge);
         });
       } else {
         td.textContent = v;
@@ -457,6 +577,8 @@ function render() {
           td.title = '개별 예약표 대신 선사가 공지한 해당 시즌 출항 시각입니다.';
         }
       }
+      // 날짜·운항·구분·상태는 줄이 갈리면 읽기 나빠집니다. 폭은 긴 이름 칸에서 법니다.
+      if (i <= 2 || i === 7) td.className = 'nowrap';
       if (i >= 8) td.className = 'num';
       if (i === 8) {
         const age = freshness(t), hint = document.createElement('small');
@@ -467,6 +589,7 @@ function render() {
       tr.append(td);
     });
     const watchCell = document.createElement('td');
+    watchCell.className = 'watchcell';
     if (MONITOR) {
       const button = document.createElement('button');
       button.className = 'watch';
@@ -503,6 +626,7 @@ function loadData() { return fetch('data.json?t=' + Date.now(), { cache: 'no-sto
   .then((r) => r.json())
   .then((d) => {
     DATA = d;
+    RATES = loadRates();   // 관리 화면에서 매긴 별점이 다음 갱신 때 따라옵니다
     const failed = Object.values(d.sites).filter((s) => !s.ok).length;
     $('meta').textContent =
       `출조 ${d.trips.length}건 · 갱신 ${d.generatedAt ? new Date(d.generatedAt).toLocaleString('ko-KR') : '-'}` +
@@ -541,8 +665,10 @@ async function pollData() { await reload(); setTimeout(pollData, 30000); }
 setTimeout(pollData, 30000);
 
 const refresh = () => { render(); drawMap(); };
-for (const id of ['f-open', 'f-fav']) $(id).addEventListener('change', refresh);
-$('f-q').addEventListener('input', refresh);
+// 필터를 바꾸면 보던 쪽 번호는 의미가 없습니다. 첫 주부터 다시 봅니다.
+const filtered = () => { PAGE = 0; refresh(); };
+for (const id of ['f-open', 'f-fav']) $(id).addEventListener('change', filtered);
+$('f-q').addEventListener('input', filtered);
 
 // <details>는 한 번 열면 스스로 안 닫힙니다. 여섯 개를 차례로 누르면 메뉴가 겹겹이
 // 열린 채 표를 가립니다. 바깥을 누르면 닫습니다 — 다른 메뉴의 summary를 누른 것도
@@ -600,7 +726,7 @@ function drawMap() {
       .on('click', () => {
         setOnlyFilterValue('f-region', regionOf(port));
         setOnlyFilterValue('f-port', null);
-        refresh();
+        filtered();
       })
       .addTo(markers);
   }
@@ -610,7 +736,8 @@ function drawMap() {
   const noPort = hidden.filter((t) => !t.port).length;
   const noCoord = new Set(hidden.filter((t) => t.port).map((t) => t.port));
   $('maphint').textContent = Object.keys(DATA.ports ?? {}).length
-    ? `항구 ${byPort.size}곳 · 마커를 누르면 같은 지역 항구만 봅니다. 좌표는 대략값이라 실제 선착장과 다를 수 있습니다.`
+    ? `항구 ${byPort.size}곳 · 마커를 누르면 같은 지역 항구만 봅니다. 지도는 주 단위로 나누지 않고 필터에 걸린 전체를 보여줍니다.`
+      + ' 좌표는 대략값이라 실제 선착장과 다를 수 있습니다.'
       + (noPort ? ` · 항구를 모르는 출조 ${noPort}건은 지도에 없습니다(시스템 관리에서 항구를 적으면 나옵니다).` : '')
       + (noCoord.size ? ` · 좌표 없는 항구 ${noCoord.size}곳은 sites/ports.json에 넣어야 찍힙니다.` : '')
     : '항구 좌표가 없습니다 — sites/ports.json을 채우세요.';
@@ -623,6 +750,7 @@ function switchView(toMap) {
   $('map').hidden = !toMap;
   $('maphint').hidden = !toMap;
   $('tablewrap').hidden = toMap;
+  for (const id of ['pager-top', 'pager-bottom']) $(id).hidden = toMap || $(id).textContent === '';
   if (!toMap) return;
   ensureMap();
   // 숨겨진 채로 만들어진 지도는 자기 크기를 모릅니다.
