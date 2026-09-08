@@ -55,6 +55,8 @@
                         border-radius: 6px; background: transparent; color: var(--fg); font: inherit; font-size: 14px; }
   td input[type=text]:hover { border-color: var(--line); }
   td input[type=text]:focus { border-color: var(--accent); outline: none; background: var(--bg); }
+  .boatnames { margin-top: 3px; color: var(--muted); font-size: 12px; line-height: 1.35;
+               overflow-wrap: anywhere; }
   tr.dirty { background: color-mix(in srgb, var(--few) 12%, transparent); }
   .kind { font-size: 12px; color: var(--muted); white-space: nowrap; }
   .stars { white-space: nowrap; }
@@ -214,6 +216,19 @@ function textCell(site, key) {
   input.placeholder = '-';
   input.addEventListener('input', () => markDirty(site.id, key, input.value.trim()));
   td.append(input);
+  return td;
+}
+
+// 관리 단위는 사이트지만, 사용자는 배 이름으로 찾습니다. 소속 배를 숨기면
+// 피싱게이트에 들어 있는 아우라호처럼 수집 중인 배도 없는 것으로 보입니다.
+function siteNameCell(site) {
+  const td = textCell(site, 'name');
+  const names = Object.keys(site.boats ?? {});
+  if (!names.length) return td;
+  const boats = document.createElement('div');
+  boats.className = 'boatnames';
+  boats.textContent = `배: ${names.join(' · ')}`;
+  td.append(boats);
   return td;
 }
 
@@ -378,7 +393,7 @@ function render() {
     else if (st.ok) tdLast.innerHTML = `<span class="ok">✓ ${st.count}건</span> <span class="muted">${when(st.at)}</span>`;
     else tdLast.innerHTML = `<span class="fail">✗ ${st.error ?? '실패'}</span> <span class="muted">직전 ${st.count ?? 0}건 유지</span>`;
 
-    tr.append(tdOn, tdId, textCell(site, 'name'), rateCell(site), tdKind, addedTag(site),
+    tr.append(tdOn, tdId, siteNameCell(site), rateCell(site), tdKind, addedTag(site),
               textCell(site, 'port'), textCell(site, 'phone'), tdUrl, tdLast);
     // 저장 전에 다른 쪽으로 넘어갔다 돌아와도 고친 표시가 남아 있어야 합니다.
     if (DIRTY.has(site.id)) tr.classList.add('dirty');
@@ -668,10 +683,16 @@ async function load() {
   } else {
     const d = data;
     STATUS = d.sites ?? {};
+    const boatsBySite = {};
+    for (const trip of d.trips ?? []) {
+      if (!trip.siteId || !trip.boat) continue;
+      (boatsBySite[trip.siteId] ??= new Set()).add(trip.boat);
+    }
     // 정적 모드에서는 registry를 못 읽으므로 수집 결과에 남은 사이트만 보여줍니다.
     SITES = Object.entries(STATUS).map(([id, s]) => ({
       id, name: s.name, platformLabel: s.platform, url: s.url, port: s.port, phone: s.phone,
       addedBy: s.addedBy ?? null,
+      boats: Object.fromEntries([...(boatsBySite[id] ?? [])].map((name) => [name, {}])),
     }));
     $('meta').textContent =
       `사이트 ${SITES.length}곳 (수동 ${SITES.filter((s) => !s.addedBy).length} · ` +
