@@ -567,6 +567,50 @@ test('합쳐지지 않은 줄도 출처 하나로 똑같이 그린다', () => {
   assert.match(inline, /siteName: t\.siteName, url: t\.url, seatsLeft: t\.seatsLeft, urlDated: t\.urlDated/);
 });
 
+// ── 전화 걸기 ───────────────────────────────────────────────────────────────
+// 번호는 시스템 관리 화면에만 있었습니다. 자리를 찾은 사람이 배 이름을 들고 다시
+// 검색해야 했다는 뜻입니다 — 취소석은 전화가 제일 빠른데 말입니다.
+function phoneFns() {
+  const start = inline.indexOf('// ── 전화 걸기 ──');
+  const end = inline.indexOf('// ── 전화 걸기 끝 ──');
+  assert.ok(start >= 0 && end > start, '전화 블록 표시를 찾지 못했습니다');
+  const document = { createElement: () => ({}) };
+  return new Function('document', `${inline.slice(start, end)}\nreturn { phoneHref, phoneLink };`)(document);
+}
+
+test('전화번호는 표기가 제각각이라 tel: 에는 숫자만 넣는다', () => {
+  const { phoneHref } = phoneFns();
+  assert.equal(phoneHref('010-9791-4445'), 'tel:01097914445');
+  assert.equal(phoneHref('010.9791.4445'), 'tel:01097914445');
+  assert.equal(phoneHref(' 051 123 4567 '), 'tel:0511234567');
+  assert.equal(phoneHref('+82-10-9791-4445'), 'tel:+821097914445');
+});
+
+test('번호가 없으면 아무것도 달지 않는다', () => {
+  const { phoneHref, phoneLink } = phoneFns();
+  assert.equal(phoneHref(null), null);
+  assert.equal(phoneHref(''), null);
+  assert.equal(phoneHref('전화문의'), null, '숫자가 없으면 걸 수 없습니다');
+  assert.equal(phoneLink(null), null, '빈 칸에 빈 링크를 달면 줄만 늘어납니다');
+});
+
+test('보여주는 글자는 registry에 적어둔 표기 그대로다', () => {
+  const { phoneLink } = phoneFns();
+  const a = phoneLink('010-9791-4445');
+  assert.equal(a.href, 'tel:01097914445');
+  assert.equal(a.textContent, '\u260e 010-9791-4445', '사람이 눈으로 맞춰보는 값입니다');
+  assert.equal(a.className, 'phone');
+});
+
+test('전화는 선사 칸에 줄마다 한 번만 단다', () => {
+  // 칸을 새로 만들면 표의 자연 폭이 그만큼 늘어 오른쪽 칸(관심 출조)이 잘립니다.
+  assert.match(html, /\.phone \{ display: block;/);
+  assert.match(inline, /const phone = phoneLink\(t\.phone\);/);
+  assert.match(inline, /if \(phone\) td\.append\(phone\);/);
+  // 합쳐진 줄도 번호는 하나입니다(core/merge.js) — 출처마다 달면 같은 번호가 두 번 나옵니다.
+  assert.ok(!inline.includes('phoneLink(src.phone)'), '출처마다 달면 같은 번호가 겹칩니다');
+});
+
 // ── 정렬 ────────────────────────────────────────────────────────────────────
 // 값이 없는 행이 어디로 가는지가 이 기능의 거의 전부입니다. 승선료는 지금 99%가 비어 있어서
 // (node quality.js) 낮은순으로 올리면 첫 화면이 빈 칸으로 덮입니다.
@@ -633,10 +677,48 @@ test('합쳐진 줄은 가장 오래된 출처를 기준으로 센다', () => {
   );
 });
 
-test('기본순은 수집이 정렬해 온 순서를 그대로 둔다', () => {
+test('기본순은 빈자리 안에서 수집이 정렬해 온 순서를 그대로 둔다', () => {
   const { sortTrips } = sortFns();
-  const rows = [t({ boat: '먼저' }), t({ boat: '나중' })];
-  assert.equal(sortTrips(rows, 'default'), rows, '건드릴 것이 없으면 새 배열도 만들지 않습니다');
+  const rows = [t({ boat: '먼저', status: 'open' }), t({ boat: '나중', status: 'open' })];
+  assert.deepEqual(sortTrips(rows, 'default').map((x) => x.boat), ['먼저', '나중'],
+    '같은 급끼리는 출항 시각·선사 순서(core/runner.js)를 그대로 씁니다');
+});
+
+// 이 화면은 잡을 수 있는 자리를 찾는 화면입니다. "빈자리만"을 끄고 하루를 통째로 보면
+// 마감된 배가 앞줄을 차지해 위에서부터 헛것을 읽게 됩니다.
+test('빈자리가 있는 줄이 그 날의 맨 위로 간다', () => {
+  const { sortTrips } = sortFns();
+  const rows = [
+    t({ boat: '마감', status: 'closed' }),
+    t({ boat: '휴항', status: 'off' }),
+    t({ boat: '적음', status: 'few' }),
+    t({ boat: '모름', status: 'unknown' }),
+    t({ boat: '가능', status: 'open' }),
+  ];
+  assert.deepEqual(sortTrips(rows, 'default').map((x) => x.boat),
+    ['적음', '가능', '마감', '휴항', '모름'],
+    '확인이 안 된 줄은 올리지 않습니다 — 자리가 있는지 모르는 배로 첫 화면을 덮게 됩니다');
+});
+
+test('빈자리 정렬도 날짜를 넘지 않는다', () => {
+  const { sortTrips } = sortFns();
+  const rows = [
+    t({ date: '2026-09-09', boat: '마감', status: 'closed' }),
+    t({ date: '2026-09-10', boat: '가능', status: 'open' }),
+  ];
+  assert.deepEqual(sortTrips(rows, 'default').map((x) => [x.date, x.boat]),
+    [['2026-09-09', '마감'], ['2026-09-10', '가능']],
+    '날짜 머리글과 쪽 나누기가 날짜 기준이라 하루를 넘겨 끌어올리면 안 됩니다');
+});
+
+test('고른 기준보다 빈자리가 먼저다', () => {
+  const { sortTrips } = sortFns();
+  const rows = [
+    t({ boat: '휴항인데많음', status: 'off', seatsLeft: 20 }),
+    t({ boat: '빈자리하나', status: 'few', seatsLeft: 1 }),
+  ];
+  assert.deepEqual(sortTrips(rows, 'seats-desc').map((x) => x.boat), ['빈자리하나', '휴항인데많음'],
+    '잔여석 많은순이라도 못 잡는 자리가 위에 오면 안 됩니다');
 });
 
 test('정렬 메뉴가 있고 바꾸면 다시 그린다', () => {
