@@ -9,7 +9,7 @@ import { mkdtemp, writeFile, readFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { request } from 'node:http';
-import { createApp, explainPullFailure } from '../serve.js';
+import { createApp, explainPullFailure, apiAccess } from '../serve.js';
 
 const REG = {
   $comment: '테스트용',
@@ -430,4 +430,38 @@ test('관리 화면: 별점은 읽기 전용 모드에서도 매길 수 있다',
   assert.ok(cell.length > 100, 'rateCell을 찾지 못했습니다');
   assert.ok(!cell.includes('LOCAL'), '별점은 로컬 서버가 없어도 매길 수 있어야 합니다');
   assert.match(inline, /별점과 즐겨찾기는 브라우저에 저장되는 값이라 여기서도 됩니다/);
+});
+
+// ── 밖에 열어도 되는 길과 아닌 길 ───────────────────────────────────────────
+// 상시 감시 서버는 밖에 둡니다(DEPLOY.md). 그때 감시 목록은 밖에서도 쓸 수 있어야 하지만,
+// registry를 고치고 프로세스를 띄우는 관리 API는 그대로 루프백에만 있어야 합니다.
+const req = ({ ip = '127.0.0.1', host = 'localhost:8080', headers = {} } = {}) =>
+  ({ socket: { remoteAddress: ip }, headers: { host, ...headers } });
+
+test('관리 API는 밖에서 못 부른다 — 켜든 안 켜든', () => {
+  for (const watchPublic of [false, true]) {
+    assert.equal(apiAccess(req({ ip: '203.0.113.9', headers: { 'x-admin': '1' } }), '/api/sites', { watchPublic }), 'deny');
+    assert.equal(apiAccess(req({ ip: '203.0.113.9', headers: { 'x-admin': '1', 'x-watcher': 'token-0123456789abcdef' } }),
+      '/api/collect', { watchPublic }), 'deny', '감시 토큰이 관리 권한이 되면 안 됩니다');
+  }
+});
+
+test('감시 API는 켰을 때만 밖에서 열린다', () => {
+  const outside = req({ ip: '203.0.113.9', host: 'fishing.example', headers: { 'x-watcher': 'token-0123456789abcdef' } });
+  assert.equal(apiAccess(outside, '/api/monitor', { watchPublic: false }), 'deny', '기본은 닫혀 있습니다');
+  assert.equal(apiAccess(outside, '/api/monitor', { watchPublic: true }), 'watch');
+});
+
+// 커스텀 헤더가 없으면 다른 사이트의 폼이 그냥 쏠 수 있습니다(CSRF).
+test('밖에서 온 감시 요청은 토큰 헤더가 있어야 받는다', () => {
+  const outside = req({ ip: '203.0.113.9', host: 'fishing.example' });
+  assert.equal(apiAccess(outside, '/api/monitor', { watchPublic: true }), 'deny');
+});
+
+test('로컬 관리자는 예전 그대로 세 겹을 다 통과해야 한다', () => {
+  assert.equal(apiAccess(req({ headers: { 'x-admin': '1' } }), '/api/sites'), 'admin');
+  assert.equal(apiAccess(req({}), '/api/sites'), 'deny', 'X-Admin이 없으면 안 됩니다');
+  assert.equal(apiAccess(req({ host: 'evil.example' , headers: { 'x-admin': '1' } }), '/api/sites'), 'deny',
+    'Host가 다르면 DNS 리바인딩입니다');
+  assert.equal(apiAccess(req({ ip: '::1', headers: { 'x-admin': '1' } }), '/api/sites'), 'admin');
 });
