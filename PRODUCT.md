@@ -128,4 +128,5 @@
 - `docs/index.html`: 통합 탐색, 출처 연결, 최신성, 즐겨찾기, 지도
 - `sites/registry.json`: 지원 범위와 선박 신원을 사람이 관리하는 기준
 
-구현 세부 규칙과 운영 절차는 `AGENTS.md`, 설치와 사용법은 `README.md`를 따릅니다.
+실제 작업 순서는 `TODO.md`, 구현 세부 규칙과 운영 절차는 `AGENTS.md`, 설치와 사용법은
+`README.md`를 따릅니다.
