@@ -224,6 +224,15 @@ export function createMonitor({
   }
   async function stop() { stopped = true; clearInterval(timer); await Promise.allSettled([...pending]); await saving.catch(() => {}); }
   function requestFull() { for (const r of Object.values(records)) r.attempted = 0; }
-  return { init, data, status, setWatch, adopt, tick, start, stop, requestFull,
+  function requestSite(id) {
+    const site = sites.find((candidate) => candidate.id === id);
+    if (!site) throw new Error('등록되지 않은 선사입니다');
+    if (site.enabled === false) throw new Error('꺼진 선사는 최신화할 수 없습니다');
+    // 다음 tick에서 이 선사만 즉시 대상이 됩니다. 다른 선사의 주기는 건드리지 않습니다.
+    if (records[id]) records[id].attempted = 0;
+    addLog(`${site.name ?? id}: 수동 최신화 요청`);
+    return { siteId: id, requested: true };
+  }
+  return { init, data, status, setWatch, adopt, tick, start, stop, requestFull, requestSite,
     idle: () => Promise.allSettled([...pending]) };
 }

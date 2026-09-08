@@ -266,6 +266,12 @@ export function createApp({
       return json(res, 202, { started: true });
     }
 
+    const collectOne = path.match(/^\/api\/collect\/([\w-]+)$/);
+    if (collectOne && req.method === 'POST') {
+      if (!monitor) return json(res, 409, { error: '선사별 최신화는 감시 서버에서만 쓸 수 있습니다' });
+      return json(res, 202, monitor.requestSite(collectOne[1]));
+    }
+
     if (path === '/api/collect' && req.method === 'GET') {
       if (monitor) return json(res, 200, monitor.status());
       return json(res, 200, job ?? { running: false, log: [], code: null, startedAt: null });

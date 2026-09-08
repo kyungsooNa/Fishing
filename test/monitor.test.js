@@ -65,6 +65,23 @@ test('관심 출조는 3분, 나머지는 60분에 확인하고 변경만 즉시
   assert.equal(calls.filter((id) => id === 'b').length, 2);
 });
 
+test('수동 최신화는 고른 선사 하나만 다음 수집 대상으로 만든다', async () => {
+  const calls = [];
+  const f = await fixture({ sites: [a, { ...b, url: 'https://other.net' }], baseTrips: [trip('a'), trip('b')],
+    collect: async (site) => { calls.push(site.id); return [trip(site.id)]; } });
+  await f.monitor.tick(); await f.monitor.idle();
+  calls.length = 0;
+
+  assert.deepEqual(f.monitor.requestSite('b'), { siteId: 'b', requested: true });
+  await f.monitor.tick(); await f.monitor.idle();
+  assert.deepEqual(calls, ['b']);
+  assert.ok(f.monitor.status().log.some((line) => line === 'B: 수동 최신화 요청'));
+
+  assert.throws(() => f.monitor.requestSite('missing'), /등록되지 않은/);
+  const off = await fixture({ sites: [{ ...a, enabled: false }] });
+  assert.throws(() => off.monitor.requestSite('a'), /꺼진 선사/);
+});
+
 test('같은 플랫폼은 겹치지 않고 관심 선사를 다음 순서로 우선한다', async () => {
   let release;
   const calls = [];
@@ -170,6 +187,16 @@ test('로컬 API는 헤더를 검사하고 감시 결과를 제공하며 원래 
     const invalid = await fetch(base + '/api/monitor', { method: 'POST',
       headers, body: JSON.stringify({ key: 'fake', enabled: true }) });
     assert.equal(invalid.status, 400);
+
+    const one = await fetch(base + '/api/collect/a', { method: 'POST', headers: { 'X-Admin': '1' } });
+    assert.equal(one.status, 202);
+    assert.deepEqual(await one.json(), { siteId: 'a', requested: true });
+    assert.equal((await fetch(base + '/api/collect/a', { method: 'POST' })).status, 403,
+      '선사별 최신화도 로컬 관리자만 실행할 수 있어야 합니다');
+    assert.equal((await fetch(base + '/api/collect/missing', {
+      method: 'POST', headers: { 'X-Admin': '1' },
+    })).status, 400);
+
     await f.monitor.tick(); await f.monitor.idle();
     assert.equal((await fetch(base + '/data.json').then((r) => r.json())).sites.a.ok, true);
     assert.equal(await readFile(f.opts.dataPath, 'utf8'), before);
