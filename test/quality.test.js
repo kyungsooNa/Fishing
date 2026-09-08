@@ -9,7 +9,7 @@ import { mkdtemp, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { promisify } from 'node:util';
-import { collectQuality, sitesMissing, FIELDS } from '../core/quality.js';
+import { collectQuality, sitesMissing, portHints, FIELDS } from '../core/quality.js';
 
 const run = promisify(execFile);
 
@@ -185,4 +185,49 @@ test('없는 항목을 물으면 무엇이 있는지 알려주고 실패한다',
     assert.match(err.stderr, /port/);
     return true;
   });
+});
+
+// ── 항구를 채울 곳 찾기 ─────────────────────────────────────────────────────
+// 항구가 빈 사이트는 수백 곳인데 지금 당장 두 줄로 뜨게 만드는 곳은 그중 일부입니다.
+// discover가 note에 적어둔 후보는 **확인 전에는 값이 아닙니다** — 라벨 글자가 섞여 있습니다.
+test('note에 적힌 출항지 후보를 읽는다', () => {
+  assert.deepEqual(
+    portHints({ note: '자동 발견 — 시험 수집 8건. 출항지 후보: 장고항, 공지사항, 시입항 전화 후보: 010-1234-5678' }),
+    ['장고항', '공지사항', '시입항'],
+    '전화 후보는 섞이지 않습니다',
+  );
+  assert.deepEqual(portHints({ note: '출항지 후보: 홍원항 · 공지사항' }), ['홍원항', '공지사항']);
+  assert.deepEqual(portHints({ note: '후보가 없는 메모' }), []);
+  assert.deepEqual(portHints({}), []);
+  assert.deepEqual(portHints(null), []);
+});
+
+test('후보는 합치기가 막힌 사이트 것만 준다', () => {
+  const q = collectQuality(
+    [
+      { id: 'a', name: 'A', adapter: 'sunsang24', note: '출항지 후보: 장고항, 공지사항' },
+      { id: 'b', name: 'B', adapter: 'thefishing', note: '출항지 후보: 오천항' },
+      { id: 'c', name: 'C', adapter: 'generic', note: '출항지 후보: 대천항' },
+    ],
+    {
+      trips: [
+        // 가호는 두 사이트에 걸쳐 있고 a에 항구가 없습니다 — 지금 두 줄로 뜹니다.
+        trip('a', '가호', { port: null }),
+        trip('b', '가호'),
+        // 나호는 c에만 있습니다 — 항구가 비어도 합칠 상대가 없습니다.
+        trip('c', '나호', { port: null }),
+      ],
+    },
+  );
+
+  assert.deepEqual(q.portHints, [{ siteId: 'a', hints: ['장고항', '공지사항'] }],
+    '합칠 상대가 없는 곳까지 목록에 넣으면 정작 급한 곳이 묻힙니다');
+});
+
+test('후보가 없는 사이트는 목록에 넣지 않는다', () => {
+  const q = collectQuality(
+    [{ id: 'a', name: 'A', adapter: 'sunsang24' }, { id: 'b', name: 'B', adapter: 'thefishing' }],
+    { trips: [trip('a', '가호', { port: null }), trip('b', '가호')] },
+  );
+  assert.deepEqual(q.portHints, [], '적어둔 후보가 없으면 보여줄 것도 없습니다');
 });
