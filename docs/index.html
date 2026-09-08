@@ -100,7 +100,12 @@
   .status { margin-top: 10px; display: grid; gap: 5px; }
   .status div { display: flex; gap: 8px; }
   .fail { color: var(--off); }
+  .watchactions { display: flex; align-items: center; justify-content: flex-end; gap: 5px; }
   .watch { border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--accent); padding: 5px 8px; cursor: pointer; }
+  .watch.refresh { color: var(--fg); }
+  .watch:disabled { color: var(--muted); cursor: wait; }
+  .source-select { min-width: 92px; max-width: 145px; padding: 4px 5px; border: 1px solid var(--line);
+                   border-radius: 6px; background: var(--card); color: var(--fg); font: inherit; font-size: 12px; }
   .srcchip { display: inline-block; margin-left: 5px; padding: 1px 6px; border: 1px solid var(--line);
              border-radius: 999px; font-size: 11px; color: var(--muted); vertical-align: middle; }
   .srcseats { margin-left: 4px; font-size: 11px; color: var(--few); }
@@ -196,6 +201,7 @@
                   font-size: 14px !important; font-weight: 800; text-align: right; }
     .cell-price { grid-area: price; color: var(--muted); text-align: right; }
     .watchcell { grid-area: watch; align-self: end; text-align: right; }
+    .watchactions { flex-wrap: wrap; }
     .watch { border-radius: 999px; padding: 4px 9px; font-size: 12px; }
     .freshness { font-size: 11px; font-weight: 500; }
     body > .leaflet-control-container { font-size: 13px; }
@@ -246,7 +252,7 @@
     <table>
       <thead><tr>
         <th class="starcell"></th><th>날짜</th><th>운항</th><th>구분</th><th>선사</th><th>배</th><th>항구</th>
-        <th>어종</th><th>상태</th><th class="num">잔여</th><th class="num">승선료</th><th>관심 출조</th>
+        <th>어종</th><th>상태</th><th class="num">잔여</th><th class="num">승선료</th><th>감시·최신화</th>
       </tr></thead>
       <tbody id="rows"></tbody>
     </table>
@@ -389,6 +395,40 @@ async function toggleWatch(t, button) {
     for (const row of ROW_BUTTONS) if (row.watch) paintWatch(row.watch, row.trip);
     button.disabled = false;   // 표를 다시 그리지 않으니 여기서 풀어줘야 합니다
   } catch (e) { $('monitor-status').textContent = e.message; button.disabled = false; }
+}
+
+const tripSources = (t) => t.sources?.length ? t.sources
+  : [{ siteId: t.siteId, siteName: t.siteName, url: t.url, seatsLeft: t.seatsLeft, urlDated: t.urlDated }];
+
+// 전체 290곳을 다시 돌리지 않고 이 출처 하나만 즉시 수집합니다. 완료 시각이 바뀔 때까지
+// 기다린 뒤 화면 데이터를 한 번만 다시 읽습니다. 이 API는 로컬 관리자에게만 열립니다.
+async function refreshSite(siteId, button) {
+  const original = button.textContent;
+  const before = DATA.sites[siteId]?.at ?? null;
+  button.disabled = true;
+  button.textContent = '최신화 중…';
+  try {
+    const r = await fetch(`/api/collect/${encodeURIComponent(siteId)}`, {
+      method: 'POST', headers: { 'X-Admin': '1' },
+    });
+    const reply = await r.json();
+    if (!r.ok) throw new Error(reply.error ?? '선사 최신화 요청 실패');
+
+    for (let second = 0; second < 90; second++) {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const next = await fetch('data.json?t=' + Date.now(), { cache: 'no-store' }).then((res) => res.json());
+      const after = next.sites?.[siteId]?.at ?? null;
+      if (after && after !== before) {
+        await reload();
+        return;
+      }
+    }
+    throw new Error(`${DATA.sites[siteId]?.name ?? siteId} 최신화가 지연되고 있습니다`);
+  } catch (error) {
+    $('monitor-status').textContent = error.message;
+    button.disabled = false;
+    button.textContent = original;
+  }
 }
 
 // ── 즐겨찾기 ──────────────────────────────────────────────────────────────
@@ -944,8 +984,7 @@ function render(all = sortTrips(visibleTrips())) {
         td.append(b);
       } else if (i === 3) {
         // 여러 사이트에 같은 배가 올라와 있으면 둘 다 걸어줍니다. 어디서 잡든 상관없으니까요.
-        const sources = t.sources?.length ? t.sources
-          : [{ siteId: t.siteId, siteName: t.siteName, url: t.url, seatsLeft: t.seatsLeft, urlDated: t.urlDated }];
+        const sources = tripSources(t);
         // 출처마다 잔여석이 다르면 그걸 보여줘야 합니다 — 합친 줄은 큰 쪽을 쓰기 때문에
         // (core/merge.js) 어느 사이트로 가야 그 자리가 있는지는 여기서만 알 수 있습니다.
         const seats = sources.map((src) => src.seatsLeft).filter(Number.isFinite);
@@ -1010,14 +1049,41 @@ function render(all = sortTrips(visibleTrips())) {
     });
     const watchCell = document.createElement('td');
     watchCell.className = 'watchcell';
+    const actions = document.createElement('div');
+    actions.className = 'watchactions';
     let watch = null;
     if (MONITOR) {
       watch = document.createElement('button');
       watch.className = 'watch';
       paintWatch(watch, t);
       watch.onclick = () => toggleWatch(t, watch);
-      watchCell.append(watch);
-    } else watchCell.textContent = '로컬 전용';
+      actions.append(watch);
+    }
+    if (ADMIN_API) {
+      const sources = [...new Map(tripSources(t).map((source) => [source.siteId, source])).values()];
+      let chosen = sources[0]?.siteId;
+      if (sources.length > 1) {
+        const select = document.createElement('select');
+        select.className = 'source-select';
+        select.setAttribute('aria-label', '최신화할 선사');
+        for (const source of sources) {
+          const option = document.createElement('option');
+          option.value = source.siteId;
+          option.textContent = source.siteName ?? source.siteId;
+          select.append(option);
+        }
+        select.onchange = () => { chosen = select.value; };
+        actions.append(select);
+      }
+      const update = document.createElement('button');
+      update.className = 'watch refresh';
+      update.textContent = '선사 최신화';
+      update.title = '이 선사만 지금 다시 수집합니다';
+      update.onclick = () => refreshSite(chosen, update);
+      actions.append(update);
+    }
+    if (actions.childNodes.length) watchCell.append(actions);
+    else watchCell.textContent = '로컬 전용';
     tr.append(watchCell);
     frag.append(tr);
     ROW_BUTTONS.push({ trip: t, star, watch });
@@ -1071,9 +1137,21 @@ function loadData() { return fetch('data.json?t=' + Date.now(), { cache: 'no-sto
 // 같은 곳에 물어봅니다. 정적 호스팅(GitHub Pages)이면 그 길이 아예 없어서 404·403이
 // 돌아오는데, 그건 고장이 아니라 **읽기 전용 화면**이라는 뜻이라 다시 묻지 않습니다.
 let WATCH_API = true;
+let ADMIN_API = false;
+let ADMIN_CHECKED = false;
+
+async function probeAdmin() {
+  if (ADMIN_CHECKED) return;
+  ADMIN_CHECKED = true;
+  try {
+    const r = await fetch('/api/sites', { headers: { 'X-Admin': '1' } });
+    ADMIN_API = r.ok;
+  } catch { ADMIN_API = false; }
+}
 
 async function reload() {
   try {
+    await probeAdmin();
     if (WATCH_API) {
       const r = await fetch('/api/monitor', { headers: watchHeaders() });
       if (r.status === 404 || r.status === 403) {

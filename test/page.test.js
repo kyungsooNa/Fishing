@@ -489,6 +489,19 @@ test('감시를 걸고 풀 때도 표를 다시 그리지 않는다', () => {
   assert.match(inline, /ROW_BUTTONS\.length = 0;/, '다시 그릴 때마다 비워야 옛 버튼이 안 남습니다');
 });
 
+test('3분 감시 옆에서 특정 선사만 최신화한다', () => {
+  assert.match(html, /<th>감시·최신화<\/th>/);
+  assert.match(inline, /fetch\(`\/api\/collect\/\$\{encodeURIComponent\(siteId\)\}`/,
+    '전체 수집 API를 부르면 다른 선사까지 모두 기다리게 됩니다');
+  assert.match(inline, /update\.textContent = '선사 최신화'/);
+  assert.match(inline, /update\.onclick = \(\) => refreshSite\(chosen, update\)/);
+  assert.match(inline, /tripSources\(t\).*source\.siteId/s,
+    '합쳐진 출조도 최신화할 출처를 고를 수 있어야 합니다');
+  assert.match(inline, /select\.setAttribute\('aria-label', '최신화할 선사'\)/);
+  assert.match(inline, /await probeAdmin\(\)/,
+    '공개 감시 서버에는 수동 최신화 버튼을 내놓으면 안 됩니다');
+});
+
 test('표가 옆으로 삐져나가지 않게 긴 이름 칸만 줄이 갈린다', () => {
   // 모든 칸에 nowrap을 걸면 표의 자연 폭이 화면을 넘어 오른쪽 칸이 잘립니다.
   assert.ok(!/th, td \{[^}]*white-space: nowrap/.test(html), '칸 전체에 nowrap을 걸면 안 됩니다');

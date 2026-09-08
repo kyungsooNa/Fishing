@@ -126,6 +126,7 @@ test('X-Admin 헤더가 없으면 전부 403', async () => {
     for (const [path, opt] of [
       ['/api/sites', {}],
       ['/api/collect', { method: 'POST' }],
+      ['/api/collect/aaa', { method: 'POST' }],
       ['/api/restart', { method: 'POST' }],
       ['/api/shutdown', { method: 'POST' }],
       ['/api/sites/aaa', { method: 'PATCH', body: '{"name":"x"}' }],
