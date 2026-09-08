@@ -3,24 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>낚시 출조 예약 현황판</title>
+<title>낚시 출조 메타검색 · 취소석 레이더</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
   :root {
     color-scheme: light dark;
     --bg: #f7f7f5; --card: #fff; --fg: #1c1b19; --muted: #6b6862; --line: #e3e1dc;
     --open: #1a7f4b; --few: #b06a00; --closed: #8b8781; --off: #a03030;
-    --accent: #245a8d;
+    --accent: #087fb5; --accent-soft: #e8f6fc;
   }
   @media (prefers-color-scheme: dark) {
     :root {
       --bg: #17171a; --card: #201f23; --fg: #e9e7e2; --muted: #9a968e; --line: #33323a;
-      --open: #4cc487; --few: #e0a33c; --closed: #7d7a74; --off: #e07070; --accent: #7fb0e0;
+      --open: #4cc487; --few: #e0a33c; --closed: #7d7a74; --off: #e07070;
+      --accent: #73c7ef; --accent-soft: #183544;
     }
   }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--fg);
-         font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; }
+         font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; }
   .wrap { max-width: 1400px; margin: 0 auto; padding: 20px 16px 60px; }
   h1 { font-size: 20px; margin: 0 0 4px; }
   .sub { color: var(--muted); font-size: 13px; margin-bottom: 18px; }
@@ -34,6 +35,8 @@
   .multi summary::after { content: '▾'; position: absolute; top: 50%; right: 10px;
                            transform: translateY(-50%); color: var(--muted); }
   .multi[open] summary { border-color: var(--muted); }
+  .multi[data-selected="1"] summary { border-color: color-mix(in srgb, var(--accent) 55%, var(--line));
+                                      background: var(--accent-soft); color: var(--accent); font-weight: 700; }
   .multi-menu { position: absolute; z-index: 1000; top: calc(100% + 4px); left: 0; min-width: 220px;
                 max-height: 300px; overflow: auto; padding: 6px; border: 1px solid var(--line);
                 border-radius: 7px; background: var(--card); box-shadow: 0 8px 24px rgba(0,0,0,.14); }
@@ -42,7 +45,7 @@
   label.check { display: inline-flex; align-items: center; gap: 6px; padding: 7px 10px;
                 border: 1px solid var(--line); border-radius: 7px; background: var(--card); font-size: 14px; }
   .tablewrap { overflow-x: auto; background: var(--card); border: 1px solid var(--line); border-radius: 10px; }
-  table { border-collapse: collapse; width: 100%; min-width: 820px; }
+  table { border-collapse: collapse; width: 100%; min-width: 820px; font-size: 14px; }
   th, td { padding: 9px 10px; text-align: left; border-bottom: 1px solid var(--line); }
   /* 칸마다 nowrap을 걸면 표의 자연 폭이 화면을 넘어 오른쪽 칸이 잘립니다.
      줄이 갈려도 되는 건 선사·배·항구·어종뿐이라, 나머지에만 nowrap을 둡니다. */
@@ -89,6 +92,7 @@
   .star.on { color: var(--few); }
   .star:hover { color: var(--few); }
   td.starcell, th.starcell { width: 1%; padding-right: 4px; }
+  .boatmark { display: none; }
   details { margin-top: 22px; font-size: 13px; color: var(--muted); }
   summary { cursor: pointer; }
   .status { margin-top: 10px; display: grid; gap: 5px; }
@@ -98,11 +102,95 @@
   .freshness { display: block; font-size: 11px; font-weight: normal; color: var(--muted); }
   .freshness.stale { color: var(--few); }
   .freshness.failed { color: var(--off); }
+
+  /* 선상24 모바일 목록의 장점인 "작은 카드 안에 필요한 값이 모두 보이는 밀도"만 가져옵니다.
+     사진 데이터는 없으므로 남의 이미지를 복제하지 않고 배 이름 첫 글자를 식별 타일로 씁니다. */
+  @media (max-width: 720px) {
+    body { background: var(--card); }
+    .wrap { padding: 0 0 40px; }
+    h1 { position: sticky; z-index: 1100; top: 0; margin: 0; padding: 14px 14px 12px;
+         border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--card) 94%, transparent);
+         backdrop-filter: blur(12px); font-size: 18px; }
+    .sub { margin: 0; padding: 7px 14px; font-size: 12px; }
+    #meta { padding-top: 10px; color: var(--fg); }
+    #monitor-status { padding-top: 0; padding-bottom: 10px; }
+    #watch-panel { margin: 0 14px 10px; }
+
+    .filters { position: sticky; z-index: 1050; top: 55px; flex-wrap: nowrap; gap: 7px;
+               margin: 0; padding: 9px 12px 10px; overflow-x: auto; overscroll-behavior-x: contain;
+               border-block: 1px solid var(--line); background: var(--card); scrollbar-width: none; }
+    .filters::-webkit-scrollbar { display: none; }
+    .multi { flex: 0 0 auto; }
+    .multi summary, label.check { min-width: auto; border-radius: 999px; white-space: nowrap; }
+    .multi summary { padding: 6px 27px 6px 11px; }
+    .multi-menu { position: fixed; z-index: 2000; top: 108px; right: 12px; left: 12px;
+                  max-height: min(55vh, 380px); border-radius: 14px; }
+    input[type=search] { flex: 0 0 145px; width: 145px; border-radius: 999px; padding-block: 6px; }
+    label.check { flex: 0 0 auto; padding: 6px 10px; }
+
+    .views { margin: 10px 12px 8px; }
+    .views button { border-radius: 999px; padding: 6px 13px; }
+    .views a { font-size: 12px; }
+    #map { height: 70vh; min-height: 420px; margin: 0 10px; border-radius: 14px; }
+    .maphint { margin: 8px 12px; }
+    .pager { flex-wrap: nowrap; margin: 8px 12px; overflow-x: auto; scrollbar-width: none; }
+    .pager::-webkit-scrollbar { display: none; }
+    .pager button { flex: 0 0 auto; border-radius: 999px; }
+    .pager .count { flex: 0 0 auto; margin-left: 4px; }
+
+    .tablewrap { overflow: visible; border: 0; border-radius: 0; background: var(--bg); }
+    table, tbody { display: block; width: 100%; min-width: 0; }
+    thead { display: none; }
+    tbody { padding: 0 9px 12px; }
+    tbody tr.triprow { display: grid; grid-template-columns: 72px minmax(0, 1fr) auto;
+                       grid-template-areas:
+                         "thumb boat state"
+                         "thumb site seats"
+                         "thumb species seats"
+                         "thumb run price"
+                         "thumb port watch";
+                       column-gap: 11px; row-gap: 2px; margin: 0 0 8px; padding: 11px;
+                       border: 1px solid var(--line); border-radius: 13px; background: var(--card);
+                       box-shadow: 0 2px 8px rgba(18, 61, 83, .06); }
+    tbody tr.triprow td { display: block; min-width: 0; padding: 0; border: 0; font-size: 13px; }
+    tr.dayhead { display: block; position: sticky; z-index: 1000; top: 108px; }
+    tr.dayhead td { display: block; margin: 0 -9px 8px; padding: 9px 13px; border-top-width: 2px;
+                    font-size: 14px; box-shadow: 0 2px 5px rgba(18, 61, 83, .05); }
+    .dayhead small { display: none; }
+    .tidegood { font-size: 12px; }
+
+    td.starcell { grid-area: thumb; position: relative; width: 72px; height: 72px; padding: 0; }
+    .boatmark { display: flex; align-items: center; justify-content: center; width: 72px; height: 72px;
+                border-radius: 10px; background: linear-gradient(145deg, var(--accent-soft),
+                color-mix(in srgb, var(--accent) 24%, var(--card))); color: var(--accent);
+                font-size: 28px; font-weight: 800; }
+    .star { position: absolute; top: 4px; right: 4px; display: grid; place-items: center; width: 25px; height: 25px;
+            padding: 0; border-radius: 50%; background: color-mix(in srgb, var(--card) 88%, transparent);
+            box-shadow: 0 1px 4px rgba(0,0,0,.14); font-size: 16px; }
+    .cell-date, .cell-session { display: none !important; }
+    .cell-boat { grid-area: boat; overflow: hidden; color: var(--fg); font-size: 15px !important;
+                 font-weight: 800; text-overflow: ellipsis; white-space: nowrap; }
+    .cell-site { grid-area: site; overflow: hidden; color: var(--accent); text-overflow: ellipsis; white-space: nowrap; }
+    .cell-species { grid-area: species; overflow: hidden; color: var(--fg); text-overflow: ellipsis; white-space: nowrap; }
+    .cell-run { grid-area: run; color: var(--muted); }
+    .cell-run::before { content: '운항 '; }
+    .cell-port { grid-area: port; overflow: hidden; color: var(--muted); text-overflow: ellipsis; white-space: nowrap; }
+    .cell-port::before { content: '항구 '; }
+    .cell-status { grid-area: state; align-self: start; padding-left: 8px !important; text-align: right; }
+    .cell-seats { grid-area: seats; align-self: center; padding-left: 8px !important; color: var(--accent);
+                  font-size: 14px !important; font-weight: 800; text-align: right; }
+    .cell-price { grid-area: price; color: var(--muted); text-align: right; }
+    .watchcell { grid-area: watch; align-self: end; text-align: right; }
+    .watch { border-radius: 999px; padding: 4px 9px; font-size: 12px; }
+    .freshness { font-size: 11px; font-weight: 500; }
+    body > .leaflet-control-container { font-size: 13px; }
+    .wrap > details:last-child { margin-inline: 14px; }
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>낚시 출조 예약 현황판</h1>
+  <h1>출조 찾기</h1>
   <div class="sub" id="meta">불러오는 중…</div>
   <div class="sub" id="monitor-status" role="status">전체 목록은 약 60분 주기로 수집합니다. 관심 출조 감시는 로컬 서버에서 사용할 수 있습니다.</div>
   <details id="watch-panel" hidden><summary>감시 중인 출조 관리</summary><div id="watch-list" class="status"></div></details>
@@ -424,6 +512,7 @@ function hasSelection(values, value) {
 function updateMultiLabel(control) {
   const checked = [...control.querySelectorAll('input:checked')];
   const summary = control.querySelector('summary');
+  control.dataset.selected = checked.length ? '1' : '0';
   if (!checked.length) {
     summary.textContent = control.dataset.all;
   } else if (checked.length === 1) {
@@ -577,12 +666,17 @@ function render(all = visibleTrips()) {
       prevDate = t.date;
     }
     const tr = document.createElement('tr');
+    tr.className = 'triprow';
     const starCell = document.createElement('td');
     starCell.className = 'starcell';
+    const boatMark = document.createElement('span');
+    boatMark.className = 'boatmark';
+    boatMark.textContent = (t.boat ?? '배').trim().slice(0, 1) || '배';
+    boatMark.setAttribute('aria-hidden', 'true');
     const star = document.createElement('button');
     paintStar(star, FAVS.has(favKey(t)));
     star.addEventListener('click', () => toggleFav(t));
-    starCell.append(star);
+    starCell.append(boatMark, star);
     tr.append(starCell);
 
     const cells = [
@@ -590,8 +684,10 @@ function render(all = visibleTrips()) {
       t.species ?? '', null,
       seatsLabel(t), won(t.price),
     ];
+    const cellNames = ['date', 'run', 'session', 'site', 'boat', 'port', 'species', 'status', 'seats', 'price'];
     cells.forEach((v, i) => {
       const td = document.createElement('td');
+      td.className = `cell-${cellNames[i]}`;
       if (i === 7) {
         const b = document.createElement('span');
         b.className = 'badge ' + t.status;
@@ -626,8 +722,8 @@ function render(all = visibleTrips()) {
         }
       }
       // 날짜·운항·구분·상태는 줄이 갈리면 읽기 나빠집니다. 폭은 긴 이름 칸에서 법니다.
-      if (i <= 2 || i === 7) td.className = 'nowrap';
-      if (i >= 8) td.className = 'num';
+      if (i <= 2 || i === 7) td.classList.add('nowrap');
+      if (i >= 8) td.classList.add('num');
       if (i === 8) {
         const age = freshness(t), hint = document.createElement('small');
         hint.className = 'freshness' + (age.failed ? ' failed' : age.stale ? ' stale' : '');
