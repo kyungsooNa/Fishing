@@ -104,6 +104,30 @@ function adminAllowed(req) {
   return req.headers['x-admin'] === '1';
 }
 
+/** 밖에서도 쓸 수 있는 길. 지금은 감시 목록뿐입니다 — 사람마다 나뉘고 남의 것은 못 봅니다. */
+const PUBLIC_PATHS = new Set(['/api/monitor']);
+
+/**
+ * 이 요청을 어디까지 받아줄지. `admin`은 registry를 고치고 프로세스를 띄우는 길이라
+ * 루프백에서만 열고, `watch`는 상시 감시 서버가 밖에 있을 때(DEPLOY.md) 브라우저가
+ * 자기 감시를 걸 수 있게 여는 길입니다.
+ *
+ * 밖에 열어도 되는 이유는 두 가지입니다.
+ *  - 하는 일이 **자기 감시 목록 읽고 쓰기**뿐입니다. 파일도 프로세스도 안 건드립니다.
+ *  - 누구 것인지는 `X-Watcher` 토큰으로만 정해집니다. 커스텀 헤더라 다른 사이트의
+ *    스크립트가 몰래 보낼 수 없고(프리플라이트가 뜨고 CORS 헤더를 안 줍니다),
+ *    토큰은 그 화면의 localStorage에만 있어 남이 읽지 못합니다.
+ *
+ * 밖으로 열지 말지는 **명시적으로 켭니다**(`WATCH_PUBLIC=1`). 주소만 0.0.0.0으로 바꿨다가
+ * 쓰기 길이 같이 열리는 일이 없게, 두 개를 다 켜야 열립니다.
+ */
+export function apiAccess(req, path, { watchPublic = false } = {}) {
+  if (adminAllowed(req)) return 'admin';
+  if (!watchPublic || !PUBLIC_PATHS.has(path)) return 'deny';
+  // 관리 API와 같은 이유로 커스텀 헤더를 요구합니다(CSRF).
+  return req.headers['x-watcher'] ? 'watch' : 'deny';
+}
+
 function json(res, code, body) {
   res.writeHead(code, { 'Content-Type': TYPES['.json'], 'Cache-Control': 'no-store' });
   res.end(JSON.stringify(body));
@@ -129,6 +153,8 @@ export function createApp({
   upstreamCmd = { file: 'git', args: ['rev-parse', '--abbrev-ref', '--symbolic-full-name', '@{u}'] },
   // run.bat처럼 종료 코드를 보고 다시 띄워주는 실행기가 있을 때만 재시작이 됩니다.
   restartable = process.env.RESTARTABLE === '1',
+  // 상시 감시 서버를 밖에 둘 때만 켭니다(DEPLOY.md). 켜도 열리는 것은 감시 목록뿐입니다.
+  watchPublic = process.env.WATCH_PUBLIC === '1',
   exitProcess = process.exit,
   restartDelayMs = 100,
   monitor = null,
@@ -153,7 +179,8 @@ export function createApp({
   }
 
   async function handleApi(req, res, path) {
-    if (!adminAllowed(req)) {
+    const access = apiAccess(req, path, { watchPublic });
+    if (access === 'deny') {
       return json(res, 403, { error: '로컬에서만 쓸 수 있습니다' });
     }
 

@@ -402,6 +402,55 @@ GitHub Pages에서 그대로 돕니다.
 registry에 있는데 `ports.json`에 없는 항구는 지도에서 빠지고, 수집 로그가
 `좌표 없는 항구: ○○` 로 알려줍니다. 표에는 그대로 나옵니다.
 
+## 상시 감시 서버로 돌리기
+
+내 PC가 꺼져도 감시가 이어지게 하려면 서버 한 대에 올려둡니다. 어디에 둘지와 그 이유는
+[`DEPLOY.md`](DEPLOY.md)에 적혀 있습니다(국내 소형 VPS 1대). 여기는 그걸 실제로 띄우는 방법입니다.
+
+```bash
+git clone <이 레포> && cd Fishing && npm ci --omit=dev
+HOST=0.0.0.0 PORT=8080 WATCH_PUBLIC=1 ALERTS_PATH=var/alerts.jsonl node serve.js
+```
+
+- `HOST=0.0.0.0` — 밖에서 화면에 들어올 수 있게 합니다. **이것만으로는 아무것도 못 씁니다.**
+- `WATCH_PUBLIC=1` — 감시 목록 API(`/api/monitor`)만 밖에 엽니다. 두 개를 다 켜야 열립니다.
+  주소만 바꿨다가 쓰기 길이 같이 열리는 일이 없게 나눠뒀습니다.
+- `ALERTS_PATH` — 알림 이력을 남길 곳. 기본값 `tmp/`는 청소 대상이라 서버에서는 옮깁니다.
+- 텔레그램·디스코드 환경변수를 같이 주면 알림이 나갑니다(아래 "자리 났을 때 알림 받기").
+
+**관리 API는 밖에서 못 부릅니다.** `/api/sites`·`/api/collect`·`/api/restart`는 registry를
+고치고 프로세스를 띄우므로 루프백 + Host 검사 + `X-Admin` 세 겹 그대로입니다. 서버의 관리
+화면은 SSH 터널로 씁니다.
+
+```bash
+ssh -N -L 8080:127.0.0.1:8080 <서버>     # 그다음 http://localhost:8080/admin.html
+```
+
+꺼져도 다시 뜨게 하려면 systemd에 맡깁니다.
+
+```ini
+# /etc/systemd/system/fishing.service
+[Unit]
+Description=Fishing 상시 감시
+After=network-online.target
+
+[Service]
+WorkingDirectory=/srv/fishing
+Environment=HOST=0.0.0.0 PORT=8080 WATCH_PUBLIC=1 ALERTS_PATH=/srv/fishing/var/alerts.jsonl
+ExecStart=/usr/bin/node serve.js
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+```
+
+운영 상태는 서버에서 이 둘로 봅니다 — `node metrics.js`(플랫폼별 커버리지·값의 나이),
+`node alerts.js`(감지 지연·알림 실패).
+
+**화면은 서버 주소로 들어가야 감시를 걸 수 있습니다.** GitHub Pages는 그대로 두되 읽기
+전용입니다 — 그쪽에는 `/api/*`가 없어서 화면이 감시 버튼을 접습니다.
+
 ## 감시 목록은 브라우저마다 다릅니다
 
 관심 출조(3분 감시)는 **누가 걸었는지**를 구분합니다. 계정은 만들지 않습니다 — 브라우저가

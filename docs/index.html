@@ -930,18 +930,31 @@ function loadData() { return fetch('data.json?t=' + Date.now(), { cache: 'no-sto
   })
   .catch((e) => { $('meta').textContent = 'data.json을 못 읽었습니다: ' + e.message; }); }
 
+// 감시 서버는 내 PC일 수도, 상시 서버일 수도 있습니다(DEPLOY.md). 주소로 짐작하지 않고
+// 같은 곳에 물어봅니다. 정적 호스팅(GitHub Pages)이면 그 길이 아예 없어서 404·403이
+// 돌아오는데, 그건 고장이 아니라 **읽기 전용 화면**이라는 뜻이라 다시 묻지 않습니다.
+let WATCH_API = true;
+
 async function reload() {
   try {
-    if (['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)) {
+    if (WATCH_API) {
       const r = await fetch('/api/monitor', { headers: watchHeaders() });
-      if (!r.ok) throw new Error('감시 서버 연결 실패');
-      MONITOR = await r.json();
-      monitorMessage();
+      if (r.status === 404 || r.status === 403) {
+        WATCH_API = false;
+        MONITOR = null;
+        $('watch-panel').hidden = true;
+      } else if (!r.ok) {
+        throw new Error('감시 서버 연결 실패');
+      } else {
+        MONITOR = await r.json();
+        monitorMessage();
+      }
     }
   } catch {
+    // 있던 서버가 죽은 경우입니다 — 이건 알려줘야 합니다.
     MONITOR = null;
     $('watch-panel').hidden = true;
-    $('monitor-status').textContent = '감시 서버에 연결할 수 없습니다. 로컬 서버 실행 상태를 확인하세요.';
+    $('monitor-status').textContent = '감시 서버에 연결할 수 없습니다. 서버 실행 상태를 확인하세요.';
   }
   await loadData();
 }
