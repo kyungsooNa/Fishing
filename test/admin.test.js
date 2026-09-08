@@ -196,6 +196,17 @@ test('관리 화면 스크립트에 문법 오류가 없고, 쓰는 요소가 �
   assert.deepEqual(missing, [], 'id가 바뀌면 그 부분이 조용히 안 돕니다');
 });
 
+test('관리 화면은 현황판과 한눈에 구분되는 관리 전용 머리글을 쓴다', async () => {
+  const [admin, board] = await Promise.all([
+    readFile('docs/admin.html', 'utf8'),
+    readFile('docs/index.html', 'utf8'),
+  ]);
+  assert.match(admin, /<header class="adminhead">[\s\S]*?<span class="adminbadge">관리 전용<\/span>/);
+  assert.match(admin, /\.adminhead \{[^}]*border-left: 6px solid var\(--accent\)/s);
+  assert.match(admin, /--accent: #a64f0b/, '현황판의 파란색과 다른 관리 화면 구분색이 필요합니다');
+  assert.ok(!board.includes('class="adminhead"'), '현황판까지 관리 전용 모양이면 다시 헷갈립니다');
+});
+
 test('관리 화면: 사이트가 300곳 가까이 되므로 쪽 나눔과 등록 출처 구분이 있다', async () => {
   const html = await readFile('docs/admin.html', 'utf8');
 
