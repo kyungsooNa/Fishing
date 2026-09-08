@@ -45,6 +45,14 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
 
+      # 사이트를 늘리면 같은 함대 일정표를 두 번 긁는 일이 생깁니다(선상24는 어느
+      # 서브도메인으로 들어가든 함대 전체를 돌려줍니다). 수집 결과가 있어야 판정할 수
+      # 있으므로 여기서 봅니다 — 사람이 기억해서 돌리는 것으로는 안 굴러갑니다.
+      # 수집은 이미 끝났으니 이 단계가 실패해도 결과를 버리지 않습니다.
+      - name: 중복 감사
+        continue-on-error: true
+        run: node dupes.js
+
       # 수집이 15~20분 걸립니다. 그 사이 main에 다른 커밋이 들어오면 push가 거부되고,
       # 방금 받아온 결과가 통째로 버려집니다(실제로 한 번 그랬습니다). 거부되면 최신
       # main 위에 결과만 다시 얹습니다 — data.json은 수집할 때마다 통째로 다시 쓰는

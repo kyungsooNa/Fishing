@@ -2972,12 +2972,12 @@
       "adapter": "thefishing",
       "url": "https://bluedragon.thefishing.kr/index.php?mid=bk",
       "source": "detail",
-      "enabled": true,
+      "enabled": false,
       "addedBy": "discover",
       "boats": {
         "청룡호": {}
       },
-      "note": "자동 발견(https://bluedragon.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 장고항, 공지사항 전화 후보: 010-5427-8866, 041-353-6740"
+      "note": "[dupes] ysho와 같은 일정표라 껐습니다 — 겹치는 배(청룡호)의 출조가 날짜·출항시각·잔여석까지 같습니다. 둘 다 켜면 같은 출조가 두 줄로 뜹니다(전화번호가 없어 core/merge.js가 못 합칩니다). 배를 더 많이 주는 쪽을 남겼습니다. — 원래 메모: 자동 발견(https://bluedragon.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 장고항, 공지사항 전화 후보: 010-5427-8866, 041-353-6740"
     },
     {
       "id": "cgho",
@@ -3457,9 +3457,9 @@
       "url": "https://monster.thefishing.kr/index.php?mid=bk",
       "source": "detail",
       "phone": "010-9009-7608",
-      "enabled": true,
+      "enabled": false,
       "addedBy": "discover",
-      "note": "자동 발견(https://monster.thefishing.kr) — 시험 수집 9건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 인이상출항, 출조항"
+      "note": "[중복] monster(yusungho.kr)와 같은 배라 껐습니다 — 겹치는 42건 중 40건이 완전히 같고 나머지 2건도 seatsTotal만 갈립니다(node dupes.js --why monster monster2). monster 쪽에 선사 표기와 출항지(시화방조제 중간선착장)가 있어 그쪽을 남겼습니다. 이 사이트에서 읽은 전화번호 010-9009-7608은 같은 배의 번호일 가능성이 높지만, 신원은 잘못 넣으면 엉뚱한 배가 합쳐지므로 peek으로 확인한 뒤 monster에 옮기세요."
     },
     {
       "id": "nadree",
@@ -3636,12 +3636,12 @@
       "url": "https://raraho.thefishing.kr/index.php?mid=bk",
       "source": "detail",
       "phone": "010-9008-7564",
-      "enabled": true,
+      "enabled": false,
       "addedBy": "discover",
       "boats": {
         "라라호": {}
       },
-      "note": "자동 발견(https://raraho.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 오천항, 공지사항, 출조항"
+      "note": "[중복] raraho(raraho.kr)와 같은 배라 껐습니다 — 전화번호가 010-9008-7564로 같고, 겹치는 21건이 날짜·출항시각·잔여석·어종까지 전부 같습니다(node dupes.js --why raraho raraho2). 갈리는 값은 seatsTotal 하나(22 vs 20)인데, raraho의 22는 선박소개에서 옮긴 미확인 값이고 20은 예약판에서 읽은 값입니다 — peek으로 대조해서 raraho의 seatsTotal을 정하세요. 자체 도메인 쪽(raraho)을 남긴 것은 항구(오천항)와 선사 표기가 채워져 있어서입니다."
     },
     {
       "id": "redpearl",
