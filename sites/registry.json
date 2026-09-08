@@ -123,12 +123,13 @@
       "url": "https://www.ssfish.kr/index.php?mid=bk",
       "source": "detail",
       "port": "충남 보령 무창포항",
+      "phone": "010-6480-0115",
       "windowDays": 7,
       "excludeBoats": [
         "무창포 선상낚시"
       ],
       "enabled": true,
-      "note": "index 방식이라 seatsTotal 없이 동작합니다. detail로 바꾸려면 정원을 먼저 확인하세요."
+      "note": "대표번호 010-6480-0115는 공식 홈페이지의 예약 및 문의전화와 하단 사업자 정보에서 확인했습니다. index 방식이라 seatsTotal 없이 동작합니다. detail로 바꾸려면 정원을 먼저 확인하세요."
     },
     {
       "id": "hifishing",
