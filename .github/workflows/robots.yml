@@ -1,0 +1,47 @@
+name: robots
+
+# 사이트가 "받아가도 된다"고 했는지 확인합니다.
+#
+# 개발 환경에서 국내 도메인이 막혀 있어(HTTP 403) 여기서 돌립니다 — peek·discover와 같은 이유.
+# Actions 탭 → robots → Run workflow
+#   hosts=sunsang24.com thefishing.kr   확인할 도메인(공백으로 구분)
+#   path=/ship/schedule_fleet           실제로 받아가는 경로
+
+on:
+  workflow_dispatch:
+    inputs:
+      hosts:
+        description: '도메인 (공백으로 구분). 비우면 registry에 켜져 있는 곳 전부'
+        required: false
+        type: string
+      path:
+        description: '확인할 경로 (예: /ship/schedule_fleet)'
+        required: false
+        type: string
+        default: '/'
+
+jobs:
+  robots:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci --no-audit --no-fund
+
+      # 입력값은 셸에 끼워 넣지 않고 환경변수로 넘깁니다.
+      - name: robots.txt 확인
+        env:
+          HOSTS: ${{ inputs.hosts }}
+          TARGET_PATH: ${{ inputs.path }}
+        run: |
+          if [ -z "$HOSTS" ]; then
+            node robots.js --sites --path "$TARGET_PATH"
+          else
+            # shellcheck disable=SC2086
+            node robots.js --path "$TARGET_PATH" $HOSTS
+          fi
