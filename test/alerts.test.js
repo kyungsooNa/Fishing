@@ -8,7 +8,7 @@ import { mkdtemp, readFile, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { promisify } from 'node:util';
-import { alertRecords, appendAlerts, readAlerts, summarizeAlerts, alertKey, dropRepeats, rememberSent, REPEAT_MS } from '../core/alerts.js';
+import { alertRecords, appendAlerts, readAlerts, summarizeAlerts, alertKey, dropRepeats, rememberSent, alertsFor, REPEAT_MS } from '../core/alerts.js';
 import { findOpenings } from '../core/diff.js';
 import { format } from '../core/notify.js';
 import { STATUS } from '../core/schema.js';
@@ -269,4 +269,41 @@ test('주소가 없으면 그 줄만 빠지고 나머지는 간다', () => {
 
 test('시각을 모르면 지어내지 않는다', () => {
   assert.match(format([opening()], '시각아님'), /시각 미상/);
+});
+
+// ── 누구의 알림인가 ────────────────────────────────────────────────────────
+// 남의 알림이 내 화면에 뜨면 감시 목록을 사람마다 나눠 둔 뜻이 없습니다(core/watchers.js).
+test('기록에 누구의 감시가 잡았는지 남는다', () => {
+  const [r] = alertRecords({ openings: [opening()], at: AT, ownersOf: () => ['me', 'you'] });
+  assert.deepEqual(r.watchers, ['me', 'you']);
+
+  const [none] = alertRecords({ openings: [opening()], at: AT });
+  assert.deepEqual(none.watchers, [], '주인을 모르면 아무에게도 안 보입니다');
+});
+
+test('이력은 내 감시가 잡은 것만 준다', () => {
+  const records = [
+    { at: AT, boat: '내배', watchers: ['me'] },
+    { at: AT, boat: '남의배', watchers: ['you'] },
+    { at: AT, boat: '같이본배', watchers: ['me', 'you'] },
+    { at: AT, boat: '주인없음' },
+  ];
+  assert.deepEqual(alertsFor(records, 'me').map((r) => r.boat), ['같이본배', '내배'], '최근 것부터');
+  assert.deepEqual(alertsFor(records, 'you').map((r) => r.boat), ['같이본배', '남의배']);
+  assert.deepEqual(alertsFor(records, null), [], '누군지 모르면 아무것도 안 줍니다');
+  assert.deepEqual(alertsFor(records, '모르는사람'), []);
+});
+
+test('이력은 최근 것부터 정해진 수만큼만 준다', () => {
+  const records = Array.from({ length: 40 }, (_, i) => ({ at: AT, boat: `배${i}`, watchers: ['me'] }));
+  const got = alertsFor(records, 'me');
+  assert.equal(got.length, 30);
+  assert.equal(got[0].boat, '배39', '가장 최근 것이 맨 위입니다');
+});
+
+test('링크가 그 날짜로 가는지도 이력에 남는다', () => {
+  const [dated] = alertRecords({ openings: [opening({ urlDated: true })], at: AT });
+  const [listing] = alertRecords({ openings: [opening()], at: AT });
+  assert.equal(dated.urlDated, true);
+  assert.equal(listing.urlDated, false, '화면이 "예약 화면"과 "일정표"를 갈라 보여줍니다');
 });

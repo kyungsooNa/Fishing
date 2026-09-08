@@ -17,6 +17,7 @@ import { pathToFileURL } from 'node:url';
 import { platformOf, effectiveMode } from './core/platform.js';
 import { createMonitor } from './core/monitor.js';
 import { watcherId } from './core/watchers.js';
+import { readAlerts, alertsFor, ALERTS_PATH } from './core/alerts.js';
 import { acquireCollectorLock } from './core/collector-lock.js';
 
 const TYPES = {
@@ -105,7 +106,7 @@ function adminAllowed(req) {
 }
 
 /** 밖에서도 쓸 수 있는 길. 지금은 감시 목록뿐입니다 — 사람마다 나뉘고 남의 것은 못 봅니다. */
-const PUBLIC_PATHS = new Set(['/api/monitor']);
+const PUBLIC_PATHS = new Set(['/api/monitor', '/api/alerts']);
 
 /**
  * 이 요청을 어디까지 받아줄지. `admin`은 registry를 고치고 프로세스를 띄우는 길이라
@@ -153,8 +154,10 @@ export function createApp({
   upstreamCmd = { file: 'git', args: ['rev-parse', '--abbrev-ref', '--symbolic-full-name', '@{u}'] },
   // run.bat처럼 종료 코드를 보고 다시 띄워주는 실행기가 있을 때만 재시작이 됩니다.
   restartable = process.env.RESTARTABLE === '1',
-  // 상시 감시 서버를 밖에 둘 때만 켭니다(DEPLOY.md). 켜도 열리는 것은 감시 목록뿐입니다.
+  // 상시 감시 서버를 밖에 둘 때만 켭니다(DEPLOY.md). 켜도 열리는 것은 감시 목록과
+  // 그 사람이 받은 알림 이력뿐입니다.
   watchPublic = process.env.WATCH_PUBLIC === '1',
+  alertsPath = ALERTS_PATH,
   exitProcess = process.exit,
   restartDelayMs = 100,
   monitor = null,
@@ -199,6 +202,13 @@ export function createApp({
       const id = watcherId(req.headers['x-watcher']);
       if (!id) return json(res, 400, { error: '감시를 걸려면 브라우저 식별자(X-Watcher)가 필요합니다' });
       return json(res, 200, await monitor.setWatch(body.key, body.enabled, id, { local: isLoopback(req) }));
+    }
+
+    // 내 감시가 잡은 알림만. 남의 알림이 내 화면에 뜨면 목록을 나눠 둔 뜻이 없습니다.
+    if (path === '/api/alerts' && req.method === 'GET') {
+      const id = watcherId(req.headers['x-watcher']);
+      const { records } = await readAlerts(alertsPath);
+      return json(res, 200, { alerts: alertsFor(records, id) });
     }
 
     if (path === '/api/sites' && req.method === 'GET') {
