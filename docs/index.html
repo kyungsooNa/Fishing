@@ -322,11 +322,13 @@ function dayLabel(d) {
   return `${m}/${dd}(${WEEK[new Date(y, m - 1, dd).getDay()]})`;
 }
 
+// 조금 앞뒤로 물살이 죽는 며칠이 좋은 물때입니다. 12·13물부터 조금·무시를 지나
+// 1~4물까지 — 3·4물도 아직 사리로 넘어가기 전이라 같이 셉니다.
 function isGoodTide(tide) {
   if (!tide) return false;
   if (tide === '조금' || tide === '무시') return true;
   const n = Number(String(tide).match(/^(\d{1,2})물$/)?.[1]);
-  return n === 12 || n === 13 || n === 1 || n === 2;
+  return n === 12 || n === 13 || (n >= 1 && n <= 4);
 }
 
 // 물때는 날짜별로 한 번만 모읍니다. 날짜 머리글마다 그 쪽 전체를 다시 훑으면

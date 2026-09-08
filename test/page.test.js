@@ -129,8 +129,23 @@ test('물때는 날짜 그룹 줄에 한 번만 표시한다', () => {
 test('좋은 물때는 날짜 줄에 배지로 표시한다', () => {
   assert.match(html, /\.tidegood/);
   assert.match(inline, /function isGoodTide/);
-  assert.match(inline, /n === 12 \|\| n === 13 \|\| n === 1 \|\| n === 2/);
   assert.match(inline, /좋은 물때/);
+});
+
+// 어떤 물때가 좋은 물때인지는 글자를 찾아 확인하면 조건을 고칠 때마다 테스트도
+// 같이 고쳐야 해서 아무것도 못 잡습니다. 함수를 꺼내 값으로 확인합니다.
+test('좋은 물때는 조금 앞뒤 — 12·13물, 조금·무시, 1~4물', () => {
+  const start = inline.indexOf('function isGoodTide');
+  const end = inline.indexOf('function tidesByDate');
+  assert.ok(start >= 0 && end > start, 'isGoodTide를 찾지 못했습니다');
+  const { isGoodTide } = new Function(`${inline.slice(start, end)}\nreturn { isGoodTide };`)();
+
+  for (const t of ['조금', '무시', '12물', '13물', '1물', '2물', '3물', '4물']) {
+    assert.equal(isGoodTide(t), true, `${t}은 좋은 물때입니다`);
+  }
+  for (const t of ['5물', '7물', '9물', '11물', '한객기', null, '']) {
+    assert.equal(isGoodTide(t), false, `${t}은 좋은 물때가 아닙니다`);
+  }
 });
 
 test('data.json은 화면이 기대하는 모양이다', async () => {
