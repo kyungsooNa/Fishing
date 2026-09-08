@@ -8,8 +8,9 @@ import { mkdtemp, readFile, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { promisify } from 'node:util';
-import { alertRecords, appendAlerts, readAlerts, summarizeAlerts } from '../core/alerts.js';
+import { alertRecords, appendAlerts, readAlerts, summarizeAlerts, alertKey, dropRepeats, rememberSent, REPEAT_MS } from '../core/alerts.js';
 import { findOpenings } from '../core/diff.js';
+import { format } from '../core/notify.js';
 import { STATUS } from '../core/schema.js';
 
 const run = promisify(execFile);
@@ -195,4 +196,77 @@ test('명령이 실제로 돈다', async () => {
 test('기록이 없으면 어떻게 쌓이는지 알려준다', async () => {
   const { stdout } = await run(process.execPath, ['alerts.js', '--from', join(tmpdir(), 'alerts-없음.jsonl')]);
   assert.match(stdout, /기록이 없습니다/);
+});
+
+// ── 같은 소식을 다시 울리지 않기 ────────────────────────────────────────────
+// 3분마다 보니 자리가 붙었다 떨어졌다 하면 계속 울립니다. 몇 번 헛울리면 사람이 알림을
+// 꺼버리고, 그러면 정작 필요한 알림도 같이 잃습니다.
+test('같은 출조·같은 이유·같은 자리 수면 같은 소식이다', () => {
+  const base = opening();
+  assert.equal(alertKey(base), alertKey({ ...base, siteName: '이름만 다름' }));
+  assert.notEqual(alertKey(base), alertKey({ ...base, seatsLeft: 5 }), '자리가 더 늘면 다른 소식입니다');
+  assert.notEqual(alertKey(base), alertKey({ ...base, reason: 'more-seats' }));
+  assert.notEqual(alertKey(base), alertKey({ ...base, date: '2026-09-10' }));
+});
+
+test('이미 보낸 소식은 걸러내고 새 소식만 남긴다', () => {
+  const now = Date.parse(AT);
+  const sent = rememberSent({}, [opening()], { now: now - 60_000 });
+
+  const { fresh, repeats } = dropRepeats([opening(), opening({ seatsLeft: 5 })], sent, { now });
+  assert.deepEqual(repeats.map((o) => o.seatsLeft), [2]);
+  assert.deepEqual(fresh.map((o) => o.seatsLeft), [5], '자리가 더 늘어난 건 알립니다');
+});
+
+test('시간이 지나면 다시 알린다 — 사람에게는 새 소식입니다', () => {
+  const now = Date.parse(AT);
+  const sent = rememberSent({}, [opening()], { now: now - REPEAT_MS - 1 });
+  assert.equal(dropRepeats([opening()], sent, { now }).fresh.length, 1);
+});
+
+test('보낸 기록은 오래된 것부터 버린다 — 안 버리면 파일이 계속 자랍니다', () => {
+  const now = Date.parse(AT);
+  const old = rememberSent({}, [opening({ boat: '옛날호' })], { now: now - REPEAT_MS - 1 });
+  const next = rememberSent(old, [opening()], { now });
+
+  assert.equal(Object.keys(next).length, 1);
+  assert.equal(dropRepeats([opening()], next, { now }).repeats.length, 1);
+});
+
+test('기록이 없거나 깨져 있어도 거르다가 죽지 않는다', () => {
+  for (const bad of [undefined, null, {}, { 'a|b': '숫자아님' }]) {
+    assert.equal(dropRepeats([opening()], bad).fresh.length, 1);
+    assert.deepEqual(Object.keys(rememberSent(bad, [])), []);
+  }
+});
+
+// ── 알림 본문 ───────────────────────────────────────────────────────────────
+// 알림을 받고 바로 예약하러 갈 수 있어야 합니다. 주소가 없으면 사이트를 다시 찾아
+// 날짜를 뒤져야 하고, 그 사이에 자리는 없어집니다.
+test('알림에 원본 링크와 확인 시각이 같이 간다', () => {
+  const text = format([opening({ url: 'https://x.example/bk?day=9', urlDated: true })],
+    new Date('2026-09-08T03:05:00Z'));
+
+  assert.match(text, /https:\/\/x\.example\/bk\?day=9/);
+  assert.match(text, /12:05 확인/, '한국시간입니다 — 러너는 UTC라 그냥 찍으면 9시간 전으로 보입니다');
+  assert.match(text, /취소석/);
+  assert.match(text, /감시 해제는/, '그만 받는 방법을 모르면 알림을 통째로 끕니다');
+});
+
+test('주소로 날짜를 못 가는 링크는 그렇다고 적는다', () => {
+  const dated = format([opening({ url: 'https://x.example/day', urlDated: true })]);
+  const listing = format([opening({ url: 'https://x.example/list' })]);
+
+  assert.ok(!dated.includes('일정표'), '그 날짜로 바로 가면 덧붙일 말이 없습니다');
+  assert.match(listing, /일정표 — 날짜는 직접 고르세요/);
+});
+
+test('주소가 없으면 그 줄만 빠지고 나머지는 간다', () => {
+  const text = format([opening({ url: null })]);
+  assert.match(text, /가호/);
+  assert.equal(text.includes('undefined'), false);
+});
+
+test('시각을 모르면 지어내지 않는다', () => {
+  assert.match(format([opening()], '시각아님'), /시각 미상/);
 });

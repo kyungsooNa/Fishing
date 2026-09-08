@@ -312,3 +312,67 @@ test('주인 없는 예전 목록도 그동안은 계속 감시한다', async ()
   await resumed.tick(); await resumed.idle();
   assert.deepEqual(calls, ['b'], '주인을 못 찾았다고 감시를 멈추면 그 사이 자리를 놓칩니다');
 });
+
+// 3분마다 보니 자리가 붙었다 떨어졌다 하면 계속 울립니다. 몇 번 헛울리면 사람이 알림을
+// 꺼버리고, 그러면 정작 필요한 알림도 같이 잃습니다(core/alerts.js의 dropRepeats).
+test('같은 소식은 다시 울리지 않고, 자리가 더 늘면 알린다', async () => {
+  let seats = 0;
+  const notices = [];
+  const f = await fixture({ collect: async () => [trip('a', seats)], send: async (o) => { notices.push(o); } });
+  await f.monitor.setWatch(tripKey(trip()), true, ME);
+  await f.monitor.tick(); await f.monitor.idle();
+
+  seats = 2; f.advance(WATCH_MS);
+  await f.monitor.tick(); await f.monitor.idle();
+  assert.equal(notices.length, 1, '처음 잡힌 자리는 알립니다');
+
+  seats = 0; f.advance(WATCH_MS);            // 누가 예약해서 다시 마감
+  await f.monitor.tick(); await f.monitor.idle();
+  seats = 2; f.advance(WATCH_MS);            // 또 취소 — 사람에게는 같은 소식
+  await f.monitor.tick(); await f.monitor.idle();
+  assert.equal(notices.length, 1, '같은 자리 수로 돌아온 것은 다시 안 울립니다');
+
+  seats = 5; f.advance(WATCH_MS);
+  await f.monitor.tick(); await f.monitor.idle();
+  assert.equal(notices.length, 2, '자리가 더 늘어난 것은 새 소식입니다');
+});
+
+test('보낸 기록은 재시작해도 남는다 — 서버가 뜰 때마다 다시 울리면 안 됩니다', async () => {
+  let seats = 0;
+  const notices = [];
+  const send = async (o) => { notices.push(o); };
+  const f = await fixture({ collect: async () => [trip('a', seats)], send });
+  await f.monitor.setWatch(tripKey(trip()), true, ME);
+  await f.monitor.tick(); await f.monitor.idle();
+  seats = 2; f.advance(WATCH_MS);
+  await f.monitor.tick(); await f.monitor.idle();
+  assert.equal(notices.length, 1);
+  await f.monitor.stop();
+
+  const resumed = createMonitor({ ...f.opts, send });
+  await resumed.init();
+  seats = 0; f.advance(WATCH_MS);
+  await resumed.tick(); await resumed.idle();
+  seats = 2; f.advance(WATCH_MS);
+  await resumed.tick(); await resumed.idle();
+  assert.equal(notices.length, 1, '재시작 전에 보낸 소식입니다');
+});
+
+test('알림이 실패해도 3분 뒤에 같은 소식을 또 보내지 않는다', async () => {
+  let seats = 0, tries = 0;
+  const f = await fixture({ collect: async () => [trip('a', seats)],
+    send: async () => { tries += 1; throw new Error('offline'); } });
+  await f.monitor.setWatch(tripKey(trip()), true, ME);
+  await f.monitor.tick(); await f.monitor.idle();
+
+  seats = 2; f.advance(WATCH_MS);
+  await f.monitor.tick(); await f.monitor.idle();
+  seats = 0; f.advance(WATCH_MS);
+  await f.monitor.tick(); await f.monitor.idle();
+  seats = 2; f.advance(WATCH_MS);
+  await f.monitor.tick(); await f.monitor.idle();
+
+  assert.equal(tries, 1, '채널이 살아나는 순간 밀린 알림이 한꺼번에 오면 안 됩니다');
+  assert.equal(f.alerts.length, 1, '실패한 것도 이력에는 남습니다');
+  assert.equal(f.alerts[0].notify.failed[0].error, 'offline');
+});
