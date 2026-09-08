@@ -99,6 +99,9 @@
   .status div { display: flex; gap: 8px; }
   .fail { color: var(--off); }
   .watch { border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--accent); padding: 5px 8px; cursor: pointer; }
+  .srcchip { display: inline-block; margin-left: 5px; padding: 1px 6px; border: 1px solid var(--line);
+             border-radius: 999px; font-size: 11px; color: var(--muted); vertical-align: middle; }
+  .srcseats { margin-left: 4px; font-size: 11px; color: var(--few); }
   .freshness { display: block; font-size: 11px; font-weight: normal; color: var(--muted); }
   .freshness.stale { color: var(--few); }
   .freshness.failed { color: var(--off); }
@@ -196,6 +199,7 @@
   <details id="watch-panel" hidden><summary>감시 중인 출조 관리</summary><div id="watch-list" class="status"></div></details>
 
   <div class="filters">
+    <details class="multi" id="f-platform" data-label="플랫폼" data-all="전체 플랫폼"><summary>전체 플랫폼</summary><div class="multi-menu"></div></details>
     <details class="multi" id="f-site" data-label="선사" data-all="전체 선사"><summary>전체 선사</summary><div class="multi-menu"></div></details>
     <details class="multi" id="f-region" data-label="지역" data-all="전체 지역"><summary>전체 지역</summary><div class="multi-menu"></div></details>
     <details class="multi" id="f-port" data-label="항구" data-all="전체 항구"><summary>전체 항구</summary><div class="multi-menu"></div></details>
@@ -375,6 +379,15 @@ function rateOf(map, id) {
 const rateStars = (score) => '★'.repeat(score) + '☆'.repeat(RATE_MAX - score);
 
 // 안 매긴 선사는 아무것도 안 붙입니다. 288곳에 ☆☆☆☆☆가 깔리면 표가 안 읽힙니다.
+// 어디서 온 출조인지 한눈에. 이 화면의 존재 이유가 "선상24 밖도 같이 본다"인데,
+// 배지가 없으면 지금 보고 있는 줄이 어디 것인지 알 수가 없습니다.
+function platformChip(siteId) {
+  const chip = document.createElement('span');
+  chip.className = 'srcchip';
+  chip.textContent = platformOf(DATA.sites, siteId);
+  return chip;
+}
+
 function rateBadge(siteId) {
   const score = rateOf(RATES, siteId);
   if (!score) return null;
@@ -482,6 +495,22 @@ function regionOf(port) {
   return parts[0] ?? NO_PORT;
 }
 
+// 어느 예약 플랫폼에서 온 출조인가. 계열 표기는 data.json의 사이트 상태에 실려 옵니다
+// (registry를 화면에서는 못 읽습니다). "더피싱(상세)"의 (상세)는 우리가 어떻게 긁는지일 뿐
+// 사용자에겐 같은 더피싱이라 떼고 보여줍니다.
+const UNKNOWN_PLATFORM = '(미상)';
+
+function platformOf(sites, siteId) {
+  const label = sites?.[siteId]?.platform;
+  return label ? String(label).replace(/\(상세\)$/, '') : UNKNOWN_PLATFORM;
+}
+
+/** 합쳐진 줄은 여러 플랫폼에서 왔습니다. 그중 하나만 걸어도 걸리게 전부 돌려줍니다. */
+function platformsOf(sites, trip) {
+  const ids = (trip.sources?.length ? trip.sources : [trip]).map((s) => s.siteId);
+  return [...new Set(ids.map((id) => platformOf(sites, id)))];
+}
+
 function fillOptions(control, values, defaults = []) {
   const menu = control.querySelector('.multi-menu');
   if (control.dataset.loaded) defaults = [...selectedValues(control.id)];
@@ -529,6 +558,7 @@ function setOnlyFilterValue(id, value) {
 
 // 표와 지도가 같은 기준을 보도록 필터는 한 군데서만 겁니다.
 function visibleTrips() {
+  const platform = selectedValues('f-platform');
   const site = selectedValues('f-site'), region = selectedValues('f-region'), port = selectedValues('f-port');
   const species = selectedValues('f-species'), date = selectedValues('f-date'), session = selectedValues('f-session');
   const q = $('f-q').value.trim(), openOnly = $('f-open').checked;
@@ -537,6 +567,7 @@ function visibleTrips() {
 
   return DATA.trips.filter((t) =>
     (!favOnly || FAVS.has(favKey(t))) &&
+    (!platform.size || platformsOf(DATA.sites, t).some((p) => platform.has(p))) &&
     (!site.size || site.has(t.siteName) || (t.sources ?? []).some((x) => site.has(x.siteName))) &&
     hasSelection(region, regionOf(t.port)) && hasSelection(port, portOf(t)) &&
     (!species.size || speciesOf(t).some((s) => species.has(s))) && hasSelection(date, t.date) &&
@@ -695,7 +726,11 @@ function render(all = visibleTrips()) {
         td.append(b);
       } else if (i === 3) {
         // 여러 사이트에 같은 배가 올라와 있으면 둘 다 걸어줍니다. 어디서 잡든 상관없으니까요.
-        const sources = t.sources?.length ? t.sources : [{ siteId: t.siteId, siteName: t.siteName, url: t.url }];
+        const sources = t.sources?.length ? t.sources : [{ siteId: t.siteId, siteName: t.siteName, url: t.url, seatsLeft: t.seatsLeft }];
+        // 출처마다 잔여석이 다르면 그걸 보여줘야 합니다 — 합친 줄은 큰 쪽을 쓰기 때문에
+        // (core/merge.js) 어느 사이트로 가야 그 자리가 있는지는 여기서만 알 수 있습니다.
+        const seats = sources.map((src) => src.seatsLeft).filter(Number.isFinite);
+        const split = sources.length > 1 && new Set(seats).size > 1;
         sources.forEach((src, n) => {
           if (n) td.append(' · ');
           if (!src.url) td.append(src.siteName ?? '');
@@ -705,6 +740,14 @@ function render(all = visibleTrips()) {
             a.textContent = src.siteName ?? '';
             if (Number.isFinite(src.seatsLeft)) a.title = `이 사이트 기준 잔여 ${src.seatsLeft}`;
             td.append(a);
+          }
+          td.append(platformChip(src.siteId));
+          if (split && Number.isFinite(src.seatsLeft)) {
+            const seat = document.createElement('span');
+            seat.className = 'srcseats';
+            seat.textContent = `잔여 ${src.seatsLeft}`;
+            seat.title = '출처마다 남은 자리가 다릅니다. 이 사이트 기준입니다.';
+            td.append(seat);
           }
           const badge = rateBadge(src.siteId);
           if (badge) td.append(badge);
@@ -779,6 +822,7 @@ function loadData() { return fetch('data.json?t=' + Date.now(), { cache: 'no-sto
       `출조 ${d.trips.length}건 · 갱신 ${d.generatedAt ? new Date(d.generatedAt).toLocaleString('ko-KR') : '-'}` +
       (failed ? ` · 갱신 실패 ${failed}곳` : '');
     migrateFavs(d.trips);
+    fillOptions($('f-platform'), d.trips.flatMap((t) => platformsOf(d.sites, t)));
     fillOptions($('f-site'), d.trips.map((t) => t.siteName));
     fillOptions($('f-region'), d.trips.map((t) => regionOf(t.port)));
     fillOptions($('f-port'), d.trips.map(portOf));

@@ -22,7 +22,7 @@ test('스크립트가 쓰는 요소가 화면에 다 있다', () => {
 });
 
 test('주요 필터는 다중 선택 메뉴다', () => {
-  for (const id of ['f-site', 'f-region', 'f-port', 'f-species', 'f-session', 'f-date']) {
+  for (const id of ['f-platform', 'f-site', 'f-region', 'f-port', 'f-species', 'f-session', 'f-date']) {
     assert.match(html, new RegExp(`<details class="multi" id="${id}"[\\s\\S]*?<div class="multi-menu"></div>`));
   }
   assert.match(inline, /selectedValues\('f-site'\)/);
@@ -479,4 +479,62 @@ test('모바일 필터는 가로 칩이고 선택된 값이 눈에 띈다', () =
   assert.match(html, /\.filters \{ position: sticky;[^}]*flex-wrap: nowrap;[^}]*overflow-x: auto;/s);
   assert.match(html, /\.multi\[data-selected="1"\] summary/);
   assert.match(inline, /control\.dataset\.selected = checked\.length \? '1' : '0';/);
+});
+
+// ── 플랫폼(예약 사이트 계열) ────────────────────────────────────────────────
+// "선상24 밖도 같이 본다"가 이 화면의 존재 이유인데, 어디서 온 출조인지 보이지도 고르지도
+// 못했습니다. 계열 표기는 화면이 registry를 못 읽어서 data.json의 사이트 상태에서 옵니다.
+function platformFns() {
+  const start = inline.indexOf('const UNKNOWN_PLATFORM');
+  const end = inline.indexOf('function fillOptions');
+  assert.ok(start >= 0 && end > start, '플랫폼 헬퍼를 찾지 못했습니다');
+  return new Function(`${inline.slice(start, end)}\nreturn { platformOf, platformsOf };`)();
+}
+
+test('플랫폼 필터가 있고 표에도 걸린다', () => {
+  assert.match(html, /id="f-platform"[\s\S]*?<div class="multi-menu"><\/div>/);
+  assert.match(inline, /selectedValues\('f-platform'\)/);
+  assert.match(inline, /platformsOf\(DATA\.sites, t\)\.some/);
+  assert.match(inline, /fillOptions\(\$\('f-platform'\)/);
+});
+
+test('(상세)는 우리가 긁는 방식이라 사용자에게는 떼고 보여준다', () => {
+  const { platformOf } = platformFns();
+  const sites = { a: { platform: '더피싱(상세)' }, b: { platform: '더피싱' }, c: { platform: '선상24' } };
+  assert.equal(platformOf(sites, 'a'), '더피싱');
+  assert.equal(platformOf(sites, 'b'), '더피싱');
+  assert.equal(platformOf(sites, 'c'), '선상24');
+});
+
+test('계열을 모르는 사이트도 한 칸으로 모은다', () => {
+  const { platformOf } = platformFns();
+  assert.equal(platformOf({}, 'ghost'), '(미상)', '거르는 순간 이유 없이 사라지면 안 됩니다');
+  assert.equal(platformOf(undefined, 'ghost'), '(미상)');
+});
+
+test('합쳐진 줄은 출처의 플랫폼을 모두 돌려준다', () => {
+  const { platformsOf } = platformFns();
+  const sites = { s: { platform: '선상24' }, f: { platform: '더피싱(상세)' } };
+
+  assert.deepEqual(platformsOf(sites, { siteId: 's' }), ['선상24']);
+  assert.deepEqual(
+    platformsOf(sites, { siteId: 's', sources: [{ siteId: 's' }, { siteId: 'f' }] }),
+    ['선상24', '더피싱'],
+    '둘 중 하나만 골라도 걸려야 합니다 — 어디서 잡든 같은 자리입니다',
+  );
+  assert.deepEqual(
+    platformsOf(sites, { siteId: 's', sources: [{ siteId: 'f' }, { siteId: 'f' }] }),
+    ['더피싱'],
+    '같은 플랫폼이 둘이면 한 번만',
+  );
+});
+
+test('출처마다 계열 배지를 달고, 잔여석이 갈리면 그 숫자도 보여준다', () => {
+  assert.match(html, /\.srcchip/);
+  assert.match(html, /\.srcseats/);
+  assert.match(inline, /function platformChip/);
+  assert.match(inline, /td\.append\(platformChip\(src\.siteId\)\)/);
+  // 합친 줄은 잔여석이 큰 쪽을 쓰므로(core/merge.js) 어느 사이트에 그 자리가 있는지는
+  // 출처별 숫자를 보여줘야만 알 수 있습니다.
+  assert.match(inline, /const split = sources\.length > 1 && new Set\(seats\)\.size > 1;/);
 });

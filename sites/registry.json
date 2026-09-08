@@ -333,6 +333,7 @@
       "id": "uijiho",
       "name": "의지호",
       "adapter": "uijiho",
+      "platform": "자체",
       "url": "http://uijiho.com/month_view.php?strt=0&tb=2&tbnr=4",
       "port": "충남 서천 홍원항",
       "phone": "010-6422-2497",
