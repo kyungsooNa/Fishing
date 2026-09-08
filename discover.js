@@ -21,6 +21,7 @@ import { mkdir, writeFile, readFile } from 'node:fs/promises';
 import * as cheerio from 'cheerio';
 import { fetchHtml, closeBrowser, describeError } from './core/fetcher.js';
 import { loadRegistry, collectSite, REGISTRY_PATH } from './core/runner.js';
+import { looksLikePort } from './core/ports.js';
 
 const CANDIDATES_PATH = 'tmp/candidates.json';
 
@@ -230,7 +231,10 @@ export function pickPort(text) {
   const t = String(text ?? '').replace(/\s+/g, ' ');
   const labeled = new Set();
   for (const m of t.matchAll(/(?:출항지|출항항|승선장|출발지)\s*[:：]?\s*([가-힣A-Za-z0-9 ]{2,20}?항)/g)) {
-    labeled.add(m[1].trim());
+    // 라벨이 붙었어도 잡힌 말이 "안전운항"이면 항구가 아닙니다. 라벨로 찾은 값은
+    // registry에 그대로 실려 신원이 되므로(core/merge.js) 여기서 한 번 더 봅니다.
+    const found = m[1].trim();
+    if (looksLikePort(found)) labeled.add(found);
   }
   const list = [...labeled];
   if (list.length) return { value: list.length === 1 ? list[0] : null, candidates: list };
@@ -239,11 +243,11 @@ export function pickPort(text) {
   //
   // 한글에는 \b 단어경계가 없고, 뒤에 한글이 오면 끊는 방식(?![가-힣])도 못 씁니다 —
   // "남당항에서"의 조사까지 걸러버립니다. 그래서 끊지 않고 뽑은 다음, 항구가 아닌
-  // 낱말만 이름으로 버립니다. 어차피 note에 적어 사람이 고르는 후보입니다.
-  const NOT_PORT = ['출항', '입항', '귀항', '회항', '운항', '결항', '휴항', '사항', '조항', '항항'];
+  // 낱말만 이름으로 버립니다(`core/ports.js`의 `looksLikePort`). 어차피 note에 적어
+  // 사람이 고르는 후보입니다.
   const loose = new Set();
   for (const m of t.matchAll(/[가-힣]{2,6}항/g)) {
-    if (!NOT_PORT.includes(m[0])) loose.add(m[0]);
+    if (looksLikePort(m[0])) loose.add(m[0]);
   }
   return { value: null, candidates: [...loose].slice(0, 5) };
 }

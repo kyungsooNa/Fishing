@@ -14,6 +14,7 @@
 
 import { platformOf } from './platform.js';
 import { normPhone } from './schema.js';
+import { looksLikePort } from './ports.js';
 
 /** `where`는 이 값을 어디서 고치느냐입니다 — registry(사람이 적음) / adapter(페이지에서 읽음). */
 export const FIELDS = [
@@ -46,10 +47,11 @@ export function collectQuality(registry, data) {
   // 항구를 채워야 하는 사이트가 어디를 보면 되는지. 막힌 배에 얽힌 곳만 추립니다 —
   // 항구가 빈 사이트는 256곳인데 지금 당장 손해를 보는 것은 그중 일부입니다.
   const blockedSites = new Set(identity.blocked.flatMap((b) => b.sites.filter((s) => !s.port).map((s) => s.siteId)));
+  // 후보가 없다고 목록에서 빼지 않습니다 — 채워야 할 곳은 그대로고, 오히려 페이지를
+  // 직접 열어야 하는 곳입니다. 후보가 있는 곳을 앞에 둬서 손이 덜 가는 것부터 잡습니다.
   const hints = [...blockedSites]
     .map((id) => ({ siteId: id, hints: portHints(siteById.get(id)) }))
-    .filter((row) => row.hints.length)
-    .sort((a, b) => a.siteId.localeCompare(b.siteId));
+    .sort((a, b) => (b.hints.length ? 1 : 0) - (a.hints.length ? 1 : 0) || a.siteId.localeCompare(b.siteId));
 
   return {
     generatedAt: data.generatedAt ?? null,
@@ -134,13 +136,17 @@ function groupBy(trips, keyOf) {
 
 /**
  * `discover`가 note에 적어둔 출항지 후보. 값으로 채우지 못한 것들이라 **후보일 뿐입니다** —
- * "공지사항"·"출조항" 같은 라벨 글자가 섞여 있고, 진짜 항구가 그 안에 없을 수도 있습니다.
- * 그래서 여기서 registry를 고치지 않습니다. 사람이 페이지를 열어볼 때 어디를 볼지만 좁혀줍니다.
+ * 진짜 항구가 그 안에 없을 수도 있습니다. 그래서 여기서 registry를 고치지 않습니다.
+ * 사람이 페이지를 열어볼 때 어디를 볼지만 좁혀줍니다.
+ *
+ * 이미 registry에 적힌 note에는 "공지사항"·"출조항"처럼 항구가 아닌 말이 섞여 있습니다
+ * (`discover.js`의 `pickPort`가 낱말을 정확히 비교하다 놓친 것들입니다). 그걸 고쳐도
+ * 옛 note는 그대로라, 읽는 쪽에서도 한 번 거릅니다.
  */
 export function portHints(site) {
   const found = /출항지 후보:\s*([^:]*?)(?:\s+전화 후보:|$)/.exec(site?.note ?? '');
   if (!found) return [];
-  return found[1].split(/[,·]/).map((s) => s.trim()).filter(Boolean);
+  return found[1].split(/[,·]/).map((s) => s.trim()).filter((s) => looksLikePort(s));
 }
 
 /** 그 항목이 빠진 사이트 id — 다음에 손볼 곳을 그대로 집어낼 수 있게. */
