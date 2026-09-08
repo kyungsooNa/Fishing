@@ -12,6 +12,7 @@ import * as cheerio from 'cheerio';
 import { fetchHtml } from '../core/fetcher.js';
 import { makeTrip, toDate, tripTimeRange, toTide } from '../core/schema.js';
 import { matchBoatName } from './_rows.js';
+import { kstDate } from '../core/when.js';
 
 const SPECIES = [
   '주꾸미', '쭈꾸미', '갑오징어', '한치', '문어', '광어', '우럭', '참돔', '감성돔',
@@ -155,7 +156,11 @@ export function parseDetail(site, html, url) {
         status: text.slice(0, 200),
         seatsLeft,
         seatsTotal,
-        url,
+        // 한 요청에 일주일치가 오는데(windowDays) 받아온 주소를 그대로 붙이면 그 주의 첫
+        // 날짜로 갑니다 — 9월 8일 출조를 눌렀는데 9월 7일 예약판이 열렸습니다.
+        // 이 사이트는 주소에 날짜를 넣을 수 있으니 출조마다 제 날짜로 답니다.
+        url: dayUrl(site, date) ?? url,
+        urlDated: Boolean(dayUrl(site, date)),
       }),
     );
   }
@@ -340,20 +345,45 @@ export function indexUrl(bookingUrl) {
   return u.toString();
 }
 
+/**
+ * 그 날짜의 예약 화면 주소. `day`는 Date이거나 "2026-09-09" 꼴 문자열입니다.
+ *
+ * 문자열을 그대로 받는 이유: 출조에 붙는 날짜는 이미 "2026-09-09" 꼴이라, Date로 바꿨다가
+ * 다시 읽으면 시간대 때문에 하루가 밀 수 있습니다(`new Date('2026-09-09')`는 UTC 자정입니다).
+ */
 export function detailUrl(bookingUrl, day) {
   const u = new URL(bookingUrl);
+  const [year, month, date] = typeof day === 'string'
+    ? day.split('-').map(Number)
+    : [day.getFullYear(), day.getMonth() + 1, day.getDate()];
   // 선사 홈페이지 주소를 그대로 복사해오면 mid=index(메인)인 경우가 많습니다.
   // 예약 페이지는 mid=bk라, 여기서 맞춰줍니다.
   u.searchParams.set('mid', 'bk');
-  u.searchParams.set('year', String(day.getFullYear()));
-  u.searchParams.set('month', String(day.getMonth() + 1));
-  u.searchParams.set('day', String(day.getDate()));
+  u.searchParams.set('year', String(year));
+  u.searchParams.set('month', String(month));
+  u.searchParams.set('day', String(date));
   return u.toString();
+}
+
+/** 주소가 이상해서 못 만들면(테스트 fixture 등) 조용히 포기하고 받아온 주소를 씁니다. */
+function dayUrl(site, date) {
+  if (!site.url || !date) return null;
+  try {
+    return detailUrl(site.url, date);
+  } catch {
+    return null;
+  }
 }
 
 const squash = (s) => String(s ?? '').replace(/\s+/g, ' ').trim();
 
-/** 이 어댑터가 실제로 받아오는 주소. index 방식이 기본이라 메인 요약이 먼저입니다. */
+/**
+ * 이 어댑터가 실제로 받아오는 주소. index 방식이 기본이라 메인 요약이 먼저입니다.
+ *
+ * 날짜가 붙은 주소를 **오늘과 일주일 뒤 두 개** 보여줍니다. 이 사이트의 예약판은 요청한
+ * 날짜부터 며칠치를 이어서 그리는데, peek으로 둘을 견줘 보면 주소의 날짜가 실제로 판을
+ * 옮기는지 바로 보입니다 — 출조마다 제 날짜 주소를 붙이는 근거가 그것입니다.
+ */
 export function targets(site) {
-  return [indexUrl(site.url), detailUrl(site.url, new Date())];
+  return [indexUrl(site.url), detailUrl(site.url, kstDate(0)), detailUrl(site.url, kstDate(7))];
 }

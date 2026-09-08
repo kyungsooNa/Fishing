@@ -13,7 +13,11 @@ export const SPECIES = [
 ];
 
 // ── 파싱 ────────────────────────────────────────────────────────────────────
-export function parseRows(site, html, url) {
+/**
+ * `urlDated`는 넘겨받은 주소가 그 날짜의 예약 화면이냐입니다. 이 파서는 한 페이지에서
+ * 여러 날을 읽을 수도 있어서 스스로는 알 수 없고, 주소를 만든 쪽(어댑터)만 압니다.
+ */
+export function parseRows(site, html, url, { urlDated = false } = {}) {
   const $ = cheerio.load(html);
   const trips = [];
   let headerDate = null;   // 목록형은 날짜 머리글이 행 앞에 따로 나옵니다
@@ -60,6 +64,7 @@ export function parseRows(site, html, url) {
         status: text,
         seatsLeft,
         url,
+        urlDated,
       }),
     );
   });

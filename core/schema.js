@@ -271,6 +271,7 @@ export function makeTrip(site, fields) {
     price = null,
     port = null,
     url = null,
+    urlDated = false,
   } = fields;
 
   const resolvedDate = date ?? toDate(rawDate);
@@ -307,5 +308,10 @@ export function makeTrip(site, fields) {
     seatsTotal: seatsTotal ?? site.seatsTotal ?? null,
     price: price ?? pickPrice(site, boatName, species),
     url: url ?? site.url ?? null,
+    // 이 주소가 **그 날짜의 예약 화면**으로 바로 가는지. 대부분의 사이트는 일정표 한 장에
+    // 여러 날을 담아서 날짜를 주소로 지정할 수 없습니다. 그때는 화면이 "링크를 눌러도
+    // 날짜는 직접 찾아야 한다"고 알려줘야 해서, 갈 수 있는 경우만 표시해 둡니다.
+    // 기본값은 false입니다 — 못 하는 쪽이 안전한 기본입니다.
+    ...(urlDated ? { urlDated: true } : {}),
   };
 }
