@@ -189,14 +189,16 @@ test('없는 항목을 물으면 무엇이 있는지 알려주고 실패한다',
 
 // ── 항구를 채울 곳 찾기 ─────────────────────────────────────────────────────
 // 항구가 빈 사이트는 수백 곳인데 지금 당장 두 줄로 뜨게 만드는 곳은 그중 일부입니다.
-// discover가 note에 적어둔 후보는 **확인 전에는 값이 아닙니다** — 라벨 글자가 섞여 있습니다.
-test('note에 적힌 출항지 후보를 읽는다', () => {
+// discover가 note에 적어둔 후보는 **확인 전에는 값이 아닙니다** — 항구 이름처럼 생겼다는
+// 것뿐입니다. 다만 항구도 아닌 말(공지사항·출조항)까지 섞이면 목록을 볼 이유가 없어집니다.
+test('note에 적힌 출항지 후보를 읽되 항구가 아닌 말은 버린다', () => {
   assert.deepEqual(
-    portHints({ note: '자동 발견 — 시험 수집 8건. 출항지 후보: 장고항, 공지사항, 시입항 전화 후보: 010-1234-5678' }),
-    ['장고항', '공지사항', '시입항'],
+    portHints({ note: '자동 발견 — 시험 수집 8건. 출항지 후보: 장고항, 공지사항, 남당항 전화 후보: 010-1234-5678' }),
+    ['장고항', '남당항'],
     '전화 후보는 섞이지 않습니다',
   );
-  assert.deepEqual(portHints({ note: '출항지 후보: 홍원항 · 공지사항' }), ['홍원항', '공지사항']);
+  // 이미 registry에 적힌 옛 note에는 이런 말이 그대로 남아 있습니다. 읽는 쪽에서 거릅니다.
+  assert.deepEqual(portHints({ note: '출항지 후보: 홍원항 · 공지사항 · 출조항 · 안전운항' }), ['홍원항']);
   assert.deepEqual(portHints({ note: '후보가 없는 메모' }), []);
   assert.deepEqual(portHints({}), []);
   assert.deepEqual(portHints(null), []);
@@ -220,14 +222,30 @@ test('후보는 합치기가 막힌 사이트 것만 준다', () => {
     },
   );
 
-  assert.deepEqual(q.portHints, [{ siteId: 'a', hints: ['장고항', '공지사항'] }],
+  assert.deepEqual(q.portHints, [{ siteId: 'a', hints: ['장고항'] }],
     '합칠 상대가 없는 곳까지 목록에 넣으면 정작 급한 곳이 묻힙니다');
 });
 
-test('후보가 없는 사이트는 목록에 넣지 않는다', () => {
+// 후보가 없는 곳이야말로 페이지를 직접 열어야 하는 곳입니다. 목록에서 빼면 채워야 할
+// 선사가 조용히 사라지고, 남은 목록만 보고 "다 했다"고 착각합니다.
+test('후보가 없어도 채워야 할 곳이면 목록에 남기고, 후보가 있는 곳을 앞에 둔다', () => {
   const q = collectQuality(
-    [{ id: 'a', name: 'A', adapter: 'sunsang24' }, { id: 'b', name: 'B', adapter: 'thefishing' }],
-    { trips: [trip('a', '가호', { port: null }), trip('b', '가호')] },
+    [
+      { id: 'a', name: 'A', adapter: 'sunsang24' },
+      { id: 'b', name: 'B', adapter: 'thefishing', note: '출항지 후보: 오천항' },
+      { id: 'c', name: 'C', adapter: 'generic' },
+    ],
+    {
+      trips: [
+        trip('a', '가호', { port: null }),
+        trip('b', '가호', { port: null }),
+        trip('c', '가호'),
+      ],
+    },
   );
-  assert.deepEqual(q.portHints, [], '적어둔 후보가 없으면 보여줄 것도 없습니다');
+
+  assert.deepEqual(q.portHints, [
+    { siteId: 'b', hints: ['오천항'] },
+    { siteId: 'a', hints: [] },
+  ], '후보가 있는 곳이 손이 덜 갑니다');
 });

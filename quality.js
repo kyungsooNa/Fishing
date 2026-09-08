@@ -65,12 +65,14 @@ if (identity.blocked.length) {
 
 // 항구가 빈 사이트는 수백 곳인데, 지금 당장 두 줄로 뜨게 만드는 곳은 그중 일부입니다.
 // 거기부터 채우면 화면이 바로 좋아집니다. 후보는 discover가 페이지에서 주운 글자라
-// **확인 전에는 값이 아닙니다** — 라벨 글자("공지사항", "출조항")가 섞여 있습니다.
+// **확인 전에는 값이 아닙니다** — 항구 이름처럼 생겼다는 것뿐이고, 그 배가 실제로
+// 거기서 뜨는지는 페이지를 봐야 압니다(항구가 여럿인 선사도 있습니다).
 if (q.portHints.length) {
   console.log(`\n■ 항구를 채우면 합쳐지는 곳 ${n(q.portHints.length)}곳 — 페이지를 열어 확인하세요`);
   const width = Math.max(...q.portHints.map((h) => h.siteId.length));
   for (const row of q.portHints.slice(0, argv.includes('--all') ? Infinity : 12)) {
-    console.log(`  ${row.siteId.padEnd(width)}  후보: ${row.hints.join(' · ')}`);
+    // 후보가 없는 곳도 빼지 않습니다 — 오히려 페이지를 직접 열어야 하는 곳입니다.
+    console.log(`  ${row.siteId.padEnd(width)}  ${row.hints.length ? '후보: ' + row.hints.join(' · ') : '후보 없음 — 페이지를 열어야 합니다'}`);
   }
   if (!argv.includes('--all') && q.portHints.length > 12) {
     console.log(`  … 외 ${n(q.portHints.length - 12)}곳 (--all 로 전부)`);

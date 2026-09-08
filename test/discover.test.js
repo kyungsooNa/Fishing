@@ -82,6 +82,22 @@ test('출항지는 라벨이 붙어 있을 때만 값으로 쓴다', () => {
   assert.ok(loose.candidates.includes('남당항'));
 });
 
+// 본문에는 "○○항"으로 끝나는 말이 항구보다 훨씬 많습니다. 이걸 못 거르면 후보 목록이
+// 공지사항·주의사항으로 덮여, 페이지를 열 곳을 좁혀주는 목록이 아니게 됩니다.
+test('"항"으로 끝나기만 하는 말은 후보로 안 준다', () => {
+  const found = pickPort('공지사항 주의사항입니다. 안전운항 하겠습니다. 출조항 안내 — 홍원항에서 뜹니다.');
+  assert.deepEqual(found.candidates, ['홍원항']);
+  assert.equal(found.value, null, '라벨이 없으면 후보일 뿐입니다');
+});
+
+// 라벨로 찾은 값은 registry에 그대로 실려 신원이 됩니다(core/merge.js).
+// 잘못 실리면 다른 배가 한 줄로 붙으므로 여기서도 한 번 더 봅니다.
+test('라벨이 붙었어도 항구가 아니면 값으로 안 쓴다', () => {
+  const found = pickPort('출항지 : 안전운항');
+  assert.equal(found.value, null);
+  assert.deepEqual(found.candidates, []);
+});
+
 test('id는 서브도메인에서 뽑고 겹치면 번호를 붙인다', () => {
   assert.equal(idFor('https://nature.sunsang24.com'), 'nature');
   assert.equal(idFor('https://www.ssfish.kr/index.php?mid=bk'), 'ssfish');

@@ -3,7 +3,7 @@
 
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { usedPorts } from '../core/ports.js';
+import { usedPorts, looksLikePort } from '../core/ports.js';
 
 const ports = {
   '충남 보령 오천항': { lat: 36.4, lng: 126.5 },
@@ -67,4 +67,31 @@ test('배별로 다른 출항지도 좌표가 있어야 한다', async () => {
     }
   }
   assert.deepEqual([...new Set(missing)], []);
+});
+
+// ── 항구 이름 판별 ──────────────────────────────────────────────────────────
+// 본문에서 "○○항"을 뽑으면 공지사항·안전운항이 같이 딸려 옵니다. 한글에는 \b 단어경계가
+// 없어서 뽑을 때는 못 막고, 뽑은 다음 걸러야 합니다.
+test('항구 이름은 살리고 "항"으로 끝나는 다른 말은 버린다', () => {
+  for (const port of ['남당항', '오천항', '홍원항', '아야진항', '마검포항', '백사장항']) {
+    assert.equal(looksLikePort(port), true, port);
+  }
+  for (const no of ['공지사항', '주의사항', '변경사항', '인적사항', '안전운항', '출조항', '역시출항', '시간조항', '휴항']) {
+    assert.equal(looksLikePort(no), false, no);
+  }
+});
+
+// 앞에 몇 글자를 붙여 뽑았느냐에 따라 같은 '사항'이 "공지사항"으로도 "변경사항"으로도
+// 나옵니다. 낱말이 같은지로 재면 이 둘이 다 새어 나갑니다 — 실제로 그랬습니다.
+test('끝나는 말로 보지, 낱말이 같은지로 보지 않는다', () => {
+  assert.equal(looksLikePort('사항'), false);
+  assert.equal(looksLikePort('공지사항'), false, '낱말 비교로는 못 걸러집니다');
+});
+
+test('항구 이름이 아닌 것은 조용히 지나간다', () => {
+  assert.equal(looksLikePort(''), false);
+  assert.equal(looksLikePort(null), false);
+  assert.equal(looksLikePort('오천'), false, '"항"으로 끝나지 않습니다');
+  assert.equal(looksLikePort(' 홍원항 '), true, '앞뒤 공백은 값이 아닙니다');
+  assert.equal(looksLikePort('충남 태안 백사장항'), true, '앞에 지역이 붙어도 항구입니다');
 });
