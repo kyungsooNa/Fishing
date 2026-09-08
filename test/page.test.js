@@ -85,8 +85,8 @@ test('시각 포맷터는 한 번만 만든다', () => {
 
 // 표와 지도가 각자 거르면 같은 1만 건을 두 번(예전엔 세 번) 훑습니다.
 test('한 번 거른 결과를 표와 지도가 나눠 쓴다', () => {
-  assert.match(inline, /const refresh = \(\) => \{ const trips = visibleTrips\(\); render\(trips\); drawMap\(trips\); \}/);
-  assert.match(inline, /function render\(all = visibleTrips\(\)\)/, '혼자 부르는 자리도 있어 기본값을 둡니다');
+  assert.match(inline, /const refresh = \(\) => \{ const trips = sortTrips\(visibleTrips\(\)\); render\(trips\); drawMap\(trips\); \}/);
+  assert.match(inline, /function render\(all = sortTrips\(visibleTrips\(\)\)\)/, '혼자 부르는 자리도 있어 기본값을 둡니다');
   assert.match(inline, /function drawMap\(trips = visibleTrips\(\)\)/);
   assert.ok(!/const hidden = visibleTrips\(\)/.test(inline), '지도가 다시 거르면 안 됩니다');
 });
@@ -550,4 +550,85 @@ test('날짜로 못 가는 링크는 링크 옆에 그렇다고 적는다', () =
 
 test('합쳐지지 않은 줄도 출처 하나로 똑같이 그린다', () => {
   assert.match(inline, /siteName: t\.siteName, url: t\.url, seatsLeft: t\.seatsLeft, urlDated: t\.urlDated/);
+});
+
+// ── 정렬 ────────────────────────────────────────────────────────────────────
+// 값이 없는 행이 어디로 가는지가 이 기능의 거의 전부입니다. 승선료는 지금 99%가 비어 있어서
+// (node quality.js) 낮은순으로 올리면 첫 화면이 빈 칸으로 덮입니다.
+function sortFns(sites = {}) {
+  const start = inline.indexOf('const SORTS = {');
+  const end = inline.indexOf('// ── 쪽 나누기');
+  assert.ok(start >= 0 && end > start, '정렬 함수를 찾지 못했습니다');
+  const stub = `const DATA = ${JSON.stringify({ sites })};\nconst $ = () => ({ value: 'default' });\n`;
+  return new Function(`${stub}${inline.slice(start, end)}\nreturn { sortTrips, checkedAt };`)();
+}
+
+const t = (over) => ({ date: '2026-09-09', departAt: '05:00', siteId: 'a', boat: '가호', ...over });
+
+test('정렬은 하루 안에서만 건다 — 날짜 머리글과 쪽 나누기가 날짜 기준입니다', () => {
+  const { sortTrips } = sortFns();
+  const rows = [
+    t({ date: '2026-09-09', boat: '적음', seatsLeft: 1 }),
+    t({ date: '2026-09-10', boat: '많음', seatsLeft: 9 }),
+    t({ date: '2026-09-09', boat: '많음', seatsLeft: 8 }),
+  ];
+  assert.deepEqual(
+    sortTrips(rows, 'seats-desc').map((x) => [x.date, x.boat]),
+    [['2026-09-09', '많음'], ['2026-09-09', '적음'], ['2026-09-10', '많음']],
+    '날짜를 넘어 섞이면 안 됩니다',
+  );
+});
+
+test('잔여석은 많은순·적은순 둘 다 되고, 값이 없으면 뒤로 간다', () => {
+  const { sortTrips } = sortFns();
+  const rows = [t({ boat: '없음', seatsLeft: null }), t({ boat: '셋', seatsLeft: 3 }), t({ boat: '아홉', seatsLeft: 9 })];
+
+  assert.deepEqual(sortTrips(rows, 'seats-desc').map((x) => x.boat), ['아홉', '셋', '없음']);
+  assert.deepEqual(sortTrips(rows, 'seats-asc').map((x) => x.boat), ['셋', '아홉', '없음'],
+    '적은순에서도 모르는 값이 앞에 오면 안 됩니다');
+});
+
+test('승선료도 없는 값은 뒤로 간다', () => {
+  const { sortTrips } = sortFns();
+  const rows = [t({ boat: '없음', price: null }), t({ boat: '비쌈', price: 120000 }), t({ boat: '쌈', price: 90000 })];
+  assert.deepEqual(sortTrips(rows, 'price-asc').map((x) => x.boat), ['쌈', '비쌈', '없음']);
+});
+
+test('최신 확인순은 그 사이트를 마지막으로 확인한 때로 센다', () => {
+  const sites = {
+    fresh: { ok: true, at: '2026-09-08T03:00:00.000Z' },
+    stale: { ok: true, at: '2026-09-08T01:00:00.000Z' },
+    failed: { ok: false, at: '2026-09-08T03:00:00.000Z', keptFrom: '2026-09-05T00:00:00.000Z' },
+    never: {},
+  };
+  const { sortTrips } = sortFns(sites);
+  const rows = ['never', 'stale', 'failed', 'fresh'].map((id) => t({ siteId: id, boat: id }));
+
+  assert.deepEqual(sortTrips(rows, 'checked-desc').map((x) => x.boat), ['fresh', 'stale', 'failed', 'never'],
+    '실패한 곳은 시도한 때가 아니라 그 값이 언제 것인지로 셉니다');
+});
+
+test('합쳐진 줄은 가장 오래된 출처를 기준으로 센다', () => {
+  const sites = { new: { ok: true, at: '2026-09-08T03:00:00.000Z' }, old: { ok: true, at: '2026-09-01T03:00:00.000Z' } };
+  const { checkedAt } = sortFns(sites);
+  assert.equal(
+    checkedAt({ siteId: 'new', sources: [{ siteId: 'new' }, { siteId: 'old' }] }),
+    Date.parse('2026-09-01T03:00:00.000Z'),
+    '한쪽이 낡았으면 그 줄은 낡은 것입니다',
+  );
+});
+
+test('기본순은 수집이 정렬해 온 순서를 그대로 둔다', () => {
+  const { sortTrips } = sortFns();
+  const rows = [t({ boat: '먼저' }), t({ boat: '나중' })];
+  assert.equal(sortTrips(rows, 'default'), rows, '건드릴 것이 없으면 새 배열도 만들지 않습니다');
+});
+
+test('정렬 메뉴가 있고 바꾸면 다시 그린다', () => {
+  assert.match(html, /<select id="f-sort"/);
+  for (const value of ['seats-desc', 'seats-asc', 'price-asc', 'checked-desc']) {
+    assert.match(html, new RegExp(`value="${value}"`));
+  }
+  // 정렬은 보이는 날짜를 바꾸지 않으므로 첫 쪽으로 돌아가지 않습니다(필터와 다른 점).
+  assert.match(inline, /\$\('f-sort'\)\.addEventListener\('change', \(\) => refresh\(\)\)/);
 });

@@ -40,6 +40,8 @@
   .multi-menu { position: absolute; z-index: 1000; top: calc(100% + 4px); left: 0; min-width: 220px;
                 max-height: 300px; overflow: auto; padding: 6px; border: 1px solid var(--line);
                 border-radius: 7px; background: var(--card); box-shadow: 0 8px 24px rgba(0,0,0,.14); }
+  select#f-sort { border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--fg);
+                  padding: 7px 9px; font-size: 14px; font-family: inherit; }
   .multi-menu label { display: flex; align-items: center; gap: 7px; padding: 5px 6px; white-space: nowrap; }
   .multi-menu label:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); }
   label.check { display: inline-flex; align-items: center; gap: 6px; padding: 7px 10px;
@@ -207,6 +209,13 @@
     <details class="multi" id="f-species" data-label="어종" data-all="전체 어종"><summary>전체 어종</summary><div class="multi-menu"></div></details>
     <details class="multi" id="f-session" data-label="운항" data-all="오전·오후·종일"><summary>오전·오후·종일</summary><div class="multi-menu"></div></details>
     <details class="multi" id="f-date" data-label="날짜" data-all="전체 날짜"><summary>전체 날짜</summary><div class="multi-menu"></div></details>
+    <select id="f-sort" aria-label="정렬">
+      <option value="default">기본순 (출항 시각)</option>
+      <option value="seats-desc">잔여석 많은순</option>
+      <option value="seats-asc">잔여석 적은순</option>
+      <option value="price-asc">승선료 낮은순</option>
+      <option value="checked-desc">최신 확인순</option>
+    </select>
     <input type="search" id="f-q" placeholder="배 이름 검색">
     <label class="check"><input type="checkbox" id="f-open" checked> 빈자리만</label>
     <label class="check"><input type="checkbox" id="f-fav"> <span id="f-fav-label">★ 즐겨찾기만</span></label>
@@ -578,6 +587,59 @@ function visibleTrips() {
     (!openOnly || t.status === 'open' || t.status === 'few'));
 }
 
+// ── 정렬 ──────────────────────────────────────────────────────────────────
+// **날짜가 먼저입니다.** 표는 날짜로 끊어 보고(dayhead) 쪽도 날짜로 나누기 때문에,
+// 잔여석순으로 통째로 섞으면 날짜 머리글이 줄마다 나오고 쪽 나누기가 무너집니다.
+// 사람도 "언제 갈지"를 먼저 정하고 그 날 배를 고르므로, 고른 기준은 **하루 안에서** 겁니다.
+//
+// 값이 없는 행은 방향과 상관없이 뒤로 보냅니다. 승선료는 지금 99% 가 비어 있어서
+// (node quality.js) 낮은순으로 올리면 빈 칸이 첫 화면을 다 덮습니다.
+const SORTS = {
+  default: null,
+  'seats-desc': byValue((t) => t.seatsLeft, 'desc'),
+  'seats-asc': byValue((t) => t.seatsLeft, 'asc'),
+  'price-asc': byValue((t) => t.price, 'asc'),
+  'checked-desc': byValue(checkedAt, 'desc'),
+};
+
+/**
+ * 값이 없는 행은 **방향과 상관없이 뒤로** 보냅니다. 적은순이라고 모르는 값을 0으로 쳐서
+ * 앞에 세우면, 잔여석을 못 읽은 배가 "자리 없는 배"로 보입니다.
+ * 두 값이 다 없으면 0을 돌려줘 원래 순서(출항 시각·선사·배)에 맡깁니다.
+ */
+function byValue(pick, dir) {
+  return (a, b) => {
+    const x = finite(pick(a));
+    const y = finite(pick(b));
+    if (x === null && y === null) return 0;
+    if (x === null) return 1;
+    if (y === null) return -1;
+    return dir === 'asc' ? x - y : y - x;
+  };
+}
+
+function finite(value) {
+  return Number.isFinite(value) ? value : null;
+}
+
+/** 그 출조의 값을 마지막으로 확인한 때. 합쳐진 줄은 가장 오래된 출처가 기준입니다. */
+function checkedAt(t) {
+  const times = (t.sources ?? [t]).map((s) => {
+    const site = DATA.sites[s.siteId];
+    return Date.parse(site?.ok ? site.at : site?.keptFrom);
+  });
+  const oldest = Math.min(...times);
+  return Number.isFinite(oldest) ? oldest : null;
+}
+
+function sortTrips(trips, key = $('f-sort').value) {
+  const by = SORTS[key];
+  if (!by) return trips;
+  // data.json이 이미 날짜·출항시각·선사·배 순으로 정렬돼 옵니다(core/runner.js). 그 순서를
+  // 동점자 규칙으로 그대로 쓰려면 안정 정렬이어야 합니다 — Array.sort는 안정입니다.
+  return [...trips].sort((a, b) => (a.date ?? '').localeCompare(b.date ?? '') || by(a, b));
+}
+
 // ── 쪽 나누기 ─────────────────────────────────────────────────────────────
 // 필터를 걸어도 3주치가 한 화면에 수천 줄로 쏟아집니다. 날짜로 끊어 일주일씩 봅니다.
 // 달력 주가 아니라 **출조가 있는 날 7개**입니다 — 배가 안 뜨는 날까지 세면 어떤 쪽은
@@ -664,7 +726,7 @@ function paintWatch(button, t) {
 
 // 표와 지도를 한 번에 다시 그릴 때는 거른 결과를 넘겨받습니다. 안 넘기면 스스로 거릅니다
 // (쪽 넘기기·지도 열기처럼 한쪽만 다시 그리는 자리).
-function render(all = visibleTrips()) {
+function render(all = sortTrips(visibleTrips())) {
   const view = paginate(all);
   const rows = view.rows;
   renderPager(view, all.length);
@@ -866,10 +928,12 @@ async function pollData() { await reload(); setTimeout(pollData, 30000); }
 setTimeout(pollData, 30000);
 
 // 거르는 일은 한 번만 합니다. 표와 지도가 각자 거르면 같은 1만 건을 두 번 훑습니다.
-const refresh = () => { const trips = visibleTrips(); render(trips); drawMap(trips); };
+const refresh = () => { const trips = sortTrips(visibleTrips()); render(trips); drawMap(trips); };
 // 필터를 바꾸면 보던 쪽 번호는 의미가 없습니다. 첫 주부터 다시 봅니다.
 const filtered = () => { PAGE = 0; refresh(); };
 for (const id of ['f-open', 'f-fav']) $(id).addEventListener('change', filtered);
+// 정렬은 보이는 날짜를 바꾸지 않으므로 보던 쪽에 그대로 있습니다(필터와 다른 점입니다).
+$('f-sort').addEventListener('change', () => refresh());
 // 배 이름 검색은 한 글자마다 걸지 않습니다. 손이 멈춘 뒤에 한 번만 겁니다 —
 // 안 그러면 "무적호"를 치는 동안 표를 예닐곱 번 다시 그립니다.
 // 한글은 조합 중에도 input이 뜹니다(ㅁ→무→뭇→무적). 조합이 끝나기 전에는 그리지 않습니다.
