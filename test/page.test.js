@@ -330,7 +330,7 @@ function rateModule(saved) {
   const localStorage = { getItem: () => (saved === undefined ? null : saved) };
   const document = { createElement: () => ({}) };
   return new Function('localStorage', 'document',
-    `${inline.slice(start, end)}\nreturn { RATES, rateOf, rateStars, rateBadge };`,
+    `${inline.slice(start, end)}\nreturn { RATES, rateKey, rateOf, rateStars, rateForTrip, rateBadge };`,
   )(localStorage, document);
 }
 
@@ -340,22 +340,34 @@ test('현황판은 별점을 읽기만 한다', async () => {
   assert.ok(!/setItem\(\s*RATE_KEY/.test(inline), '현황판이 별점을 저장하고 있습니다');
   // 누를 수 있는 것처럼 보이면 안 됩니다 — 버튼이 아니라 글자로 붙입니다.
   assert.match(inline, /span\.className = 'rate'/);
-  assert.match(inline, /rateBadge\(src\.siteId\)/, '선사 칸에 붙어야 합니다');
+  assert.match(inline, /rateBadge\(t\)/, '출조의 배 별점이 선사 칸에 붙어야 합니다');
+  assert.doesNotMatch(inline, /rateBadge\(src\.siteId\)/, '출처마다 별점을 반복해 붙이면 안 됩니다');
 
   // 저장 형식은 관리 화면과 같아야 합니다. 어긋나면 매긴 별점이 안 보입니다.
   const adminInline = (await readFile('docs/admin.html', 'utf8')).match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
-  for (const line of ["const RATE_KEY = 'fishing:ratings';", 'const RATE_MAX = 5;']) {
+  for (const line of ["const RATE_KEY = 'fishing:boat-ratings';", 'const RATE_MAX = 5;']) {
     assert.ok(inline.includes(line) && adminInline.includes(line), `양쪽이 같이 써야 합니다: ${line}`);
   }
 });
 
-test('매기지 않은 선사에는 별점을 붙이지 않는다', () => {
-  const m = rateModule(JSON.stringify({ aaa: 4 }));
-  assert.equal(m.rateOf(m.RATES, 'aaa'), 4);
-  assert.equal(m.rateOf(m.RATES, 'bbb'), 0);
-  assert.equal(m.rateBadge('bbb'), null, '288곳에 ☆☆☆☆☆가 깔리면 표가 안 읽힙니다');
-  assert.equal(m.rateBadge('aaa').textContent, '★★★★☆');
-  assert.match(m.rateBadge('aaa').title, /시스템 관리/, '어디서 매기는지 알려줘야 합니다');
+test('매긴 배에만 별점을 붙이고 합친 출처의 점수도 찾는다', () => {
+  const saved = {
+    'fishinggate|아우라호': 4,
+    'other|블랙펄호': 3,
+  };
+  const m = rateModule(JSON.stringify(saved));
+  assert.equal(m.rateOf(m.RATES, 'fishinggate|아우라호'), 4);
+  assert.equal(m.rateKey('fishinggate', '아우라호'), 'fishinggate|아우라호');
+  assert.notEqual(m.rateKey('other', '아우라호'), m.rateKey('fishinggate', '아우라호'));
+
+  const unrated = { siteId: 'fishinggate', boat: '블랙펄호' };
+  assert.equal(m.rateBadge(unrated), null, '안 매긴 모든 출조에 ☆☆☆☆☆가 깔리면 표가 안 읽힙니다');
+  const aura = { siteId: 'fishinggate', boat: '아우라호' };
+  assert.equal(m.rateBadge(aura).textContent, '★★★★☆');
+  assert.match(m.rateBadge(aura).title, /시스템 관리/, '어디서 매기는지 알려줘야 합니다');
+
+  const merged = { siteId: 'primary', boat: '블랙펄호', sources: [{ siteId: 'primary' }, { siteId: 'other' }] };
+  assert.equal(m.rateForTrip(merged), 3, '합쳐진 줄은 어느 출처에서 매겼든 배 별점을 찾아야 합니다');
 });
 
 test('관리창에서 별점을 바꾸면 열린 현황판에도 바로 반영한다', () => {

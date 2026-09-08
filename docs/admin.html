@@ -36,18 +36,20 @@
   button.primary { border-color: var(--accent); color: var(--accent); font-weight: 600; }
   button.danger { border-color: var(--off); color: var(--off); }
   .tablewrap { overflow-x: auto; background: var(--card); border: 1px solid var(--line); border-radius: 10px; }
-  table { border-collapse: collapse; width: 100%; min-width: 1110px; table-layout: fixed; }
+  table { border-collapse: collapse; width: 100%; min-width: 1430px; table-layout: fixed; }
   th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: middle; }
   th { font-size: 12px; color: var(--muted); font-weight: 600; white-space: nowrap; }
   /* 칸 폭을 못박아 둡니다. 안 그러면 표기·항구가 눌려서 글자가 잘립니다. */
   th:nth-child(1), td:nth-child(1) { width: 48px; }
   th:nth-child(2), td:nth-child(2) { width: 116px; }
-  th:nth-child(3), td:nth-child(3) { width: 200px; }
-  th:nth-child(4), td:nth-child(4) { width: 108px; }
+  th:nth-child(3), td:nth-child(3) { width: 180px; }
+  th:nth-child(4), td:nth-child(4) { width: 300px; }
   th:nth-child(5), td:nth-child(5) { width: 76px; }
-  th:nth-child(6), td:nth-child(6) { width: 190px; }
+  th:nth-child(6), td:nth-child(6) { width: 70px; }
   th:nth-child(7), td:nth-child(7) { width: 150px; }
-  th:nth-child(8), td:nth-child(8) { width: 220px; }
+  th:nth-child(8), td:nth-child(8) { width: 150px; }
+  th:nth-child(9), td:nth-child(9) { width: 160px; }
+  th:nth-child(10), td:nth-child(10) { width: 180px; }
   tbody tr:last-child td { border-bottom: 0; }
   tr.off td { opacity: 0.55; }
   td.id { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; white-space: nowrap; }
@@ -55,8 +57,10 @@
                         border-radius: 6px; background: transparent; color: var(--fg); font: inherit; font-size: 14px; }
   td input[type=text]:hover { border-color: var(--line); }
   td input[type=text]:focus { border-color: var(--accent); outline: none; background: var(--bg); }
-  .boatnames { margin-top: 3px; color: var(--muted); font-size: 12px; line-height: 1.35;
-               overflow-wrap: anywhere; }
+  .boatrate { display: flex; align-items: center; justify-content: space-between; gap: 8px;
+              padding: 3px 0; border-bottom: 1px dotted var(--line); }
+  .boatrate:last-child { border-bottom: 0; }
+  .boatlabel { min-width: 0; overflow-wrap: anywhere; font-size: 13px; }
   tr.dirty { background: color-mix(in srgb, var(--few) 12%, transparent); }
   .kind { font-size: 12px; color: var(--muted); white-space: nowrap; }
   .stars { white-space: nowrap; }
@@ -134,7 +138,7 @@
   <div class="tablewrap">
     <table>
       <thead><tr>
-        <th>켜짐</th><th>id</th><th>선사 표기</th><th>별점</th><th>계열</th><th>등록</th><th>항구</th><th>전화</th>
+        <th>켜짐</th><th>id</th><th>선사 표기</th><th>배별 별점</th><th>계열</th><th>등록</th><th>항구</th><th>전화</th>
         <th>주소</th><th>최근 수집</th>
       </tr></thead>
       <tbody id="rows"></tbody>
@@ -219,26 +223,16 @@ function textCell(site, key) {
   return td;
 }
 
-// 관리 단위는 사이트지만, 사용자는 배 이름으로 찾습니다. 소속 배를 숨기면
-// 피싱게이트에 들어 있는 아우라호처럼 수집 중인 배도 없는 것으로 보입니다.
-function siteNameCell(site) {
-  const td = textCell(site, 'name');
-  const names = Object.keys(site.boats ?? {});
-  if (!names.length) return td;
-  const boats = document.createElement('div');
-  boats.className = 'boatnames';
-  boats.textContent = `배: ${names.join(' · ')}`;
-  td.append(boats);
-  return td;
-}
-
 // ── 별점 ──────────────────────────────────────────────────────────────────
-// 선사에 매기는 개인 평가입니다. 서버로 보내지 않고 즐겨찾기처럼 이 브라우저의
+// 배마다 매기는 개인 평가입니다. 서버로 보내지 않고 즐겨찾기처럼 이 브라우저의
 // localStorage에만 남습니다 — 그래서 registry를 못 고치는 읽기 전용 모드(Pages)에서도
 // 매길 수 있습니다. 매기는 곳은 이 화면 한 군데뿐이고, 현황판(index.html)은 같은 키를
 // 읽어 보여주기만 합니다. 형식을 바꾸려면 양쪽을 같이 고쳐야 합니다.
-const RATE_KEY = 'fishing:ratings';
+const RATE_KEY = 'fishing:boat-ratings';
 const RATE_MAX = 5;
+
+// 같은 이름의 배가 다른 선사에도 있을 수 있으므로 사이트 id와 배 이름을 함께 씁니다.
+const rateKey = (siteId, boat) => siteId && boat ? `${siteId}|${boat}` : '';
 
 function loadRates() {
   try {
@@ -266,32 +260,48 @@ function setRate(map, id, score) {
 
 let RATES = loadRates();
 
-// 별 다섯 개. 누른 자리까지 채우고, 같은 자리를 다시 누르면 지웁니다.
-function rateCell(site) {
+// 사이트 안의 배를 한 줄씩 펼쳐 별점을 따로 매깁니다. 배가 많은 함대형 사이트에서도
+// 아우라호처럼 원하는 배를 이름으로 찾아 바로 평가할 수 있어야 합니다.
+function boatRatesCell(site) {
   const td = document.createElement('td');
-  const box = document.createElement('span');
-  box.className = 'stars';
-  const score = rateOf(RATES, site.id);
-  for (let n = 1; n <= RATE_MAX; n++) {
-    const star = document.createElement('button');
-    star.type = 'button';
-    star.className = n <= score ? 'on' : '';
-    star.textContent = n <= score ? '★' : '☆';
-    star.title = n === score ? `${n}점 — 다시 누르면 지웁니다` : `${n}점 주기`;
-    star.setAttribute('aria-label', `${site.name ?? site.id} ${star.title}`);
-    star.addEventListener('click', () => {
-      const next = setRate(RATES, site.id, n);
-      if (!saveRates(RATES)) {
-        RATES = loadRates();   // 저장이 막혔으면 화면도 원래대로 되돌립니다
-        render();
-        return toast('브라우저가 저장을 막고 있습니다');
-      }
-      render();
-      toast(next ? `${site.name ?? site.id} ★${next}` : `${site.name ?? site.id} 별점을 지웠습니다`);
-    });
-    box.append(star);
+  const names = Object.keys(site.boats ?? {}).sort((a, b) => a.localeCompare(b, 'ko'));
+  if (!names.length) {
+    td.className = 'muted';
+    td.textContent = '배 정보 없음';
+    return td;
   }
-  td.append(box);
+  for (const boat of names) {
+    const key = rateKey(site.id, boat);
+    const row = document.createElement('div');
+    row.className = 'boatrate';
+    const label = document.createElement('span');
+    label.className = 'boatlabel';
+    label.textContent = boat;
+    const box = document.createElement('span');
+    box.className = 'stars';
+    const score = rateOf(RATES, key);
+    for (let n = 1; n <= RATE_MAX; n++) {
+      const star = document.createElement('button');
+      star.type = 'button';
+      star.className = n <= score ? 'on' : '';
+      star.textContent = n <= score ? '★' : '☆';
+      star.title = n === score ? `${n}점 — 다시 누르면 지웁니다` : `${n}점 주기`;
+      star.setAttribute('aria-label', `${boat} ${star.title}`);
+      star.addEventListener('click', () => {
+        const next = setRate(RATES, key, n);
+        if (!saveRates(RATES)) {
+          RATES = loadRates();
+          render();
+          return toast('브라우저가 저장을 막고 있습니다');
+        }
+        render();
+        toast(next ? `${boat} ★${next}` : `${boat} 별점을 지웠습니다`);
+      });
+      box.append(star);
+    }
+    row.append(label, box);
+    td.append(row);
+  }
   return td;
 }
 
@@ -337,10 +347,10 @@ function render() {
   const from = PAGE * size;
   const page = list.slice(from, from + size);
 
-  const rated = SITES.filter((s) => rateOf(RATES, s.id)).length;
+  const rated = Object.values(RATES).filter((score) => rateOf({ score }, 'score')).length;
   $('ratemeta').textContent =
-    (rated ? `별점 ${rated}곳 · ` : '') +
-    '별점은 개인 기록입니다 — 이 브라우저에만 저장되고, 현황판에는 읽기 전용으로 보입니다.';
+    (rated ? `별점 ${rated}척 · ` : '') +
+    '배별 별점은 개인 기록입니다 — 이 브라우저에만 저장되고, 현황판에는 읽기 전용으로 보입니다.';
 
   $('rowsempty').hidden = list.length > 0;
   $('pageinfo').textContent = list.length
@@ -393,7 +403,7 @@ function render() {
     else if (st.ok) tdLast.innerHTML = `<span class="ok">✓ ${st.count}건</span> <span class="muted">${when(st.at)}</span>`;
     else tdLast.innerHTML = `<span class="fail">✗ ${st.error ?? '실패'}</span> <span class="muted">직전 ${st.count ?? 0}건 유지</span>`;
 
-    tr.append(tdOn, tdId, siteNameCell(site), rateCell(site), tdKind, addedTag(site),
+    tr.append(tdOn, tdId, textCell(site, 'name'), boatRatesCell(site), tdKind, addedTag(site),
               textCell(site, 'port'), textCell(site, 'phone'), tdUrl, tdLast);
     // 저장 전에 다른 쪽으로 넘어갔다 돌아와도 고친 표시가 남아 있어야 합니다.
     if (DIRTY.has(site.id)) tr.classList.add('dirty');
@@ -656,6 +666,21 @@ function staticMode(reason) {
   for (const id of ['save', 'update', 'collect', 'restart', 'quit']) $(id).disabled = true;
 }
 
+// 로컬 registry에 boats가 없는 사이트도 실제 수집 결과에는 여러 배가 있을 수 있습니다.
+// 합쳐진 출조라면 모든 출처 사이트에 같은 배를 돌려줘 관리 목록에서 빠지지 않게 합니다.
+function boatsFromTrips(trips) {
+  const found = {};
+  for (const trip of trips ?? []) {
+    if (!trip.boat) continue;
+    const ids = trip.sources?.length ? trip.sources.map((source) => source.siteId) : [trip.siteId];
+    for (const id of ids) {
+      if (!id) continue;
+      (found[id] ??= {})[trip.boat] ??= {};
+    }
+  }
+  return found;
+}
+
 async function load() {
   // 즐겨찾기 대조에 출조 목록이 필요합니다. 읽기 전용 모드에서는 사이트 표도 여기서 만듭니다.
   const data = await fetch('data.json?t=' + Date.now())
@@ -664,7 +689,11 @@ async function load() {
 
   if (LOCAL) {
     const d = await api('api/sites').then((r) => r.json());
-    SITES = d.sites;
+    const observed = boatsFromTrips(data.trips);
+    SITES = d.sites.map((site) => ({
+      ...site,
+      boats: { ...(observed[site.id] ?? {}), ...(site.boats ?? {}) },
+    }));
     STATUS = d.status;
     RESTARTABLE = d.restartable;
     $('update').textContent = RESTARTABLE ? '최신 코드 받고 재시작' : '최신 코드 받기';
@@ -683,16 +712,12 @@ async function load() {
   } else {
     const d = data;
     STATUS = d.sites ?? {};
-    const boatsBySite = {};
-    for (const trip of d.trips ?? []) {
-      if (!trip.siteId || !trip.boat) continue;
-      (boatsBySite[trip.siteId] ??= new Set()).add(trip.boat);
-    }
+    const boatsBySite = boatsFromTrips(d.trips);
     // 정적 모드에서는 registry를 못 읽으므로 수집 결과에 남은 사이트만 보여줍니다.
     SITES = Object.entries(STATUS).map(([id, s]) => ({
       id, name: s.name, platformLabel: s.platform, url: s.url, port: s.port, phone: s.phone,
       addedBy: s.addedBy ?? null,
-      boats: Object.fromEntries([...(boatsBySite[id] ?? [])].map((name) => [name, {}])),
+      boats: boatsBySite[id] ?? {},
     }));
     $('meta').textContent =
       `사이트 ${SITES.length}곳 (수동 ${SITES.filter((s) => !s.addedBy).length} · ` +
