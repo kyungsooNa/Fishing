@@ -57,6 +57,7 @@ node debug.js akbari --peek       # 페이지가 어떻게 생겼는지 요약 (
 node collect.js                   # 전체
 node metrics.js                   # 플랫폼별 사이트·성공률·출조 수·값의 나이
 node quality.js                   # 비어 있는 값 — 무엇부터 채워야 하나
+node alerts.js                    # 취소석을 얼마나 빨리 잡았나 · 알림이 실제로 갔나
 npm test                          # 파서·수집 회귀 확인 (네트워크 불필요)
 npm run serve                     # http://localhost:8080 (관리는 /admin.html)
 ```
@@ -443,6 +444,38 @@ TELEGRAM_CHAT_ID=...
 
 더피싱은 `"source": "detail"`이면 `더피싱(상세)`로 구분됩니다. 요청 수가 크게 다르기 때문입니다.
 generic으로 잡았지만 실은 알려진 솔루션이면 `"platform": "서로피싱"`처럼 직접 적어도 됩니다.
+
+## 취소석을 얼마나 빨리 잡았나 (alerts)
+
+```bash
+node alerts.js                  # 감지 지연·알림 성공/실패 요약
+node alerts.js --last 20        # 최근 20건을 줄로
+node alerts.js --json
+ALERTS_PATH=... node collect.js  # 이력을 남길 곳 (기본 tmp/alerts.jsonl)
+```
+
+자리를 잡을 때마다 한 줄씩 JSON Lines로 쌓고(`core/alerts.js`), 그걸 읽어 요약합니다.
+
+```json
+{"at":"2026-09-08T03:00:00.000Z","since":"2026-09-08T02:57:00.000Z","delayMaxMs":180000,
+ "siteId":"a","boat":"가호","date":"2026-09-09","reason":"reopened","before":0,"after":2,
+ "notify":{"attempted":["telegram"],"sent":["telegram"],"failed":[]}}
+```
+
+**여기 있는 시간은 지연이 아니라 지연 상한입니다.** 자리가 실제로 언제 났는지는 아무도
+알려주지 않습니다. 사이트는 지금 잔여석만 보여주고, 우리가 아는 건 "직전에 봤을 때는
+없었고 이번에 보니 있더라"는 구간뿐입니다. 그래서 `delayMaxMs = 이번 확인 − 직전 확인`이고,
+이 값을 줄이는 방법은 하나뿐입니다 — **그 사이트를 더 자주 확인하는 것**. 관심 출조를 3분마다
+보면 상한이 3분, 전체 60분 주기면 한 시간입니다. 직전 확인 시각을 모르면 `null`로 두고
+분포에서도 뺍니다. 모르는 값을 0으로 적으면 통계가 통째로 거짓말이 됩니다.
+
+**알림은 보냈든 못 보냈든 남깁니다.** 막힌 알림이야말로 남아야 하는 기록입니다. 채널이
+없어 아예 못 보낸 것과 보내다 실패한 것은 다르게 셉니다 — 앞은 설정 문제, 뒤는 채널 문제라
+고칠 곳이 다릅니다.
+
+기록을 **어디에** 쌓을지는 아직 정하지 않았습니다. 기본값은 `tmp/alerts.jsonl`이라 로컬
+서버(3분 감시)에서는 쌓이지만, GitHub Actions 러너는 매번 새 컨테이너라 사라집니다.
+상시 감시를 어디에 둘지와 함께 정할 일이라(TODO 3번) 경로만 `ALERTS_PATH`로 열어뒀습니다.
 
 ## 무엇부터 채워야 하나 (quality)
 

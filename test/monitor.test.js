@@ -14,7 +14,7 @@ const b = { ...a, id: 'b', name: 'B', url: 'https://b.example.com' };
 const trip = (siteId = 'a', seatsLeft = 0) => ({ siteId, boat: '테스트호', date, departAt: '23:00',
   status: seatsLeft ? 'open' : 'closed', seatsLeft });
 
-async function fixture({ sites = [a], collect, send, baseTrips = [trip()] } = {}) {
+async function fixture({ sites = [a], collect, send, writeAlerts, baseTrips = [trip()] } = {}) {
   const dir = await mkdtemp(join(tmpdir(), 'monitor-'));
   let now = Date.parse('2026-09-05T00:00:00Z');
   const dataPath = join(dir, 'data.json');
@@ -22,11 +22,14 @@ async function fixture({ sites = [a], collect, send, baseTrips = [trip()] } = {}
   await writeFile(dataPath, JSON.stringify({ trips: baseTrips, sites: {
     a: { ok: true, at: '2026-09-04T00:00:00Z', count: 1 },
   } }));
+  // 알림 이력은 기본값이 tmp/alerts.jsonl이라 그냥 두면 테스트가 레포에 파일을 씁니다.
+  const alerts = [];
   const opts = { dataPath, statePath, readRegistry: async () => sites, clock: () => now,
-    collect: collect ?? (async (s) => [trip(s.id)]), send: send ?? (async () => {}) };
+    collect: collect ?? (async (s) => [trip(s.id)]), send: send ?? (async () => {}),
+    writeAlerts: writeAlerts ?? (async (records) => { alerts.push(...records); }) };
   const monitor = createMonitor(opts);
   await monitor.init();
-  return { monitor, opts, dir, advance: (ms) => { now += ms; } };
+  return { monitor, opts, dir, alerts, advance: (ms) => { now += ms; } };
 }
 
 test('관심 출조는 3분, 나머지는 60분에 확인하고 변경만 즉시 알린다', async () => {
@@ -165,4 +168,41 @@ test('별도 수집 프로세스의 동시 실행은 잠금으로 막는다', as
   await assert.rejects(acquireCollectorLock(path), /이미 실행 중/);
   await release();
   await (await acquireCollectorLock(path))();
+});
+
+// 3분 주기가 값어치가 있는지는 이력으로만 확인됩니다 — 감시 주기를 줄일지 말지의 근거입니다.
+test('관심 출조에서 자리를 잡으면 지연 상한과 알림 결과를 이력에 남긴다', async () => {
+  let seats = 0;
+  const f = await fixture({
+    collect: async (s) => [trip(s.id, seats)],
+    send: async () => ({ attempted: ['telegram'], sent: ['telegram'], failed: [] }),
+  });
+  await f.monitor.setWatch(tripKey(trip()), true);
+  await f.monitor.tick(); await f.monitor.idle();
+  assert.deepEqual(f.alerts, [], '처음은 비교 기준이라 남길 것이 없습니다');
+
+  seats = 2;
+  f.advance(WATCH_MS);
+  await f.monitor.tick(); await f.monitor.idle();
+
+  assert.equal(f.alerts.length, 1);
+  assert.equal(f.alerts[0].reason, 'reopened');
+  assert.equal(f.alerts[0].delayMaxMs, WATCH_MS, '직전 확인이 3분 전이면 지연 상한도 3분입니다');
+  assert.deepEqual(f.alerts[0].notify.sent, ['telegram']);
+});
+
+test('알림이 실패해도 이력은 남는다', async () => {
+  let seats = 0;
+  const f = await fixture({
+    collect: async (s) => [trip(s.id, seats)],
+    send: async () => { throw new Error('네트워크 끊김'); },
+  });
+  await f.monitor.setWatch(tripKey(trip()), true);
+  await f.monitor.tick(); await f.monitor.idle();
+  seats = 2;
+  f.advance(WATCH_MS);
+  await f.monitor.tick(); await f.monitor.idle();
+
+  assert.equal(f.alerts.length, 1, '알림이 막힌 것이야말로 남아야 하는 기록입니다');
+  assert.equal(f.alerts[0].notify.failed[0].error, '네트워크 끊김');
 });

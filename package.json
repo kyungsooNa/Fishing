@@ -5,6 +5,7 @@
   "type": "module",
   "description": "낚시 출조 예약 현황판 — 여러 예약 사이트를 긁어 한 페이지에서 빈자리를 봅니다.",
   "scripts": {
+    "alerts": "node alerts.js",
     "collect": "node collect.js",
     "debug": "node debug.js",
     "discover": "node discover.js",
