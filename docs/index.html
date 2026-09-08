@@ -181,9 +181,10 @@
     .cell-date, .cell-session { display: none !important; }
     .cell-boat { grid-area: boat; overflow: hidden; color: var(--fg); font-size: 15px !important;
                  font-weight: 800; text-overflow: ellipsis; white-space: nowrap; }
-    .cell-site { grid-area: site; overflow: hidden; color: var(--accent); text-overflow: ellipsis; white-space: nowrap; }
-    /* 전화는 작은 화면에서 가장 쓸모 있는 값입니다(눌러서 바로 겁니다). 선사 이름 줄이
-       ellipsis로 잘려도 번호는 제 줄에 온전히 남아야 합니다. */
+    /* 선사 이름 뒤에 출처·별점·전화가 붙습니다. 한 줄로 자르면 뒤쪽 별점이 통째로
+       사라지므로 작은 화면에서는 이 칸만 여러 줄을 허용합니다. */
+    .cell-site { grid-area: site; overflow: visible; color: var(--accent); white-space: normal; }
+    /* 전화는 작은 화면에서 가장 쓸모 있는 값입니다(눌러서 바로 겁니다). */
     .cell-site .phone { color: var(--muted); font-size: 12px; }
     .cell-species { grid-area: species; overflow: hidden; color: var(--fg); text-overflow: ellipsis; white-space: nowrap; }
     .cell-run { grid-area: run; color: var(--muted); }
@@ -1093,6 +1094,13 @@ setTimeout(pollData, 30000);
 
 // 거르는 일은 한 번만 합니다. 표와 지도가 각자 거르면 같은 1만 건을 두 번 훑습니다.
 const refresh = () => { const trips = sortTrips(visibleTrips()); render(trips); drawMap(trips); };
+// 관리창을 다른 탭에 열어 별점을 바꾸면 localStorage는 즉시 바뀌지만 이 탭의 RATES는
+// 옛 객체를 들고 있습니다. 다음 30초 수집 갱신까지 기다리지 않고 바로 다시 그립니다.
+window.addEventListener('storage', (event) => {
+  if (event.key !== RATE_KEY) return;
+  RATES = loadRates();
+  refresh();
+});
 // 필터를 바꾸면 보던 쪽 번호는 의미가 없습니다. 첫 주부터 다시 봅니다.
 const filtered = () => { PAGE = 0; refresh(); };
 for (const id of ['f-open', 'f-fav']) $(id).addEventListener('change', filtered);

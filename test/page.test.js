@@ -358,6 +358,12 @@ test('매기지 않은 선사에는 별점을 붙이지 않는다', () => {
   assert.match(m.rateBadge('aaa').title, /시스템 관리/, '어디서 매기는지 알려줘야 합니다');
 });
 
+test('관리창에서 별점을 바꾸면 열린 현황판에도 바로 반영한다', () => {
+  assert.match(inline, /window\.addEventListener\('storage'/);
+  assert.match(inline, /event\.key !== RATE_KEY/);
+  assert.match(inline, /RATES = loadRates\(\);\s+refresh\(\);/);
+});
+
 test('별점 저장값이 깨져 있어도 화면은 그대로 돈다', () => {
   assert.deepEqual(rateModule('붙여넣다 만 글자').RATES, {});
   assert.deepEqual(rateModule('[1,2,3]').RATES, {}, '객체가 아니면 없는 셈 칩니다');
@@ -488,6 +494,8 @@ test('모바일에서는 출조 한 건이 사진형 식별 타일을 둔 카드
   assert.match(inline, /tr\.className = 'triprow';/);
   assert.match(inline, /boatMark\.textContent = \(t\.boat \?\? '배'\)/);
   assert.match(inline, /starCell\.append\(boatMark, star\);/);
+  assert.match(html, /\.cell-site \{[^}]*overflow: visible;[^}]*white-space: normal;/,
+    '선사 이름 뒤의 별점이 작은 화면에서 잘리면 안 됩니다');
 });
 
 test('모바일 필터는 가로 칩이고 선택된 값이 눈에 띈다', () => {
