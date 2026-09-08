@@ -23,6 +23,7 @@ collect.js        전체 수집 진입점 (Actions가 이걸 부릅니다)
 debug.js          어댑터 고칠 때 쓰는 도구. 한 사이트만 돌려보고 표로 보여줍니다
 discover.js       선사 후보를 자동으로 모으고 시험 수집합니다. 손으로 찾아 등록하는 대신
 dupes.js          같은 일정표를 두 번 긁고 있는 사이트를 찾습니다. 수집 결과를 보고 판정합니다
+status.js         지금 무엇을 얼마나 보고 있나. 계열별 커버리지·성공률·값의 나이를 한 번에 셉니다
 serve.js          docs/ 로컬 서빙 + 관리 API(/api/*). 루프백 전용, createApp()으로 테스트합니다
 docs/admin.html   시스템 관리 화면. 서버가 없으면(Pages) 읽기 전용으로 떨어집니다
 core/schema.js    통합 스키마 + 표기 정규화. 어댑터는 원문 텍스트만 넘기면 됩니다
@@ -31,6 +32,7 @@ core/store.js     docs/data.json 읽기·쓰기
 core/diff.js      이전 결과와 비교해 "새로 난 자리"만 추출
 core/merge.js     같은 출조·같은 배 합치기 (신원은 이름+출항지+전화번호)
 core/dupes.js     같은 함대 일정표를 내보내는 사이트 찾기. 끌 수 있는 쪽을 골라줍니다
+core/status.js    registry(보기로 한 것)와 data.json(실제로 본 것)을 맞춰 셉니다. 합이 전체와 맞습니다
 core/platform.js  사이트 계열(선상24/더피싱/자체). 어댑터에서 자동
 core/when.js      날짜 기준. 러너가 UTC여도 전부 한국시간으로 셉니다
 core/ports.js     항구 좌표(지도용). sites/ports.json에서 읽습니다
