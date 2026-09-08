@@ -3,7 +3,7 @@
 
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { subdomainsFromCrt, hostsFromCdx, linksFrom, adapterPlan, pickPhone, pickPort, idFor, entryFor } from '../discover.js';
+import { subdomainsFromCrt, hostsFromCdx, linksFrom, adapterPlan, pickPhone, pickPort, idFor, entryFor, portTargets, applyPorts } from '../discover.js';
 
 test('인증서 로그에서 선사 서브도메인만 추린다', () => {
   const rows = [
@@ -142,4 +142,64 @@ test('등록 조각에는 확인이 필요하다는 표시가 남는다', () => 
   assert.equal(entry.phone, undefined);          // 애매한 값은 채우지 않습니다
   assert.deepEqual(Object.keys(entry.boats), ['네이처호']);
   assert.match(entry.note, /전화 후보/);
+});
+
+// ── 항구 다시 읽기 ──────────────────────────────────────────────────────────
+// 항구가 빈 선사가 239곳입니다. 어디부터 보느냐가 이 기능의 거의 전부입니다 — id 순으로
+// 훑으면 지금 당장 두 줄로 뜨고 있는 곳이 뒤에 묻힙니다.
+const quality = {
+  portHints: [{ siteId: 'blocked2', hints: [] }, { siteId: 'blocked1', hints: ['오천항'] }],
+  sites: [{ key: 'busy', trips: 300 }, { key: 'quiet', trips: 5 }, { key: 'blocked1', trips: 10 }],
+};
+
+test('두 줄로 뜨는 곳부터, 그다음은 출조가 많은 곳부터 본다', () => {
+  const registry = [
+    { id: 'quiet', url: 'https://q.example' },
+    { id: 'busy', url: 'https://b.example' },
+    { id: 'blocked1', url: 'https://b1.example' },
+    { id: 'blocked2', url: 'https://b2.example' },
+  ];
+
+  assert.deepEqual(portTargets(registry, quality).map((t) => t.id), ['blocked2', 'blocked1', 'busy', 'quiet'],
+    'quality가 매긴 순서를 그대로 씁니다 — 거기가 지금 손해를 세는 곳입니다');
+  assert.deepEqual(portTargets(registry, quality).map((t) => t.blocked), [true, true, false, false]);
+});
+
+test('채워져 있거나 끈 곳, 주소 없는 곳은 보지 않는다', () => {
+  const registry = [
+    { id: 'has', url: 'https://a.example', port: '홍원항' },
+    { id: 'off', url: 'https://b.example', enabled: false },
+    { id: 'nourl', port: null },
+    // 배마다 항구를 적어둔 곳은 사이트에 port가 없어도 채워진 것입니다(core/schema.js의 pickPort).
+    { id: 'perboat', url: 'https://c.example', boats: { '가호': { port: '오천항' } } },
+    { id: 'todo', url: 'https://d.example' },
+  ];
+  assert.deepEqual(portTargets(registry, null).map((t) => t.id), ['todo']);
+});
+
+test('수집 결과가 없어도 돌긴 돈다 — 순서만 거칠어집니다', () => {
+  const registry = [{ id: 'b', url: 'https://b.example' }, { id: 'a', url: 'https://a.example' }];
+  assert.deepEqual(portTargets(registry, null).map((t) => t.id), ['a', 'b']);
+});
+
+test('registry에는 라벨로 찾은 값만, 빈 곳에만 채운다', () => {
+  const parsed = { sites: [{ id: 'a' }, { id: 'b', port: '이미있음' }, { id: 'c' }] };
+  const filled = applyPorts(parsed, [
+    { id: 'a', port: '오천항' },
+    { id: 'b', port: '남당항' },      // 사람이 적어둔 값을 덮어쓰면 안 됩니다
+    { id: 'c', port: null },          // 후보만 있는 곳은 값이 아닙니다
+    { id: 'ghost', port: '홍원항' },  // registry에 없는 id
+  ]);
+
+  assert.deepEqual(filled, ['a']);
+  assert.equal(parsed.sites[0].port, '오천항');
+  assert.match(parsed.sites[0].note, /출항지 오천항 — 페이지의 라벨에서 읽었습니다/);
+  assert.equal(parsed.sites[1].port, '이미있음');
+  assert.equal(parsed.sites[2].port, undefined);
+});
+
+test('registry가 배열로 적혀 있어도 채운다', () => {
+  const parsed = [{ id: 'a' }];
+  assert.deepEqual(applyPorts(parsed, [{ id: 'a', port: '오천항' }]), ['a']);
+  assert.equal(parsed[0].port, '오천항');
 });

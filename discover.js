@@ -252,14 +252,68 @@ export function pickPort(text) {
   return { value: null, candidates: [...loose].slice(0, 5) };
 }
 
+/**
+ * 못 받은 것과 받았는데 안 적혀 있는 것은 다릅니다. 앞은 다시 돌리면 되고 뒤는 사람이
+ * 페이지를 봐야 합니다. 값이 없다는 것만 돌려주면 이 둘이 한 줄로 보여서, 상대가
+ * 막고 있는 판에 "51곳 전부 페이지에 안 적혀 있음"이라고 읽게 됩니다.
+ */
 async function identity(url) {
   try {
     const html = await fetchHtml(originOf(url), { mode: 'static', retries: 0 });
     const text = cheerio.load(html)('body').text();
     return { phone: pickPhone(text), port: pickPort(text) };
-  } catch {
-    return { phone: { value: null, candidates: [] }, port: { value: null, candidates: [] } };
+  } catch (err) {
+    return {
+      phone: { value: null, candidates: [] },
+      port: { value: null, candidates: [] },
+      error: describeError(err),
+    };
   }
+}
+
+// ── 등록된 선사의 항구 다시 읽기 ────────────────────────────────────────────
+//
+// 항구는 사람이 registry에 적는 값입니다(`core/merge.js`의 신원). 그래서 저절로 채워지지
+// 않는데, 지금 배 473척 중 항구가 없는 것이 256척입니다. 손으로 채우려면 선사 페이지를
+// 하나씩 열어야 하고, 개발 환경에서는 국내 도메인이 막혀 열 수조차 없습니다.
+// 러너는 닿으므로 Actions에서 돌립니다 — peek·discover와 같은 이유입니다.
+//
+// **순서가 곧 이 기능입니다.** 항구가 빈 곳을 id 순으로 훑으면 지금 당장 손해를 보는 곳이
+// 뒤에 묻힙니다. 지금 손해란 "같은 배가 현황판에 두 줄로 떠 있는 것"이고, 그건
+// `core/quality.js`가 이미 세고 있습니다(`portHints` — 합치기가 막힌 곳만 추립니다).
+// 그다음은 출조가 많은 곳입니다. 한 곳을 채워 여러 줄이 고쳐지는 순서입니다.
+export function portTargets(registry, quality) {
+  const blocked = new Map((quality?.portHints ?? []).map((row, rank) => [row.siteId, rank]));
+  const trips = new Map((quality?.sites ?? []).map((row) => [row.key, row.trips]));
+
+  return registry
+    .filter((site) => site.enabled !== false && !site.port && site.url)
+    // boats에 배별 항구를 적어둔 곳은 사이트에 port가 없어도 채워진 것입니다.
+    .filter((site) => !Object.values(site.boats ?? {}).some((boat) => boat?.port))
+    .map((site) => ({
+      id: site.id, url: site.url, name: site.name ?? site.id,
+      blocked: blocked.has(site.id), rank: blocked.get(site.id) ?? Infinity,
+      trips: trips.get(site.id) ?? 0,
+    }))
+    .sort((a, b) => a.rank - b.rank || b.trips - a.trips || a.id.localeCompare(b.id));
+}
+
+/** 다시 읽은 결과를 registry에 반영합니다. 라벨이 붙어 답이 하나인 것만 값이 됩니다. */
+export function applyPorts(parsed, found) {
+  const sites = Array.isArray(parsed) ? parsed : (parsed.sites ?? []);
+  const byId = new Map(sites.map((site) => [site.id, site]));
+  const filled = [];
+
+  for (const row of found) {
+    const site = byId.get(row.id);
+    // 이미 채워진 곳은 건드리지 않습니다 — 사람이 고쳐둔 값을 덮어쓰면 안 됩니다.
+    if (!site || site.port || !row.port) continue;
+    site.port = row.port;
+    site.note = [site.note, `출항지 ${row.port} — 페이지의 라벨에서 읽었습니다(discover ports). 확인하세요.`]
+      .filter(Boolean).join(' ');
+    filled.push(row.id);
+  }
+  return filled;
 }
 
 // ── registry 조각 ───────────────────────────────────────────────────────────
@@ -331,6 +385,7 @@ async function main() {
   if (cmd === 'wayback') return list(await fromWayback(need(args[0], '도메인을 적으세요 (예: sunsang24.com)')));
   if (cmd === 'links') return list(await fromLinks(need(args[0], '주소를 적으세요')));
   if (cmd === 'probe') return probeAll();
+  if (cmd === 'ports') return portsAll();
   usage();
 }
 
@@ -343,6 +398,8 @@ function usage() {
   node discover.js probe <주소...>     후보를 어댑터로 돌려보기
   node discover.js probe --from ${CANDIDATES_PATH}
   node discover.js probe ... --add     통과한 후보를 ${REGISTRY_PATH}에 붙이기
+  node discover.js ports              항구가 빈 등록 선사를 다시 읽기 (급한 곳부터)
+  node discover.js ports --add        라벨로 찾은 값만 ${REGISTRY_PATH}에 채우기
 `);
   process.exitCode = 1;
 }
@@ -417,6 +474,69 @@ async function probeAll() {
 }
 
 // 통째로 다시 쓰지 않고 sites 배열에만 덧붙입니다. $comment 같은 다른 키를 잃지 않도록.
+/**
+ * 항구가 빈 선사를 급한 곳부터 다시 읽습니다. 값으로 쓰는 것은 **라벨이 붙어 답이 하나일
+ * 때뿐**이고(`pickPort`), 나머지는 후보만 적어 사람이 고르게 둡니다 — 항구는 신원이라
+ * 잘못 채우면 다른 배가 한 줄로 붙습니다(`core/merge.js`).
+ */
+async function portsAll() {
+  const limit = Number(valueOf('--limit') ?? 30);
+  const registry = await loadRegistry();
+  // data.json이 있으면 "지금 두 줄로 뜨는 곳"을 앞에 둡니다. 없으면 출조 수를 모르므로
+  // id 순이 되는데, 그래도 도는 데는 지장이 없습니다.
+  const quality = await portQuality(registry);
+  const targets = portTargets(registry, quality);
+
+  console.log(`항구가 빈 선사 ${targets.length}곳`
+    + ` (지금 두 줄로 뜨는 곳 ${targets.filter((t) => t.blocked).length}곳) — 앞에서 ${Math.min(limit, targets.length)}곳을 봅니다\n`);
+
+  const found = [];
+  for (const target of targets.slice(0, limit)) {
+    const mark = target.blocked ? '!' : ' ';
+    const { port, error } = await identity(target.url);
+    found.push({ ...target, port: port.value, candidates: port.candidates, ...(error ? { error } : {}) });
+
+    if (error) console.log(`${mark} ${target.id.padEnd(16)} 못 받았습니다: ${error.slice(0, 80)}`);
+    else if (port.value) console.log(`${mark} ${target.id.padEnd(16)} ${port.value}  ← 라벨에서 읽음`);
+    else if (port.candidates.length) console.log(`${mark} ${target.id.padEnd(16)} 후보: ${port.candidates.join(' · ')}`);
+    else console.log(`${mark} ${target.id.padEnd(16)} 못 찾았습니다 — 페이지에 안 적혀 있거나 그림입니다`);
+  }
+
+  const values = found.filter((row) => row.port);
+  const failed = found.filter((row) => row.error);
+  console.log(`\n라벨로 값을 찾은 곳 ${values.length} / 후보만 있는 곳 ${found.filter((r) => !r.error && !r.port && r.candidates.length).length}`
+    + ` / 페이지에 없는 곳 ${found.filter((r) => !r.error && !r.port && !r.candidates.length).length}`
+    + ` / 못 받은 곳 ${failed.length}`);
+  if (failed.length === found.length && found.length) {
+    console.log('전부 못 받았습니다 — 여기서는 국내 도메인이 막혀 있습니다. Actions 탭 → ports 로 돌리세요.');
+  }
+  console.log('! 표시가 지금 현황판에 두 줄로 뜨고 있는 곳입니다.');
+
+  await mkdir('tmp', { recursive: true });
+  await writeFile('tmp/ports.json', `${JSON.stringify(found, null, 2)}\n`);
+  console.log('tmp/ports.json 에 후보까지 전부 적었습니다.');
+
+  if (!has('--add')) return console.log(`\n${REGISTRY_PATH}에 채우려면 --add 를 붙이세요.`);
+  if (!values.length) return console.log('\n채울 값이 없습니다.');
+
+  const parsed = JSON.parse(await readFile(REGISTRY_PATH, 'utf8'));
+  const filled = applyPorts(parsed, values);
+  await writeFile(REGISTRY_PATH, `${JSON.stringify(parsed, null, 2)}\n`);
+  console.log(`\n${REGISTRY_PATH} 에 ${filled.length}곳을 채웠습니다: ${filled.join(', ')}`);
+  console.log('머지 전에 페이지와 맞춰보세요 — 항구는 다른 사이트의 같은 배와 합칠지를 정하는 값입니다.');
+}
+
+/** 수집 결과가 있으면 "지금 두 줄로 뜨는 곳"을 알 수 있습니다. 없으면 순서만 거칠어집니다. */
+async function portQuality(registry) {
+  try {
+    const { collectQuality } = await import('./core/quality.js');
+    const { load } = await import('./core/store.js');
+    return collectQuality(registry, await load());
+  } catch {
+    return null;
+  }
+}
+
 async function addToRegistry(entries) {
   const parsed = JSON.parse(await readFile(REGISTRY_PATH, 'utf8'));
   if (Array.isArray(parsed)) parsed.push(...entries);
