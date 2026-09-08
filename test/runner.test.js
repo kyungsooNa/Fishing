@@ -133,14 +133,15 @@ test('최근 timeout 실패는 백오프 시간 동안 다시 붙잡지 않고 �
     registryPath,
     dataPath,
     days: 21,
-    now: new Date('2026-09-07T02:00:00.000Z'),
+    now: new Date('2026-09-07T00:30:00.000Z'),   // 첫 대기(1시간)가 아직 안 지났습니다
     timeoutBackoffHours: 6,
   });
 
   assert.deepEqual(failed, ['broken']);
   assert.equal(data.trips.length, 1, '직전 행은 그대로 남아야 한다');
   assert.equal(data.sites.broken.skipped, 'timeout-backoff');
-  assert.equal(data.sites.broken.retryAt, '2026-09-07T06:00:00.000Z');
+  // 첫 timeout은 1시간만 쉽니다. 상한(6시간)을 통째로 쉬면 매시간 도는 수집이 5~6회 헛돕니다.
+  assert.equal(data.sites.broken.retryAt, '2026-09-07T01:00:00.000Z');
   assert.match(data.sites.broken.error, /재시도 보류/);
   assert.equal(data.sites.broken.error.match(/재시도 보류/g).length, 1, '보류 문구가 반복되면 안 된다');
 });
@@ -163,6 +164,57 @@ test('timeout 백오프 시간이 지나면 실제 수집을 다시 시도한다
 
   assert.equal(data.sites.broken.skipped, undefined);
   assert.match(data.sites.broken.error, /_nonexistent/);
+});
+
+// 잠깐 막힌 곳은 금방 돌아오고, 정말 죽은 곳은 매시간 두드리지 않게 합니다.
+test('연달아 timeout이 나면 쉬는 시간이 1→2→4시간으로 늘고 상한에서 멈춘다', async () => {
+  const 이전시각 = '2026-09-07T00:00:00.000Z';
+  const 대기 = async (streak) => {
+    const 어제것 = {
+      generatedAt: 이전시각,
+      sites: { broken: {
+        ok: false, at: 이전시각, error: '30000ms 안에 응답이 없습니다', count: 0,
+        ...(streak ? { timeoutStreak: streak } : {}),
+      } },
+      trips: [],
+    };
+    const { registryPath, dataPath } = await fixture([brokenSite], 어제것);
+    const { data } = await runAll({
+      registryPath, dataPath, days: 21,
+      now: new Date('2026-09-07T00:30:00.000Z'),   // 어느 경우에도 아직 쉬는 중
+      timeoutBackoffHours: 6,
+    });
+    assert.equal(data.sites.broken.skipped, 'timeout-backoff', `streak ${streak}`);
+    return data.sites.broken.retryAt;
+  };
+
+  assert.equal(await 대기(0), '2026-09-07T01:00:00.000Z', '기록이 없으면 첫 번째로 봅니다');
+  assert.equal(await 대기(1), '2026-09-07T01:00:00.000Z');
+  assert.equal(await 대기(2), '2026-09-07T02:00:00.000Z');
+  assert.equal(await 대기(3), '2026-09-07T04:00:00.000Z');
+  assert.equal(await 대기(4), '2026-09-07T06:00:00.000Z', '상한을 넘지 않습니다');
+  assert.equal(await 대기(99), '2026-09-07T06:00:00.000Z', '아무리 오래 죽어 있어도 상한입니다');
+});
+
+test('연속 timeout 횟수를 세고, 성공하면 다시 0부터 센다', async () => {
+  const 이전시각 = '2026-09-07T00:00:00.000Z';
+  // 백오프가 끝난 뒤 또 실패하면 2번째입니다.
+  const 어제것 = {
+    generatedAt: 이전시각,
+    sites: { broken: { ok: false, at: 이전시각, error: '30000ms 안에 응답이 없습니다', count: 0, timeoutStreak: 2 } },
+    trips: [],
+  };
+  const { registryPath, dataPath } = await fixture([brokenSite], 어제것);
+  const { data } = await runAll({
+    registryPath, dataPath, days: 21,
+    now: new Date('2026-09-07T09:00:00.000Z'),   // 쉬는 시간이 끝나 실제로 다시 붙잡습니다
+    timeoutBackoffHours: 6,
+  });
+
+  assert.equal(data.sites.broken.skipped, undefined, '쉬는 시간이 끝나면 다시 시도합니다');
+  // 이 자리는 DNS 실패(timeout이 아님)라 연속 횟수가 붙지 않습니다.
+  assert.match(data.sites.broken.error, /_nonexistent/);
+  assert.equal(data.sites.broken.timeoutStreak, undefined, 'timeout이 아닌 실패는 세지 않습니다');
 });
 
 test('수집 결과를 파일로 남긴다', async () => {
