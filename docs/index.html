@@ -105,6 +105,11 @@
              border-radius: 999px; font-size: 11px; color: var(--muted); vertical-align: middle; }
   .srcseats { margin-left: 4px; font-size: 11px; color: var(--few); }
   .srchint { margin-left: 4px; font-size: 11px; color: var(--muted); }
+  /* 자리가 났을 때 사람이 하는 일은 결국 전화입니다. 선사 칸 밑에 한 줄로 답니다 —
+     칸을 새로 만들면 표의 자연 폭이 그만큼 늘어 오른쪽 칸이 잘립니다. */
+  .phone { display: block; margin-top: 2px; font-size: 12px; color: var(--muted);
+           white-space: nowrap; text-decoration: none; font-variant-numeric: tabular-nums; }
+  .phone:hover { color: var(--accent); text-decoration: underline; }
   .freshness { display: block; font-size: 11px; font-weight: normal; color: var(--muted); }
   .freshness.stale { color: var(--few); }
   .freshness.failed { color: var(--off); }
@@ -177,6 +182,9 @@
     .cell-boat { grid-area: boat; overflow: hidden; color: var(--fg); font-size: 15px !important;
                  font-weight: 800; text-overflow: ellipsis; white-space: nowrap; }
     .cell-site { grid-area: site; overflow: hidden; color: var(--accent); text-overflow: ellipsis; white-space: nowrap; }
+    /* 전화는 작은 화면에서 가장 쓸모 있는 값입니다(눌러서 바로 겁니다). 선사 이름 줄이
+       ellipsis로 잘려도 번호는 제 줄에 온전히 남아야 합니다. */
+    .cell-site .phone { color: var(--muted); font-size: 12px; }
     .cell-species { grid-area: species; overflow: hidden; color: var(--fg); text-overflow: ellipsis; white-space: nowrap; }
     .cell-run { grid-area: run; color: var(--muted); }
     .cell-run::before { content: '운항 '; }
@@ -211,7 +219,7 @@
     <details class="multi" id="f-session" data-label="운항" data-all="오전·오후·종일"><summary>오전·오후·종일</summary><div class="multi-menu"></div></details>
     <details class="multi" id="f-date" data-label="날짜" data-all="전체 날짜"><summary>전체 날짜</summary><div class="multi-menu"></div></details>
     <select id="f-sort" aria-label="정렬">
-      <option value="default">기본순 (출항 시각)</option>
+      <option value="default">기본순 (빈자리 · 출항 시각)</option>
       <option value="seats-desc">잔여석 많은순</option>
       <option value="seats-asc">잔여석 적은순</option>
       <option value="price-asc">승선료 낮은순</option>
@@ -495,6 +503,30 @@ const seatsLabel = (t) => {
   return Number.isFinite(t.seatsTotal) ? `${t.seatsLeft}/${t.seatsTotal}` : String(t.seatsLeft);
 };
 
+// ── 전화 걸기 ────────────────────────────────────────────────────────────
+// 취소석은 화면으로 보고 전화로 잡습니다. 번호는 시스템 관리에서 registry에 적어둔 값이
+// 그대로 실려 옵니다(core/runner.js의 meta, core/schema.js의 pickPhone) — 관리 화면에만
+// 있으면 자리를 찾은 사람이 배 이름을 들고 다시 검색해야 합니다.
+//
+// 표기가 제각각(010-1234-5678 / 010.1234.5678 / 051 123 4567)이라 tel: 에는 숫자만 넣고,
+// 보여주는 글자는 적어둔 표기 그대로 둡니다 — 사람이 눈으로 맞춰보는 값입니다.
+function phoneHref(phone) {
+  const digits = String(phone ?? '').replace(/[^0-9+]/g, '');
+  return digits.length >= 3 ? 'tel:' + digits : null;
+}
+
+function phoneLink(phone) {
+  const href = phoneHref(phone);
+  if (!href) return null;
+  const a = document.createElement('a');
+  a.className = 'phone';
+  a.href = href;
+  a.textContent = '\u260e ' + String(phone).trim();
+  a.title = '선사에 바로 겁니다. 취소석은 전화가 제일 빠릅니다.';
+  return a;
+}
+// ── 전화 걸기 끝 ── (test/page.test.js가 이 표시까지를 떼어내 돌려봅니다)
+
 // 04:00 출항해서 17:00 들어오면 "04:00~17:00". 끝 시각을 모르면 시작만.
 const runLabel = (t) => (t.departAt ? (t.returnAt ? `${t.departAt}~${t.returnAt}` : t.departAt) : '선사 확인');
 
@@ -701,6 +733,18 @@ const SORTS = {
   'checked-desc': byValue(checkedAt, 'desc'),
 };
 
+// **빈자리가 있는 줄이 그 날의 위로 갑니다.** 날짜 다음, 고른 기준 앞입니다.
+// 이 화면은 잡을 수 있는 자리를 찾는 화면이라, 마감·휴항된 배가 그 날 앞줄을 차지하면
+// 하루를 통째로 볼 때(빈자리만을 끈 채) 위에서부터 헛것을 읽게 됩니다. 켜 두면 애초에
+// 빈자리만 남으므로 이 규칙은 끄고 볼 때 드러납니다.
+//
+// 기준은 "빈자리만" 필터와 같은 open·few입니다 — 두 곳이 갈리면 체크를 껐다 켤 때
+// 같은 줄이 위아래로 튑니다. 확인이 안 된 줄(unknown)은 올리지 않습니다. 자리가 있는지
+// 모르는 배로 첫 화면을 덮느니 마감된 줄과 같이 뒤에서 수집 순서를 지키는 게 낫습니다
+// (값이 없는 행을 뒤로 보내는 byValue와 같은 이유입니다).
+const hasSeat = (t) => t.status === 'open' || t.status === 'few';
+const byVacancy = (a, b) => (hasSeat(b) ? 1 : 0) - (hasSeat(a) ? 1 : 0);
+
 /**
  * 값이 없는 행은 **방향과 상관없이 뒤로** 보냅니다. 적은순이라고 모르는 값을 0으로 쳐서
  * 앞에 세우면, 잔여석을 못 읽은 배가 "자리 없는 배"로 보입니다.
@@ -733,10 +777,11 @@ function checkedAt(t) {
 
 function sortTrips(trips, key = $('f-sort').value) {
   const by = SORTS[key];
-  if (!by) return trips;
   // data.json이 이미 날짜·출항시각·선사·배 순으로 정렬돼 옵니다(core/runner.js). 그 순서를
   // 동점자 규칙으로 그대로 쓰려면 안정 정렬이어야 합니다 — Array.sort는 안정입니다.
-  return [...trips].sort((a, b) => (a.date ?? '').localeCompare(b.date ?? '') || by(a, b));
+  // 기본순도 빈자리를 올려야 해서 여기서는 원본을 그대로 돌려주지 않습니다.
+  return [...trips].sort((a, b) =>
+    (a.date ?? '').localeCompare(b.date ?? '') || byVacancy(a, b) || (by ? by(a, b) : 0));
 }
 
 // ── 쪽 나누기 ─────────────────────────────────────────────────────────────
@@ -924,6 +969,10 @@ function render(all = sortTrips(visibleTrips())) {
           const badge = rateBadge(src.siteId);
           if (badge) td.append(badge);
         });
+        // 합친 줄이라도 번호는 하나입니다 — 이름·출항지·전화가 셋 다 같아야 합치니까요
+        // (core/merge.js). 그래서 출처마다가 아니라 줄마다 한 번만 답니다.
+        const phone = phoneLink(t.phone);
+        if (phone) td.append(phone);
       } else {
         td.textContent = v;
       }
