@@ -456,11 +456,12 @@ function emptyMessage() {
 // ── 즐겨찾기 끝 ── (test/page.test.js가 이 표시까지를 떼어내 돌려봅니다)
 
 // ── 별점 보기 ─────────────────────────────────────────────────────────────
-// 선사 별점은 시스템 관리 화면에서 매깁니다. 현황판은 **읽기만 합니다** — 표에서
+// 배별 별점은 시스템 관리 화면에서 매깁니다. 현황판은 **읽기만 합니다** — 표에서
 // 잘못 눌러 점수가 바뀌는 일이 없어야 해서 여기엔 저장하는 코드를 두지 않습니다.
 // 저장 형식(키·1~5점)은 admin.html과 같아야 합니다.
-const RATE_KEY = 'fishing:ratings';
+const RATE_KEY = 'fishing:boat-ratings';
 const RATE_MAX = 5;
+const rateKey = (siteId, boat) => siteId && boat ? `${siteId}|${boat}` : '';
 
 function loadRates() {
   try {
@@ -474,7 +475,7 @@ function rateOf(map, id) {
 }
 const rateStars = (score) => '★'.repeat(score) + '☆'.repeat(RATE_MAX - score);
 
-// 안 매긴 선사는 아무것도 안 붙입니다. 288곳에 ☆☆☆☆☆가 깔리면 표가 안 읽힙니다.
+// 안 매긴 배에는 아무것도 안 붙입니다. 모든 출조에 ☆☆☆☆☆가 깔리면 표가 안 읽힙니다.
 // 어디서 온 출조인지 한눈에. 이 화면의 존재 이유가 "선상24 밖도 같이 본다"인데,
 // 배지가 없으면 지금 보고 있는 줄이 어디 것인지 알 수가 없습니다.
 function platformChip(siteId) {
@@ -484,8 +485,17 @@ function platformChip(siteId) {
   return chip;
 }
 
-function rateBadge(siteId) {
-  const score = rateOf(RATES, siteId);
+function rateForTrip(trip) {
+  const ids = [trip.siteId, ...(trip.sources ?? []).map((source) => source.siteId)];
+  for (const siteId of new Set(ids)) {
+    const score = rateOf(RATES, rateKey(siteId, trip.boat));
+    if (score) return score;
+  }
+  return 0;
+}
+
+function rateBadge(trip) {
+  const score = rateForTrip(trip);
   if (!score) return null;
   const span = document.createElement('span');
   span.className = 'rate';
@@ -967,9 +977,10 @@ function render(all = sortTrips(visibleTrips())) {
             seat.title = '출처마다 남은 자리가 다릅니다. 이 사이트 기준입니다.';
             td.append(seat);
           }
-          const badge = rateBadge(src.siteId);
-          if (badge) td.append(badge);
         });
+        // 별점은 출처가 아니라 배의 평가이므로, 합쳐진 줄에도 한 번만 붙입니다.
+        const badge = rateBadge(t);
+        if (badge) td.append(badge);
         // 합친 줄이라도 번호는 하나입니다 — 이름·출항지·전화가 셋 다 같아야 합치니까요
         // (core/merge.js). 그래서 출처마다가 아니라 줄마다 한 번만 답니다.
         const phone = phoneLink(t.phone);

@@ -212,13 +212,16 @@ test('관리 화면: 사이트가 300곳 가까이 되므로 쪽 나눔과 등�
   assert.match(inline, /DIRTY\.has\(site\.id\)/);
 });
 
-test('관리 화면: 사이트에 속한 배 이름도 보여준다', async () => {
+test('관리 화면: 사이트에 속한 배 이름을 별점 칸에 보여준다', async () => {
   const html = await readFile('docs/admin.html', 'utf8');
 
-  assert.match(html, /className = 'boatnames'/);
+  assert.match(html, /className = 'boatlabel'/);
   assert.match(html, /Object\.keys\(site\.boats \?\? \{\}\)/,
     '로컬 registry의 배 이름을 사이트 행에 표시해야 합니다');
-  assert.match(html, /boatsBySite\[trip\.siteId\]/,
+  assert.match(html, /function boatsFromTrips/);
+  assert.match(html, /source\.siteId/,
+    '합쳐진 출조의 모든 출처 사이트에도 배를 돌려줘야 합니다');
+  assert.match(html, /boatsBySite\[id\]/,
     '읽기 전용 화면도 data.json 출조에서 배 이름을 복원해야 합니다');
 });
 
@@ -385,9 +388,9 @@ test('관리 화면: 즐겨찾기를 글자로 내보내고 합쳐 가져온다'
   assert.match(inline, /const merged = \[\.\.\.new Set\(\[\.\.\.before, \.\.\.keys\]\)\]/);
 });
 
-test('관리 화면: 선사마다 별점을 매긴다', async () => {
+test('관리 화면: 배마다 별점을 매긴다', async () => {
   const html = await readFile('docs/admin.html', 'utf8');
-  assert.match(html, /<th>선사 표기<\/th><th>별점<\/th>/, '별점 칸이 표에 없습니다');
+  assert.match(html, /<th>선사 표기<\/th><th>배별 별점<\/th>/, '배별 별점 칸이 표에 없습니다');
   assert.ok(html.includes('id="ratemeta"'), '별점이 어디 저장되는지 알려주는 줄이 없습니다');
 
   const inline = html.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
@@ -402,27 +405,31 @@ test('관리 화면: 선사마다 별점을 매긴다', async () => {
     setItem: (k, v) => store.set(k, v),
   };
   const m = new Function('localStorage',
-    `${inline.slice(start, end)}\nreturn { RATE_KEY, loadRates, saveRates, rateOf, setRate };`,
+    `${inline.slice(start, end)}\nreturn { RATE_KEY, rateKey, loadRates, saveRates, rateOf, setRate };`,
   )(localStorage);
 
   const rates = m.loadRates();
   assert.deepEqual(rates, {}, '처음에는 아무것도 안 매겨져 있습니다');
 
-  assert.equal(m.setRate(rates, 'aaa', 4), 4);
-  assert.equal(m.setRate(rates, 'bbb', 2), 2);
-  assert.equal(m.rateOf(rates, 'aaa'), 4);
+  const aura = m.rateKey('fishinggate', '아우라호');
+  const black = m.rateKey('fishinggate', '블랙펄호');
+  assert.equal(aura, 'fishinggate|아우라호');
+  assert.notEqual(aura, m.rateKey('other', '아우라호'), '다른 선사의 동명 배는 섞이면 안 됩니다');
+  assert.equal(m.setRate(rates, aura, 4), 4);
+  assert.equal(m.setRate(rates, black, 2), 2);
+  assert.equal(m.rateOf(rates, aura), 4);
 
   // 같은 별을 다시 누르면 지웁니다. 0점을 남기면 "안 매김"과 구별이 안 됩니다.
-  assert.equal(m.setRate(rates, 'aaa', 4), 0);
-  assert.ok(!('aaa' in rates), '지운 별점은 값이 남으면 안 됩니다');
-  assert.equal(m.rateOf(rates, 'aaa'), 0);
+  assert.equal(m.setRate(rates, aura, 4), 0);
+  assert.ok(!(aura in rates), '지운 별점은 값이 남으면 안 됩니다');
+  assert.equal(m.rateOf(rates, aura), 0);
   // 다른 별을 누르면 그 점수로 바뀝니다.
-  assert.equal(m.setRate(rates, 'bbb', 5), 5);
+  assert.equal(m.setRate(rates, black, 5), 5);
 
   assert.ok(m.saveRates(rates));
-  assert.equal(m.RATE_KEY, 'fishing:ratings', '현황판이 이 키를 읽습니다');
-  assert.deepEqual(JSON.parse(store.get('fishing:ratings')), { bbb: 5 });
-  assert.deepEqual(m.loadRates(), { bbb: 5 }, '다시 열어도 남아 있어야 합니다');
+  assert.equal(m.RATE_KEY, 'fishing:boat-ratings', '현황판이 이 키를 읽습니다');
+  assert.deepEqual(JSON.parse(store.get('fishing:boat-ratings')), { [black]: 5 });
+  assert.deepEqual(m.loadRates(), { [black]: 5 }, '다시 열어도 남아 있어야 합니다');
 
   // 저장이 막힌 브라우저(시크릿 창 등)에서도 화면이 죽으면 안 됩니다.
   const blocked = new Function('localStorage',
@@ -436,8 +443,8 @@ test('관리 화면: 별점은 읽기 전용 모드에서도 매길 수 있다',
   const html = await readFile('docs/admin.html', 'utf8');
   const inline = html.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
   // 별점은 registry가 아니라 브라우저에 남습니다. LOCAL 여부로 잠그면 Pages에서 못 씁니다.
-  const cell = inline.slice(inline.indexOf('function rateCell'), inline.indexOf('// 항구는 사이트에'));
-  assert.ok(cell.length > 100, 'rateCell을 찾지 못했습니다');
+  const cell = inline.slice(inline.indexOf('function boatRatesCell'), inline.indexOf('// 항구는 사이트에'));
+  assert.ok(cell.length > 100, 'boatRatesCell을 찾지 못했습니다');
   assert.ok(!cell.includes('LOCAL'), '별점은 로컬 서버가 없어도 매길 수 있어야 합니다');
   assert.match(inline, /별점과 즐겨찾기는 브라우저에 저장되는 값이라 여기서도 됩니다/);
 });
