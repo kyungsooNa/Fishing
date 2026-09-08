@@ -15,6 +15,17 @@ export const AGE_BUCKETS = [
   { key: 'unknown', label: '미확인', maxMs: null },
 ];
 
+// 항구·전화번호는 단순 표시값이 아니라 서로 다른 사이트의 같은 배를 합치는 신원입니다.
+// 나머지는 화면에서 출조를 비교하고 원본 예약처로 이동할 때 필요한 값입니다.
+export const QUALITY_FIELDS = [
+  { key: 'port', label: '항구', section: 'identity' },
+  { key: 'phone', label: '전화번호', section: 'identity' },
+  { key: 'departAt', label: '출항시각', section: 'display' },
+  { key: 'price', label: '승선료', section: 'display' },
+  { key: 'seatsTotal', label: '정원', section: 'display' },
+  { key: 'url', label: '원본 링크', section: 'display' },
+];
+
 // 더피싱(상세)는 수집 방식이지 별도 플랫폼이 아닙니다. 커버리지에서는 더피싱 하나로 셉니다.
 export function platformFamily(site) {
   return platformOf(site).label.replace(/\(상세\)$/, '');
@@ -73,8 +84,43 @@ export function collectMetrics(registry, data, now = new Date()) {
     trips: sum.trips + row.trips,
   }), { sites: 0, success: 0, failed: 0, held: 0, uncollected: 0, trips: 0 }));
 
-  return { generatedAt: data.generatedAt ?? null, platforms, totals, checkedAt };
+  return {
+    generatedAt: data.generatedAt ?? null,
+    platforms,
+    totals,
+    checkedAt,
+    quality: collectQuality(data.trips ?? []),
+  };
 }
+
+export function collectQuality(trips) {
+  const fields = QUALITY_FIELDS.map((field) => {
+    const missing = trips.filter((trip) => missingValue(trip, field.key));
+    const counts = new Map();
+    for (const trip of missing) {
+      if (trip.siteId) counts.set(trip.siteId, (counts.get(trip.siteId) ?? 0) + 1);
+    }
+    const siteCounts = [...counts].map(([siteId, trips]) => ({ siteId, trips }))
+      .sort((a, b) => b.trips - a.trips || a.siteId.localeCompare(b.siteId, 'ko'));
+    return {
+      ...field,
+      trips: missing.length,
+      sites: siteCounts.length,
+      siteIds: siteCounts.map(({ siteId }) => siteId),
+      siteCounts,
+    };
+  });
+
+  return { trips: trips.length, fields };
+}
+
+function missingValue(trip, key) {
+  // 합쳐진 출조는 대표 링크가 없어도 다른 출처 링크가 남아 있으면 예약처로 갈 수 있습니다.
+  if (key === 'url' && trip.sources?.some((source) => hasValue(source.url))) return false;
+  return !hasValue(trip[key]);
+}
+
+const hasValue = (value) => value !== null && value !== undefined && value !== '';
 
 /**
  * 실패와 보류는 다릅니다. 보류는 연달아 timeout이 난 곳을 러너가 일부러 안 두드린 것이라
@@ -126,7 +172,28 @@ export function formatMetrics(metrics) {
     ...rows.map(line),
     '',
     `값을 확인한 때: ${ages}`,
+    '',
+    ...formatQuality(metrics.quality),
   ].join('\n');
+}
+
+function formatQuality(quality) {
+  const lines = [`데이터 품질: 현재 출조 ${quality.trips}건 기준`];
+  const sections = [
+    ['identity', '합치기 신원 (registry 우선)'],
+    ['display', '일반 표시·예약 정보'],
+  ];
+
+  for (const [key, label] of sections) {
+    lines.push(label);
+    for (const field of quality.fields.filter((candidate) => candidate.section === key)) {
+      lines.push(`  ${field.label}: 누락 출조 ${field.trips}건 · 선사 ${field.sites}곳`);
+      const first = field.siteCounts.slice(0, 10).map(({ siteId, trips }) => `${siteId}(${trips}건)`);
+      const rest = field.siteCounts.length - first.length;
+      lines.push(`    우선 id: ${first.length ? first.join(', ') : '-'}${rest ? ` 외 ${rest}곳` : ''}`);
+    }
+  }
+  return lines;
 }
 
 const percent = (value) => value === null ? '-' : `${(value * 100).toFixed(1)}%`;

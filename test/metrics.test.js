@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { collectMetrics, formatMetrics, platformFamily } from '../core/metrics.js';
+import { collectMetrics, collectQuality, formatMetrics, platformFamily } from '../core/metrics.js';
 
 const registry = [
   { id: 'sun', adapter: 'sunsang24' },
@@ -106,4 +106,48 @@ test('실패한 곳은 시도 시각이 아니라 그 값이 언제 것인지로
 test('직전 성공 기록이 없는 실패는 시도 시각으로 센다', () => {
   const result = collectMetrics(registry, data, NOW);
   assert.equal(result.checkedAt.within6h, 1, '한 번도 성공한 적 없으면 그거라도 씁니다');
+});
+
+test('품질 필드별 누락 출조와 고유 선사 id를 센다', () => {
+  const quality = collectQuality([
+    { siteId: 'sun', port: '대천항', phone: null, departAt: '05:00', price: 100000, seatsTotal: 20, url: 'https://sun.example' },
+    { siteId: 'fish', port: null, phone: null, departAt: null, price: null, seatsTotal: null, url: null },
+    { siteId: 'fish', port: null, phone: '010-0000-0000', departAt: null, price: 0, seatsTotal: 0, url: '' },
+  ]);
+
+  assert.equal(quality.trips, 3);
+  assert.deepEqual(quality.fields.map(({ key, trips, sites, siteIds }) => ({ key, trips, sites, siteIds })), [
+    { key: 'port', trips: 2, sites: 1, siteIds: ['fish'] },
+    { key: 'phone', trips: 2, sites: 2, siteIds: ['fish', 'sun'] },
+    { key: 'departAt', trips: 2, sites: 1, siteIds: ['fish'] },
+    { key: 'price', trips: 1, sites: 1, siteIds: ['fish'] },
+    { key: 'seatsTotal', trips: 1, sites: 1, siteIds: ['fish'] },
+    { key: 'url', trips: 2, sites: 1, siteIds: ['fish'] },
+  ]);
+  assert.deepEqual(quality.fields.find((field) => field.key === 'phone').siteCounts, [
+    { siteId: 'fish', trips: 1 },
+    { siteId: 'sun', trips: 1 },
+  ]);
+});
+
+test('합쳐진 출조는 어느 출처든 원본 링크가 있으면 링크 누락이 아니다', () => {
+  const quality = collectQuality([{
+    siteId: 'sun', url: null,
+    sources: [{ siteId: 'sun', url: null }, { siteId: 'fish', url: 'https://fish.example/reserve' }],
+  }]);
+  const link = quality.fields.find((field) => field.key === 'url');
+
+  assert.equal(link.trips, 0);
+  assert.deepEqual(link.siteIds, []);
+});
+
+test('사람이 읽는 품질 표는 합치기 신원과 일반 정보를 나누고 id를 보여준다', () => {
+  const text = formatMetrics(collectMetrics(registry, {
+    ...data,
+    trips: [{ siteId: 'fish', port: null, phone: null, departAt: null, price: null, seatsTotal: null, url: null }],
+  }, NOW));
+
+  assert.match(text, /데이터 품질: 현재 출조 1건 기준/);
+  assert.match(text, /합치기 신원 \(registry 우선\)[\s\S]*항구: 누락 출조 1건 · 선사 1곳[\s\S]*우선 id: fish\(1건\)/);
+  assert.match(text, /일반 표시·예약 정보[\s\S]*출항시각: 누락 출조 1건 · 선사 1곳/);
 });
