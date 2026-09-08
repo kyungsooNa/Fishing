@@ -80,7 +80,7 @@ export async function runAll({
     if (!only && inTimeoutBackoff(prevStatus, timeoutBackoffMs, now)) {
       failed.add(site.id);
       const kept = (prevBySite.get(site.id) ?? []).map((t) => refreshKeptTrip(site, t));
-      const retryAt = new Date(Date.parse(prevStatus.at) + timeoutBackoffMs).toISOString();
+      const retryAt = new Date(Date.parse(prevStatus.at) + backoffMsFor(prevStatus, timeoutBackoffMs)).toISOString();
       const error = `${baseTimeoutError(prevStatus.error)} — 최근 timeout이라 ${retryAt}까지 재시도 보류`;
       tripsById.set(site.id, kept);
       statusById.set(site.id, {
@@ -105,16 +105,20 @@ export async function runAll({
     } catch (err) {
       failed.add(site.id);
       const kept = (prevBySite.get(site.id) ?? []).map((t) => refreshKeptTrip(site, t));
+      const error = describeError(err).slice(0, 300);
+      // 연달아 timeout이면 다음 대기가 길어집니다. 다른 이유로 실패했으면 세지 않습니다.
+      const streak = isTimeoutError(error) ? timeoutStreakOf(prevStatus) + 1 : 0;
       tripsById.set(site.id, kept);
       statusById.set(site.id, {
         ok: false,
         at,
-        error: describeError(err).slice(0, 300),
+        error,
         count: kept.length,
         keptFrom: prev.sites?.[site.id]?.at ?? prev.generatedAt ?? null,
+        ...(streak ? { timeoutStreak: streak } : {}),
         ...meta(site),
       });
-      console.warn(`  ${site.id.padEnd(14)} 실패: ${describeError(err).slice(0, 300)}`);
+      console.warn(`  ${site.id.padEnd(14)} 실패: ${error}`);
     }
   };
 
@@ -196,12 +200,34 @@ function defaultTimeoutBackoffHours() {
   return process.env.GITHUB_ACTIONS === 'true' ? 6 : 0;
 }
 
-function inTimeoutBackoff(status, backoffMs, now) {
-  if (!backoffMs || !status || status.ok !== false) return false;
-  if (!/timeout|timed out|안에 응답/i.test(String(status.error ?? ''))) return false;
+const isTimeoutError = (error) => /timeout|timed out|안에 응답/i.test(String(error ?? ''));
+
+// 연달아 몇 번 timeout이 났는지. 성공했거나 다른 이유로 실패했으면 0부터 다시 셉니다.
+function timeoutStreakOf(status) {
+  if (!status || status.ok !== false || !isTimeoutError(status.error)) return 0;
+  return Math.max(1, Number(status.timeoutStreak) || 1);
+}
+
+// timeout은 대개 잠깐입니다 — 상대가 잠시 막았다가 풉니다. 더피싱 111곳이 한꺼번에
+// 죽었다가 재시도하면 그대로 살아났습니다. 그런데 한 번 막힐 때마다 상한(6시간)을
+// 통째로 쉬면 매시간 도는 수집이 5~6회 헛돕니다. 그래서 처음엔 1시간만 쉬고, 연달아
+// 또 timeout이면 2·4시간으로 늘려 상한에서 멈춥니다 — 잠깐 막힌 곳은 금방 돌아오고,
+// 정말 죽은 곳은 매시간 두드리지 않습니다.
+const FIRST_BACKOFF_MS = 60 * 60 * 1000;
+
+function backoffMsFor(status, maxMs) {
+  const streak = Math.max(1, timeoutStreakOf(status));
+  // 2의 거듭제곱은 금방 커집니다. 지수부터 묶어 두고 상한으로 자릅니다.
+  return Math.min(FIRST_BACKOFF_MS * 2 ** Math.min(streak - 1, 20), maxMs);
+}
+
+function inTimeoutBackoff(status, maxMs, now) {
+  if (!maxMs || !status || status.ok !== false) return false;
+  if (!isTimeoutError(status.error)) return false;
   const lastTried = Date.parse(status.at ?? '');
   const nowMs = Number(now);
-  return Number.isFinite(lastTried) && Number.isFinite(nowMs) && nowMs >= lastTried && nowMs - lastTried < backoffMs;
+  if (!Number.isFinite(lastTried) || !Number.isFinite(nowMs) || nowMs < lastTried) return false;
+  return nowMs - lastTried < backoffMsFor(status, maxMs);
 }
 
 function baseTimeoutError(error) {
