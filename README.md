@@ -55,7 +55,7 @@ node debug.js akbari              # 한 곳만 돌려보기
 node debug.js akbari --dump       # 원본 HTML을 tmp/ 에 저장
 node debug.js akbari --peek       # 페이지가 어떻게 생겼는지 요약 (로그로)
 node collect.js                   # 전체
-node metrics.js                   # 플랫폼별 사이트·성공률·출조 수·확인 시각
+node metrics.js                   # 플랫폼별 사이트·성공률·출조 수·값의 나이
 npm test                          # 파서·수집 회귀 확인 (네트워크 불필요)
 npm run serve                     # http://localhost:8080 (관리는 /admin.html)
 ```
