@@ -849,6 +849,9 @@ test('targets: 진단 도구가 어댑터와 같은 주소를 본다', async () 
   const t = fishing.targets({ url: 'https://raraho.kr/m/index.php?mid=bk' });
   assert.equal(t[0], 'https://raraho.kr/m/', 'index 방식은 메인 요약을 본다');
   assert.match(t[1], /mid=bk&year=/, 'detail 방식 주소도 같이 보여준다');
+  // 주소의 날짜가 예약판을 실제로 옮기는지 peek으로 견주려면 다른 날짜가 하나 더 필요합니다.
+  assert.notEqual(t[2], t[1], '오늘과 일주일 뒤를 같이 봅니다');
+  assert.match(t[2], /mid=bk&year=/);
 
   const generic = await import('../adapters/generic.js');
   assert.deepEqual(generic.targets({ url: 'http://uijiho.com/' }), ['http://uijiho.com/']);

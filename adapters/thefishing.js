@@ -12,6 +12,7 @@ import * as cheerio from 'cheerio';
 import { fetchHtml } from '../core/fetcher.js';
 import { makeTrip, toDate, tripTimeRange, toTide } from '../core/schema.js';
 import { matchBoatName } from './_rows.js';
+import { kstDate } from '../core/when.js';
 
 const SPECIES = [
   '주꾸미', '쭈꾸미', '갑오징어', '한치', '문어', '광어', '우럭', '참돔', '감성돔',
@@ -376,7 +377,13 @@ function dayUrl(site, date) {
 
 const squash = (s) => String(s ?? '').replace(/\s+/g, ' ').trim();
 
-/** 이 어댑터가 실제로 받아오는 주소. index 방식이 기본이라 메인 요약이 먼저입니다. */
+/**
+ * 이 어댑터가 실제로 받아오는 주소. index 방식이 기본이라 메인 요약이 먼저입니다.
+ *
+ * 날짜가 붙은 주소를 **오늘과 일주일 뒤 두 개** 보여줍니다. 이 사이트의 예약판은 요청한
+ * 날짜부터 며칠치를 이어서 그리는데, peek으로 둘을 견줘 보면 주소의 날짜가 실제로 판을
+ * 옮기는지 바로 보입니다 — 출조마다 제 날짜 주소를 붙이는 근거가 그것입니다.
+ */
 export function targets(site) {
-  return [indexUrl(site.url), detailUrl(site.url, new Date())];
+  return [indexUrl(site.url), detailUrl(site.url, kstDate(0)), detailUrl(site.url, kstDate(7))];
 }
