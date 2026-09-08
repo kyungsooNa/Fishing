@@ -74,7 +74,6 @@
   a { color: var(--accent); }
   .empty { padding: 30px; text-align: center; color: var(--muted); }
   .views { display: flex; gap: 6px; margin-bottom: 10px; align-items: center; }
-  .views a { margin-left: auto; font-size: 13px; }
   .views button { padding: 6px 14px; border: 1px solid var(--line); border-radius: 7px;
                   background: var(--card); color: var(--muted); font: inherit; font-size: 14px; cursor: pointer; }
   .views button.on { color: var(--fg); font-weight: 600; border-color: var(--muted); }
@@ -146,7 +145,6 @@
 
     .views { margin: 10px 12px 8px; }
     .views button { border-radius: 999px; padding: 6px 13px; }
-    .views a { font-size: 12px; }
     #map { height: 70vh; min-height: 420px; margin: 0 10px; border-radius: 14px; }
     .maphint { margin: 8px 12px; }
     .pager { flex-wrap: nowrap; margin: 8px 12px; overflow-x: auto; scrollbar-width: none; }
@@ -212,7 +210,7 @@
 <body>
 <div class="wrap">
   <h1>출조 찾기</h1>
-  <div class="sub" id="meta">불러오는 중…</div>
+  <div class="sub"><a href="admin.html">시스템 관리 →</a> · <span id="meta">불러오는 중…</span></div>
   <div class="sub" id="monitor-status" role="status">전체 목록은 약 60분 주기로 수집합니다. 관심 출조 감시는 로컬 서버에서 사용할 수 있습니다.</div>
   <details id="watch-panel" hidden><summary>감시 중인 출조 관리</summary><div id="watch-list" class="status"></div></details>
   <details id="alert-panel" hidden><summary>내가 받은 알림</summary><div id="alert-list" class="status"></div></details>
@@ -240,7 +238,6 @@
   <div class="views">
     <button id="view-table" class="on">표</button>
     <button id="view-map">지도</button>
-    <a href="admin.html">시스템 관리 →</a>
   </div>
 
   <div id="map" hidden></div>

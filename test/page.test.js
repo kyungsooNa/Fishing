@@ -21,6 +21,16 @@ test('스크립트가 쓰는 요소가 화면에 다 있다', () => {
   assert.deepEqual(missing, [], 'id가 바뀌면 그 부분이 조용히 안 돕니다');
 });
 
+test('현황판과 시스템 관리의 이동 링크는 제목 아래 같은 위치에 있다', async () => {
+  const admin = await readFile('docs/admin.html', 'utf8');
+  assert.match(html,
+    /<h1>출조 찾기<\/h1>\s*<div class="sub"><a href="admin\.html">시스템 관리 →<\/a> · <span id="meta">/);
+  assert.match(admin,
+    /<h1>시스템 관리<\/h1>\s*<div class="sub"><a href="index\.html">← 현황판으로<\/a> · <span id="meta">/);
+  assert.doesNotMatch(html, /<div class="views">[\s\S]*?<a href="admin\.html">/,
+    '시스템 관리 링크가 표·지도 버튼 옆에 남아 있으면 두 화면의 위치가 다시 달라집니다');
+});
+
 test('주요 필터는 다중 선택 메뉴다', () => {
   for (const id of ['f-platform', 'f-site', 'f-region', 'f-port', 'f-species', 'f-session', 'f-date']) {
     assert.match(html, new RegExp(`<details class="multi" id="${id}"[\\s\\S]*?<div class="multi-menu"></div>`));
