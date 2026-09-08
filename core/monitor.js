@@ -9,6 +9,7 @@ import { findOpenings } from './diff.js';
 import { tripKey } from './schema.js';
 import { platformOf } from './platform.js';
 import { notify } from './notify.js';
+import { alertRecords, appendAlerts } from './alerts.js';
 import { loadPorts, usedPorts } from './ports.js';
 
 export const FULL_MS = 60 * 60 * 1000;
@@ -16,7 +17,7 @@ export const WATCH_MS = 3 * 60 * 1000;
 
 export function createMonitor({
   registryPath = 'sites/registry.json', dataPath = 'docs/data.json',
-  statePath = 'tmp/monitor.json', collect = collectSite, send = notify,
+  statePath = 'tmp/monitor.json', collect = collectSite, send = notify, writeAlerts = appendAlerts,
   clock = Date.now, readRegistry = () => loadRegistry(registryPath),
 } = {}) {
   let base, ports = {}, sites = [], watches = [], records = {}, timer, stopped = false;
@@ -103,6 +104,14 @@ export function createMonitor({
     return status();
   }
 
+  async function record(openings, before, at, result, siteId) {
+    try {
+      await writeAlerts(alertRecords({ openings, at, since: { [siteId]: before }, result }));
+    } catch (err) {
+      addLog(`알림 이력 기록 실패: ${err.message}`);
+    }
+  }
+
   async function collectOne(site) {
     const old = records[site.id];
     const attempted = clock();
@@ -117,8 +126,12 @@ export function createMonitor({
       addLog(`${site.name ?? site.id}: ${trips.length}건 확인${openings.length ? ` · 취소석/자리 증가 ${openings.length}건` : ''}`);
       await persist();
       if (openings.length) {
-        try { await send(openings); }
-        catch (err) { addLog(`알림 실패: ${err.message}`); }
+        // 관심 출조는 3분마다 봅니다. 그 주기가 실제로 값어치가 있는지는 여기 남는
+        // 기록으로만 확인할 수 있습니다(node alerts.js) — 보냈든 못 보냈든 남깁니다.
+        let result = null;
+        try { result = await send(openings); }
+        catch (err) { addLog(`알림 실패: ${err.message}`); result = { attempted: [], sent: [], failed: [{ channel: '전체', error: err.message }] }; }
+        await record(openings, old?.status?.at ?? null, at, result, site.id);
       }
     } catch (err) {
       const previous = old?.status ?? base.sites[site.id];

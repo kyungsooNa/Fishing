@@ -150,7 +150,9 @@ export async function runAll({
   const data = { generatedAt: startedAt.toISOString(), sites: status, ports: places, trips };
 
   if (!dryRun) await save(data, dataPath);
-  return { data, openings, failed: [...failed] };
+  // prevSites는 "그 사이트를 직전에 확인한 시각"입니다. 취소석을 얼마나 빨리 잡았는지는
+  // 그 시각과 이번 시각 사이의 폭으로만 알 수 있어서(core/alerts.js) 같이 돌려줍니다.
+  return { data, openings, failed: [...failed], prevSites: prev.sites ?? {} };
 }
 
 // 오늘 이전과 수집 범위 밖의 날짜를 떨궈냅니다. 기준은 한국 날짜입니다.
