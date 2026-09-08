@@ -461,6 +461,22 @@ test('표가 옆으로 삐져나가지 않게 긴 이름 칸만 줄이 갈린다
   assert.ok(!/th, td \{[^}]*white-space: nowrap/.test(html), '칸 전체에 nowrap을 걸면 안 됩니다');
   assert.match(html, /th, td\.nowrap, td\.num, td\.starcell, td\.watchcell \{ white-space: nowrap; \}/);
   // 날짜·운항·구분·상태는 갈리면 읽기 나쁩니다. 선사·배·항구·어종에서 폭을 법니다.
-  assert.match(inline, /if \(i <= 2 \|\| i === 7\) td\.className = 'nowrap';/);
+  assert.match(inline, /if \(i <= 2 \|\| i === 7\) td\.classList\.add\('nowrap'\);/);
   assert.match(inline, /watchCell\.className = 'watchcell';/);
+});
+
+test('모바일에서는 출조 한 건이 사진형 식별 타일을 둔 카드로 보인다', () => {
+  assert.match(html, /@media \(max-width: 720px\)/);
+  assert.match(html, /tbody tr\.triprow \{[^}]*display: grid;[^}]*grid-template-areas:/s);
+  assert.match(html, /"thumb boat state"[\s\S]*"thumb port watch"/);
+  assert.match(html, /\.boatmark \{ display: flex;/);
+  assert.match(inline, /tr\.className = 'triprow';/);
+  assert.match(inline, /boatMark\.textContent = \(t\.boat \?\? '배'\)/);
+  assert.match(inline, /starCell\.append\(boatMark, star\);/);
+});
+
+test('모바일 필터는 가로 칩이고 선택된 값이 눈에 띈다', () => {
+  assert.match(html, /\.filters \{ position: sticky;[^}]*flex-wrap: nowrap;[^}]*overflow-x: auto;/s);
+  assert.match(html, /\.multi\[data-selected="1"\] summary/);
+  assert.match(inline, /control\.dataset\.selected = checked\.length \? '1' : '0';/);
 });
