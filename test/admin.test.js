@@ -465,3 +465,35 @@ test('로컬 관리자는 예전 그대로 세 겹을 다 통과해야 한다', 
     'Host가 다르면 DNS 리바인딩입니다');
   assert.equal(apiAccess(req({ ip: '::1', headers: { 'x-admin': '1' } }), '/api/sites'), 'admin');
 });
+
+// 알림 이력 API도 사람마다 나뉩니다. 관리 API와 달리 밖에서도 열 수 있는 길이라
+// (WATCH_PUBLIC) 특히 남의 것이 새지 않아야 합니다.
+test('알림 이력은 내 감시가 잡은 것만 준다', async () => {
+  const alerts = [
+    // 'token-0123456789abcdef'의 해시입니다(core/watchers.js).
+    { at: '2026-09-08T03:00:00.000Z', boat: '내배', watchers: ['3282c594dbdb33e245d995adcdafee3e'] },
+    { at: '2026-09-08T03:00:00.000Z', boat: '남의배', watchers: ['다른사람'] },
+  ];
+  await withServer(async ({ base, dir }) => {
+    const mine = await fetch(base + '/api/alerts', {
+      headers: { 'X-Admin': '1', 'X-Watcher': 'token-0123456789abcdef' },
+    }).then((r) => r.json());
+    assert.deepEqual(mine.alerts.map((a) => a.boat), ['내배']);
+
+    const stranger = await fetch(base + '/api/alerts', {
+      headers: { 'X-Admin': '1', 'X-Watcher': 'another-token-0123456789' },
+    }).then((r) => r.json());
+    assert.deepEqual(stranger.alerts, [], '남의 이력은 안 줍니다');
+
+    const anonymous = await fetch(base + '/api/alerts', { headers: { 'X-Admin': '1' } }).then((r) => r.json());
+    assert.deepEqual(anonymous.alerts, []);
+    void dir;
+  }, { alertsPath: await writeAlerts(alerts) });
+});
+
+async function writeAlerts(records) {
+  const dir = await mkdtemp(join(tmpdir(), 'alerts-api-'));
+  const path = join(dir, 'alerts.jsonl');
+  await writeFile(path, records.map((r) => JSON.stringify(r)).join('\n') + '\n');
+  return path;
+}

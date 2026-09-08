@@ -60,7 +60,7 @@ export function rememberSent(sent, openings, { now = Date.now(), withinMs = REPE
  * 알림거리 하나를 기록 한 줄로. `since`는 그 사이트를 직전에 확인한 시각입니다 —
  * 없으면(첫 수집) 지연을 계산할 수 없으므로 null로 두고 분포에서도 뺍니다.
  */
-export function alertRecords({ openings = [], at = new Date(), since = {}, result = null } = {}) {
+export function alertRecords({ openings = [], at = new Date(), since = {}, result = null, ownersOf = null } = {}) {
   const atIso = new Date(at).toISOString();
   const notify = notifyOf(result);
 
@@ -80,6 +80,10 @@ export function alertRecords({ openings = [], at = new Date(), since = {}, resul
       before: opening.before ?? null,
       after: opening.seatsLeft ?? null,
       url: opening.url ?? null,
+      urlDated: Boolean(opening.urlDated),
+      // 누구의 감시가 잡은 소식인가. 이력 화면이 이걸로 나눕니다 — 남의 알림이 내 화면에
+      // 뜨면 감시 목록을 나눠 둔 뜻이 없습니다(core/watchers.js). 저장되는 건 이미 해시입니다.
+      watchers: ownersOf ? ownersOf(opening) : [],
       notify,
     };
   });
@@ -119,6 +123,12 @@ export async function readAlerts(path = ALERTS_PATH) {
     try { records.push(JSON.parse(line)); } catch { broken += 1; }
   }
   return { records, broken };
+}
+
+/** 그 사람의 감시가 잡은 것만. 이력에 주인이 안 적힌 옛 기록은 아무에게도 안 보입니다. */
+export function alertsFor(records, watcherId, limit = 30) {
+  if (!watcherId) return [];
+  return records.filter((r) => (r.watchers ?? []).includes(watcherId)).slice(-limit).reverse();
 }
 
 /**

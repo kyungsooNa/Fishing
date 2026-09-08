@@ -376,3 +376,17 @@ test('알림이 실패해도 3분 뒤에 같은 소식을 또 보내지 않는�
   assert.equal(f.alerts.length, 1, '실패한 것도 이력에는 남습니다');
   assert.equal(f.alerts[0].notify.failed[0].error, 'offline');
 });
+
+test('알림 이력에 누구의 감시였는지 남는다', async () => {
+  let seats = 0;
+  const f = await fixture({ collect: async () => [trip('a', seats)], send: async () => ({ attempted: [], sent: [], failed: [] }) });
+  await f.monitor.setWatch(tripKey(trip()), true, ME);
+  await f.monitor.setWatch(tripKey(trip()), true, YOU);   // 같은 출조를 둘이 봅니다
+  await f.monitor.tick(); await f.monitor.idle();
+
+  seats = 2; f.advance(WATCH_MS);
+  await f.monitor.tick(); await f.monitor.idle();
+
+  assert.equal(f.alerts.length, 1);
+  assert.deepEqual(f.alerts[0].watchers.sort(), [ME, YOU].sort(), '둘 다의 화면에 떠야 합니다');
+});

@@ -200,6 +200,7 @@
   <div class="sub" id="meta">불러오는 중…</div>
   <div class="sub" id="monitor-status" role="status">전체 목록은 약 60분 주기로 수집합니다. 관심 출조 감시는 로컬 서버에서 사용할 수 있습니다.</div>
   <details id="watch-panel" hidden><summary>감시 중인 출조 관리</summary><div id="watch-list" class="status"></div></details>
+  <details id="alert-panel" hidden><summary>내가 받은 알림</summary><div id="alert-list" class="status"></div></details>
 
   <div class="filters">
     <details class="multi" id="f-platform" data-label="플랫폼" data-all="전체 플랫폼"><summary>전체 플랫폼</summary><div class="multi-menu"></div></details>
@@ -275,6 +276,59 @@ function freshness(t) {
   return { text: `${failed ? '수집 실패 · 직전 ' : ''}${age}`, stale: failed || minutes >= 30, failed };
 }
 
+/**
+ * 내 감시가 잡은 알림 이력. 알림이 갔는지 못 갔는지를 화면에서 확인할 수 있어야 합니다 —
+ * 텔레그램이 조용하면 "자리가 안 났다"인지 "알림이 막혔다"인지 알 수가 없습니다.
+ */
+async function loadAlerts() {
+  if (!WATCH_API) return;
+  try {
+    const r = await fetch('/api/alerts', { headers: watchHeaders() });
+    if (!r.ok) return;
+    const { alerts } = await r.json();
+    const list = $('alert-list');
+    list.textContent = '';
+    $('alert-panel').hidden = false;
+    $('alert-panel').querySelector('summary').textContent = `내가 받은 알림 ${alerts.length}건`;
+
+    if (!alerts.length) {
+      list.textContent = '아직 없습니다. 감시를 걸어두면 자리가 났을 때 여기에 남습니다.';
+      return;
+    }
+    for (const a of alerts) list.append(alertRow(a));
+  } catch { /* 서버가 없으면 조용히 접습니다 — reload()가 이미 알려줍니다 */ }
+}
+
+function alertRow(a) {
+  const row = document.createElement('div');
+  const when = a.at ? new Date(a.at).toLocaleString('ko-KR') : '시각 미상';
+  const what = a.reason === 'reopened' ? '취소석' : `자리 늘어남 ${a.before ?? '-'}→${a.after ?? '-'}`;
+  row.append(`${when} · ${a.date ?? ''} ${a.departAt ?? ''} ${a.boat ?? ''} · ${what} `);
+
+  if (a.url) {
+    const link = document.createElement('a');
+    link.href = a.url; link.target = '_blank'; link.rel = 'noopener noreferrer';
+    link.textContent = a.urlDated ? '예약 화면' : '일정표';
+    row.append(link, ' ');
+  }
+
+  // 알림이 실제로 갔는지가 이 화면의 핵심입니다.
+  const mark = document.createElement('span');
+  const failed = a.notify?.failed ?? [];
+  if (failed.length) {
+    mark.className = 'fail';
+    mark.textContent = `알림 실패 (${failed.map((f) => `${f.channel}: ${f.error}`).join(', ')})`;
+  } else if (a.notify?.sent?.length) {
+    mark.textContent = `알림 보냄 (${a.notify.sent.join(', ')})`;
+  } else {
+    mark.className = 'fail';
+    mark.textContent = a.notify?.skipped === 'no-credentials'
+      ? '알림 채널 미설정 — 화면에만 남았습니다' : '알림 못 보냄';
+  }
+  row.append(mark);
+  return row;
+}
+
 function monitorMessage() {
   if (!MONITOR) return;
   $('monitor-status').textContent = `전체 60분 · 관심 출조 ${MONITOR.watches.length}개, 3분 목표 · 서버가 켜져 있는 동안 감시` +
@@ -321,7 +375,7 @@ async function toggleWatch(t, button) {
       body: JSON.stringify({ key: watchKey(t), enabled: !watched(t) }) });
     const d = await r.json();
     if (!r.ok) throw new Error(d.error ?? '감시 설정 실패');
-    MONITOR = d; monitorMessage();
+    MONITOR = d; monitorMessage(); void loadAlerts();
     // 버튼 문구 하나 바뀌자고 표를 다시 그리지 않습니다. 감시 상태만 고쳐 그립니다.
     for (const row of ROW_BUTTONS) if (row.watch) paintWatch(row.watch, row.trip);
     button.disabled = false;   // 표를 다시 그리지 않으니 여기서 풀어줘야 합니다
@@ -943,17 +997,20 @@ async function reload() {
         WATCH_API = false;
         MONITOR = null;
         $('watch-panel').hidden = true;
+        $('alert-panel').hidden = true;
       } else if (!r.ok) {
         throw new Error('감시 서버 연결 실패');
       } else {
         MONITOR = await r.json();
         monitorMessage();
+        await loadAlerts();
       }
     }
   } catch {
     // 있던 서버가 죽은 경우입니다 — 이건 알려줘야 합니다.
     MONITOR = null;
     $('watch-panel').hidden = true;
+    $('alert-panel').hidden = true;
     $('monitor-status').textContent = '감시 서버에 연결할 수 없습니다. 서버 실행 상태를 확인하세요.';
   }
   await loadData();

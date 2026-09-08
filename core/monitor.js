@@ -138,9 +138,14 @@ export function createMonitor({
     return true;
   }
 
+  /** 이 소식을 누구의 감시가 잡았나. 주인 없는 옛 목록(legacy)이 잡은 것은 주인이 없습니다. */
+  const ownersOf = (opening) => Object.entries(watchers)
+    .filter(([, list]) => list.some((w) => tripKey(w) === tripKey(opening)))
+    .map(([id]) => id);
+
   async function record(openings, before, at, result, siteId) {
     try {
-      await writeAlerts(alertRecords({ openings, at, since: { [siteId]: before }, result }));
+      await writeAlerts(alertRecords({ openings, at, since: { [siteId]: before }, result, ownersOf }));
     } catch (err) {
       addLog(`알림 이력 기록 실패: ${err.message}`);
     }
