@@ -12,8 +12,49 @@
 
 import { appendFile, readFile, mkdir } from 'node:fs/promises';
 import { dirname } from 'node:path';
+import { tripKey } from './schema.js';
 
 export const ALERTS_PATH = process.env.ALERTS_PATH ?? 'tmp/alerts.jsonl';
+
+/** 같은 소식인지 가르는 열쇠 — 어느 출조가, 왜, 몇 자리로. */
+export function alertKey(opening) {
+  return [tripKey(opening), opening.reason ?? '', opening.seatsLeft ?? ''].join('|');
+}
+
+/** 한 번 알린 소식을 다시 안 알리는 기간. 이 시간이 지나면 사람에게는 새 소식입니다. */
+export const REPEAT_MS = 6 * 60 * 60 * 1000;
+
+/**
+ * 이미 보낸 소식을 걸러냅니다.
+ *
+ * 관심 출조는 3분마다 봅니다. 잔여석이 3→5로 늘었다가 누가 예약해서 3이 되고 또 취소돼
+ * 5가 되면, 화면에는 변화가 두 번이지만 **사람에게는 같은 소식**입니다. 그렇게 몇 번
+ * 울리고 나면 알림을 끕니다 — 그러면 정작 필요한 알림도 같이 잃습니다.
+ *
+ * 기준은 "같은 출조가 같은 이유로 같은 자리 수가 됐나"입니다. 자리가 더 늘어난 것(5→8)은
+ * 다른 소식이라 알립니다.
+ */
+export function dropRepeats(openings, sent, { now = Date.now(), withinMs = REPEAT_MS } = {}) {
+  const seen = sent ?? {};
+  const fresh = [];
+  const repeats = [];
+  for (const opening of openings) {
+    const last = seen[alertKey(opening)];
+    if (Number.isFinite(last) && now - last < withinMs) repeats.push(opening);
+    else fresh.push(opening);
+  }
+  return { fresh, repeats };
+}
+
+/** 보낸 기록을 남기고, 오래된 것은 버립니다 — 안 버리면 파일이 계속 자랍니다. */
+export function rememberSent(sent, openings, { now = Date.now(), withinMs = REPEAT_MS } = {}) {
+  const next = {};
+  for (const [key, at] of Object.entries(sent ?? {})) {
+    if (Number.isFinite(at) && now - at < withinMs) next[key] = at;
+  }
+  for (const opening of openings) next[alertKey(opening)] = now;
+  return next;
+}
 
 /**
  * 알림거리 하나를 기록 한 줄로. `since`는 그 사이트를 직전에 확인한 시각입니다 —

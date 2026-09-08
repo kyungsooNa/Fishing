@@ -9,7 +9,7 @@ import { findOpenings } from './diff.js';
 import { tripKey } from './schema.js';
 import { platformOf } from './platform.js';
 import { notify } from './notify.js';
-import { alertRecords, appendAlerts } from './alerts.js';
+import { alertRecords, appendAlerts, dropRepeats, rememberSent } from './alerts.js';
 import { loadWatchers, listOf, allWatches, setList, MAX_WATCHES } from './watchers.js';
 import { loadPorts, usedPorts } from './ports.js';
 
@@ -25,6 +25,8 @@ export function createMonitor({
   // legacy는 사용자 구분이 없던 시절의 목록입니다 — 주인을 모르니 아무에게나 주지 않고,
   // 로컬 화면이 처음 붙을 때 그 사람에게 넘깁니다(adopt).
   let base, ports = {}, sites = [], watchers = {}, legacy = [], records = {}, timer, stopped = false;
+  // 이미 보낸 소식. 3분마다 보니 같은 자리가 붙었다 떨어졌다 하면 계속 울립니다(core/alerts.js).
+  let sentAlerts = {};
   let saving = Promise.resolve(), ticking = false;
   const busy = new Set(), pending = new Set();
   const log = [];
@@ -41,7 +43,7 @@ export function createMonitor({
     return r.attempted + delay;
   };
   const persist = () => {
-    const text = JSON.stringify({ watchers, ...(legacy.length ? { watches: legacy } : {}), records });
+    const text = JSON.stringify({ watchers, ...(legacy.length ? { watches: legacy } : {}), records, sentAlerts });
     const operation = saving.catch(() => {}).then(async () => {
       await mkdir(dirname(statePath), { recursive: true });
       await writeFile(statePath + '.next', text);
@@ -59,6 +61,7 @@ export function createMonitor({
       const saved = JSON.parse(await readFile(statePath, 'utf8'));
       ({ watchers, legacy } = loadWatchers(saved));
       records = saved.records ?? {};
+      sentAlerts = rememberSent(saved.sentAlerts, [], { now: clock() });
     } catch { /* 첫 실행 */ }
   }
 
@@ -157,12 +160,25 @@ export function createMonitor({
       addLog(`${site.name ?? site.id}: ${trips.length}건 확인${openings.length ? ` · 취소석/자리 증가 ${openings.length}건` : ''}`);
       await persist();
       if (openings.length) {
-        // 관심 출조는 3분마다 봅니다. 그 주기가 실제로 값어치가 있는지는 여기 남는
-        // 기록으로만 확인할 수 있습니다(node alerts.js) — 보냈든 못 보냈든 남깁니다.
-        let result = null;
-        try { result = await send(openings); }
-        catch (err) { addLog(`알림 실패: ${err.message}`); result = { attempted: [], sent: [], failed: [{ channel: '전체', error: err.message }] }; }
-        await record(openings, old?.status?.at ?? null, at, result, site.id);
+        // 같은 소식을 다시 울리지 않습니다. 몇 번 헛울리면 사람이 알림을 꺼버리고,
+        // 그러면 정작 필요한 알림도 같이 잃습니다.
+        const { fresh, repeats } = dropRepeats(openings, sentAlerts, { now: clock() });
+        if (repeats.length) addLog(`이미 알린 소식 ${repeats.length}건은 건너뜁니다`);
+
+        if (fresh.length) {
+          // 관심 출조는 3분마다 봅니다. 그 주기가 실제로 값어치가 있는지는 여기 남는
+          // 기록으로만 확인할 수 있습니다(node alerts.js) — 보냈든 못 보냈든 남깁니다.
+          let result = null;
+          try { result = await send(fresh, undefined, new Date(clock())); }
+          catch (err) { addLog(`알림 실패: ${err.message}`); result = { attempted: [], sent: [], failed: [{ channel: '전체', error: err.message }] }; }
+          // 보낸 것으로 치는 기준은 "보냈다"가 아니라 "보내려 했다"입니다. 채널이 죽어
+          // 실패한 것을 3분 뒤에 또 시도하면 살아나는 순간 밀린 알림이 한꺼번에 옵니다.
+          sentAlerts = rememberSent(sentAlerts, fresh, { now: clock() });
+          // 여기서 한 번 더 저장합니다. 위(수집 직후)의 persist는 이 기록이 생기기 전이라,
+          // 알린 직후에 서버가 죽으면 다시 떴을 때 같은 소식을 또 보냅니다.
+          await persist();
+          await record(fresh, old?.status?.at ?? null, at, result, site.id);
+        }
       }
     } catch (err) {
       const previous = old?.status ?? base.sites[site.id];
