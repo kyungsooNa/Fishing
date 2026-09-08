@@ -16,6 +16,7 @@ import { extname, join, normalize } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { platformOf, effectiveMode } from './core/platform.js';
 import { createMonitor } from './core/monitor.js';
+import { watcherId } from './core/watchers.js';
 import { acquireCollectorLock } from './core/collector-lock.js';
 
 const TYPES = {
@@ -94,8 +95,10 @@ export function explainPullFailure(log, upstream = '', branch = 'main') {
  * 3. X-Admin 헤더가 있을 때만 — 다른 사이트의 스크립트가 보내면 커스텀 헤더 때문에
  *    프리플라이트가 뜨고, CORS 헤더를 안 주므로 브라우저가 막습니다(CSRF).
  */
+const isLoopback = (req) => LOOPBACK.includes(req.socket.remoteAddress ?? '');
+
 function adminAllowed(req) {
-  if (!LOOPBACK.includes(req.socket.remoteAddress ?? '')) return false;
+  if (!isLoopback(req)) return false;
   const host = (req.headers.host ?? '').replace(/:\d+$/, '');
   if (!LOCAL_HOSTS.includes(host)) return false;
   return req.headers['x-admin'] === '1';
@@ -154,15 +157,21 @@ export function createApp({
       return json(res, 403, { error: '로컬에서만 쓸 수 있습니다' });
     }
 
+    // 감시 목록은 사람마다 다릅니다. 브라우저가 보내는 토큰(X-Watcher)의 해시로 나눠 두고,
+    // 응답에는 그 사람 것만 싣습니다 — 목록만 봐도 누가 어느 배를 노리는지 드러납니다.
     if (path === '/api/monitor' && req.method === 'GET' && monitor) {
-      return json(res, 200, monitor.status());
+      const id = watcherId(req.headers['x-watcher']);
+      await monitor.adopt(id, { local: isLoopback(req) });
+      return json(res, 200, monitor.status(id));
     }
     if (path === '/api/monitor' && req.method === 'POST' && monitor) {
       const body = await readJsonBody(req);
       if (typeof body.key !== 'string' || typeof body.enabled !== 'boolean') {
         return json(res, 400, { error: '출조 키와 감시 여부가 필요합니다' });
       }
-      return json(res, 200, await monitor.setWatch(body.key, body.enabled));
+      const id = watcherId(req.headers['x-watcher']);
+      if (!id) return json(res, 400, { error: '감시를 걸려면 브라우저 식별자(X-Watcher)가 필요합니다' });
+      return json(res, 200, await monitor.setWatch(body.key, body.enabled, id, { local: isLoopback(req) }));
     }
 
     if (path === '/api/sites' && req.method === 'GET') {

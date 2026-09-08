@@ -291,10 +291,33 @@ function monitorMessage() {
   }
 }
 
+// 감시 목록은 사람마다 다릅니다. 계정을 만들지 않는 대신 브라우저가 토큰 하나를 만들어
+// 보관하고, 서버는 그 해시로 목록을 나눠 둡니다(core/watchers.js). 즐겨찾기·별점과 같은
+// 급의 개인 기록이라 로그인을 시키면 아무도 안 씁니다.
+// 토큰을 지우면 그 목록은 못 찾습니다 — 기기 간 동기화는 따로 볼 일입니다.
+const WATCHER_KEY = 'fishing:watcher';
+
+function watcherToken() {
+  try {
+    const saved = localStorage.getItem(WATCHER_KEY);
+    if (saved) return saved;
+    const made = (crypto.randomUUID?.() ?? String(Math.random()).slice(2) + Date.now());
+    localStorage.setItem(WATCHER_KEY, made);
+    return made;
+  } catch {
+    // 저장을 막아둔 브라우저. 이번 세션에서만 쓰는 토큰이라 새로고침하면 목록을 잃습니다.
+    WATCHER_FALLBACK ??= String(Math.random()).slice(2) + Date.now();
+    return WATCHER_FALLBACK;
+  }
+}
+
+let WATCHER_FALLBACK = null;
+const watchHeaders = (extra = {}) => ({ 'X-Admin': '1', 'X-Watcher': watcherToken(), ...extra });
+
 async function toggleWatch(t, button) {
   button.disabled = true;
   try {
-    const r = await fetch('/api/monitor', { method: 'POST', headers: { 'X-Admin': '1', 'Content-Type': 'application/json' },
+    const r = await fetch('/api/monitor', { method: 'POST', headers: watchHeaders({ 'Content-Type': 'application/json' }),
       body: JSON.stringify({ key: watchKey(t), enabled: !watched(t) }) });
     const d = await r.json();
     if (!r.ok) throw new Error(d.error ?? '감시 설정 실패');
@@ -910,7 +933,7 @@ function loadData() { return fetch('data.json?t=' + Date.now(), { cache: 'no-sto
 async function reload() {
   try {
     if (['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)) {
-      const r = await fetch('/api/monitor', { headers: { 'X-Admin': '1' } });
+      const r = await fetch('/api/monitor', { headers: watchHeaders() });
       if (!r.ok) throw new Error('감시 서버 연결 실패');
       MONITOR = await r.json();
       monitorMessage();

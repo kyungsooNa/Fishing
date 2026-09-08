@@ -10,6 +10,7 @@ import { tripKey } from './schema.js';
 import { platformOf } from './platform.js';
 import { notify } from './notify.js';
 import { alertRecords, appendAlerts } from './alerts.js';
+import { loadWatchers, listOf, allWatches, setList, MAX_WATCHES } from './watchers.js';
 import { loadPorts, usedPorts } from './ports.js';
 
 export const FULL_MS = 60 * 60 * 1000;
@@ -20,12 +21,17 @@ export function createMonitor({
   statePath = 'tmp/monitor.json', collect = collectSite, send = notify, writeAlerts = appendAlerts,
   clock = Date.now, readRegistry = () => loadRegistry(registryPath),
 } = {}) {
-  let base, ports = {}, sites = [], watches = [], records = {}, timer, stopped = false;
+  // 감시 목록은 사람(브라우저 토큰의 해시)마다 따로 둡니다(core/watchers.js).
+  // legacy는 사용자 구분이 없던 시절의 목록입니다 — 주인을 모르니 아무에게나 주지 않고,
+  // 로컬 화면이 처음 붙을 때 그 사람에게 넘깁니다(adopt).
+  let base, ports = {}, sites = [], watchers = {}, legacy = [], records = {}, timer, stopped = false;
   let saving = Promise.resolve(), ticking = false;
   const busy = new Set(), pending = new Set();
   const log = [];
   const addLog = (s) => { log.push(s); if (log.length > 100) log.shift(); };
-  const activeWatches = () => pruneOld(watches, 21, new Date(clock()));
+  // 수집 스케줄은 모두의 목록을 합쳐 정합니다. 한 번 받아 다 같이 나눠 씁니다.
+  const activeWatches = () => pruneOld(allWatches(watchers, legacy), 21, new Date(clock()));
+  const watchesOf = (id) => pruneOld(listOf(watchers, id), 21, new Date(clock()));
   const interested = (id) => activeWatches().some((w) => w.siteId === id);
   const interval = (id) => interested(id) ? WATCH_MS : FULL_MS;
   const nextAt = (s) => {
@@ -35,7 +41,7 @@ export function createMonitor({
     return r.attempted + delay;
   };
   const persist = () => {
-    const text = JSON.stringify({ watches, records });
+    const text = JSON.stringify({ watchers, ...(legacy.length ? { watches: legacy } : {}), records });
     const operation = saving.catch(() => {}).then(async () => {
       await mkdir(dirname(statePath), { recursive: true });
       await writeFile(statePath + '.next', text);
@@ -51,7 +57,7 @@ export function createMonitor({
     sites = await readRegistry();
     try {
       const saved = JSON.parse(await readFile(statePath, 'utf8'));
-      watches = Array.isArray(saved.watches) ? saved.watches : [];
+      ({ watchers, legacy } = loadWatchers(saved));
       records = saved.records ?? {};
     } catch { /* 첫 실행 */ }
   }
@@ -76,32 +82,57 @@ export function createMonitor({
       generatedAt: times.at(-1) ?? base.generatedAt };
   }
 
-  function status() {
+  /**
+   * `watcherId`가 있으면 **그 사람의 목록만** 돌려줍니다. 남의 감시는 응답에 싣지 않습니다 —
+   * 목록만 봐도 누가 어느 배를 노리는지 드러납니다.
+   */
+  function status(watcherId = null) {
     const enabled = sites.filter((s) => s.enabled !== false);
     const running = busy.size > 0 || enabled.some((s) => nextAt(s) <= clock());
     return {
-      watches: activeWatches(), fullMinutes: 60, watchMinutes: 3,
+      watches: watchesOf(watcherId), fullMinutes: 60, watchMinutes: 3,
       running, log: [...log], code: running ? null : 0,
       overdue: enabled.filter((s) => interested(s.id) && clock() > nextAt(s) + WATCH_MS).length,
       notificationConfigured: Boolean((process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID) || process.env.DISCORD_WEBHOOK),
     };
   }
 
-  async function setWatch(key, enabled) {
-    const existing = watches.find((w) => tripKey(w) === key);
+  async function setWatch(key, enabled, watcherId = null, { local = true } = {}) {
+    if (!watcherId) throw new Error('감시를 걸려면 브라우저 식별자가 필요합니다');
+    await adopt(watcherId, { local });
+    const mine = watchesOf(watcherId);
+    const existing = mine.find((w) => tripKey(w) === key);
     const trip = data().trips.find((t) => tripKey(t) === key);
     if (!existing && !trip) throw new Error('목록에 없는 출조입니다');
     const source = existing ?? trip;
     const ids = (trip?.sources ?? [source]).map((s) => s.siteId);
-    const next = activeWatches().filter((w) => !(ids.includes(w.siteId) && w.boat === source.boat &&
+    const next = mine.filter((w) => !(ids.includes(w.siteId) && w.boat === source.boat &&
       w.date === source.date && w.departAt === source.departAt));
     if (enabled) {
-      if (next.length + ids.length > 50) throw new Error('관심 출조는 최대 50개입니다');
+      // 상한은 사람마다 셉니다. 한 벌로 세면 남이 채워서 내가 못 겁니다.
+      if (next.length + ids.length > MAX_WATCHES) throw new Error(`관심 출조는 최대 ${MAX_WATCHES}개입니다`);
       for (const siteId of ids) next.push({ siteId, boat: source.boat, date: source.date, departAt: source.departAt });
     }
-    watches = next;
+    watchers = setList(watchers, watcherId, next);
     await persist();
-    return status();
+    return status(watcherId);
+  }
+
+  /**
+   * 사용자 구분이 없던 시절의 목록을 처음 붙은 사람에게 넘깁니다.
+   *
+   * 그때는 서버가 루프백 전용이라 그 목록의 주인은 이 PC를 쓰던 사람 하나뿐입니다.
+   * 그래서 **한 번만, 아직 아무 목록도 없는 사람에게만** 넘깁니다. 넘기고 나면 legacy는
+   * 비워져서 다음 사람은 못 가져갑니다. 서버를 바깥에 열기 전에 끝나는 일입니다.
+   */
+  async function adopt(watcherId, { local = true } = {}) {
+    // 바깥에서 온 요청에는 절대 넘기지 않습니다 — 남의 감시 목록을 통째로 가져가게 됩니다.
+    if (!local || !legacy.length || !watcherId || listOf(watchers, watcherId).length) return false;
+    watchers = setList(watchers, watcherId, legacy);
+    legacy = [];
+    addLog('사용자 구분이 없던 감시 목록을 이 브라우저로 옮겼습니다');
+    await persist();
+    return true;
   }
 
   async function record(openings, before, at, result, siteId) {
@@ -172,6 +203,6 @@ export function createMonitor({
   }
   async function stop() { stopped = true; clearInterval(timer); await Promise.allSettled([...pending]); await saving.catch(() => {}); }
   function requestFull() { for (const r of Object.values(records)) r.attempted = 0; }
-  return { init, data, status, setWatch, tick, start, stop, requestFull,
+  return { init, data, status, setWatch, adopt, tick, start, stop, requestFull,
     idle: () => Promise.allSettled([...pending]) };
 }
