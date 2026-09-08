@@ -212,6 +212,16 @@ test('관리 화면: 사이트가 300곳 가까이 되므로 쪽 나눔과 등�
   assert.match(inline, /DIRTY\.has\(site\.id\)/);
 });
 
+test('관리 화면: 사이트에 속한 배 이름도 보여준다', async () => {
+  const html = await readFile('docs/admin.html', 'utf8');
+
+  assert.match(html, /className = 'boatnames'/);
+  assert.match(html, /Object\.keys\(site\.boats \?\? \{\}\)/,
+    '로컬 registry의 배 이름을 사이트 행에 표시해야 합니다');
+  assert.match(html, /boatsBySite\[trip\.siteId\]/,
+    '읽기 전용 화면도 data.json 출조에서 배 이름을 복원해야 합니다');
+});
+
 // --- 최신화(git pull) + 재시작 ---
 //
 // 진짜 git을 부르면 테스트가 네트워크와 레포 상태를 타므로, 명령을 갈아끼워
