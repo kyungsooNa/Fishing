@@ -97,6 +97,9 @@ function mergeGroup(group) {
       siteName: t.siteName,
       url: t.url,
       seatsLeft: t.seatsLeft ?? null,
+      // 링크가 그 날짜로 바로 가는지는 사이트마다 다릅니다. 합친 줄에서는 출처마다
+      // 다를 수 있어서 여기까지 들고 옵니다 — 화면이 링크 옆에 그대로 표시합니다.
+      ...(t.urlDated ? { urlDated: true } : {}),
     })),
   };
 }

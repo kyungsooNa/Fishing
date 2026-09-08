@@ -538,3 +538,16 @@ test('출처마다 계열 배지를 달고, 잔여석이 갈리면 그 숫자도
   // 출처별 숫자를 보여줘야만 알 수 있습니다.
   assert.match(inline, /const split = sources\.length > 1 && new Set\(seats\)\.size > 1;/);
 });
+
+// 주소로 날짜를 지정할 수 있는 사이트는 그 날 예약 화면이 바로 열리고, 아닌 곳은 일정표
+// 한 장으로 갑니다. 누르기 전에 알아야 해서 링크 옆에 적습니다(TODO 2번).
+test('날짜로 못 가는 링크는 링크 옆에 그렇다고 적는다', () => {
+  assert.match(html, /\.srchint/);
+  assert.match(inline, /if \(!src\.urlDated && src\.url\)/);
+  assert.match(inline, /hint\.textContent = '일정표';/);
+  assert.match(inline, /주소로 날짜를 지정할 수 없습니다/);
+});
+
+test('합쳐지지 않은 줄도 출처 하나로 똑같이 그린다', () => {
+  assert.match(inline, /siteName: t\.siteName, url: t\.url, seatsLeft: t\.seatsLeft, urlDated: t\.urlDated/);
+});

@@ -505,6 +505,36 @@ test('diff: 취소석과 자리 늘어남만 알린다', () => {
   assert.equal(findOpenings(prev, next, new Set(['s'])).length, 0, '수집 실패한 사이트는 비교에서 뺀다');
 });
 
+// 한 요청에 일주일치가 오는데(windowDays 7) 받아온 주소를 그대로 붙이면 그 주의 첫 날짜로
+// 갑니다. 9월 8일 출조를 눌렀는데 9월 7일 예약판이 열렸습니다.
+test('thefishing: detail — 링크는 그 출조 날짜의 예약 화면으로 간다', () => {
+  const site = { id: 'x', name: 'X', adapter: 'thefishing', source: 'detail', url: 'https://x.thefishing.kr/index.php?mid=bk' };
+  const fetched = 'https://x.thefishing.kr/index.php?mid=bk&year=2026&month=9&day=7';
+  const html = `<div><h3>2026년 09월 09일, 수요일, 4물</h3><div>가호 운항시간 05:00~13:00 남은자리 3명</div></div>`;
+  const [trip] = parseDetail(site, html, fetched);
+
+  assert.equal(trip.date, '2026-09-09');
+  assert.match(trip.url, /year=2026&month=9&day=9/, '받아온 페이지가 아니라 그 출조의 날짜입니다');
+  assert.equal(trip.urlDated, true);
+});
+
+test('thefishing: detail — 주소를 못 만들면 받아온 주소를 그대로 쓴다', () => {
+  const site = { id: 'x', name: 'X', adapter: 'thefishing', source: 'detail', url: '주소아님' };
+  const html = `<div><h3>2026년 09월 09일, 수요일</h3><div>가호 운항시간 05:00~13:00 남은자리 3명</div></div>`;
+  const [trip] = parseDetail(site, html, 'https://x.thefishing.kr/index.php?mid=bk');
+
+  assert.equal(trip.url, 'https://x.thefishing.kr/index.php?mid=bk', '링크가 통째로 사라지면 안 됩니다');
+  assert.equal(trip.urlDated, undefined, '날짜로 간다고 말할 수는 없습니다');
+});
+
+test('thefishing: 날짜 문자열을 그대로 받아도 하루가 밀지 않는다', () => {
+  // new Date('2026-09-09')는 UTC 자정이라, 다시 읽으면 시간대에 따라 8일이 됩니다.
+  assert.equal(
+    detailUrl('https://x.thefishing.kr/index.php?mid=bk', '2026-09-09'),
+    detailUrl('https://x.thefishing.kr/index.php?mid=bk', new Date(2026, 8, 9)),
+  );
+});
+
 test('thefishing: 예약 주소에서 메인 요약과 날짜별 주소를 만든다', () => {
   const bk = 'https://www.eugeneho.kr/m/index.php?mid=bk';
   assert.equal(indexUrl(bk), 'https://www.eugeneho.kr/m/', 'index 방식은 예약모듈이 아니라 메인 요약을 봅니다');
@@ -593,6 +623,15 @@ test('merge: 같은 사이트의 시간 없는 그림자 행은 시간 있는 �
   assert.equal(out[0].departAt, '05:30', '알려진 출항시간은 보존합니다');
   assert.equal(out[0].seatsLeft, 4, '좌석은 더 유리한 쪽을 보존합니다');
   assert.equal(out[0].status, STATUS.OPEN);
+});
+
+test('merge: 출처마다 링크가 날짜로 가는지도 같이 들고 온다', () => {
+  const out = mergeDuplicates([
+    trip({ siteId: 'sunsang', url: 'https://sun/list', seatsLeft: 3 }),
+    { ...trip({ siteId: 'thefishing', url: 'https://fish/day=9', seatsLeft: 1 }), urlDated: true },
+  ]);
+  assert.equal(out.length, 1);
+  assert.deepEqual(out[0].sources.map((s) => Boolean(s.urlDated)), [false, true]);
 });
 
 test('merge: 같은 배라도 시간이 둘 다 있으면 다른 항차로 둔다', () => {

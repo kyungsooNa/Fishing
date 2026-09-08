@@ -202,12 +202,14 @@ export function parseSimpleDay(site, html, url) {
         seatsTotal: seats.total,
         port: pickNoticePort(site, rawText),
         url,
+        // 달력형은 주소로 날짜를 바꿔가며 받으므로(collectByDay) 이 주소가 곧 그 날짜입니다.
+        urlDated: true,
       });
       trips.push(trip);
     });
   });
 
-  return fillMissingSeatTotals(trips.length ? trips : parseRows(site, html, url));
+  return fillMissingSeatTotals(trips.length ? trips : parseRows(site, html, url, { urlDated: true }));
 }
 
 // 출조 한 덩어리인지. 배 이름만 있는 껍데기를 걸러냅니다.

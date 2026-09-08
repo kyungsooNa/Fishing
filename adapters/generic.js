@@ -19,10 +19,13 @@ import { kstDate } from '../core/when.js';
 export async function collect(site) {
   const trips = [];
 
+  // datePath로 하루씩 받는 사이트만 주소에 날짜가 들어 있습니다. 나머지는 일정표 한 장입니다.
+  const urlDated = Boolean(site.datePath);
+
   for (const [i, url] of pageUrls(site).entries()) {
     try {
       const html = await fetchHtml(url, { mode: site.mode ?? 'auto', waitFor: site.waitFor });
-      trips.push(...parseRows(site, html, url));
+      trips.push(...parseRows(site, html, url, { urlDated }));
     } catch (err) {
       if (i === 0) throw err;   // 첫 페이지가 죽으면 그 사이트는 못 읽는 겁니다
     }
