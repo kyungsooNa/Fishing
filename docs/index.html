@@ -510,23 +510,45 @@ function dayLabel(d) {
   return `${m}/${dd}(${WEEK[new Date(y, m - 1, dd).getDay()]})`;
 }
 
-// 조금 앞뒤로 물살이 죽는 며칠이 좋은 물때입니다. 12·13물부터 조금·무시를 지나
-// 1~4물까지 — 3·4물도 아직 사리로 넘어가기 전이라 같이 셉니다.
+// 조금 앞뒤로 물살이 죽는 며칠이 좋은 물때입니다. 12물부터 조금·무시를 지나 1~4물까지.
+//
+// **같은 날을 사이트마다 다르게 부릅니다.** 수집 결과를 날짜별로 훑어보면 이렇습니다
+// (2026-09-16 하루에 붙은 표기: `12물` 235건 · `한객기` 150건 · `13물` 108건).
+//
+//   9/16  12물 = 한객기      9/18  조금 = 14물
+//   9/17  13물 = 대객기      9/19  무시 = 15물
+//
+// 이름으로 부르는 곳과 숫자로 부르는 곳이 섞여 있고, 지역에 따라 하루씩 밀리기도 합니다
+// (같은 날 `3물`과 `4물`이 같이 나옵니다). 표기를 하나로 고쳐 쓰지는 않습니다 — 어느 쪽도
+// 틀린 게 아니고, 사이트가 그렇게 적어둔 것을 우리가 바꿔 보여줄 이유가 없습니다.
+//
+// 대신 **판단은 표기와 무관해야 합니다.** 안 그러면 같은 날인데 선사에 따라 배지가 붙었다
+// 안 붙었다 합니다 — 실제로 한객기·대객기·14물·15물이 그렇게 빠지고 있었습니다.
+const GOOD_TIDE_NAMES = new Set(['조금', '무시', '한객기', '대객기']);
+
 function isGoodTide(tide) {
   if (!tide) return false;
-  if (tide === '조금' || tide === '무시') return true;
+  if (GOOD_TIDE_NAMES.has(tide)) return true;
   const n = Number(String(tide).match(/^(\d{1,2})물$/)?.[1]);
-  return n === 12 || n === 13 || (n >= 1 && n <= 4);
+  return (n >= 12 && n <= 15) || (n >= 1 && n <= 4);
 }
 
 // 물때는 날짜별로 한 번만 모읍니다. 날짜 머리글마다 그 쪽 전체를 다시 훑으면
 // 한 쪽(3천 줄)을 그릴 때마다 2만 번씩 봅니다.
 function tidesByDate(rows) {
-  const map = new Map();
+  const counts = new Map();
   for (const t of rows) {
     if (!t.tide) continue;
-    if (!map.has(t.date)) map.set(t.date, new Set());
-    map.get(t.date).add(t.tide);
+    if (!counts.has(t.date)) counts.set(t.date, new Map());
+    const day = counts.get(t.date);
+    day.set(t.tide, (day.get(t.tide) ?? 0) + 1);
+  }
+  // 한 날에 표기가 여럿이면 **많이 쓰인 것부터** 보여줍니다. 그 날 대부분의 선사가 그렇게
+  // 부른다는 뜻이라, 사용자가 자기 물때표와 맞춰보기 쉽습니다. 소수 표기도 버리지는
+  // 않습니다 — 어느 쪽도 틀린 게 아닙니다.
+  const map = new Map();
+  for (const [date, day] of counts) {
+    map.set(date, new Set([...day.entries()].sort((a, b) => b[1] - a[1]).map(([tide]) => tide)));
   }
   return map;
 }

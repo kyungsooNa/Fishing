@@ -111,6 +111,7 @@ test('날짜별 물때는 한 번에 모은다', () => {
   ];
   const map = m.tidesByDate(rows);
   assert.deepEqual([...map.get('2026-09-07')], ['1물', '조금'], '같은 물때는 한 번만 적습니다');
+  // 위 rows는 1물 2건 · 조금 1건이라 많이 쓰인 순서가 그대로 나옵니다.
   assert.equal(map.has('2026-09-08'), false);
 
   assert.deepEqual(m.dayTideParts('2026-09-07', map.get('2026-09-07')),
@@ -134,18 +135,32 @@ test('좋은 물때는 날짜 줄에 배지로 표시한다', () => {
 
 // 어떤 물때가 좋은 물때인지는 글자를 찾아 확인하면 조건을 고칠 때마다 테스트도
 // 같이 고쳐야 해서 아무것도 못 잡습니다. 함수를 꺼내 값으로 확인합니다.
-test('좋은 물때는 조금 앞뒤 — 12·13물, 조금·무시, 1~4물', () => {
-  const start = inline.indexOf('function isGoodTide');
+function goodTide() {
+  const start = inline.indexOf('const GOOD_TIDE_NAMES');
   const end = inline.indexOf('function tidesByDate');
   assert.ok(start >= 0 && end > start, 'isGoodTide를 찾지 못했습니다');
-  const { isGoodTide } = new Function(`${inline.slice(start, end)}\nreturn { isGoodTide };`)();
+  return new Function(`${inline.slice(start, end)}\nreturn { isGoodTide };`)().isGoodTide;
+}
 
-  for (const t of ['조금', '무시', '12물', '13물', '1물', '2물', '3물', '4물']) {
+test('좋은 물때는 조금 앞뒤 — 12~15물, 조금·무시, 1~4물', () => {
+  const isGoodTide = goodTide();
+  for (const t of ['조금', '무시', '12물', '13물', '14물', '15물', '1물', '2물', '3물', '4물']) {
     assert.equal(isGoodTide(t), true, `${t}은 좋은 물때입니다`);
   }
-  for (const t of ['5물', '7물', '9물', '11물', '한객기', null, '']) {
+  for (const t of ['5물', '7물', '9물', '11물', null, '']) {
     assert.equal(isGoodTide(t), false, `${t}은 좋은 물때가 아닙니다`);
   }
+});
+
+// 같은 날을 사이트마다 다르게 부릅니다. 2026-09-16 하루에 12물 235건 · 한객기 150건 ·
+// 13물 108건이 같이 붙었습니다. 표기에 따라 배지가 붙었다 안 붙었다 하면 안 됩니다.
+test('이름으로 부르는 물때도 같은 날이면 같은 판단을 받는다', () => {
+  const isGoodTide = goodTide();
+  // 9/16 = 12물 = 한객기, 9/17 = 13물 = 대객기 (수집 결과에서 확인한 대응)
+  assert.equal(isGoodTide('한객기'), isGoodTide('12물'));
+  assert.equal(isGoodTide('대객기'), isGoodTide('13물'));
+  assert.equal(isGoodTide('조금'), isGoodTide('14물'));
+  assert.equal(isGoodTide('무시'), isGoodTide('15물'));
 });
 
 test('data.json은 화면이 기대하는 모양이다', async () => {
@@ -631,4 +646,20 @@ test('정렬 메뉴가 있고 바꾸면 다시 그린다', () => {
   }
   // 정렬은 보이는 날짜를 바꾸지 않으므로 첫 쪽으로 돌아가지 않습니다(필터와 다른 점).
   assert.match(inline, /\$\('f-sort'\)\.addEventListener\('change', \(\) => refresh\(\)\)/);
+});
+
+// 한 날에 표기가 여럿이면 그 날 대부분의 선사가 부르는 이름이 앞에 와야 자기 물때표와
+// 맞춰보기 쉽습니다. 소수 표기도 버리지 않습니다 — 어느 쪽도 틀린 게 아닙니다.
+test('한 날의 물때는 많이 쓰인 표기부터 보여준다', () => {
+  const start = inline.indexOf('function tidesByDate');
+  const end = inline.indexOf('function kstParts');
+  const src = `function dayLabel(d){return d;}\nfunction isGoodTide(){return false;}\n${inline.slice(start, end)}`;
+  const { tidesByDate } = new Function(`${src}\nreturn { tidesByDate };`)();
+
+  const rows = [
+    ...Array(3).fill({ date: '2026-09-16', tide: '한객기' }),
+    ...Array(5).fill({ date: '2026-09-16', tide: '12물' }),
+    { date: '2026-09-16', tide: '13물' },
+  ];
+  assert.deepEqual([...tidesByDate(rows).get('2026-09-16')], ['12물', '한객기', '13물']);
 });
