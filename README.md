@@ -58,6 +58,7 @@ node collect.js                   # 전체
 node metrics.js                   # 플랫폼별 사이트·성공률·출조 수·값의 나이
 node quality.js                   # 비어 있는 값 — 무엇부터 채워야 하나
 node alerts.js                    # 취소석을 얼마나 빨리 잡았나 · 알림이 실제로 갔나
+node robots.js <도메인>            # 그 사이트가 받아가도 된다고 했는지 (국내는 Actions에서)
 npm test                          # 파서·수집 회귀 확인 (네트워크 불필요)
 npm run serve                     # http://localhost:8080 (관리는 /admin.html)
 ```
