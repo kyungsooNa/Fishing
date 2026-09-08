@@ -28,6 +28,7 @@ dupes.js          같은 일정표를 두 번 긁고 있는 사이트를 찾습�
 metrics.js        플랫폼별 활성 사이트·성공률·출조 수 요약. 실패와 백오프 보류를 나눠 셉니다
 quality.js        비어 있는 값. 합치기를 막는 신원과 화면 표시를 나눠 셉니다
 alerts.js         취소석을 얼마나 빨리 잡았고 알림이 실제로 갔나. 이력을 읽어 요약합니다
+robots.js         그 사이트가 받아가도 된다고 했는지. 새 플랫폼 붙이기 전 관문입니다
 serve.js          docs/ 로컬 서빙 + 관리 API(/api/*). 루프백 전용, createApp()으로 테스트합니다
 docs/admin.html   시스템 관리 화면. 서버가 없으면(Pages) 읽기 전용으로 떨어집니다
 core/schema.js    통합 스키마 + 표기 정규화. 어댑터는 원문 텍스트만 넘기면 됩니다
@@ -37,6 +38,7 @@ core/diff.js      이전 결과와 비교해 "새로 난 자리"만 추출
 core/merge.js     같은 출조·같은 배 합치기 (신원은 이름+출항지+전화번호)
 core/dupes.js     같은 함대 일정표를 내보내는 사이트 찾기. 끌 수 있는 쪽을 골라줍니다
 core/quality.js   빈 칸 세기. 배 단위 신원, 어댑터별·사이트별 누락. 고칠 곳(registry/어댑터)까지
+core/robots.js    robots.txt 해석(RFC 9309). 못 받은 것은 허용으로 치지 않습니다
 core/platform.js  사이트 계열(선상24/더피싱/자체). 어댑터에서 자동
 core/when.js      날짜 기준. 러너가 UTC여도 전부 한국시간으로 셉니다
 core/ports.js     항구 좌표(지도용). sites/ports.json에서 읽습니다
