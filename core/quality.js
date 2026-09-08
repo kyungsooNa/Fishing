@@ -42,11 +42,21 @@ export function collectQuality(registry, data) {
     };
   });
 
+  const identity = identityGaps(trips);
+  // 항구를 채워야 하는 사이트가 어디를 보면 되는지. 막힌 배에 얽힌 곳만 추립니다 —
+  // 항구가 빈 사이트는 256곳인데 지금 당장 손해를 보는 것은 그중 일부입니다.
+  const blockedSites = new Set(identity.blocked.flatMap((b) => b.sites.filter((s) => !s.port).map((s) => s.siteId)));
+  const hints = [...blockedSites]
+    .map((id) => ({ siteId: id, hints: portHints(siteById.get(id)) }))
+    .filter((row) => row.hints.length)
+    .sort((a, b) => a.siteId.localeCompare(b.siteId));
+
   return {
     generatedAt: data.generatedAt ?? null,
     trips: trips.length,
     fields,
-    identity: identityGaps(trips),
+    portHints: hints,
+    identity,
     adapters: groupBy(trips, (trip) => siteById.get(trip.siteId)?.adapter ?? '미등록'),
     sites: groupBy(trips, (trip) => trip.siteId).map((row) => {
       const site = siteById.get(row.key);
@@ -120,6 +130,17 @@ function groupBy(trips, keyOf) {
     for (const field of FIELDS) if (!has(trip, field.key)) row.missing[field.key] += 1;
   }
   return [...groups.values()].sort((a, b) => b.trips - a.trips || String(a.key).localeCompare(String(b.key)));
+}
+
+/**
+ * `discover`가 note에 적어둔 출항지 후보. 값으로 채우지 못한 것들이라 **후보일 뿐입니다** —
+ * "공지사항"·"출조항" 같은 라벨 글자가 섞여 있고, 진짜 항구가 그 안에 없을 수도 있습니다.
+ * 그래서 여기서 registry를 고치지 않습니다. 사람이 페이지를 열어볼 때 어디를 볼지만 좁혀줍니다.
+ */
+export function portHints(site) {
+  const found = /출항지 후보:\s*([^:]*?)(?:\s+전화 후보:|$)/.exec(site?.note ?? '');
+  if (!found) return [];
+  return found[1].split(/[,·]/).map((s) => s.trim()).filter(Boolean);
 }
 
 /** 그 항목이 빠진 사이트 id — 다음에 손볼 곳을 그대로 집어낼 수 있게. */

@@ -63,6 +63,21 @@ if (identity.blocked.length) {
   console.log('\n  여러 사이트에 걸친 배 중 합치기가 막힌 것은 없습니다.');
 }
 
+// 항구가 빈 사이트는 수백 곳인데, 지금 당장 두 줄로 뜨게 만드는 곳은 그중 일부입니다.
+// 거기부터 채우면 화면이 바로 좋아집니다. 후보는 discover가 페이지에서 주운 글자라
+// **확인 전에는 값이 아닙니다** — 라벨 글자("공지사항", "출조항")가 섞여 있습니다.
+if (q.portHints.length) {
+  console.log(`\n■ 항구를 채우면 합쳐지는 곳 ${n(q.portHints.length)}곳 — 페이지를 열어 확인하세요`);
+  const width = Math.max(...q.portHints.map((h) => h.siteId.length));
+  for (const row of q.portHints.slice(0, argv.includes('--all') ? Infinity : 12)) {
+    console.log(`  ${row.siteId.padEnd(width)}  후보: ${row.hints.join(' · ')}`);
+  }
+  if (!argv.includes('--all') && q.portHints.length > 12) {
+    console.log(`  … 외 ${n(q.portHints.length - 12)}곳 (--all 로 전부)`);
+  }
+  console.log('  국내 도메인이 막혀 있으면 Actions 탭 → peek → Run workflow 에 id를 넣으세요.');
+}
+
 console.log('\n■ 빈 칸 (출조 기준)');
 printTable(
   ['항목', '고칠 곳', '빠짐', '비율', '선사'],
