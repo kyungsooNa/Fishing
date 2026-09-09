@@ -458,6 +458,19 @@ test('쪽 넘기는 막대는 표 위아래에 있고, 한 쪽뿐이면 숨는�
   assert.match(inline, /\$\('f-q'\)\.addEventListener\('input', queueSearch\)/);
 });
 
+test('날짜 머리글에서 그 날 출조만 접고 펼친다', () => {
+  assert.match(html, /\.daytoggle \{/);
+  assert.match(html, /tr\.triprow\[hidden\] \{ display: none !important; \}/,
+    '모바일 카드의 display:grid보다 hidden이 우선해야 합니다');
+  assert.match(inline, /const COLLAPSED_DATES = new Set\(\);/);
+  assert.match(inline, /toggle\.className = 'daytoggle';/);
+  assert.match(inline, /for \(const row of dayRows\) row\.hidden = collapsed;/,
+    '다른 날짜까지 다시 그리거나 숨기면 안 됩니다');
+  assert.match(inline, /tr\.hidden = COLLAPSED_DATES\.has\(t\.date\);/,
+    '필터나 쪽 이동 뒤에도 날짜별 접힘 상태가 유지되어야 합니다');
+  assert.match(inline, /button\.setAttribute\('aria-expanded', String\(!collapsed\)\);/);
+});
+
 // 한 글자마다 1만 건을 다시 거르면 "무적호"를 치는 동안 표를 예닐곱 번 다시 그립니다.
 // 한글은 조합 중에도 input이 떠서(ㅁ→무→뭇→무적) 디바운스만으로는 모자랍니다.
 test('검색어는 손이 멈춘 뒤에, 한글 조합이 끝난 뒤에 건다', () => {
