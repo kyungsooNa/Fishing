@@ -322,8 +322,13 @@ export function makeTrip(site, fields) {
   const normalizedSpecies = toSpecies(species);
   const guide = site.boats?.[boatName]?.timeGuide ?? site.timeGuide;
   const guideSpecies = guide?.species?.map(toSpecies).filter(Boolean) ?? [];
+  // 어종을 안 적은 공지는 그 선사(배별로 적었으면 그 배)의 모든 출조에 걸립니다. 공지가
+  // 어종을 안 가리는 곳이 실제로 있습니다 — 52fish는 "오전배 : 5시 출항 / 오후배 : 10시
+  // 30분 출항"처럼 배로만 갈리고, 바다사랑호는 어종 없이 "05시 30분 출항"이라고만 적습니다.
+  // 어종을 적었으면 그건 그 어종 출조 이야기라는 뜻이니 그대로 지킵니다.
+  const speciesApplies = guideSpecies.length ? guideSpecies.includes(normalizedSpecies) : true;
   const guideApplies = guide?.validFrom && guide?.validThrough && resolvedDate >= guide.validFrom &&
-    resolvedDate <= guide.validThrough && guideSpecies.includes(normalizedSpecies);
+    resolvedDate <= guide.validThrough && speciesApplies;
   const fromGuide = !departAt && !range.from && guideApplies ? toTime(guide.departAt) : null;
   const depart = departAt ?? range.from ?? fromGuide;
   const back = returnAt ?? range.to;

@@ -96,6 +96,30 @@ test('태그로 분리된 예약자 명단을 보존하고 대기자·취소자�
   assert.equal(row.departAt, '05:30');
 });
 
+// 공지가 어종을 안 가리는 곳이 있습니다 — 52fish는 배로만 갈리고("오전배 : 5시 출항"),
+// 바다사랑호는 어종 없이 "05시 30분 출항"이라고만 적습니다. 어종을 적으라고 우기면
+// 공지에 없는 어종을 우리가 지어내야 합니다.
+test('어종을 안 적은 공지는 그 선사의 모든 출조에 걸린다', () => {
+  const guideSite = { ...site, timeGuide: { departAt: '05:30',
+    validFrom: '2026-01-01', validThrough: '2026-12-31', source: 'https://example.com' } };
+  const fields = { boat: '예시호', date: '2026-09-06' };
+
+  assert.equal(makeTrip(guideSite, { ...fields, species: '주꾸미' }).departAt, '05:30');
+  assert.equal(makeTrip(guideSite, { ...fields, species: '농어' }).departAt, '05:30');
+  // 어종을 아예 못 읽은 출조에도 걸립니다 — 그런 예약판이라 공지에 기댑니다.
+  assert.equal(makeTrip(guideSite, fields).departAt, '05:30');
+  assert.equal(makeTrip(guideSite, fields).timeSource, 'notice');
+  // 유효기간은 그대로 필수입니다. 어종을 안 적었다고 아무 때나 걸리면 안 됩니다.
+  assert.equal(makeTrip(guideSite, { ...fields, date: '2027-01-01' }).departAt, null);
+  const noRange = { ...site, timeGuide: { departAt: '05:30', source: 'https://example.com' } };
+  assert.equal(makeTrip(noRange, fields).departAt, null);
+  // 배별로 적으면 그 배만입니다.
+  const perBoat = { ...site, boats: { '가호': { timeGuide: { departAt: '10:30',
+    validFrom: '2026-01-01', validThrough: '2026-12-31', source: 'https://example.com' } } } };
+  assert.equal(makeTrip(perBoat, { ...fields, boat: '가호' }).departAt, '10:30');
+  assert.equal(makeTrip(perBoat, { ...fields, boat: '나호' }).departAt, null);
+});
+
 test('선사 공지 보완은 유효기간·어종을 지키고 개별 예약 시각을 우선한다', () => {
   const guideSite = { ...site, timeGuide: { departAt: '05:30', species: ['쭈꾸미'],
     validFrom: '2026-01-01', validThrough: '2026-12-31', source: 'https://example.com' } };
