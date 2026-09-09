@@ -22,6 +22,8 @@ import * as cheerio from 'cheerio';
 import { fetchHtml, closeBrowser, describeError } from './core/fetcher.js';
 import { loadRegistry, collectSite, REGISTRY_PATH } from './core/runner.js';
 import { looksLikePort } from './core/ports.js';
+import { tripTimeRange, toSpecies } from './core/schema.js';
+import { SPECIES } from './adapters/_rows.js';
 
 const CANDIDATES_PATH = 'tmp/candidates.json';
 
@@ -386,6 +388,7 @@ async function main() {
   if (cmd === 'links') return list(await fromLinks(need(args[0], '주소를 적으세요')));
   if (cmd === 'probe') return probeAll();
   if (cmd === 'ports') return portsAll();
+  if (cmd === 'times') return timesAll();
   usage();
 }
 
@@ -400,6 +403,7 @@ function usage() {
   node discover.js probe ... --add     통과한 후보를 ${REGISTRY_PATH}에 붙이기
   node discover.js ports              항구가 빈 등록 선사를 다시 읽기 (급한 곳부터)
   node discover.js ports --add        라벨로 찾은 값만 ${REGISTRY_PATH}에 채우기
+  node discover.js times              출항시각이 빈 선사의 공지에서 시각 후보 읽기 (많이 빈 곳부터)
 `);
   process.exitCode = 1;
 }
@@ -524,6 +528,119 @@ async function portsAll() {
   await writeFile(REGISTRY_PATH, `${JSON.stringify(parsed, null, 2)}\n`);
   console.log(`\n${REGISTRY_PATH} 에 ${filled.length}곳을 채웠습니다: ${filled.join(', ')}`);
   console.log('머지 전에 페이지와 맞춰보세요 — 항구는 다른 사이트의 같은 배와 합칠지를 정하는 값입니다.');
+}
+
+// ── 등록된 선사의 출항시각 후보 모으기 ──────────────────────────────────────
+//
+// 출항시각은 어댑터가 예약판에서 읽는 값인데, **예약판에 아예 안 적힌 사이트가 91곳**
+// (2,827건)입니다(`core/quality.js`의 `timeGaps`). 거기는 파서를 고쳐도 안 채워집니다.
+// 대신 선사 홈페이지 공지에는 "2026년 쭈/갑 출항시간 새벽 5:30"처럼 적혀 있는 곳이 있고,
+// 지금 registry의 `timeGuide` 4곳이 그렇게 사람이 읽어 넣은 값입니다.
+//
+// 그 읽는 일을 여기서 돕습니다. **값으로 채우지는 않습니다** — timeGuide는 시각만이 아니라
+// 어느 어종에 언제까지 유효한지까지 적어야 하는 값이라(`core/schema.js`의 makeTrip),
+// 공지 한 줄에서 기계가 정할 수 없습니다. 후보 줄을 그대로 보여주고 사람이 고릅니다.
+// 로그에 줄을 그대로 찍는 이유도 그것입니다 — 국내 도메인이 막힌 곳에서는 아티팩트를
+// 내려받지 못하고 Actions 로그로만 봅니다(peek과 같은 사정).
+
+/** 공지에서 출항시각처럼 보이는 줄만 추립니다. 값이 아니라 **후보**입니다. */
+export function timeHints(html, limit = 5) {
+  const bare = String(html ?? '')
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ');
+  const lines = bare.replace(/<[^>]+>/g, '\n').replace(/&nbsp;/g, ' ')
+    .split('\n').map((line) => line.replace(/\s+/g, ' ').trim()).filter(Boolean);
+
+  const seen = new Map();
+  for (const line of lines) {
+    if (!/출항|출조\s*시간|운항\s*시간/.test(line)) continue;
+    // 시각을 못 읽는 줄은 후보가 아닙니다("출항 문의는 전화로"). 버스·집결·입금 시각도
+    // tripTimeRange가 이미 거릅니다 — 후보라도 그건 배가 뜨는 시각이 아닙니다.
+    const { from, to } = tripTimeRange(line);
+    if (!from) continue;
+    const key = `${from}|${to}|${line.slice(0, 40)}`;
+    if (seen.has(key)) continue;
+    seen.set(key, {
+      departAt: from,
+      returnAt: to,
+      // timeGuide는 어종을 적어야 걸립니다. 줄에 어종이 있으면 같이 보여줍니다.
+      species: SPECIES.filter((name) => line.includes(name)).map(toSpecies).filter(Boolean),
+      line: line.slice(0, 160),
+    });
+    if (seen.size >= limit) break;
+  }
+  return [...seen.values()];
+}
+
+/**
+ * 어디부터 볼까. **많이 빈 곳부터**입니다 — 한 곳에 timeGuide 한 줄을 적으면 그 선사의
+ * 출조가 통째로 채워집니다(ssfish 161건 · yamujin 132건).
+ *
+ * 이미 timeGuide가 있는 곳은 뺍니다. 배별로 적어둔 곳(`boats`)도 마찬가지입니다.
+ */
+export function timeTargets(registry, quality) {
+  const byId = new Map(registry.map((site) => [site.id, site]));
+  const gaps = quality?.time;
+  const rows = gaps
+    ? [
+      ...gaps.none.map((row) => ({ ...row, why: '예약판에 없음' })),
+      ...gaps.byBoat.map((row) => ({ ...row, why: '배마다 갈림' })),
+      ...gaps.byDate.map((row) => ({ ...row, why: '날짜마다 갈림' })),
+    ]
+    : registry.map((site) => ({ id: site.id, missing: 0, why: '수집 결과 없음' }));
+
+  return rows
+    .map((row) => ({ ...row, site: byId.get(row.id) }))
+    .filter(({ site }) => site && site.enabled !== false && site.url)
+    .filter(({ site }) => !site.timeGuide && !Object.values(site.boats ?? {}).some((boat) => boat?.timeGuide))
+    .map(({ site, ...row }) => ({ ...row, url: site.url, name: site.name ?? site.id }))
+    .sort((a, b) => b.missing - a.missing || a.id.localeCompare(b.id));
+}
+
+async function timesAll() {
+  const limit = Number(valueOf('--limit') ?? 30);
+  const registry = await loadRegistry();
+  const quality = await portQuality(registry);
+  const targets = timeTargets(registry, quality);
+
+  console.log(`출항시각이 빈 선사 ${targets.length}곳 — 많이 빈 곳부터 ${Math.min(limit, targets.length)}곳을 봅니다`);
+  console.log('공지에서 시각처럼 보이는 줄만 찍습니다. 값이 아니라 후보라, registry에는 사람이 적습니다.\n');
+
+  const found = [];
+  for (const target of targets.slice(0, limit)) {
+    let hints = [], error = null;
+    try {
+      hints = timeHints(await fetchHtml(originOf(target.url), { mode: 'static', retries: 0 }));
+    } catch (err) {
+      error = describeError(err);
+    }
+    found.push({ ...target, hints, ...(error ? { error } : {}) });
+
+    const head = `${target.id.padEnd(16)} ${String(target.missing).padStart(4)}건  ${target.why}`;
+    if (error) console.log(`${head}  못 받았습니다: ${error.slice(0, 60)}`);
+    else if (!hints.length) console.log(`${head}  공지에도 없습니다`);
+    else {
+      console.log(head);
+      for (const hint of hints) {
+        const span = hint.returnAt ? `${hint.departAt}~${hint.returnAt}` : hint.departAt;
+        console.log(`    ${span}  ${hint.species.join('·') || '어종 없음'}  | ${hint.line}`);
+      }
+    }
+  }
+
+  const withHints = found.filter((row) => row.hints.length);
+  const failed = found.filter((row) => row.error);
+  console.log(`\n후보가 나온 곳 ${withHints.length} / 공지에도 없는 곳 ${found.length - withHints.length - failed.length}`
+    + ` / 못 받은 곳 ${failed.length}`);
+  if (failed.length === found.length && found.length) {
+    console.log('전부 못 받았습니다 — 여기서는 국내 도메인이 막혀 있습니다. Actions 탭 → times 로 돌리세요.');
+  }
+
+  await mkdir('tmp', { recursive: true });
+  await writeFile('tmp/times.json', `${JSON.stringify(found, null, 2)}\n`);
+  console.log('tmp/times.json 에 후보까지 전부 적었습니다.');
+  console.log('registry에 적을 때는 timeGuide에 departAt·species·validFrom·validThrough·source를 같이 적으세요');
+  console.log('— 어느 어종에 언제까지 유효한지가 없으면 다음 시즌에 틀린 시각이 남습니다.');
 }
 
 /** 수집 결과가 있으면 "지금 두 줄로 뜨는 곳"을 알 수 있습니다. 없으면 순서만 거칠어집니다. */
