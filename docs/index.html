@@ -64,6 +64,13 @@
     font-size: 15px;
   }
   .dayhead small { margin-left: 8px; color: var(--muted); font-size: 12px; font-weight: 600; }
+  .daytoggle { float: right; width: 32px; height: 32px; margin: -5px -5px -5px 10px; padding: 0;
+               border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line)); border-radius: 7px;
+               background: var(--card); color: var(--accent); font: inherit; font-size: 16px;
+               line-height: 1; cursor: pointer; }
+  .daytoggle:hover { background: var(--accent-soft); }
+  .daytoggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  tr.triprow[hidden] { display: none !important; }
   .tidegood { display: inline-block; margin-left: 8px; padding: 2px 7px; border-radius: 999px;
               background: color-mix(in srgb, var(--open) 14%, var(--card)); color: var(--open);
               border: 1px solid color-mix(in srgb, var(--open) 40%, transparent); font-size: 12px; font-weight: 800; }
@@ -171,6 +178,7 @@
     tr.dayhead td { display: block; margin: 0 -9px 8px; padding: 9px 13px; border-top-width: 2px;
                     font-size: 14px; box-shadow: 0 2px 5px rgba(18, 61, 83, .05); }
     .dayhead small { display: none; }
+    .daytoggle { margin-top: -4px; margin-right: -5px; }
     .tidegood { font-size: 12px; }
 
     td.starcell { grid-area: thumb; position: relative; width: 72px; height: 72px; padding: 0; }
@@ -902,6 +910,7 @@ function renderPager(view, total) {
 // (한 쪽이 행 1200개 · 노드 2만 개). 그래서 render()가 그리면서 버튼을 적어두고,
 // 누를 때는 그 버튼만 고쳐 그립니다.
 const ROW_BUTTONS = [];
+const COLLAPSED_DATES = new Set();
 
 function paintStar(star, on) {
   star.className = 'star' + (on ? ' on' : '');
@@ -914,6 +923,13 @@ function paintWatch(button, t) {
   const on = Boolean(watched(t));
   button.textContent = on ? '감시 해제' : '3분 감시';
   button.setAttribute('aria-pressed', String(on));
+}
+
+function paintDayToggle(button, date, collapsed) {
+  button.textContent = collapsed ? '⌄' : '⌃';
+  button.title = `${dayLabel(date)} 출조 ${collapsed ? '펼치기' : '접기'}`;
+  button.setAttribute('aria-label', button.title);
+  button.setAttribute('aria-expanded', String(!collapsed));
 }
 
 // 표와 지도를 한 번에 다시 그릴 때는 거른 결과를 넘겨받습니다. 안 넘기면 스스로 거릅니다
@@ -929,9 +945,12 @@ function render(all = sortTrips(visibleTrips())) {
   const tides = tidesByDate(rows);
   ROW_BUTTONS.length = 0;
   let prevDate = null;
+  let currentDayRows = [];
 
   for (const t of rows) {
     if (t.date !== prevDate) {
+      const dayRows = [];
+      currentDayRows = dayRows;
       const day = document.createElement('tr');
       day.className = 'dayhead';
       const td = document.createElement('td');
@@ -947,12 +966,26 @@ function render(all = sortTrips(visibleTrips())) {
       const hint = document.createElement('small');
       hint.textContent = '물때는 날짜별 공통 표기';
       td.append(hint);
+      const toggle = document.createElement('button');
+      toggle.className = 'daytoggle';
+      toggle.type = 'button';
+      paintDayToggle(toggle, t.date, COLLAPSED_DATES.has(t.date));
+      toggle.addEventListener('click', () => {
+        const collapsed = !COLLAPSED_DATES.has(t.date);
+        if (collapsed) COLLAPSED_DATES.add(t.date);
+        else COLLAPSED_DATES.delete(t.date);
+        for (const row of dayRows) row.hidden = collapsed;
+        paintDayToggle(toggle, t.date, collapsed);
+      });
+      td.append(toggle);
       day.append(td);
       frag.append(day);
       prevDate = t.date;
     }
     const tr = document.createElement('tr');
     tr.className = 'triprow';
+    tr.hidden = COLLAPSED_DATES.has(t.date);
+    currentDayRows.push(tr);
     const starCell = document.createElement('td');
     starCell.className = 'starcell';
     const boatMark = document.createElement('span');
