@@ -2196,10 +2196,11 @@
       "mode": "static",
       "enabled": true,
       "addedBy": "discover",
+      "port": "충남 보령 오천항",
       "boats": {
         "자이언트호": {}
       },
-      "note": "자동 발견(https://rkclgh.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항, 오천항"
+      "note": "자동 발견(https://rkclgh.sunsang24.com) — 시험 수집 26건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지는 2026-09-09 공식 선박소개(https://rkclgh.sunsang24.com/ship/info)의 '출조항구: 오천항'과 오시는 길에서 확인했습니다."
     },
     {
       "id": "rosemary",
