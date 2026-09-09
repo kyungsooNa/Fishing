@@ -2873,6 +2873,35 @@
       "phone": "010-6390-5555",
       "enabled": true,
       "addedBy": "discover",
+      "boats": {
+        "52fish 오전배": {
+          "timeGuide": {
+            "departAt": "05:00",
+            "validFrom": "2026-01-01",
+            "validThrough": "2026-12-31",
+            "source": "https://52fish.thefishing.kr/",
+            "note": "2026-09-09 홈페이지 공지에서 확인: \"* 오전배 : 5시 출항\". 배 이름은 예약판에서 못 읽어 파서가 \"52fish 오전배\"로 지은 이름입니다 — 실제 배 이름을 확인하면 이 키도 같이 고쳐야 합니다."
+          }
+        },
+        "대양2호 (오전배)": {
+          "timeGuide": {
+            "departAt": "05:00",
+            "validFrom": "2026-01-01",
+            "validThrough": "2026-12-31",
+            "source": "https://52fish.thefishing.kr/",
+            "note": "2026-09-09 홈페이지 공지에서 확인: \"* 오전배 : 5시 출항\"."
+          }
+        },
+        "52fish 오후배": {
+          "timeGuide": {
+            "departAt": "10:30",
+            "validFrom": "2026-01-01",
+            "validThrough": "2026-12-31",
+            "source": "https://52fish.thefishing.kr/",
+            "note": "2026-09-09 홈페이지 공지에서 확인: \"* 오후배 : 10시 30분 출항\". 지금 수집 결과에는 오후배 줄이 없어 걸리는 출조가 없습니다 — 예약판에 오후배가 뜨면 그때 걸립니다."
+          }
+        }
+      },
       "note": "자동 발견(https://52fish.thefishing.kr) — 시험 수집 9건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 출조항"
     },
     {
@@ -2973,6 +3002,13 @@
       "phone": "010-8818-1612",
       "enabled": true,
       "addedBy": "discover",
+      "timeGuide": {
+        "departAt": "05:30",
+        "validFrom": "2026-01-01",
+        "validThrough": "2026-12-31",
+        "source": "https://badasarang.thefishing.kr/",
+        "note": "2026-09-09 홈페이지 공지에서 확인: \"05시 00분 바다사랑 사무실 도착 명부 작성(신분증지참)후 05시 30분 출항 15시까지 출조 합니다\". 어종을 안 가리는 공지라 어종을 안 적었습니다. 예약판의 개별 시각이 있으면 그 값을 우선합니다."
+      },
       "boats": {
         "바다사랑호": {}
       },
@@ -3531,6 +3567,13 @@
       "source": "detail",
       "enabled": true,
       "addedBy": "discover",
+      "timeGuide": {
+        "departAt": "05:00",
+        "validFrom": "2026-01-01",
+        "validThrough": "2026-12-31",
+        "source": "https://mobok.thefishing.kr/",
+        "note": "2026-09-09 홈페이지 공지에서 확인: \"출항시간 : AM 05:00 입항시간 : PM 16:00\". 어종을 안 가리는 공지라 어종을 안 적었습니다. 예약판의 개별 시각이 있으면 그 값을 우선합니다."
+      },
       "boats": {
         "뉴오복호": {}
       },
@@ -3814,6 +3857,14 @@
       "source": "detail",
       "enabled": true,
       "addedBy": "discover",
+      "timeGuide": {
+        "departAt": "05:00",
+        "species": ["주꾸미", "갑오징어", "주꾸미·갑오징어"],
+        "validFrom": "2026-01-01",
+        "validThrough": "2026-12-31",
+        "source": "https://sinjindo.thefishing.kr/",
+        "note": "2026-09-09 홈페이지 출조안내에서 확인: \"출항시간: 05시 출항해서 15:00~16:30쯤에 입항합니다\". 공지가 어종을 안 적었지만 같은 화면이 \"9월10월 11월 쭈구미 갑오징어 출조 모집중\"이라 쭈갑으로만 한정했습니다 — 뉴용궁호 광어·수덕호 농어 출조도 같은 시각인지는 확인이 필요합니다."
+      },
       "boats": {
         "뉴용궁호": {
           "phone": "010-8311-7171"
