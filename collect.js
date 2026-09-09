@@ -11,7 +11,10 @@ const days = Number(process.env.DAYS ?? 21);
 console.log(`수집 시작 (앞으로 ${days}일)`);
 const release = await acquireCollectorLock();
 try {
-  const { data, openings, failed, prevSites } = await runAll({ days });
+  const { data, openings, failed, prevSites } = await runAll({
+    days,
+    onProgress: (progress) => process.send?.({ type: 'collect-progress', ...progress }),
+  });
 
   const ok = Object.values(data.sites).filter((s) => s.ok).length;
   console.log(`\n출조 ${data.trips.length}건 / 사이트 ${ok}곳 성공, ${failed.length}곳 실패`);

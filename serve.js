@@ -252,8 +252,11 @@ export function createApp({
         return json(res, 202, { started: true });
       }
       if (job?.running) return json(res, 409, { error: '이미 수집 중입니다' });
-      job = { running: true, startedAt: new Date().toISOString(), log: [], code: null };
-      const child = spawn(process.execPath, collectArgs, { env: process.env });
+      job = { running: true, startedAt: new Date().toISOString(), log: [], code: null, progress: null };
+      const child = spawn(process.execPath, collectArgs, {
+        env: process.env,
+        stdio: ['ignore', 'pipe', 'pipe', 'ipc'],
+      });
       const push = (buf) => {
         for (const line of String(buf).split('\n')) if (line.trim()) job.log.push(line);
         // 로그가 무한정 쌓이지 않게 뒤쪽만 남깁니다.
@@ -261,6 +264,13 @@ export function createApp({
       };
       child.stdout.on('data', push);
       child.stderr.on('data', push);
+      child.on('message', (message) => {
+        if (message?.type !== 'collect-progress') return;
+        const done = Number(message.done);
+        const total = Number(message.total);
+        if (!Number.isInteger(done) || !Number.isInteger(total) || total < 0 || done < 0 || done > total) return;
+        job.progress = { done, total, percent: total ? Math.round(done / total * 100) : 100 };
+      });
       child.on('error', (err) => { push(`실행 실패: ${err.message}`); job.running = false; job.code = -1; });
       child.on('close', (code) => { job.running = false; job.code = code; });
       return json(res, 202, { started: true });
@@ -274,7 +284,7 @@ export function createApp({
 
     if (path === '/api/collect' && req.method === 'GET') {
       if (monitor) return json(res, 200, monitor.status());
-      return json(res, 200, job ?? { running: false, log: [], code: null, startedAt: null });
+      return json(res, 200, job ?? { running: false, log: [], code: null, startedAt: null, progress: null });
     }
 
     if (path === '/api/update' && req.method === 'POST') {

@@ -158,7 +158,7 @@ test('Host가 localhost가 아니면 거절한다 — DNS 리바인딩', async (
 test('수집을 띄우고 로그와 종료 코드를 돌려준다', async () => {
   const dir = await mkdtemp(join(tmpdir(), 'admin-job-'));
   const script = join(dir, 'fake-collect.js');
-  await writeFile(script, 'console.log("수집 시작"); console.log("끝");');
+  await writeFile(script, 'process.send?.({type:"collect-progress",done:1,total:2}); console.log("수집 시작"); process.send?.({type:"collect-progress",done:2,total:2}); console.log("끝");');
 
   await withServer(async ({ base }) => {
     const start = await admin(base, '/api/collect', { method: 'POST' });
@@ -171,6 +171,7 @@ test('수집을 띄우고 로그와 종료 코드를 돌려준다', async () => 
     assert.equal(job.running, false);
     assert.equal(job.code, 0);
     assert.deepEqual(job.log, ['수집 시작', '끝']);
+    assert.deepEqual(job.progress, { done: 2, total: 2, percent: 100 });
   }, { collectArgs: [script] });
 });
 
@@ -194,6 +195,7 @@ test('관리 화면 스크립트에 문법 오류가 없고, 쓰는 요소가 �
   const used = [...inline.matchAll(/\$\('([\w-]+)'\)/g)].map((m) => m[1]);
   const missing = [...new Set(used)].filter((id) => !html.includes(`id="${id}"`));
   assert.deepEqual(missing, [], 'id가 바뀌면 그 부분이 조용히 안 돕니다');
+  assert.match(inline, /job\.progress\?\.percent/, '수집 중에는 버튼에 진행률을 보여줍니다');
 });
 
 test('관리 화면은 현황판과 한눈에 구분되는 관리 전용 머리글을 쓴다', async () => {

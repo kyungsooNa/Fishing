@@ -27,7 +27,7 @@ export function createMonitor({
   let base, ports = {}, sites = [], watchers = {}, legacy = [], records = {}, timer, stopped = false;
   // 이미 보낸 소식. 3분마다 보니 같은 자리가 붙었다 떨어졌다 하면 계속 울립니다(core/alerts.js).
   let sentAlerts = {};
-  let saving = Promise.resolve(), ticking = false;
+  let saving = Promise.resolve(), ticking = false, fullRun = null;
   const busy = new Set(), pending = new Set();
   const log = [];
   const addLog = (s) => { log.push(s); if (log.length > 100) log.shift(); };
@@ -92,9 +92,14 @@ export function createMonitor({
   function status(watcherId = null) {
     const enabled = sites.filter((s) => s.enabled !== false);
     const running = busy.size > 0 || enabled.some((s) => nextAt(s) <= clock());
+    const done = fullRun ? fullRun.total - fullRun.pending.size : 0;
     return {
       watches: watchesOf(watcherId), fullMinutes: 60, watchMinutes: 3,
       running, log: [...log], code: running ? null : 0,
+      progress: fullRun ? {
+        done, total: fullRun.total,
+        percent: fullRun.total ? Math.round(done / fullRun.total * 100) : 100,
+      } : null,
       overdue: enabled.filter((s) => interested(s.id) && clock() > nextAt(s) + WATCH_MS).length,
       notificationConfigured: Boolean((process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID) || process.env.DISCORD_WEBHOOK),
     };
@@ -193,6 +198,8 @@ export function createMonitor({
           count: old?.trips?.length ?? previous?.count ?? 0 } };
       addLog(`${site.id}: 실패 — ${err.message}`);
       await persist();
+    } finally {
+      fullRun?.pending.delete(site.id);
     }
   }
 
@@ -223,7 +230,11 @@ export function createMonitor({
     void tick().catch((e) => addLog(e.message));
   }
   async function stop() { stopped = true; clearInterval(timer); await Promise.allSettled([...pending]); await saving.catch(() => {}); }
-  function requestFull() { for (const r of Object.values(records)) r.attempted = 0; }
+  function requestFull() {
+    const ids = sites.filter((s) => s.enabled !== false).map((s) => s.id);
+    fullRun = { total: ids.length, pending: new Set(ids) };
+    for (const r of Object.values(records)) r.attempted = 0;
+  }
   function requestSite(id) {
     const site = sites.find((candidate) => candidate.id === id);
     if (!site) throw new Error('등록되지 않은 선사입니다');
