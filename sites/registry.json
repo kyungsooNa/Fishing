@@ -3221,6 +3221,7 @@
     {
       "id": "dolphin",
       "name": "돌핀호",
+      "port": "경기 화성 전곡항",
       "adapter": "thefishing",
       "url": "https://dolphin.thefishing.kr/index.php?mid=bk",
       "source": "detail",
@@ -3230,7 +3231,7 @@
       "boats": {
         "돌핀호": {}
       },
-      "note": "자동 발견(https://dolphin.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 전곡항, 공지사항, 안전운항"
+      "note": "자동 발견(https://dolphin.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 전곡항, 공지사항, 안전운항. 출항지는 2026-09-09 홈페이지에서 확인했습니다 — \"출조점 : 경기 화성시 서신면 전곡항로 15, 전곡항 │ 상호 : 전곡항 돌핀호\"."
     },
     {
       "id": "doublek",
@@ -3376,6 +3377,7 @@
     {
       "id": "hongwonhang",
       "name": "돌핀호",
+      "port": "충남 서천 홍원항",
       "adapter": "thefishing",
       "url": "https://hongwonhang.thefishing.kr/index.php?mid=bk",
       "source": "detail",
@@ -3385,7 +3387,7 @@
       "boats": {
         "돌핀호": {}
       },
-      "note": "자동 발견(https://hongwonhang.thefishing.kr) — 시험 수집 9건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 홍원항, 공지사항, 출조항"
+      "note": "자동 발견(https://hongwonhang.thefishing.kr) — 시험 수집 9건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 홍원항, 공지사항, 출조항. 출항지는 2026-09-09 홈페이지에서 확인했습니다 — \"출조점 : 충남 서천군 서면 홍원길 101-1 [출조항 : 홍원항] | 상호 : 홍원항바다낚시\"."
     },
     {
       "id": "ilsin",
