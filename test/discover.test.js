@@ -5,7 +5,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
-import { subdomainsFromCrt, hostsFromCdx, linksFrom, adapterPlan, pickPhone, pickPort, idFor, entryFor, portTargets, applyPorts, timeHints, timeTargets } from '../discover.js';
+import { subdomainsFromCrt, hostsFromCdx, linksFrom, adapterPlan, pickPhone, pickPort, idFor, entryFor, portTargets, applyPorts, timeHints, timeTargets, portEvidence } from '../discover.js';
 
 test('인증서 로그에서 선사 서브도메인만 추린다', () => {
   const rows = [
@@ -270,4 +270,24 @@ test('CLI가 뜨고 사용법에 times가 있다', async () => {
     assert.match(err.stdout, /node discover\.js times/);
     return true;
   });
+});
+
+// 후보 낱말("○○항")만 보여주면 이 배가 뜨는 항인지 소개글에 나온 항인지 못 가립니다.
+// 그래서 주소·승선지 줄을 그대로 보여줍니다 — 시·군까지 있어야 registry 표기도 맞춥니다.
+test('항구는 후보 낱말 말고 근거 줄을 그대로 보여준다', () => {
+  const html = `<body>
+    <p>주소 : 충남 서천군 서면 홍원리 123</p>
+    <div>승선지: 홍원항 부잔교 앞</div>
+    <p>서해 최고의 조황을 자랑합니다</p>
+    <p>${'가'.repeat(200)} 홍원항 ${'나'.repeat(200)}</p>
+    <div>승선지: 홍원항 부잔교 앞</div>
+  </body>`;
+  const lines = portEvidence(html);
+
+  assert.deepEqual(lines, ['주소 : 충남 서천군 서면 홍원리 123', '승선지: 홍원항 부잔교 앞']);
+});
+
+test('근거 줄은 몇 줄까지만 — 페이지를 옮겨오는 게 아닙니다', () => {
+  const html = [1, 2, 3, 4, 5, 6].map((i) => `<p>주소 ${i} : 충남 보령시 오천면 ${i}</p>`).join('');
+  assert.equal(portEvidence(html, 2).length, 2);
 });
