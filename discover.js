@@ -18,6 +18,7 @@
 // 채우고, 애매하면 note에 후보만 적어 사람이 고르게 둡니다.
 
 import { mkdir, writeFile, readFile } from 'node:fs/promises';
+import { pathToFileURL } from 'node:url';
 import * as cheerio from 'cheerio';
 import { fetchHtml, closeBrowser, describeError } from './core/fetcher.js';
 import { loadRegistry, collectSite, REGISTRY_PATH } from './core/runner.js';
@@ -371,7 +372,9 @@ const valueOf = (f) => {
   return i >= 0 ? rest[i + 1] : null;
 };
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+// Windows의 process.argv[1]은 역슬래시 경로라 `file://${...}`로 붙이면 import.meta.url과
+// 같아지지 않습니다. URL 변환은 운영체제별 경로 규칙을 아는 표준 함수에 맡깁니다.
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   try {
     await main();
   } catch (err) {
