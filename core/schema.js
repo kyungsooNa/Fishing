@@ -116,7 +116,9 @@ export function tripTimeRange(raw) {
     const m = text.match(re);
     return m ? { time: m[1], at: m.indices[1][0] } : null;
   };
-  const timeAfter = (label) => find(new RegExp(`(?:${label})\\s*[:：]?\\s*(${TIME_TOKEN})`, 'di'));
+  // 라벨 뒤 시각에 "까지"가 붙으면 마감 시각입니다 — "05시 30분 출항 15시까지 출조"의 15시는
+  // 배가 뜨는 시각이 아닙니다(바다사랑호 공지). 그런 줄은 앞에 붙은 표기로 물러섭니다.
+  const timeAfter = (label) => find(new RegExp(`(?:${label})\\s*[:：]?\\s*(${TIME_TOKEN})(?!\\s*까지)`, 'di'));
   const timeBefore = (label) => find(new RegExp(`(${TIME_TOKEN})\\s*(?:에\\s*)?(?:${label})`, 'di'));
 
   const departAfter = timeAfter(DEPART_LABEL);
