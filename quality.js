@@ -103,7 +103,7 @@ if (time.none.length) {
   console.log(`    ${idList(time.none)}`);
 }
 if (time.byDate.length) {
-  console.log(`\n  같은 배인데 날짜마다 갈리는 ${n(time.byDate.length)}곳(${n(time.missing.byDate)}건) — 파서 후보는 여기입니다.`);
+  console.log(`\n  같은 배인데 날짜마다 갈리는 ${n(time.byDate.length)}곳(${n(time.missing.byDate)}건) — 파서를 의심할 곳은 여기뿐입니다.`);
   console.log(`    ${idList(time.byDate)}`);
 }
 if (time.byBoat.length) {
