@@ -41,13 +41,14 @@ test('빈 칸을 항목별로 세고 그 항목이 빠진 선사 수도 같이 �
   assert.equal(field('url').missing, 0);
 });
 
-// 항구·전화번호는 사람이 registry에 적는 값이고 출항시각·승선료는 어댑터가 읽는 값입니다.
-// 한 줄에 붙여두면 "이걸 고치려면 어디를 열어야 하나"가 매번 헷갈립니다.
+// 항구·전화번호·승선료는 사람이 registry에 적는 값이고 출항시각·정원은 어댑터가 읽는 값입니다.
+// 한 줄에 붙여두면 "이걸 고치려면 어디를 열어야 하나"가 매번 헷갈립니다. 승선료를 어댑터로
+// 세는 동안 "파서를 고치면 채워진다"고 적혀 있었는데, 승선료를 넘기는 어댑터는 없습니다.
 test('고칠 곳이 registry인지 어댑터인지 항목마다 붙어 있다', () => {
   const where = Object.fromEntries(FIELDS.map((f) => [f.key, f.where]));
   assert.deepEqual(where, {
-    port: 'registry', phone: 'registry',
-    departAt: 'adapter', price: 'adapter', seatsTotal: 'adapter', url: 'adapter',
+    port: 'registry', phone: 'registry', price: 'registry',
+    departAt: 'adapter', seatsTotal: 'adapter', url: 'adapter',
   });
   assert.deepEqual(FIELDS.filter((f) => f.identity).map((f) => f.key), ['port', 'phone']);
 });
@@ -165,6 +166,46 @@ async function runCli(args) {
   await writeFile(path, JSON.stringify({ trips: [trip('sun', '가호', { port: null }), trip('fish', '가호')] }), 'utf8');
   return run(process.execPath, ['quality.js', '--from', path, ...args]);
 }
+
+// "출항시각 3,565건 빔"만으로는 파서를 고칠지 선사에 물을지 못 고릅니다. 실제로 91곳은
+// 예약판에 시각 자체가 없어서 파서를 고쳐도 안 채워집니다.
+test('출항시각이 빈 이유를 파서 후보와 선사 확인 대상으로 가른다', () => {
+  const q = collectQuality(registry, {
+    trips: [
+      // 전부 있음
+      trip('sun', '가호'),
+      // 한 배 안에서 날짜마다 갈림 — 파서 후보
+      trip('fish', '나호'),
+      trip('fish', '나호', { date: '2026-09-10', departAt: null }),
+      // 배마다 갈림 — 그 배만 안 적어둔 것
+      trip('mix', '다호'),
+      trip('mix', '라호', { departAt: null }),
+      // 전부 없음 — 선사 공지에서 확인해 timeGuide로 채울 곳
+      trip('none', '마호', { departAt: null }),
+      trip('none', '바호', { departAt: null }),
+    ],
+  });
+
+  assert.deepEqual(q.time.full, ['sun']);
+  assert.deepEqual(q.time.byDate, [{ id: 'fish', missing: 1 }]);
+  assert.deepEqual(q.time.byBoat, [{ id: 'mix', missing: 1 }]);
+  assert.deepEqual(q.time.none, [{ id: 'none', missing: 2 }]);
+  assert.deepEqual(q.time.missing, { none: 2, byBoat: 1, byDate: 1 });
+  // 셋을 더하면 항목 표의 빠짐과 같아야 합니다 — 갈라 세다가 흘리면 안 됩니다.
+  const gaps = q.time.missing.none + q.time.missing.byBoat + q.time.missing.byDate;
+  assert.equal(gaps, q.fields.find((f) => f.key === 'departAt').missing);
+});
+
+test('손볼 곳은 빠진 건수가 많은 사이트부터 준다', () => {
+  const q = collectQuality(registry, {
+    trips: [
+      trip('a', '가호', { departAt: null }),
+      trip('b', '나호', { departAt: null }),
+      trip('b', '나호', { date: '2026-09-10', departAt: null }),
+    ],
+  });
+  assert.deepEqual(q.time.none.map((row) => row.id), ['b', 'a']);
+});
 
 test('명령이 실제로 돈다', async () => {
   const { stdout } = await runCli([]);
