@@ -35,6 +35,20 @@ test('서버가 다른 사이트는 동시에 받고, 결과 순서는 registry 
   assert.ok(data.trips.length > 0);
 });
 
+test('전체 수집 진행률은 시작과 사이트별 완료를 알려준다', async () => {
+  const sites = [
+    { ...mockSite, id: 'a', url: 'https://a.example.com' },
+    { ...mockSite, id: 'b', url: 'https://b.otherhost.com' },
+  ];
+  const { registryPath, dataPath } = await fixture(sites);
+  const progress = [];
+  await runAll({ registryPath, dataPath, days: 21, onProgress: (p) => progress.push(p) });
+
+  assert.deepEqual(progress[0], { done: 0, total: 2, siteId: null });
+  assert.deepEqual(progress.map((p) => p.done).sort((a, b) => a - b), [0, 1, 2]);
+  assert.equal(progress.at(-1).total, 2);
+});
+
 test('수집 결과에 등록 출처를 실어 보낸다 — 서버 없는 화면도 수동/자동을 안다', async () => {
   const { registryPath, dataPath } = await fixture([
     { ...mockSite, addedBy: 'discover' },

@@ -464,7 +464,10 @@ async function pollCollect() {
   const job = await api('api/collect').then((r) => r.json());
   $('log').textContent = job.log.join('\n');
   $('log').scrollTop = $('log').scrollHeight;
-  if (job.running) return;
+  if (job.running) {
+    $('collect').textContent = `수집 중… ${job.progress?.percent ?? 0}%`;
+    return;
+  }
   clearInterval(polling);
   polling = null;
   $('collect').disabled = false;
@@ -475,7 +478,7 @@ async function pollCollect() {
 
 async function collect() {
   $('collect').disabled = true;
-  $('collect').textContent = '수집 중…';
+  $('collect').textContent = '수집 중… 0%';
   const res = await api('api/collect', { method: 'POST' });
   if (!res.ok) {
     toast((await res.json()).error ?? '시작하지 못했습니다');

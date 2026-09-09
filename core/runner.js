@@ -45,9 +45,17 @@ export async function runAll({
   dryRun = false,
   now = new Date(),
   timeoutBackoffHours = defaultTimeoutBackoffHours(),
+  onProgress = null,
 } = {}) {
   const registry = await loadRegistry(registryPath);
   const targets = registry.filter((s) => (only ? s.id === only : s.enabled !== false));
+  let completed = 0;
+  // 진행 표시가 끊겨도 수집 자체는 계속돼야 합니다(IPC가 먼저 닫히는 경우 등).
+  const progress = (siteId = null) => {
+    try { onProgress?.({ done: completed, total: targets.length, siteId }); }
+    catch { /* 진행 표시는 부가 기능 */ }
+  };
+  progress();
 
   if (only && !targets.length) {
     throw new Error(`registry에 '${only}' 가 없습니다. 등록된 id: ${registry.map((s) => s.id).join(', ')}`);
@@ -94,6 +102,8 @@ export async function runAll({
         ...meta(site),
       });
       console.warn(`  ${site.id.padEnd(14)} 건너뜀: 최근 timeout, ${retryAt} 이후 재시도`);
+      completed += 1;
+      progress(site.id);
       return;
     }
 
@@ -120,6 +130,8 @@ export async function runAll({
       });
       console.warn(`  ${site.id.padEnd(14)} 실패: ${error}`);
     }
+    completed += 1;
+    progress(site.id);
   };
 
   // 서버가 다르면 동시에 받습니다. 한 줄로 세우면 사이트 수만큼 대기가 쌓입니다 —

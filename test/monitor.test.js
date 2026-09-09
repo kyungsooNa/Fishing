@@ -82,6 +82,33 @@ test('수동 최신화는 고른 선사 하나만 다음 수집 대상으로 만
   assert.throws(() => off.monitor.requestSite('a'), /꺼진 선사/);
 });
 
+test('수동 전체 수집은 완료한 사이트 수로 진행률을 센다', async () => {
+  let block = false;
+  let releaseB;
+  const f = await fixture({
+    sites: [a, { ...b, url: 'https://other.net' }],
+    baseTrips: [trip('a'), trip('b')],
+    collect: async (site) => {
+      if (block && site.id === 'b') await new Promise((resolve) => { releaseB = resolve; });
+      return [trip(site.id)];
+    },
+  });
+  await f.monitor.tick(); await f.monitor.idle();
+
+  block = true;
+  f.monitor.requestFull();
+  assert.deepEqual(f.monitor.status().progress, { done: 0, total: 2, percent: 0 });
+  await f.monitor.tick();
+  for (let i = 0; i < 20 && !releaseB; i++) await new Promise((resolve) => setImmediate(resolve));
+  for (let i = 0; i < 100 && f.monitor.status().progress.done < 1; i++) {
+    await new Promise((resolve) => setTimeout(resolve, 5));
+  }
+  assert.deepEqual(f.monitor.status().progress, { done: 1, total: 2, percent: 50 });
+  releaseB();
+  await f.monitor.idle();
+  assert.deepEqual(f.monitor.status().progress, { done: 2, total: 2, percent: 100 });
+});
+
 test('같은 플랫폼은 겹치지 않고 관심 선사를 다음 순서로 우선한다', async () => {
   let release;
   const calls = [];
