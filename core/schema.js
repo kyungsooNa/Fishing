@@ -104,15 +104,40 @@ export function toTimeRange(raw) {
   return { from: toTime(text), to: null };
 }
 
+const DEPART_LABEL = '출항(?:\\s*시간)?|정상출조|출조\\s*시간';
+const ARRIVE_LABEL = '입항(?:\\s*시간)?|귀항(?:\\s*시간)?';
+
 /** 예약 안내의 버스·입금·일몰 시각을 배의 출항으로 쓰지 않습니다. */
 export function tripTimeRange(raw) {
   const text = String(raw ?? '').replace(/\s+/g, ' ');
-  const timeAfter = (label) => text.match(new RegExp(`(?:${label})\\s*[:：]?\\s*(${TIME_TOKEN})`, 'i'))?.[1];
-  const from = timeAfter('출항(?:\\s*시간)?|정상출조|출조\\s*시간') ??
-    text.match(new RegExp(`(${TIME_TOKEN})\\s*(?:에\\s*)?출항`, 'i'))?.[1];
-  const to = timeAfter('입항(?:\\s*시간)?|귀항(?:\\s*시간)?') ??
-    text.match(new RegExp(`(${TIME_TOKEN})\\s*(?:에\\s*)?(?:입항|귀항)`, 'i'))?.[1];
-  if (from || to) return { from: toTime(from), to: toTime(to) };
+  // 라벨이 앞에 붙는 곳("출항 05:00")과 뒤에 붙는 곳("5시 출항")이 섞여 있습니다.
+  // 어느 시각을 집었는지(자리)까지 들고 있어야 두 라벨이 같은 시각을 집는 걸 압니다.
+  const find = (re) => {
+    const m = text.match(re);
+    return m ? { time: m[1], at: m.indices[1][0] } : null;
+  };
+  const timeAfter = (label) => find(new RegExp(`(?:${label})\\s*[:：]?\\s*(${TIME_TOKEN})`, 'di'));
+  const timeBefore = (label) => find(new RegExp(`(${TIME_TOKEN})\\s*(?:에\\s*)?(?:${label})`, 'di'));
+
+  const departAfter = timeAfter(DEPART_LABEL);
+  const departBefore = timeBefore(DEPART_LABEL);
+  const arriveAfter = timeAfter(ARRIVE_LABEL);
+  const arriveBefore = timeBefore(ARRIVE_LABEL);
+  let from = departAfter ?? departBefore;
+  let to = arriveAfter ?? arriveBefore;
+
+  // "예진호 5시 출항 3시 입항" — 라벨 사이에 시각이 하나뿐이면 출항이 뒤를, 입항이 앞을 집어
+  // 둘 다 3시가 됩니다. 그대로 두면 5시 배가 3시 출항으로 뜹니다(예진호가 그랬습니다).
+  // 같은 시각을 집었으면 반대쪽 표기가 있는 쪽으로 물러섭니다.
+  if (from && to && from.at === to.at) {
+    if (departBefore && departBefore.at !== to.at) from = departBefore;
+    else if (arriveAfter && arriveAfter.at !== from.at) to = arriveAfter;
+    else to = null;      // 누구 시각인지 못 가르면 출항으로 둡니다 — 표가 쓰는 값입니다
+  }
+  if (from || to) {
+    const start = toTime(from?.time);
+    return { from: start, to: afternoonBack(start, to?.time) };
+  }
   const operating = text.match(/운항\s*시간\s*[:：]?\s*(.*)/)?.[1];
   if (operating) return toTimeRange(operating.slice(0, 55));
   for (const line of String(raw ?? '').split(/\n/)) {
@@ -121,6 +146,21 @@ export function tripTimeRange(raw) {
     if (range.to || new RegExp(`^\\s*${TIME_TOKEN}\\s*$`, 'i').test(line)) return range;
   }
   return { from: null, to: null };
+}
+
+/**
+ * "5시 출항 3시 입항"의 3시는 오후 3시입니다. 아침에 나간 배가 22시간 뒤에 들어오지 않습니다.
+ * 조건을 좁게 겁니다 — 출항이 오전이고, 입항을 "3시"처럼 오전·오후 없이 적었고, 그대로 읽으면
+ * 출항보다 이를 때만. 24시 표기(03:00)나 "밤 12시"는 그대로 둡니다. 오후에 나가 새벽에 들어오는
+ * 갈치·문어 배가 실제로 그렇게 적혀 있고(13:00~07:00), 그건 고칠 값이 아닙니다.
+ */
+function afternoonBack(from, rawTo) {
+  const to = toTime(rawTo);
+  if (!from || !to || HHMM(to) >= HHMM(from) || HHMM(from) >= 12 * 60) return to;
+  if (!/^\s*\d{1,2}\s*시/.test(String(rawTo))) return to;
+  const shifted = HHMM(to) + 12 * 60;
+  if (shifted <= HHMM(from) || shifted > 23 * 60 + 59) return to;
+  return `${String(Math.floor(shifted / 60)).padStart(2, '0')}:${String(shifted % 60).padStart(2, '0')}`;
 }
 
 const HHMM = (t) => {
