@@ -27,6 +27,25 @@ test('버스·문의·입금·물때 시각을 출항으로 오인하지 않는�
   assert.deepEqual(tripTimeRange('입항 16시, 출항 새벽 5시30분'), { from: '05:30', to: '16:00' });
 });
 
+test('출항·입항이 시각 하나를 두고 다투면 각자 제 표기를 집는다', () => {
+  // 예진호가 "5시 출항 3시 입항"인데 출항이 뒤(3시)를, 입항이 앞(3시)을 집어 둘 다 3시였습니다.
+  assert.deepEqual(tripTimeRange('예진호 5시 출항 3시 입항'), { from: '05:00', to: '15:00' });
+  assert.deepEqual(tripTimeRange('05:30 출항 15:00 입항'), { from: '05:30', to: '15:00' });
+  // 라벨 뒤에 적는 판은 그대로여야 합니다 — 앞뒤를 통째로 뒤집는 고침이 아닙니다.
+  assert.deepEqual(tripTimeRange('출항 05:00 입항 13:00'), { from: '05:00', to: '13:00' });
+  // 시각이 하나뿐이면 출항으로 둡니다. 표가 보여주는 값이 출항입니다.
+  assert.deepEqual(tripTimeRange('출항 3시 입항'), { from: '03:00', to: null });
+});
+
+test('오전에 나간 배의 "3시 입항"은 오후로 읽고, 24시 표기와 야간배는 건드리지 않는다', () => {
+  assert.equal(tripTimeRange('예진호 6시 출항 4시 입항').to, '16:00');
+  // 사이트가 24시 표기로 적었으면 그 말이 맞습니다.
+  assert.equal(tripTimeRange('출항 05:00 입항 03:00').to, '03:00');
+  // 오후에 나가 새벽에 들어오는 갈치·문어 배는 실제로 그렇습니다.
+  assert.equal(tripTimeRange('16:30 출항 7시 입항').to, '07:00');
+  assert.equal(tripTimeRange('오후 1시 출항 밤 12시 입항').to, '00:00');
+});
+
 test('PC 예약표: 태그 사이에 있는 시간과 서로 다른 배의 운항을 보존한다', () => {
   const html = pc(`<tr><td><span>오로라호</span> 쭈꾸미 &amp; 갑오징어<br>05:30~15:00</td>
     <td>낚시종류 쭈꾸미 <table><tr><td>입금자</td><td>예약자(2명/1,2)</td></tr></table></td><td>18명</td></tr>
