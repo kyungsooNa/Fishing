@@ -3,7 +3,9 @@
 
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { subdomainsFromCrt, hostsFromCdx, linksFrom, adapterPlan, pickPhone, pickPort, idFor, entryFor, portTargets, applyPorts } from '../discover.js';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
+import { subdomainsFromCrt, hostsFromCdx, linksFrom, adapterPlan, pickPhone, pickPort, idFor, entryFor, portTargets, applyPorts, timeHints, timeTargets } from '../discover.js';
 
 test('인증서 로그에서 선사 서브도메인만 추린다', () => {
   const rows = [
@@ -202,4 +204,70 @@ test('registry가 배열로 적혀 있어도 채운다', () => {
   const parsed = [{ id: 'a' }];
   assert.deepEqual(applyPorts(parsed, [{ id: 'a', port: '오천항' }]), ['a']);
   assert.equal(parsed[0].port, '오천항');
+});
+
+// 출항시각은 예약판에 아예 안 적힌 사이트가 91곳입니다(core/quality.js의 timeGaps).
+// 거기는 선사 공지에서 읽어 timeGuide에 적어야 하는데, 공지 줄을 값으로 바로 쓰면
+// 버스 출발·집결 시각이 출항으로 들어옵니다. 그래서 여기서도 후보까지만 냅니다.
+test('공지에서 출항시각처럼 보이는 줄만 후보로 준다', () => {
+  const html = `<body>
+    <p>2026년 쭈/갑 출항시간 새벽 5:30</p>
+    <p>갈치 출조 : 오후 1시 출항 ~ 새벽 2시 입항</p>
+    <p>버스는 04:20 리더낚시에서 출발합니다</p>
+    <p>출항 문의는 전화로 주세요</p>
+    <p>2026년 쭈/갑 출항시간 새벽 5:30</p>
+    <script>var t = "05:00 출항";</script>
+  </body>`;
+  const hints = timeHints(html);
+
+  assert.deepEqual(hints.map((h) => [h.departAt, h.returnAt]), [['05:30', null], ['13:00', '02:00']]);
+  assert.deepEqual(hints[1].species, ['갈치']);
+  assert.match(hints[0].line, /출항시간 새벽 5:30/);
+});
+
+test('후보는 몇 줄까지만 — 공지 전체를 옮겨오는 게 목적이 아닙니다', () => {
+  const html = [1, 2, 3, 4, 5, 6].map((h) => `<p>${h}호 출항 0${h}:00</p>`).join('');
+  assert.equal(timeHints(html, 2).length, 2);
+});
+
+const timeQuality = {
+  time: {
+    none: [{ id: 'empty', missing: 100 }],
+    byBoat: [{ id: 'perboat', missing: 30 }],
+    byDate: [{ id: 'perday', missing: 50 }],
+  },
+};
+
+test('출항시각은 많이 빈 곳부터 본다 — 한 줄 적으면 그 선사가 통째로 채워집니다', () => {
+  const registry = [
+    { id: 'perday', url: 'https://a.example' },
+    { id: 'empty', url: 'https://b.example' },
+    { id: 'perboat', url: 'https://c.example' },
+  ];
+  const targets = timeTargets(registry, timeQuality);
+  assert.deepEqual(targets.map((t) => [t.id, t.missing, t.why]), [
+    ['empty', 100, '예약판에 없음'],
+    ['perday', 50, '날짜마다 갈림'],
+    ['perboat', 30, '배마다 갈림'],
+  ]);
+});
+
+test('이미 timeGuide를 적어둔 곳은 다시 읽지 않는다', () => {
+  const registry = [
+    { id: 'empty', url: 'https://b.example', timeGuide: { departAt: '05:00' } },
+    // 배별로 적어둔 곳도 마찬가지입니다(core/schema.js의 makeTrip이 배별을 먼저 봅니다).
+    { id: 'perday', url: 'https://a.example', boats: { '가호': { timeGuide: { departAt: '05:00' } } } },
+    { id: 'perboat', url: 'https://c.example', enabled: false },
+  ];
+  assert.deepEqual(timeTargets(registry, timeQuality), []);
+});
+
+// 모듈이 뜨다가 죽으면 명령을 통째로 못 씁니다. 실제로 최상위 const를 함수보다 늦게
+// 두는 바람에 CLI가 뜨지도 못한 적이 있습니다 — 네트워크 없이 확인되는 부분입니다.
+test('CLI가 뜨고 사용법에 times가 있다', async () => {
+  const run = promisify(execFile);
+  await assert.rejects(run(process.execPath, ['discover.js']), (err) => {
+    assert.match(err.stdout, /node discover\.js times/);
+    return true;
+  });
 });
