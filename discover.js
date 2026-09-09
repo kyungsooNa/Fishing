@@ -264,14 +264,47 @@ async function identity(url) {
   try {
     const html = await fetchHtml(originOf(url), { mode: 'static', retries: 0 });
     const text = cheerio.load(html)('body').text();
-    return { phone: pickPhone(text), port: pickPort(text) };
+    return { phone: pickPhone(text), port: pickPort(text), evidence: portEvidence(html) };
   } catch (err) {
     return {
       phone: { value: null, candidates: [] },
       port: { value: null, candidates: [] },
+      evidence: [],
       error: describeError(err),
     };
   }
+}
+
+/** 태그를 줄바꿈으로 바꿔 사람이 읽는 줄로 자릅니다. 근거를 줄 단위로 보여주려면 필요합니다. */
+export function textLines(html) {
+  return String(html ?? '')
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, '\n')
+    .replace(/&nbsp;/g, ' ')
+    .split('\n')
+    .map((line) => line.replace(/\s+/g, ' ').trim())
+    .filter(Boolean);
+}
+
+/**
+ * 항구를 사람이 고를 때 볼 **근거 줄**. 후보 낱말("○○항")만 보여주면 그게 이 배가 뜨는
+ * 항인지 소개글에 나온 항인지 가릴 수가 없습니다. 그래서 주소·승선지처럼 항을 말해주는
+ * 줄을 통째로, 페이지에 적힌 그대로 보여줍니다 — 시·군까지 있어야 registry 표기도
+ * 맞출 수 있습니다("충남 서천 홍원항").
+ */
+export function portEvidence(html, limit = 4) {
+  const wanted = /(주소|소재지|도로명|출항지|승선지|승선장|출조점|집결지|오시는\s*길|[가-힣]{2,6}항\b|[가-힣]{2,6}항[에서로]|[가-힣]{2,6}항\s*[,.·)])/;
+  const seen = new Map();
+  for (const line of textLines(html)) {
+    // 너무 긴 줄은 페이지가 통째로 한 덩어리로 붙어 나온 것이라 근거가 못 됩니다.
+    if (line.length > 160 || !wanted.test(line)) continue;
+    if (!/[가-힣]{2,6}항|주소|소재지|도로명|승선|집결|오시는/.test(line)) continue;
+    const key = line.replace(/\s/g, '');
+    if (!seen.has(key)) seen.set(key, line);
+    if (seen.size >= limit) break;
+  }
+  return [...seen.values()];
 }
 
 // ── 등록된 선사의 항구 다시 읽기 ────────────────────────────────────────────
@@ -500,13 +533,16 @@ async function portsAll() {
   const found = [];
   for (const target of targets.slice(0, limit)) {
     const mark = target.blocked ? '!' : ' ';
-    const { port, error } = await identity(target.url);
-    found.push({ ...target, port: port.value, candidates: port.candidates, ...(error ? { error } : {}) });
+    const { port, evidence = [], error } = await identity(target.url);
+    found.push({ ...target, port: port.value, candidates: port.candidates, evidence, ...(error ? { error } : {}) });
 
     if (error) console.log(`${mark} ${target.id.padEnd(16)} 못 받았습니다: ${error.slice(0, 80)}`);
     else if (port.value) console.log(`${mark} ${target.id.padEnd(16)} ${port.value}  ← 라벨에서 읽음`);
     else if (port.candidates.length) console.log(`${mark} ${target.id.padEnd(16)} 후보: ${port.candidates.join(' · ')}`);
     else console.log(`${mark} ${target.id.padEnd(16)} 못 찾았습니다 — 페이지에 안 적혀 있거나 그림입니다`);
+    // 후보 낱말만으로는 이 배가 뜨는 항인지 소개글에 나온 항인지 못 가립니다.
+    // 주소·승선지 줄을 그대로 보여줘서 사람이 한 번에 판단하게 합니다.
+    for (const line of evidence) console.log(`    | ${line}`);
   }
 
   const values = found.filter((row) => row.port);
@@ -548,14 +584,8 @@ async function portsAll() {
 
 /** 공지에서 출항시각처럼 보이는 줄만 추립니다. 값이 아니라 **후보**입니다. */
 export function timeHints(html, limit = 5) {
-  const bare = String(html ?? '')
-    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
-    .replace(/<style[\s\S]*?<\/style>/gi, ' ');
-  const lines = bare.replace(/<[^>]+>/g, '\n').replace(/&nbsp;/g, ' ')
-    .split('\n').map((line) => line.replace(/\s+/g, ' ').trim()).filter(Boolean);
-
   const seen = new Map();
-  for (const line of lines) {
+  for (const line of textLines(html)) {
     if (!/출항|출조\s*시간|운항\s*시간/.test(line)) continue;
     // 시각을 못 읽는 줄은 후보가 아닙니다("출항 문의는 전화로"). 버스·집결·입금 시각도
     // tripTimeRange가 이미 거릅니다 — 후보라도 그건 배가 뜨는 시각이 아닙니다.
