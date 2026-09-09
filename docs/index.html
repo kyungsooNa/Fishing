@@ -44,6 +44,15 @@
                   padding: 7px 9px; font-size: 14px; font-family: inherit; }
   .multi-menu label { display: flex; align-items: center; gap: 7px; padding: 5px 6px; white-space: nowrap; }
   .multi-menu label:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+  .date-menu { min-width: 270px; max-height: none; overflow: visible; padding: 10px; }
+  .date-menu label { justify-content: space-between; gap: 12px; }
+  .date-menu input[type=date] { width: 168px; padding: 6px 8px; border: 1px solid var(--line);
+                                border-radius: 7px; background: var(--card); color: var(--fg);
+                                color-scheme: light dark; font: inherit; }
+  .date-menu button { width: 100%; margin-top: 7px; padding: 6px 10px; border: 1px solid var(--line);
+                      border-radius: 7px; background: var(--card); color: var(--muted);
+                      font: inherit; cursor: pointer; }
+  .date-menu button:hover { color: var(--accent); border-color: var(--accent); }
   label.check { display: inline-flex; align-items: center; gap: 6px; padding: 7px 10px;
                 border: 1px solid var(--line); border-radius: 7px; background: var(--card); font-size: 14px; }
   .tablewrap { overflow-x: auto; background: var(--card); border: 1px solid var(--line); border-radius: 10px; }
@@ -230,7 +239,14 @@
     <details class="multi" id="f-port" data-label="항구" data-all="전체 항구"><summary>전체 항구</summary><div class="multi-menu"></div></details>
     <details class="multi" id="f-species" data-label="어종" data-all="전체 어종"><summary>전체 어종</summary><div class="multi-menu"></div></details>
     <details class="multi" id="f-session" data-label="운항" data-all="오전·오후·종일"><summary>오전·오후·종일</summary><div class="multi-menu"></div></details>
-    <details class="multi" id="f-date" data-label="날짜" data-all="전체 날짜"><summary>전체 날짜</summary><div class="multi-menu"></div></details>
+    <details class="multi" id="f-date" data-label="날짜" data-all="전체 날짜">
+      <summary>전체 날짜</summary>
+      <div class="multi-menu date-menu">
+        <label><span>시작일</span><input type="date" id="f-date-start" aria-label="시작 날짜"></label>
+        <label><span>종료일</span><input type="date" id="f-date-end" aria-label="종료 날짜"></label>
+        <button type="button" id="f-date-clear">전체 날짜로 초기화</button>
+      </div>
+    </details>
     <select id="f-sort" aria-label="정렬">
       <option value="default">기본순 (빈자리 · 출항 시각)</option>
       <option value="seats-desc">잔여석 많은순</option>
@@ -719,7 +735,7 @@ function fillOptions(control, values, defaults = []) {
     input.type = 'checkbox';
     input.value = v;
     input.checked = defaults.includes(v);
-    input.dataset.text = control.id === 'f-date' ? dayLabel(v) : v;
+    input.dataset.text = v;
     input.addEventListener('change', () => { updateMultiLabel(control); filtered(); });
     label.append(input, input.dataset.text);
     menu.append(label);
@@ -753,11 +769,51 @@ function setOnlyFilterValue(id, value) {
   updateMultiLabel($(id));
 }
 
+function dateRange() {
+  return { start: $('f-date-start').value || null, end: $('f-date-end').value || null };
+}
+
+function inDateRange(value, { start, end }) {
+  return (!start || value >= start) && (!end || value <= end);
+}
+
+function updateDateRangeLabel() {
+  const { start, end } = dateRange();
+  const control = $('f-date');
+  control.dataset.selected = start || end ? '1' : '0';
+  control.querySelector('summary').textContent = start && end
+    ? (start === end ? dayLabel(start) : `${dayLabel(start)}~${dayLabel(end)}`)
+    : start ? `${dayLabel(start)}부터`
+      : end ? `${dayLabel(end)}까지` : control.dataset.all;
+}
+
+function fillDateRange(values) {
+  const dates = [...new Set(values.filter(Boolean))].sort();
+  const min = dates[0] ?? '';
+  const max = dates.at(-1) ?? '';
+  for (const input of [$('f-date-start'), $('f-date-end')]) {
+    input.min = min;
+    input.max = max;
+  }
+  updateDateRangeLabel();
+}
+
+function changeDateRange(changed) {
+  const start = $('f-date-start');
+  const end = $('f-date-end');
+  if (start.value && end.value && start.value > end.value) {
+    if (changed === start) end.value = start.value;
+    else start.value = end.value;
+  }
+  updateDateRangeLabel();
+  filtered();
+}
+
 // 표와 지도가 같은 기준을 보도록 필터는 한 군데서만 겁니다.
 function visibleTrips() {
   const platform = selectedValues('f-platform');
   const site = selectedValues('f-site'), region = selectedValues('f-region'), port = selectedValues('f-port');
-  const species = selectedValues('f-species'), date = selectedValues('f-date'), session = selectedValues('f-session');
+  const species = selectedValues('f-species'), dates = dateRange(), session = selectedValues('f-session');
   const q = $('f-q').value.trim(), openOnly = $('f-open').checked;
   const favOnly = $('f-fav').checked;
   const kst = kstParts();
@@ -767,7 +823,7 @@ function visibleTrips() {
     (!platform.size || platformsOf(DATA.sites, t).some((p) => platform.has(p))) &&
     (!site.size || site.has(t.siteName) || (t.sources ?? []).some((x) => site.has(x.siteName))) &&
     hasSelection(region, regionOf(t.port)) && hasSelection(port, portOf(t)) &&
-    (!species.size || speciesOf(t).some((s) => species.has(s))) && hasSelection(date, t.date) &&
+    (!species.size || speciesOf(t).some((s) => species.has(s))) && inDateRange(t.date, dates) &&
     hasSelection(session, sessionOf(t)) &&
     showTripByTime(t, kst) &&
     (!q || (t.boat ?? '').includes(q)) &&
@@ -1157,7 +1213,7 @@ function loadData() { return fetch('data.json?t=' + Date.now(), { cache: 'no-sto
     fillOptions($('f-port'), d.trips.map(portOf));
     fillOptions($('f-species'), d.trips.flatMap(speciesOf), ['갑오징어', '주꾸미']);
     fillOptions($('f-session'), d.trips.map(sessionOf));
-    fillOptions($('f-date'), d.trips.map((t) => t.date));
+    fillDateRange(d.trips.map((t) => t.date));
     renderStatus();
     refresh();
   })
@@ -1223,6 +1279,14 @@ window.addEventListener('storage', (event) => {
 // 필터를 바꾸면 보던 쪽 번호는 의미가 없습니다. 첫 주부터 다시 봅니다.
 const filtered = () => { PAGE = 0; refresh(); };
 for (const id of ['f-open', 'f-fav']) $(id).addEventListener('change', filtered);
+$('f-date-start').addEventListener('change', (event) => changeDateRange(event.currentTarget));
+$('f-date-end').addEventListener('change', (event) => changeDateRange(event.currentTarget));
+$('f-date-clear').addEventListener('click', () => {
+  $('f-date-start').value = '';
+  $('f-date-end').value = '';
+  updateDateRangeLabel();
+  filtered();
+});
 // 정렬은 보이는 날짜를 바꾸지 않으므로 보던 쪽에 그대로 있습니다(필터와 다른 점입니다).
 $('f-sort').addEventListener('change', () => refresh());
 // 배 이름 검색은 한 글자마다 걸지 않습니다. 손이 멈춘 뒤에 한 번만 겁니다 —

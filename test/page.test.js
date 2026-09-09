@@ -31,11 +31,34 @@ test('현황판과 시스템 관리의 이동 링크는 제목 아래 같은 위
     '시스템 관리 링크가 표·지도 버튼 옆에 남아 있으면 두 화면의 위치가 다시 달라집니다');
 });
 
-test('주요 필터는 다중 선택 메뉴다', () => {
-  for (const id of ['f-platform', 'f-site', 'f-region', 'f-port', 'f-species', 'f-session', 'f-date']) {
+test('목록형 필터는 다중 선택 메뉴다', () => {
+  for (const id of ['f-platform', 'f-site', 'f-region', 'f-port', 'f-species', 'f-session']) {
     assert.match(html, new RegExp(`<details class="multi" id="${id}"[\\s\\S]*?<div class="multi-menu"></div>`));
   }
   assert.match(inline, /selectedValues\('f-site'\)/);
+});
+
+test('날짜는 달력으로 시작일과 종료일을 고른다', () => {
+  assert.match(html, /id="f-date-start"[^>]*type="date"|type="date"[^>]*id="f-date-start"/);
+  assert.match(html, /id="f-date-end"[^>]*type="date"|type="date"[^>]*id="f-date-end"/);
+  assert.match(html, /id="f-date-clear"/);
+  assert.doesNotMatch(inline, /fillOptions\(\$\('f-date'\)/);
+  assert.match(inline, /fillDateRange\(d\.trips\.map/);
+  assert.match(inline, /inDateRange\(t\.date, dates\)/);
+});
+
+test('날짜 기간은 시작일과 종료일을 모두 포함한다', () => {
+  const start = inline.indexOf('function inDateRange');
+  const end = inline.indexOf('function updateDateRangeLabel');
+  assert.ok(start >= 0 && end > start, '날짜 기간 판정 함수를 찾지 못했습니다');
+  const { inDateRange } = new Function(`${inline.slice(start, end)}\nreturn { inDateRange };`)();
+  const range = { start: '2026-09-10', end: '2026-09-12' };
+  assert.equal(inDateRange('2026-09-09', range), false);
+  assert.equal(inDateRange('2026-09-10', range), true);
+  assert.equal(inDateRange('2026-09-12', range), true);
+  assert.equal(inDateRange('2026-09-13', range), false);
+  assert.equal(inDateRange('2026-09-13', { start: '2026-09-12', end: null }), true);
+  assert.equal(inDateRange('2026-09-09', { start: null, end: '2026-09-10' }), true);
 });
 
 test('어종 필터는 갑오징어·주꾸미를 기본 선택한다', () => {
