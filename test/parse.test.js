@@ -463,6 +463,21 @@ test('thefishing: detail — 공지사항 껍데기 행은 출조로 만들지 �
   assert.deepEqual(trips.map((t) => t.boat), ['배짱호']);
 });
 
+test('thefishing: detail — 어종이 적혀도 예약 상태 없는 상시 안내는 출조가 아니다', () => {
+  const site = { id: 'yayaho', name: '야야호', boats: { 나로호: {} } };
+  const html = `<table>
+    <tr><td colspan="3"><span>2026년 09월 12일</span>, 토요일, 8물</td></tr>
+    <tr><th>선박명</th><th>예 약 현 황</th><th>남은자리</th></tr>
+    <tr><td>나로호(빨대선장)</td><td>공지 쭈갑 출조 선비: 9만 · 독배전문(개인출조가능)</td><td></td></tr>
+    <tr><td>야야호</td><td>쭈꾸미 출조</td><td>예약완료</td></tr>
+  </table>`;
+  const trips = parseDetail(site, html, 'https://x');
+
+  assert.deepEqual(trips.map((t) => [t.boat, t.status, t.seatsLeft]), [
+    ['야야호', STATUS.CLOSED, 0],
+  ]);
+});
+
 test('thefishing: 플랫폼 이름은 배로 등록하지 않는다', () => {
   const site = {
     id: 'ssfish', name: '무창포 선상낚시', excludeBoats: ['무창포 선상낚시'],
