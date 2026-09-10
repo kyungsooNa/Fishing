@@ -3475,13 +3475,14 @@
       "adapter": "thefishing",
       "url": "https://doublek.thefishing.kr/index.php?mid=bk",
       "source": "detail",
+      "port": "경남 사천 팔포항",
       "phone": "010-4455-6222",
       "enabled": true,
       "addedBy": "discover",
       "boats": {
         "1호": {}
       },
-      "note": "자동 발견(https://doublek.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 팔포항, 출조항"
+      "note": "자동 발견(https://doublek.thefishing.kr) — 시험 수집 8건. 2026-09-10 공식 홈페이지의 '출조점 경남 사천시 팔포3길 65-3 팔포항'에서 출항지를 확인했습니다. 이름·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다."
     },
     {
       "id": "dragonho",
