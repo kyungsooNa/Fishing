@@ -5,7 +5,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
-import { subdomainsFromCrt, hostsFromCdx, linksFrom, adapterPlan, pickPhone, pickPort, idFor, entryFor, portTargets, applyPorts, timeHints, timeTargets, portEvidence } from '../discover.js';
+import { subdomainsFromCrt, hostsFromCdx, linksFrom, adapterPlan, pickPhone, pickPort, idFor, entryFor, portTargets, applyPorts, timeHints, timeTargets, portEvidence, priceHints, priceTargets } from '../discover.js';
 
 test('인증서 로그에서 선사 서브도메인만 추린다', () => {
   const rows = [
@@ -262,12 +262,67 @@ test('이미 timeGuide를 적어둔 곳은 다시 읽지 않는다', () => {
   assert.deepEqual(timeTargets(registry, timeQuality), []);
 });
 
+// 승선료는 registry에 사람이 적지만, 260곳이 넘는 홈페이지를 무작정 열 수는 없습니다.
+// 금액만 뽑으면 예약금·장비 대여료를 선비로 오인하므로 라벨과 근거 줄을 함께 봅니다.
+test('승선료 라벨과 금액이 함께 있는 줄만 후보로 준다', () => {
+  const html = `<body>
+    <p><span>주꾸미 승선료</span> <strong>100,000원</strong></p>
+    <p>갈치 선비 12만원</p>
+    <p>가격은 90,000원입니다</p>
+    <p>승선료는 전화 문의</p>
+  </body>`;
+  const hints = priceHints(html);
+
+  assert.deepEqual(hints.map((hint) => hint.amounts), [[100000], [120000]]);
+  assert.deepEqual(hints.map((hint) => hint.species), [['주꾸미'], ['갈치']]);
+  assert.match(hints[0].line, /승선료 100,000원/);
+});
+
+test('예약금·입금액·추가요금은 승선료 후보에서 제외한다', () => {
+  const html = `<body>
+    <p>승선료 예약금 30,000원, 잔금은 현장 입금</p>
+    <p>선비 외 장비 대여료 20,000원 추가</p>
+    <p>버스 포함 출조비 150,000원</p>
+    <p>광어 출조비 13만원</p>
+  </body>`;
+  assert.deepEqual(priceHints(html), [{ amounts: [130000], species: ['광어'], line: '광어 출조비 13만원' }]);
+});
+
+test('여러 요금 행을 감싼 div는 한 요금처럼 합치지 않는다', () => {
+  const html = `<div class="price-list">
+    <p>주꾸미 승선료 100,000원</p>
+    <p>갈치 승선료 200,000원</p>
+  </div>`;
+  assert.deepEqual(priceHints(html).map((hint) => hint.amounts), [[100000], [200000]]);
+});
+
+test('승선료가 많이 빈 곳부터 보고 일부만 채운 곳도 다시 본다', () => {
+  const registry = [
+    { id: 'partial', url: 'https://a.example', prices: { 주꾸미: 90000 } },
+    { id: 'busy', url: 'https://b.example' },
+    { id: 'done', url: 'https://c.example', price: 100000 },
+    { id: 'off', url: 'https://d.example', enabled: false },
+  ];
+  const quality = { sites: [
+    { key: 'partial', trips: 20, missing: { price: 10 } },
+    { key: 'busy', trips: 100, missing: { price: 100 } },
+    { key: 'done', trips: 5, missing: { price: 0 } },
+    { key: 'off', trips: 200, missing: { price: 200 } },
+  ] };
+
+  assert.deepEqual(priceTargets(registry, quality).map((row) => [row.id, row.missing]), [
+    ['busy', 100], ['partial', 10],
+  ]);
+  assert.deepEqual(priceTargets(registry, null).map((row) => row.id), ['busy']);
+});
+
 // 모듈이 뜨다가 죽으면 명령을 통째로 못 씁니다. 실제로 최상위 const를 함수보다 늦게
 // 두는 바람에 CLI가 뜨지도 못한 적이 있습니다 — 네트워크 없이 확인되는 부분입니다.
-test('CLI가 뜨고 사용법에 times가 있다', async () => {
+test('CLI가 뜨고 사용법에 times와 prices가 있다', async () => {
   const run = promisify(execFile);
   await assert.rejects(run(process.execPath, ['discover.js']), (err) => {
     assert.match(err.stdout, /node discover\.js times/);
+    assert.match(err.stdout, /node discover\.js prices/);
     return true;
   });
 });
