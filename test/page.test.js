@@ -107,6 +107,18 @@ test('어종이 둘인 출조는 어느 쪽으로 걸러도 나오고, 값이 �
   assert.match(inline, /hasSelection\(session, sessionOf\(t\)\)/);
 });
 
+test('잔여 좌석을 공개하지 않은 예약 가능 출조는 빈칸 대신 선사 확인으로 표시한다', () => {
+  const start = inline.indexOf('const seatsLabel');
+  const end = inline.indexOf('// ── 전화 걸기');
+  assert.ok(start >= 0 && end > start, '잔여 좌석 표시 함수를 찾지 못했습니다');
+  const { seatsLabel } = new Function(`${inline.slice(start, end)}\nreturn { seatsLabel };`)();
+
+  assert.equal(seatsLabel({ status: 'unknown', seatsLeft: null }), '선사 확인');
+  assert.equal(seatsLabel({ status: 'open', seatsLeft: null }), '선사 확인');
+  assert.equal(seatsLabel({ status: 'off', seatsLeft: null }), '');
+  assert.equal(seatsLabel({ status: 'open', seatsLeft: 3, seatsTotal: 20 }), '3/20');
+});
+
 test('빈자리 필터는 기본으로 켜져 있다', () => {
   assert.match(html, /id="f-open" checked/);
 });

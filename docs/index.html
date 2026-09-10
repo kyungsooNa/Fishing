@@ -595,7 +595,9 @@ let RATES = loadRates();
 const $ = (id) => document.getElementById(id);
 const won = (n) => n == null ? '' : n.toLocaleString('ko-KR') + '원';
 const seatsLabel = (t) => {
-  if (!Number.isFinite(t.seatsLeft)) return '';
+  if (!Number.isFinite(t.seatsLeft)) {
+    return ['open', 'few', 'unknown'].includes(t.status) ? '선사 확인' : '';
+  }
   return Number.isFinite(t.seatsTotal) ? `${t.seatsLeft}/${t.seatsTotal}` : String(t.seatsLeft);
 };
 
@@ -1205,6 +1207,9 @@ function render(all = sortTrips(visibleTrips())) {
           td.append(note);
           td.title = '개별 예약표 대신 선사가 공지한 해당 시즌 출항 시각입니다.';
         }
+      }
+      if (i === 8 && !Number.isFinite(t.seatsLeft) && seatsLabel(t)) {
+        td.title = '예약 페이지에 잔여 좌석 수가 없습니다. 선사에 확인해 주세요.';
       }
       // 날짜·운항·구분·상태는 줄이 갈리면 읽기 나빠집니다. 폭은 긴 이름 칸에서 법니다.
       if (i <= 2 || i === 7) td.classList.add('nowrap');
