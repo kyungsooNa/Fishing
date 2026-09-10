@@ -1252,18 +1252,196 @@
       "addedBy": "discover",
       "port": "전북 군산 비응항",
       "boats": {
-        "챔피언호": {},
-        "나드리호": {},
+        "챔피언호": {
+          "priceGuides": [
+            {
+              "price": 120000,
+              "species": "문어",
+              "sessions": "종일",
+              "departAt": "04:30",
+              "validFrom": "2026-09-10",
+              "validThrough": "2026-09-27",
+              "source": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet",
+              "note": "2026-09-10 공식 일정표의 9/10~9/27 챔피언호 문어 종일 출조에서 선비 12만원 확인"
+            },
+            {
+              "price": 110000,
+              "species": "갑오징어",
+              "sessions": "종일",
+              "departAt": "05:00",
+              "validFrom": "2026-09-28",
+              "validThrough": "2026-09-30",
+              "source": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet",
+              "note": "2026-09-10 공식 일정표의 9/28~9/30 챔피언호 갑오징어 종일 출조에서 선비 11만원 확인"
+            },
+            {
+              "price": 60000,
+              "sessions": "오후",
+              "departAt": "16:30",
+              "validFrom": "2026-09-10",
+              "validThrough": "2026-09-30",
+              "source": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet",
+              "note": "2026-09-10 공식 일정표의 9/10~9/30 챔피언호 꽃게 오후 출조에서 선비 6만원 확인"
+            }
+          ]
+        },
+        "나드리호": {
+          "priceGuides": [
+            {
+              "price": 130000,
+              "species": "주꾸미",
+              "sessions": "종일",
+              "departAt": "05:00",
+              "validFrom": "2026-09-12",
+              "validThrough": "2026-09-20",
+              "source": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet",
+              "note": "2026-09-10 공식 일정표의 9/12·9/19·9/20 나드리호 주꾸미·갑오징어 종일 출조에서 선비 13만원 확인"
+            },
+            {
+              "price": 60000,
+              "sessions": "오후",
+              "departAt": "16:30",
+              "validFrom": "2026-09-11",
+              "validThrough": "2026-09-18",
+              "source": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet",
+              "note": "2026-09-10 공식 일정표의 9/11·9/18 나드리호 꽃게 오후 출조에서 선비 6만원 확인"
+            },
+            {
+              "price": 100000,
+              "species": "주꾸미",
+              "validFrom": "2026-09-10",
+              "validThrough": "2026-09-30",
+              "source": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet",
+              "note": "2026-09-10 공식 일정표의 9/10~9/30 나드리호 주꾸미 출조에서 선비 10만원 확인"
+            }
+          ]
+        },
         "임마누엘호": {},
-        "스마트호": {},
+        "스마트호": {
+          "priceGuides": [
+            {
+              "price": 100000,
+              "species": "주꾸미",
+              "validFrom": "2026-09-10",
+              "validThrough": "2026-09-30",
+              "source": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet",
+              "note": "2026-09-10 공식 일정표의 9/10~9/30 스마트호 주꾸미 출조에서 선비 10만원 확인"
+            }
+          ]
+        },
         "범고래호": {},
-        "포세이돈호": {},
+        "포세이돈호": {
+          "priceGuides": [
+            {
+              "price": 100000,
+              "species": "주꾸미",
+              "sessions": "종일",
+              "departAt": "05:00",
+              "validFrom": "2026-09-10",
+              "validThrough": "2026-09-10",
+              "source": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet",
+              "note": "2026-09-10 공식 일정표의 9/10 포세이돈호 주꾸미 종일 출조에서 선비 10만원 확인"
+            },
+            {
+              "price": 120000,
+              "species": "문어",
+              "sessions": "종일",
+              "departAt": "04:00",
+              "validFrom": "2026-09-11",
+              "validThrough": "2026-09-30",
+              "source": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet",
+              "note": "2026-09-10 공식 일정표의 9/11~9/30 포세이돈호 문어 종일 출조에서 선비 12만원 확인"
+            }
+          ]
+        },
         "포세이돈2호": {},
-        "창성호": {},
+        "창성호": {
+          "priceGuides": [
+            {
+              "price": 50000,
+              "species": "주꾸미",
+              "sessions": "오후",
+              "departAt": "12:00",
+              "validFrom": "2026-09-25",
+              "validThrough": "2026-09-25",
+              "source": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet",
+              "note": "2026-09-10 공식 일정표의 9/25 창성호 주꾸미 오후 출조에서 선비 5만원 확인"
+            },
+            {
+              "price": 100000,
+              "species": "주꾸미",
+              "sessions": "종일",
+              "departAt": "05:30",
+              "validFrom": "2026-09-10",
+              "validThrough": "2026-09-30",
+              "source": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet",
+              "note": "2026-09-10 공식 일정표의 9/10~9/30 창성호 주꾸미 종일 출조에서 선비 10만원 확인"
+            }
+          ]
+        },
         "그랜드호": {},
-        "월명호": {},
-        "뉴라이브호": {},
-        "인해호": {}
+        "월명호": {
+          "priceGuides": [
+            {
+              "price": 50000,
+              "species": "주꾸미",
+              "sessions": [
+                "오전",
+                "오후"
+              ],
+              "validFrom": "2026-09-10",
+              "validThrough": "2026-09-30",
+              "source": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet",
+              "note": "2026-09-10 공식 일정표의 9/10~9/30 월명호 주꾸미 오전·오후 출조에서 선비 5만원 확인"
+            }
+          ]
+        },
+        "뉴라이브호": {
+          "priceGuides": [
+            {
+              "price": 120000,
+              "species": "주꾸미",
+              "departAt": "13:00",
+              "validFrom": "2026-09-10",
+              "validThrough": "2026-09-17",
+              "source": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet",
+              "note": "2026-09-10 공식 일정표의 9/10~9/17 뉴라이브호 주꾸미·갑오징어·꽃게 출조에서 선비 12만원 확인"
+            },
+            {
+              "price": 100000,
+              "species": "주꾸미",
+              "departAt": "05:30",
+              "validFrom": "2026-09-12",
+              "validThrough": "2026-09-30",
+              "source": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet",
+              "note": "2026-09-10 공식 일정표의 9/12~9/30 뉴라이브호 주꾸미·갑오징어·낙지 출조에서 선비 10만원 확인"
+            }
+          ]
+        },
+        "인해호": {
+          "priceGuides": [
+            {
+              "price": 130000,
+              "species": "주꾸미",
+              "sessions": "종일",
+              "departAt": "05:00",
+              "validFrom": "2026-09-10",
+              "validThrough": "2026-09-29",
+              "source": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet",
+              "note": "2026-09-10 공식 일정표의 9/10~9/29 인해호 주꾸미 종일 출조에서 선비 13만원 확인"
+            },
+            {
+              "price": 150000,
+              "species": "갑오징어",
+              "sessions": "종일",
+              "departAt": "04:30",
+              "validFrom": "2026-09-28",
+              "validThrough": "2026-09-30",
+              "source": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet",
+              "note": "2026-09-10 공식 일정표의 9/28·9/30 인해호 갑오징어 종일 출조에서 선비 15만원 확인"
+            }
+          ]
+        }
       },
       "note": "자동 발견(https://gunsannaksi.sunsang24.com) — 시험 수집 490건. 출항지는 2026-09-09 공식 업체소개(https://gunsannaksi.sunsang24.com/ship/info)의 '출조항구: 비응항'과 비응항 출조 중심이라는 안내에서 확인했습니다. 예약문의 번호가 010-9453-4046과 010-9477-4046 두 개라 배별 전화번호는 확인 전까지 비워둡니다."
     },
