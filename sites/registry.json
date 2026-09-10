@@ -1469,7 +1469,19 @@
             }
           ]
         },
-        "뉴빅토리호": {},
+        "뉴빅토리호": {
+          "priceGuides": [
+            {
+              "price": 100000,
+              "species": "주꾸미",
+              "sessions": "종일",
+              "validFrom": "2026-09-10",
+              "validThrough": "2026-09-30",
+              "source": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet",
+              "note": "2026-09-10 공식 일정표의 9/10~9/30 뉴빅토리호 주꾸미 종일 출조에서 '선비100,000' 확인"
+            }
+          ]
+        },
         "삼성호": {
           "priceGuides": [
             {
