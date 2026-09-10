@@ -43,6 +43,7 @@ try {
   if (peek) await peekPages(site);
   const trips = await collectSite({ ...site, days });
   report(trips);
+  if (dump) await dumpHtml(site);
 } catch (err) {
   console.error(`실패: ${describeError(err)}\n`);
   if (dump) await dumpHtml(site);
