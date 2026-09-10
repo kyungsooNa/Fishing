@@ -425,6 +425,7 @@ async function main() {
   if (cmd === 'probe') return probeAll();
   if (cmd === 'ports') return portsAll();
   if (cmd === 'times') return timesAll();
+  if (cmd === 'prices') return pricesAll();
   usage();
 }
 
@@ -440,6 +441,7 @@ function usage() {
   node discover.js ports              항구가 빈 등록 선사를 다시 읽기 (급한 곳부터)
   node discover.js ports --add        라벨로 찾은 값만 ${REGISTRY_PATH}에 채우기
   node discover.js times              출항시각이 빈 선사의 공지에서 시각 후보 읽기 (많이 빈 곳부터)
+  node discover.js prices             승선료가 빈 선사의 요금 근거 문장 읽기 (많이 빈 곳부터)
 `);
   process.exitCode = 1;
 }
@@ -674,6 +676,144 @@ async function timesAll() {
   console.log('tmp/times.json 에 후보까지 전부 적었습니다.');
   console.log('registry에 적을 때는 timeGuide에 departAt·species·validFrom·validThrough·source를 같이 적으세요');
   console.log('— 어느 어종에 언제까지 유효한지가 없으면 다음 시즌에 틀린 시각이 남습니다.');
+}
+
+// ── 등록된 선사의 승선료 후보 모으기 ────────────────────────────────────────
+//
+// 승선료는 registry에서만 옵니다(core/schema.js의 pickPrice). 예약판과 공지에는 예약금,
+// 입금액, 장비 대여료도 함께 보여서 금액만 뽑아 자동 입력하면 틀립니다. 여기서는
+// "승선료·선비·출조비"가 붙은 짧은 줄만 근거 후보로 남기고, 값은 사람이 확인합니다.
+const PRICE_LABEL = /(승선료|선비|출조비|출조\s*요금|낚시\s*요금|1인\s*(?:요금|금액))/;
+const NOT_TRIP_PRICE = /(예약금|입금|계좌|추가\s*(?:비용|요금|금액)|대여|렌탈|보증금|환불|취소\s*수수료|버스|식대|미끼|채비|장비|얼음|낚싯대)/;
+const WON = /(\d{1,3}(?:,\d{3})+|\d{4,7})\s*원|(\d{1,3}(?:\.\d+)?)\s*만\s*원?/g;
+
+function wonAmounts(line) {
+  const amounts = new Set();
+  for (const match of String(line).matchAll(WON)) {
+    const amount = match[1]
+      ? Number(match[1].replace(/,/g, ''))
+      : Math.round(Number(match[2]) * 10_000);
+    // 일반 선상 출조비 범위 밖 숫자는 회비·상품가일 가능성이 큽니다. 후보 단계에서도
+    // 명백한 잡음을 줄이되, 최종 값으로 쓰는 판단은 사람이 합니다.
+    if (amount >= 10_000 && amount <= 1_000_000) amounts.add(amount);
+  }
+  return [...amounts];
+}
+
+/** 공지·예약판에서 승선료로 명시된 근거 줄만 추립니다. 자동 입력할 값이 아닙니다. */
+export function priceHints(html, limit = 6) {
+  const seen = new Map();
+  const lines = [];
+  // 라벨과 금액이 <span>·<strong>처럼 서로 다른 태그에 있으면 textLines에서는 둘로
+  // 갈립니다. 사람이 보는 한 행·문단 단위 텍스트도 같이 보되, 긴 부모 컨테이너는 버립니다.
+  const $ = cheerio.load(String(html ?? ''));
+  $('script, style').remove();
+  const blocks = 'p, li, tr, dt, dd, div';
+  const qualifies = (line) => line.length <= 180 && PRICE_LABEL.test(line) &&
+    !NOT_TRIP_PRICE.test(line) && wonAmounts(line).length > 0;
+  $(blocks).each((_, el) => {
+    const line = $(el).text().replace(/\s+/g, ' ').trim();
+    if (!line || line.length > 180) return;
+    // 여러 요금 행을 감싼 div를 한 후보로 합치지 않습니다. 다만 라벨과 금액이 서로
+    // 다른 자식 div에 갈린 경우에는 부모 한 줄이 유일한 근거이므로 남깁니다.
+    const hasCloserHint = $(el).find(blocks).toArray().some((child) =>
+      qualifies($(child).text().replace(/\s+/g, ' ').trim()));
+    if (!hasCloserHint) lines.push(line);
+  });
+  lines.push(...textLines(html));
+  for (const line of lines) {
+    if (line.length > 180 || !PRICE_LABEL.test(line) || NOT_TRIP_PRICE.test(line)) continue;
+    const amounts = wonAmounts(line);
+    if (!amounts.length) continue;
+    const key = line.replace(/\s/g, '');
+    if (seen.has(key)) continue;
+    seen.set(key, {
+      amounts,
+      species: SPECIES.filter((name) => line.includes(name)).map(toSpecies).filter(Boolean),
+      line,
+    });
+    if (seen.size >= limit) break;
+  }
+  return [...seen.values()];
+}
+
+const hasConfiguredPrice = (site) =>
+  site.price != null || Object.keys(site.prices ?? {}).length > 0 ||
+  Object.values(site.boats ?? {}).some((boat) =>
+    boat?.price != null || Object.keys(boat?.prices ?? {}).length > 0);
+
+/** 승선료가 많이 빈 선사부터 봅니다. 일부 배·어종만 채운 사이트도 남은 빈 값을 봅니다. */
+export function priceTargets(registry, quality) {
+  const byId = new Map(registry.map((site) => [site.id, site]));
+  if (quality?.sites) {
+    return quality.sites
+      .filter((row) => Number(row.missing?.price) > 0)
+      .map((row) => ({ ...row, site: byId.get(row.key) }))
+      .filter(({ site }) => site && site.enabled !== false && site.url)
+      .map(({ site, ...row }) => ({
+        id: site.id, url: site.url, name: site.name ?? site.id,
+        missing: row.missing.price, trips: row.trips ?? 0,
+      }))
+      .sort((a, b) => b.missing - a.missing || b.trips - a.trips || a.id.localeCompare(b.id));
+  }
+
+  return registry
+    .filter((site) => site.enabled !== false && site.url && !hasConfiguredPrice(site))
+    .map((site) => ({ id: site.id, url: site.url, name: site.name ?? site.id, missing: 0, trips: 0 }))
+    .sort((a, b) => a.id.localeCompare(b.id));
+}
+
+async function pricesAll() {
+  const limit = Number(valueOf('--limit') ?? 30);
+  const registry = await loadRegistry();
+  const quality = await portQuality(registry);
+  const targets = priceTargets(registry, quality);
+
+  console.log(`승선료가 빈 선사 ${targets.length}곳 — 많이 빈 곳부터 ${Math.min(limit, targets.length)}곳을 봅니다`);
+  console.log('예약금·입금액·추가요금은 버리고 승선료 근거 문장만 찍습니다. 값은 registry에 사람이 적습니다.\n');
+
+  const found = [];
+  for (const target of targets.slice(0, limit)) {
+    let hints = [], source = null, received = false, lastError = null;
+    // 홈페이지에 없으면 실제 예약판도 한 번 봅니다. 홈페이지에서 찾았으면 요청을 더 하지 않습니다.
+    const pages = [...new Set([originOf(target.url), target.url])];
+    for (const url of pages) {
+      try {
+        const html = await fetchHtml(url, { mode: 'static', retries: 0 });
+        received = true;
+        hints = priceHints(html);
+        if (hints.length) { source = url; break; }
+      } catch (err) {
+        lastError = describeError(err);
+      }
+    }
+    const error = !received && lastError ? lastError : null;
+    found.push({ ...target, hints, ...(source ? { source } : {}), ...(error ? { error } : {}) });
+
+    const head = `${target.id.padEnd(16)} ${String(target.missing).padStart(4)}건`;
+    if (error) console.log(`${head}  못 받았습니다: ${error.slice(0, 70)}`);
+    else if (!hints.length) console.log(`${head}  요금 근거를 못 찾았습니다`);
+    else {
+      console.log(head);
+      for (const hint of hints) {
+        const amounts = hint.amounts.map((value) => `${value.toLocaleString('ko-KR')}원`).join(' · ');
+        console.log(`    ${amounts}  ${hint.species.join('·') || '어종 없음'}  | ${hint.line}`);
+      }
+    }
+  }
+
+  const withHints = found.filter((row) => row.hints.length);
+  const failed = found.filter((row) => row.error);
+  console.log(`\n후보가 나온 곳 ${withHints.length} / 근거를 못 찾은 곳 ${found.length - withHints.length - failed.length}`
+    + ` / 못 받은 곳 ${failed.length}`);
+  if (failed.length === found.length && found.length) {
+    console.log('전부 못 받았습니다 — 여기서는 국내 도메인이 막혀 있습니다. Actions 탭 → prices 로 돌리세요.');
+  }
+
+  await mkdir('tmp', { recursive: true });
+  await writeFile('tmp/prices.json', `${JSON.stringify(found, null, 2)}\n`);
+  console.log('tmp/prices.json 에 근거 문장과 출처를 적었습니다.');
+  console.log('registry에는 배·어종별 차이와 적용 시즌을 페이지에서 확인한 뒤 price 또는 prices로 적으세요.');
 }
 
 /** 수집 결과가 있으면 "지금 두 줄로 뜨는 곳"을 알 수 있습니다. 없으면 순서만 거칠어집니다. */

@@ -1,0 +1,45 @@
+name: prices
+
+# 승선료가 빈 선사의 홈페이지와 예약판을 읽어, 승선료라고 명시된 근거 문장만 모읍니다.
+#
+# 금액이 보여도 예약금·입금액·장비 대여료일 수 있어 자동으로 registry에 넣지 않습니다.
+# 후보 문장과 출처를 tmp/prices.json으로 올리고, 사람이 배·어종·시즌을 확인해 적습니다.
+#
+# Actions 탭 → prices → Run workflow.
+
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: '읽을 선사 수 (홈페이지에 없으면 예약판도 보므로 30곳이면 3분쯤)'
+        required: false
+        type: string
+        default: '30'
+
+jobs:
+  prices:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci --no-audit --no-fund
+
+      # 정적 본문만 읽고 후보까지만 냅니다. registry를 고치거나 PR을 열지 않습니다.
+      - name: 승선료 근거 문장 읽기
+        env:
+          LIMIT: ${{ inputs.limit }}
+        run: node discover.js prices --limit "$LIMIT"
+
+      - name: 결과 올리기
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: prices
+          path: tmp/
+          if-no-files-found: ignore
+          retention-days: 7
