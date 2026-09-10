@@ -38,13 +38,30 @@ test('목록형 필터는 다중 선택 메뉴다', () => {
   assert.match(inline, /selectedValues\('f-site'\)/);
 });
 
-test('날짜는 달력으로 시작일과 종료일을 고른다', () => {
-  assert.match(html, /id="f-date-start"[^>]*type="date"|type="date"[^>]*id="f-date-start"/);
-  assert.match(html, /id="f-date-end"[^>]*type="date"|type="date"[^>]*id="f-date-end"/);
+test('날짜는 달력 하나에서 시작일과 종료일을 고른다', () => {
+  assert.match(html, /id="f-date-grid"/);
+  assert.match(html, /id="f-date-prev"/);
+  assert.match(html, /id="f-date-next"/);
+  assert.doesNotMatch(html, /id="f-date-(?:start|end)"/);
   assert.match(html, /id="f-date-clear"/);
   assert.doesNotMatch(inline, /fillOptions\(\$\('f-date'\)/);
   assert.match(inline, /fillDateRange\(d\.trips\.map/);
   assert.match(inline, /inDateRange\(t\.date, dates\)/);
+});
+
+test('달력은 두 날짜 중 작은 값을 시작일, 큰 값을 종료일로 둔다', () => {
+  const start = inline.indexOf('function chooseDateRange');
+  const end = inline.indexOf('function inDateRange');
+  assert.ok(start >= 0 && end > start, '날짜 선택 함수를 찾지 못했습니다');
+  const { chooseDateRange } = new Function(`${inline.slice(start, end)}\nreturn { chooseDateRange };`)();
+  const first = chooseDateRange({ start: null, end: null }, '2026-09-13');
+  assert.deepEqual(first, { start: '2026-09-13', end: null });
+  assert.deepEqual(chooseDateRange(first, '2026-09-10'), {
+    start: '2026-09-10', end: '2026-09-13',
+  });
+  assert.deepEqual(chooseDateRange({ start: '2026-09-10', end: '2026-09-13' }, '2026-09-12'), {
+    start: '2026-09-12', end: null,
+  });
 });
 
 test('날짜 기간은 시작일과 종료일을 모두 포함한다', () => {

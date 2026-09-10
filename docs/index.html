@@ -44,15 +44,27 @@
                   padding: 7px 9px; font-size: 14px; font-family: inherit; }
   .multi-menu label { display: flex; align-items: center; gap: 7px; padding: 5px 6px; white-space: nowrap; }
   .multi-menu label:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); }
-  .date-menu { min-width: 270px; max-height: none; overflow: visible; padding: 10px; }
-  .date-menu label { justify-content: space-between; gap: 12px; }
-  .date-menu input[type=date] { width: 168px; padding: 6px 8px; border: 1px solid var(--line);
-                                border-radius: 7px; background: var(--card); color: var(--fg);
-                                color-scheme: light dark; font: inherit; }
-  .date-menu button { width: 100%; margin-top: 7px; padding: 6px 10px; border: 1px solid var(--line);
-                      border-radius: 7px; background: var(--card); color: var(--muted);
-                      font: inherit; cursor: pointer; }
-  .date-menu button:hover { color: var(--accent); border-color: var(--accent); }
+  .date-menu { width: 252px; min-width: 252px; max-height: none; overflow: visible; padding: 10px; }
+  .date-head { display: grid; grid-template-columns: 32px 1fr 32px; align-items: center; gap: 4px; }
+  .date-head strong { text-align: center; font-size: 14px; }
+  .date-menu button { border: 1px solid var(--line); border-radius: 7px; background: var(--card);
+                      color: var(--muted); font: inherit; cursor: pointer; }
+  .date-menu button:hover:not(:disabled) { color: var(--accent); border-color: var(--accent); }
+  .date-menu button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .date-nav { width: 32px; height: 32px; padding: 0; font-size: 17px; }
+  .date-nav:disabled { opacity: .3; cursor: default; }
+  .date-week, .date-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+  .date-week { margin-top: 7px; color: var(--muted); font-size: 11px; text-align: center; }
+  .date-week span { padding: 3px 0; }
+  .date-grid button, .date-blank { width: 31px; height: 31px; padding: 0; border: 0; border-radius: 6px; }
+  .date-grid button { color: var(--fg); }
+  .date-grid button:hover { background: var(--accent-soft); }
+  .date-grid button.in-range { border-radius: 0; background: var(--accent-soft); color: var(--accent); }
+  .date-grid button.range-start, .date-grid button.range-end {
+    border-radius: 6px; background: var(--accent); color: var(--card); font-weight: 800;
+  }
+  .date-help { min-height: 18px; margin: 7px 2px 0; color: var(--muted); font-size: 12px; }
+  .date-clear { width: 100%; margin-top: 6px; padding: 6px 10px; }
   label.check { display: inline-flex; align-items: center; gap: 6px; padding: 7px 10px;
                 border: 1px solid var(--line); border-radius: 7px; background: var(--card); font-size: 14px; }
   .tablewrap { overflow-x: auto; background: var(--card); border: 1px solid var(--line); border-radius: 10px; }
@@ -243,9 +255,15 @@
     <details class="multi" id="f-date" data-label="날짜" data-all="전체 날짜">
       <summary>전체 날짜</summary>
       <div class="multi-menu date-menu">
-        <label><span>시작일</span><input type="date" id="f-date-start" aria-label="시작 날짜"></label>
-        <label><span>종료일</span><input type="date" id="f-date-end" aria-label="종료 날짜"></label>
-        <button type="button" id="f-date-clear">전체 날짜로 초기화</button>
+        <div class="date-head">
+          <button type="button" class="date-nav" id="f-date-prev" aria-label="이전 달">‹</button>
+          <strong id="f-date-month" aria-live="polite"></strong>
+          <button type="button" class="date-nav" id="f-date-next" aria-label="다음 달">›</button>
+        </div>
+        <div class="date-week" aria-hidden="true"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div>
+        <div class="date-grid" id="f-date-grid" role="grid" aria-label="출조 날짜 범위"></div>
+        <p class="date-help" id="f-date-help">시작일을 선택하세요</p>
+        <button type="button" class="date-clear" id="f-date-clear">전체 날짜로 초기화</button>
       </div>
     </details>
     <select id="f-sort" aria-label="정렬">
@@ -775,8 +793,17 @@ function setOnlyFilterValue(id, value) {
   updateMultiLabel($(id));
 }
 
-function dateRange() {
-  return { start: $('f-date-start').value || null, end: $('f-date-end').value || null };
+let DATE_RANGE = { start: null, end: null };
+let DATE_MIN = '';
+let DATE_MAX = '';
+let DATE_MONTH = '';
+
+function dateRange() { return { ...DATE_RANGE }; }
+
+function chooseDateRange(range, value) {
+  if (!range.start || range.end) return { start: value, end: null };
+  const [start, end] = [range.start, value].sort();
+  return { start, end };
 }
 
 function inDateRange(value, { start, end }) {
@@ -793,26 +820,77 @@ function updateDateRangeLabel() {
       : end ? `${dayLabel(end)}까지` : control.dataset.all;
 }
 
-function fillDateRange(values) {
-  const dates = [...new Set(values.filter(Boolean))].sort();
-  const min = dates[0] ?? '';
-  const max = dates.at(-1) ?? '';
-  for (const input of [$('f-date-start'), $('f-date-end')]) {
-    input.min = min;
-    input.max = max;
-  }
-  updateDateRangeLabel();
+function moveMonth(month, delta) {
+  const [year, number] = month.split('-').map(Number);
+  const moved = new Date(Date.UTC(year, number - 1 + delta, 1));
+  return `${moved.getUTCFullYear()}-${String(moved.getUTCMonth() + 1).padStart(2, '0')}`;
 }
 
-function changeDateRange(changed) {
-  const start = $('f-date-start');
-  const end = $('f-date-end');
-  if (start.value && end.value && start.value > end.value) {
-    if (changed === start) end.value = start.value;
-    else start.value = end.value;
+function renderDateCalendar() {
+  const grid = $('f-date-grid');
+  grid.textContent = '';
+  if (!DATE_MONTH) return;
+
+  const [year, month] = DATE_MONTH.split('-').map(Number);
+  $('f-date-month').textContent = `${year}년 ${month}월`;
+  $('f-date-prev').disabled = Boolean(DATE_MIN && moveMonth(DATE_MONTH, -1) < DATE_MIN.slice(0, 7));
+  $('f-date-next').disabled = Boolean(DATE_MAX && moveMonth(DATE_MONTH, 1) > DATE_MAX.slice(0, 7));
+
+  const frag = document.createDocumentFragment();
+  const firstWeekday = new Date(Date.UTC(year, month - 1, 1)).getUTCDay();
+  const lastDay = new Date(Date.UTC(year, month, 0)).getUTCDate();
+  for (let i = 0; i < firstWeekday; i++) {
+    const blank = document.createElement('span');
+    blank.className = 'date-blank';
+    frag.append(blank);
+  }
+  for (let day = 1; day <= lastDay; day++) {
+    const value = `${DATE_MONTH}-${String(day).padStart(2, '0')}`;
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = day;
+    button.dataset.date = value;
+    button.disabled = Boolean((DATE_MIN && value < DATE_MIN) || (DATE_MAX && value > DATE_MAX));
+    button.setAttribute('aria-label', dayLabel(value));
+    button.setAttribute('aria-pressed', String(value === DATE_RANGE.start || value === DATE_RANGE.end));
+    if (DATE_RANGE.start && DATE_RANGE.end && value > DATE_RANGE.start && value < DATE_RANGE.end) {
+      button.classList.add('in-range');
+    }
+    if (value === DATE_RANGE.start) button.classList.add('range-start');
+    if (value === DATE_RANGE.end) button.classList.add('range-end');
+    button.addEventListener('click', () => selectCalendarDate(value));
+    frag.append(button);
+  }
+  grid.append(frag);
+
+  const { start, end } = dateRange();
+  $('f-date-help').textContent = !start ? '시작일을 선택하세요'
+    : !end ? `${dayLabel(start)} · 종료일을 선택하세요`
+      : start === end ? `${dayLabel(start)} 하루`
+        : `${dayLabel(start)} ~ ${dayLabel(end)}`;
+}
+
+function fillDateRange(values) {
+  const dates = [...new Set(values.filter(Boolean))].sort();
+  DATE_MIN = dates[0] ?? '';
+  DATE_MAX = dates.at(-1) ?? '';
+  if (!DATE_MONTH || DATE_MONTH < DATE_MIN.slice(0, 7) || DATE_MONTH > DATE_MAX.slice(0, 7)) {
+    DATE_MONTH = (DATE_RANGE.start || DATE_MIN).slice(0, 7);
   }
   updateDateRangeLabel();
+  renderDateCalendar();
+}
+
+function selectCalendarDate(value) {
+  DATE_RANGE = chooseDateRange(DATE_RANGE, value);
+  updateDateRangeLabel();
+  renderDateCalendar();
   filtered();
+}
+
+function changeDateMonth(delta) {
+  DATE_MONTH = moveMonth(DATE_MONTH, delta);
+  renderDateCalendar();
 }
 
 // 표와 지도가 같은 기준을 보도록 필터는 한 군데서만 겁니다.
@@ -1288,12 +1366,12 @@ window.addEventListener('storage', (event) => {
 // 필터를 바꾸면 보던 쪽 번호는 의미가 없습니다. 첫 주부터 다시 봅니다.
 const filtered = () => { PAGE = 0; refresh(); };
 for (const id of ['f-open', 'f-fav']) $(id).addEventListener('change', filtered);
-$('f-date-start').addEventListener('change', (event) => changeDateRange(event.currentTarget));
-$('f-date-end').addEventListener('change', (event) => changeDateRange(event.currentTarget));
+$('f-date-prev').addEventListener('click', () => changeDateMonth(-1));
+$('f-date-next').addEventListener('click', () => changeDateMonth(1));
 $('f-date-clear').addEventListener('click', () => {
-  $('f-date-start').value = '';
-  $('f-date-end').value = '';
+  DATE_RANGE = { start: null, end: null };
   updateDateRangeLabel();
+  renderDateCalendar();
   filtered();
 });
 // 정렬은 보이는 날짜를 바꾸지 않으므로 보던 쪽에 그대로 있습니다(필터와 다른 점입니다).
