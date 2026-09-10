@@ -3302,12 +3302,13 @@
       "url": "https://bestho.thefishing.kr/index.php?mid=bk",
       "source": "detail",
       "phone": "010-4710-7536",
+      "port": "충남 보령 오천항",
       "enabled": true,
       "addedBy": "discover",
       "boats": {
         "베스트호": {}
       },
-      "note": "자동 발견(https://bestho.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 인적사항, 주의사항, 오천항"
+      "note": "자동 발견(https://bestho.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지는 2026-09-10 공식 홈페이지 제목 '오천베스트호'와 출조점 주소 '충남 보령시 오천면 오천해안로 781-23'에서 확인했습니다."
     },
     {
       "id": "bgsho",
