@@ -14,7 +14,7 @@ export const STATUS = {
 const OFF_WORDS = ['휴항', '결항', '출조취소', '취소됨', '기상악화', '운휴', '개인사정'];
 const OFF_PATTERNS = [/(?<!꾸)미출조/];
 const CLOSED_WORDS = ['마감', '만석', '완료', '매진', '예약불가', '불가', '종료'];
-const OPEN_WORDS = ['예약가능', '가능', '접수중', '모집', '여유', '○', 'ㅇ', 'O'];
+const OPEN_WORDS = ['예약가능', '접수중', '모집', '여유', '○', 'ㅇ', 'O'];
 
 /** "예약가능 / ○ / 잔여3 / 마감 / 휴항" 처럼 제각각인 표기를 하나로 정리합니다. */
 export function toStatus(rawText, seatsLeft) {
@@ -30,7 +30,9 @@ export function toStatus(rawText, seatsLeft) {
   }
 
   if (CLOSED_WORDS.some((w) => t.includes(w))) return STATUS.CLOSED;
-  if (OPEN_WORDS.some((w) => t.includes(w))) return STATUS.OPEN;
+  // 상태 칸이 딱 "가능"인 경우는 열림이지만, 본문 속 "개인출조가능" 같은 안내 문구는
+  // 실제 잔여석이나 온라인 예약 가능 여부를 뜻하지 않습니다(야야호 나로호).
+  if (t === '가능' || OPEN_WORDS.some((w) => t.includes(w))) return STATUS.OPEN;
   return STATUS.UNKNOWN;
 }
 

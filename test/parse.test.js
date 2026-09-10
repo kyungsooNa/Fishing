@@ -29,6 +29,9 @@ test('schema: 표기 정규화', () => {
   assert.equal(toStatus('쭈꾸미 출조 정상출조 예약하기', 12), STATUS.OPEN, '쭈꾸미출조의 "미출조" 글자 조각을 휴항으로 읽지 않습니다');
   assert.equal(toStatus('미출조', 12), STATUS.OFF);
   assert.equal(toStatus('오늘 미출조 합니다'), STATUS.OFF);
+  assert.equal(toStatus('가능'), STATUS.OPEN, '상태 칸의 가능 표기는 예약 가능입니다');
+  assert.equal(toStatus('독배전문(개인출조가능)'), STATUS.UNKNOWN,
+    '안내문 속 가능을 잔여석이 있는 것으로 오해하지 않습니다');
   assert.equal(toDate('9월 5일', new Date('2026-09-01')), '2026-09-05');
   assert.equal(toTime('오후 1시 출항'), '13:00');
   assert.equal(parseSeats('남은자리 3명'), 3);
