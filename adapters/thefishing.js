@@ -139,7 +139,9 @@ export function parseDetail(site, html, url) {
     const species = SPECIES.find((s) => text.includes(s)) ?? null;
     let seatsLeft = explicit;
     if (seatsLeft === null && Number.isFinite(seatsTotal)) seatsLeft = Math.max(0, seatsTotal - filled);
-    if (!species && seatsLeft === null && seatsTotal === null &&
+    // 어종·승선료를 적은 상시 공지도 날짜 표 안에 매일 반복됩니다. 좌석이나 예약 상태가
+    // 하나도 없으면 실제 출조 행으로 만들지 않습니다(야야호의 나로호 독배 안내).
+    if (seatsLeft === null && seatsTotal === null &&
       !/예약하기|예약완료|예약마감|마감|만석|휴항|결항|출조취소|개인사정|입금|예약확정/.test(text)) {
       continue;
     }
