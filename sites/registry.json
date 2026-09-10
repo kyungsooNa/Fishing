@@ -4031,12 +4031,13 @@
       "url": "https://plus.thefishing.kr/index.php?mid=bk",
       "source": "detail",
       "phone": "010-3304-7556",
+      "port": "충남 보령 무창포항",
       "enabled": true,
       "addedBy": "discover",
       "boats": {
         "플러스호": {}
       },
-      "note": "자동 발견(https://plus.thefishing.kr) — 시험 수집 9건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 무창포항"
+      "note": "자동 발견(https://plus.thefishing.kr) — 시험 수집 9건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지는 2026-09-10 공식 홈페이지 제목 '무창포 선상바다낚시전문배 플러스호'에서 확인했습니다."
     },
     {
       "id": "pthbest",
