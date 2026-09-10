@@ -3266,6 +3266,7 @@
       "adapter": "thefishing",
       "url": "https://badasarang.thefishing.kr/index.php?mid=bk",
       "source": "detail",
+      "port": "충남 서천 홍원항",
       "phone": "010-8818-1612",
       "enabled": true,
       "addedBy": "discover",
@@ -3279,7 +3280,7 @@
       "boats": {
         "바다사랑호": {}
       },
-      "note": "자동 발견(https://badasarang.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 홍원항, 공지사항"
+      "note": "자동 발견(https://badasarang.thefishing.kr) — 시험 수집 8건. 2026-09-10 공식 홈페이지와 예약표 제목 '홍원항 바다사랑호'에서 출항지를 확인했습니다. 이름·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다."
     },
     {
       "id": "baekdusan",
