@@ -763,11 +763,24 @@ export function priceTargets(registry, quality) {
     .sort((a, b) => a.id.localeCompare(b.id));
 }
 
+/** 홈페이지가 아니라 어댑터가 실제 수집하는 일정표부터 봅니다. 요청 폭증을 막아 두 장까지만 봅니다. */
+export async function pricePageUrls(site) {
+  let collected = [];
+  try {
+    const adapter = await import(`./adapters/${site.adapter}.js`);
+    collected = adapter.targets?.(site) ?? [];
+  } catch {
+    // 전용 어댑터가 targets를 내지 않거나 불러오지 못해도 홈페이지 후보 수집은 계속합니다.
+  }
+  return [...new Set([...collected.slice(0, 2), originOf(site.url)])];
+}
+
 async function pricesAll() {
   const limit = Number(valueOf('--limit') ?? 30);
   const registry = await loadRegistry();
   const quality = await portQuality(registry);
   const targets = priceTargets(registry, quality);
+  const sitesById = new Map(registry.map((site) => [site.id, site]));
 
   console.log(`승선료가 빈 선사 ${targets.length}곳 — 많이 빈 곳부터 ${Math.min(limit, targets.length)}곳을 봅니다`);
   console.log('예약금·입금액·추가요금은 버리고 승선료 근거 문장만 찍습니다. 값은 registry에 사람이 적습니다.\n');
@@ -775,8 +788,9 @@ async function pricesAll() {
   const found = [];
   for (const target of targets.slice(0, limit)) {
     let hints = [], source = null, received = false, lastError = null;
-    // 홈페이지에 없으면 실제 예약판도 한 번 봅니다. 홈페이지에서 찾았으면 요청을 더 하지 않습니다.
-    const pages = [...new Set([originOf(target.url), target.url])];
+    // 어댑터가 평소 읽는 실제 일정표를 먼저 봅니다. 루트 홈페이지에는 요금 숫자가 없고
+    // 일정표 공지에만 선비가 적힌 선상24가 대부분입니다. 찾았으면 요청을 더 하지 않습니다.
+    const pages = await pricePageUrls(sitesById.get(target.id));
     for (const url of pages) {
       try {
         const html = await fetchHtml(url, { mode: 'static', retries: 0 });

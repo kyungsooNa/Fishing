@@ -5,7 +5,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
-import { subdomainsFromCrt, hostsFromCdx, linksFrom, adapterPlan, pickPhone, pickPort, idFor, entryFor, portTargets, applyPorts, timeHints, timeTargets, portEvidence, priceHints, priceTargets } from '../discover.js';
+import { subdomainsFromCrt, hostsFromCdx, linksFrom, adapterPlan, pickPhone, pickPort, idFor, entryFor, portTargets, applyPorts, timeHints, timeTargets, portEvidence, priceHints, priceTargets, pricePageUrls } from '../discover.js';
 
 test('인증서 로그에서 선사 서브도메인만 추린다', () => {
   const rows = [
@@ -314,6 +314,15 @@ test('승선료가 많이 빈 곳부터 보고 일부만 채운 곳도 다시 �
     ['busy', 100], ['partial', 10],
   ]);
   assert.deepEqual(priceTargets(registry, null).map((row) => row.id), ['busy']);
+});
+
+test('승선료는 홈페이지보다 어댑터가 실제 읽는 일정표를 먼저 본다', async () => {
+  assert.deepEqual(await pricePageUrls({
+    id: 'sample', adapter: 'sunsang24', url: 'https://sample.sunsang24.com',
+  }), [
+    'https://sample.sunsang24.com/ship/schedule_fleet',
+    'https://sample.sunsang24.com',
+  ]);
 });
 
 // 모듈이 뜨다가 죽으면 명령을 통째로 못 씁니다. 실제로 최상위 const를 함수보다 늦게
