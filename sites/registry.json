@@ -3346,13 +3346,14 @@
       "adapter": "thefishing",
       "url": "https://bless.thefishing.kr/index.php?mid=bk",
       "source": "detail",
+      "port": "충남 태안 신진항",
       "phone": "010-3956-7016",
       "enabled": true,
       "addedBy": "discover",
       "boats": {
         "블레스호": {}
       },
-      "note": "자동 발견(https://bless.thefishing.kr) — 시험 수집 9건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 주의사항"
+      "note": "자동 발견(https://bless.thefishing.kr) — 시험 수집 9건. 2026-09-10 공식 예약 안내의 '승선위치 신진도항 마도 부잔교'와 출조점 주소 '충남 태안군 근흥면 신진부두길 86'에서 출항지를 확인했습니다. 이름·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다."
     },
     {
       "id": "bluedragon",
