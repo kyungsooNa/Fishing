@@ -278,6 +278,18 @@ test('승선료 라벨과 금액이 함께 있는 줄만 후보로 준다', () =
   assert.match(hints[0].line, /승선료 100,000원/);
 });
 
+test('승선료 라벨 바로 뒤면 원 단위를 생략한 금액도 후보로 준다', () => {
+  const html = `<body>
+    <p>뉴빅토리호 선비100,000 중식 제공</p>
+    <p>삼성호 승선료: 120000 점심 제공</p>
+    <p>선비 20명 정원</p>
+    <p>오늘 예약 인원 100,000</p>
+  </body>`;
+  const hints = priceHints(html);
+
+  assert.deepEqual(hints.map((hint) => hint.amounts), [[100000], [120000]]);
+});
+
 test('예약금·입금액·추가요금은 승선료 후보에서 제외한다', () => {
   const html = `<body>
     <p>승선료 예약금 30,000원, 잔금은 현장 입금</p>
