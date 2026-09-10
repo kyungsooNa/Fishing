@@ -716,7 +716,25 @@ function fareMatches(line) {
     const amount = wonAmounts(amountMatch[0])[0];
     if (amount != null) matches.push({ amount, labelIndex, end: amountMatch.index + amountMatch[0].length });
   }
-  return matches;
+
+  // 일부 일정표는 "선비100,000"처럼 명시적인 승선료 라벨 뒤에서만 원 단위를 생략합니다.
+  // 아무 숫자나 허용하면 정원·예약 인원을 금액으로 읽으므로, 라벨 바로 뒤의 쉼표 금액 또는
+  // 5~7자리 수만 후보로 받습니다. 원/만원이 붙은 표기는 위의 기존 경로에서 이미 처리합니다.
+  for (const label of text.matchAll(new RegExp(PRICE_LABEL.source, 'g'))) {
+    const labelIndex = label.index;
+    const afterIndex = labelIndex + label[0].length;
+    const after = text.slice(afterIndex, afterIndex + 30);
+    const amountMatch = after.match(/^\s*[:：=\-]?\s*(\d{1,3}(?:,\d{3})+|\d{5,7})(?![\d,])/);
+    if (!amountMatch) continue;
+    const suffix = after.slice(amountMatch[0].length);
+    if (/^\s*(?:원|만\s*원?)/.test(suffix)) continue;
+    const amount = Number(amountMatch[1].replace(/,/g, ''));
+    if (amount < 10_000 || amount > 1_000_000) continue;
+    const end = afterIndex + amountMatch[0].length;
+    const context = text.slice(Math.max(0, labelIndex - 15), end);
+    if (!NOT_TRIP_PRICE.test(context)) matches.push({ amount, labelIndex, end });
+  }
+  return matches.sort((a, b) => a.labelIndex - b.labelIndex);
 }
 
 function fareWindows(line) {
