@@ -1443,9 +1443,47 @@
           ]
         },
         "해신호": {},
-        "아폴로호": {},
+        "아폴로호": {
+          "priceGuides": [
+            {
+              "price": 50000,
+              "species": "주꾸미",
+              "sessions": [
+                "오전",
+                "오후"
+              ],
+              "validFrom": "2026-09-10",
+              "validThrough": "2026-09-30",
+              "source": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet",
+              "note": "2026-09-10 공식 일정표의 9/10~9/30 아폴로호 주꾸미 오전·오후반에서 선비 5만원 확인"
+            },
+            {
+              "price": 100000,
+              "species": "주꾸미",
+              "sessions": "종일",
+              "departAt": "05:30",
+              "validFrom": "2026-09-12",
+              "validThrough": "2026-09-27",
+              "source": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet",
+              "note": "2026-09-10 공식 일정표의 9/12·9/13·9/19·9/20·9/25·9/27 아폴로호 주꾸미 종일반에서 선비 10만원 확인"
+            }
+          ]
+        },
         "뉴빅토리호": {},
-        "삼성호": {},
+        "삼성호": {
+          "priceGuides": [
+            {
+              "price": 100000,
+              "species": "주꾸미",
+              "sessions": "종일",
+              "departAt": "05:30",
+              "validFrom": "2026-09-11",
+              "validThrough": "2026-09-30",
+              "source": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet",
+              "note": "2026-09-10 공식 일정표의 9/11~9/30 삼성호 주꾸미 종일반에서 선비 10만원 확인"
+            }
+          ]
+        },
         "원투피싱호": {}
       },
       "note": "자동 발견(https://gunsannaksi.sunsang24.com) — 시험 수집 490건. 출항지는 2026-09-09 공식 업체소개(https://gunsannaksi.sunsang24.com/ship/info)의 '출조항구: 비응항'과 비응항 출조 중심이라는 안내에서 확인했습니다. 2026-09-10 공식 일정표에서 등록된 12척 외에 해신호·아폴로호·뉴빅토리호·삼성호·원투피싱호의 출조를 확인해 등록했습니다. 예약문의 번호가 010-9453-4046과 010-9477-4046 두 개라 배별 전화번호는 확인 전까지 비워둡니다."
