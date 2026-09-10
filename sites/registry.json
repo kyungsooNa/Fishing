@@ -3385,9 +3385,10 @@
       "adapter": "thefishing",
       "url": "https://champion.thefishing.kr/index.php?mid=bk",
       "source": "detail",
+      "port": "충남 보령 대천항",
       "enabled": true,
       "addedBy": "discover",
-      "note": "자동 발견(https://champion.thefishing.kr) — 시험 수집 8건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 대천항, 공지사항, 문의사항, 변경사항, 출조항 전화 후보: 010-2480-2138, 010-2173-5152"
+      "note": "자동 발견(https://champion.thefishing.kr) — 시험 수집 8건. 배 이름을 페이지에서 못 읽었습니다 — boats를 채우세요. 2026-09-10 공식 예약표의 '출조항 : 충남 보령시 대천항 중앙길 46'에서 출항지를 확인했습니다. 이름·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 전화 후보: 010-2480-2138, 010-2173-5152"
     },
     {
       "id": "choice",
