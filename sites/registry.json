@@ -3795,6 +3795,13 @@
       "enabled": true,
       "addedBy": "discover",
       "port": "충남 태안 신진항",
+      "timeGuide": {
+        "departAt": "05:30",
+        "validFrom": "2026-09-11",
+        "validThrough": "2026-12-31",
+        "source": "https://manaru.thefishing.kr/index.php?mid=notice&page=1&mode=view&wr_uid=2024217",
+        "note": "2026-09-10 공식 홈페이지 공지에서 확인: \"9월 11일부터 출항시간이 5시 30분으로 변경됩니다..4시 30분까지 오셔서 승선준비하세요\". 어종이나 배를 가리지 않은 선단 공지라 사이트 전체에 적용합니다. 예약표의 개별 시각이 있으면 그 값을 우선합니다."
+      },
       "boats": {
         "은양호": {
           "phone": "010-6423-1570"
