@@ -115,6 +115,7 @@
   .status { margin-top: 10px; display: grid; gap: 5px; }
   .status div { display: flex; gap: 8px; }
   .fail { color: var(--off); }
+  .held { color: var(--few); }
   .watchactions { display: flex; align-items: center; justify-content: flex-end; gap: 5px; }
   .watch { border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--accent); padding: 5px 8px; cursor: pointer; }
   .watch.refresh { color: var(--fg); }
@@ -299,17 +300,22 @@ const watched = (t) => MONITOR?.watches.some((w) => (t.sources ?? [t]).some((s) 
 
 function freshness(t) {
   const states = (t.sources ?? [t]).map((s) => DATA.sites[s.siteId]);
-  const failed = states.some((s) => !s?.ok);
+  const failed = states.some((s) => !s?.ok && !s?.skipped);
+  const held = !failed && states.some((s) => !s?.ok && s?.skipped);
   const times = states.map((s) => Date.parse(s?.ok ? s.at : s?.keptFrom));
   const time = Math.min(...times);
-  if (!Number.isFinite(time)) return { text: failed ? '수집 실패 · 확인 시각 없음' : '확인 시각 없음', stale: true, failed };
+  if (!Number.isFinite(time)) {
+    const prefix = failed ? '수집 실패 · ' : held ? '수집 보류 · ' : '';
+    return { text: `${prefix}확인 시각 없음`, stale: true, failed };
+  }
   const minutes = Math.max(0, Math.floor((Date.now() - time) / 60000));
   const age = minutes >= 1440
     ? `${Math.floor(minutes / 1440)}일 전 확인`
     : minutes >= 60
       ? `${Math.floor(minutes / 60)}시간 ${minutes % 60}분 전 확인`
       : `${minutes}분 전 확인`;
-  return { text: `${failed ? '수집 실패 · 직전 ' : ''}${age}`, stale: failed || minutes >= 30, failed };
+  const prefix = failed ? '수집 실패 · 직전 ' : held ? '수집 보류 · 직전 ' : '';
+  return { text: `${prefix}${age}`, stale: failed || held || minutes >= 30, failed };
 }
 
 /**
@@ -1187,12 +1193,14 @@ function renderStatus() {
   box.textContent = '';
   for (const [id, s] of Object.entries(DATA.sites)) {
     const div = document.createElement('div');
-    if (!s.ok) div.className = 'fail';
+    if (!s.ok) div.className = s.skipped ? 'held' : 'fail';
     const when = s.at ? new Date(s.at).toLocaleString('ko-KR') : '';
     const kind = s.platform ? ` [${s.platform}]` : '';
     div.textContent = s.ok
       ? `✓ ${s.name ?? id}${kind} — ${s.count}건 · ${when}`
-      : `✗ ${s.name ?? id}${kind} — 갱신 실패(${s.error}) · 직전 ${s.count}건 유지`;
+      : s.skipped
+        ? `△ ${s.name ?? id}${kind} — 갱신 보류(${s.error}) · 직전 ${s.count}건 유지`
+        : `✗ ${s.name ?? id}${kind} — 갱신 실패(${s.error}) · 직전 ${s.count}건 유지`;
     box.append(div);
   }
 }
@@ -1202,10 +1210,11 @@ function loadData() { return fetch('data.json?t=' + Date.now(), { cache: 'no-sto
   .then((d) => {
     DATA = d;
     RATES = loadRates();   // 관리 화면에서 매긴 별점이 다음 갱신 때 따라옵니다
-    const failed = Object.values(d.sites).filter((s) => !s.ok).length;
+    const failed = Object.values(d.sites).filter((s) => !s.ok && !s.skipped).length;
+    const held = Object.values(d.sites).filter((s) => !s.ok && s.skipped).length;
     $('meta').textContent =
       `출조 ${d.trips.length}건 · 갱신 ${d.generatedAt ? new Date(d.generatedAt).toLocaleString('ko-KR') : '-'}` +
-      (failed ? ` · 갱신 실패 ${failed}곳` : '');
+      (failed ? ` · 갱신 실패 ${failed}곳` : '') + (held ? ` · 보류 ${held}곳` : '');
     migrateFavs(d.trips);
     fillOptions($('f-platform'), d.trips.flatMap((t) => platformsOf(d.sites, t)));
     fillOptions($('f-site'), d.trips.map((t) => t.siteName));

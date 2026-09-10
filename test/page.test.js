@@ -61,6 +61,13 @@ test('날짜 기간은 시작일과 종료일을 모두 포함한다', () => {
   assert.equal(inDateRange('2026-09-09', { start: null, end: '2026-09-10' }), true);
 });
 
+test('수집 보류는 실제 실패와 다른 문구로 표시한다', () => {
+  assert.match(inline, /s\.skipped \? 'held' : 'fail'/);
+  assert.match(inline, /갱신 보류/);
+  assert.match(inline, /수집 보류 · 직전/);
+  assert.match(inline, /!s\.ok && !s\.skipped/);
+});
+
 test('어종 필터는 갑오징어·주꾸미를 기본 선택한다', () => {
   assert.match(inline, /fillOptions\(\$\('f-species'\),[\s\S]*\['갑오징어', '주꾸미'\]\)/);
   assert.match(inline, /input\.checked = defaults\.includes\(v\)/);

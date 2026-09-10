@@ -79,6 +79,58 @@ test('한 사이트가 죽어도 나머지는 수집된다', async () => {
   assert.match(data.sites.broken.error, /_nonexistent/);
 });
 
+test('더피싱이 3곳 연속 timeout이면 남은 곳은 요청하지 않고 보류한다', async () => {
+  const sites = Array.from({ length: 5 }, (_, index) => ({
+    id: `fish${index + 1}`,
+    name: `더피싱 ${index + 1}`,
+    adapter: 'thefishing',
+    source: 'detail',
+    // 자체 도메인이어도 같은 더피싱 백엔드이므로 하나의 회로로 묶여야 합니다.
+    url: `https://boat${index + 1}.example.com/index.php?mid=bk`,
+  }));
+  const 이전시각 = '2026-09-09T00:00:00.000Z';
+  const prevData = {
+    generatedAt: 이전시각,
+    sites: Object.fromEntries(sites.map((site) => [site.id, { ok: true, at: 이전시각, count: 1 }])),
+    trips: sites.map((site) => ({
+      siteId: site.id, siteName: site.name, boat: site.name,
+      date: '2026-09-11', status: 'open', seatsLeft: 3,
+    })),
+  };
+  const { registryPath, dataPath } = await fixture(sites, prevData);
+  let calls = 0;
+  const { data } = await runAll({
+    registryPath, dataPath, days: 21,
+    now: new Date('2026-09-10T00:00:00.000Z'),
+    timeoutBackoffHours: 0,
+    collectFn: async () => {
+      calls += 1;
+      throw new Error('30000ms 안에 응답이 없습니다');
+    },
+  });
+
+  assert.equal(calls, 3, '공통 장애인데 모든 선사를 계속 두드리면 안 됩니다');
+  assert.equal(data.sites.fish3.skipped, undefined, '실제로 요청한 세 곳은 실패입니다');
+  assert.equal(data.sites.fish4.skipped, 'platform-timeout');
+  assert.equal(data.sites.fish5.skipped, 'platform-timeout');
+  assert.equal(data.sites.fish4.timeoutStreak, undefined, '요청하지 않은 곳의 연속 실패를 올리면 안 됩니다');
+  assert.equal(data.trips.length, 5, '보류해도 직전 출조는 모두 유지해야 합니다');
+
+  // 회로가 막아 보류한 곳은 다음 정기 수집에서 즉시 복구 여부를 시험합니다. 실제 timeout이
+  // 난 앞의 세 곳은 기존 사이트별 백오프를 지키고, 나머지는 성공하면 정상 수집으로 돌아옵니다.
+  calls = 0;
+  const 다음시각 = new Date(Date.parse(data.sites.fish1.at) + 30 * 60 * 1000);
+  const recovered = await runAll({
+    registryPath, dataPath, days: 21,
+    now: 다음시각,
+    timeoutBackoffHours: 6,
+    collectFn: async () => { calls += 1; return []; },
+  });
+  assert.equal(calls, 2, '플랫폼 보류는 사이트별 백오프에 갇히면 안 됩니다');
+  assert.equal(recovered.data.sites.fish4.ok, true);
+  assert.equal(recovered.data.sites.fish5.ok, true);
+});
+
 test('죽은 사이트는 직전 결과를 그대로 남긴다', async () => {
   const 어제것 = {
     generatedAt: '2026-09-01T00:00:00.000Z',

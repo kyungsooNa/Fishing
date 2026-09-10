@@ -11,6 +11,7 @@ import { findOpenings } from './diff.js';
 import { makeTrip, STATUS } from './schema.js';
 
 export const REGISTRY_PATH = 'sites/registry.json';
+const PLATFORM_TIMEOUT_LIMIT = 3;
 
 export async function loadRegistry(path = REGISTRY_PATH) {
   const parsed = JSON.parse(await readFile(path, 'utf8'));
@@ -46,6 +47,7 @@ export async function runAll({
   now = new Date(),
   timeoutBackoffHours = defaultTimeoutBackoffHours(),
   onProgress = null,
+  collectFn = collectSite,
 } = {}) {
   const registry = await loadRegistry(registryPath);
   const targets = registry.filter((s) => (only ? s.id === only : s.enabled !== false));
@@ -82,12 +84,38 @@ export async function runAll({
   const tripsById = new Map();
   const statusById = new Map();
 
+  const keepPrevious = (site) =>
+    (prevBySite.get(site.id) ?? []).map((t) => refreshKeptTrip(site, t));
+
+  // 더피싱 공통 서버가 잠시 막혔을 때 100곳 넘게 같은 timeout을 반복하지 않습니다.
+  // 실제로 요청하지 않은 곳은 실패가 아니라 보류이며, 다음 수집에서는 백오프 없이
+  // 다시 시험합니다. 직전 행은 그대로 둬 화면과 취소석 비교가 갑자기 비지 않게 합니다.
+  const holdForPlatformTimeout = (site) => {
+    const at = new Date().toISOString();
+    const prevStatus = prev.sites?.[site.id];
+    const kept = keepPrevious(site);
+    failed.add(site.id);
+    tripsById.set(site.id, kept);
+    statusById.set(site.id, {
+      ok: false,
+      at,
+      error: `더피싱에서 ${PLATFORM_TIMEOUT_LIMIT}곳 연속 timeout — 이번 수집 보류`,
+      count: kept.length,
+      keptFrom: prevStatus?.keptFrom ?? prevStatus?.at ?? prev.generatedAt ?? null,
+      skipped: 'platform-timeout',
+      ...meta(site),
+    });
+    console.warn(`  ${site.id.padEnd(14)} 건너뜀: 더피싱 연속 timeout으로 이번 수집 보류`);
+    completed += 1;
+    progress(site.id);
+  };
+
   const collectOne = async (site) => {
     const at = new Date().toISOString();
     const prevStatus = prev.sites?.[site.id];
     if (!only && inTimeoutBackoff(prevStatus, timeoutBackoffMs, now)) {
       failed.add(site.id);
-      const kept = (prevBySite.get(site.id) ?? []).map((t) => refreshKeptTrip(site, t));
+      const kept = keepPrevious(site);
       const retryAt = new Date(Date.parse(prevStatus.at) + backoffMsFor(prevStatus, timeoutBackoffMs)).toISOString();
       const error = `${baseTimeoutError(prevStatus.error)} — 최근 timeout이라 ${retryAt}까지 재시도 보류`;
       tripsById.set(site.id, kept);
@@ -104,17 +132,20 @@ export async function runAll({
       console.warn(`  ${site.id.padEnd(14)} 건너뜀: 최근 timeout, ${retryAt} 이후 재시도`);
       completed += 1;
       progress(site.id);
-      return;
+      return 'held';
     }
 
     try {
-      const trips = await collectSite({ days, ...site });
+      const trips = await collectFn({ days, ...site });
       tripsById.set(site.id, trips);
       statusById.set(site.id, { ok: true, at, count: trips.length, ...meta(site) });
       console.log(`  ${site.id.padEnd(14)} ${String(trips.length).padStart(4)}건`);
+      completed += 1;
+      progress(site.id);
+      return 'success';
     } catch (err) {
       failed.add(site.id);
-      const kept = (prevBySite.get(site.id) ?? []).map((t) => refreshKeptTrip(site, t));
+      const kept = keepPrevious(site);
       const error = describeError(err).slice(0, 300);
       // 연달아 timeout이면 다음 대기가 길어집니다. 다른 이유로 실패했으면 세지 않습니다.
       const streak = isTimeoutError(error) ? timeoutStreakOf(prevStatus) + 1 : 0;
@@ -129,9 +160,10 @@ export async function runAll({
         ...meta(site),
       });
       console.warn(`  ${site.id.padEnd(14)} 실패: ${error}`);
+      completed += 1;
+      progress(site.id);
+      return isTimeoutError(error) ? 'timeout' : 'failed';
     }
-    completed += 1;
-    progress(site.id);
   };
 
   // 서버가 다르면 동시에 받습니다. 한 줄로 세우면 사이트 수만큼 대기가 쌓입니다 —
@@ -140,7 +172,19 @@ export async function runAll({
   // 그대로고 기다리는 시간만 겹칩니다.
   const groups = [...groupBy(targets, serverOf).values()];
   await inParallel(groups, Number(process.env.PARALLEL ?? 6), async (group) => {
-    for (const site of group) await collectOne(site);
+    let consecutiveTimeouts = 0;
+    for (let index = 0; index < group.length; index++) {
+      const outcome = await collectOne(group[index]);
+      if (outcome === 'timeout') consecutiveTimeouts += 1;
+      else if (outcome !== 'held') consecutiveTimeouts = 0;
+
+      const tripCircuit = !only && group[index].adapter === 'thefishing' &&
+        consecutiveTimeouts >= PLATFORM_TIMEOUT_LIMIT;
+      if (!tripCircuit) continue;
+
+      for (const site of group.slice(index + 1)) holdForPlatformTimeout(site);
+      break;
+    }
   });
 
   await closeBrowser();
@@ -237,6 +281,7 @@ function backoffMsFor(status, maxMs) {
 
 function inTimeoutBackoff(status, maxMs, now) {
   if (!maxMs || !status || status.ok !== false) return false;
+  if (status.skipped === 'platform-timeout') return false;
   if (!isTimeoutError(status.error)) return false;
   const lastTried = Date.parse(status.at ?? '');
   const nowMs = Number(now);
@@ -261,6 +306,9 @@ export function sortTrips(trips) {
 
 /** 같은 서버에 얹힌 사이트끼리 묶는 키. 주소가 없으면(예시 어댑터) 저 혼자 한 무리입니다. */
 function serverOf(site) {
+  // 더피싱은 자체 도메인을 쓰는 선사도 같은 예약 백엔드에 얹혀 있습니다. URL 도메인만
+  // 보면 서로 다른 서버처럼 병렬 수집되어, 공통 장애를 감지하지 못하고 부담도 커집니다.
+  if (site.adapter === 'thefishing') return 'platform:thefishing';
   try {
     return gapKey(site.url);
   } catch {
