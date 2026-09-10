@@ -12,7 +12,7 @@ import { parseMonth as parseUijihoMonth } from '../adapters/uijiho.js';
 import { findOpenings } from '../core/diff.js';
 import { mergeDuplicates } from '../core/merge.js';
 import { kstDate } from '../core/when.js';
-import { toStatus, toDate, toTime, toTimeRange, sessionOf, parseSeats, pickPrice, toSpecies, toTide, STATUS } from '../core/schema.js';
+import { toStatus, toDate, toTime, toTimeRange, sessionOf, parseSeats, pickPrice, toSpecies, toTide, makeTrip, STATUS } from '../core/schema.js';
 import * as fx from './fixtures.js';
 
 const sunsangSite = {
@@ -69,6 +69,56 @@ test('schema: 승선료는 registry 표기가 달라도 찾는다', () => {
   assert.equal(pickPrice(site, '다른호', '쭈갑'), 110000);
   assert.equal(pickPrice(site, '한바다호', '쭈갑'), 90000, '어종이 둘이면 하나씩도 봅니다');
   assert.equal(pickPrice(site, '다른호', '광어'), null);
+});
+
+test('schema: 조건부 승선료는 시즌·어종·항차·출항시각을 모두 지킨다', () => {
+  const evidence = {
+    validFrom: '2026-09-01', validThrough: '2026-09-30',
+    source: 'https://sample.example/schedule', note: '2026-09-10 일정표 선비 표기',
+  };
+  const site = {
+    prices: { 주꾸미: 70000 },
+    boats: { 아폴로호: { priceGuides: [
+      { ...evidence, price: 130000, species: '주꾸미', sessions: '종일', departAt: '05:00' },
+      { ...evidence, price: 100000, species: '주꾸미', sessions: '종일' },
+      { ...evidence, price: 50000, species: '주꾸미', sessions: ['오전', '오후'] },
+    ] } },
+  };
+
+  assert.equal(pickPrice(site, '아폴로호', '주꾸미', {
+    date: '2026-09-10', session: '종일', departAt: '05:00',
+  }), 130000, '전투 출조처럼 출항시각까지 맞는 앞 규칙이 우선합니다');
+  assert.equal(pickPrice(site, '아폴로호', '주꾸미', {
+    date: '2026-09-10', session: '종일', departAt: '05:30',
+  }), 100000);
+  assert.equal(pickPrice(site, '아폴로호', '주꾸미', {
+    date: '2026-09-10', session: '오전', departAt: '05:30',
+  }), 50000);
+  assert.equal(pickPrice(site, '아폴로호', '문어', {
+    date: '2026-09-10', session: '오전', departAt: '05:30',
+  }), null, '배별 조건이 안 맞으면 사이트 공통의 다른 어종 값도 붙지 않습니다');
+  assert.equal(pickPrice(site, '아폴로호', '주꾸미', {
+    date: '2026-10-01', session: '오전', departAt: '05:30',
+  }), 70000, '유효기간 밖에서는 기존 가격 표기로 물러납니다');
+});
+
+test('schema: 근거가 완전한 조건부 승선료만 출조에 출처와 함께 붙는다', () => {
+  const source = 'https://sample.example/schedule';
+  const site = { id: 'sample', boats: { 아폴로호: { priceGuides: [
+    { price: 50000, species: '주꾸미', sessions: '오전', validFrom: '2026-09-01',
+      validThrough: '2026-09-30', source, note: '오전반 선비 5만원' },
+  ] } } };
+  const trip = makeTrip(site, { boat: '아폴로호', date: '2026-09-10', species: '쭈꾸미', rawTime: '05:30~11:30' });
+
+  assert.equal(trip.price, 50000);
+  assert.equal(trip.priceSource, 'notice');
+  assert.equal(trip.priceSourceUrl, source);
+
+  const noNote = structuredClone(site);
+  delete noNote.boats.아폴로호.priceGuides[0].note;
+  assert.equal(makeTrip(noNote, {
+    boat: '아폴로호', date: '2026-09-10', species: '주꾸미', rawTime: '05:30~11:30',
+  }).price, null, '원문 근거가 빠진 규칙은 적용하지 않습니다');
 });
 
 test('sunsang24: 목록형 — 하루 행 안의 배마다 한 줄씩 나온다', () => {

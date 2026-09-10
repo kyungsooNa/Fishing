@@ -315,12 +315,14 @@ test('승선료가 많이 빈 곳부터 보고 일부만 채운 곳도 다시 �
     { id: 'partial', url: 'https://a.example', prices: { 주꾸미: 90000 } },
     { id: 'busy', url: 'https://b.example' },
     { id: 'done', url: 'https://c.example', price: 100000 },
+    { id: 'guided', url: 'https://g.example', priceGuides: [{ price: 50000 }] },
     { id: 'off', url: 'https://d.example', enabled: false },
   ];
   const quality = { sites: [
     { key: 'partial', trips: 20, missing: { price: 10 } },
     { key: 'busy', trips: 100, missing: { price: 100 } },
     { key: 'done', trips: 5, missing: { price: 0 } },
+    { key: 'guided', trips: 5, missing: { price: 0 } },
     { key: 'off', trips: 200, missing: { price: 200 } },
   ] };
 

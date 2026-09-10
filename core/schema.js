@@ -232,11 +232,11 @@ export function toSpecies(raw) {
 }
 
 /**
- * registry에 적어둔 승선료에서 그 날 어종에 맞는 값을 고릅니다.
- * 배별 prices → 배별 price → 사이트 공통 prices → 사이트 공통 price 순.
+ * registry에 적어둔 승선료에서 그 출조 조건에 맞는 값을 고릅니다.
+ * 배별 priceGuides → 사이트 공통 priceGuides → 배별 prices/price → 사이트 공통 순.
  * 못 찾으면 null이고, 화면에서는 가격칸이 빈 채로 보입니다.
  */
-export function pickPrice(site, boat, species) {
+function selectPrice(site, boat, species, context = {}) {
   const boatConf = site.boats?.[boat] ?? {};
   // registry는 사람이 적습니다. "쭈꾸미"라고 적어둔 곳이 있어서 표기를 맞춰 놓고 찾습니다.
   // 쭈갑처럼 어종이 둘이면 붙여 쓴 표기를 먼저, 없으면 어종 하나씩 봅니다.
@@ -248,13 +248,44 @@ export function pickPrice(site, boat, species) {
     for (const key of keys) if (normalized.get(key) != null) return normalized.get(key);
     return null;
   };
+
+  const wantedSessions = (value) => (Array.isArray(value) ? value : value ? [value] : []);
+  const wantedTimes = (value) => (Array.isArray(value) ? value : value ? [value] : [])
+    .map(toTime).filter(Boolean);
+  const guidePrice = (guides) => {
+    if (!Array.isArray(guides) || !context.date) return null;
+    for (const guide of guides) {
+      // 시즌 가격은 근거와 유효기간이 모두 있어야 적용합니다. 하나라도 없으면 다음 시즌에
+      // 낡은 금액이 조용히 붙을 수 있으므로, 비어 있는 것보다 위험합니다.
+      if (!Number.isFinite(guide?.price) || !guide.validFrom || !guide.validThrough ||
+          !guide.source || !guide.note || context.date < guide.validFrom || context.date > guide.validThrough) continue;
+      const guideSpecies = (Array.isArray(guide.species) ? guide.species : guide.species ? [guide.species] : [])
+        .map(toSpecies).filter(Boolean);
+      if (guideSpecies.length && !guideSpecies.some((name) => name === wanted || keys.includes(name))) continue;
+      const sessions = wantedSessions(guide.sessions);
+      if (sessions.length && !sessions.includes(context.session)) continue;
+      const times = wantedTimes(guide.departAt);
+      if (times.length && !times.includes(context.departAt)) continue;
+      return { value: guide.price, source: guide.source };
+    }
+    return null;
+  };
+
+  const boatGuide = guidePrice(boatConf.priceGuides);
+  if (boatGuide) return boatGuide;
+  const siteGuide = guidePrice(site.priceGuides);
+  if (siteGuide) return siteGuide;
   const boatPrice = priceIn(boatConf.prices);
-  if (boatPrice != null) return boatPrice;
-  if (boatConf.price != null) return boatConf.price;
+  if (boatPrice != null) return { value: boatPrice };
+  if (boatConf.price != null) return { value: boatConf.price };
   const sitePrice = priceIn(site.prices);
-  if (sitePrice != null) return sitePrice;
-  if (site.price != null) return site.price;
-  return null;
+  if (sitePrice != null) return { value: sitePrice };
+  if (site.price != null) return { value: site.price };
+  return { value: null };
+}
+
+export function pickPrice(site, boat, species, context = {}) {
+  return selectPrice(site, boat, species, context).value;
 }
 
 /** 배별 출항지가 따로 적혀 있으면 그걸, 없으면 사이트 기본값을 씁니다. */
@@ -334,6 +365,9 @@ export function makeTrip(site, fields) {
   const back = returnAt ?? range.to;
   const { session, hours } = sessionOf(depart, back);
   const seats = Number.isFinite(seatsLeft) ? seatsLeft : parseSeats(rawStatus);
+  const selectedPrice = price != null
+    ? { value: price }
+    : selectPrice(site, boatName, normalizedSpecies, { date: resolvedDate, departAt: depart, session, hours });
 
   return {
     siteId: site.id,
@@ -353,7 +387,8 @@ export function makeTrip(site, fields) {
     statusText: rawStatus ? String(rawStatus).replace(/\s+/g, ' ').trim() : null,
     seatsLeft: seats,
     seatsTotal: seatsTotal ?? site.seatsTotal ?? null,
-    price: price ?? pickPrice(site, boatName, species),
+    price: selectedPrice.value,
+    ...(selectedPrice.source ? { priceSource: 'notice', priceSourceUrl: selectedPrice.source } : {}),
     url: url ?? site.url ?? null,
     // 이 주소가 **그 날짜의 예약 화면**으로 바로 가는지. 대부분의 사이트는 일정표 한 장에
     // 여러 날을 담아서 날짜를 주소로 지정할 수 없습니다. 그때는 화면이 "링크를 눌러도
