@@ -296,6 +296,20 @@ test('여러 요금 행을 감싼 div는 한 요금처럼 합치지 않는다', 
   assert.deepEqual(priceHints(html).map((hint) => hint.amounts), [[100000], [200000]]);
 });
 
+test('일정 행 뒤쪽의 입금 표기는 앞쪽 선비 근거를 지우지 않는다', () => {
+  const filler = '예약 안내 '.repeat(30);
+  const html = `<table><tr><td>주꾸미 공지 선비 10만원 ${filler} 예약완료 입금대기 취소대기</td></tr></table>`;
+  const hints = priceHints(html);
+  assert.equal(hints[0].amounts[0], 100000);
+  assert.match(hints[0].line, /선비 10만원/);
+  assert.ok(hints[0].line.length <= 180);
+});
+
+test('한 줄에 예약금과 승선료가 따로 있으면 승선료만 남긴다', () => {
+  const hints = priceHints('<p>예약금 30,000원, 주꾸미 승선료 100,000원, 입금은 당일</p>');
+  assert.deepEqual(hints[0].amounts, [100000]);
+});
+
 test('승선료가 많이 빈 곳부터 보고 일부만 채운 곳도 다시 본다', () => {
   const registry = [
     { id: 'partial', url: 'https://a.example', prices: { 주꾸미: 90000 } },

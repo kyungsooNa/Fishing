@@ -700,6 +700,38 @@ function wonAmounts(line) {
   return [...amounts];
 }
 
+// 한 일정 행 뒤쪽의 "입금대기" 때문에 앞쪽의 정상 선비까지 버리면 안 됩니다. 금액마다
+// 바로 앞의 승선료 라벨만 보고, 그 짧은 구간에 예약금·대여료 같은 말이 있을 때만 버립니다.
+function fareMatches(line) {
+  const text = String(line);
+  const matches = [];
+  for (const amountMatch of text.matchAll(WON)) {
+    const before = text.slice(Math.max(0, amountMatch.index - 60), amountMatch.index);
+    const labels = [...before.matchAll(new RegExp(PRICE_LABEL.source, 'g'))];
+    const label = labels.at(-1);
+    if (!label) continue;
+    const labelIndex = amountMatch.index - before.length + label.index;
+    const context = text.slice(Math.max(0, labelIndex - 15), amountMatch.index + amountMatch[0].length);
+    if (NOT_TRIP_PRICE.test(context)) continue;
+    const amount = wonAmounts(amountMatch[0])[0];
+    if (amount != null) matches.push({ amount, labelIndex, end: amountMatch.index + amountMatch[0].length });
+  }
+  return matches;
+}
+
+function fareWindows(line) {
+  const text = String(line).replace(/\s+/g, ' ').trim();
+  const matches = fareMatches(text);
+  if (!matches.length) return [];
+  if (text.length <= 180) return [{ line: text, amounts: [...new Set(matches.map((m) => m.amount))] }];
+
+  // 표 한 행이 통째로 붙은 경우에도 공지 전체를 내보내지 않고, 금액 주변만 근거로 남깁니다.
+  return matches.map((match) => {
+    const excerpt = text.slice(Math.max(0, match.labelIndex - 35), Math.min(text.length, match.end + 70)).trim();
+    return { line: excerpt, amounts: [...new Set(fareMatches(excerpt).map((m) => m.amount))] };
+  });
+}
+
 /** 공지·예약판에서 승선료로 명시된 근거 줄만 추립니다. 자동 입력할 값이 아닙니다. */
 export function priceHints(html, limit = 6) {
   const seen = new Map();
@@ -709,11 +741,10 @@ export function priceHints(html, limit = 6) {
   const $ = cheerio.load(String(html ?? ''));
   $('script, style').remove();
   const blocks = 'p, li, tr, dt, dd, div';
-  const qualifies = (line) => line.length <= 180 && PRICE_LABEL.test(line) &&
-    !NOT_TRIP_PRICE.test(line) && wonAmounts(line).length > 0;
+  const qualifies = (line) => fareMatches(line).length > 0;
   $(blocks).each((_, el) => {
     const line = $(el).text().replace(/\s+/g, ' ').trim();
-    if (!line || line.length > 180) return;
+    if (!line) return;
     // 여러 요금 행을 감싼 div를 한 후보로 합치지 않습니다. 다만 라벨과 금액이 서로
     // 다른 자식 div에 갈린 경우에는 부모 한 줄이 유일한 근거이므로 남깁니다.
     const hasCloserHint = $(el).find(blocks).toArray().some((child) =>
@@ -721,17 +752,17 @@ export function priceHints(html, limit = 6) {
     if (!hasCloserHint) lines.push(line);
   });
   lines.push(...textLines(html));
-  for (const line of lines) {
-    if (line.length > 180 || !PRICE_LABEL.test(line) || NOT_TRIP_PRICE.test(line)) continue;
-    const amounts = wonAmounts(line);
-    if (!amounts.length) continue;
-    const key = line.replace(/\s/g, '');
-    if (seen.has(key)) continue;
-    seen.set(key, {
-      amounts,
-      species: SPECIES.filter((name) => line.includes(name)).map(toSpecies).filter(Boolean),
-      line,
-    });
+  for (const rawLine of lines) {
+    for (const { line, amounts } of fareWindows(rawLine)) {
+      const key = line.replace(/\s/g, '');
+      if (seen.has(key)) continue;
+      seen.set(key, {
+        amounts,
+        species: SPECIES.filter((name) => line.includes(name)).map(toSpecies).filter(Boolean),
+        line,
+      });
+      if (seen.size >= limit) break;
+    }
     if (seen.size >= limit) break;
   }
   return [...seen.values()];
