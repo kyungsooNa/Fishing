@@ -3191,13 +3191,14 @@
       "adapter": "thefishing",
       "url": "https://acefish.thefishing.kr/index.php?mid=bk",
       "source": "detail",
+      "port": "충남 서천 홍원항",
       "enabled": true,
       "addedBy": "discover",
       "boats": {
         "스마트호": {},
         "골드피싱호": {}
       },
-      "note": "자동 발견(https://acefish.thefishing.kr) — 시험 수집 16건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 문의사항, 시간조항 전화 후보: 010-9227-2266, 010-5851-0216"
+      "note": "자동 발견(https://acefish.thefishing.kr) — 시험 수집 16건. 2026-09-10 공식 홈페이지의 출조점 주소 '충청남도 서천군 서면 홍원길 67'과 상호명 '홍원에이스낚시'에서 출항지를 확인했습니다. 이름·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 전화 후보: 010-9227-2266, 010-5851-0216"
     },
     {
       "id": "angel",
