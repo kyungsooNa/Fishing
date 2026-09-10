@@ -680,7 +680,7 @@ async function timesAll() {
 
 // ── 등록된 선사의 승선료 후보 모으기 ────────────────────────────────────────
 //
-// 승선료는 registry에서만 옵니다(core/schema.js의 pickPrice). 예약판과 공지에는 예약금,
+// 승선료는 registry의 priceGuides·prices·price에서 옵니다(core/schema.js의 pickPrice). 예약판과 공지에는 예약금,
 // 입금액, 장비 대여료도 함께 보여서 금액만 뽑아 자동 입력하면 틀립니다. 여기서는
 // "승선료·선비·출조비"가 붙은 짧은 줄만 근거 후보로 남기고, 값은 사람이 확인합니다.
 const PRICE_LABEL = /(승선료|선비|출조비|출조\s*요금|낚시\s*요금|1인\s*(?:요금|금액))/;
@@ -769,9 +769,9 @@ export function priceHints(html, limit = 6) {
 }
 
 const hasConfiguredPrice = (site) =>
-  site.price != null || Object.keys(site.prices ?? {}).length > 0 ||
+  site.price != null || Object.keys(site.prices ?? {}).length > 0 || site.priceGuides?.length > 0 ||
   Object.values(site.boats ?? {}).some((boat) =>
-    boat?.price != null || Object.keys(boat?.prices ?? {}).length > 0);
+    boat?.price != null || Object.keys(boat?.prices ?? {}).length > 0 || boat?.priceGuides?.length > 0);
 
 /** 승선료가 많이 빈 선사부터 봅니다. 일부 배·어종만 채운 사이트도 남은 빈 값을 봅니다. */
 export function priceTargets(registry, quality) {
@@ -858,7 +858,7 @@ async function pricesAll() {
   await mkdir('tmp', { recursive: true });
   await writeFile('tmp/prices.json', `${JSON.stringify(found, null, 2)}\n`);
   console.log('tmp/prices.json 에 근거 문장과 출처를 적었습니다.');
-  console.log('registry에는 배·어종별 차이와 적용 시즌을 페이지에서 확인한 뒤 price 또는 prices로 적으세요.');
+  console.log('registry에는 배·어종·항차별 차이와 적용 시즌을 확인한 뒤 priceGuides 또는 prices로 적으세요.');
 }
 
 /** 수집 결과가 있으면 "지금 두 줄로 뜨는 곳"을 알 수 있습니다. 없으면 순서만 거칠어집니다. */

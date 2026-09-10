@@ -25,7 +25,7 @@ export const FIELDS = [
   { key: 'port', label: '항구', where: 'registry', identity: true },
   { key: 'phone', label: '전화번호', where: 'registry', identity: true },
   { key: 'departAt', label: '출항시각', where: 'adapter' },
-  // 승선료를 넘기는 어댑터는 하나도 없습니다 — 값은 전부 registry의 prices·price에서 옵니다
+  // 승선료를 넘기는 어댑터는 하나도 없습니다 — 값은 전부 registry의 priceGuides·prices·price에서 옵니다
   // (core/schema.js의 pickPrice). "어댑터"로 세는 동안 파서를 고치면 채워질 것처럼 보였는데,
   // 예약판에 적힌 금액은 10,043건 중 259건뿐이고 그나마 "예약금 3만원"·"1인 추가 5만원"처럼
   // 선비가 아닌 금액이 섞여 있습니다. 읽어서 채우면 틀린 값이 됩니다.

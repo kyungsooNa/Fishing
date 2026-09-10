@@ -79,7 +79,7 @@ function report(trips) {
   if (dates.size === 1) warn.push(`날짜가 ${[...dates][0]} 하루뿐입니다 — dayPath/월 주소가 안 먹는지 보세요.`);
   if (trips.every((t) => t.boat === (site.name ?? site.id))) warn.push('배 이름을 못 찾아 사이트 이름으로 대체했습니다.');
   if (trips.every((t) => t.species === null)) warn.push('어종이 전부 비었습니다 (index 방식이면 정상입니다).');
-  if (trips.every((t) => t.price === null)) warn.push('가격이 전부 비었습니다 — registry의 prices를 채우세요.');
+  if (trips.every((t) => t.price === null)) warn.push('가격이 전부 비었습니다 — registry의 priceGuides/prices를 채우세요.');
 
   console.log(`\n총 ${trips.length}건 / 날짜 ${dates.size}일 / 배 ${new Set(trips.map((t) => t.boat)).size}척`);
   for (const w of warn) console.log(`  ⚠ ${w}`);

@@ -194,6 +194,39 @@ Pages는 GitHub Actions가 매시간 수집해 배포하는 결과를 보여줍�
   ```
 
   그 날 어종에 맞는 가격을 붙이고, 못 찾으면 비워둡니다. 화면에서는 가격칸이 비어 보입니다.
+  같은 어종도 항차별로 다르면 근거와 유효기간을 붙인 `priceGuides`를 씁니다. 구체적인 규칙을
+  먼저 적으며, 시즌·어종·항차·출항시각이 모두 맞는 첫 규칙만 적용됩니다.
+
+  ```jsonc
+  "boats": {
+    "아폴로호": {
+      "priceGuides": [
+        {
+          "price": 50000,
+          "species": "주꾸미",
+          "sessions": ["오전", "오후"],
+          "validFrom": "2026-09-01",
+          "validThrough": "2026-09-30",
+          "source": "https://example.com/ship/schedule_fleet",
+          "note": "2026-09-10 일정표: 오전·오후반 선비 5만원"
+        },
+        {
+          "price": 100000,
+          "species": "주꾸미",
+          "sessions": "종일",
+          "departAt": "05:30",
+          "validFrom": "2026-09-01",
+          "validThrough": "2026-09-30",
+          "source": "https://example.com/ship/schedule_fleet",
+          "note": "2026-09-10 일정표: 종일반 선비 10만원"
+        }
+      ]
+    }
+  }
+  ```
+
+  네 근거 필드(`validFrom`, `validThrough`, `source`, `note`)가 하나라도 없으면 규칙을 적용하지
+  않습니다. 적용된 출조에는 `priceSource: "notice"`와 `priceSourceUrl`이 함께 남습니다.
 - 물때(12물, 조금, 무시)도 같이 가져와 목록에 보여줍니다. **같은 날을 사이트마다 다르게 부릅니다** —
   이름으로 부르는 곳(한객기·대객기·조금·무시)과 숫자로 부르는 곳(12~15물)이 섞여 있고, 지역에
   따라 하루씩 밀리기도 합니다. 표기는 사이트가 적은 대로 두되(어느 쪽도 틀린 게 아닙니다) 그 날
