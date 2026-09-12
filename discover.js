@@ -233,7 +233,10 @@ export function pickPhone(text) {
 export function pickPort(text) {
   const t = String(text ?? '').replace(/\s+/g, ' ');
   const labeled = new Set();
-  for (const m of t.matchAll(/(?:출항지|출항항|승선장|출발지)\s*[:：]?\s*([가-힣A-Za-z0-9 ]{2,20}?항)/g)) {
+  // 선상24 선사들이 실제로 쓰는 말은 "출조항구"입니다 — 8곳을 열어보니 전부 "※ 출조항구 : ○○항"
+  // 이라고 적어뒀는데 라벨 목록에 없어서 값이 못 되고 후보로만 나왔습니다. 긴 말부터 적습니다
+  // (출조항이 먼저면 "출조항구"의 앞부분만 물고 "구"가 남습니다).
+  for (const m of t.matchAll(/(?:출조항구|출조항|출항항구|출항지|출항항|승선장|출발지)\s*[:：]?\s*([가-힣A-Za-z0-9 ]{2,20}?항)/g)) {
     // 라벨이 붙었어도 잡힌 말이 "안전운항"이면 항구가 아닙니다. 라벨로 찾은 값은
     // registry에 그대로 실려 신원이 되므로(core/merge.js) 여기서 한 번 더 봅니다.
     const found = m[1].trim();
