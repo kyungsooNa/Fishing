@@ -264,7 +264,9 @@ async function identity(url) {
   try {
     const html = await fetchHtml(originOf(url), { mode: 'static', retries: 0 });
     const text = cheerio.load(html)('body').text();
-    return { phone: pickPhone(text), port: pickPort(text), evidence: portEvidence(html) };
+    const port = pickPort(text);
+    // 후보를 같이 넘겨야 "그 낱말이 어디서 나왔나"가 근거에 실립니다.
+    return { phone: pickPhone(text), port, evidence: portEvidence(html, 4, port.candidates) };
   } catch (err) {
     return {
       phone: { value: null, candidates: [] },
@@ -287,16 +289,31 @@ export function textLines(html) {
     .filter(Boolean);
 }
 
+/** 긴 줄에서 낱말 둘레만 잘라 보여줍니다. 자른 자리는 …로 표시해 원문이 더 있음을 알립니다. */
+function around(line, word, span = 60) {
+  const at = line.indexOf(word);
+  if (at < 0) return null;
+  const from = Math.max(0, at - span);
+  const to = Math.min(line.length, at + word.length + span);
+  return (from ? '…' : '') + line.slice(from, to) + (to < line.length ? '…' : '');
+}
+
 /**
  * 항구를 사람이 고를 때 볼 **근거 줄**. 후보 낱말("○○항")만 보여주면 그게 이 배가 뜨는
  * 항인지 소개글에 나온 항인지 가릴 수가 없습니다. 그래서 주소·승선지처럼 항을 말해주는
  * 줄을 통째로, 페이지에 적힌 그대로 보여줍니다 — 시·군까지 있어야 registry 표기도
  * 맞출 수 있습니다("충남 서천 홍원항").
+ *
+ * `candidates`를 넘기면 **후보마다 그 낱말이 나온 줄을 반드시 한 줄씩** 붙입니다. 주소 줄만
+ * 보여주면 정작 고를 대상인 후보의 출처가 빠집니다 — 실제로 luna는 "물개길 85"라는 주소만
+ * 나오고 후보 "물개항"이 어디서 왔는지는 안 보여서, 도로명에서 짐작한 값인지 페이지가
+ * 말한 값인지 가릴 수 없었습니다. 여기서는 길이 제한에 걸린 줄도 낱말 둘레만 잘라 싣습니다.
  */
-export function portEvidence(html, limit = 4) {
+export function portEvidence(html, limit = 4, candidates = []) {
   const wanted = /(주소|소재지|도로명|출항지|승선지|승선장|출조점|집결지|오시는\s*길|[가-힣]{2,6}항\b|[가-힣]{2,6}항[에서로]|[가-힣]{2,6}항\s*[,.·)])/;
+  const lines = textLines(html);
   const seen = new Map();
-  for (const line of textLines(html)) {
+  for (const line of lines) {
     // 너무 긴 줄은 페이지가 통째로 한 덩어리로 붙어 나온 것이라 근거가 못 됩니다.
     if (line.length > 160 || !wanted.test(line)) continue;
     if (!/[가-힣]{2,6}항|주소|소재지|도로명|승선|집결|오시는/.test(line)) continue;
@@ -304,7 +321,15 @@ export function portEvidence(html, limit = 4) {
     if (!seen.has(key)) seen.set(key, line);
     if (seen.size >= limit) break;
   }
-  return [...seen.values()];
+
+  const out = [...seen.values()];
+  for (const word of candidates) {
+    if (out.some((line) => line.includes(word))) continue;
+    const hit = lines.find((line) => line.includes(word));
+    const shown = hit && (hit.length > 160 ? around(hit, word) : hit);
+    if (shown) out.push(`[${word}] ${shown}`);
+  }
+  return out;
 }
 
 // ── 등록된 선사의 항구 다시 읽기 ────────────────────────────────────────────

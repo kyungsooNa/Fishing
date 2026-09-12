@@ -383,3 +383,36 @@ test('근거 줄은 몇 줄까지만 — 페이지를 옮겨오는 게 아닙니
   const html = [1, 2, 3, 4, 5, 6].map((i) => `<p>주소 ${i} : 충남 보령시 오천면 ${i}</p>`).join('');
   assert.equal(portEvidence(html, 2).length, 2);
 });
+
+// 주소 줄만 보여주면 정작 고를 대상인 후보가 어디서 왔는지가 빠집니다. luna가 그랬습니다 —
+// "물개길 85"라는 주소만 나오고 후보 "물개항"의 출처는 안 보여서, 도로명에서 짐작한 값인지
+// 페이지가 말한 값인지 가릴 수 없었습니다.
+test('항구 후보를 넘기면 그 낱말이 나온 줄도 근거에 같이 싣는다', () => {
+  const html = `<body>
+    <p>오시는길 : 경상남도 통영시 산양읍 물개길 85</p>
+    <p>저희 배는 물개항 좌측 부잔교에서 출항합니다</p>
+  </body>`;
+  const lines = portEvidence(html, 4, ['물개항']);
+
+  assert.ok(lines.includes('오시는길 : 경상남도 통영시 산양읍 물개길 85'));
+  assert.ok(lines.some((line) => line.includes('물개항 좌측 부잔교에서 출항')));
+});
+
+// 길이 제한에 걸려 잘려나가던 줄이야말로 후보의 유일한 출처일 수 있습니다. 통째로 싣지 않고
+// 낱말 둘레만 잘라 보여줍니다 — 페이지를 옮겨오지 않으면서 출처는 남깁니다.
+test('긴 줄에 묻힌 후보는 낱말 둘레만 잘라서 싣는다', () => {
+  const html = `<body><p>${'가'.repeat(200)} 남당항에서 출항 ${'나'.repeat(200)}</p></body>`;
+  const lines = portEvidence(html, 4, ['남당항']);
+
+  assert.equal(lines.length, 1);
+  assert.ok(lines[0].includes('남당항에서 출항'));
+  assert.ok(lines[0].startsWith('[남당항] …'));
+  assert.ok(lines[0].length < 160);
+});
+
+// 후보가 본문 어디에도 없으면 지어내지 않습니다 — 근거 없는 줄이 붙으면 그게 값이 됩니다.
+test('본문에 없는 후보는 근거 줄을 만들지 않는다', () => {
+  const html = '<body><p>주소 : 충남 보령시 오천면 1</p></body>';
+
+  assert.deepEqual(portEvidence(html, 4, ['없는항']), ['주소 : 충남 보령시 오천면 1']);
+});
