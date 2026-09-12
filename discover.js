@@ -28,19 +28,6 @@ import { SPECIES } from './adapters/_rows.js';
 
 const CANDIDATES_PATH = 'tmp/candidates.json';
 
-// 훑어보는 도구들이 페이지를 받아올 때 쓰는 설정.
-//
-// **retries를 0으로 두면 더피싱 계열 109곳이 이 도구들에 영영 안 보입니다.** 어댑터는
-// 기본값(retries 2)으로 받는데(`adapters/thefishing.js`) 여기만 0이었습니다. 더피싱은
-// 한 번 timeout 나도 재시도하면 그대로 살아나는 것이 이미 확인된 성질이라
-// (`AGENTS.md`의 timeout 백오프), 수집은 109/109 성공하는데 같은 시각에 prices는
-// 13곳을 "못 받았습니다"로 적고 있었습니다. 두 번 돌려도 같은 13곳이 같은 자리에서
-// 죽어서 일시 장애가 아니라는 것이 드러났습니다.
-//
-// 한 번만 더 시도합니다. 훑어보는 도구는 한 번에 수십 곳을 도는지라 어댑터처럼 두 번
-// 더 하면 한 바퀴가 길어집니다 — 살릴 곳은 첫 재시도에서 대부분 살아납니다.
-const SCAN_FETCH = { mode: 'static', retries: 1 };
-
 // ── 후보 모으기: 인증서 로그 ────────────────────────────────────────────────
 //
 // 선상24처럼 선사마다 서브도메인을 하나씩 파주는 플랫폼은, 인증서를 발급할 때마다
@@ -278,7 +265,7 @@ export function pickPort(text) {
  */
 async function identity(url) {
   try {
-    const html = await fetchHtml(originOf(url), SCAN_FETCH);
+    const html = await fetchHtml(originOf(url), { mode: 'static', retries: 0 });
     const text = cheerio.load(html)('body').text();
     const port = pickPort(text);
     // 후보를 같이 넘겨야 "그 낱말이 어디서 나왔나"가 근거에 실립니다.
@@ -686,7 +673,7 @@ async function timesAll() {
   for (const target of targets.slice(0, limit)) {
     let hints = [], error = null;
     try {
-      hints = timeHints(await fetchHtml(originOf(target.url), SCAN_FETCH));
+      hints = timeHints(await fetchHtml(originOf(target.url), { mode: 'static', retries: 0 }));
     } catch (err) {
       error = describeError(err);
     }
@@ -883,7 +870,7 @@ async function pricesAll() {
     const pages = await pricePageUrls(sitesById.get(target.id));
     for (const url of pages) {
       try {
-        const html = await fetchHtml(url, SCAN_FETCH);
+        const html = await fetchHtml(url, { mode: 'static', retries: 0 });
         received = true;
         hints = priceHints(html);
         if (hints.length) { source = url; break; }
