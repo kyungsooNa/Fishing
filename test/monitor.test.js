@@ -150,6 +150,50 @@ test('수집 실패는 이전 좌석과 확인 시각을 보존하고 재시도 
   assert.equal(notices, 0);
 });
 
+// 헌터호가 이걸로 나흘 동안 멈춰 있었습니다. 사이트도 Actions 수집도 멀쩡했는데
+// 로컬에서만 실패해서, 받아온 최신 결과를 며칠 묵은 로컬 결과가 덮고 있었습니다.
+test('로컬만 실패한 선사는 받아온 결과가 더 새것이면 그쪽을 싣는다', async () => {
+  let failing = false;
+  const f = await fixture({ collect: async () => {
+    if (failing) throw new Error('fetch failed');
+    return [trip('a', 2)];
+  } });
+  await f.monitor.tick(); await f.monitor.idle();
+  failing = true;
+  f.advance(FULL_MS);
+  await f.monitor.tick(); await f.monitor.idle();
+  assert.equal(f.monitor.data().sites.a.ok, false, '받아온 것이 더 낡았으면 실패 그대로입니다');
+  assert.equal(f.monitor.data().trips[0].seatsLeft, 2, '직전 로컬 결과를 유지합니다');
+
+  // Actions가 수집해 커밋한 결과를 run.bat이 받아온 상황.
+  f.advance(FULL_MS);
+  const fetchedAt = new Date(Date.parse('2026-09-05T00:00:00Z') + 3 * FULL_MS).toISOString();
+  await writeFile(join(f.dir, 'data.json'), JSON.stringify({
+    generatedAt: fetchedAt, trips: [trip('a', 7)],
+    sites: { a: { ok: true, at: fetchedAt, count: 1 } },
+  }));
+  await f.monitor.tick(); await f.monitor.idle();
+
+  const site = f.monitor.data().sites.a;
+  assert.equal(site.ok, true, '받아온 값이 더 새것이면 그 시각을 답니다');
+  assert.equal(site.at, fetchedAt);
+  assert.equal(site.localError, 'fetch failed', '이 PC의 수집이 깨진 것은 남깁니다');
+  assert.equal(f.monitor.data().trips[0].seatsLeft, 7, '며칠 묵은 로컬 결과로 덮지 않습니다');
+});
+
+test('성공한 로컬 수집은 받아온 결과보다 새것이 아니어도 유지한다', async () => {
+  const f = await fixture({ collect: async () => [trip('a', 2)] });
+  await f.monitor.tick(); await f.monitor.idle();
+  const later = new Date(Date.parse('2026-09-05T00:00:00Z') + FULL_MS).toISOString();
+  await writeFile(join(f.dir, 'data.json'), JSON.stringify({
+    generatedAt: later, trips: [trip('a', 7)], sites: { a: { ok: true, at: later, count: 1 } },
+  }));
+  f.advance(1000);
+  await f.monitor.tick(); await f.monitor.idle();
+  assert.equal(f.monitor.data().trips[0].seatsLeft, 2, '방금 직접 확인한 값이 우선입니다');
+  assert.equal(f.monitor.data().sites.a.localError, undefined);
+});
+
 test('감시와 비교 기준이 재시작 후 남고, 감시 해제와 지난 출조는 3분 대상에서 빠진다', async () => {
   const f = await fixture();
   await f.monitor.setWatch(tripKey(trip()), true, ME);

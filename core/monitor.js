@@ -1,5 +1,5 @@
 // 로컬 서버의 전체 수집과 관심 출조를 한 스케줄러에서 돌립니다.
-import { readFile, mkdir, writeFile, rename } from 'node:fs/promises';
+import { readFile, mkdir, writeFile, rename, stat } from 'node:fs/promises';
 import { dirname } from 'node:path';
 import { collectSite, loadRegistry, pruneOld, sortTrips } from './runner.js';
 import { load } from './store.js';
@@ -24,7 +24,7 @@ export function createMonitor({
   // 감시 목록은 사람(브라우저 토큰의 해시)마다 따로 둡니다(core/watchers.js).
   // legacy는 사용자 구분이 없던 시절의 목록입니다 — 주인을 모르니 아무에게나 주지 않고,
   // 로컬 화면이 처음 붙을 때 그 사람에게 넘깁니다(adopt).
-  let base, ports = {}, sites = [], watchers = {}, legacy = [], records = {}, timer, stopped = false;
+  let base, baseMark = null, ports = {}, sites = [], watchers = {}, legacy = [], records = {}, timer, stopped = false;
   // 이미 보낸 소식. 3분마다 보니 같은 자리가 붙었다 떨어졌다 하면 계속 울립니다(core/alerts.js).
   let sentAlerts = {};
   let saving = Promise.resolve(), ticking = false, fullRun = null;
@@ -53,8 +53,25 @@ export function createMonitor({
     return operation;
   };
 
-  async function init() {
+  /**
+   * 받아온 수집 결과를 다시 읽습니다.
+   *
+   * `docs/data.json`은 Actions가 매시간 수집해 커밋하고 run.bat이 켤 때 받아옵니다.
+   * 켤 때 한 번만 읽으면, 그 뒤에 받은 값은 서버를 껐다 켜기 전까지 화면에 못 올라옵니다 —
+   * 로컬 수집이 실패하는 선사는 그동안 통째로 시간이 멈춥니다. 그렇다고 6.7MB짜리를
+   * tick마다 다시 파싱할 수는 없으니, 파일이 바뀐 것이 보일 때만 읽습니다.
+   * 못 읽을 때(파일이 없거나 받는 중)는 들고 있던 것을 그대로 씁니다.
+   */
+  async function refreshBase() {
+    const mark = await stat(dataPath).then(({ mtimeMs, size }) => `${mtimeMs}:${size}`, () => null);
+    if (base && (mark === null || mark === baseMark)) return false;
     base = await load(dataPath);
+    baseMark = mark;
+    return true;
+  }
+
+  async function init() {
+    await refreshBase();
     ports = await loadPorts();
     sites = await readRegistry();
     try {
@@ -65,20 +82,46 @@ export function createMonitor({
     } catch { /* 첫 실행 */ }
   }
 
+  /**
+   * 그 결과가 언제 본 값인가. 실패한 수집의 시각(`at`)은 "언제 시도했나"라서 화면에
+   * 실린 값의 나이가 아닙니다 — 직전에 성공한 시각(`keptFrom`)으로 셉니다.
+   */
+  const snapAt = (s) => Date.parse(s?.ok ? s.at : s?.keptFrom) || 0;
+
+  /**
+   * 로컬 수집이 실패한 선사를 받아온 결과보다 더 낡은 채로 붙들고 있나.
+   *
+   * 실패한 선사는 직전 결과를 그대로 남깁니다. 그런데 그 사이에도 Actions는 매시간
+   * 수집해 커밋하고 run.bat이 그걸 받아옵니다. 받아온 값이 더 새것인데 며칠 묵은 로컬
+   * 결과로 덮으면 그 배만 현황판에서 시간이 멈춥니다 — 헌터호가 실제로 그랬습니다.
+   * 사이트도 멀쩡했고 Actions 수집도 계속 성공하고 있었는데, 로컬에서만 실패해서
+   * 나흘 전 잔여석이 "수집 실패 · 직전 4일 전 확인"으로 계속 떠 있었습니다.
+   *
+   * 그래서 실패한 선사는 둘 중 새 쪽을 씁니다. 성공한 수집은 따지지 않습니다 —
+   * 방금 직접 확인한 값이고, 알림도 그 값으로 갑니다.
+   */
+  const stalled = (id) => {
+    const local = records[id]?.status;
+    return Boolean(local) && !local.ok && snapAt(base.sites[id]) > snapAt(local);
+  };
+
   function data() {
     const enabled = new Set(sites.filter((s) => s.enabled !== false).map((s) => s.id));
-    const fresh = new Set(Object.keys(records).filter((id) => enabled.has(id) && records[id].trips));
+    const fresh = new Set(Object.keys(records)
+      .filter((id) => enabled.has(id) && records[id].trips && !stalled(id)));
     // 옛 통합 결과를 다시 다른 출처의 원문으로 취급하면 잔여석을 부풀릴 수 있습니다.
     const untouched = base.trips.filter((t) => enabled.has(t.siteId) &&
       !(t.sources ?? [t]).some((s) => fresh.has(s.siteId)));
     const trips = sortTrips(mergeDuplicates(pruneOld([
       ...untouched,
-      ...Object.entries(records).filter(([id]) => enabled.has(id)).flatMap(([, r]) => r.trips ?? []),
+      ...[...fresh].flatMap((id) => records[id].trips),
     ], 21, new Date(clock()))));
     const status = Object.fromEntries(sites.filter((s) => enabled.has(s.id)).map((s) => [s.id, {
       ...base.sites[s.id], name: s.name ?? s.id, url: s.url,
       port: s.port, phone: s.phone, addedBy: s.addedBy, platform: platformOf(s).label,
-      ...(records[s.id]?.status ?? {}),
+      // 받아온 값을 쓰기로 한 선사는 그 값의 시각·건수를 그대로 답니다. 다만 이 PC의
+      // 수집이 깨진 것은 남겨야 합니다 — 그래야 3분 감시가 왜 안 도는지 알 수 있습니다.
+      ...(stalled(s.id) ? { localError: records[s.id].status.error } : records[s.id]?.status ?? {}),
     }]));
     const times = Object.values(records).map((r) => r.status?.at).filter(Boolean).sort();
     return { ...base, trips, sites: status, ports: usedPorts(trips, ports).places,
@@ -208,6 +251,10 @@ export function createMonitor({
     ticking = true;
     try {
       sites = await readRegistry();
+      // run.bat이 받아온(또는 collect.js가 새로 쓴) 결과가 있으면 그때 집어 올립니다.
+      if (await refreshBase().catch((err) => { addLog(`받아온 결과 읽기 실패: ${err.message}`); return false; })) {
+        addLog('받아온 수집 결과(docs/data.json)를 다시 읽었습니다');
+      }
       if (stopped) return;
       const due = sites.filter((s) => s.enabled !== false && nextAt(s) <= clock());
       // 같은 플랫폼은 한 번에 하나, 전체 동시 실행은 여섯 개까지입니다.
