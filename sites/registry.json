@@ -3699,13 +3699,14 @@
       "adapter": "thefishing",
       "url": "https://joen.thefishing.kr/index.php?mid=bk",
       "source": "detail",
+      "port": "충남 서산 창리포구",
       "phone": "010-8268-8644",
       "enabled": true,
       "addedBy": "discover",
       "boats": {
         "독립좌대1호": {}
       },
-      "note": "자동 발견(https://joen.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항"
+      "note": "자동 발견(https://joen.thefishing.kr) — 시험 수집 8건. 이름·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지는 2026-09-13 공식 홈페이지의 '좌대위치 : 충남 서산시 부석면 창리 295-1번지 (창리포구)'에서 확인했습니다."
     },
     {
       "id": "jungwoo",
@@ -4312,12 +4313,13 @@
       "adapter": "thefishing",
       "url": "https://sungho.thefishing.kr/index.php?mid=bk",
       "source": "detail",
+      "port": "충남 태안 당암포구",
       "enabled": true,
       "addedBy": "discover",
       "boats": {
         "독립좌대1호": {}
       },
-      "note": "자동 발견(https://sungho.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항 전화 후보: 010-5431-0371, 010-2415-9656, 0371010-2415"
+      "note": "자동 발견(https://sungho.thefishing.kr) — 시험 수집 8건. 이름·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 전화 후보: 010-5431-0371, 010-2415-9656, 0371010-2415. 출항지는 2026-09-13 공식 홈페이지 설명의 '당암포구'와 주소 '충남 태안군 남면 한바위길36-19 성호낚시'를 같은 주소의 공식 출조 안내와 대조해 확인했습니다."
     },
     {
       "id": "sunny",
@@ -4396,6 +4398,7 @@
       "adapter": "thefishing",
       "url": "https://winner.thefishing.kr/index.php?mid=bk",
       "source": "detail",
+      "port": "충남 보령 무창포항",
       "phone": "010-6526-6525",
       "enabled": true,
       "addedBy": "discover",
@@ -4403,7 +4406,7 @@
         "30호": {},
         "배짱호": {}
       },
-      "note": "자동 발견(https://winner.thefishing.kr) — 시험 수집 7건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항, 안내사항"
+      "note": "자동 발견(https://winner.thefishing.kr) — 시험 수집 7건. 이름·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지는 2026-09-13 공식 홈페이지 제목 '무창포 피싱위너'와 같은 전화번호(010-6526-6525)의 뉴빅토리호 출조 기록에 적힌 무창포항을 대조해 확인했습니다."
     },
     {
       "id": "worldfishing",
@@ -4440,12 +4443,13 @@
       "adapter": "thefishing",
       "url": "https://wsdhaesin.thefishing.kr/index.php?mid=bk",
       "source": "detail",
+      "port": "충남 보령 선촌항",
       "enabled": true,
       "addedBy": "discover",
       "boats": {
         "해신호": {}
       },
-      "note": "자동 발견(https://wsdhaesin.thefishing.kr) — 시험 수집 8건. 이름·출항지·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 출항지 후보: 공지사항 전화 후보: 010-4761-0034, 010-8489-0037"
+      "note": "자동 발견(https://wsdhaesin.thefishing.kr) — 시험 수집 8건. 이름·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다. 전화 후보: 010-4761-0034, 010-8489-0037. 출항지는 2026-09-13 공식 홈페이지의 '원산도 선촌선착장'과 주소 '충남 보령시 오천면 원산도 1길 39'에서 확인했고, 같은 주소의 기존 표기인 충남 보령 선촌항으로 맞췄습니다."
     },
     {
       "id": "yaho",
