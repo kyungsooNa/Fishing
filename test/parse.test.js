@@ -12,6 +12,7 @@ import { parseMonth as parseUijihoMonth } from '../adapters/uijiho.js';
 import { findOpenings } from '../core/diff.js';
 import { mergeDuplicates } from '../core/merge.js';
 import { kstDate } from '../core/when.js';
+import { loadRegistry } from '../core/runner.js';
 import { toStatus, toDate, toTime, toTimeRange, sessionOf, parseSeats, pickPrice, toSpecies, toTide, makeTrip, STATUS } from '../core/schema.js';
 import * as fx from './fixtures.js';
 
@@ -131,6 +132,32 @@ test('schema: 근거가 완전한 조건부 승선료만 출조에 출처와 함
   assert.equal(makeTrip(noNote, {
     boat: '아폴로호', date: '2026-09-10', species: '주꾸미', rawTime: '05:30~11:30',
   }).price, null, '원문 근거가 빠진 규칙은 적용하지 않습니다');
+});
+
+test('registry: 확인한 승선료는 날짜·배·어종·출항시각 범위에서만 붙는다', async () => {
+  const registry = await loadRegistry();
+  const flex = registry.find((site) => site.id === 'flex');
+  const nara = registry.find((site) => site.id === 'nara');
+
+  assert.equal(pickPrice(flex, '오로라호', '주꾸미·갑오징어', {
+    date: '2026-09-20', departAt: '05:30', session: '종일',
+  }), 84000);
+  assert.equal(pickPrice(flex, '오로라호', '주꾸미', {
+    date: '2026-09-20', departAt: '05:30', session: '종일',
+  }), 84000, '어종 파서 개선 전 보존 행에도 같은 근거가 적용됩니다');
+  assert.equal(pickPrice(flex, '오로라호', '주꾸미·갑오징어', {
+    date: '2026-10-04', departAt: '05:30', session: '종일',
+  }), null, '확인한 일정 밖으로 금액을 지어내지 않습니다');
+
+  assert.equal(pickPrice(nara, '나라2호', '갈치', {
+    date: '2026-09-18', departAt: '13:00', session: '야간',
+  }), 190000);
+  assert.equal(pickPrice(nara, '나라2호', '갈치', {
+    date: '2026-09-19', departAt: '13:00', session: '야간',
+  }), 210000, '날짜별 특별 요금이 넓은 기간 요금보다 먼저입니다');
+  assert.equal(pickPrice(nara, '나라2호', '갈치', {
+    date: '2026-10-01', departAt: '13:00', session: '야간',
+  }), null);
 });
 
 test('sunsang24: 목록형 — 하루 행 안의 배마다 한 줄씩 나온다', () => {
