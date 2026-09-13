@@ -864,25 +864,34 @@ async function pricesAll() {
 
   const found = [];
   for (const target of targets.slice(0, limit)) {
-    let hints = [], source = null, received = false, lastError = null;
+    let hints = [], source = null, received = false;
+    // 주소마다 따로 남깁니다. 마지막 오류 하나만 덮어쓰면 "못 받았습니다" 한 줄만 남아
+    // **어느 주소에서 죽었는지를 못 봅니다** — 실제로 더피싱 13곳이 매번 같이 죽는데
+    // 루트가 문제인지 예약판이 문제인지 로그로 가릴 수가 없었습니다. 걸린 시간도 같이
+    // 남깁니다. 30초 timeout이라고 적힌 실패가 15초 만에 나면 그 설명이 틀린 것입니다.
+    const tried = [];
     // 어댑터가 평소 읽는 실제 일정표를 먼저 봅니다. 루트 홈페이지에는 요금 숫자가 없고
     // 일정표 공지에만 선비가 적힌 선상24가 대부분입니다. 찾았으면 요청을 더 하지 않습니다.
     const pages = await pricePageUrls(sitesById.get(target.id));
     for (const url of pages) {
+      const startedAt = Date.now();
       try {
         const html = await fetchHtml(url, { mode: 'static', retries: 0 });
         received = true;
         hints = priceHints(html);
         if (hints.length) { source = url; break; }
       } catch (err) {
-        lastError = describeError(err);
+        tried.push({ url, error: describeError(err), ms: Date.now() - startedAt });
       }
     }
-    const error = !received && lastError ? lastError : null;
-    found.push({ ...target, hints, ...(source ? { source } : {}), ...(error ? { error } : {}) });
+    const error = !received && tried.length ? tried.at(-1).error : null;
+    found.push({ ...target, hints, ...(source ? { source } : {}), ...(error ? { error, tried } : {}) });
 
     const head = `${target.id.padEnd(16)} ${String(target.missing).padStart(4)}건`;
-    if (error) console.log(`${head}  못 받았습니다: ${error.slice(0, 70)}`);
+    if (error) {
+      console.log(`${head}  못 받았습니다`);
+      for (const attempt of tried) console.log(`    ${attempt.ms}ms  ${attempt.url}\n      ${attempt.error.slice(0, 90)}`);
+    }
     else if (!hints.length) console.log(`${head}  요금 근거를 못 찾았습니다`);
     else {
       console.log(head);
