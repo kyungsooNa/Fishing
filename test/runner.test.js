@@ -92,6 +92,35 @@ test('수집 실패로 이전 결과를 보존해도 registry 제외 배는 되�
   assert.equal(data.sites.broken.count, 1, '보존 상태의 건수도 실제 남은 행과 같아야 합니다');
 });
 
+test('수집 보류로 이전 결과를 보존해도 공지사항 오탐은 되살리지 않는다', async () => {
+  const 이전시각 = '2026-09-09T00:00:00.000Z';
+  const prevData = {
+    generatedAt: 이전시각,
+    sites: { broken: { ok: true, at: 이전시각, count: 2 } },
+    trips: [
+      {
+        siteId: 'broken', siteName: '오천항 유진호', boat: '오천항 유진호',
+        date: '2026-09-19', departAt: '20:00', status: 'open', statusText: '공지사항', seatsLeft: 20,
+      },
+      {
+        siteId: 'broken', siteName: '오천항 유진호', boat: '유진호',
+        date: '2026-09-19', status: 'closed', statusText: '유진호(EUGENE)', seatsLeft: 0,
+      },
+    ],
+  };
+  const { registryPath, dataPath } = await fixture([brokenSite], prevData);
+
+  const { data } = await runAll({
+    registryPath,
+    dataPath,
+    days: 21,
+    now: new Date('2026-09-14T00:00:00+09:00'),
+  });
+
+  assert.deepEqual(data.trips.map((trip) => trip.boat), ['유진호']);
+  assert.equal(data.sites.broken.count, 1);
+});
+
 test('한 사이트가 죽어도 나머지는 수집된다', async () => {
   const { registryPath, dataPath } = await fixture([mockSite, brokenSite]);
   const { data, failed } = await runAll({ registryPath, dataPath, days: 21 });

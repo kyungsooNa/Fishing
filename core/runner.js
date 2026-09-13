@@ -30,7 +30,7 @@ export async function collectSite(site) {
   const trips = (await collect(site)) ?? [];
   // 날짜 없는 행은 화면에서 정렬도 비교도 안 되므로 버립니다.
   // 사이트 제목이나 플랫폼명이 배 이름으로 섞여 들어오는 경우도 여기서 한 번 더 거릅니다.
-  return trips.filter((t) => t && t.date && !site.excludeBoats?.includes(t.boat));
+  return trips.filter((t) => t && t.date && !site.excludeBoats?.includes(t.boat) && !isNoticeShell(t));
 }
 
 /**
@@ -88,7 +88,8 @@ export async function runAll({
     (prevBySite.get(site.id) ?? [])
       // 수집이 실패해도 registry 변경은 즉시 따라야 합니다. 제외한 배를 이전 결과에서
       // 계속 살리면 플랫폼 장애 동안 가짜 행이 화면에 남습니다(teamhanpro의 흑돼지호).
-      .filter((t) => t && t.date && !site.excludeBoats?.includes(t.boat))
+      // 같은 이유로 예전 파서가 배로 읽은 더피싱 공지 카드도 보존 단계에서 걷어냅니다.
+      .filter((t) => t && t.date && !site.excludeBoats?.includes(t.boat) && !isNoticeShell(t))
       .map((t) => refreshKeptTrip(site, t));
 
   // 더피싱 공통 서버가 잠시 막혔을 때 100곳 넘게 같은 timeout을 반복하지 않습니다.
@@ -250,6 +251,10 @@ function refreshKeptTrip(site, t) {
     status: refreshed.status === STATUS.UNKNOWN && t.status ? t.status : refreshed.status,
     statusText: refreshed.statusText ?? t.statusText ?? null,
   };
+}
+
+function isNoticeShell(trip) {
+  return /^(?:공지사항?|안내사항?)$/.test(String(trip?.statusText ?? '').replace(/\s+/g, ''));
 }
 
 function toMinutes(value) {
