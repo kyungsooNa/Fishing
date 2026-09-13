@@ -131,6 +131,9 @@ export function parseDetail(site, html, url) {
   // 날짜 머리글로 페이지를 하루씩 끊습니다. 오전배·오후배는 별개 출조로 잡힙니다.
   for (const block of splitByDate($)) {
     const { date, text } = block;
+    // 모바일판은 공지사항도 배와 같은 res_box/h2 구조입니다. registry 정원이 있으면
+    // 공지의 "20시 안내문자"가 출항 20:00인 빈 배 20석으로 바뀌므로 배 이름 단계에서 버립니다.
+    if (/^(?:공지사항?|안내사항?)$/.test(squash(block.boat))) continue;
     if (!date || !/남은자리|잔여|여석|입금|예약확정|휴항|결항|출조취소|개인사정/.test(text)) continue;
 
     const mode = site.seatCount ?? seatMode(text);
