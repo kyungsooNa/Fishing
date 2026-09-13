@@ -11,14 +11,8 @@
 import * as cheerio from 'cheerio';
 import { fetchHtml } from '../core/fetcher.js';
 import { makeTrip, toDate, tripTimeRange, toTide } from '../core/schema.js';
-import { matchBoatName } from './_rows.js';
+import { matchBoatName, speciesIn } from './_rows.js';
 import { kstDate } from '../core/when.js';
-
-const SPECIES = [
-  '주꾸미', '쭈꾸미', '갑오징어', '한치', '문어', '광어', '우럭', '참돔', '감성돔',
-  '농어', '삼치', '부시리', '방어', '고등어', '갈치', '대구', '열기', '볼락', '백조기',
-  '민어', '침선', '눈볼대', '가자미', '쭈갑',
-];
 
 export async function collect(site) {
   if ((site.source ?? 'index') === 'index') {
@@ -136,7 +130,7 @@ export function parseDetail(site, html, url) {
     if (site.excludeBoats?.includes(boat)) continue;
 
     const time = tripTimeRange(text);
-    const species = SPECIES.find((s) => text.includes(s)) ?? null;
+    const species = speciesIn(text);
     let seatsLeft = explicit;
     if (seatsLeft === null && Number.isFinite(seatsTotal)) seatsLeft = Math.max(0, seatsTotal - filled);
     // 어종·승선료를 적은 상시 공지도 날짜 표 안에 매일 반복됩니다. 좌석이나 예약 상태가
