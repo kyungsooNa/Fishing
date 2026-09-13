@@ -9,7 +9,7 @@
 // 이름이 겹치는 배가 없으면 항구가 비어도 지금 당장 손해는 없습니다.
 //
 // 고치는 곳이 어디냐도 같이 냅니다. 항구·전화번호·승선료는 registry에 사람이 적는 값이고,
-// 출항시각·정원은 어댑터가 페이지에서 읽어오는 값입니다. 섞어 세면 registry를 고칠 일과
+// 출항시각·어종·정원은 어댑터가 페이지에서 읽어오는 값입니다. 섞어 세면 registry를 고칠 일과
 // 파서를 고칠 일이 한 줄에 붙어버립니다.
 //
 // 어댑터가 읽는 값이라고 다 파서로 채워지는 것도 아닙니다. 출항시각은 **예약판에 아예
@@ -25,6 +25,7 @@ export const FIELDS = [
   { key: 'port', label: '항구', where: 'registry', identity: true },
   { key: 'phone', label: '전화번호', where: 'registry', identity: true },
   { key: 'departAt', label: '출항시각', where: 'adapter' },
+  { key: 'species', label: '어종', where: 'adapter' },
   // 승선료를 넘기는 어댑터는 하나도 없습니다 — 값은 전부 registry의 priceGuides·prices·price에서 옵니다
   // (core/schema.js의 pickPrice). "어댑터"로 세는 동안 파서를 고치면 채워질 것처럼 보였는데,
   // 예약판에 적힌 금액은 10,043건 중 259건뿐이고 그나마 "예약금 3만원"·"1인 추가 5만원"처럼

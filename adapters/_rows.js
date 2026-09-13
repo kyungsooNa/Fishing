@@ -9,8 +9,20 @@ import { makeTrip, toDate, toTide, parseSeats, tripTimeRange } from '../core/sch
 export const SPECIES = [
   '주꾸미', '쭈꾸미', '갑오징어', '한치', '문어', '광어', '우럭', '참돔', '감성돔', '돌돔',
   '농어', '삼치', '부시리', '방어', '고등어', '갈치', '대구', '열기', '볼락', '백조기',
-  '민어', '침선', '눈볼대', '가자미', '숭어', '전어', '학꽁치', '오징어', '아나고',
+  '민어', '침선', '눈볼대', '가자미', '붉바리', '꽃게', '숭어', '전어', '학꽁치', '오징어', '아나고',
 ];
+
+/**
+ * 일정 본문에서 어종을 읽습니다. 템플릿마다 `쭈&갑`·`쭈.갑`·`갑 오징어`처럼
+ * 띄어쓰기와 구분자가 달라 단순 includes로는 같은 어종이 빈 칸이 됩니다.
+ * 원문에 없는 어종은 추측하지 않고 null로 둡니다.
+ */
+export function speciesIn(text) {
+  const compact = String(text ?? '').replace(/\s+/g, '');
+  if (/(?:쭈|주)(?:꾸미)?[.,/+&·]*(?:갑(?:오징어)?)/.test(compact)) return '쭈갑';
+  if (compact.includes('꽃개')) return '꽃게'; // 예약판에서 반복되는 오타
+  return SPECIES.find((name) => compact.includes(name)) ?? null;
+}
 
 // ── 파싱 ────────────────────────────────────────────────────────────────────
 /**
@@ -59,7 +71,7 @@ export function parseRows(site, html, url, { urlDated = false } = {}) {
         date,
         departAt: time.from,
         returnAt: time.to,
-        species: SPECIES.find((s) => text.includes(s)) ?? null,
+        species: speciesIn(text),
         tide: toTide(text),
         status: text,
         seatsLeft,

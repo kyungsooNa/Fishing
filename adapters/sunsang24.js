@@ -9,7 +9,7 @@
 
 import { fetchHtml } from '../core/fetcher.js';
 import * as cheerio from 'cheerio';
-import { parseRows, SPECIES, matchBoatName } from './_rows.js';
+import { parseRows, speciesIn, matchBoatName } from './_rows.js';
 import { makeTrip, toDate, toTide } from '../core/schema.js';
 import { kstDate, kstYm } from '../core/when.js';
 
@@ -316,8 +316,7 @@ function portPrefix(port) {
 
 function pickSpecies(text) {
   const m = text.match(/어종\s*:\s*([^/\n]{1,20}?)(?:\/|운항시간|예약|$)/);
-  const named = m && SPECIES.find((sp) => m[1].includes(sp));
-  return named ?? SPECIES.find((sp) => text.includes(sp)) ?? null;
+  return speciesIn(m?.[1]) ?? speciesIn(text);
 }
 
 function pickBoat(site, text) {

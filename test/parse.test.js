@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { monthUrls, parseFleet, parseSimpleDay } from '../adapters/sunsang24.js';
 import { parseIndex } from '../adapters/thefishing.js';
-import { matchBoatName } from '../adapters/_rows.js';
+import { matchBoatName, speciesIn } from '../adapters/_rows.js';
 import { parseRows } from '../adapters/_rows.js';
 import { pageUrls } from '../adapters/generic.js';
 import { platformOf, needsBrowser } from '../core/platform.js';
@@ -36,6 +36,15 @@ test('schema: 표기 정규화', () => {
   assert.equal(toTime('오후 1시 출항'), '13:00');
   assert.equal(parseSeats('남은자리 3명'), 3);
   assert.equal(parseSeats('예약마감'), 0);
+});
+
+test('어종 표기의 띄어쓰기·구분자와 반복 오타를 같은 값으로 읽는다', () => {
+  assert.equal(toSpecies(speciesIn('공지 쭈 & 갑 출조')), '주꾸미·갑오징어');
+  assert.equal(toSpecies(speciesIn('낚시종류 쭈.갑')), '주꾸미·갑오징어');
+  assert.equal(toSpecies(speciesIn('갑 오징어 출조')), '갑오징어');
+  assert.equal(toSpecies(speciesIn('어종 : 꽃개')), '꽃게');
+  assert.equal(toSpecies(speciesIn('어종 : 붉바리 / 생미끼 외수질')), '붉바리');
+  assert.equal(speciesIn('독립좌대 예약'), null, '원문에 없는 어종은 추측하지 않는다');
 });
 
 test('schema: 승선료는 배별 → 사이트 공통 순으로 고른다', () => {

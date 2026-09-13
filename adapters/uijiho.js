@@ -4,8 +4,7 @@ import * as cheerio from 'cheerio';
 import { fetchHtml } from '../core/fetcher.js';
 import { makeTrip, toTide } from '../core/schema.js';
 import { kstDate } from '../core/when.js';
-
-const SPECIES = ['주꾸미', '쭈꾸미', '갑오징어'];
+import { speciesIn } from './_rows.js';
 
 export async function collect(site) {
   const html = await fetchHtml(site.url, { mode: site.mode ?? 'static' });
@@ -36,7 +35,7 @@ export function parseMonth(site, html, url) {
     trips.push(makeTrip(site, {
       boat,
       date,
-      species: SPECIES.find((s) => text.includes(s)) ?? null,
+      species: speciesIn(text),
       tide: toTide(cells.eq(2).text()),
       status: text,
       seatsLeft,
