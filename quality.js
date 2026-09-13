@@ -9,8 +9,8 @@
 //
 // 비어 있는 칸을 한 덩어리로 세면 "8,854개"가 나오는데 그 숫자로는 무엇부터 손볼지
 // 못 고릅니다. 그래서 (1) 합치기를 막는 신원과 화면 표시를 나누고, (2) 고치는 곳이
-// registry냐 어댑터냐로 나누고, (3) 출항시각은 파서로 채워지는 곳과 선사에 확인할 곳까지
-// 갈라 보여줍니다.
+// registry냐 어댑터냐로 나누고, (3) 출항시각은 파서로 채워지는 곳과 선사에 확인할 곳까지,
+// 잔여석은 마감·휴항과 실제 확인 대상을 갈라 보여줍니다.
 
 import { collectQuality, sitesMissing, FIELDS } from './core/quality.js';
 import { load, DATA_PATH } from './core/store.js';
@@ -102,6 +102,7 @@ if (time.none.length) {
   console.log('  파서로는 안 채워집니다 — 선사 공지에서 확인해 registry의 timeGuide에 적으세요.');
   console.log(`    ${idList(time.none)}`);
 }
+
 if (time.byDate.length) {
   console.log(`\n  같은 배인데 날짜마다 갈리는 ${n(time.byDate.length)}곳(${n(time.missing.byDate)}건) — 파서를 의심할 곳은 여기뿐입니다.`);
   console.log(`    ${idList(time.byDate)}`);
@@ -109,6 +110,15 @@ if (time.byDate.length) {
 if (time.byBoat.length) {
   console.log(`\n  배마다 갈리는 ${n(time.byBoat.length)}곳(${n(time.missing.byBoat)}건) — 그 배만 안 적어둔 것입니다.`);
   console.log(`    ${idList(time.byBoat)}`);
+}
+
+const seats = q.seats;
+console.log('\n■ 잔여석이 빈 이유 — 잡을 수 없는 상태와 선사 확인 대상');
+console.log(`  숫자 있음 ${n(seats.known)}건 · 마감·휴항 ${n(sumMissing(seats.notBookable))}건`
+  + ` · 예약 가능·상태 미상 ${n(sumMissing(seats.needsCheck))}건`);
+if (seats.needsCheck.length) {
+  console.log('  예약 가능·상태 미상인 행만 화면에 “선사 확인”으로 보입니다. 원문에 숫자가 없다면 추측하지 않습니다.');
+  console.log(`    ${idList(seats.needsCheck)}`);
 }
 
 console.log('\n■ 어댑터별 — 파서 하나를 고치면 몇 건이 채워지나');
@@ -143,6 +153,10 @@ function idList(rows) {
   const limit = argv.includes('--all') ? Infinity : 12;
   const head = rows.slice(0, limit).map((row) => `${row.id}(${n(row.missing)})`).join(' · ');
   return rows.length > limit ? `${head} … 외 ${n(rows.length - limit)}곳 (--all 로 전부)` : head;
+}
+
+function sumMissing(rows) {
+  return rows.reduce((sum, row) => sum + row.missing, 0);
 }
 
 function pct(rate) {

@@ -9,7 +9,7 @@ import { mkdtemp, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { promisify } from 'node:util';
-import { collectQuality, sitesMissing, portHints, FIELDS } from '../core/quality.js';
+import { collectQuality, sitesMissing, portHints, FIELDS, seatGaps } from '../core/quality.js';
 
 const run = promisify(execFile);
 
@@ -20,7 +20,7 @@ const registry = [
 
 const trip = (siteId, boat, extra = {}) => ({
   siteId, boat, date: '2026-09-09', port: '홍원항', phone: '010-1234-5678',
-  departAt: '05:00', species: '우럭', price: 90000, seatsTotal: 20, url: 'https://a', ...extra,
+  departAt: '05:00', species: '우럭', seatsLeft: 3, price: 90000, seatsTotal: 20, url: 'https://a', ...extra,
 });
 
 test('빈 칸을 항목별로 세고 그 항목이 빠진 선사 수도 같이 낸다', () => {
@@ -41,14 +41,14 @@ test('빈 칸을 항목별로 세고 그 항목이 빠진 선사 수도 같이 �
   assert.equal(field('url').missing, 0);
 });
 
-// 항구·전화번호·승선료는 사람이 registry에 적는 값이고 출항시각·어종·정원은 어댑터가 읽는 값입니다.
+// 항구·전화번호·승선료는 사람이 registry에 적는 값이고 출항시각·어종·잔여석·정원은 어댑터가 읽는 값입니다.
 // 한 줄에 붙여두면 "이걸 고치려면 어디를 열어야 하나"가 매번 헷갈립니다. 승선료를 어댑터로
 // 세는 동안 "파서를 고치면 채워진다"고 적혀 있었는데, 승선료를 넘기는 어댑터는 없습니다.
 test('고칠 곳이 registry인지 어댑터인지 항목마다 붙어 있다', () => {
   const where = Object.fromEntries(FIELDS.map((f) => [f.key, f.where]));
   assert.deepEqual(where, {
     port: 'registry', phone: 'registry', price: 'registry',
-    departAt: 'adapter', species: 'adapter', seatsTotal: 'adapter', url: 'adapter',
+    departAt: 'adapter', species: 'adapter', seatsLeft: 'adapter', seatsTotal: 'adapter', url: 'adapter',
   });
   assert.deepEqual(FIELDS.filter((f) => f.identity).map((f) => f.key), ['port', 'phone']);
 });
@@ -145,6 +145,27 @@ test('어종 빈칸도 전체·사이트·어댑터별로 같은 수를 센다',
   assert.deepEqual(sitesMissing(q, 'species'), ['sun']);
 });
 
+test('잔여석 빈칸은 마감·휴항과 실제 선사 확인 대상으로 가른다', () => {
+  const rows = [
+    trip('sun', '숫자호'),
+    trip('sun', '마감호', { status: 'closed', seatsLeft: null }),
+    trip('fish', '휴항호', { status: 'off', seatsLeft: null }),
+    trip('fish', '확인호', { status: 'open', seatsLeft: null }),
+    trip('fish', '미상호', { status: 'unknown', seatsLeft: null }),
+  ];
+  const seats = seatGaps(rows);
+
+  assert.equal(seats.known, 1);
+  assert.equal(seats.missing, 4);
+  assert.deepEqual(seats.notBookable, [
+    { id: 'fish', missing: 1 }, { id: 'sun', missing: 1 },
+  ]);
+  assert.deepEqual(seats.needsCheck, [{ id: 'fish', missing: 2 }]);
+
+  const q = collectQuality(registry, { trips: rows });
+  assert.equal(q.fields.find((f) => f.key === 'seatsLeft').missing, seats.missing);
+});
+
 test('registry에 없는 사이트의 출조도 흘리지 않는다', () => {
   const q = collectQuality(registry, {
     sites: { ghost: { platform: '선상24', name: '유령' } },
@@ -223,6 +244,7 @@ test('명령이 실제로 돈다', async () => {
   const { stdout } = await runCli([]);
   assert.match(stdout, /■ 합치기 신원/);
   assert.match(stdout, /■ 빈 칸/);
+  assert.match(stdout, /■ 잔여석이 빈 이유/);
   assert.match(stdout, /■ 어댑터별/);
 });
 

@@ -472,6 +472,35 @@ test('thefishing: detail — 공지사항 껍데기 행은 출조로 만들지 �
   assert.deepEqual(trips.map((t) => t.boat), ['배짱호']);
 });
 
+test('thefishing: detail — 첫 칸이 공지인 입금 안내와 빈 예약표는 출조가 아니다', () => {
+  const site = { id: 'ace', name: '스마트호' };
+  const notice = `<table>
+    <tr><td colspan="3">2026년 09월 13일, 일요일, 9물</td></tr>
+    <tr><th>선박명</th><th>예 약 현 황</th><th>남은자리</th></tr>
+    <tr><td>공지사항</td><td>공지 입금 안내</td><td></td></tr>
+  </table>`;
+  const empty = `<table>
+    <tr><td colspan="3">2026년 09월 20일, 일요일, 1물</td></tr>
+    <tr><th>선박명</th><th>예 약 현 황</th><th>남은자리</th></tr>
+  </table><footer>입금 계좌 안내</footer>`;
+
+  assert.deepEqual(parseDetail(site, notice, 'https://x'), []);
+  assert.deepEqual(parseDetail(site, empty, 'https://x'), []);
+});
+
+test('thefishing: detail — 모바일의 외부 예약 공지는 다음 배 상태와 섞이지 않는다', () => {
+  const site = { id: 'team', name: '팀한프로', boats: { 흑돼지호: {}, 팀한프로: {} } };
+  const html = `<h1>2026년 09월 20일 (일요일) 1물</h1>
+    <div class="res_box"><div class="res_box_header"><h2>흑돼지호</h2></div>
+      <div>공지 흑돼지호 예약은 외부 사이트로</div></div>
+    <div class="res_box"><div class="res_box_header"><h2>팀한프로</h2></div>
+      <p>남은자리 <span>예약완료</span></p></div>`;
+
+  assert.deepEqual(parseDetail(site, html, 'https://x').map((t) => [t.boat, t.seatsLeft]), [
+    ['팀한프로', 0],
+  ]);
+});
+
 test('thefishing: detail — 어종이 적혀도 예약 상태 없는 상시 안내는 출조가 아니다', () => {
   const site = { id: 'yayaho', name: '야야호', boats: { 나로호: {} } };
   const html = `<table>

@@ -245,6 +245,7 @@ function maxSeatNumber(text) {
 function splitByDate($) {
   // PC 예약판은 하루 표 안의 각 행이 배·항차 하나입니다. 공지/좌석을 서로 섞지 않습니다.
   const rows = [];
+  let foundDatedSeatTable = false;
   $('table').each((_, table) => {
     const direct = $(table).children('tr').add($(table).children('tbody,thead').children('tr'));
     let seatsColumn = -1;
@@ -260,16 +261,22 @@ function splitByDate($) {
       const heading = squash(cells.first().text());
       if (heading.length <= 40 && /^20\d{2}/.test(heading)) {
         date = toDate(heading);
+        foundDatedSeatTable ||= Boolean(date);
         tideText = heading;
         continue;
       }
       if (!date || cells.length < 2 || cells.first().is('th')) continue;
+      // 공지 전용 행에 입금 안내가 있으면 출조 표기처럼 보입니다. 배가 아닌 첫 칸에서
+      // 거르는 편이 안전합니다 — 실제 배 행의 공지 문구는 그대로 읽습니다.
+      if (/^(?:공지사항?|안내사항?)$/.test(heading)) continue;
       const text = textWithBreaks($, row);
       if (!/공지|낚시종류|입금|예약하기|예약완료|대기하기|휴항|결항|출조취소|개인사정/.test(text)) continue;
       rows.push({ date, boat: heading, text: tideText + '\n' + text + '\n남은자리 ' + squash(cells.eq(seatsColumn).text()) });
     }
   });
-  if (rows.length) return rows;
+  // 예약 표가 비어 있는 날은 0건입니다. 모바일 파서로 다시 훑으면 주소·입금 안내를
+  // 그 날의 출조 한 건으로 잘못 만들 수 있습니다(만석낚시의 빈 일정표).
+  if (foundDatedSeatTable) return rows;
 
   const blocks = [];
   let cur = null;
@@ -296,9 +303,12 @@ function splitByDate($) {
       return;
     }
     // 모바일 예약판의 항차 머리글. <h2>몬스터호<br>(오전배)</h2>도 보존합니다.
-    if (cur && /^h[1-6]$/.test(el.name) && /호|오전배|오후배/.test(text)) {
-      if (cur.boat && /남은자리|입금|예약하기/.test(cur.text)) {
-        // 물때는 날짜에 달린 값이라 같은 날의 다음 배에도 그대로 갑니다.
+    const boatHeading = cur && /^h[1-6]$/.test(el.name)
+      && (/호|오전배|오후배/.test(text) || $(el).closest('.res_box_header').length);
+    if (boatHeading) {
+      if (cur.boat) {
+        // 빈 공지 카드도 다음 배와 경계를 나눕니다. 안 나누면 앞 카드의 배 이름과
+        // 뒤 카드의 예약완료가 합쳐져 가짜 출조가 됩니다(팀한프로 → 흑돼지호).
         cur = { date: cur.date, tide: cur.tide, text: '' }; blocks.push(cur);
       }
       // 배 이름 앞의 머리말은 버리지만 물때는 cur.text 밖에 있어 살아남습니다.
