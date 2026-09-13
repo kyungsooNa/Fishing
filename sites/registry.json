@@ -4448,6 +4448,7 @@
       "adapter": "thefishing",
       "url": "https://winner.thefishing.kr/index.php?mid=bk",
       "source": "detail",
+      "emptySeatImagePlaceholder": 21,
       "port": "충남 보령 무창포항",
       "phone": "010-6526-6525",
       "enabled": true,

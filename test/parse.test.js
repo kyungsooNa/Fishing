@@ -486,6 +486,27 @@ test('thefishing: detail — 잔여석이 이미지 alt에만 있어도 읽는�
   assert.deepEqual(trips.map((t) => t.tide), ['무시', '4물', '5물', '7물']);
 });
 
+test('thefishing: detail — 빈 명단의 사이트별 정원 이미지는 잔여석으로 확정하지 않는다', () => {
+  const site = {
+    id: 'winner', name: '30호', emptySeatImagePlaceholder: 21,
+    boats: { '깜보호': {}, '뉴빅토리호': {} },
+  };
+  const html = `<table>
+    <tr><td colspan="3">2026년 09월 14일, 월요일, 10물</td></tr>
+    <tr><th>선박명</th><th>예 약 현 황</th><th>남은자리</th></tr>
+    <tr><td>깜보호 예약하기</td><td>쭈갑 낚시</td>
+      <td><img src="/r_x_21.gif" alt="남은자리 21명"></td></tr>
+    <tr><td>뉴빅토리호 예약하기</td><td>예약 홍*동님(2)</td>
+      <td><img src="/r_x_8.gif" alt="남은자리 8명"></td></tr>
+  </table>`;
+  const trips = parseDetail(site, html, 'https://x');
+
+  assert.deepEqual(trips.map((t) => [t.boat, t.seatsLeft, t.seatsTotal, t.status]), [
+    ['깜보호', null, null, STATUS.OPEN],
+    ['뉴빅토리호', 8, 10, STATUS.OPEN],
+  ]);
+});
+
 test('thefishing: detail — 공지사항 껍데기 행은 출조로 만들지 않는다', () => {
   const site = { id: 'winner', name: '30호' };
   const html = `<table>
