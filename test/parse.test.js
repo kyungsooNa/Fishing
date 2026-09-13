@@ -549,6 +549,23 @@ test('thefishing: detail — 모바일의 외부 예약 공지는 다음 배 상
   ]);
 });
 
+test('thefishing: detail — 모바일 공지사항 카드는 정원만큼 빈 출조가 아니다', () => {
+  const site = { id: 'eugeneho', name: '오천항 유진호', seatsTotal: 20 };
+  const html = `<h1><div class="reservation_date">
+      <span>2026년 09월 19일 (토요일)</span><span>무시</span></div></h1>
+    <div class="res_box"><div class="res_box_header"><h2>공지사항</h2>
+      <p>남은자리</p></div><div>공지 선박위치: 20시 안내문자 발송예정</div></div>
+    <div class="res_box"><div class="res_box_header"><h2>유진호(EUGENE)</h2>
+      <p>남은자리 <img alt="예약완료"></p></div>
+      <div>낚시종류 쭈꾸미(쭈/갑) 입금자 선두컴 히트맨님(20)</div></div>`;
+
+  assert.deepEqual(parseDetail(site, html, 'https://x').map((t) => [
+    t.boat, t.departAt, t.seatsLeft, t.seatsTotal, t.status,
+  ]), [
+    ['유진호', null, 0, 20, STATUS.CLOSED],
+  ]);
+});
+
 test('thefishing: detail — 날짜 선택 달력을 빈자리 출조로 만들지 않는다', () => {
   const site = { id: 'monster', name: '오이도 몬스터호', seatsTotal: 20 };
   const html = `
