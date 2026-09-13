@@ -167,6 +167,9 @@ export function parseDetail(site, html, url) {
 // 글자로 남는 라벨 + 이미지로만 있던 라벨. 잔여석("남은자리 8명")도 이미지라 같이 살립니다.
 const ALT_LABEL = /^(남은자리\s*\d{1,3}\s*[명석자리]*|예약완료|예약마감|마감|만석|매진|예약하기|대기하기|개인사정|휴항|결항|출조취소|입금자|입금대기|예약자|대기자|취소자)$/;
 
+// 연·월 선택기의 "2026년 1월 2월"을 2026-01-02로 읽지 않도록 한국식 날짜는 '일'까지 봅니다.
+const DATE_HEADING = /^(?:20\d{2}\s*[-./]\s*\d{1,2}\s*[-./]\s*\d{1,2}|20\d{2}\s*년\s*\d{1,2}\s*월\s*\d{1,2}\s*일|\d{1,2}\s*(?:[-./]\s*\d{1,2}|월\s*\d{1,2}\s*일))/;
+
 // 입금자·입금대기 명단만 셉니다. 대기자·취소자는 자리를 차지하지 않습니다.
 const TAKEN_LINE = /(입금|예약확정|확정|^예약자)/;
 const SKIP_LINE = /(대기자|취소|환불)/;
@@ -284,7 +287,13 @@ function splitByDate($) {
     if (el.type === 'text') { if (cur) cur.text += el.data; return; }
     if (/^(script|style|noscript)$/.test(el.name)) return;
     const text = squash($(el).text());
-    const asDate = text.length <= 40 && /^(?:20\d{2}[-./년]|\d{1,2}[-./월]\s*\d)/.test(text) ? toDate(text) : null;
+    // 예약판 위 날짜 선택 버튼도 "2026년 9월 13일"처럼 생겼습니다. 이걸 하루 머리글로
+    // 잡으면 달력·공지를 한 출조로 묶고, registry 정원에서 0명을 빼 가짜 만석(20/20)을
+    // 만듭니다(오이도 몬스터호). 링크와 날짜선택 UI는 일정 머리글이 아닙니다.
+    const dateLike = text.length <= 40 && DATE_HEADING.test(text);
+    const dateControl = dateLike && (el.name === 'a' || $(el).closest('a').length
+      || $(el).children('a').length || /날짜선택/.test(text));
+    const asDate = dateLike && !dateControl ? toDate(text) : null;
     if (asDate && !/예약|입금|공지/.test(text)) {
       // 물때는 날짜 머리글 옆에 붙는데, 붙는 방식이 판마다 다릅니다.
       //   PC판   : <span>2026년 09월 09일</span>, 수요일, 4물   ← 요소 없는 텍스트
