@@ -62,7 +62,12 @@ export function parseRows(site, html, url, { urlDated = false } = {}) {
     if (site.skipPhoneOnly !== false && /전화예약/.test(text) && /(^|\D)0\s*명/.test(text)) return;
 
     const boat = pickBoat(site, cells, text);
-    const seatsLeft = /예약마감|마감|만석/.test(text) ? 0 : parseSeats(text);
+    // 푸른바다처럼 예약자 명단과 잔여석 배지를 한 행에 함께 두는 표가 있습니다.
+    // 행 전체에서 첫 "2명"을 잡으면 예약 인원을 빈자리로 뒤집어 보여주므로,
+    // 전용 잔여석 칸이 있으면 그 값만 믿습니다.
+    const seatLabel = squash($el.find('.left_person .reservation_count').last().text());
+    const seatText = seatLabel || text;
+    const seatsLeft = /예약(?:완료|마감)|마감|만석|매진/.test(seatText) ? 0 : parseSeats(seatText);
     const time = tripTimeRange(text);
 
     trips.push(
