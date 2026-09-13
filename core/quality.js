@@ -9,7 +9,7 @@
 // 이름이 겹치는 배가 없으면 항구가 비어도 지금 당장 손해는 없습니다.
 //
 // 고치는 곳이 어디냐도 같이 냅니다. 항구·전화번호·승선료는 registry에 사람이 적는 값이고,
-// 출항시각·어종·정원은 어댑터가 페이지에서 읽어오는 값입니다. 섞어 세면 registry를 고칠 일과
+// 출항시각·어종·잔여석·정원은 어댑터가 페이지에서 읽어오는 값입니다. 섞어 세면 registry를 고칠 일과
 // 파서를 고칠 일이 한 줄에 붙어버립니다.
 //
 // 어댑터가 읽는 값이라고 다 파서로 채워지는 것도 아닙니다. 출항시각은 **예약판에 아예
@@ -26,6 +26,7 @@ export const FIELDS = [
   { key: 'phone', label: '전화번호', where: 'registry', identity: true },
   { key: 'departAt', label: '출항시각', where: 'adapter' },
   { key: 'species', label: '어종', where: 'adapter' },
+  { key: 'seatsLeft', label: '잔여석', where: 'adapter' },
   // 승선료를 넘기는 어댑터는 하나도 없습니다 — 값은 전부 registry의 priceGuides·prices·price에서 옵니다
   // (core/schema.js의 pickPrice). "어댑터"로 세는 동안 파서를 고치면 채워질 것처럼 보였는데,
   // 예약판에 적힌 금액은 10,043건 중 259건뿐이고 그나마 "예약금 3만원"·"1인 추가 5만원"처럼
@@ -69,6 +70,7 @@ export function collectQuality(registry, data) {
     portHints: hints,
     identity,
     time: timeGaps(trips),
+    seats: seatGaps(trips),
     adapters: groupBy(trips, (trip) => siteById.get(trip.siteId)?.adapter ?? '미등록'),
     sites: groupBy(trips, (trip) => trip.siteId).map((row) => {
       const site = siteById.get(row.key);
@@ -78,6 +80,31 @@ export function collectQuality(registry, data) {
         platform: site ? platformOf(site).label : (data.sites?.[row.key]?.platform ?? '미등록'),
       };
     }),
+  };
+}
+
+/**
+ * 잔여 숫자가 없는 행을 화면에서 실제 확인이 필요한 것과 아닌 것으로 가릅니다.
+ * 마감·휴항은 숫자가 없어도 잡을 수 없는 상태가 분명해 빈칸을 표시하지 않습니다.
+ * 예약 가능·상태 미상인데 숫자가 없을 때만 화면이 `선사 확인`이라고 표시합니다.
+ */
+export function seatGaps(trips) {
+  const groups = { notBookable: new Map(), needsCheck: new Map() };
+  let missing = 0;
+  for (const trip of trips) {
+    if (has(trip, 'seatsLeft')) continue;
+    missing += 1;
+    const kind = ['closed', 'off'].includes(trip.status) ? 'notBookable' : 'needsCheck';
+    const rows = groups[kind];
+    rows.set(trip.siteId, (rows.get(trip.siteId) ?? 0) + 1);
+  }
+  const sorted = (rows) => [...rows].map(([id, count]) => ({ id, missing: count }))
+    .sort((a, b) => b.missing - a.missing || a.id.localeCompare(b.id));
+  return {
+    known: trips.length - missing,
+    missing,
+    notBookable: sorted(groups.notBookable),
+    needsCheck: sorted(groups.needsCheck),
   };
 }
 
