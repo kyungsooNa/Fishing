@@ -898,6 +898,30 @@ test('generic: 푸른바다의 마성호·뉴마성호를 선박명으로 읽는
   assert.deepEqual(trips.map((t) => t.boat), ['뉴마성호', '마성호']);
 });
 
+test('generic: 예약자 숫자보다 전용 잔여석 칸을 우선한다', () => {
+  const site = {
+    id: 'blueseaho', name: '오천항 푸른바다낚시',
+    boats: { 마성호: {}, 뉴마성호: {} },
+  };
+  const trips = parseRows(site, `
+    <table>
+      <tr data-dn_date="2026-09-19">
+        <td>09월 19일 (토)</td><td>뉴마성호 예약하기</td>
+        <td>예약확정 주정호님 (2명) 대기 이지원님 (3명)</td>
+        <td class="left_person"><span class="reservation_count">예약완료</span></td>
+      </tr>
+      <tr data-dn_date="2026-09-19">
+        <td>마성호 예약하기</td><td>예약확정 최순석님 (8명)</td>
+        <td class="left_person"><span class="reservation_count">1명</span></td>
+      </tr>
+    </table>`, 'https://x');
+
+  assert.deepEqual(trips.map((t) => [t.boat, t.seatsLeft, t.status]), [
+    ['뉴마성호', 0, STATUS.CLOSED],
+    ['마성호', 1, STATUS.FEW],
+  ]);
+});
+
 test('generic: rowspan으로 날짜가 빈 형제 행은 직전 날짜를 이어받는다', () => {
   const site = {
     id: 'blueseaho', name: '오천항 푸른바다낚시',
