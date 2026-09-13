@@ -114,9 +114,11 @@
       "url": "http://www.yusungho.kr/m/index.php?mid=bk",
       "source": "detail",
       "port": "경기 시흥 시화방조제 중간선착장",
+      "phone": "010-9009-7608",
       "windowDays": 7,
       "seatsTotal": 20,
-      "enabled": true
+      "enabled": true,
+      "note": "2026-09-13 오이도 몬스터호 홈페이지의 문의전화 표기(010.9009.7608)와 중복 예약처 monster2의 번호가 일치해 등록했습니다."
     },
     {
       "id": "ssfish",
