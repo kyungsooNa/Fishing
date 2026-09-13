@@ -85,7 +85,11 @@ export async function runAll({
   const statusById = new Map();
 
   const keepPrevious = (site) =>
-    (prevBySite.get(site.id) ?? []).map((t) => refreshKeptTrip(site, t));
+    (prevBySite.get(site.id) ?? [])
+      // 수집이 실패해도 registry 변경은 즉시 따라야 합니다. 제외한 배를 이전 결과에서
+      // 계속 살리면 플랫폼 장애 동안 가짜 행이 화면에 남습니다(teamhanpro의 흑돼지호).
+      .filter((t) => t && t.date && !site.excludeBoats?.includes(t.boat))
+      .map((t) => refreshKeptTrip(site, t));
 
   // 더피싱 공통 서버가 잠시 막혔을 때 100곳 넘게 같은 timeout을 반복하지 않습니다.
   // 실제로 요청하지 않은 곳은 실패가 아니라 보류이며, 다음 수집에서는 백오프 없이

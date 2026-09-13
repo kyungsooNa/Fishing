@@ -68,6 +68,30 @@ test('수집 결과에서 registry 제외 배 이름을 제거한다', async () 
   assert.ok(data.trips.every((trip) => trip.boat !== '모형호'));
 });
 
+test('수집 실패로 이전 결과를 보존해도 registry 제외 배는 되살리지 않는다', async () => {
+  const site = { ...brokenSite, excludeBoats: ['흑돼지호'] };
+  const 이전시각 = '2026-09-09T00:00:00.000Z';
+  const prevData = {
+    generatedAt: 이전시각,
+    sites: { broken: { ok: true, at: 이전시각, count: 2 } },
+    trips: [
+      { siteId: 'broken', siteName: '깨진곳', boat: '흑돼지호', date: '2026-09-11', status: 'unknown', seatsLeft: null },
+      { siteId: 'broken', siteName: '깨진곳', boat: '남길호', date: '2026-09-11', status: 'open', seatsLeft: 3 },
+    ],
+  };
+  const { registryPath, dataPath } = await fixture([site], prevData);
+
+  const { data } = await runAll({
+    registryPath,
+    dataPath,
+    days: 21,
+    now: new Date('2026-09-10T00:00:00+09:00'),
+  });
+
+  assert.deepEqual(data.trips.map((trip) => trip.boat), ['남길호']);
+  assert.equal(data.sites.broken.count, 1, '보존 상태의 건수도 실제 남은 행과 같아야 합니다');
+});
+
 test('한 사이트가 죽어도 나머지는 수집된다', async () => {
   const { registryPath, dataPath } = await fixture([mockSite, brokenSite]);
   const { data, failed } = await runAll({ registryPath, dataPath, days: 21 });
