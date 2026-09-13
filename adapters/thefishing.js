@@ -114,6 +114,17 @@ export function parseDetail(site, html, url) {
   // 라벨(입금자·대기자)도 이미지라 누가 자리를 차지했는지도 구분이 안 됐습니다.
   $('img[alt]').each((_, el) => {
     const label = squash($(el).attr('alt'));
+    const seats = label.match(/^남은자리\s*(\d{1,3})\s*[명석자리]*$/);
+    // 피싱위너는 빈 명단을 열 때 정원값 이미지(21명)를 보내기도 하지만, 실제 화면에는
+    // 숫자 없이 "예약가능"만 보이는 때가 있습니다. 확정 숫자로 노출하지 않도록 그 사이트가
+    // 지정한 값은 예약 명단이 없을 때 상태 표기로만 남깁니다. 다른 숫자와 다른 선사는 그대로입니다.
+    if (seats && Number(seats[1]) === site.emptySeatImagePlaceholder) {
+      const rowText = squash($(el).closest('tr').text());
+      if (!/\(\s*\d+/.test(rowText)) {
+        $(el).replaceWith($('<span>').text('예약가능'));
+        return;
+      }
+    }
     if (ALT_LABEL.test(label)) $(el).replaceWith($('<span>').text(label));
   });
 
@@ -131,6 +142,10 @@ export function parseDetail(site, html, url) {
 
     const time = tripTimeRange(text);
     const species = speciesIn(text);
+    // 위에서 정원 이미지를 "예약가능"으로 낮춘 행은 그 표기가 긴 공지 뒤에 있어
+    // 200자 상태 요약에서 잘릴 수 있습니다. 숫자는 모르더라도 예약 가능 상태는 보존합니다.
+    const statusText = site.emptySeatImagePlaceholder && /예약가능/.test(text)
+      ? `예약가능 ${text}` : text;
     let seatsLeft = explicit;
     if (seatsLeft === null && Number.isFinite(seatsTotal)) seatsLeft = Math.max(0, seatsTotal - filled);
     // 어종·승선료를 적은 상시 공지도 날짜 표 안에 매일 반복됩니다. 좌석이나 예약 상태가
@@ -149,7 +164,7 @@ export function parseDetail(site, html, url) {
         species,
         // 날짜 머리글에서 집은 물때가 먼저입니다 — 본문에는 다른 날 물때가 섞일 수 있습니다.
         tide: block.tide ?? toTide(text),
-        status: text.slice(0, 200),
+        status: statusText.slice(0, 200),
         seatsLeft,
         seatsTotal,
         // 한 요청에 일주일치가 오는데(windowDays) 받아온 주소를 그대로 붙이면 그 주의 첫
