@@ -528,6 +528,29 @@ test('thefishing: detail — 모바일의 외부 예약 공지는 다음 배 상
   ]);
 });
 
+test('thefishing: detail — 날짜 선택 달력을 빈자리 출조로 만들지 않는다', () => {
+  const site = { id: 'monster', name: '오이도 몬스터호', seatsTotal: 20 };
+  const html = `
+    <div class="year-picker"><span>2026년</span><span>1월</span><span>2월</span></div>
+    <div class="v3_btn_box">
+      <a>2026년 9월 13일</a><a>날짜선택 닫기</a>
+    </div>
+    <table class="test_month"><tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr></table>
+    <div>예약 취소는 고객센터로 문의하십시오. 쭈꾸미 갑오징어 출조</div>
+    <h1><div><span>2026년 09월 13일 (일요일)</span><span>9물</span></div></h1>
+    <div class="res_box">
+      <div class="res_box_header"><h2>몬스터호<br>(오전배)</h2>
+        <p>남은자리 <span>예약완료</span><a>대기하기</a></p></div>
+    </div>`;
+
+  const trips = parseDetail(site, html, 'https://x');
+
+  assert.deepEqual(trips.map((t) => [t.boat, t.status, t.seatsLeft]), [
+    ['몬스터호 (오전배)', STATUS.CLOSED, 0],
+  ]);
+  assert.ok(!trips[0].statusText.includes('일 월 화'), '달력 머리글이 출조 본문에 섞이지 않습니다');
+});
+
 test('thefishing: detail — 어종이 적혀도 예약 상태 없는 상시 안내는 출조가 아니다', () => {
   const site = { id: 'yayaho', name: '야야호', boats: { 나로호: {} } };
   const html = `<table>
