@@ -303,3 +303,31 @@ test('dryRun이면 파일을 건드리지 않는다', async () => {
   assert.ok(data.trips.length > 0);
   await assert.rejects(readFile(dataPath, 'utf8'), '파일이 생기면 안 된다');
 });
+
+// fetcher가 이제 실제로 흐른 시간을 적습니다("5192ms 동안 응답이 없습니다 (제한 30000ms)").
+// 문구가 달라졌다고 timeout으로 안 세면 백오프와 더피싱 회로 차단이 조용히 멈추고,
+// 막힌 곳을 매시간 다시 두드리게 됩니다.
+test('새 timeout 문구도 timeout으로 세어 백오프를 건다', async () => {
+  const 이전시각 = '2026-09-07T00:00:00.000Z';
+  const 어제것 = {
+    generatedAt: 이전시각,
+    sites: {
+      broken: { ok: false, at: 이전시각, error: '5192ms 동안 응답이 없습니다 (제한 30000ms)', count: 1 },
+    },
+    trips: [{
+      siteId: 'broken', siteName: '깨진곳', boat: '옛날호',
+      date: '2026-09-08', status: '예약가능', seatsLeft: 3,
+    }],
+  };
+  const { registryPath, dataPath } = await fixture([brokenSite], 어제것);
+  const { data } = await runAll({
+    registryPath,
+    dataPath,
+    days: 21,
+    now: new Date('2026-09-07T00:30:00.000Z'),   // 첫 대기(1시간)가 아직 안 지났습니다
+    timeoutBackoffHours: 6,
+  });
+
+  assert.equal(data.sites.broken.skipped, 'timeout-backoff');
+  assert.equal(data.trips.length, 1, '직전 행은 그대로 남아야 한다');
+});

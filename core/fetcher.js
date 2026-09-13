@@ -101,7 +101,15 @@ function getStatic(url, { referer, timeoutMs = TIMEOUT_MS, redirects = MAX_REDIR
     );
 
     // 붙는 동안에도 도는 시계입니다. 국내 호스트에 해외에서 붙을 때 이게 관건입니다.
-    req.setTimeout(timeoutMs, () => req.destroy(new Error(`${timeoutMs}ms 안에 응답이 없습니다`)));
+    //
+    // **설정값이 아니라 실제로 흐른 시간을 적습니다.** 예전에는 `${timeoutMs}ms 안에 응답이
+    // 없습니다`라고만 적었는데, Actions에서 이 오류가 30000ms라고 말하면서 실제로는 5초 만에
+    // 나고 있었습니다(18곳 × 주소 3개가 전부 5.0~5.4초). 설정값을 적으면 "30초를 기다렸는데도
+    // 안 온다"로 읽혀서, 상대가 느린 것이 아니라 5초 어딘가에서 잘린다는 사실이 가려집니다.
+    // 왜 5초에 잘리는지는 아직 모릅니다 — 적어도 숫자는 사실대로 남겨둬야 다음에 봅니다.
+    const startedAt = Date.now();
+    req.setTimeout(timeoutMs, () =>
+      req.destroy(new Error(`${Date.now() - startedAt}ms 동안 응답이 없습니다 (제한 ${timeoutMs}ms)`)));
     req.on('error', reject);
   });
 }
@@ -167,7 +175,7 @@ async function getRendered(url, { waitFor, referer } = {}) {
 const HOPELESS = /ENOTFOUND|ECONNREFUSED|EHOSTUNREACH|ENETUNREACH|ETIMEDOUT|CERT_|ERR_TLS/;
 
 function isHopeless(err) {
-  if (/안에 응답이 없습니다/.test(String(err?.message ?? ''))) return true;
+  if (/응답이 없습니다/.test(String(err?.message ?? ''))) return true;
   for (let cur = err, depth = 0; cur && depth < 4; cur = cur.cause, depth++) {
     if (HOPELESS.test(cur.code ?? '') || HOPELESS.test(String(cur.message ?? ''))) return true;
   }

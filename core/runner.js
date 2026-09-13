@@ -258,7 +258,9 @@ function defaultTimeoutBackoffHours() {
   return process.env.GITHUB_ACTIONS === 'true' ? 6 : 0;
 }
 
-const isTimeoutError = (error) => /timeout|timed out|안에 응답/i.test(String(error ?? ''));
+// "안에 응답"은 옛 문구입니다. data.json에 그 문구로 남은 지난 상태도 계속 timeout으로
+// 세야 백오프가 이어지므로 둘 다 봅니다(`core/fetcher.js`가 이제 실제 걸린 시간을 적습니다).
+const isTimeoutError = (error) => /timeout|timed out|응답이 없습니다|안에 응답/i.test(String(error ?? ''));
 
 // 연달아 몇 번 timeout이 났는지. 성공했거나 다른 이유로 실패했으면 0부터 다시 셉니다.
 function timeoutStreakOf(status) {
