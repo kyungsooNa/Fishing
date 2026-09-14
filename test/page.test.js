@@ -31,6 +31,21 @@ test('현황판과 시스템 관리의 이동 링크는 제목 아래 같은 위
     '시스템 관리 링크가 표·지도 버튼 옆에 남아 있으면 두 화면의 위치가 다시 달라집니다');
 });
 
+// 배정비일은 자리가 남은 채로 옵니다(무창포 대진피싱). 상태는 휴항과 같은 급이지만
+// "휴항"이라고만 적으면 왜 못 잡는지 알려면 예약판을 열어봐야 합니다.
+test('정비로 배가 안 뜨는 날은 휴항과 다르게 적는다', () => {
+  const start = inline.indexOf('const LABEL = {');
+  const end = inline.indexOf("const WEEK = ");
+  assert.ok(start >= 0 && end > start, '상태 표기 함수를 찾지 못했습니다');
+  const { statusLabel } = new Function(`${inline.slice(start, end)}\nreturn { statusLabel };`)();
+
+  assert.equal(statusLabel({ status: 'off', statusText: '취소자 공지 배 점검으로 예약을 받지 않습니다. 배정비일' }), '정비');
+  assert.equal(statusLabel({ status: 'off', statusText: '기상악화로 휴항합니다' }), '휴항');
+  assert.equal(statusLabel({ status: 'off', statusText: null }), '휴항');
+  assert.equal(statusLabel({ status: 'open', statusText: '예약하기' }), '예약가능');
+  assert.equal(statusLabel({ status: 'few', statusText: '남은자리 1명' }), '잔여 적음');
+});
+
 test('목록형 필터는 다중 선택 메뉴다', () => {
   for (const id of ['f-platform', 'f-site', 'f-region', 'f-port', 'f-species', 'f-session']) {
     assert.match(html, new RegExp(`<details class="multi" id="${id}"[\\s\\S]*?<div class="multi-menu"></div>`));

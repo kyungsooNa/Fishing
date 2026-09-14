@@ -309,6 +309,16 @@
 
 <script>
 const LABEL = { open: '예약가능', few: '잔여 적음', closed: '마감', off: '휴항', unknown: '확인필요' };
+
+// 배가 안 뜨는 이유가 기상이 아니라 정비·점검이면 그렇게 적습니다. 자리가 남은 채로
+// 배정비일이 되는 날이 있어서(무창포 대진피싱) "휴항"이라고만 적으면 예약판을 열어보고
+// 나서야 이유를 압니다. 색과 정렬은 휴항과 같습니다 — 어느 쪽이든 못 잡는 자리입니다.
+function statusLabel(trip) {
+  if (trip.status === 'off' && /(?:배|선박)\s*(?:정비|점검|수리)|(?:정비|점검)\s*중/.test(trip.statusText ?? '')) {
+    return '정비';
+  }
+  return LABEL[trip.status] ?? trip.status;
+}
 const WEEK = ['일','월','화','수','목','금','토'];
 let DATA = { trips: [], sites: {}, ports: {}, generatedAt: null };
 let MONITOR = null;
@@ -1152,7 +1162,7 @@ function render(all = sortTrips(visibleTrips())) {
       if (i === 7) {
         const b = document.createElement('span');
         b.className = 'badge ' + t.status;
-        b.textContent = LABEL[t.status] ?? t.status;
+        b.textContent = statusLabel(t);
         td.append(b);
       } else if (i === 3) {
         // 여러 사이트에 같은 배가 올라와 있으면 둘 다 걸어줍니다. 어디서 잡든 상관없으니까요.
