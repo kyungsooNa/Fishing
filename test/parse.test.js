@@ -138,6 +138,7 @@ test('registry: 확인한 승선료는 날짜·배·어종·출항시각 범위�
   const registry = await loadRegistry();
   const flex = registry.find((site) => site.id === 'flex');
   const nara = registry.find((site) => site.id === 'nara');
+  const tpho = registry.find((site) => site.id === 'tpho');
 
   assert.equal(pickPrice(flex, '오로라호', '주꾸미·갑오징어', {
     date: '2026-09-20', departAt: '05:30', session: '종일',
@@ -158,6 +159,16 @@ test('registry: 확인한 승선료는 날짜·배·어종·출항시각 범위�
   assert.equal(pickPrice(nara, '나라2호', '갈치', {
     date: '2026-10-01', departAt: '13:00', session: '야간',
   }), null);
+
+  assert.equal(pickPrice(tpho, '태평호', '주꾸미·갑오징어', {
+    date: '2026-09-15', departAt: '05:30', session: '종일',
+  }), 100000);
+  assert.equal(pickPrice(tpho, '태평호', '광어·우럭', {
+    date: '2026-09-15', departAt: '05:30', session: '종일',
+  }), null, '같은 배라도 공식 안내에서 확인하지 않은 어종에는 붙이지 않습니다');
+  assert.equal(pickPrice(tpho, '태평호', '주꾸미·갑오징어', {
+    date: '2027-01-01', departAt: '05:30', session: '종일',
+  }), null, '2026년 공식 안내 기간 밖으로 금액을 지어내지 않습니다');
 });
 
 test('sunsang24: 목록형 — 하루 행 안의 배마다 한 줄씩 나온다', () => {
