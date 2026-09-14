@@ -10,7 +10,7 @@
 
 import * as cheerio from 'cheerio';
 import { fetchHtml } from '../core/fetcher.js';
-import { makeTrip, toDate, tripTimeRange, toTide } from '../core/schema.js';
+import { makeTrip, toDate, tripTimeRange, toTide, toStatus, STATUS } from '../core/schema.js';
 import { matchBoatName, speciesIn } from './_rows.js';
 import { kstDate } from '../core/when.js';
 
@@ -147,8 +147,17 @@ export function parseDetail(site, html, url) {
     const species = speciesIn(text);
     // 위에서 정원 이미지를 "예약가능"으로 낮춘 행은 그 표기가 긴 공지 뒤에 있어
     // 200자 상태 요약에서 잘릴 수 있습니다. 숫자는 모르더라도 예약 가능 상태는 보존합니다.
-    const statusText = site.emptySeatImagePlaceholder && /예약가능/.test(text)
+    let statusText = site.emptySeatImagePlaceholder && /예약가능/.test(text)
       ? `예약가능 ${text}` : text;
+    // 그 날 배가 안 뜬다는 쪽지(취소자·공지 행의 "배정비일")를 배 행에 얹습니다. 배가
+    // 여럿인 날은 쪽지가 어느 배 이야기인지 알 수 없어, 쪽지에 배 이름이 적혀 있을 때만
+    // 얹습니다 — 멀쩡한 배를 휴항으로 적는 쪽이 정비일을 놓치는 것보다 나쁩니다.
+    // 좌석·시각·어종은 위에서 이미 읽었습니다. 쪽지를 본문에 섞으면 공지의 "03시30분"이
+    // 출항시각이 되고 "남은자리 배정비일"이 잔여석 자리를 차지합니다.
+    // 앞에 붙이는 것은 상태 표기를 200자로 자르기 때문입니다 — 뒤에 붙이면 잘려 나갑니다.
+    if (block.dayNote && (block.boatsThatDay === 1 || (boat && block.dayNote.includes(boat)))) {
+      statusText = `${block.dayNote} ${statusText}`;
+    }
     let seatsLeft = explicit;
     if (seatsLeft === null && Number.isFinite(seatsTotal)) seatsLeft = Math.max(0, seatsTotal - filled);
     // 어종·승선료를 적은 상시 공지도 날짜 표 안에 매일 반복됩니다. 좌석이나 예약 상태가
@@ -184,6 +193,10 @@ export function parseDetail(site, html, url) {
 
 // 글자로 남는 라벨 + 이미지로만 있던 라벨. 잔여석("남은자리 8명")도 이미지라 같이 살립니다.
 const ALT_LABEL = /^(남은자리\s*\d{1,3}\s*[명석자리]*|예약완료|예약마감|마감|만석|매진|예약하기|대기하기|개인사정|휴항|결항|출조취소|입금자|입금대기|예약자|대기자|취소자)$/;
+
+// 선박명 칸에 배 대신 들어오는 라벨. 공지·안내는 껍데기 행이고, 취소자·대기자는
+// 그 배의 명단 줄입니다. 셋 다 출조 한 건으로 만들면 그 날이 두 줄이 됩니다.
+const NOT_A_BOAT = /^(?:공지사항?|안내사항?|취소자|대기자)$/;
 
 // 연·월 선택기의 "2026년 1월 2월"을 2026-01-02로 읽지 않도록 한국식 날짜는 '일'까지 봅니다.
 const DATE_HEADING = /^(?:20\d{2}\s*[-./]\s*\d{1,2}\s*[-./]\s*\d{1,2}|20\d{2}\s*년\s*\d{1,2}\s*월\s*\d{1,2}\s*일|\d{1,2}\s*(?:[-./]\s*\d{1,2}|월\s*\d{1,2}\s*일))/;
@@ -266,6 +279,12 @@ function maxSeatNumber(text) {
 function splitByDate($) {
   // PC 예약판은 하루 표 안의 각 행이 배·항차 하나입니다. 공지/좌석을 서로 섞지 않습니다.
   const rows = [];
+  // 그 날 배가 안 뜨는 것을 배 행이 아니라 취소자·대기자 행에 적는 예약판이 있습니다.
+  // 무창포 대진피싱은 배 행에 "예약하기 / 남은자리 20명"을 그대로 두고, 아래 취소자 행에만
+  // "배정비일"과 "배 점검으로 예약을 받지 않습니다"를 적습니다. 이 행은 좌석도 예약 표기도
+  // 없어서 출조로 만들 수 없고(만들면 그 날이 모순되는 두 줄이 됩니다) 버리면 정비일이
+  // 예약가능으로 남습니다. 그래서 날짜 단위 쪽지로 모아 뒀다가 같은 날 배 행에 얹습니다.
+  const dayNotes = new Map();
   let foundDatedSeatTable = false;
   $('table').each((_, table) => {
     const direct = $(table).children('tr').add($(table).children('tbody,thead').children('tr'));
@@ -289,12 +308,35 @@ function splitByDate($) {
       if (!date || cells.length < 2 || cells.first().is('th')) continue;
       // 공지 전용 행에 입금 안내가 있으면 출조 표기처럼 보입니다. 배가 아닌 첫 칸에서
       // 거르는 편이 안전합니다 — 실제 배 행의 공지 문구는 그대로 읽습니다.
-      if (/^(?:공지사항?|안내사항?)$/.test(heading)) continue;
+      if (NOT_A_BOAT.test(heading)) {
+        // 상시 공지는 날마다 그대로 반복돼서 본문 문구로는 어느 날 이야기인지 못 가립니다.
+        // "남은자리" 칸은 그 날 한 칸뿐이라 여기 적힌 것은 그 날 이야기입니다. 그래서
+        // 쪽지는 이 칸이 "배가 안 뜬다"고 말할 때만 만듭니다(취소석 없음을 뜻하는 "마감"은
+        // 아닙니다 — 판정은 core/schema.js 한 곳에 두고 여기서 다시 적지 않습니다).
+        const seatCell = squash(cells.eq(seatsColumn).text());
+        if (toStatus(seatCell, null) === STATUS.OFF) {
+          dayNotes.set(date, squash(textWithBreaks($, row)));
+        }
+        continue;
+      }
       const text = textWithBreaks($, row);
       if (!/공지|낚시종류|입금|예약하기|예약완료|대기하기|휴항|결항|출조취소|개인사정/.test(text)) continue;
-      rows.push({ date, boat: heading, text: tideText + '\n' + text + '\n남은자리 ' + squash(cells.eq(seatsColumn).text()) });
+      rows.push({
+        date,
+        boat: heading,
+        text: tideText + '\n' + text + '\n남은자리 ' + squash(cells.eq(seatsColumn).text()),
+      });
     }
   });
+  if (dayNotes.size) {
+    const boatsThatDay = new Map();
+    for (const row of rows) boatsThatDay.set(row.date, (boatsThatDay.get(row.date) ?? 0) + 1);
+    for (const row of rows) {
+      row.dayNote = dayNotes.get(row.date) ?? null;
+      row.boatsThatDay = boatsThatDay.get(row.date) ?? 0;
+    }
+  }
+
   // 예약 표가 비어 있는 날은 0건입니다. 모바일 파서로 다시 훑으면 주소·입금 안내를
   // 그 날의 출조 한 건으로 잘못 만들 수 있습니다(만석낚시의 빈 일정표).
   if (foundDatedSeatTable) return rows;

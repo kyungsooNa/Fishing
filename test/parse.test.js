@@ -30,6 +30,12 @@ test('schema: 표기 정규화', () => {
   assert.equal(toStatus('쭈꾸미 출조 정상출조 예약하기', 12), STATUS.OPEN, '쭈꾸미출조의 "미출조" 글자 조각을 휴항으로 읽지 않습니다');
   assert.equal(toStatus('미출조', 12), STATUS.OFF);
   assert.equal(toStatus('오늘 미출조 합니다'), STATUS.OFF);
+  assert.equal(toStatus('배 점검으로 예약을 받지 않습니다 남은자리 배정비일', 20), STATUS.OFF,
+    '정비일은 자리가 남은 채로 옵니다 — 잔여석보다 우선해야 예약가능으로 안 뜹니다');
+  assert.equal(toStatus('선박 정비중', 5), STATUS.OFF);
+  assert.equal(toStatus('장비점검 끝났습니다 예약하기', 7), STATUS.OPEN,
+    '한글에는 \\b가 없어서 앞 글자가 붙은 말이 그대로 통과합니다 — 배·선박이 붙은 것만 봅니다');
+  assert.equal(toStatus('채비 정비 안내 남은자리 7명', 7), STATUS.OPEN);
   assert.equal(toStatus('가능'), STATUS.OPEN, '상태 칸의 가능 표기는 예약 가능입니다');
   assert.equal(toStatus('독배전문(개인출조가능)'), STATUS.UNKNOWN,
     '안내문 속 가능을 잔여석이 있는 것으로 오해하지 않습니다');
@@ -516,6 +522,74 @@ test('thefishing: detail — 빈 명단의 사이트별 정원 이미지는 잔�
     ['깜보호', null, null, STATUS.OPEN],
     ['뉴빅토리호', 8, 10, STATUS.OPEN],
   ]);
+});
+
+// 무창포 대진피싱은 배 행을 "예약하기 / 남은자리 20명"으로 그대로 두고, 그 날 배가 안
+// 뜬다는 것은 아래 취소자 행에만 적습니다. 그 행을 버리면 정비일이 예약가능으로 남고,
+// 출조로 만들면 같은 날이 "예약가능 20석"과 "휴항" 두 줄로 갈립니다.
+test('thefishing: detail — 취소자 행의 배정비일을 같은 날 배 행에 얹는다', () => {
+  const site = { id: 'daejinmcp', name: '무창포 대진피싱', boats: { 대진피싱: {} } };
+  const html = `<table>
+    <tr><td colspan="3">2026년 09월 15일, 화요일, 11물</td></tr>
+    <tr><th>선박명</th><th>예 약 현 황</th><th>남은자리</th></tr>
+    <tr><td>대진피싱 예약하기</td><td>낚시종류 쭈꾸미 입금대기 김*님(1)</td><td>20명</td></tr>
+    <tr><td>취소자</td><td>공지 배 점검으로 예약을 받지 않습니다.</td><td>배정비일</td></tr>
+  </table>`;
+  const trips = parseDetail(site, html, 'https://x');
+
+  assert.deepEqual(trips.map((t) => [t.boat, t.seatsLeft, t.status]), [['대진피싱', 20, STATUS.OFF]],
+    '한 줄로 남아야 합니다 — 자리 수는 예약판 그대로 두고 상태만 못 잡는 자리로 내립니다');
+  assert.match(trips[0].statusText, /배정비일/, '왜 못 잡는지가 상태 표기에 남아야 합니다');
+});
+
+test('thefishing: detail — 취소석 없는 취소자 행은 그 날을 휴항으로 만들지 않는다', () => {
+  const site = { id: 'daejinmcp', name: '무창포 대진피싱', boats: { 대진피싱: {} } };
+  const html = `<table>
+    <tr><td colspan="3">2026년 09월 16일, 수요일, 한객기</td></tr>
+    <tr><th>선박명</th><th>예 약 현 황</th><th>남은자리</th></tr>
+    <tr><td>대진피싱 예약하기</td><td>낚시종류 쭈꾸미</td><td>20명</td></tr>
+    <tr><td>취소자</td><td>공지 취소석 나오면 올립니다</td><td>마감</td></tr>
+  </table>`;
+
+  assert.deepEqual(parseDetail(site, html, 'https://x').map((t) => [t.boat, t.seatsLeft, t.status]),
+    [['대진피싱', 20, STATUS.OPEN]],
+    '취소자 칸의 마감은 취소석이 없다는 뜻입니다 — 그 날 배가 안 뜬다는 말이 아닙니다');
+});
+
+// 쪽지에 배 이름이 없으면 어느 배 이야기인지 알 수 없습니다. 멀쩡한 배를 휴항으로 적는
+// 쪽이 정비일을 놓치는 것보다 나쁩니다.
+test('thefishing: detail — 배가 여럿인 날은 이름이 적힌 배에만 정비 쪽지를 얹는다', () => {
+  const site = { id: 'two', name: '두배', boats: { 깜보호: {}, 뉴빅토리호: {} } };
+  const day = (notice) => `<table>
+    <tr><td colspan="3">2026년 09월 15일, 화요일, 11물</td></tr>
+    <tr><th>선박명</th><th>예 약 현 황</th><th>남은자리</th></tr>
+    <tr><td>깜보호 예약하기</td><td>쭈갑 남은자리</td><td>8명</td></tr>
+    <tr><td>뉴빅토리호 예약하기</td><td>쭈갑 남은자리</td><td>5명</td></tr>
+    <tr><td>취소자</td><td>${notice}</td><td>배정비일</td></tr>
+  </table>`;
+
+  assert.deepEqual(parseDetail(site, day('공지 점검'), 'https://x').map((t) => [t.boat, t.status]),
+    [['깜보호', STATUS.OPEN], ['뉴빅토리호', STATUS.OPEN]],
+    '어느 배 이야기인지 모르는 쪽지는 버립니다');
+  assert.deepEqual(parseDetail(site, day('공지 깜보호 선박 정비'), 'https://x').map((t) => [t.boat, t.status]),
+    [['깜보호', STATUS.OFF], ['뉴빅토리호', STATUS.OPEN]]);
+});
+
+// 쪽지를 본문에 섞으면 공지의 "03시30분"이 출항시각이 되고 "남은자리 배정비일"이
+// 잔여석 자리를 차지합니다. 상태 표기에만 얹어야 합니다.
+test('thefishing: detail — 정비 쪽지의 시각·어종은 출조 값으로 새지 않는다', () => {
+  const site = { id: 'daejinmcp', name: '무창포 대진피싱', boats: { 대진피싱: {} } };
+  const html = `<table>
+    <tr><td colspan="3">2026년 09월 15일, 화요일, 11물</td></tr>
+    <tr><th>선박명</th><th>예 약 현 황</th><th>남은자리</th></tr>
+    <tr><td>대진피싱 예약하기</td><td>낚시종류 쭈꾸미 입금대기 김*님(1)</td><td>20명</td></tr>
+    <tr><td>취소자</td><td>공지 03시30분까지 명부 작성, 갑오징어 문의</td><td>배정비일</td></tr>
+  </table>`;
+  const [trip] = parseDetail(site, html, 'https://x');
+
+  assert.equal(trip.departAt, null, '공지의 명부 작성 시각은 출항시각이 아닙니다');
+  assert.equal(trip.species, '주꾸미', '어종은 배 행에서만 읽습니다');
+  assert.equal(trip.seatsLeft, 20);
 });
 
 test('thefishing: detail — 공지사항 껍데기 행은 출조로 만들지 않는다', () => {
