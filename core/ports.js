@@ -146,6 +146,14 @@ export function qualifyPort(name, regions, ports, { requireRegion = false } = {}
 
   const inRegion = keys.filter((row) => regions?.has(row.region));
   if (inRegion.length === 1) return inRegion[0].key;
-  if (requireRegion || inRegion.length > 1) return null;
+  if (inRegion.length > 1) return null;
+  if (requireRegion) return null;
+
+  // 주소를 읽었는데 그 시·군에 이 이름의 항구가 없으면, 같은 이름의 **다른 데 항구**입니다.
+  // 아는 항구 중 이름이 하나뿐이라는 이유로 고르면 안 됩니다 — 스텔론1호·베테랑피싱은
+  // 주소가 전남 여수 돌산읍인데 "인천 옹진 진두항"이 들어갔습니다(여수 돌산에도 진두항이
+  // 있지만 ports.json에 없었습니다). 여수 배가 인천에 핀이 찍히고 인천 배와 합쳐집니다.
+  if (regions?.size) return null;
+
   return keys.length === 1 ? keys[0].key : null;
 }
