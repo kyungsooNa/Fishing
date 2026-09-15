@@ -122,6 +122,22 @@ test('라벨이 없어도 주소의 시·군과 후보가 한 곳으로 모이�
   assert.equal(two.value, null);
 });
 
+// 자동 실행이 실제로 채운 값을 보다 나왔습니다. 용호 페이지는 "※ 출조항구: 장곰포항,
+// 구매항"이라고 항구를 둘 적어뒀는데, 장곰포항이 ports.json에 없다는 이유로 구매항이
+// 유일 후보가 되어 채워졌습니다 — 근거로 고른 게 아니라 목록에 없어서 이긴 것입니다.
+test('페이지가 출조 항구를 여럿 적어두면 하나만 안다고 고르지 않는다', () => {
+  const two = pickPort(
+    '오시는길 : 충남 홍성군 서부면 남당항로 213 ※ 출조항구: 장곰포항, 남당항',
+    PORTS,
+  );
+  assert.equal(two.value, null, '둘 중 하나만 아는 항구여도 고르면 안 됩니다');
+  assert.ok(two.candidates.includes('남당항'));
+
+  // 하나만 적어둔 곳은 그대로 값입니다.
+  const one = pickPort('오시는길 : 충남 홍성군 서부면 남당항로 213 출조항구: 남당항', PORTS);
+  assert.equal(one.value, '충남 홍성 남당항');
+});
+
 test('주소가 없으면 본문의 항 이름은 후보일 뿐이다', () => {
   const loose = pickPort('남당항에서 출발해 오천항 앞바다까지 갑니다', PORTS);
   assert.equal(loose.value, null);
