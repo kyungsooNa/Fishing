@@ -524,6 +524,17 @@ test('thefishing: detail — 잔여석이 이미지 alt에만 있어도 읽는�
   assert.deepEqual(trips.map((t) => t.tide), ['무시', '4물', '5물', '7물']);
 });
 
+test('thefishing: detail — "예약대기"도 대기자라 자리를 차지하지 않는다', () => {
+  const site = { id: 'neweocheongdo', name: '어청도피싱호', boats: { '어청도피싱호': {} } };
+  const [trip] = parseDetail(site, fx.THEFISHING_DETAIL_WAITLIST_LABEL, 'https://x');
+
+  // 사이트가 적은 남은자리 1명 + 예약완료 19명 = 정원 20명. 예약대기 5명을 같이 세면
+  // 정원이 25명이 되고, 남은자리를 못 읽는 날에는 잔여석까지 5자리 모자라게 나옵니다.
+  assert.equal(trip.seatsLeft, 1);
+  assert.equal(trip.seatsTotal, 20);
+  assert.equal(trip.status, STATUS.FEW);
+});
+
 test('thefishing: detail — 빈 명단의 사이트별 정원 이미지는 잔여석으로 확정하지 않는다', () => {
   const site = {
     id: 'winner', name: '30호', emptySeatImagePlaceholder: 21,

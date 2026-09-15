@@ -252,3 +252,42 @@ export const THEFISHING_DETAIL_IMG_SEATS = `
     </tr>
   </table>
 </div>`;
+
+// 어청도피싱호 2026-09-19 예약판(사람이 사이트에서 직접 확인한 화면을 어울림호 마크업으로
+// 옮긴 것). 이 예약판은 명단 라벨을 "입금자/대기자"가 아니라 "예약완료/예약대기"로 씁니다.
+// 사이트가 적은 남은자리는 1명이고, 예약완료 19명과 더하면 정원 20명으로 딱 떨어집니다 —
+// 즉 예약대기 5명은 자리를 차지하지 않습니다.
+export const THEFISHING_DETAIL_WAITLIST_LABEL = `
+<div id="new-div-20260919" class="new-divs">
+  <table class="r_mytable">
+    <tr class="jeil-panel">
+      <td colspan="2" height="44"><a name="20260919"></a>
+        <span style="font-weight:bold;">2026년 09월 19일</span>, 토요일, 15물 </td>
+      <td height="44"><p align="center"><a href="javascript:void(0);">▲<br>TOP</a></p></td>
+    </tr>
+    <tr><th>선박명</th><th>예 약 현 황</th><th>남은자리</th></tr>
+    <tr>
+      <td align="center">
+        <span style="font-size:15px; font-weight:bold;">어청도피싱호</span>
+        <a href="javascript:void(0);" class="btn_re vm mg0">예약하기</a>
+      </td>
+      <td>
+        <table width="100%">
+        <tr><td valign="top"><img src="https://icon.myfishmap.kr/e.gif" alt="공지"></td>
+            <td valign="top">@입금우선예약 15인이상자리추첨 @</td></tr>
+        <tr><td valign="top"><img src="https://icon.myfishmap.kr/a.gif" alt="낚시종류"></td>
+            <td valign="top">주꾸미 (10만원)</td></tr>
+        <tr><td valign="top"><img src="https://icon.myfishmap.kr/b.gif" alt="예약완료"></td>
+            <td valign="top">군*1님(1) / 박*용님(2) / 이**뽈님(1) / 유*권님(1) / 노*영님(1) / 노*영님(1) / 윤*준님(3) / 군*1님(1) / 김*철님(1) / 강*규님(1) / 강*규님(1) / 박*인님(1) / 우*수님(4)</td></tr>
+        <tr><td valign="top"><img src="https://icon.myfishmap.kr/d.gif" alt="예약대기"></td>
+            <td valign="top">김*렬님(1) / 이*우님(1) / 여*구님(3)</td></tr>
+        <tr><td valign="top"><img src="https://icon.myfishmap.kr/c.gif" alt="취소자"></td>
+            <td valign="top">강*석님(1) / 윤*근님(1) / 김*용님(5) / 관*자님(1) / 여*구님(3)</td></tr>
+        </table>
+      </td>
+      <td align="center">
+        <div id="admin-right-20260919-1-0"><img src="/_core/module/reservation_boat_v5.2_seat1/image/r_x_1.gif" border="0" alt="남은자리 1명"></div>
+      </td>
+    </tr>
+  </table>
+</div>`;
