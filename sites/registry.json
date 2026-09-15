@@ -3348,6 +3348,21 @@
       "note": "자동 발견(https://badasarang.thefishing.kr) — 시험 수집 8건. 2026-09-10 공식 홈페이지와 예약표 제목 '홍원항 바다사랑호'에서 출항지를 확인했습니다. 이름·전화번호는 확인하고 고치세요 — 셋이 다 맞아야 다른 사이트의 같은 배와 합쳐집니다."
     },
     {
+      "id": "bokseong",
+      "name": "안면도 뉴복성호",
+      "adapter": "thefishing",
+      "url": "https://bokseong.thefishing.kr/m/index.php?mid=bk",
+      "source": "detail",
+      "port": "충남 태안 대야도항",
+      "phone": "010-8818-1391",
+      "windowDays": 7,
+      "enabled": true,
+      "boats": {
+        "복성호": {}
+      },
+      "note": "공식 모바일 예약표와 하단 출조점 주소(충남 태안군 안면읍 대야로 328-4 피싱아일랜드)에서 확인했습니다. 예약표에는 복성호로 표기되며, 홈페이지 이름은 뉴복성호입니다."
+    },
+    {
       "id": "baekdusan",
       "name": "백두산호",
       "port": "충남 서천 홍원항",
