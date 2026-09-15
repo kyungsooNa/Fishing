@@ -153,6 +153,20 @@ test('주소의 시·군에 그 이름의 항구가 없으면 다른 데 항구�
   assert.equal(incheon.value, '인천 옹진 진두항');
 });
 
+// 라벨 바로 뒤가 주소인 페이지는 드뭅니다. 앞에서 끊어 읽다가 주소를 통째로 놓치면
+// 지역 근거가 없는 채로 판정하게 되고, 같은 이름의 다른 데 항구를 거르는 관문이 열립니다.
+test('라벨이 겹쳐 있어도 뒤에 오는 주소를 읽는다', () => {
+  const overlapped = pickPort(
+    '오시는길 찾아오시는길 출조점 : 충남 홍성군 서부면 남당항로 213 남당항',
+    PORTS,
+  );
+  assert.equal(overlapped.value, '충남 홍성 남당항');
+
+  // 지역 근거를 제대로 읽어야 다른 데 항구도 제대로 걸러집니다.
+  const yeosu = pickPort('오시는길 안내드립니다 주소 : 전남 여수시 돌산읍 진두해안길 68 진두항', PORTS);
+  assert.equal(yeosu.value, null);
+});
+
 test('주소가 없으면 본문의 항 이름은 후보일 뿐이다', () => {
   const loose = pickPort('남당항에서 출발해 오천항 앞바다까지 갑니다', PORTS);
   assert.equal(loose.value, null);
