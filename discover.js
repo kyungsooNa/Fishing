@@ -237,11 +237,15 @@ export function pickPort(text, ports = {}) {
   // 지도 핀의 열쇠라 "국동항"이 아니라 "전남 여수 국동항"이어야 합니다.
   const regions = regionsFromAddress(t);
   const labeled = new Set();
-  for (const m of t.matchAll(/(?:출항지|출항항|승선장|출발지)\s*[:：]?\s*([가-힣A-Za-z0-9 ]{2,20}?항)/g)) {
+  // 라벨 뒤는 **목록째로** 읽습니다 — "출조항구: 장곰포항, 구매항"처럼 둘을 적어둔 곳이
+  // 있습니다. 앞의 하나만 집으면 둘인 줄 모르고, 그 중 아는 항구가 하나뿐이면 근거로
+  // 고른 게 아니라 목록에 없어서 이긴 값이 됩니다(용호가 그렇게 구매항이 됐습니다).
+  for (const m of t.matchAll(/(?:출조항구|출항항구|출항지|출항항|승선장|출발지)\s*[:：]?\s*([가-힣A-Za-z0-9,·\- ]{2,40})/g)) {
     // 라벨이 붙었어도 잡힌 말이 "안전운항"이면 항구가 아닙니다. 라벨로 찾은 값은
     // registry에 그대로 실려 신원이 되므로(core/merge.js) 여기서 한 번 더 봅니다.
-    const found = m[1].trim();
-    if (looksLikePort(found)) labeled.add(found);
+    for (const found of m[1].match(/[가-힣]{2,6}항/g) ?? []) {
+      if (looksLikePort(found)) labeled.add(found);
+    }
   }
   const list = [...labeled];
   if (list.length) {
