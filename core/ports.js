@@ -113,12 +113,16 @@ export function regionsFromAddress(text) {
   const found = new Set();
   for (const m of String(text ?? '').matchAll(ADDRESS_LABEL)) {
     const addr = m[1].replace(/\s+/g, ' ').trim();
-    const hit = addr.match(/^([가-힣]{2,7}(?:특별자치시|특별자치도|특별시|광역시|도|시)?)\s*([가-힣]{2,6}(?:시|군|구))/);
-    if (!hit) continue;
-    const province = PROVINCE.get(hit[1]);
-    if (!province) continue;
-    found.add(`${province} ${hit[2]}`);
-    found.add(`${province} ${hit[2].replace(/[시군구]$/, '')}`);
+    // 라벨 **바로 뒤**가 주소인 페이지는 드뭅니다. "오시는길 찾아오시는길 출조점 : 충남
+    // 서천군 …"처럼 라벨이 겹쳐 있거나 안내 문구가 먼저 오는 곳이 훨씬 많아서, 앞에서
+    // 끊어 읽으면 주소를 통째로 놓칩니다 — 그러면 지역 근거가 없는 채로 판정하게 되고,
+    // 같은 이름의 다른 데 항구를 거르는 관문이 열려버립니다.
+    for (const hit of addr.matchAll(/([가-힣]{2,7}(?:특별자치시|특별자치도|특별시|광역시|도|시)?)\s*([가-힣]{2,6}(?:시|군|구))/g)) {
+      const province = PROVINCE.get(hit[1]);
+      if (!province) continue;
+      found.add(`${province} ${hit[2]}`);
+      found.add(`${province} ${hit[2].replace(/[시군구]$/, '')}`);
+    }
   }
   return found;
 }
