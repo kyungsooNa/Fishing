@@ -10,6 +10,10 @@ name: ports
 # 순서는 급한 곳부터입니다: 지금 현황판에 같은 배가 두 줄로 뜨는 곳(quality.js) → 출조가 많은 곳.
 
 on:
+  # 항구는 사람이 적는 값이라 아무도 안 채우면 영영 빕니다(지금 배 477척 중 100척).
+  # 주 1회 스스로 돌아 근거가 한 곳으로 모인 곳만 채운 PR을 엽니다 — 머지는 사람이 합니다.
+  schedule:
+    - cron: '20 19 * * 1'   # 매주 화요일 04:20 KST
   workflow_dispatch:
     inputs:
       limit:
@@ -43,8 +47,10 @@ jobs:
       # 홈페이지 본문만 읽습니다(mode: static). 브라우저는 필요 없습니다.
       - name: 항구 다시 읽기
         env:
-          LIMIT: ${{ inputs.limit }}
-          ADD: ${{ inputs.open_pr && '--add' || '' }}
+          # schedule 실행에는 workflow_dispatch의 default가 안 실립니다. 비워 두면
+          # --limit "" 가 되고 Number('')는 0이라 한 곳도 안 봅니다.
+          LIMIT: ${{ inputs.limit || '40' }}
+          ADD: ${{ (inputs.open_pr || github.event_name == 'schedule') && '--add' || '' }}
         run: node discover.js ports --limit "$LIMIT" $ADD
 
       # 값으로 못 쓴 후보까지 전부 들어 있습니다. 사람이 고를 때 여기부터 봅니다.
@@ -60,7 +66,7 @@ jobs:
       # 자동으로 머지하지 않습니다. 항구는 다른 사이트의 같은 배와 합칠지를 정하는 값이라
       # (core/merge.js) 잘못 채우면 다른 배가 한 줄로 붙습니다. 사람이 페이지와 맞춰봐야 합니다.
       - name: registry PR 열기
-        if: inputs.open_pr
+        if: inputs.open_pr || github.event_name == 'schedule'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |

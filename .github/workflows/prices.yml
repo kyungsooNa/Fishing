@@ -8,6 +8,10 @@ name: prices
 # Actions 탭 → prices → Run workflow.
 
 on:
+  # 승선료는 95.3%가 비어 있는데, 홈페이지에 선비와 예약금·장비 대여료가 같이 적혀 있어
+  # 자동으로 registry에 넣지 않습니다(AGENTS.md). 근거 문장만 주 1회 모아둡니다.
+  schedule:
+    - cron: '0 20 * * 1'   # 매주 화요일 05:00 KST (times 다음)
   workflow_dispatch:
     inputs:
       limit:
@@ -32,7 +36,9 @@ jobs:
       # 정적 본문만 읽고 후보까지만 냅니다. registry를 고치거나 PR을 열지 않습니다.
       - name: 승선료 근거 문장 읽기
         env:
-          LIMIT: ${{ inputs.limit }}
+          # schedule 실행에는 workflow_dispatch의 default가 안 실립니다. 비워 두면
+          # --limit "" 가 되고 Number('')는 0이라 한 곳도 안 봅니다.
+          LIMIT: ${{ inputs.limit || '30' }}
         run: node discover.js prices --limit "$LIMIT"
 
       - name: 결과 올리기
