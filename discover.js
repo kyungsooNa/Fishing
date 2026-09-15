@@ -22,7 +22,7 @@ import { pathToFileURL } from 'node:url';
 import * as cheerio from 'cheerio';
 import { fetchHtml, closeBrowser, describeError } from './core/fetcher.js';
 import { loadRegistry, collectSite, REGISTRY_PATH } from './core/runner.js';
-import { looksLikePort } from './core/ports.js';
+import { looksLikePort, loadPorts, regionsFromAddress, qualifyPort } from './core/ports.js';
 import { tripTimeRange, toSpecies } from './core/schema.js';
 import { SPECIES } from './adapters/_rows.js';
 
@@ -230,8 +230,12 @@ export function pickPhone(text) {
   return { value: list.length === 1 ? list[0] : null, candidates: list.slice(0, 5) };
 }
 
-export function pickPort(text) {
+export function pickPort(text, ports = {}) {
   const t = String(text ?? '').replace(/\s+/g, ' ');
+  // 주소는 라벨이 붙어 있는 경우가 훨씬 많습니다("오시는길 : 전남 여수시 …"). 여기서 읽은
+  // 시·군으로 항구 이름을 ports.json 열쇠까지 올립니다 — registry의 port는 신원이자
+  // 지도 핀의 열쇠라 "국동항"이 아니라 "전남 여수 국동항"이어야 합니다.
+  const regions = regionsFromAddress(t);
   const labeled = new Set();
   for (const m of t.matchAll(/(?:출항지|출항항|승선장|출발지)\s*[:：]?\s*([가-힣A-Za-z0-9 ]{2,20}?항)/g)) {
     // 라벨이 붙었어도 잡힌 말이 "안전운항"이면 항구가 아닙니다. 라벨로 찾은 값은
@@ -240,7 +244,12 @@ export function pickPort(text) {
     if (looksLikePort(found)) labeled.add(found);
   }
   const list = [...labeled];
-  if (list.length) return { value: list.length === 1 ? list[0] : null, candidates: list };
+  if (list.length) {
+    // 라벨이 붙었어도 열쇠로 못 올리면 값으로 쓰지 않습니다. "남당항"만 적으면 좌표를
+    // 못 찾아 지도에서 그 배들이 사라집니다(test/ports.test.js).
+    const keyed = list.length === 1 ? qualifyPort(list[0], regions, ports) : null;
+    return { value: keyed, candidates: list };
+  }
 
   // 라벨이 없으면 본문에 나온 "○○항"을 후보로만 모읍니다. 값으로는 쓰지 않습니다.
   //
@@ -252,7 +261,15 @@ export function pickPort(text) {
   for (const m of t.matchAll(/[가-힣]{2,6}항/g)) {
     if (looksLikePort(m[0])) loose.add(m[0]);
   }
-  return { value: null, candidates: [...loose].slice(0, 5) };
+
+  // 라벨이 없어도 근거가 한 곳으로 모이면 값입니다 — 주소의 시·군에 있는 것으로 등록된
+  // 항구가 본문 후보 중 **하나뿐**일 때. 헌터호가 그랬습니다: 후보는 국동항 하나였고
+  // 주소가 여수라 "전남 여수 국동항"으로 모입니다. 반대로 정원호는 후보가 신월항인데
+  // 그 시·군에 등록된 항구가 아니라 안 모이고, 왕눈이호(잠두항)도 마찬가지입니다.
+  const keyed = [...new Set([...loose]
+    .map((name) => qualifyPort(name, regions, ports, { requireRegion: true }))
+    .filter(Boolean))];
+  return { value: keyed.length === 1 ? keyed[0] : null, candidates: [...loose].slice(0, 5) };
 }
 
 /**
@@ -264,7 +281,7 @@ async function identity(url) {
   try {
     const html = await fetchHtml(originOf(url), { mode: 'static', retries: 0 });
     const text = cheerio.load(html)('body').text();
-    return { phone: pickPhone(text), port: pickPort(text), evidence: portEvidence(html) };
+    return { phone: pickPhone(text), port: pickPort(text, await loadPorts()), evidence: portEvidence(html) };
   } catch (err) {
     return {
       phone: { value: null, candidates: [] },

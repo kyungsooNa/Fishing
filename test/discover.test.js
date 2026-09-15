@@ -76,10 +76,54 @@ test('전화번호는 하나로 좁혀질 때만 값으로 쓴다', () => {
   assert.deepEqual(pickPhone('선장 010-1111-2222 사무실 041-333-4444').candidates.length, 2);
 });
 
-test('출항지는 라벨이 붙어 있을 때만 값으로 쓴다', () => {
-  assert.equal(pickPort('출항지 : 남당항 / 오시는길').value, '남당항');
-  // 본문에 항 이름이 흩어져 있는 건 후보일 뿐입니다.
-  const loose = pickPort('남당항에서 출발해 오천항 앞바다까지 갑니다');
+// registry의 port는 신원이자(core/merge.js) 지도 핀의 열쇠입니다(sites/ports.json).
+// 그래서 값은 "남당항"이 아니라 "충남 홍성 남당항"이어야 합니다 — 맨 이름으로 적으면
+// 좌표를 못 찾아 그 배들이 지도에서만 조용히 사라집니다.
+const PORTS = {
+  '충남 홍성 남당항': { lat: 36.55, lng: 126.42 },
+  '충남 보령 오천항': { lat: 36.41, lng: 126.5 },
+  '전남 여수 국동항': { lat: 34.72, lng: 127.71 },
+  '경남 통영 남당항': { lat: 34.83, lng: 128.42 },   // 같은 이름의 항구가 다른 지역에 있습니다
+  '충남 홍성 궁리항': { lat: 36.58, lng: 126.44 },   // 같은 시·군에 항구가 둘입니다
+};
+
+test('출항지는 아는 항구 열쇠로 올릴 수 있을 때만 값으로 쓴다', () => {
+  // 라벨 + 주소의 시·군이 한 곳으로 모이면 값입니다.
+  assert.equal(
+    pickPort('출항지 : 남당항 / 오시는길 : 충남 홍성군 서부면 남당항로 213', PORTS).value,
+    '충남 홍성 남당항',
+  );
+  // 이름이 같은 항구가 여럿인데 주소가 없으면 어느 쪽인지 모릅니다 — 비웁니다.
+  const nowhere = pickPort('출항지 : 남당항', PORTS);
+  assert.equal(nowhere.value, null);
+  assert.deepEqual(nowhere.candidates, ['남당항']);
+  // 항구 목록을 모르면(예전처럼) 맨 이름을 값으로 쓰지 않습니다.
+  assert.equal(pickPort('출항지 : 남당항 / 오시는길 : 충남 홍성군 서부면').value, null);
+});
+
+// 라벨 없이 본문에 흩어져 있어도, 주소의 시·군에 등록된 항구가 후보 중 하나뿐이면
+// 근거가 한 곳으로 모인 것입니다. 헌터호가 그랬습니다.
+test('라벨이 없어도 주소의 시·군과 후보가 한 곳으로 모이면 값이다', () => {
+  const found = pickPort('오시는길 : 전남 여수시 어항단지로 42번지 국동항에서 뜹니다', PORTS);
+  assert.equal(found.value, '전남 여수 국동항');
+
+  // 그 시·군에 등록된 항구가 아니면 안 모입니다 — 정원호(신월항)·왕눈이호(잠두항)가 그렇습니다.
+  const unknown = pickPort('오시는길 : 전남 여수시 어항단지로 18-5 신월항 출조', PORTS);
+  assert.equal(unknown.value, null);
+  assert.ok(unknown.candidates.includes('신월항'));
+
+  // 다른 시·군의 항구를 지나가는 말로 적은 것은 근거를 흐리지 않습니다 — 주소가 홍성이니
+  // 홍성 항구인 남당항으로 모입니다(오천항은 보령입니다).
+  const passing = pickPort('오시는길 : 충남 홍성군 서부면 남당항로 213 남당항에서 뜨고 오천항 앞바다로 갑니다', PORTS);
+  assert.equal(passing.value, '충남 홍성 남당항');
+
+  // 같은 시·군에 등록된 항구가 후보에 둘이면 못 정합니다.
+  const two = pickPort('오시는길 : 충남 홍성군 서부면 남당항로 213 남당항 또는 궁리항에서 뜹니다', PORTS);
+  assert.equal(two.value, null);
+});
+
+test('주소가 없으면 본문의 항 이름은 후보일 뿐이다', () => {
+  const loose = pickPort('남당항에서 출발해 오천항 앞바다까지 갑니다', PORTS);
   assert.equal(loose.value, null);
   assert.ok(loose.candidates.includes('남당항'));
 });

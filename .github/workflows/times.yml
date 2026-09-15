@@ -14,6 +14,10 @@ name: times
 # Actions 탭 → times → Run workflow.
 
 on:
+  # 출항시각은 예약판에 없는 곳이 83곳(2,508건)이라 선사 공지에서 읽어야 합니다.
+  # 주 1회 후보를 모아 아티팩트로 올려둡니다 — registry의 timeGuide는 사람이 적습니다.
+  schedule:
+    - cron: '40 19 * * 1'   # 매주 화요일 04:40 KST (ports 다음)
   workflow_dispatch:
     inputs:
       limit:
@@ -38,7 +42,9 @@ jobs:
       # 홈페이지 본문만 읽습니다(mode: static). 브라우저는 필요 없습니다.
       - name: 공지에서 출항시각 후보 읽기
         env:
-          LIMIT: ${{ inputs.limit }}
+          # schedule 실행에는 workflow_dispatch의 default가 안 실립니다. 비워 두면
+          # --limit "" 가 되고 Number('')는 0이라 한 곳도 안 봅니다.
+          LIMIT: ${{ inputs.limit || '30' }}
         run: node discover.js times --limit "$LIMIT"
 
       # 후보 줄은 로그에도 그대로 찍히지만, 파일에는 안 자른 값까지 들어 있습니다.
