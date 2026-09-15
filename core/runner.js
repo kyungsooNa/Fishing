@@ -160,7 +160,11 @@ export async function runAll({
         at,
         error,
         count: kept.length,
-        keptFrom: prev.sites?.[site.id]?.at ?? prev.generatedAt ?? null,
+        // 직전에 성공한 시각입니다 — 시도한 시각이 아닙니다. `prevStatus.at`을 그냥 쓰면
+        // 실패가 이어질 때마다 한 수집 간격씩 앞으로 밀려서, 며칠 묵은 값이 "방금 확인"으로
+        // 보입니다(한솔호가 9/13부터 한 번도 성공 못 했는데 화면에는 "0.8시간 전"이었습니다).
+        // 위의 보류·백오프 경로는 원래 이렇게 이어받고 있었고 여기만 빠져 있었습니다.
+        keptFrom: prevStatus?.keptFrom ?? prevStatus?.at ?? prev.generatedAt ?? null,
         ...(streak ? { timeoutStreak: streak } : {}),
         ...meta(site),
       });
