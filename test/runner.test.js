@@ -198,6 +198,31 @@ test('죽은 사이트는 직전 결과를 그대로 남긴다', async () => {
   assert.equal(data.sites.broken.keptFrom, '2026-09-01T00:00:00.000Z', '언제 것을 남겼는지 알 수 있어야 한다');
 });
 
+test('계속 실패하는 사이트의 keptFrom은 앞으로 밀리지 않는다', async () => {
+  // 실패가 이어지면 keptFrom을 직전 "시도" 시각으로 덮어써서, 며칠 묵은 값이 방금 확인한
+  // 것처럼 보였습니다. 한솔호가 9/13부터 한 번도 성공 못 했는데 화면에는 "0.8시간 전"으로
+  // 떴습니다 — 취소석 레이더에서 이건 없는 자리를 예약가능으로 보여주는 것과 같습니다.
+  const 성공한때 = '2026-09-01T00:00:00.000Z';
+  const 어제것 = {
+    generatedAt: 성공한때,
+    sites: { broken: { ok: true, at: 성공한때, count: 1 } },
+    trips: [{ siteId: 'broken', siteName: '깨진곳', boat: '옛날호', date: '2999-12-31', status: 'open', seatsLeft: 3 }],
+  };
+  const { registryPath, dataPath } = await fixture([brokenSite], 어제것);
+
+  const 첫실패 = await runAll({ registryPath, dataPath, days: 21 });
+  assert.equal(첫실패.data.sites.broken.keptFrom, 성공한때);
+
+  // 같은 이유로 또 실패합니다. 화면에 실린 값은 여전히 9월 1일 것입니다.
+  const 두번째 = await runAll({ registryPath, dataPath, days: 21 });
+  assert.equal(두번째.data.sites.broken.keptFrom, 성공한때,
+    '두 번째 실패에도 값의 나이는 그대로여야 합니다');
+
+  const 세번째 = await runAll({ registryPath, dataPath, days: 21 });
+  assert.equal(세번째.data.sites.broken.keptFrom, 성공한때,
+    '실패가 이어져도 값의 나이는 계속 그대로여야 합니다');
+});
+
 test('죽은 사이트의 보존 행도 현재 스키마로 다시 정규화한다', async () => {
   const 예전것 = {
     generatedAt: '2026-09-01T00:00:00.000Z',
