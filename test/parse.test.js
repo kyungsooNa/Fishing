@@ -1218,6 +1218,39 @@ test('sessionOf: 끝 시각이 없으면 시작으로만 가른다', () => {
   assert.deepEqual(sessionOf(null, null), { session: null, hours: null });
 });
 
+// 정원낚시 공지는 "※출항시간:05 시 ※입항시간:15 시~16 시"라고 둘 다 적어두는데 입항을
+// 버리고 있었습니다. 그러면 05시 출항만 남아 sessionOf가 시작 시각만 보고 오전배로 가릅니다 —
+// 실제로는 10시간짜리 종일배입니다.
+test('공지의 입항시각도 빈 칸을 메운다 — 예약판 값이 언제나 먼저', () => {
+  const guide = {
+    departAt: '05:00', returnAt: '15:00',
+    validFrom: '2026-01-01', validThrough: '2026-12-31',
+    source: 'https://www.jungwonho.com/index.php?mid=bk', note: '※출항시간:05 시 ※입항시간:15 시~16 시',
+  };
+  const site = { id: 'jungwonnaksi', name: '정원낚시', adapter: 'thefishing', url: 'https://x.example',
+    boats: { 정원호: { timeGuide: guide } } };
+
+  const filled = makeTrip(site, { date: '2026-09-17', boat: '정원호', rawStatus: '예약가능' });
+  assert.equal(filled.departAt, '05:00');
+  assert.equal(filled.returnAt, '15:00');
+  assert.equal(filled.session, '종일', '입항을 버리면 10시간짜리가 오전배가 됩니다');
+  assert.equal(filled.hours, 10);
+
+  // 예약판에 입항이 적혀 있으면 그쪽이 먼저입니다. 공지는 빈 칸만 메웁니다.
+  const own = makeTrip(site, { date: '2026-09-17', boat: '정원호', rawTime: '06:00~12:00', rawStatus: '예약가능' });
+  assert.equal(own.returnAt, '12:00');
+  assert.equal(own.departAt, '06:00');
+
+  // 공지가 이름을 안 집은 배에는 안 걸립니다.
+  const other = makeTrip(site, { date: '2026-09-17', boat: '협력선박성진호', rawStatus: '예약가능' });
+  assert.equal(other.departAt, null);
+  assert.equal(other.returnAt, null);
+
+  // 적용 기간 밖이면 쓰지 않습니다.
+  const stale = makeTrip(site, { date: '2027-01-02', boat: '정원호', rawStatus: '예약가능' });
+  assert.equal(stale.returnAt, null);
+});
+
 // 오이도 몬스터호는 예약판에 시각도 구분도 없이 배 이름으로만 나눕니다. 그대로 두면
 // 그 배는 구분 칸이 비고 오전·오후 필터에서 통째로 빠집니다 — 아는 값인데 못 거릅니다.
 test('sessionFromName: 배 이름에만 적힌 오전·오후도 구분으로 센다', () => {
