@@ -270,6 +270,64 @@ test('공식 사이트 조사 동안 로컬 자동 수집을 멈췄다가 다시
   }, { researchArgs: [script], monitor });
 });
 
+// 손으로 눌러야만 도는 기능은 아무도 안 누릅니다. 수집이 한가할 때 스스로 몇 곳씩 봅니다.
+test('서버가 주기적으로 스스로 조사한다', async () => {
+  const dir = await mkdtemp(join(tmpdir(), 'admin-auto-'));
+  const script = join(dir, 'fake-research.js');
+  const report = join(dir, 'report.md');
+  await writeFile(script, 'console.log(JSON.stringify(process.argv.slice(2)))');
+  await writeFile(report, '# 자동 조사 결과');
+
+  await withServer(async ({ base }) => {
+    let task;
+    for (let i = 0; i < 200; i++) {
+      task = await admin(base, '/api/research').then((r) => r.json());
+      if (task.code === 0) break;
+      await new Promise((r) => setTimeout(r, 20));
+    }
+    // 스스로 돌 때는 선사를 고르지 않고 우선순위 상위 몇 곳을 봅니다(--limit).
+    assert.match(task.log.join('\n'), /"--pages","4","--limit","2"/);
+    assert.ok(!task.log.join('\n').includes('--sites'), '스스로 돌 때는 선사를 지정하지 않습니다');
+    assert.equal(task.auto, true, '손으로 누른 것과 구분돼야 화면이 그렇게 적습니다');
+    assert.match(task.report, /자동 조사 결과/);
+    assert.equal(task.autoResearch.everyHours > 0, true);
+    assert.ok(task.autoResearch.lastAt, '언제 봤는지 남아야 화면이 적을 수 있습니다');
+  }, { researchArgs: [script], researchReport: report,
+       autoResearch: { everyMs: 30, limit: 2, pages: 4 } });
+});
+
+// 같은 예약 플랫폼을 두 프로세스가 동시에 두드리면 안 됩니다. 기다렸다 끼어들지 않고 거릅니다.
+test('수집이 도는 중이면 자동 조사는 그 차례를 건너뛴다', async () => {
+  const dir = await mkdtemp(join(tmpdir(), 'admin-auto-busy-'));
+  const slow = join(dir, 'slow.js');
+  const script = join(dir, 'fake-research.js');
+  await writeFile(slow, 'setTimeout(() => {}, 400);');
+  await writeFile(script, 'console.log("조사함")');
+
+  await withServer(async ({ base }) => {
+    assert.equal((await admin(base, '/api/collect', { method: 'POST' })).status, 202);
+    await new Promise((r) => setTimeout(r, 150));
+    const task = await admin(base, '/api/research').then((r) => r.json());
+    assert.equal(task.running, false, '수집 중에는 조사를 시작하면 안 됩니다');
+    assert.equal(task.autoResearch.lastAt, null);
+  }, { collectArgs: [slow], researchArgs: [script],
+       autoResearch: { everyMs: 30, limit: 2, pages: 4 } });
+});
+
+test('자동 조사는 끌 수 있다', async () => {
+  const dir = await mkdtemp(join(tmpdir(), 'admin-auto-off-'));
+  const script = join(dir, 'fake-research.js');
+  await writeFile(script, 'console.log("조사함")');
+
+  await withServer(async ({ base }) => {
+    await new Promise((r) => setTimeout(r, 120));
+    const task = await admin(base, '/api/research').then((r) => r.json());
+    assert.equal(task.running, false);
+    assert.equal(task.autoResearch.everyHours, 0, '0이면 화면이 "꺼짐"이라고 적습니다');
+    assert.equal(task.autoResearch.lastAt, null);
+  }, { researchArgs: [script], autoResearch: { everyMs: 0, limit: 3, pages: 6 } });
+});
+
 test('관리 화면 스크립트에 문법 오류가 없고, 쓰는 요소가 다 있다', async () => {
   const html = await readFile('docs/admin.html', 'utf8');
   const inline = html.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';

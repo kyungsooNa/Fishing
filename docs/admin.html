@@ -729,6 +729,15 @@ async function collect() {
   polling = setInterval(pollCollect, 1500);
 }
 
+// 스스로 도는 조사는 눌러서 시작한 것이 아니라 화면이 말해주지 않으면 도는 줄도 모릅니다.
+// 주기와 마지막으로 본 때를 적습니다(서버가 RESEARCH_AUTO_HOURS=0으로 껐으면 껐다고).
+function autoResearchNote(auto) {
+  if (!auto) return '';
+  if (!auto.everyHours) return '자동 조사 꺼짐(RESEARCH_AUTO_HOURS=0)';
+  const last = auto.lastAt ? ` · 마지막 ${when(auto.lastAt)}` : ' · 아직 안 돎';
+  return `${auto.everyHours}시간마다 ${auto.limit}곳씩 스스로 조사${last}`;
+}
+
 async function pollResearch() {
   const task = await api('api/research').then((r) => r.json());
   $('log').textContent = task.running
@@ -736,7 +745,8 @@ async function pollResearch() {
     : (task.report || task.log.join('\n') || '(조사 결과 없음)');
   $('log').scrollTop = $('log').scrollHeight;
   if (task.running) {
-    $('research').textContent = `조사 중… ${task.sites.join(', ')}`;
+    // 스스로 돈 조사는 선사를 안 고르고 우선순위 상위 몇 곳을 봅니다.
+    $('research').textContent = task.auto ? '자동 조사 중…' : `조사 중… ${task.sites.join(', ')}`;
     $('research-state').textContent = `선사당 최대 ${task.pages}페이지 확인 중`;
     return;
   }
@@ -745,9 +755,10 @@ async function pollResearch() {
   $('research').disabled = false;
   $('collect').disabled = false;
   $('research').textContent = '공식 사이트 정보 조사';
-  $('research-state').textContent = task.code === 0
+  const note = autoResearchNote(task.autoResearch);
+  $('research-state').textContent = (task.code === 0
     ? '조사가 끝났습니다. 아래 보고서를 검토하세요.'
-    : `조사가 코드 ${task.code}로 끝났습니다.`;
+    : `조사가 코드 ${task.code}로 끝났습니다.`) + (note ? ` · ${note}` : '');
   toast(task.code === 0 ? '선사 정보 조사가 끝났습니다' : `조사가 코드 ${task.code}로 끝났습니다`);
 }
 
@@ -777,7 +788,13 @@ async function research() {
 async function resumeResearch() {
   if (!LOCAL) return;
   const task = await api('api/research').then((r) => r.json());
-  if (!task.running) return;
+  const note = autoResearchNote(task.autoResearch);
+  if (!task.running) {
+    // 스스로 돈 보고서가 있으면 열자마자 보입니다 — 안 그러면 돌아도 아무도 안 읽습니다.
+    if (task.report) $('log').textContent = task.report;
+    if (note) $('research-state').textContent = note;
+    return;
+  }
   $('research-sites').value = task.sites.join(',');
   $('research-pages').value = task.pages;
   $('research-force').checked = task.force;
