@@ -81,12 +81,12 @@ test('탭바는 접었다 펼 수 있고, 접은 상태는 두 화면이 같이 
 // 못 찾았습니다 — 배와 선사는 다른 칸입니다.
 test('별점은 배 이름 옆에 붙고, 한 줄에 한 번만 붙는다', () => {
   const boatCell = inline.match(/\} else if \(i === 4\) \{([\s\S]*?)\n      \} else \{/)?.[1] ?? '';
-  assert.match(boatCell, /rateBadge\(t\)/, '배 칸에 별점이 없습니다');
+  assert.match(boatCell, /paintRate\(rateBtn, rateOfTrip\(t\)\)/, '배 칸에 별점이 없습니다');
   assert.match(boatCell, /className = 'boatname'/,
     '이름만 잘리고 별은 남아야 해서 이름을 따로 감쌉니다');
 
   // 출처가 아니라 배의 평가라 합쳐진 줄에도 한 번입니다. 두 칸에 붙이면 두 번 나옵니다.
-  assert.equal(inline.split('rateBadge(t)').length - 1, 1);
+  assert.equal(inline.split('paintRate(rateBtn').length - 1, 1);
 });
 
 // 배정비일은 자리가 남은 채로 옵니다(무창포 대진피싱). 상태는 휴항과 같은 급이지만
@@ -478,27 +478,44 @@ test('지도에서 빠진 출조는 몇 건인지 힌트에 적는다', () => {
 
 // 별점은 현황판에서 읽기만 합니다. 이 블록도 localStorage·document만 가짜로 넣으면 돕니다.
 function rateModule(saved, trips = []) {
-  const start = inline.indexOf('// ── 별점 보기 ──');
-  const end = inline.indexOf('// ── 별점 보기 끝 ──');
+  const start = inline.indexOf('// ── 별점 ──');
+  const end = inline.indexOf('// ── 별점 끝 ──');
   assert.ok(start >= 0 && end > start, '별점 블록 표시를 찾지 못했습니다');
 
-  const localStorage = { getItem: () => (saved === undefined ? null : saved) };
-  const document = { createElement: () => ({}) };
+  const store = { value: saved, blocked: false };
+  const localStorage = {
+    getItem: () => (store.value === undefined ? null : store.value),
+    setItem: (key, value) => {
+      if (store.blocked) throw new Error('브라우저가 저장을 막았습니다');
+      store.value = value;
+    },
+  };
+  const document = { createElement: () => ({ setAttribute() {} }) };
   const DATA = { trips };
-  return new Function('localStorage', 'document', 'DATA',
-    `${inline.slice(start, end)}\nreturn { RATES, rateKey, rateOf, rateStars, rateForTrip, rateBadge,
-       rateOfTrip, ratedCount, ratedLabel, ratedEmptyMessage, clearRateCache };`,
-  )(localStorage, document, DATA);
+  const ROW_BUTTONS = [];
+  const checks = { 'f-rated': { checked: false }, 'f-rated-label': { textContent: '' } };
+  let refreshed = 0;
+  const module = new Function('localStorage', 'document', 'DATA', 'ROW_BUTTONS', '$', 'refresh',
+    `${inline.slice(start, end)}\nreturn { getRates: () => RATES, rateKey, rateOf, rateStars, rateForTrip,
+       rateOfTrip, ratedCount, ratedLabel, ratedEmptyMessage, clearRateCache,
+       paintRate, applyRate, saveRates };`,
+  )(localStorage, document, DATA, ROW_BUTTONS, (id) => checks[id], () => { refreshed += 1; });
+  return { ...module, RATES: module.getRates(), store, ROW_BUTTONS, checks, refreshed: () => refreshed };
 }
 
-test('현황판은 별점을 읽기만 한다', async () => {
-  // 저장하는 코드가 여기 있으면 표를 누르다 점수가 바뀝니다. 매기는 곳은 관리 화면 한 군데입니다.
-  assert.ok(!inline.includes('setRate'), '현황판에 별점을 고치는 코드가 있습니다');
-  assert.ok(!/setItem\(\s*RATE_KEY/.test(inline), '현황판이 별점을 저장하고 있습니다');
-  // 누를 수 있는 것처럼 보이면 안 됩니다 — 버튼이 아니라 글자로 붙입니다.
-  assert.match(inline, /span\.className = 'rate'/);
-  assert.match(inline, /rateBadge\(t\)/, '출조의 배 별점이 선사 칸에 붙어야 합니다');
-  assert.doesNotMatch(inline, /rateBadge\(src\.siteId\)/, '출처마다 별점을 반복해 붙이면 안 됩니다');
+test('표에서 별을 한 번 누르면 고르는 칸만 열린다 — 점수는 두 번째 누름에 바뀐다', async () => {
+  // 한 번 누름에 점수가 바뀌면 표를 훑다가 조용히 별점이 달라집니다. 그래서 별을 누르면
+  // 고르는 칸을 열기만 하고(openRatePop), 저장은 거기서 고를 때(chooseRate) 합니다.
+  const boatCell = inline.match(/\} else if \(i === 4\) \{([\s\S]*?)\n      \} else \{/)?.[1] ?? '';
+  assert.match(boatCell, /addEventListener\('click', \(e\) => \{[^}]*openRatePop\(rateBtn, t\)/);
+  assert.doesNotMatch(boatCell, /applyRate/, '별을 누르는 것만으로 점수가 바뀌면 안 됩니다');
+  assert.match(inline, /function chooseRate\(score\) \{[\s\S]*?applyRate\(/);
+
+  // 고르는 칸은 화면에 하나만 만들어 옮겨 씁니다. 줄마다 만들면 한 쪽에 1200개가 생깁니다.
+  assert.match(inline, /let RATE_POP = null;/);
+  assert.match(inline, /if \(RATE_POP\) return RATE_POP;/);
+  // 바깥을 누르거나 Esc면 닫힙니다(필터 메뉴와 같은 자리).
+  assert.match(inline, /!RATE_POP\.contains\(target\)\) closeRatePop\(\)/);
 
   // 저장 형식은 관리 화면과 같아야 합니다. 어긋나면 매긴 별점이 안 보입니다.
   const adminInline = (await readFile('docs/admin.html', 'utf8')).match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
@@ -517,14 +534,54 @@ test('매긴 배에만 별점을 붙이고 합친 출처의 점수도 찾는다'
   assert.equal(m.rateKey('fishinggate', '아우라호'), 'fishinggate|아우라호');
   assert.notEqual(m.rateKey('other', '아우라호'), m.rateKey('fishinggate', '아우라호'));
 
-  const unrated = { siteId: 'fishinggate', boat: '블랙펄호' };
-  assert.equal(m.rateBadge(unrated), null, '안 매긴 모든 출조에 ☆☆☆☆☆가 깔리면 표가 안 읽힙니다');
-  const aura = { siteId: 'fishinggate', boat: '아우라호' };
-  assert.equal(m.rateBadge(aura).textContent, '★★★★☆');
-  assert.match(m.rateBadge(aura).title, /시스템 관리/, '어디서 매기는지 알려줘야 합니다');
+  const button = { setAttribute() {} };
+  m.paintRate(button, 0);
+  assert.equal(button.textContent, '☆', '안 매긴 줄까지 ☆☆☆☆☆면 표가 안 읽힙니다');
+  m.paintRate(button, 4);
+  assert.equal(button.textContent, '★★★★☆');
+  assert.match(button.className, /ratebtn on/);
 
   const merged = { siteId: 'primary', boat: '블랙펄호', sources: [{ siteId: 'primary' }, { siteId: 'other' }] };
   assert.equal(m.rateForTrip(merged), 3, '합쳐진 줄은 어느 출처에서 매겼든 배 별점을 찾아야 합니다');
+});
+
+// 표에서 매긴 점수는 저장까지 돼야 다음에 열 때도 남습니다. 저장이 막혔는데 화면만
+// 바뀌면 사람은 매긴 줄 알고 창을 닫습니다 — 그래서 막히면 없던 일로 되돌립니다.
+test('표에서 매긴 별점은 저장하고, 저장이 막히면 없던 일로 되돌린다', () => {
+  const m = rateModule(JSON.stringify({}));
+  const trip = { siteId: 'winner', boat: '깜보호' };
+  const button = { setAttribute() {} };
+  m.ROW_BUTTONS.push({ trip, rate: button });
+
+  assert.equal(m.applyRate(trip, 4), true);
+  assert.deepEqual(JSON.parse(m.store.value), { 'winner|깜보호': 4 }, '저장까지 돼야 합니다');
+  assert.equal(button.textContent, '★★★★☆', '표를 다시 안 그리니 별만 고쳐 그립니다');
+  assert.equal(m.checks['f-rated-label'].textContent, '★ 별점 준 배만 (1)');
+  assert.equal(m.refreshed(), 0, '필터가 꺼져 있으면 표를 다시 그리지 않습니다');
+
+  // 지우기(0점)도 같은 길입니다.
+  assert.equal(m.applyRate(trip, 0), true);
+  assert.deepEqual(JSON.parse(m.store.value), {});
+  assert.equal(button.textContent, '☆');
+
+  m.store.blocked = true;
+  assert.equal(m.applyRate(trip, 5), false, '저장이 막히면 실패를 알려야 합니다');
+  assert.equal(m.rateOfTrip(trip), 0, '막혔으면 점수도 남으면 안 됩니다');
+
+  // 이름이 없는 줄에는 매길 수 없습니다 — 키를 만들 수 없습니다.
+  m.store.blocked = false;
+  assert.equal(m.applyRate({ siteId: 'winner', boat: null }, 3), false);
+});
+
+// "별점 준 배만"을 켠 채로 점수를 지우면 그 줄이 사라져야 합니다. 그때만 다시 그립니다.
+test('별점 필터가 켜져 있을 때만 표를 다시 그린다', () => {
+  const m = rateModule(JSON.stringify({ 'winner|깜보호': 3 }));
+  const trip = { siteId: 'winner', boat: '깜보호' };
+  m.ROW_BUTTONS.push({ trip, rate: { setAttribute() {} } });
+  m.checks['f-rated'].checked = true;
+
+  m.applyRate(trip, 0);
+  assert.equal(m.refreshed(), 1);
 });
 
 test('관리창에서 별점을 바꾸면 열린 현황판에도 바로 반영한다', () => {
@@ -683,7 +740,7 @@ test('감시를 걸고 풀 때도 표를 다시 그리지 않는다', () => {
   assert.match(inline, /for \(const row of ROW_BUTTONS\) if \(row\.watch\) paintWatch\(row\.watch, row\.trip\);/);
   // 표를 다시 그리지 않으니 버튼을 직접 풀어줘야 합니다. 안 그러면 영영 눌리지 않습니다.
   assert.match(inline, /button\.disabled = false;\s+\/\/ 표를 다시 그리지 않으니/);
-  assert.match(inline, /ROW_BUTTONS\.push\(\{ trip: t, star, watch \}\);/);
+  assert.match(inline, /ROW_BUTTONS\.push\(\{ trip: t, star, watch, rate: rateBtn \}\);/);
   assert.match(inline, /ROW_BUTTONS\.length = 0;/, '다시 그릴 때마다 비워야 옛 버튼이 안 남습니다');
 });
 
