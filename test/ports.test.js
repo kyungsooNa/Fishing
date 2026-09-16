@@ -3,7 +3,7 @@
 
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { usedPorts, looksLikePort } from '../core/ports.js';
+import { usedPorts, looksLikePort, portNameKnown } from '../core/ports.js';
 
 const ports = {
   '충남 보령 오천항': { lat: 36.4, lng: 126.5 },
@@ -86,6 +86,26 @@ test('항구 이름은 살리고 "항"으로 끝나는 다른 말은 버린다',
 test('끝나는 말로 보지, 낱말이 같은지로 보지 않는다', () => {
   assert.equal(looksLikePort('사항'), false);
   assert.equal(looksLikePort('공지사항'), false, '낱말 비교로는 못 걸러집니다');
+});
+
+// 항구의 갈래(국가어항·연안항·무역항)는 이름이 아니라 등급입니다. 이름으로 남겨두면
+// "모르는 항구가 같이 적혀 있다"로 읽혀 `pickPort`의 자동 입력을 공연히 막습니다.
+test('항구의 갈래를 가리키는 말은 이름이 아니다', () => {
+  for (const no of ['국가어항', '지방어항', '연안항', '무역항', '제1종어항']) {
+    assert.equal(looksLikePort(no), false, no);
+  }
+});
+
+// `qualifyPort`는 "이 지역의 그 항구"를 묻습니다. 모르는 이름을 거를 때는 그것만으로
+// 부족합니다 — 목록에 아예 없는 이름은 다른 지역 것이라 빠진 게 아니라 우리가 모르는
+// 것이고, 같은 지역일 수도 있습니다.
+test('이름을 아는지와 그 지역 것인지는 다른 질문이다', () => {
+  const ports = { '충남 보령 대천항': { lat: 36.3, lng: 126.5 } };
+  assert.equal(portNameKnown('대천항', ports), true);
+  assert.equal(portNameKnown('회변항', ports), false, '목록에 없으면 모르는 이름입니다');
+  assert.equal(portNameKnown(' 대천항 ', ports), true, '앞뒤 공백은 값이 아닙니다');
+  assert.equal(portNameKnown('', ports), false);
+  assert.equal(portNameKnown('대천항', {}), false, '목록이 없으면 아는 이름이 없습니다');
 });
 
 test('항구 이름이 아닌 것은 조용히 지나간다', () => {

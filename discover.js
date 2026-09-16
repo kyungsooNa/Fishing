@@ -22,7 +22,7 @@ import { pathToFileURL } from 'node:url';
 import * as cheerio from 'cheerio';
 import { fetchHtml, closeBrowser, describeError } from './core/fetcher.js';
 import { loadRegistry, collectSite, REGISTRY_PATH } from './core/runner.js';
-import { looksLikePort, loadPorts, regionsFromAddress, qualifyPort } from './core/ports.js';
+import { looksLikePort, loadPorts, portNameKnown, regionsFromAddress, qualifyPort } from './core/ports.js';
 import { tripTimeRange, toSpecies } from './core/schema.js';
 import { SPECIES } from './adapters/_rows.js';
 
@@ -273,7 +273,18 @@ export function pickPort(text, ports = {}) {
   const keyed = [...new Set([...loose]
     .map((name) => qualifyPort(name, regions, ports, { requireRegion: true }))
     .filter(Boolean))];
-  return { value: keyed.length === 1 ? keyed[0] : null, candidates: [...loose].slice(0, 5) };
+
+  // 다만 "하나뿐"을 세기 전에, **아는 이름만 세고 있는 것은 아닌지** 봐야 합니다.
+  // ports.json에 없는 이름은 다른 지역 것이라 빠진 게 아니라 우리가 모르는 것이고,
+  // 같은 지역일 수도 있습니다. 그러면 남은 하나는 근거로 이긴 게 아니라 **목록에
+  // 없어서 이긴 값**입니다 — 양파호(bikini)가 그랬습니다. 페이지에 대천항과 회변항이
+  // 같이 나오는데 회변항이 목록에 없어 대천항이 혼자 남았습니다(2026-09-16, PR #281).
+  //
+  // 지나가는 말로 적힌 다른 지역 항구는 이 관문에 안 걸립니다. 그건 목록에 있어서
+  // 시·군이 다르다는 것까지 아는 이름이라, 근거가 아니라고 **보여줄 수** 있습니다.
+  const unknown = [...loose].filter((name) => !portNameKnown(name, ports));
+  const settled = keyed.length === 1 && !unknown.length;
+  return { value: settled ? keyed[0] : null, candidates: [...loose].slice(0, 5) };
 }
 
 /**
