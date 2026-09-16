@@ -636,7 +636,12 @@ function phoneLink(phone) {
 // ── 전화 걸기 끝 ── (test/page.test.js가 이 표시까지를 떼어내 돌려봅니다)
 
 // 04:00 출항해서 17:00 들어오면 "04:00~17:00". 끝 시각을 모르면 시작만.
-const runLabel = (t) => (t.departAt ? (t.returnAt ? `${t.departAt}~${t.returnAt}` : t.departAt) : '선사 확인');
+const runLabel = (t) => {
+  if (t.departAt && t.departThrough) return `${t.departAt}~${t.departThrough} 출항`;
+  if (t.departAt) return t.returnAt ? `${t.departAt}~${t.returnAt}` : t.departAt;
+  if (t.meetingAt) return `${t.meetingAt}까지 도착`;
+  return '선사 확인';
+};
 
 // "종일 13시간" — 몇 시간짜리인지가 오전배냐 종일배냐만큼 중요합니다.
 function sessionLabel(t) {

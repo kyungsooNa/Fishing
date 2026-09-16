@@ -47,12 +47,16 @@ function sameSiteLooseKey(t) {
 function mergeSameSiteGroup(group) {
   const primary = [...group].sort((a, b) => score(b) - score(a))[0];
   const timed = group.find((t) => t.departAt);
+  const meeting = group.find((t) => t.meetingAt);
+  const windowed = group.find((t) => t.departThrough);
   const seats = group.map((t) => t.seatsLeft).filter(Number.isFinite);
   const seatsLeft = seats.length ? Math.max(...seats) : null;
 
   return {
     ...primary,
     departAt: primary.departAt ?? timed?.departAt ?? null,
+    ...(primary.departThrough ?? windowed?.departThrough ? { departThrough: primary.departThrough ?? windowed.departThrough } : {}),
+    ...(primary.meetingAt ?? meeting?.meetingAt ? { meetingAt: primary.meetingAt ?? meeting.meetingAt } : {}),
     returnAt: primary.returnAt ?? timed?.returnAt ?? null,
     seatsLeft,
     status: toStatus(primary.statusText, seatsLeft),

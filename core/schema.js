@@ -111,6 +111,28 @@ export function toTimeRange(raw) {
   return { from: toTime(text), to: null };
 }
 
+/** "04시30분까지 매장 도착", "접안지역에 04:40부터 대기"처럼 집결 안내만 읽습니다. */
+export function meetingTime(raw) {
+  const text = String(raw ?? '').replace(/\s+/g, ' ');
+  const place = '(?:매장|사무실|접안\s*지역|선착장|승선장|출조점|항구)?';
+  const action = '(?:도착|대기|집결|모여|승선\s*명부|명부\s*작성)';
+  const before = text.match(new RegExp(`(${TIME_TOKEN})(?:\s*(?:까지|부터|이전))?[^\n]{0,35}?${place}[^\n]{0,15}?${action}`, 'i'));
+  if (before) return toTime(before[1]);
+  const after = text.match(new RegExp(`(?:집결(?:\s*시간)?|도착(?:\s*시간)?|${action})\s*[:：]?\s*(${TIME_TOKEN})`, 'i'));
+  return after ? toTime(after[1]) : null;
+}
+
+/** 출항 가능 범위. 운항 시작~종료 범위와 다른 값이라 returnAt에 넣지 않습니다. */
+export function departureWindow(raw) {
+  const text = String(raw ?? '').replace(/\s+/g, ' ');
+  if (!/출항/.test(text) || !/(?:에서|부터|~|～|∼|-).{0,25}(?:사이\s*)?출항/.test(text)) {
+    return { from: null, through: null };
+  }
+  const times = [...text.matchAll(new RegExp(TIME_TOKEN, 'gi'))].map((m) => m[0]);
+  if (times.length < 2) return { from: null, through: null };
+  return { from: toTime(times[0]), through: toTime(times[1]) };
+}
+
 const DEPART_LABEL = '출항(?:\\s*시간)?|정상출조|출조\\s*시간';
 const ARRIVE_LABEL = '입항(?:\\s*시간)?|귀항(?:\\s*시간)?';
 
@@ -340,7 +362,9 @@ export function makeTrip(site, fields) {
     date,
     rawDate = null,
     departAt = null,
+    departThrough = null,
     returnAt = null,
+    meetingAt = null,
     rawTime = null,
     species = null,
     tide = null,
@@ -356,6 +380,7 @@ export function makeTrip(site, fields) {
 
   const resolvedDate = date ?? toDate(rawDate);
   const range = toTimeRange(rawTime ?? '');
+  const rawDepartureWindow = departureWindow(rawStatus);
   const boatName = boat ? String(boat).trim() : null;
   const normalizedSpecies = toSpecies(species);
   const guide = site.boats?.[boatName]?.timeGuide ?? site.timeGuide;
@@ -367,8 +392,12 @@ export function makeTrip(site, fields) {
   const speciesApplies = guideSpecies.length ? guideSpecies.includes(normalizedSpecies) : true;
   const guideApplies = guide?.validFrom && guide?.validThrough && resolvedDate >= guide.validFrom &&
     resolvedDate <= guide.validThrough && speciesApplies;
-  const fromGuide = !departAt && !range.from && guideApplies ? toTime(guide.departAt) : null;
-  const depart = departAt ?? range.from ?? fromGuide;
+  const fromGuide = !departAt && !range.from && !rawDepartureWindow.from && guideApplies ? toTime(guide.departAt) : null;
+  const depart = departAt ?? range.from ?? rawDepartureWindow.from ?? fromGuide;
+  const throughFromGuide = !departThrough && !rawDepartureWindow.through && guideApplies ? toTime(guide.departThrough) : null;
+  const departEnd = departThrough ?? rawDepartureWindow.through ?? throughFromGuide;
+  const meetingFromGuide = !meetingAt && !meetingTime(rawStatus) && guideApplies ? toTime(guide.meetingAt) : null;
+  const meet = meetingAt ?? meetingTime(rawStatus) ?? meetingFromGuide;
   const back = returnAt ?? range.to;
   const { session, hours } = sessionOf(depart, back);
   const seats = Number.isFinite(seatsLeft) ? seatsLeft : parseSeats(rawStatus);
@@ -384,7 +413,9 @@ export function makeTrip(site, fields) {
     phone: pickPhone(site, boatName),
     date: resolvedDate,
     departAt: depart,
-    ...(fromGuide ? { timeSource: 'notice', timeSourceUrl: guide.source } : {}),
+    ...(departEnd ? { departThrough: departEnd } : {}),
+    ...(meet ? { meetingAt: meet } : {}),
+    ...(fromGuide || throughFromGuide || meetingFromGuide ? { timeSource: 'notice', timeSourceUrl: guide.source } : {}),
     returnAt: back,
     session,
     hours,
