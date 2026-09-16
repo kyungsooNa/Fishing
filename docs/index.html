@@ -371,8 +371,8 @@
   <div class="tablewrap" id="tablewrap">
     <table>
       <thead><tr>
-        <th class="starcell"></th><th>날짜</th><th>운항</th><th>구분</th><th>선사</th><th>배</th><th>항구</th>
-        <th>어종</th><th>상태</th><th class="num">잔여</th><th class="num">승선료</th><th>감시·최신화</th>
+        <th class="starcell"></th><th>날짜</th><th>선사</th><th>배</th><th>상태</th><th class="num">잔여</th>
+        <th>항구</th><th>어종</th><th class="num">승선료</th><th>운항</th><th>구분</th><th>감시·최신화</th>
       </tr></thead>
       <tbody id="rows"></tbody>
     </table>
@@ -1273,6 +1273,9 @@ function renderPager(view, total) {
 // (한 쪽이 행 1200개 · 노드 2만 개). 그래서 render()가 그리면서 버튼을 적어두고,
 // 누를 때는 그 버튼만 고쳐 그립니다.
 const ROW_BUTTONS = [];
+// 칸의 성질도 순서가 아니라 이름으로 정합니다(위 cells와 같은 이유).
+const NOWRAP_CELLS = new Set(['date', 'run', 'session', 'status']);
+const NUM_CELLS = new Set(['seats', 'price']);
 const COLLAPSED_DATES = new Set();
 
 function paintStar(star, on) {
@@ -1362,21 +1365,32 @@ function render(all = sortTrips(visibleTrips())) {
     tr.append(starCell);
 
     let rateBtn = null;
+    // **칸 순서가 곧 중요도입니다.** 운항은 36.5%, 승선료는 95%가 빈 칸이라(`node quality.js`)
+    // 앞에 두면 첫 화면이 빈 칸으로 덮이고, 정작 고를 때 보는 값(선사·배·상태·잔여)이 오른쪽으로
+    // 밀려 가로 스크롤 뒤에 숨습니다. 그래서 잘 차는 값부터 왼쪽에 둡니다.
+    // **칸은 번호가 아니라 이름으로 다룹니다** — 번호로 두면 순서를 바꿀 때마다 아래 분기가
+    // 조용히 다른 칸에 걸립니다. 순서를 바꾸면 위의 `<thead>`도 같이 고치세요(둘이 짝입니다).
     const cells = [
-      dayLabel(t.date), runLabel(t), sessionLabel(t), t.siteName ?? '', t.boat ?? '', t.port ?? '',
-      t.species ?? '', null,
-      seatsLabel(t), won(t.price),
+      ['date', dayLabel(t.date)],
+      ['site', t.siteName ?? ''],
+      ['boat', t.boat ?? ''],
+      ['status', null],
+      ['seats', seatsLabel(t)],
+      ['port', t.port ?? ''],
+      ['species', t.species ?? ''],
+      ['price', won(t.price)],
+      ['run', runLabel(t)],
+      ['session', sessionLabel(t)],
     ];
-    const cellNames = ['date', 'run', 'session', 'site', 'boat', 'port', 'species', 'status', 'seats', 'price'];
-    cells.forEach((v, i) => {
+    for (const [name, v] of cells) {
       const td = document.createElement('td');
-      td.className = `cell-${cellNames[i]}`;
-      if (i === 7) {
+      td.className = `cell-${name}`;
+      if (name === 'status') {
         const b = document.createElement('span');
         b.className = 'badge ' + t.status;
         b.textContent = statusLabel(t);
         td.append(b);
-      } else if (i === 3) {
+      } else if (name === 'site') {
         // 여러 사이트에 같은 배가 올라와 있으면 둘 다 걸어줍니다. 어디서 잡든 상관없으니까요.
         const sources = tripSources(t);
         // 출처마다 잔여석이 다르면 그걸 보여줘야 합니다 — 합친 줄은 큰 쪽을 쓰기 때문에
@@ -1415,7 +1429,7 @@ function render(all = sortTrips(visibleTrips())) {
         // (core/merge.js). 그래서 출처마다가 아니라 줄마다 한 번만 답니다.
         const phone = phoneLink(t.phone);
         if (phone) td.append(phone);
-      } else if (i === 4) {
+      } else if (name === 'boat') {
         // 별점은 **배**에 매긴 값이라 배 이름 옆에 답니다. 선사 칸에 달아뒀을 때는 매긴
         // 사람이 자기 별점을 못 찾았습니다 — 표에서 배와 선사는 다른 칸이고, 별을 준
         // 이름은 배 이름입니다. 출처가 아니라 배의 평가이므로 합쳐진 줄에도 한 번만 붙습니다.
@@ -1431,7 +1445,7 @@ function render(all = sortTrips(visibleTrips())) {
       } else {
         td.textContent = v;
       }
-      if (i === 1) {
+      if (name === 'run') {
         if (!t.departAt) td.title = '예약 페이지에 출항 시각이 없습니다. 선사에 확인해 주세요.';
         if (t.timeSource === 'notice') {
           const note = document.createElement('small');
@@ -1440,20 +1454,20 @@ function render(all = sortTrips(visibleTrips())) {
           td.title = '개별 예약표 대신 선사가 공지한 해당 시즌 출항 시각입니다.';
         }
       }
-      if (i === 8 && !Number.isFinite(t.seatsLeft) && seatsLabel(t)) {
+      if (name === 'seats' && !Number.isFinite(t.seatsLeft) && seatsLabel(t)) {
         td.title = '예약 페이지에 잔여 좌석 수가 없습니다. 선사에 확인해 주세요.';
       }
       // 날짜·운항·구분·상태는 줄이 갈리면 읽기 나빠집니다. 폭은 긴 이름 칸에서 법니다.
-      if (i <= 2 || i === 7) td.classList.add('nowrap');
-      if (i >= 8) td.classList.add('num');
-      if (i === 8) {
+      if (NOWRAP_CELLS.has(name)) td.classList.add('nowrap');
+      if (NUM_CELLS.has(name)) td.classList.add('num');
+      if (name === 'seats') {
         const age = freshness(t), hint = document.createElement('small');
         hint.className = 'freshness' + (age.failed ? ' failed' : age.stale ? ' stale' : '');
         hint.textContent = age.text;
         td.append(hint);
       }
       tr.append(td);
-    });
+    }
     const watchCell = document.createElement('td');
     watchCell.className = 'watchcell';
     const actions = document.createElement('div');

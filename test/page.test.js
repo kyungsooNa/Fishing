@@ -80,7 +80,7 @@ test('탭바는 접었다 펼 수 있고, 접은 상태는 두 화면이 같이 
 // 별을 준 이름은 배 이름입니다. 선사 칸에 달아뒀을 때는 매긴 사람이 표에서 자기 별점을
 // 못 찾았습니다 — 배와 선사는 다른 칸입니다.
 test('별점은 배 이름 옆에 붙고, 한 줄에 한 번만 붙는다', () => {
-  const boatCell = inline.match(/\} else if \(i === 4\) \{([\s\S]*?)\n      \} else \{/)?.[1] ?? '';
+  const boatCell = inline.match(/\} else if \(name === 'boat'\) \{([\s\S]*?)\n      \} else \{/)?.[1] ?? '';
   assert.match(boatCell, /paintRate\(rateBtn, rateOfTrip\(t\)\)/, '배 칸에 별점이 없습니다');
   assert.match(boatCell, /className = 'boatname'/,
     '이름만 잘리고 별은 남아야 해서 이름을 따로 감쌉니다');
@@ -273,7 +273,7 @@ test('날짜별 물때는 한 번에 모은다', () => {
 });
 
 test('물때는 날짜 그룹 줄에 한 번만 표시한다', () => {
-  assert.match(html, /<th>어종<\/th><th>상태<\/th>/);
+  assert.match(html, /<th>어종<\/th><th class="num">승선료<\/th>/);
   assert.match(inline, /function dayTideParts/);
   assert.match(inline, /td\.colSpan = 12/);
   assert.match(inline, /물때는 날짜별 공통 표기/);
@@ -506,7 +506,7 @@ function rateModule(saved, trips = []) {
 test('표에서 별을 한 번 누르면 고르는 칸만 열린다 — 점수는 두 번째 누름에 바뀐다', async () => {
   // 한 번 누름에 점수가 바뀌면 표를 훑다가 조용히 별점이 달라집니다. 그래서 별을 누르면
   // 고르는 칸을 열기만 하고(openRatePop), 저장은 거기서 고를 때(chooseRate) 합니다.
-  const boatCell = inline.match(/\} else if \(i === 4\) \{([\s\S]*?)\n      \} else \{/)?.[1] ?? '';
+  const boatCell = inline.match(/\} else if \(name === 'boat'\) \{([\s\S]*?)\n      \} else \{/)?.[1] ?? '';
   assert.match(boatCell, /addEventListener\('click', \(e\) => \{[^}]*openRatePop\(rateBtn, t\)/);
   assert.doesNotMatch(boatCell, /applyRate/, '별을 누르는 것만으로 점수가 바뀌면 안 됩니다');
   assert.match(inline, /function chooseRate\(score\) \{[\s\S]*?applyRate\(/);
@@ -757,12 +757,29 @@ test('3분 감시 옆에서 특정 선사만 최신화한다', () => {
     '공개 감시 서버에는 수동 최신화 버튼을 내놓으면 안 됩니다');
 });
 
+// 머리글과 칸 목록은 짝입니다. 한쪽만 고치면 값이 다른 머리글 밑으로 들어갑니다 —
+// 화면은 멀쩡해 보이고 숫자만 엉뚱한 칸에 찍힙니다.
+test('표 머리글과 칸 목록이 같은 순서다 — 잘 차는 값이 왼쪽', () => {
+  const heads = [...html.matchAll(/<th(?: class="[^"]*")?>([^<]*)<\/th>/g)].map((m) => m[1]);
+  const names = [...inline.matchAll(/\n      \['(\w+)', /g)].map((m) => m[1]);
+
+  assert.deepEqual(names,
+    ['date', 'site', 'boat', 'status', 'seats', 'port', 'species', 'price', 'run', 'session']);
+  // 앞의 빈 칸은 즐겨찾기 별, 끝의 감시·최신화는 표 밖에서 따로 붙입니다.
+  assert.deepEqual(heads,
+    ['', '날짜', '선사', '배', '상태', '잔여', '항구', '어종', '승선료', '운항', '구분', '감시·최신화']);
+  // 빈 칸이 많은 운항(36.5%)·승선료(95%)가 앞자리를 차지하면 첫 화면이 빈 칸으로 덮입니다.
+  assert.ok(names.indexOf('run') > names.indexOf('seats'), '운항은 잔여보다 뒤입니다');
+  assert.ok(names.indexOf('price') > names.indexOf('status'), '승선료는 상태보다 뒤입니다');
+});
+
 test('표가 옆으로 삐져나가지 않게 긴 이름 칸만 줄이 갈린다', () => {
   // 모든 칸에 nowrap을 걸면 표의 자연 폭이 화면을 넘어 오른쪽 칸이 잘립니다.
   assert.ok(!/th, td \{[^}]*white-space: nowrap/.test(html), '칸 전체에 nowrap을 걸면 안 됩니다');
   assert.match(html, /th, td\.nowrap, td\.num, td\.starcell, td\.watchcell \{ white-space: nowrap; \}/);
   // 날짜·운항·구분·상태는 갈리면 읽기 나쁩니다. 선사·배·항구·어종에서 폭을 법니다.
-  assert.match(inline, /if \(i <= 2 \|\| i === 7\) td\.classList\.add\('nowrap'\);/);
+  assert.match(inline, /if \(NOWRAP_CELLS\.has\(name\)\) td\.classList\.add\('nowrap'\);/);
+  assert.match(inline, /const NOWRAP_CELLS = new Set\(\['date', 'run', 'session', 'status'\]\);/);
   assert.match(inline, /watchCell\.className = 'watchcell';/);
 });
 
