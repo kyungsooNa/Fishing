@@ -671,7 +671,13 @@ export function timeHints(html, limit = 5) {
  *
  * 이미 timeGuide가 있는 곳은 뺍니다. 배별로 적어둔 곳(`boats`)도 마찬가지입니다.
  */
-const hasTimeGuide = (conf) => Boolean(conf?.timeGuide || conf?.timeGuides?.length);
+// 화살표 함수(const)로 두면 안 됩니다. 이 파일은 최상위에서 바로 명령을 돌려서
+// `timesAll()`이 이 줄보다 먼저 불립니다 — const는 호이스팅돼도 초기화 전엔 못 씁니다
+// ("Cannot access 'hasTimeGuide' before initialization"으로 워크플로가 즉시 죽었습니다).
+// 함수 선언은 통째로 끌어올려지므로 안전합니다.
+function hasTimeGuide(conf) {
+  return Boolean(conf?.timeGuide || conf?.timeGuides?.length);
+}
 
 export function timeTargets(registry, quality) {
   const byId = new Map(registry.map((site) => [site.id, site]));
