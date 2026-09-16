@@ -265,6 +265,16 @@
   <textarea id="favtext" class="favio" rows="3" hidden placeholder='["배이름|항구", …]'></textarea>
   <div class="sub" id="favio"></div>
 
+  <h2 class="sec">현황판에 안 보이는 별점</h2>
+  <div class="sub" id="lostmeta">불러오는 중…</div>
+  <div class="tablewrap">
+    <table class="favtable">
+      <thead><tr><th>선사</th><th>별점이 적힌 이름</th><th>별점</th><th>현황판에 뜨는 이름</th><th></th></tr></thead>
+      <tbody id="lostrows"></tbody>
+    </table>
+    <div class="empty" id="lostempty" hidden>안 보이는 별점이 없습니다. 매긴 별점은 모두 현황판에 뜹니다.</div>
+  </div>
+
   <div class="log" id="log"></div>
 </div>
 
@@ -356,6 +366,106 @@ function setRate(map, id, score) {
 let RATES = loadRates();
 // 수집이 실제로 읽어온 배 이름. 현황판은 이 이름(trip.boat)으로만 별점을 찾습니다.
 let OBSERVED = {};
+
+// 현황판은 수집이 읽은 이름으로만 별점을 찾습니다. 그 규칙이 생기기 전에 매긴 별점 중에는
+// registry 표기로 저장돼 **현황판에 영영 안 뜨는** 것이 있습니다(`raraho|라라호`). 매긴 사람은
+// 별을 줬는데 표에 아무것도 없는 것만 봅니다. 저장된 점수는 멀쩡하니 버리지 않고, 어느 이름으로
+// 옮기면 되는지 여기서 보여주고 옮깁니다. 이름을 우리가 짐작해 옮기지는 않습니다 — "마성호"와
+// "뉴마성호"처럼 다른 배가 있어서, 고르는 것은 사람이 합니다.
+function lostRates() {
+  return Object.keys(RATES)
+    .filter((key) => rateOf(RATES, key) && key.includes('|'))
+    .map((key) => ({
+      key,
+      siteId: key.slice(0, key.indexOf('|')),
+      boat: key.slice(key.indexOf('|') + 1),
+      score: rateOf(RATES, key),
+    }))
+    .filter(({ siteId, boat }) => !(boat in (OBSERVED[siteId] ?? {})));
+}
+
+// 옮기기는 지우기와 저장이 한 번에 일어나야 합니다. 중간에 저장이 막히면 점수를 잃습니다.
+function moveRate(from, to) {
+  const score = rateOf(RATES, from);
+  if (!score || !to) return false;
+  const before = { ...RATES };
+  delete RATES[from];
+  RATES[to] = score;
+  if (saveRates(RATES)) return true;
+  RATES = before;                          // 저장이 막혔으면 없던 일로 둡니다
+  return false;
+}
+
+function renderLostRates() {
+  const lost = lostRates();
+  const box = $('lostrows');
+  box.textContent = '';
+  $('lostempty').hidden = lost.length > 0;
+  $('lostmeta').textContent = lost.length
+    ? `${lost.length}개 · 현황판은 수집이 읽은 이름으로만 별점을 찾습니다. 옮기면 그대로 보입니다.`
+    : '매긴 별점이 모두 현황판에 뜹니다.';
+
+  for (const { key, siteId, boat, score } of lost) {
+    const names = Object.keys(OBSERVED[siteId] ?? {}).sort((a, b) => a.localeCompare(b, 'ko'));
+    const tr = document.createElement('tr');
+    const site = document.createElement('td');
+    site.className = 'id';
+    site.textContent = siteId;
+    const label = document.createElement('td');
+    label.textContent = boat;
+    const stars = document.createElement('td');
+    stars.className = 'stars';
+    stars.textContent = '★'.repeat(score) + '☆'.repeat(RATE_MAX - score);
+
+    const target = document.createElement('td');
+    const act = document.createElement('td');
+    if (!names.length) {
+      // 그 선사의 출조가 아예 없으면 옮길 이름이 없습니다. 이름이 틀린 것과는 다른 사정이라
+      // 지우라고만 하지 않고 왜 못 옮기는지 적습니다 — 수집이 되살아나면 그때 옮기면 됩니다.
+      target.className = 'muted';
+      target.textContent = '지금 수집된 출조가 없음';
+    } else {
+      const pick = document.createElement('select');
+      for (const name of names) {
+        const opt = document.createElement('option');
+        opt.value = opt.textContent = name;
+        pick.append(opt);
+      }
+      target.append(pick);
+
+      const move = document.createElement('button');
+      move.className = 'small';
+      move.textContent = '옮기기';
+      const paint = () => {
+        const taken = rateOf(RATES, rateKey(siteId, pick.value));
+        move.textContent = taken ? `덮어쓰기 (지금 ★${taken})` : '옮기기';
+      };
+      paint();
+      pick.addEventListener('change', paint);
+      move.addEventListener('click', () => {
+        if (!moveRate(key, rateKey(siteId, pick.value))) return toast('브라우저가 저장을 막고 있습니다');
+        render();
+        toast(`${pick.value} ★${score}`);
+      });
+      act.append(move);
+    }
+
+    const drop = document.createElement('button');
+    drop.className = 'small danger';
+    drop.textContent = '지우기';
+    drop.addEventListener('click', () => {
+      const before = { ...RATES };
+      delete RATES[key];
+      if (!saveRates(RATES)) { RATES = before; return toast('브라우저가 저장을 막고 있습니다'); }
+      render();
+      toast('지웠습니다');
+    });
+    act.append(drop);
+
+    tr.append(site, label, stars, target, act);
+    box.append(tr);
+  }
+}
 
 // 사이트 안의 배를 한 줄씩 펼쳐 별점을 따로 매깁니다. 배가 많은 함대형 사이트에서도
 // 아우라호처럼 원하는 배를 이름으로 찾아 바로 평가할 수 있어야 합니다.
@@ -460,6 +570,8 @@ function render() {
   if (PAGE < 0) PAGE = 0;
   const from = PAGE * size;
   const page = list.slice(from, from + size);
+
+  renderLostRates();
 
   const rated = Object.values(RATES).filter((score) => rateOf({ score }, 'score')).length;
   $('ratemeta').textContent =

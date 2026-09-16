@@ -341,6 +341,26 @@ test('관리 화면: 현황판이 못 읽는 배 이름에는 별을 달지 않�
   assert.match(inline, /'수집 이름 아님' : '수집 결과 없음'/);
 });
 
+// 규칙이 생기기 전에 registry 표기로 매긴 별점은 현황판에 영영 안 뜹니다. 저장된 점수는
+// 멀쩡하니 버리지 않고 옮길 수 있어야 합니다 — 안 그러면 "별점이 안 보인다"가 그대로 남습니다.
+test('관리 화면: 현황판에 안 보이는 별점을 모아 옮기거나 지운다', async () => {
+  const html = await readFile('docs/admin.html', 'utf8');
+  const inline = html.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
+
+  for (const id of ['lostrows', 'lostmeta', 'lostempty']) {
+    assert.ok(html.includes(`id="${id}"`), `되살리기 칸이 없습니다: ${id}`);
+  }
+  assert.match(inline, /function lostRates\(\)/);
+  assert.match(inline, /!\(boat in \(OBSERVED\[siteId\] \?\? \{\}\)\)/,
+    '수집 이름에 없는 키만 골라야 합니다');
+
+  // 옮기기는 지우기와 저장이 한 번에. 저장이 막히면 점수를 잃습니다.
+  const move = inline.match(/function moveRate\([\s\S]*?\n\}/)?.[0] ?? '';
+  assert.match(move, /const before = \{ \.\.\.RATES \};/);
+  assert.match(move, /RATES = before;/, '저장이 막혔으면 없던 일로 돌려야 합니다');
+  assert.match(inline, /renderLostRates\(\);/);
+});
+
 // --- 최신화(git pull) + 재시작 ---
 //
 // 진짜 git을 부르면 테스트가 네트워크와 레포 상태를 타므로, 명령을 갈아끼워
