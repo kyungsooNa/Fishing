@@ -66,6 +66,15 @@ function getStatic(url, { referer, timeoutMs = TIMEOUT_MS, redirects = MAX_REDIR
     const req = lib.get(
       url,
       {
+        // **기본 agent를 안 씁니다.** Node 19부터 globalAgent가 `keepAlive: true,
+        // timeout: 5000`으로 옵니다. 그 5초가 소켓에 걸리면 우리가 건 30초는 무시되고,
+        // 더 나쁘게는 `req.setTimeout(30000, cb)`의 **cb는 그대로 불려서** 5초 만에
+        // 끊긴 것을 "30000ms 안에 응답이 없습니다"라고 보고합니다. times 실행
+        // (run 35105080153)에서 10곳이 전부 "30000ms … — 5.0초 만에"였습니다.
+        // 해외 러너에서 국내 호스트에 붙는 데는 5초가 모자랍니다.
+        //
+        // 같은 서버에 3초씩 쉬고 붙으므로(pace) 연결 재사용으로 얻을 것도 없습니다.
+        agent: false,
         headers: {
           'User-Agent': UA,
           'Accept-Language': 'ko-KR,ko;q=0.9',
