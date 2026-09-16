@@ -339,16 +339,23 @@ export function portEvidence(html, limit = 4) {
 // 뒤에 묻힙니다. 지금 손해란 "같은 배가 현황판에 두 줄로 떠 있는 것"이고, 그건
 // `core/quality.js`가 이미 세고 있습니다(`portHints` — 합치기가 막힌 곳만 추립니다).
 // 그다음은 출조가 많은 곳입니다. 한 곳을 채워 여러 줄이 고쳐지는 순서입니다.
+/**
+ * 항구와 전화가 빈 곳. **둘은 같은 일입니다** — 페이지를 한 번 받아 둘 다 읽으므로
+ * (`identity`) 항구만 보고 전화를 버리면 전화만 빈 49곳은 아무도 안 봅니다.
+ * 둘 다 다른 사이트의 같은 배를 알아보는 신원이라, 비면 같은 배가 두 줄로 뜹니다.
+ */
 export function portTargets(registry, quality) {
   const blocked = new Map((quality?.portHints ?? []).map((row, rank) => [row.siteId, rank]));
   const trips = new Map((quality?.sites ?? []).map((row) => [row.key, row.trips]));
+  // boats에 배별 항구를 적어둔 곳은 사이트에 port가 없어도 채워진 것입니다.
+  const needsPort = (site) => !site.port && !Object.values(site.boats ?? {}).some((boat) => boat?.port);
 
   return registry
-    .filter((site) => site.enabled !== false && !site.port && site.url)
-    // boats에 배별 항구를 적어둔 곳은 사이트에 port가 없어도 채워진 것입니다.
-    .filter((site) => !Object.values(site.boats ?? {}).some((boat) => boat?.port))
+    .filter((site) => site.enabled !== false && site.url)
+    .filter((site) => needsPort(site) || !site.phone)
     .map((site) => ({
       id: site.id, url: site.url, name: site.name ?? site.id,
+      needs: [needsPort(site) ? '항구' : null, site.phone ? null : '전화'].filter(Boolean),
       blocked: blocked.has(site.id), rank: blocked.get(site.id) ?? Infinity,
       trips: trips.get(site.id) ?? 0,
     }))
@@ -363,11 +370,21 @@ export function applyPorts(parsed, found) {
 
   for (const row of found) {
     const site = byId.get(row.id);
+    if (!site) continue;
+    const notes = [];
     // 이미 채워진 곳은 건드리지 않습니다 — 사람이 고쳐둔 값을 덮어쓰면 안 됩니다.
-    if (!site || site.port || !row.port) continue;
-    site.port = row.port;
-    site.note = [site.note, `출항지 ${row.port} — 페이지의 라벨에서 읽었습니다(discover ports). 확인하세요.`]
-      .filter(Boolean).join(' ');
+    if (row.port && !site.port) {
+      site.port = row.port;
+      notes.push(`출항지 ${row.port} — 페이지의 라벨에서 읽었습니다(discover ports). 확인하세요.`);
+    }
+    // 전화는 페이지에 번호가 **하나뿐일 때만** 값이 됩니다(pickPhone). 여럿이면 어느 것이
+    // 예약 번호인지 모르고, 틀린 번호로 합치면 다른 배가 한 줄이 됩니다.
+    if (row.phone && !site.phone) {
+      site.phone = row.phone;
+      notes.push(`전화 ${row.phone} — 페이지에 번호가 하나뿐이라 읽었습니다(discover ports). 확인하세요.`);
+    }
+    if (!notes.length) continue;
+    site.note = [site.note, ...notes].filter(Boolean).join(' ');
     filled.push(row.id);
   }
   return filled;
@@ -550,28 +567,37 @@ async function portsAll() {
   const quality = await portQuality(registry);
   const targets = portTargets(registry, quality);
 
-  console.log(`항구가 빈 선사 ${targets.length}곳`
-    + ` (지금 두 줄로 뜨는 곳 ${targets.filter((t) => t.blocked).length}곳) — 앞에서 ${Math.min(limit, targets.length)}곳을 봅니다\n`);
+  console.log(`항구나 전화가 빈 선사 ${targets.length}곳`
+    + ` (항구 ${targets.filter((t) => t.needs.includes('항구')).length} · 전화 ${targets.filter((t) => t.needs.includes('전화')).length}`
+    + ` · 지금 두 줄로 뜨는 곳 ${targets.filter((t) => t.blocked).length}) — 앞에서 ${Math.min(limit, targets.length)}곳을 봅니다\n`);
 
   const found = [];
   for (const target of targets.slice(0, limit)) {
     const mark = target.blocked ? '!' : ' ';
-    const { port, evidence = [], error } = await identity(target.url);
-    found.push({ ...target, port: port.value, candidates: port.candidates, evidence, ...(error ? { error } : {}) });
+    const { port, phone, evidence = [], error } = await identity(target.url);
+    // 빈 칸만 채웁니다. 이미 적힌 값을 다시 읽어 덮어쓰면 사람이 고쳐둔 것을 잃습니다.
+    const gotPort = target.needs.includes('항구') ? port.value : null;
+    const gotPhone = target.needs.includes('전화') ? phone.value : null;
+    found.push({ ...target, port: gotPort, phone: gotPhone,
+      candidates: port.candidates, phoneCandidates: phone.candidates, evidence, ...(error ? { error } : {}) });
 
+    const got = [gotPort, gotPhone].filter(Boolean);
     if (error) console.log(`${mark} ${target.id.padEnd(16)} 못 받았습니다: ${error.slice(0, 80)}`);
-    else if (port.value) console.log(`${mark} ${target.id.padEnd(16)} ${port.value}  ← 라벨에서 읽음`);
-    else if (port.candidates.length) console.log(`${mark} ${target.id.padEnd(16)} 후보: ${port.candidates.join(' · ')}`);
-    else console.log(`${mark} ${target.id.padEnd(16)} 못 찾았습니다 — 페이지에 안 적혀 있거나 그림입니다`);
+    else if (got.length) console.log(`${mark} ${target.id.padEnd(16)} ${got.join(' · ')}  ← 페이지에서 읽음`);
+    else if (port.candidates.length || phone.candidates.length) {
+      console.log(`${mark} ${target.id.padEnd(16)} 후보: ${[...port.candidates, ...phone.candidates].join(' · ')}`);
+    } else console.log(`${mark} ${target.id.padEnd(16)} 못 찾았습니다 — 페이지에 안 적혀 있거나 그림입니다`);
     // 후보 낱말만으로는 이 배가 뜨는 항인지 소개글에 나온 항인지 못 가립니다.
     // 주소·승선지 줄을 그대로 보여줘서 사람이 한 번에 판단하게 합니다.
     for (const line of evidence) console.log(`    | ${line}`);
   }
 
-  const values = found.filter((row) => row.port);
+  const values = found.filter((row) => row.port || row.phone);
   const failed = found.filter((row) => row.error);
-  console.log(`\n라벨로 값을 찾은 곳 ${values.length} / 후보만 있는 곳 ${found.filter((r) => !r.error && !r.port && r.candidates.length).length}`
-    + ` / 페이지에 없는 곳 ${found.filter((r) => !r.error && !r.port && !r.candidates.length).length}`
+  const hasCandidate = (r) => r.candidates.length || r.phoneCandidates.length;
+  console.log(`\n값을 찾은 곳 ${values.length}(항구 ${found.filter((r) => r.port).length} · 전화 ${found.filter((r) => r.phone).length})`
+    + ` / 후보만 있는 곳 ${found.filter((r) => !r.error && !r.port && !r.phone && hasCandidate(r)).length}`
+    + ` / 페이지에 없는 곳 ${found.filter((r) => !r.error && !r.port && !r.phone && !hasCandidate(r)).length}`
     + ` / 못 받은 곳 ${failed.length}`);
   if (failed.length === found.length && found.length) {
     console.log('전부 못 받았습니다 — 여기서는 국내 도메인이 막혀 있습니다. Actions 탭 → ports 로 돌리세요.');
@@ -589,7 +615,7 @@ async function portsAll() {
   const filled = applyPorts(parsed, values);
   await writeFile(REGISTRY_PATH, `${JSON.stringify(parsed, null, 2)}\n`);
   console.log(`\n${REGISTRY_PATH} 에 ${filled.length}곳을 채웠습니다: ${filled.join(', ')}`);
-  console.log('머지 전에 페이지와 맞춰보세요 — 항구는 다른 사이트의 같은 배와 합칠지를 정하는 값입니다.');
+  console.log('머지 전에 페이지와 맞춰보세요 — 항구와 전화는 다른 사이트의 같은 배와 합칠지를 정하는 값입니다.');
 }
 
 // ── 등록된 선사의 출항시각 후보 모으기 ──────────────────────────────────────
