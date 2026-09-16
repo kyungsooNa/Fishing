@@ -340,7 +340,10 @@ function favModule(saved = []) {
     getItem: (k) => store.get(k) ?? null,
     setItem: (k, v) => store.set(k, v),
   };
-  const checks = { 'f-fav': { checked: true }, 'f-fav-label': { textContent: '' } };
+  const checks = {
+    'f-fav': { checked: true }, 'f-fav-label': { textContent: '' },
+    'f-rated': { checked: false }, 'f-rated-label': { textContent: '' },
+  };
   const DATA = { trips: [] };
   // 별을 누르면 표를 통째로 다시 그리는 대신 그 별들만 고쳐 그립니다. 그 두 가지를
   // 가짜로 넣어 실제로 어느 쪽이 도는지 봅니다.
@@ -474,16 +477,18 @@ test('지도에서 빠진 출조는 몇 건인지 힌트에 적는다', () => {
 });
 
 // 별점은 현황판에서 읽기만 합니다. 이 블록도 localStorage·document만 가짜로 넣으면 돕니다.
-function rateModule(saved) {
+function rateModule(saved, trips = []) {
   const start = inline.indexOf('// ── 별점 보기 ──');
   const end = inline.indexOf('// ── 별점 보기 끝 ──');
   assert.ok(start >= 0 && end > start, '별점 블록 표시를 찾지 못했습니다');
 
   const localStorage = { getItem: () => (saved === undefined ? null : saved) };
   const document = { createElement: () => ({}) };
-  return new Function('localStorage', 'document',
-    `${inline.slice(start, end)}\nreturn { RATES, rateKey, rateOf, rateStars, rateForTrip, rateBadge };`,
-  )(localStorage, document);
+  const DATA = { trips };
+  return new Function('localStorage', 'document', 'DATA',
+    `${inline.slice(start, end)}\nreturn { RATES, rateKey, rateOf, rateStars, rateForTrip, rateBadge,
+       rateOfTrip, ratedCount, ratedLabel, ratedEmptyMessage, clearRateCache };`,
+  )(localStorage, document, DATA);
 }
 
 test('현황판은 별점을 읽기만 한다', async () => {
@@ -525,7 +530,35 @@ test('매긴 배에만 별점을 붙이고 합친 출처의 점수도 찾는다'
 test('관리창에서 별점을 바꾸면 열린 현황판에도 바로 반영한다', () => {
   assert.match(inline, /window\.addEventListener\('storage'/);
   assert.match(inline, /event\.key !== RATE_KEY/);
-  assert.match(inline, /RATES = loadRates\(\);\s+refresh\(\);/);
+  assert.match(inline, /RATES = loadRates\(\);\s+clearRateCache\(\);\s+refresh\(\);/,
+    '기억해 둔 별점을 안 버리면 바뀐 값이 이 탭에 안 나타납니다');
+});
+
+// 별점은 거르기·정렬에서 1만 건을 훑는 자리에 들어갑니다. 출조마다 다시 재면
+// 거르기 한 번에 배열과 Set을 수만 개 만듭니다(Intl.DateTimeFormat으로 3초를 태운 그 자리).
+test('별점은 출조마다 한 번만 재고 기억해 둔다', () => {
+  const m = rateModule(JSON.stringify({ 'a|무적호': 5 }));
+  const trip = { siteId: 'a', boat: '무적호' };
+  assert.equal(m.rateOfTrip(trip), 5);
+  assert.equal(m.rateOfTrip(trip), 5, '두 번째는 기억해 둔 값을 씁니다');
+  assert.match(inline, /RATE_CACHE\.set\(trip, score = rateForTrip\(trip\)\)/);
+  assert.match(inline, /\(!ratedOnly \|\| rateOfTrip\(t\) > 0\)/, '거르기에서도 기억한 값을 씁니다');
+  // 안 매긴 배는 방향과 상관없이 뒤로 가야 해서 0이 아니라 null을 줍니다.
+  assert.match(inline, /'rate-desc': byValue\(\(t\) => rateOfTrip\(t\) \|\| null, 'desc'\)/);
+});
+
+// "조건에 맞는 출조가 없습니다" 한 줄로는 왜 비었는지 알 수 없습니다. 즐겨찾기와 같습니다.
+test('별점 필터가 비면 왜 비었는지 갈라 말한다', () => {
+  assert.match(rateModule().ratedEmptyMessage(), /별점을 준 배가 없습니다/);
+
+  const gone = rateModule(JSON.stringify({ 'a|없는배': 4 }), [{ siteId: 'a', boat: '다른배' }]);
+  assert.match(gone.ratedEmptyMessage(), /지금 목록에 없습니다/);
+  assert.match(gone.ratedEmptyMessage(), /안 보이는 별점/, '이름이 갈린 별점은 고칠 곳까지 알려줍니다');
+
+  const filtered = rateModule(JSON.stringify({ 'a|있는배': 4 }), [{ siteId: 'a', boat: '있는배' }]);
+  assert.match(filtered.ratedEmptyMessage(), /필터/);
+
+  assert.equal(rateModule(JSON.stringify({ 'a|무적호': 3 })).ratedLabel(), '★ 별점 준 배만 (1)');
 });
 
 test('별점 저장값이 깨져 있어도 화면은 그대로 돈다', () => {
