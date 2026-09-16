@@ -38,6 +38,15 @@
             background: var(--card); font-size: 13px; margin-bottom: 14px; }
   .banner.warn { border-color: var(--few); color: var(--few); }
   .actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 14px; }
+  .researchbar { padding: 10px 12px; border: 1px solid var(--line); border-radius: 9px;
+                 background: var(--card); }
+  .researchbar label { display: flex; align-items: center; gap: 5px; font-size: 13px; color: var(--muted); }
+  .researchbar input[type=text] { width: min(320px, 55vw); }
+  .researchbar input[type=number] { width: 62px; }
+  .researchbar input[type=text], .researchbar input[type=number] {
+    padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px;
+    background: var(--bg); color: var(--fg); font: inherit;
+  }
   .favio { width: 100%; margin-bottom: 6px; padding: 8px; border: 1px solid var(--line); border-radius: 7px;
            background: var(--card); color: var(--fg); font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; }
   button { padding: 7px 14px; border: 1px solid var(--line); border-radius: 7px;
@@ -159,6 +168,18 @@
     <button id="restart">앱 재실행</button>
     <button id="quit" class="danger">서버 종료</button>
     <span class="toast" id="toast"></span>
+  </div>
+
+  <div class="actions researchbar">
+    <label>정보 조사 선사 id
+      <input id="research-sites" type="text" value="ssfish,plaza" placeholder="ssfish,plaza">
+    </label>
+    <label>페이지
+      <input id="research-pages" type="number" min="1" max="20" value="8">
+    </label>
+    <label><input id="research-force" type="checkbox"> 다시 확인</label>
+    <button id="research">공식 사이트 정보 조사</button>
+    <span class="muted" id="research-state">빈칸·선사 확인·추후 안내의 근거를 찾습니다.</span>
   </div>
 
   <!-- 사이트가 300곳 가까이 됩니다. 한 화면에 다 그리면 못 씁니다. -->
@@ -496,6 +517,7 @@ async function save() {
 }
 
 let polling = null;
+let researchPolling = null;
 async function pollCollect() {
   const job = await api('api/collect').then((r) => r.json());
   $('log').textContent = job.log.join('\n');
@@ -507,6 +529,7 @@ async function pollCollect() {
   clearInterval(polling);
   polling = null;
   $('collect').disabled = false;
+  $('research').disabled = false;
   $('collect').textContent = '수집 다시 실행';
   toast(job.code === 0 ? '수집이 끝났습니다' : `수집이 코드 ${job.code}로 끝났습니다`);
   await load();
@@ -514,15 +537,75 @@ async function pollCollect() {
 
 async function collect() {
   $('collect').disabled = true;
+  $('research').disabled = true;
   $('collect').textContent = '수집 중… 0%';
   const res = await api('api/collect', { method: 'POST' });
   if (!res.ok) {
     toast((await res.json()).error ?? '시작하지 못했습니다');
     $('collect').disabled = false;
+    $('research').disabled = false;
     $('collect').textContent = '수집 다시 실행';
     return;
   }
   polling = setInterval(pollCollect, 1500);
+}
+
+async function pollResearch() {
+  const task = await api('api/research').then((r) => r.json());
+  $('log').textContent = task.running
+    ? task.log.join('\n')
+    : (task.report || task.log.join('\n') || '(조사 결과 없음)');
+  $('log').scrollTop = $('log').scrollHeight;
+  if (task.running) {
+    $('research').textContent = `조사 중… ${task.sites.join(', ')}`;
+    $('research-state').textContent = `선사당 최대 ${task.pages}페이지 확인 중`;
+    return;
+  }
+  clearInterval(researchPolling);
+  researchPolling = null;
+  $('research').disabled = false;
+  $('collect').disabled = false;
+  $('research').textContent = '공식 사이트 정보 조사';
+  $('research-state').textContent = task.code === 0
+    ? '조사가 끝났습니다. 아래 보고서를 검토하세요.'
+    : `조사가 코드 ${task.code}로 끝났습니다.`;
+  toast(task.code === 0 ? '선사 정보 조사가 끝났습니다' : `조사가 코드 ${task.code}로 끝났습니다`);
+}
+
+async function research() {
+  const sites = $('research-sites').value.split(',').map((id) => id.trim()).filter(Boolean);
+  const pages = Number($('research-pages').value);
+  $('research').disabled = true;
+  $('collect').disabled = true;
+  $('research').textContent = '조사 시작 중…';
+  const res = await api('api/research', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ sites, pages, force: $('research-force').checked }),
+  });
+  if (!res.ok) {
+    toast((await res.json()).error ?? '조사를 시작하지 못했습니다');
+    $('research').disabled = false;
+    $('collect').disabled = false;
+    $('research').textContent = '공식 사이트 정보 조사';
+    return;
+  }
+  $('research-state').textContent = `${sites.join(', ')} 조사 중`;
+  await pollResearch();
+  if (researchPolling === null && $('research').disabled) researchPolling = setInterval(pollResearch, 1500);
+}
+
+async function resumeResearch() {
+  if (!LOCAL) return;
+  const task = await api('api/research').then((r) => r.json());
+  if (!task.running) return;
+  $('research-sites').value = task.sites.join(',');
+  $('research-pages').value = task.pages;
+  $('research-force').checked = task.force;
+  $('research').disabled = true;
+  $('collect').disabled = true;
+  await pollResearch();
+  if (researchPolling === null) researchPolling = setInterval(pollResearch, 1500);
 }
 
 async function update() {
@@ -718,9 +801,9 @@ function staticMode(reason) {
   $('banner').hidden = false;
   $('banner').className = 'banner warn';
   $('banner').textContent =
-    `읽기 전용입니다 (${reason}). 켜고 끄기·표기 수정·수집 재실행·종료는 로컬에서 run.bat으로 띄웠을 때만 됩니다.` +
+    `읽기 전용입니다 (${reason}). 켜고 끄기·표기 수정·수집 재실행·정보 조사·종료는 로컬에서 run.bat으로 띄웠을 때만 됩니다.` +
     ' 별점과 즐겨찾기는 브라우저에 저장되는 값이라 여기서도 됩니다.';
-  for (const id of ['save', 'update', 'collect', 'restart', 'quit']) $(id).disabled = true;
+  for (const id of ['save', 'update', 'collect', 'research', 'research-sites', 'research-pages', 'research-force', 'restart', 'quit']) $(id).disabled = true;
 }
 
 // 로컬 registry에 boats가 없는 사이트도 실제 수집 결과에는 여러 배가 있을 수 있습니다.
@@ -800,12 +883,14 @@ async function load() {
     staticMode('관리 API가 없습니다');
   }
   await load();
+  await resumeResearch();
 })();
 
 bindPager();
 $('save').addEventListener('click', save);
 $('update').addEventListener('click', update);
 $('collect').addEventListener('click', collect);
+$('research').addEventListener('click', research);
 $('restart').addEventListener('click', restart);
 $('quit').addEventListener('click', quit);
 </script>

@@ -15,6 +15,12 @@ npm run research -- --limit 5 --pages 6
 GitHub Actions의 `research` → Run workflow에서도 실행할 수 있습니다. 결과는 `research`
 아티팩트로 받으며, 확인 이력은 캐시로 다음 실행에 넘깁니다. 정기 실행은 설정하지 않았습니다.
 
+로컬에서 `run.bat`으로 띄운 시스템 관리 화면에는 **공식 사이트 정보 조사** 버튼이 있습니다.
+선사 id를 쉼표로 적고 페이지 수를 고르면 같은 명령을 실행하며, 아래 로그 칸에 최종 보고서까지
+보여줍니다. `다시 확인`을 켜면 기존 확인 이력의 대기 시간을 건너뜁니다. 수집과 조사는 같은
+예약 플랫폼에 동시에 요청하지 않도록 둘 중 하나만 실행됩니다. GitHub Pages는 프로세스를
+실행할 서버가 없어 버튼이 읽기 전용으로 비활성화됩니다.
+
 `--from tmp/monitor.json`으로 로컬 수집 결과도 조사할 수 있습니다.
 `--out tmp/research` 아래 report.json, report.md와 누적 history.json을 씁니다.
 결과에는 대상 항목, 배·날짜 예시, 확인 URL·시각, 근거 문장, 첨부 URL,
