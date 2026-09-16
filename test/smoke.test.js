@@ -126,3 +126,21 @@ test('수집 한 바퀴 — 자리가 나면 알림거리로 잡힌다', async (
     await new Promise((r) => server.close(r));
   }
 });
+
+// 워크플로가 즉시 죽은 적이 있습니다 — "Cannot access 'hasTimeGuide' before initialization".
+// `discover.js`는 최상위에서 바로 명령을 돌려서, 파일 아래쪽의 `const`를 위쪽 명령이
+// 먼저 씁니다(함수 선언과 달리 const는 초기화 전엔 못 씁니다). 조각 테스트는 모듈을
+// import한 뒤에 부르니 이걸 못 잡습니다 — **CLI를 진짜로 돌려야** 잡힙니다.
+//
+// `--limit 0`이라 한 곳도 안 받아옵니다(바깥 네트워크를 안 탑니다).
+test('discover 명령들이 껍데기만 돌려도 죽지 않는다', async () => {
+  const { execFile } = await import('node:child_process');
+  const { promisify } = await import('node:util');
+  const run = promisify(execFile);
+
+  for (const cmd of ['ports', 'times', 'prices']) {
+    const { stdout } = await run('node', ['discover.js', cmd, '--limit', '0'], { encoding: 'utf8' });
+    assert.match(stdout, /곳/, `${cmd}: 요약 줄이 나와야 합니다`);
+    assert.doesNotMatch(stdout, /before initialization/, `${cmd}: 초기화 순서가 깨졌습니다`);
+  }
+});

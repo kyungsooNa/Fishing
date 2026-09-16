@@ -496,6 +496,13 @@ git push -u origin <작업이름>
 git checkout main && git pull origin main
 ```
 
+**`npm test`가 초록이어도 CLI는 따로 돌려보세요.** `discover.js`는 최상위에서 바로 명령을
+돌립니다 — 파일 아래쪽에 `const`로 둔 헬퍼를 위쪽 명령이 먼저 쓰면 "Cannot access X before
+initialization"으로 **즉시** 죽습니다(함수 선언은 통째로 끌어올려지니 안전합니다). 조각
+테스트는 모듈을 import한 뒤에 부르니 이걸 못 잡습니다. 2026-09-16 `times` 워크플로가
+이렇게 0초 만에 실패했습니다. 지금은 `test/smoke.test.js`가 `ports`·`times`·`prices`를
+`--limit 0`으로 진짜 실행해 봅니다(네트워크는 안 탑니다).
+
 **머지는 squash로 합니다.** 브랜치에 커밋이 몇 개든 `main`에는 한 줄로 남습니다.
 어차피 변경 하나에 PR 하나라, `main` 이력이 곧 변경 목록이 됩니다.
 
