@@ -919,12 +919,19 @@ test('전화는 선사 칸에 줄마다 한 번만 단다', () => {
 // ── 정렬 ────────────────────────────────────────────────────────────────────
 // 값이 없는 행이 어디로 가는지가 이 기능의 거의 전부입니다. 승선료는 지금 99%가 비어 있어서
 // (node quality.js) 낮은순으로 올리면 첫 화면이 빈 칸으로 덮입니다.
-function sortFns(sites = {}) {
+function sortFns(sites = {}, { favs = [], rates = {} } = {}) {
   const start = inline.indexOf('const SORTS = {');
   const end = inline.indexOf('// ── 쪽 나누기');
   assert.ok(start >= 0 && end > start, '정렬 함수를 찾지 못했습니다');
   const stub = `const DATA = ${JSON.stringify({ sites })};\nconst $ = () => ({ value: 'default' });\n`;
-  return new Function(`${stub}${inline.slice(start, end)}\nreturn { sortTrips, checkedAt };`)();
+  // 즐겨찾기·별점은 다른 블록에 있습니다. 여기서는 그 둘을 넣어주고 차례만 봅니다.
+  return new Function('FAVS', 'favKey', 'rateOfTrip',
+    `${stub}${inline.slice(start, end)}\nreturn { sortTrips, checkedAt };`,
+  )(
+    new Set(favs),
+    (trip) => `${trip.boat ?? ''}|${trip.port ?? ''}`,
+    (trip) => rates[`${trip.siteId}|${trip.boat}`] ?? 0,
+  );
 }
 
 const t = (over) => ({ date: '2026-09-09', departAt: '05:00', siteId: 'a', boat: '가호', ...over });
@@ -980,6 +987,37 @@ test('합쳐진 줄은 가장 오래된 출처를 기준으로 센다', () => {
     Date.parse('2026-09-01T03:00:00.000Z'),
     '한쪽이 낡았으면 그 줄은 낡은 것입니다',
   );
+});
+
+// 하루에 수백 줄이 나오는데 어느 배가 내가 눈여겨본 배인지는 표를 훑어야 알았습니다.
+// 즐겨찾기와 별점은 그걸 이미 적어둔 값이라 자리 여부보다 앞에 둡니다.
+test('하루 안의 차례는 즐겨찾기 → 별점 → 빈자리 순이다', () => {
+  const { sortTrips } = sortFns({}, {
+    favs: ['별표|항구'],
+    rates: { 'a|넷점': 4, 'a|한점': 1 },
+  });
+  const rows = [
+    t({ boat: '빈자리', status: 'open' }),
+    t({ boat: '한점', status: 'closed' }),
+    t({ boat: '넷점', status: 'closed' }),
+    t({ boat: '별표', port: '항구', status: 'closed' }),
+    t({ boat: '아무것도', status: 'closed' }),
+  ];
+
+  assert.deepEqual(sortTrips(rows, 'default').map((x) => x.boat),
+    ['별표', '넷점', '한점', '빈자리', '아무것도'],
+    '즐겨찾기가 맨 위, 그다음 별점 높은순, 그다음 빈자리');
+});
+
+// 즐겨찾기·별점은 고른 정렬보다 앞입니다. 정렬은 그 뒤를 정합니다.
+test('정렬을 바꿔도 즐겨찾기·별점 줄은 그 날의 앞에 남는다', () => {
+  const { sortTrips } = sortFns({}, { favs: ['별표|항구'], rates: { 'a|셋점': 3 } });
+  const rows = [
+    t({ boat: '많음', seatsLeft: 30, status: 'open' }),
+    t({ boat: '별표', port: '항구', seatsLeft: 1, status: 'open' }),
+    t({ boat: '셋점', seatsLeft: 2, status: 'open' }),
+  ];
+  assert.deepEqual(sortTrips(rows, 'seats-desc').map((x) => x.boat), ['별표', '셋점', '많음']);
 });
 
 test('기본순은 빈자리 안에서 수집이 정렬해 온 순서를 그대로 둔다', () => {
