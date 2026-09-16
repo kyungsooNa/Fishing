@@ -806,6 +806,17 @@ test('표가 옆으로 삐져나가지 않게 긴 이름 칸만 줄이 갈린다
   assert.match(inline, /watchCell\.className = 'watchcell';/);
 });
 
+// 잔여 칸은 숫자 칸이라 nowrap입니다. 확인 문구가 길면("수집 보류 · 직전 4시간 46분 전 확인")
+// 그 칸이 통째로 늘어나 선사 칸이 71px로 눌리고, 전화번호가 그 위로 삐져나와 겹쳐 찍혔습니다.
+test('작은 화면에서 긴 확인 문구가 전화번호를 덮지 않는다', () => {
+  assert.match(html,
+    /\.cell-seats \.freshness \{ max-width: 108px; margin-left: auto;\s*white-space: normal; word-break: keep-all; \}/,
+    '확인 문구는 접히되 폭이 막혀 있어야 합니다');
+  // 폭만 막고 안 접으면 글자가 칸 밖으로 나가고, 접기만 하면 칸이 제일 긴 줄만큼 넓어집니다.
+  assert.match(html, /th, td\.nowrap, td\.num, td\.starcell, td\.watchcell \{ white-space: nowrap; \}/,
+    '숫자 칸 자체는 한 줄로 둡니다 — 잔여석이 갈리면 읽기 나쁩니다');
+});
+
 test('모바일에서는 출조 한 건이 사진형 식별 타일을 둔 카드로 보인다', () => {
   assert.match(html, /@media \(max-width: 720px\)/);
   assert.match(html, /tbody tr\.triprow \{[^}]*display: grid;[^}]*grid-template-areas:/s);

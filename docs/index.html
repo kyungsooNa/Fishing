@@ -274,6 +274,14 @@
     .watchactions { flex-wrap: wrap; }
     .watch { border-radius: 999px; padding: 4px 9px; font-size: 12px; }
     .freshness { font-size: 11px; font-weight: 500; }
+    /* 확인 문구가 길면("수집 보류 · 직전 4시간 46분 전 확인") 잔여 칸이 통째로 그만큼
+       늘어나(nowrap이라 접히지도 않습니다) 선사 칸이 71px로 눌리고, 전화번호가 그 위로
+       삐져나와 겹쳐 찍혔습니다. 숫자는 한 줄로 두고 **확인 문구만** 접습니다. 폭을 막아두는
+       이유는, 접히기만 해서는 칸이 여전히 제일 긴 줄만큼 넓어지기 때문입니다.
+       접는 김에 `word-break: keep-all`을 겁니다 — 한글은 기본값이 글자 단위로 갈려서
+       "4시간"이 "4시 / 간"으로 끊깁니다. 빈칸에서만 갈리게 둡니다. */
+    .cell-seats .freshness { max-width: 108px; margin-left: auto;
+                             white-space: normal; word-break: keep-all; }
     body > .leaflet-control-container { font-size: 13px; }
     .wrap > details:last-child { margin-inline: 14px; }
   }
