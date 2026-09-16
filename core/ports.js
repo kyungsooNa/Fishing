@@ -24,7 +24,12 @@ export async function loadPorts(path = PORTS_PATH) {
 // 앞 글자를 몇 개까지 붙여 뽑았느냐에 따라 같은 '사항'이 "공지사항"으로도 "변경사항"으로도
 // 나옵니다. 그래서 목록과 **같은지**가 아니라 **그 말로 끝나는지**를 봅니다 — 처음에
 // 같은지로 재다가 후보의 절반이 헛것이 됐습니다.
-const NOT_PORT = ['출항', '입항', '귀항', '회항', '운항', '결항', '휴항', '취항', '사항', '조항', '항항'];
+//
+// 항구의 **갈래**를 가리키는 말도 뺍니다(국가어항·지방어항·연안항·무역항). 이건 항구
+// 이름이 아니라 등급인데, 이름으로 남겨두면 "모르는 항구가 같이 적혀 있다"로 읽혀
+// 아래 `pickPort`의 자동 입력을 공연히 막습니다.
+const NOT_PORT = ['출항', '입항', '귀항', '회항', '운항', '결항', '휴항', '취항', '사항', '조항', '항항',
+  '어항', '연안항', '무역항'];
 
 /** 본문에서 주운 "○○항"이 항구 이름으로 보이는지. 값으로 쓸지는 여전히 사람이 정합니다. */
 export function looksLikePort(word) {
@@ -138,6 +143,18 @@ export function regionsFromAddress(text) {
  * 하나뿐이어도 부족합니다 — 조황글의 "오천항 앞바다까지 갑니다"가 출항지가 돼버립니다.
  * 주소의 시·군과 맞아야 근거가 한 곳으로 모인 것입니다.
  */
+/**
+ * 이 이름의 항구를 **어디에 있는 것이든** 알고 있는지. `qualifyPort`는 "이 지역의 그
+ * 항구"를 묻는데, 모르는 이름을 거를 때는 그것만으로 부족합니다 — 목록에 아예 없는
+ * 이름은 다른 지역 것이라서 빠진 게 아니라 우리가 모르는 것이고, 같은 지역일 수도
+ * 있습니다. 회변항이 그랬습니다(`discover.js`의 `pickPort`).
+ */
+export function portNameKnown(name, ports) {
+  const target = String(name ?? '').trim();
+  if (!target) return false;
+  return Object.keys(ports ?? {}).some((key) => splitPortKey(key)?.name === target);
+}
+
 export function qualifyPort(name, regions, ports, { requireRegion = false } = {}) {
   const target = String(name ?? '').trim();
   if (!target) return null;
