@@ -349,8 +349,18 @@ function textCell(site, key) {
 const RATE_KEY = 'fishing:boat-ratings';
 const RATE_MAX = 5;
 
+// 같은 배가 오전·오후로 나뉘어 올라오는 곳이 있습니다 — 오이도 몬스터호는 `몬스터호 (오전배)`,
+// 우리바다호·52fish는 괄호 없이 `우리바다호 오전배`입니다(2026-09-16 수집본에 이 셋뿐입니다).
+// 사람에게는 **한 배**라 즐겨찾기와 별점은 한 번만 매기고 두 줄에 같이 보입니다.
+// **출조 자체는 안 합칩니다** — 출항 시각이 다르면 다른 출조이고, 자리도 따로 셉니다.
+// 낱말은 **끝에 붙고 앞에 빈칸이나 괄호가 있을 때만** 뗍니다. 붙여 쓴 이름(`만선호오전배`)을
+// 건드리지 않으려는 것이고, 떼고 나서 빈 이름이 되면 원래 이름을 그대로 씁니다.
+// 형식이라 두 화면이 같아야 합니다(키가 갈리면 매긴 별점이 안 보입니다).
+const SESSION_TAIL = /[\s(（[]+\s*(?:오전|오후|종일|야간)\s*배?\s*[)）\]]*\s*$/;
+const boatId = (name) => (name ?? '').replace(SESSION_TAIL, '').trim() || (name ?? '');
+
 // 같은 이름의 배가 다른 선사에도 있을 수 있으므로 사이트 id와 배 이름을 함께 씁니다.
-const rateKey = (siteId, boat) => siteId && boat ? `${siteId}|${boat}` : '';
+const rateKey = (siteId, boat) => siteId && boat ? `${siteId}|${boatId(boat)}` : '';
 
 function loadRates() {
   try {
@@ -394,7 +404,8 @@ function lostRates() {
       boat: key.slice(key.indexOf('|') + 1),
       score: rateOf(RATES, key),
     }))
-    .filter(({ siteId, boat }) => !(boat in (OBSERVED[siteId] ?? {})));
+    .filter(({ siteId, boat }) =>
+      !Object.keys(OBSERVED[siteId] ?? {}).some((name) => boatId(name) === boat));
 }
 
 // 옮기기는 지우기와 저장이 한 번에 일어나야 합니다. 중간에 저장이 막히면 점수를 잃습니다.
@@ -419,7 +430,8 @@ function renderLostRates() {
     : '매긴 별점이 모두 현황판에 뜹니다.';
 
   for (const { key, siteId, boat, score } of lost) {
-    const names = Object.keys(OBSERVED[siteId] ?? {}).sort((a, b) => a.localeCompare(b, 'ko'));
+    const names = [...new Set(Object.keys(OBSERVED[siteId] ?? {}).map(boatId))]
+      .sort((a, b) => a.localeCompare(b, 'ko'));
     const tr = document.createElement('tr');
     const site = document.createElement('td');
     site.className = 'id';
@@ -484,7 +496,10 @@ function renderLostRates() {
 // 아우라호처럼 원하는 배를 이름으로 찾아 바로 평가할 수 있어야 합니다.
 function boatRatesCell(site) {
   const td = document.createElement('td');
-  const names = Object.keys(site.boats ?? {}).sort((a, b) => a.localeCompare(b, 'ko'));
+  // 오전배·오후배는 한 배라 한 줄로 묶습니다(별점 키가 하나뿐이라 두 줄로 두면 같은 점수가
+  // 두 번 나옵니다). 이름은 낱말을 뗀 쪽으로 적습니다 — 현황판이 찾는 이름도 그것입니다.
+  const names = [...new Set(Object.keys(site.boats ?? {}).map(boatId))]
+    .sort((a, b) => a.localeCompare(b, 'ko'));
   if (!names.length) {
     td.className = 'muted';
     td.textContent = '배 정보 없음';
@@ -495,7 +510,7 @@ function boatRatesCell(site) {
   // 현황판에 **영원히 안 보입니다** — 두 이름이 같은 배인지는 우리가 알 수 없고, 비슷하다고
   // 합치면 "마성호"와 "뉴마성호"처럼 다른 배까지 한 배가 됩니다. 그래서 합치는 대신
   // 못 읽는 이름에는 별을 아예 안 답니다. 매길 수 있는데 안 보이는 것이 가장 나쁩니다.
-  const shown = new Set(Object.keys(OBSERVED[site.id] ?? {}));
+  const shown = new Set(Object.keys(OBSERVED[site.id] ?? {}).map(boatId));
   for (const boat of names) {
     const key = rateKey(site.id, boat);
     const row = document.createElement('div');
@@ -849,7 +864,7 @@ async function quit() {
 
 // 현황판(index.html)과 똑같은 형식이어야 합니다. 같은 오리진이라 같은 localStorage를 봅니다.
 const FAV_KEY = 'fishing:favorites';
-const favKey = (t) => `${t.boat ?? ''}|${t.port ?? ''}`;
+const favKey = (t) => `${boatId(t.boat)}|${t.port ?? ''}`;
 
 function loadFavs() {
   try { return JSON.parse(localStorage.getItem(FAV_KEY) ?? '[]'); } catch { return []; }
