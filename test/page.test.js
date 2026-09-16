@@ -796,9 +796,23 @@ test('모바일에서는 출조 한 건이 사진형 식별 타일을 둔 카드
 });
 
 test('모바일 필터는 가로 칩이고 선택된 값이 눈에 띈다', () => {
-  assert.match(html, /\.filters \{ position: sticky;[^}]*flex-wrap: nowrap;[^}]*overflow-x: auto;/s);
+  // 검색칸과 필터는 한 덩어리(.controls)로 붙어 위에 남습니다. 따로 두면 검색칸만 밀려납니다.
+  assert.match(html, /\.controls \{ position: sticky;[^}]*top: 55px;/s);
+  assert.match(html, /\.filters \{ flex-wrap: nowrap;[^}]*overflow-x: auto;/s);
   assert.match(html, /\.multi\[data-selected="1"\] summary/);
   assert.match(inline, /control\.dataset\.selected = checked\.length \? '1' : '0';/);
+});
+
+// 배를 이름으로 찾는 것이 제일 자주 하는 일인데 필터 여덟 개 뒤에 같은 모양으로 끼워
+// 두니 있는 줄도 몰랐습니다. 줄을 따로 내주고, 걸러진 상태는 색으로 알립니다.
+test('검색칸은 필터 줄 밖에 따로 있고 눈에 띈다', () => {
+  assert.match(html, /<div class="searchbar">[\s\S]*?<svg class="searchicon"[\s\S]*?id="f-q"[\s\S]*?<\/div>/);
+  assert.doesNotMatch(html, /<div class="filters">[\s\S]*?id="f-q"/,
+    '검색칸이 필터 줄 안에 있으면 다시 묻힙니다');
+  assert.match(html, /input\[type=search\]:not\(:placeholder-shown\) \{ border-color: var\(--accent\)/,
+    '검색어가 들어 있으면 표가 걸러진 상태라 그렇게 보여야 합니다');
+  // 모바일에서 검색칸이 밀려나면 스크롤 중에 못 씁니다.
+  assert.match(html, /@media \(max-width: 720px\)[\s\S]*?\.searchbar \{ margin: 0; padding: 9px 12px 0; \}/);
 });
 
 // ── 플랫폼(예약 사이트 계열) ────────────────────────────────────────────────

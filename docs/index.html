@@ -26,8 +26,21 @@
   h1 { font-size: 20px; margin: 0 0 4px; }
   .sub { color: var(--muted); font-size: 13px; margin-bottom: 18px; }
   .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
-  input[type=search] { padding: 7px 10px; border: 1px solid var(--line); border-radius: 7px;
-                       background: var(--card); color: var(--fg); font: inherit; font-size: 14px; }
+  /* 배를 이름으로 찾는 것이 이 화면에서 제일 자주 하는 일인데, 필터 여덟 개 뒤에 같은
+     모양으로 끼워 두니 있는 줄도 몰랐습니다. 줄을 따로 내주고 크기·아이콘으로 구분합니다. */
+  .searchbar { position: relative; display: flex; margin-bottom: 9px; }
+  .searchicon { position: absolute; top: 50%; left: 13px; width: 17px; height: 17px;
+                transform: translateY(-50%); fill: none; stroke: var(--muted); stroke-width: 1.7;
+                stroke-linecap: round; pointer-events: none; }
+  input[type=search] { flex: 0 1 400px; min-width: 0; padding: 10px 12px 10px 38px;
+                       border: 1px solid var(--line); border-radius: 10px;
+                       background: var(--card); color: var(--fg); font: inherit; font-size: 15px; }
+  input[type=search]:focus { border-color: var(--accent); outline: none;
+                             box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent); }
+  /* 검색어가 들어 있으면 표가 걸러진 상태입니다 — 필터가 켜졌을 때와 같은 색으로 알립니다. */
+  input[type=search]:not(:placeholder-shown) { border-color: var(--accent); background: var(--accent-soft); }
+  input[type=search]:not(:placeholder-shown) + .searchicon,
+  .searchbar:focus-within .searchicon { stroke: var(--accent); }
   .multi { position: relative; margin: 0; color: var(--fg); font-size: 14px; }
   .multi summary { min-width: 118px; padding: 7px 28px 7px 10px; border: 1px solid var(--line);
                    border-radius: 7px; background: var(--card); cursor: pointer; list-style: none; }
@@ -178,16 +191,23 @@
     #monitor-status { padding-top: 0; padding-bottom: 10px; }
     #watch-panel { margin: 0 14px 10px; }
 
-    .filters { position: sticky; z-index: 1050; top: 55px; flex-wrap: nowrap; gap: 7px;
+    /* 검색칸과 필터는 한 덩어리로 붙여 둡니다. 따로 두면 검색칸만 스크롤에 밀려 사라집니다.
+       아래 sticky 값들이 이 덩어리 높이에 얹혀 있습니다 — 여기를 고치면 .multi-menu와
+       tr.dayhead의 top도 같이 재서 고치세요(제목 55px + 이 덩어리 높이). */
+    .controls { position: sticky; z-index: 1050; top: 55px;
+                border-block: 1px solid var(--line); background: var(--card); }
+    .searchbar { margin: 0; padding: 9px 12px 0; }
+    .searchicon { left: 25px; }
+    .filters { flex-wrap: nowrap; gap: 7px;
                margin: 0; padding: 9px 12px 10px; overflow-x: auto; overscroll-behavior-x: contain;
-               border-block: 1px solid var(--line); background: var(--card); scrollbar-width: none; }
+               background: var(--card); scrollbar-width: none; }
     .filters::-webkit-scrollbar { display: none; }
     .multi { flex: 0 0 auto; }
     .multi summary, label.check { min-width: auto; border-radius: 999px; white-space: nowrap; }
     .multi summary { padding: 6px 27px 6px 11px; }
-    .multi-menu { position: fixed; z-index: 2000; top: 108px; right: 12px; left: 12px;
+    .multi-menu { position: fixed; z-index: 2000; top: 161px; right: 12px; left: 12px;
                   max-height: min(55vh, 380px); border-radius: 14px; }
-    input[type=search] { flex: 0 0 145px; width: 145px; border-radius: 999px; padding-block: 6px; }
+    input[type=search] { flex: 1 1 auto; border-radius: 999px; padding: 8px 14px 8px 36px; }
     label.check { flex: 0 0 auto; padding: 6px 10px; }
 
     .views { margin: 10px 12px 8px; }
@@ -214,7 +234,7 @@
                        border: 1px solid var(--line); border-radius: 13px; background: var(--card);
                        box-shadow: 0 2px 8px rgba(18, 61, 83, .06); }
     tbody tr.triprow td { display: block; min-width: 0; padding: 0; border: 0; font-size: 13px; }
-    tr.dayhead { display: block; position: sticky; z-index: 1000; top: 108px; }
+    tr.dayhead { display: block; position: sticky; z-index: 1000; top: 161px; }
     tr.dayhead td { display: block; margin: 0 -9px 8px; padding: 9px 13px; border-top-width: 2px;
                     font-size: 14px; box-shadow: 0 2px 5px rgba(18, 61, 83, .05); }
     .dayhead small { display: none; }
@@ -323,6 +343,13 @@
   <details id="watch-panel" hidden><summary>감시 중인 출조 관리</summary><div id="watch-list" class="status"></div></details>
   <details id="alert-panel" hidden><summary>내가 받은 알림</summary><div id="alert-list" class="status"></div></details>
 
+  <div class="controls">
+    <div class="searchbar">
+      <svg class="searchicon" viewBox="0 0 16 16" aria-hidden="true">
+        <circle cx="6.8" cy="6.8" r="4.3"></circle><path d="M10 10 14.2 14.2"></path>
+      </svg>
+      <input type="search" id="f-q" placeholder="배 이름으로 찾기">
+    </div>
   <div class="filters">
     <details class="multi" id="f-platform" data-label="플랫폼" data-all="전체 플랫폼"><summary>전체 플랫폼</summary><div class="multi-menu"></div></details>
     <details class="multi" id="f-site" data-label="선사" data-all="전체 선사"><summary>전체 선사</summary><div class="multi-menu"></div></details>
@@ -352,10 +379,10 @@
       <option value="rate-desc">내 별점 높은순</option>
       <option value="checked-desc">최신 확인순</option>
     </select>
-    <input type="search" id="f-q" placeholder="배 이름 검색">
     <label class="check"><input type="checkbox" id="f-open" checked> 빈자리만</label>
     <label class="check"><input type="checkbox" id="f-fav"> <span id="f-fav-label">★ 즐겨찾기만</span></label>
     <label class="check"><input type="checkbox" id="f-rated"> <span id="f-rated-label">★ 별점 준 배만</span></label>
+  </div>
   </div>
 
   <div class="views">
