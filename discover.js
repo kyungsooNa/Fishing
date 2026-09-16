@@ -671,6 +671,8 @@ export function timeHints(html, limit = 5) {
  *
  * 이미 timeGuide가 있는 곳은 뺍니다. 배별로 적어둔 곳(`boats`)도 마찬가지입니다.
  */
+const hasTimeGuide = (conf) => Boolean(conf?.timeGuide || conf?.timeGuides?.length);
+
 export function timeTargets(registry, quality) {
   const byId = new Map(registry.map((site) => [site.id, site]));
   const gaps = quality?.time;
@@ -685,7 +687,9 @@ export function timeTargets(registry, quality) {
   return rows
     .map((row) => ({ ...row, site: byId.get(row.id) }))
     .filter(({ site }) => site && site.enabled !== false && site.url)
-    .filter(({ site }) => !site.timeGuide && !Object.values(site.boats ?? {}).some((boat) => boat?.timeGuide))
+    // 배별로 적었든 사이트 공통이든, 한 줄(`timeGuide`)이든 여러 줄(`timeGuides`)이든
+    // 이미 적어둔 곳은 다시 읽지 않습니다.
+    .filter(({ site }) => !hasTimeGuide(site) && !Object.values(site.boats ?? {}).some(hasTimeGuide))
     .map(({ site, ...row }) => ({ ...row, url: site.url, name: site.name ?? site.id }))
     .sort((a, b) => b.missing - a.missing || a.id.localeCompare(b.id));
 }
