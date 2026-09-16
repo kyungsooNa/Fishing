@@ -212,10 +212,14 @@
             padding: 0; border-radius: 50%; background: color-mix(in srgb, var(--card) 88%, transparent);
             box-shadow: 0 1px 4px rgba(0,0,0,.14); font-size: 16px; }
     .cell-date, .cell-session { display: none !important; }
-    .cell-boat { grid-area: boat; overflow: hidden; color: var(--fg); font-size: 15px !important;
-                 font-weight: 800; text-overflow: ellipsis; white-space: nowrap; }
-    /* 선사 이름 뒤에 출처·별점·전화가 붙습니다. 한 줄로 자르면 뒤쪽 별점이 통째로
-       사라지므로 작은 화면에서는 이 칸만 여러 줄을 허용합니다. */
+    /* 배 이름 뒤에 별점이 붙습니다. 이름만 잘리고 별은 남아야 해서, 자르는 것은
+       이름 쪽에 걸고 별은 줄지 않게 둡니다(한 칸을 통째로 자르면 별이 먼저 사라집니다). */
+    .cell-boat { grid-area: boat; display: flex; align-items: baseline; gap: 4px; overflow: hidden;
+                 color: var(--fg); font-size: 15px !important; font-weight: 800; }
+    .cell-boat .boatname { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .cell-boat .rate { flex: 0 0 auto; font-weight: 600; }
+    /* 선사 이름 뒤에 출처·전화가 붙습니다. 한 줄로 자르면 뒤쪽이 통째로 사라지므로
+       작은 화면에서는 이 칸만 여러 줄을 허용합니다. */
     .cell-site { grid-area: site; overflow: visible; color: var(--accent); white-space: normal; }
     /* 전화는 작은 화면에서 가장 쓸모 있는 값입니다(눌러서 바로 겁니다). */
     .cell-site .phone { color: var(--muted); font-size: 12px; }
@@ -1260,13 +1264,20 @@ function render(all = sortTrips(visibleTrips())) {
             td.append(seat);
           }
         });
-        // 별점은 출처가 아니라 배의 평가이므로, 합쳐진 줄에도 한 번만 붙입니다.
-        const badge = rateBadge(t);
-        if (badge) td.append(badge);
         // 합친 줄이라도 번호는 하나입니다 — 이름·출항지·전화가 셋 다 같아야 합치니까요
         // (core/merge.js). 그래서 출처마다가 아니라 줄마다 한 번만 답니다.
         const phone = phoneLink(t.phone);
         if (phone) td.append(phone);
+      } else if (i === 4) {
+        // 별점은 **배**에 매긴 값이라 배 이름 옆에 답니다. 선사 칸에 달아뒀을 때는 매긴
+        // 사람이 자기 별점을 못 찾았습니다 — 표에서 배와 선사는 다른 칸이고, 별을 준
+        // 이름은 배 이름입니다. 출처가 아니라 배의 평가이므로 합쳐진 줄에도 한 번만 붙습니다.
+        const name = document.createElement('span');
+        name.className = 'boatname';
+        name.textContent = v;
+        td.append(name);
+        const badge = rateBadge(t);
+        if (badge) td.append(badge);
       } else {
         td.textContent = v;
       }
