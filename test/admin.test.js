@@ -126,6 +126,7 @@ test('X-Admin 헤더가 없으면 전부 403', async () => {
     for (const [path, opt] of [
       ['/api/sites', {}],
       ['/api/collect', { method: 'POST' }],
+      ['/api/research', { method: 'POST', body: '{"sites":["aaa"],"pages":8}' }],
       ['/api/collect/aaa', { method: 'POST' }],
       ['/api/restart', { method: 'POST' }],
       ['/api/shutdown', { method: 'POST' }],
@@ -186,6 +187,89 @@ test('수집은 한 번에 하나만 돈다', async () => {
   }, { collectArgs: [script] });
 });
 
+test('관리 화면에서 선사를 골라 공식 사이트 조사를 띄우고 보고서를 읽는다', async () => {
+  const dir = await mkdtemp(join(tmpdir(), 'admin-research-'));
+  const script = join(dir, 'fake-research.js');
+  const report = join(dir, 'report.md');
+  await writeFile(script, 'console.log(JSON.stringify(process.argv.slice(2)))');
+  await writeFile(report, '# 조사 결과\n\n- 출항 05시');
+
+  await withServer(async ({ base }) => {
+    const start = await admin(base, '/api/research', {
+      method: 'POST',
+      body: JSON.stringify({ sites: ['aaa', 'bbb'], pages: 8, force: true }),
+    });
+    assert.equal(start.status, 202);
+
+    let task;
+    for (let i = 0; i < 100; i++) {
+      task = await admin(base, '/api/research').then((r) => r.json());
+      if (!task.running) break;
+      await new Promise((r) => setTimeout(r, 20));
+    }
+    assert.equal(task.code, 0);
+    assert.match(task.log.join('\n'), /"--sites","aaa,bbb","--pages","8","--force"/);
+    assert.match(task.report, /출항 05시/);
+  }, { researchArgs: [script], researchReport: report });
+});
+
+test('정보 조사는 등록 id와 페이지 상한을 검사한다', async () => {
+  await withServer(async ({ base }) => {
+    assert.equal((await admin(base, '/api/research', {
+      method: 'POST', body: JSON.stringify({ sites: ['zzz'], pages: 8 }),
+    })).status, 400);
+    assert.equal((await admin(base, '/api/research', {
+      method: 'POST', body: JSON.stringify({ sites: ['aaa'], pages: 21 }),
+    })).status, 400);
+  });
+});
+
+test('수집과 공식 사이트 조사는 동시에 실행하지 않는다', async () => {
+  const dir = await mkdtemp(join(tmpdir(), 'admin-exclusive-jobs-'));
+  const script = join(dir, 'slow.js');
+  await writeFile(script, 'setTimeout(() => {}, 3000)');
+
+  await withServer(async ({ base }) => {
+    assert.equal((await admin(base, '/api/collect', { method: 'POST' })).status, 202);
+    assert.equal((await admin(base, '/api/research', {
+      method: 'POST', body: JSON.stringify({ sites: ['aaa'], pages: 8 }),
+    })).status, 409);
+  }, { collectArgs: [script], researchArgs: [script] });
+
+  await withServer(async ({ base }) => {
+    assert.equal((await admin(base, '/api/research', {
+      method: 'POST', body: JSON.stringify({ sites: ['aaa'], pages: 8 }),
+    })).status, 202);
+    assert.equal((await admin(base, '/api/collect', { method: 'POST' })).status, 409);
+  }, { collectArgs: [script], researchArgs: [script] });
+});
+
+test('공식 사이트 조사 동안 로컬 자동 수집을 멈췄다가 다시 시작한다', async () => {
+  const dir = await mkdtemp(join(tmpdir(), 'admin-research-monitor-'));
+  const script = join(dir, 'research.js');
+  await writeFile(script, 'console.log("조사 완료")');
+  let stopped = 0;
+  let started = 0;
+  const monitor = {
+    status: () => ({ running: false }),
+    stop: async () => { stopped += 1; },
+    start: () => { started += 1; },
+  };
+
+  await withServer(async ({ base }) => {
+    assert.equal((await admin(base, '/api/research', {
+      method: 'POST', body: JSON.stringify({ sites: ['aaa'], pages: 8 }),
+    })).status, 202);
+    for (let i = 0; i < 100; i++) {
+      const task = await admin(base, '/api/research').then((r) => r.json());
+      if (!task.running) break;
+      await new Promise((r) => setTimeout(r, 20));
+    }
+    assert.equal(stopped, 1);
+    assert.equal(started, 1);
+  }, { researchArgs: [script], monitor });
+});
+
 test('관리 화면 스크립트에 문법 오류가 없고, 쓰는 요소가 다 있다', async () => {
   const html = await readFile('docs/admin.html', 'utf8');
   const inline = html.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
@@ -196,6 +280,8 @@ test('관리 화면 스크립트에 문법 오류가 없고, 쓰는 요소가 �
   const missing = [...new Set(used)].filter((id) => !html.includes(`id="${id}"`));
   assert.deepEqual(missing, [], 'id가 바뀌면 그 부분이 조용히 안 돕니다');
   assert.match(inline, /job\.progress\?\.percent/, '수집 중에는 버튼에 진행률을 보여줍니다');
+  assert.match(html, /id="research-sites"[\s\S]*?id="research-pages"[\s\S]*?id="research"/,
+    '공식 사이트 조사 대상과 페이지 수를 고르는 버튼이 있어야 합니다');
 });
 
 test('관리 화면은 현황판과 한눈에 구분되는 관리 전용 머리글을 쓴다', async () => {

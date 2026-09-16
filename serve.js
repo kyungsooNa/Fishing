@@ -147,6 +147,8 @@ export function createApp({
   root = 'docs',
   registry = 'sites/registry.json',
   collectArgs = ['collect.js'],
+  researchArgs = ['research.js'],
+  researchReport = 'tmp/research/report.md',
   // 최신화에 쓸 명령. 테스트에서 갈아끼웁니다.
   updateCmd = { file: 'git', args: ['pull', '--ff-only'] },
   revisionCmd = { file: 'git', args: ['rev-parse', 'HEAD'] },
@@ -162,8 +164,10 @@ export function createApp({
   restartDelayMs = 100,
   monitor = null,
 } = {}) {
-  // 수집 작업은 한 번에 하나만. 로그는 화면에서 보려고 들고 있습니다.
+  // 수집과 공식 사이트 조사는 동시에 돌리지 않습니다. 별도 프로세스라 fetcher의 호스트당
+  // 요청 간격을 서로 모르므로 같이 돌리면 같은 예약 플랫폼을 필요 이상으로 두드립니다.
   let job = null;
+  let researchJob = null;
 
   // 명령 하나를 돌리고 출력과 종료 코드를 돌려줍니다.
   const run = ({ file, args }) => new Promise((resolve) => {
@@ -247,6 +251,7 @@ export function createApp({
     }
 
     if (path === '/api/collect' && req.method === 'POST') {
+      if (researchJob?.running) return json(res, 409, { error: '선사 정보 조사 중입니다' });
       if (monitor) {
         monitor.requestFull();
         return json(res, 202, { started: true });
@@ -285,6 +290,63 @@ export function createApp({
     if (path === '/api/collect' && req.method === 'GET') {
       if (monitor) return json(res, 200, monitor.status());
       return json(res, 200, job ?? { running: false, log: [], code: null, startedAt: null, progress: null });
+    }
+
+    if (path === '/api/research' && req.method === 'POST') {
+      if (researchJob?.running) return json(res, 409, { error: '이미 조사 중입니다' });
+      if (job?.running || monitor?.status?.().running) return json(res, 409, { error: '수집이 끝난 뒤 조사하세요' });
+      const body = await readJsonBody(req);
+      const rawSites = Array.isArray(body.sites) ? body.sites : String(body.sites ?? '').split(',');
+      const sites = [...new Set(rawSites.map((id) => String(id).trim()).filter(Boolean))];
+      const pages = Number(body.pages ?? 8);
+      if (!sites.length || sites.length > 50 || sites.some((id) => !/^[\w-]+$/.test(id))) {
+        return json(res, 400, { error: '선사 id를 1~50곳 입력하세요' });
+      }
+      if (!Number.isInteger(pages) || pages < 1 || pages > 20) {
+        return json(res, 400, { error: '페이지 수는 1~20이어야 합니다' });
+      }
+      const reg = await readRegistry();
+      const known = new Set(reg.sites.map((site) => site.id));
+      const unknown = sites.filter((id) => !known.has(id));
+      if (unknown.length) return json(res, 400, { error: `등록되지 않은 선사: ${unknown.join(', ')}` });
+
+      const args = [...researchArgs, '--sites', sites.join(','), '--pages', String(pages)];
+      if (body.force === true) args.push('--force');
+      researchJob = {
+        running: true, startedAt: new Date().toISOString(), sites, pages,
+        force: body.force === true, log: [], report: null, code: null,
+      };
+      const current = researchJob;
+      if (monitor) await monitor.stop();
+      const child = spawn(process.execPath, args, { env: process.env, stdio: ['ignore', 'pipe', 'pipe'] });
+      const push = (buf) => {
+        for (const line of String(buf).split('\n')) if (line.trim()) current.log.push(line);
+        if (current.log.length > 500) current.log.splice(0, current.log.length - 500);
+      };
+      child.stdout.on('data', push);
+      child.stderr.on('data', push);
+      let finished = false;
+      const finish = async (code) => {
+        if (finished) return;
+        finished = true;
+        current.code = code;
+        current.report = await readFile(researchReport, 'utf8').catch(() => null);
+        current.running = false;
+        monitor?.start();
+      };
+      child.on('error', (err) => {
+        push(`실행 실패: ${err.message}`);
+        void finish(-1);
+      });
+      child.on('close', (code) => { void finish(code); });
+      return json(res, 202, { started: true, sites, pages });
+    }
+
+    if (path === '/api/research' && req.method === 'GET') {
+      return json(res, 200, researchJob ?? {
+        running: false, startedAt: null, sites: [], pages: null, force: false,
+        log: [], report: null, code: null,
+      });
     }
 
     if (path === '/api/update' && req.method === 'POST') {
