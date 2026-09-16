@@ -2,7 +2,7 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { loadRegistry } from './core/runner.js';
 import { fetchHtml, closeBrowser } from './core/fetcher.js';
-import { researchTargets, dueForResearch, researchSite, researchMarkdown } from './core/research.js';
+import { researchTargets, dueForResearch, researchSite, researchMarkdown, researchProposals } from './core/research.js';
 
 const args = process.argv.slice(2);
 const option = (name, fallback) => args.includes(name) ? args[args.indexOf(name) + 1] : fallback;
@@ -35,8 +35,12 @@ if (args.includes('--list')) {
       // 중간 종료되어도 이미 확인한 선사를 잃지 않습니다.
       await writeFile(`${out}/history.json`, JSON.stringify(history, null, 2) + '\n');
       await writeFile(`${out}/report.json`, JSON.stringify(results, null, 2) + '\n');
-      await writeFile(`${out}/report.md`, researchMarkdown(results));
-      console.log(`${target.id}: ${result.status} · 근거 ${result.evidence.length} · 첨부 ${result.media.length} · 페이지 ${result.pages.length}`);
+      // 근거만 쌓아두면 읽는 사람이 매번 같은 판단을 다시 합니다. 붙일 초안과 막는 이유까지 냅니다.
+      const proposals = researchProposals(results, registry);
+      await writeFile(`${out}/proposals.json`, JSON.stringify(proposals, null, 2) + '\n');
+      await writeFile(`${out}/report.md`, researchMarkdown(results, proposals));
+      const ready = proposals.filter(p => !p.missing.length).length;
+      console.log(`${target.id}: ${result.status} · 근거 ${result.evidence.length} · 첨부 ${result.media.length} · 페이지 ${result.pages.length} · 반영 후보 ${proposals.length}(막는 것 없음 ${ready})`);
     }
     if (!due.length) console.log('재확인 대기 중입니다. 기존 history.json을 보거나 --force로 다시 조사하세요.');
   } finally { await closeBrowser(); }
