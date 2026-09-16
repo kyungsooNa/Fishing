@@ -477,10 +477,15 @@ test('지도에서 빠진 출조는 몇 건인지 힌트에 적는다', () => {
 });
 
 // 별점은 현황판에서 읽기만 합니다. 이 블록도 localStorage·document만 가짜로 넣으면 돕니다.
+// 배 이름을 줄이는 boatId는 즐겨찾기 쪽에 있습니다. 테스트가 정규식을 따로 쓰면 어긋나므로
+// 화면의 그 줄을 그대로 떼어 같이 넣습니다.
+const boatIdSrc = inline.match(/const SESSION_TAIL = [^\n]*\nconst boatId = [^\n]*\n/)?.[0] ?? '';
+
 function rateModule(saved, trips = []) {
   const start = inline.indexOf('// ── 별점 ──');
   const end = inline.indexOf('// ── 별점 끝 ──');
   assert.ok(start >= 0 && end > start, '별점 블록 표시를 찾지 못했습니다');
+  assert.ok(boatIdSrc, 'boatId를 찾지 못했습니다');
 
   const store = { value: saved, blocked: false };
   const localStorage = {
@@ -496,7 +501,7 @@ function rateModule(saved, trips = []) {
   const checks = { 'f-rated': { checked: false }, 'f-rated-label': { textContent: '' } };
   let refreshed = 0;
   const module = new Function('localStorage', 'document', 'DATA', 'ROW_BUTTONS', '$', 'refresh',
-    `${inline.slice(start, end)}\nreturn { getRates: () => RATES, rateKey, rateOf, rateStars, rateForTrip,
+    `${boatIdSrc}${inline.slice(start, end)}\nreturn { getRates: () => RATES, rateKey, rateOf, rateStars, rateForTrip, boatId,
        rateOfTrip, ratedCount, ratedLabel, ratedEmptyMessage, clearRateCache,
        paintRate, applyRate, saveRates };`,
   )(localStorage, document, DATA, ROW_BUTTONS, (id) => checks[id], () => { refreshed += 1; });
@@ -543,6 +548,24 @@ test('매긴 배에만 별점을 붙이고 합친 출처의 점수도 찾는다'
 
   const merged = { siteId: 'primary', boat: '블랙펄호', sources: [{ siteId: 'primary' }, { siteId: 'other' }] };
   assert.equal(m.rateForTrip(merged), 3, '합쳐진 줄은 어느 출처에서 매겼든 배 별점을 찾아야 합니다');
+});
+
+// 오이도 몬스터호는 "(오전배)"/"(오후배)", 우리바다호·52fish는 괄호 없이 "오전배"로 올라옵니다.
+// 사람에게는 한 배라, 별점과 즐겨찾기는 한 번만 매기고 두 줄에 같이 보여야 합니다.
+test('오전배·오후배는 한 배로 보고 별점을 나눠 쓴다', () => {
+  const m = rateModule(JSON.stringify({ 'a|몬스터호': 4 }));
+
+  assert.equal(m.boatId('몬스터호 (오전배)'), '몬스터호');
+  assert.equal(m.boatId('우리바다호 오후배'), '우리바다호');
+  assert.equal(m.boatId('52fish 오전배'), '52fish');
+  // 붙여 쓴 이름과 낱말 자체는 건드리지 않습니다 — 떼면 빈 이름이 되거나 다른 배가 됩니다.
+  assert.equal(m.boatId('만선호오전배'), '만선호오전배');
+  assert.equal(m.boatId('오전배'), '오전배');
+  assert.equal(m.boatId('종일호'), '종일호', '배 이름에 든 낱말을 떼면 안 됩니다');
+
+  for (const boat of ['몬스터호 (오전배)', '몬스터호 (오후배)', '몬스터호']) {
+    assert.equal(m.rateOfTrip({ siteId: 'a', boat }), 4, `${boat}가 같은 별점을 봐야 합니다`);
+  }
 });
 
 // 표에서 매긴 점수는 저장까지 돼야 다음에 열 때도 남습니다. 저장이 막혔는데 화면만

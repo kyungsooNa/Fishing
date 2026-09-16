@@ -597,10 +597,26 @@ async function refreshSite(siteId, button) {
 // 브라우저에만 저장합니다. 서버가 없으니 기기마다 따로 남습니다.
 // 배 이름만으로는 안 됩니다 — 다른 지역에 같은 이름의 배가 있어서, 출항지까지 묶습니다.
 const FAV_KEY = 'fishing:favorites';
-const favKey = (t) => `${t.boat ?? ''}|${t.port ?? ''}`;
+// 같은 배가 오전·오후로 나뉘어 올라오는 곳이 있습니다 — 오이도 몬스터호는 `몬스터호 (오전배)`,
+// 우리바다호·52fish는 괄호 없이 `우리바다호 오전배`입니다(2026-09-16 수집본에 이 셋뿐입니다).
+// 사람에게는 **한 배**라 즐겨찾기와 별점은 한 번만 매기고 두 줄에 같이 보입니다.
+// **출조 자체는 안 합칩니다** — 출항 시각이 다르면 다른 출조이고, 자리도 따로 셉니다.
+// 낱말은 **끝에 붙고 앞에 빈칸이나 괄호가 있을 때만** 뗍니다. 붙여 쓴 이름(`만선호오전배`)을
+// 건드리지 않으려는 것이고, 떼고 나서 빈 이름이 되면 원래 이름을 그대로 씁니다.
+// 형식이라 두 화면이 같아야 합니다(키가 갈리면 매긴 별점이 안 보입니다).
+const SESSION_TAIL = /[\s(（[]+\s*(?:오전|오후|종일|야간)\s*배?\s*[)）\]]*\s*$/;
+const boatId = (name) => (name ?? '').replace(SESSION_TAIL, '').trim() || (name ?? '');
+const favKey = (t) => `${boatId(t.boat)}|${t.port ?? ''}`;
 
 function loadFavs() {
-  try { return new Set(JSON.parse(localStorage.getItem(FAV_KEY) ?? '[]')); } catch { return new Set(); }
+  try {
+    // 오전·오후를 나눠 담아둔 옛 즐겨찾기는 한 배로 합쳐 읽습니다(저장은 다음에 누를 때).
+    const saved = JSON.parse(localStorage.getItem(FAV_KEY) ?? '[]');
+    return new Set(saved.map((key) => {
+      const cut = key.indexOf('|');
+      return cut < 0 ? key : `${boatId(key.slice(0, cut))}|${key.slice(cut + 1)}`;
+    }));
+  } catch { return new Set(); }
 }
 function saveFavs() {
   try { localStorage.setItem(FAV_KEY, JSON.stringify([...FAVS])); } catch { /* 저장이 막혀도 이번 세션은 됩니다 */ }
@@ -629,7 +645,7 @@ function migrateFavs(trips) {
   for (const t of trips) {
     const key = favKey(t);
     live.add(key);
-    const boat = t.boat ?? '';
+    const boat = boatId(t.boat);
     if (!byBoat.has(boat)) byBoat.set(boat, new Set());
     byBoat.get(boat).add(key);
   }
@@ -666,7 +682,8 @@ function emptyMessage() {
 // 저장 형식(키·1~5점)은 두 화면이 같아야 합니다.
 const RATE_KEY = 'fishing:boat-ratings';
 const RATE_MAX = 5;
-const rateKey = (siteId, boat) => siteId && boat ? `${siteId}|${boat}` : '';
+// 배 이름은 boatId로 줄여 씁니다 — 오전배·오후배가 한 별점을 나눠 씁니다(위 SESSION_TAIL).
+const rateKey = (siteId, boat) => siteId && boat ? `${siteId}|${boatId(boat)}` : '';
 
 function loadRates() {
   try {

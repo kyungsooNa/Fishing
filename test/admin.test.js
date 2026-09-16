@@ -334,7 +334,8 @@ test('관리 화면: 현황판이 못 읽는 배 이름에는 별을 달지 않�
 
   assert.match(inline, /OBSERVED = boatsFromTrips\(/,
     '수집이 읽은 이름을 알아야 매길 수 있는 이름인지 가릅니다');
-  assert.match(inline, /const shown = new Set\(Object\.keys\(OBSERVED\[site\.id\] \?\? \{\}\)\);/);
+  assert.match(inline, /const shown = new Set\(Object\.keys\(OBSERVED\[site\.id\] \?\? \{\}\)\.map\(boatId\)\);/);
+  assert.match(inline, /if \(!shown\.has\(boatId\(boat\)\)\) \{|if \(!shown\.has\(boat\)\) \{/);
   assert.match(inline, /if \(!shown\.has\(boat\)\) \{/, '못 읽는 이름에도 별이 달립니다');
 
   // 못 받은 것과 이름이 다른 것은 고칠 곳이 달라서 다르게 적습니다.
@@ -343,6 +344,18 @@ test('관리 화면: 현황판이 못 읽는 배 이름에는 별을 달지 않�
 
 // 규칙이 생기기 전에 registry 표기로 매긴 별점은 현황판에 영영 안 뜹니다. 저장된 점수는
 // 멀쩡하니 버리지 않고 옮길 수 있어야 합니다 — 안 그러면 "별점이 안 보인다"가 그대로 남습니다.
+// 오전배·오후배를 한 배로 보는 규칙은 저장 형식의 일부입니다. 두 화면이 갈리면 관리
+// 화면에서 매긴 별점을 현황판이 못 찾습니다.
+test('관리 화면과 현황판이 배 이름을 같은 규칙으로 줄인다', async () => {
+  const [admin, board] = await Promise.all([
+    readFile('docs/admin.html', 'utf8'),
+    readFile('docs/index.html', 'utf8'),
+  ]);
+  const pick = (html) => html.match(/const SESSION_TAIL = [^\n]*\nconst boatId = [^\n]*/)?.[0];
+  assert.ok(pick(admin), '관리 화면에 boatId가 없습니다');
+  assert.equal(pick(admin), pick(board), '두 화면의 규칙이 갈렸습니다');
+});
+
 test('관리 화면: 현황판에 안 보이는 별점을 모아 옮기거나 지운다', async () => {
   const html = await readFile('docs/admin.html', 'utf8');
   const inline = html.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
@@ -351,8 +364,8 @@ test('관리 화면: 현황판에 안 보이는 별점을 모아 옮기거나 �
     assert.ok(html.includes(`id="${id}"`), `되살리기 칸이 없습니다: ${id}`);
   }
   assert.match(inline, /function lostRates\(\)/);
-  assert.match(inline, /!\(boat in \(OBSERVED\[siteId\] \?\? \{\}\)\)/,
-    '수집 이름에 없는 키만 골라야 합니다');
+  assert.match(inline, /!Object\.keys\(OBSERVED\[siteId\] \?\? \{\}\)\.some\(\(name\) => boatId\(name\) === boat\)/,
+    '수집 이름에 없는 키만 골라야 합니다(오전배·오후배는 줄인 이름으로 맞춥니다)');
 
   // 옮기기는 지우기와 저장이 한 번에. 저장이 막히면 점수를 잃습니다.
   const move = inline.match(/function moveRate\([\s\S]*?\n\}/)?.[0] ?? '';
