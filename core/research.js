@@ -2,6 +2,7 @@
 import * as cheerio from 'cheerio';
 import { createHash } from 'node:crypto';
 import { kstDate } from './when.js';
+import { toTime, toTimeRange } from './schema.js';
 import { priceHints } from '../discover.js';
 
 export const FIELDS = ['departAt', 'returnAt', 'port', 'phone', 'species', 'price', 'seatsLeft', 'seatsTotal'];
@@ -152,12 +153,107 @@ export async function researchSite(target, { readPage, maxPages = 6, now = Date.
   return result;
 }
 
-export function researchMarkdown(results) {
+export function researchMarkdown(results, proposals = []) {
   const out = ['# 선사 정보 조사 결과', '', '후보는 아직 확정값이 아닙니다. 이미지·첨부파일과 적용 범위를 확인한 뒤 반영하세요.', ''];
+  if (proposals.length) {
+    const ready = proposals.filter((p) => !p.missing.length);
+    out.push('## registry 반영 후보', '',
+      `${proposals.length}건 · 그대로 붙일 수 있는 것 ${ready.length}건. **값을 정해주지 않습니다** —`,
+      '막는 것이 없는 줄만 초안 그대로 쓰고, 나머지는 막힌 이유를 먼저 해결하세요.', '');
+    for (const p of proposals) {
+      const value = p.draft.timeGuide.departThrough
+        ? `${p.draft.timeGuide[p.field]}~${p.draft.timeGuide.departThrough}`
+        : p.draft.timeGuide[p.field];
+      out.push(`- ${p.site} · ${p.path}.${p.field} ${value} — ${p.missing.length ? '막힘: ' + p.missing.join(' · ') : '**막는 것 없음**'}`);
+      if (p.candidates.length > 1) out.push(`  - 다른 후보: ${p.candidates.join(', ')}`);
+      out.push(`  - 근거: ${p.draft.timeGuide.note} — ${p.draft.timeGuide.source}`);
+      out.push('  - 초안: ' + JSON.stringify(p.draft));
+    }
+    out.push('');
+  }
   for (const r of results) {
     out.push(`## ${r.name} (${r.id}) — ${r.status}`, '', `확인: ${r.checkedAt}`, '', ...r.issues.map(i => `- ${i.field}: ${i.reason} (${i.count}건)`), '');
     for (const e of r.evidence) out.push(`- ${e.kind}: ${e.quote.replace(/[\r\n]/g, ' ')} — ${e.source} (${e.pageTitle || '제목 없음'})`);
     out.push('', '확인한 페이지:', ...r.pages.map(p => `- ${p.status}: ${p.url}${p.error ? ' — ' + p.error : ''}`), '', '이미지·첨부파일 확인 대기:', ...r.media.map(m => `- ${m.title || '첨부자료'}: ${m.url} (게시물: ${m.source})`), '', '요청 상한으로 미방문:', ...r.remaining.map(p => `- ${p.title}: ${p.url}`), '');
   }
   return out.join('\n');
+}
+
+// 조사한 근거를 registry에 붙일 **초안**으로 정리합니다. 값을 정해주지는 않습니다 —
+// 무엇이 후보이고 **무엇 때문에 아직 못 붙이는지**를 같이 적는 것이 이 함수의 일입니다.
+// 막는 것을 안 적으면 사람이 초안을 그대로 붙여 넣고, 작년 공지의 시각이 올해 값으로 남습니다
+// (홍원 2024·2025년도 공지가 실제로 그럴 뻔했습니다 — RESEARCH.md).
+const GUIDE_FIELD = { meeting: 'meetingAt', departure: 'departAt', 'departure-window-or-operation': 'departAt', return: 'returnAt' };
+// "2026년 9월 1일 ~ 10월 31일"처럼 **원문이 적어둔** 기간만 인정합니다. 연도만 있는 공지는
+// 그 연도를 알려주기만 하고 기간으로 치지 않습니다.
+const PERIOD = /(\d{4})[.\-년]\s*(\d{1,2})[.\-월]\s*(\d{1,2})\s*일?\s*(?:부터|~|-|–|—)\s*(?:(\d{4})[.\-년]\s*)?(\d{1,2})[.\-월]\s*(\d{1,2})\s*일?\s*(?:까지)?/;
+const pad = (n) => String(n).padStart(2, '0');
+
+export function proposeGuides(result, site = {}) {
+  const boats = Object.keys(site.boats ?? {});
+  const wanted = new Set((result.issues ?? []).map((i) => i.field));
+  const byField = new Map();
+
+  for (const e of result.evidence ?? []) {
+    const field = GUIDE_FIELD[e.kind];
+    if (!field) continue;
+    // 그 선사가 아쉬운 값만 제안합니다. 집결시각은 출항시각이 빈 곳에서만 쓸모가 있습니다.
+    if (!wanted.has(field === 'meetingAt' ? 'departAt' : field)) continue;
+    const { from, to } = toTimeRange(e.quote);
+    if (!from) continue;
+    // "05시 에서 05시 30분 사이"처럼 ~ 없이 적은 범위는 toTimeRange가 못 읽습니다.
+    // inspectPage가 이미 뽑아둔 시각 목록에서 둘째 값을 씁니다.
+    const second = to ?? (e.times?.length > 1 ? toTime(e.times[1]) : null);
+    const named = boats.filter((boat) => e.quote.includes(boat));
+    const period = `${e.quote} ${e.pageTitle ?? ''}`.match(PERIOD);
+    const rawYear = `${e.quote} ${e.pageTitle ?? ''}`.match(/(?:20)?(\d{2})\s*년도?|(?:20)?(\d{2})\s*시즌/);
+    const year = rawYear ? `20${rawYear[1] ?? rawYear[2]}` : null;
+    const item = byField.get(field) ?? { field, values: new Map() };
+    const key = [from, to ?? '', named[0] ?? ''].join('|');
+    item.values.set(key, item.values.get(key) ?? {
+      value: from,
+      through: e.kind === 'departure-window-or-operation' ? second : null,
+      boat: named.length === 1 ? named[0] : null,
+      source: e.source,
+      note: e.quote,
+      year,
+      period: period && {
+        validFrom: `${period[1]}-${pad(period[2])}-${pad(period[3])}`,
+        validThrough: `${period[4] ?? period[1]}-${pad(period[5])}-${pad(period[6])}`,
+      },
+    });
+    byField.set(field, item);
+  }
+
+  return [...byField.values()].map(({ field, values }) => {
+    const candidates = [...values.values()];
+    const first = candidates[0];
+    const missing = [];
+    // 값이 갈리면 어느 쪽이 맞는지 우리가 고를 수 없습니다. 고르면 절반은 틀립니다.
+    if (new Set(candidates.map((c) => c.value + (c.through ?? ''))).size > 1) missing.push('값이 여러 개');
+    if (!first.period) missing.push(first.year ? `적용 기간(근거는 ${first.year}년 공지)` : '적용 기간');
+    // 배가 여럿인 선사에서 공지가 어느 배인지 모르면 멀쩡한 배까지 그 시각이 됩니다.
+    if (boats.length > 1 && !first.boat) missing.push(`배 확인(${boats.length}척)`);
+    const guide = {
+      [field]: first.value,
+      ...(first.through ? { departThrough: first.through } : {}),
+      validFrom: first.period?.validFrom ?? null,
+      validThrough: first.period?.validThrough ?? null,
+      source: first.source,
+      note: first.note,
+    };
+    return {
+      site: result.id, boat: first.boat, field, candidates: candidates.map((c) => c.value),
+      missing, checkedAt: result.checkedAt,
+      // 붙일 곳까지 적습니다 — boats[배].timeGuide인지 사이트 공통 timeGuide인지.
+      path: first.boat ? `boats.${first.boat}.timeGuide` : 'timeGuide',
+      draft: { timeGuide: guide },
+    };
+  });
+}
+
+/** 선사별 제안. registry에서 그 선사를 찾아 배 목록·붙일 곳을 같이 봅니다. */
+export function researchProposals(results, registry) {
+  const sites = new Map(registry.map((s) => [s.id, s]));
+  return results.flatMap((r) => proposeGuides(r, sites.get(r.id) ?? {}));
 }
