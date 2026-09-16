@@ -241,13 +241,30 @@
      관리 화면에서는 주황입니다 — 어느 쪽에 있는지가 탭 말고도 한 번 더 보입니다.
      이 조각은 두 화면에 똑같이 들어갑니다. 한쪽만 고치면 탭이 화면마다 다른 자리에
      뜨므로 test/page.test.js가 둘을 맞춰 봅니다. */
-  :root { --nav-w: 172px; }
-  body { padding-left: var(--nav-w); }
+  body { --nav-w: 172px; padding-left: var(--nav-w); }
   .sidenav { position: fixed; z-index: 1200; top: 0; bottom: 0; left: 0; width: var(--nav-w);
              display: flex; flex-direction: column; gap: 4px; padding: 16px 12px;
              border-right: 1px solid var(--line); background: var(--card); }
-  .sidebrand { padding: 6px 10px 14px; color: var(--muted); font-size: 12px; font-weight: 700;
+  .sidehead { display: flex; align-items: center; gap: 4px; padding: 6px 2px 14px 10px; }
+  .sidebrand { flex: 1 1 auto; color: var(--muted); font-size: 12px; font-weight: 700;
                letter-spacing: .06em; }
+  .navfold { flex: 0 0 auto; display: grid; place-items: center; width: 28px; height: 28px; padding: 0;
+             border: 1px solid var(--line); border-radius: 8px; background: var(--card);
+             color: var(--muted); cursor: pointer; }
+  .navfold:hover { border-color: var(--accent); color: var(--accent); }
+  .navfold:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  /* 접는 것은 넓은 화면 이야기입니다 — 작은 화면의 탭바는 아래에 가로로 붙어 있어 접을 폭이
+     없습니다. 그래서 규칙을 min-width로 묶습니다. 안 묶으면 접어둔 채로 폰에서 열었을 때
+     아래 탭바의 글자만 사라집니다(저장한 값은 화면 크기를 모릅니다). */
+  @media (min-width: 721px) {
+    body[data-nav="fold"] { --nav-w: 58px; }
+    body[data-nav="fold"] .sidenav { padding-inline: 9px; }
+    body[data-nav="fold"] .sidehead { justify-content: center; padding: 6px 0 14px; }
+    body[data-nav="fold"] .sidebrand,
+    body[data-nav="fold"] .sidetab span { display: none; }
+    body[data-nav="fold"] .sidetab { justify-content: center; padding: 10px 0; }
+    body[data-nav="fold"] .navfold svg { transform: rotate(180deg); }
+  }
   .sidetab { display: flex; align-items: center; gap: 9px; padding: 9px 11px; border-radius: 9px;
              color: var(--muted); font-size: 14px; font-weight: 600; text-decoration: none; }
   .sidetab:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); color: var(--fg); }
@@ -263,16 +280,19 @@
     .sidenav { top: auto; right: 0; width: auto; flex-direction: row; gap: 6px;
                padding: 6px 12px calc(6px + env(safe-area-inset-bottom));
                border-right: 0; border-top: 1px solid var(--line); }
-    .sidebrand { display: none; }
+    .sidehead { display: none; }
     .sidetab { flex: 1 1 0; justify-content: center; padding: 9px 6px; }
   }
 </style>
 </head>
 <body>
-<nav class="sidenav" aria-label="화면 이동">
-  <div class="sidebrand">출조 레이더</div>
-  <a class="sidetab" href="index.html" aria-current="page"><svg class="sideicon" viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2.5" width="12" height="11" rx="2"></rect><path d="M2 6.5h12M6.5 6.5v7"></path></svg><span>현황</span></a>
-  <a class="sidetab" href="admin.html"><svg class="sideicon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 5h10M3 11h10"></path><circle cx="6" cy="5" r="1.9"></circle><circle cx="10.5" cy="11" r="1.9"></circle></svg><span>시스템</span></a>
+<nav class="sidenav" id="sidenav" aria-label="화면 이동">
+  <div class="sidehead">
+    <span class="sidebrand">출조 레이더</span>
+    <button type="button" class="navfold" id="navfold" aria-controls="sidenav" aria-expanded="true" aria-label="탭바 접기" title="탭바 접기"><svg class="sideicon" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3.5 5.5 8l4.5 4.5"></path></svg></button>
+  </div>
+  <a class="sidetab" href="index.html" title="현황" aria-current="page"><svg class="sideicon" viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2.5" width="12" height="11" rx="2"></rect><path d="M2 6.5h12M6.5 6.5v7"></path></svg><span>현황</span></a>
+  <a class="sidetab" href="admin.html" title="시스템"><svg class="sideicon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 5h10M3 11h10"></path><circle cx="6" cy="5" r="1.9"></circle><circle cx="10.5" cy="11" r="1.9"></circle></svg><span>시스템</span></a>
 </nav>
 <div class="wrap">
   <h1>출조 찾기</h1>
@@ -1539,6 +1559,27 @@ function switchView(toMap) {
 
 $('view-map').addEventListener('click', () => switchView(true));
 $('view-table').addEventListener('click', () => switchView(false));
+
+// 왼쪽 탭바 접기. 표가 넓어 오른쪽 칸이 잘릴 때 172px을 돌려받는 길입니다.
+// 접은 상태는 즐겨찾기·별점과 같은 급의 개인 기록이라 브라우저에만 둡니다. 열쇠가 하나라
+// 현황판에서 접으면 시스템 관리도 접혀 있습니다 — 화면마다 폭이 달라지면 오갈 때마다 놀랍니다.
+const NAV_FOLD_KEY = 'fishing:nav-fold';
+
+function paintNavFold(fold) {
+  document.body.dataset.nav = fold ? 'fold' : 'open';
+  const label = fold ? '탭바 펼치기' : '탭바 접기';
+  $('navfold').setAttribute('aria-expanded', String(!fold));
+  $('navfold').setAttribute('aria-label', label);
+  $('navfold').title = label;
+}
+
+try { paintNavFold(localStorage.getItem(NAV_FOLD_KEY) === '1'); } catch { paintNavFold(false); }
+$('navfold').addEventListener('click', () => {
+  const fold = document.body.dataset.nav !== 'fold';
+  paintNavFold(fold);
+  try { localStorage.setItem(NAV_FOLD_KEY, fold ? '1' : '0'); } catch { /* 저장이 막혀도 이번 세션은 됩니다 */ }
+});
+
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
 </body>

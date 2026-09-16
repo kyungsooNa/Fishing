@@ -38,7 +38,7 @@ test('두 화면은 왼쪽 탭바로 오가고, 탭바는 양쪽이 같다', asy
 
   // 표시는 자기 화면에 하나만. 둘 다 켜지면 어디 있는지 알 수 없습니다.
   for (const [page, own] of [[boardNav, 'index.html'], [adminNav, 'admin.html']]) {
-    const marked = [...page.matchAll(/href="([\w.]+)" aria-current="page"/g)].map((m) => m[1]);
+    const marked = [...page.matchAll(/href="([\w.]+)"[^>]*aria-current="page"/g)].map((m) => m[1]);
     assert.deepEqual(marked, [own]);
   }
 
@@ -52,6 +52,28 @@ test('두 화면은 왼쪽 탭바로 오가고, 탭바는 양쪽이 같다', asy
   // 작은 화면에서는 아래로 내립니다. 위는 제목·필터가 sticky로 자리를 잡고 있습니다.
   for (const page of [html, admin]) {
     assert.match(page, /@media \(max-width: 720px\) \{\s*body \{ padding-left: 0; padding-bottom: 64px; \}/);
+  }
+});
+
+// 접은 상태는 브라우저에만 남는 값이라 화면 크기를 모릅니다. 접기 규칙을 min-width로
+// 묶지 않으면 접어둔 채로 폰에서 열었을 때 아래 탭바의 글자만 사라집니다.
+test('탭바는 접었다 펼 수 있고, 접은 상태는 두 화면이 같이 본다', async () => {
+  const admin = await readFile('docs/admin.html', 'utf8');
+
+  for (const page of [html, admin]) {
+    assert.match(page, /<button type="button" class="navfold" id="navfold"[^>]*aria-expanded="true"/,
+      '접기 버튼이 없습니다');
+
+    const script = page.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
+    // 열쇠가 하나라 현황판에서 접으면 시스템 관리도 접혀 있습니다.
+    assert.match(script, /NAV_FOLD_KEY = 'fishing:nav-fold'/,
+      '접은 상태를 기억하지 않으면 화면을 옮길 때마다 다시 접어야 합니다');
+    assert.match(script, /localStorage\.getItem\(NAV_FOLD_KEY\)/);
+
+    const fold = page.match(/@media \(min-width: 721px\) \{[\s\S]*?\n  \}/)?.[0] ?? '';
+    assert.match(fold, /body\[data-nav="fold"\] \{ --nav-w: 58px; \}/,
+      '접기는 넓은 화면에서만 — 아래로 내려간 탭바는 접을 폭이 없습니다');
+    assert.match(fold, /\.sidetab span \{ display: none; \}/);
   }
 });
 
