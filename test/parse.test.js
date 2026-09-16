@@ -13,7 +13,7 @@ import { findOpenings } from '../core/diff.js';
 import { mergeDuplicates } from '../core/merge.js';
 import { kstDate } from '../core/when.js';
 import { loadRegistry } from '../core/runner.js';
-import { toStatus, toDate, toTime, toTimeRange, sessionOf, parseSeats, pickPrice, toSpecies, toTide, makeTrip, STATUS } from '../core/schema.js';
+import { toStatus, toDate, toTime, toTimeRange, sessionOf, sessionFromName, parseSeats, pickPrice, toSpecies, toTide, makeTrip, STATUS } from '../core/schema.js';
 import * as fx from './fixtures.js';
 
 const sunsangSite = {
@@ -1216,4 +1216,33 @@ test('sessionOf: 끝 시각이 없으면 시작으로만 가른다', () => {
   assert.deepEqual(sessionOf('05:30', null), { session: '오전', hours: null });
   assert.deepEqual(sessionOf('13:00', null), { session: '오후', hours: null });
   assert.deepEqual(sessionOf(null, null), { session: null, hours: null });
+});
+
+// 오이도 몬스터호는 예약판에 시각도 구분도 없이 배 이름으로만 나눕니다. 그대로 두면
+// 그 배는 구분 칸이 비고 오전·오후 필터에서 통째로 빠집니다 — 아는 값인데 못 거릅니다.
+test('sessionFromName: 배 이름에만 적힌 오전·오후도 구분으로 센다', () => {
+  assert.equal(sessionFromName('몬스터호 (오전배)'), '오전');
+  assert.equal(sessionFromName('몬스터호 (오후배)'), '오후');
+  assert.equal(sessionFromName('우리바다호 오전배'), '오전');
+  assert.equal(sessionFromName('돌핀호 (야간)'), '야간');
+
+  // 붙여 쓴 이름과 배 이름에 든 낱말은 건드리지 않습니다(한글에는 \b가 없습니다).
+  assert.equal(sessionFromName('만선호오전배'), null);
+  assert.equal(sessionFromName('종일호'), null);
+  assert.equal(sessionFromName('나무호'), null);
+  assert.equal(sessionFromName(null), null);
+});
+
+test('makeTrip: 시각이 없어도 이름에 적힌 구분을 싣는다', () => {
+  const site = { id: 'monster', name: '오이도 몬스터호', adapter: 'thefishing', url: 'https://x.example' };
+  const named = makeTrip(site, { date: '2026-09-17', boat: '몬스터호 (오전배)', rawStatus: '예약가능' });
+  assert.equal(named.session, '오전');
+  assert.equal(named.hours, null, '시간 길이는 시각이 있어야 셉니다 — 지어내지 않습니다');
+
+  // 예약판에 시각이 있으면 언제나 그쪽이 먼저입니다. 이름은 빈 칸을 메울 뿐입니다.
+  const timed = makeTrip(site, { date: '2026-09-17', boat: '몬스터호 (오전배)', rawTime: '13:00', rawStatus: '예약가능' });
+  assert.equal(timed.session, '오후', '시각이 있으면 이름보다 시각이 먼저입니다');
+
+  const plain = makeTrip(site, { date: '2026-09-17', boat: '나무호', rawStatus: '예약가능' });
+  assert.equal(plain.session, null);
 });
