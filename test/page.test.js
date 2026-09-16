@@ -273,7 +273,7 @@ test('날짜별 물때는 한 번에 모은다', () => {
 });
 
 test('물때는 날짜 그룹 줄에 한 번만 표시한다', () => {
-  assert.match(html, /<th>어종<\/th><th class="num">승선료<\/th>/);
+  assert.match(html, /<th class="cell-species">어종<\/th><th class="cell-price num">승선료<\/th>/);
   assert.match(inline, /function dayTideParts/);
   assert.match(inline, /td\.colSpan = 12/);
   assert.match(inline, /물때는 날짜별 공통 표기/);
@@ -962,6 +962,70 @@ test('전화는 선사 칸에 줄마다 한 번만 단다', () => {
   assert.match(inline, /if \(phone\) td\.append\(phone\);/);
   // 합쳐진 줄도 번호는 하나입니다(core/merge.js) — 출처마다 달면 같은 번호가 두 번 나옵니다.
   assert.ok(!inline.includes('phoneLink(src.phone)'), '출처마다 달면 같은 번호가 겹칩니다');
+});
+
+// ── 칸 고르기 ───────────────────────────────────────────────────────────────
+// 승선료는 한 쪽 828줄 중 777줄(94%)이 빈 채로 열 하나를 차지합니다. 그렇다고 자동으로
+// 숨기면 값이 있는 선사만 보는 사람이 고르는 기준을 잃습니다. 고르게 두고 기억합니다.
+function columnModule(saved) {
+  const start = inline.indexOf('// ── 칸 고르기 ──');
+  const end = inline.indexOf('// ── 정렬 ──');
+  assert.ok(start >= 0 && end > start, '칸 고르기 부분을 찾지 못했습니다');
+
+  const store = { value: saved };
+  const localStorage = {
+    getItem: () => (store.value === undefined ? null : store.value),
+    setItem: (key, value) => { store.value = value; },
+  };
+  const control = { dataset: { label: '숨긴 칸', all: '칸 고르기' }, querySelector: () => summary };
+  const summary = { textContent: '' };
+  const body = { dataset: {} };
+  const module = new Function('localStorage', 'document', '$',
+    `${inline.slice(start, end)}\nreturn { getHidden: () => HIDDEN, COLUMNS, loadHidden, toggleColumn, emptyShare, paintHidden };`,
+  )(localStorage, { body }, () => control);
+  return { ...module, store, body, summary, control };
+}
+
+test('칸을 접으면 그 브라우저에 남고, 모르는 이름은 버린다', () => {
+  const m = columnModule(JSON.stringify(['price', '없는칸']));
+  assert.deepEqual([...m.getHidden()], ['price'], '이름이 바뀐 옛 값은 버립니다');
+
+  m.paintHidden();
+  assert.equal(m.body.dataset.hide, 'price', 'CSS가 이 값을 보고 숨깁니다');
+  assert.equal(m.summary.textContent, '숨긴 칸 1개');
+
+  m.toggleColumn('session', false);
+  assert.deepEqual(JSON.parse(m.store.value), ['price', 'session']);
+  assert.equal(m.body.dataset.hide, 'price session');
+
+  m.toggleColumn('price', true);
+  assert.deepEqual(JSON.parse(m.store.value), ['session']);
+  assert.equal(m.summary.textContent, '숨긴 칸 1개');
+});
+
+test('접을지 정하라고 그 칸이 얼마나 비었는지 센다', () => {
+  const m = columnModule('[]');
+  const trips = [
+    { port: '홍원항', price: 100000, species: null },
+    { port: null, price: null, species: '주꾸미' },
+    { port: null, price: null, species: '주꾸미' },
+    { port: null, price: null, species: '주꾸미' },
+  ];
+  assert.equal(m.emptyShare(trips, 'price'), 75);
+  assert.equal(m.emptyShare(trips, 'port'), 75);
+  assert.equal(m.emptyShare(trips, 'species'), 25);
+  assert.equal(m.emptyShare([], 'price'), null, '줄이 없으면 셀 것도 없습니다');
+});
+
+test('머리글과 줄이 같은 칸 이름을 쓴다 — 하나만 숨으면 표가 어긋납니다', () => {
+  const { COLUMNS } = columnModule('[]');
+  for (const [name] of COLUMNS) {
+    assert.match(html, new RegExp(`<th class="cell-${name}[^"]*">`), `머리글에 cell-${name}이 없습니다`);
+    assert.match(html, new RegExp(`body\\[data-hide~="${name}"\\] \\.cell-${name}`), `${name}을 숨기는 규칙이 없습니다`);
+  }
+  // 칸을 접는 규칙은 좁은 화면 전용이 아닙니다 — 모바일 블록 안에 두면 넓은 화면에서 안 됩니다.
+  const mobile = html.slice(html.indexOf('@media (max-width: 720px)'));
+  assert.ok(!mobile.includes('body[data-hide~="price"]'), '숨김 규칙이 모바일 블록 안에 있습니다');
 });
 
 // ── 정렬 ────────────────────────────────────────────────────────────────────

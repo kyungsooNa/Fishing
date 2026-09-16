@@ -81,6 +81,15 @@
   label.check { display: inline-flex; align-items: center; gap: 6px; padding: 7px 10px;
                 border: 1px solid var(--line); border-radius: 7px; background: var(--card); font-size: 14px; }
   .tablewrap { overflow-x: auto; background: var(--card); border: 1px solid var(--line); border-radius: 10px; }
+  /* 안 쓰는 칸은 접어둘 수 있습니다. 승선료는 이 쪽 828줄 중 777줄(94%)이 빈 채로 열
+     하나를 차지합니다. 무엇을 접을지는 사람마다 다르므로 고르게 두고, 고른 것은 그 브라우저에
+     남깁니다. 머리글과 줄에 같은 칸 이름을 달아 한 줄로 같이 숨깁니다. */
+  body[data-hide~="date"] .cell-date, body[data-hide~="site"] .cell-site,
+  body[data-hide~="boat"] .cell-boat, body[data-hide~="status"] .cell-status,
+  body[data-hide~="seats"] .cell-seats, body[data-hide~="port"] .cell-port,
+  body[data-hide~="species"] .cell-species, body[data-hide~="price"] .cell-price,
+  body[data-hide~="run"] .cell-run, body[data-hide~="session"] .cell-session { display: none !important; }
+
   table { border-collapse: collapse; width: 100%; min-width: 820px; font-size: 14px; }
   th, td { padding: 9px 10px; text-align: left; border-bottom: 1px solid var(--line); }
   /* 칸마다 nowrap을 걸면 표의 자연 폭이 화면을 넘어 오른쪽 칸이 잘립니다.
@@ -390,6 +399,9 @@
     <label class="check"><input type="checkbox" id="f-open" checked> 빈자리만</label>
     <label class="check"><input type="checkbox" id="f-fav"> <span id="f-fav-label">★ 즐겨찾기만</span></label>
     <label class="check"><input type="checkbox" id="f-rated"> <span id="f-rated-label">★ 별점 준 배만</span></label>
+    <details class="multi" id="f-cols" data-label="숨긴 칸" data-all="칸 고르기">
+      <summary>칸 고르기</summary><div class="multi-menu"></div>
+    </details>
   </div>
   </div>
 
@@ -406,8 +418,10 @@
   <div class="tablewrap" id="tablewrap">
     <table>
       <thead><tr>
-        <th class="starcell"></th><th>날짜</th><th>선사</th><th>배</th><th>상태</th><th class="num">잔여</th>
-        <th>항구</th><th>어종</th><th class="num">승선료</th><th>운항</th><th>구분</th><th>감시·최신화</th>
+        <th class="starcell"></th><th class="cell-date">날짜</th><th class="cell-site">선사</th>
+        <th class="cell-boat">배</th><th class="cell-status">상태</th><th class="cell-seats num">잔여</th>
+        <th class="cell-port">항구</th><th class="cell-species">어종</th><th class="cell-price num">승선료</th>
+        <th class="cell-run">운항</th><th class="cell-session">구분</th><th>감시·최신화</th>
       </tr></thead>
       <tbody id="rows"></tbody>
     </table>
@@ -1188,6 +1202,72 @@ function visibleTrips() {
     (!openOnly || t.status === 'open' || t.status === 'few'));
 }
 
+// ── 칸 고르기 ─────────────────────────────────────────────────────────────
+// 칸마다 쓸모가 사람마다 다릅니다. 승선료는 95%가 비어 있어 대부분에게는 빈 열이지만,
+// 값이 있는 선사만 보는 사람에게는 고르는 기준입니다. 그래서 자동으로 숨기지 않고
+// **고르게 두고**, 고른 것은 즐겨찾기·별점처럼 그 브라우저에만 남깁니다.
+// 얼마나 비어 있는지는 지금 보는 쪽에서 세어 메뉴에 적습니다 — 접을지 말지 판단할 값입니다.
+const COLUMN_KEY = 'fishing:columns';
+const COLUMNS = [
+  ['date', '날짜'], ['site', '선사'], ['boat', '배'], ['status', '상태'], ['seats', '잔여'],
+  ['port', '항구'], ['species', '어종'], ['price', '승선료'], ['run', '운항'], ['session', '구분'],
+];
+
+function loadHidden() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(COLUMN_KEY) ?? '[]');
+    const names = new Set(COLUMNS.map(([name]) => name));
+    return new Set(saved.filter((name) => names.has(name)));
+  } catch { return new Set(); }
+}
+let HIDDEN = loadHidden();
+
+function paintHidden() {
+  document.body.dataset.hide = [...HIDDEN].join(' ');
+  const control = $('f-cols');
+  control.dataset.selected = HIDDEN.size ? '1' : '0';
+  control.querySelector('summary').textContent = HIDDEN.size
+    ? `${control.dataset.label} ${HIDDEN.size}개`
+    : control.dataset.all;
+}
+
+function toggleColumn(name, show) {
+  if (show) HIDDEN.delete(name);
+  else HIDDEN.add(name);
+  try { localStorage.setItem(COLUMN_KEY, JSON.stringify([...HIDDEN])); } catch { /* 저장이 막혀도 이번 세션은 됩니다 */ }
+  paintHidden();
+}
+
+/** 지금 쪽에서 그 칸이 얼마나 비어 있나. 접을지 말지는 이 숫자를 보고 정합니다. */
+function emptyShare(trips, name) {
+  if (!trips.length) return null;
+  const read = { date: (t) => t.date, site: (t) => t.siteName, boat: (t) => t.boat, status: (t) => t.status,
+    seats: (t) => seatsLabel(t), port: (t) => t.port, species: (t) => t.species,
+    price: (t) => t.price, run: (t) => runLabel(t), session: (t) => t.session }[name];
+  const empty = trips.filter((t) => { const v = read(t); return v == null || v === ''; }).length;
+  return Math.round((empty / trips.length) * 100);
+}
+
+function fillColumnMenu(trips) {
+  const menu = $('f-cols').querySelector('.multi-menu');
+  menu.textContent = '';
+  for (const [name, text] of COLUMNS) {
+    const label = document.createElement('label');
+    const input = document.createElement('input');
+    input.type = 'checkbox';
+    input.value = name;
+    input.checked = !HIDDEN.has(name);
+    input.addEventListener('change', () => toggleColumn(name, input.checked));
+    const share = emptyShare(trips, name);
+    const note = document.createElement('small');
+    note.className = 'srchint';
+    note.textContent = share ? `이 쪽 ${share}% 빔` : '';
+    label.append(input, text, note);
+    menu.append(label);
+  }
+  paintHidden();
+}
+
 // ── 정렬 ──────────────────────────────────────────────────────────────────
 // **날짜가 먼저입니다.** 표는 날짜로 끊어 보고(dayhead) 쪽도 날짜로 나누기 때문에,
 // 잔여석순으로 통째로 섞으면 날짜 머리글이 줄마다 나오고 쪽 나누기가 무너집니다.
@@ -1582,6 +1662,7 @@ function render(all = sortTrips(visibleTrips())) {
   $('empty').textContent = emptyMessage();
   $('f-fav-label').textContent = favLabel();
   $('f-rated-label').textContent = ratedLabel();
+  fillColumnMenu(rows);
 }
 
 function renderStatus() {
