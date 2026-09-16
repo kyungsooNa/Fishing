@@ -56,6 +56,11 @@ async function pace(url) {
 }
 
 function getStatic(url, { referer, timeoutMs = TIMEOUT_MS, redirects = MAX_REDIRECTS } = {}) {
+  // 이 값은 CLI 인자와 환경변수를 거쳐 옵니다 — 문자열이 섞여 들어오면 req.setTimeout이
+  // 던지고, 그게 아래 'error' 리스너보다 먼저면 소켓 오류를 아무도 안 받아 **프로세스가
+  // 통째로 죽습니다**. 사이트 하나 때문에 수집 전체가 날아가는 그 사고입니다.
+  const ms = Number(timeoutMs);
+  const wait = Number.isFinite(ms) && ms > 0 ? ms : TIMEOUT_MS;
   return new Promise((resolve, reject) => {
     const lib = url.startsWith('https:') ? https : http;
     const req = lib.get(
@@ -100,9 +105,11 @@ function getStatic(url, { referer, timeoutMs = TIMEOUT_MS, redirects = MAX_REDIR
       },
     );
 
-    // 붙는 동안에도 도는 시계입니다. 국내 호스트에 해외에서 붙을 때 이게 관건입니다.
-    req.setTimeout(timeoutMs, () => req.destroy(new Error(`${timeoutMs}ms 안에 응답이 없습니다`)));
+    // 'error'를 **먼저** 답니다. 뒤에 달면 그 사이에 나는 오류를 받을 사람이 없어
+    // unhandled 'error' 이벤트로 프로세스가 죽습니다(위 주석의 그 경로입니다).
     req.on('error', reject);
+    // 붙는 동안에도 도는 시계입니다. 국내 호스트에 해외에서 붙을 때 이게 관건입니다.
+    req.setTimeout(wait, () => req.destroy(new Error(`${wait}ms 안에 응답이 없습니다`)));
   });
 }
 
@@ -183,12 +190,18 @@ export async function fetchHtml(url, { mode = 'auto', waitFor, referer, retries 
   for (let attempt = 0; attempt <= retries; attempt++) {
     if (attempt > 0) await sleep(1000 * 2 ** attempt);
     await pace(url);
+    const startedAt = Date.now();      // pace로 기다린 시간은 빼고 잽니다
     try {
       if (mode === 'js') return await getRendered(url, { waitFor, referer });
       const html = await getStatic(url, { referer, timeoutMs });
       if (mode === 'auto' && looksEmpty(html)) return await getRendered(url, { waitFor, referer });
       return html;
     } catch (err) {
+      // **얼마나 걸려서 실패했는지**를 같이 남깁니다. 이게 없으면 로그에 남은 원인을
+      // 못 믿습니다 — times 실행(run 35103670154)에서 58곳이 "30000ms 안에 응답이
+      // 없습니다"로 죽었는데 실제로는 한 곳당 2초대였습니다. 30초를 기다린 것과 2초 만에
+      // 끊긴 것은 손쓸 데가 완전히 다른데, 메시지만으로는 그 둘이 같아 보입니다.
+      err.elapsedMs = Date.now() - startedAt;
       lastErr = err;
       if (isHopeless(err)) break;   // 연결 자체가 안 되면 재시도해도 같습니다
     }
@@ -216,7 +229,9 @@ export function describeError(err) {
     const msg = String(cur.message ?? cur);
     if (msg && msg !== head) parts.push(`${code}${msg}`);
   }
-  return parts.length ? `${head} (${parts.join(' ← ')})` : head;
+  const detail = parts.length ? `${head} (${parts.join(' ← ')})` : head;
+  const elapsed = Number(err?.elapsedMs);
+  return Number.isFinite(elapsed) ? `${detail} — ${(elapsed / 1000).toFixed(1)}초 만에` : detail;
 }
 
 export async function closeBrowser() {

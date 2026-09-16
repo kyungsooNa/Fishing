@@ -176,3 +176,53 @@ test('일시적인 오류(HTTP 500)는 재시도한다', async () => {
     await site.close();
   }
 });
+
+// times 실행(run 35103670154)에서 58곳이 "30000ms 안에 응답이 없습니다"로 죽었는데
+// 실제로는 한 곳당 2초대였습니다. 30초를 기다린 것과 2초 만에 끊긴 것은 손쓸 데가
+// 완전히 다른데 메시지만으로는 그 둘이 같아 보입니다 — 걸린 시간을 같이 남깁니다.
+test('실패한 원인에 얼마나 걸려서 실패했는지가 같이 남는다', async () => {
+  const site = await serve((_, res) => { res.writeHead(503); res.end(); });
+  try {
+    await assert.rejects(
+      fetchHtml(site.url, { mode: 'static', retries: 0 }),
+      (err) => {
+        assert.ok(Number.isFinite(err.elapsedMs), '걸린 시간이 붙어야 합니다');
+        assert.match(describeError(err), /HTTP 503/);
+        assert.match(describeError(err), /초 만에/);
+        return true;
+      },
+    );
+  } finally {
+    await site.close();
+  }
+});
+
+// req.setTimeout이 던지면(문자열 msecs 등) 그 뒤에 달던 'error' 리스너가 안 달려서,
+// 소켓 오류를 아무도 안 받고 **프로세스가 통째로 죽었습니다**. 사이트 하나 때문에
+// 수집 전체가 날아가는 경로라, timeoutMs는 숫자로 맞추고 리스너를 먼저 답니다.
+test('timeoutMs에 문자열이 와도 그 요청만 실패하고 프로세스는 산다', async () => {
+  const site = await serve((_, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end('<html><body>운항시간 : 05:00 ~ 12:00 자리 넉넉합니다 예약 받습니다</body></html>');
+  });
+  try {
+    // 워크플로 입력은 문자열로 옵니다(LIMIT: '60'처럼). 숫자로 맞춰 그대로 받아옵니다.
+    const html = await fetchHtml(site.url, { mode: 'static', retries: 0, timeoutMs: '3000' });
+    assert.match(html, /운항시간/);
+  } finally {
+    await site.close();
+  }
+
+  // 숫자로 못 읽는 값도 기본값으로 물러섭니다 — 던지고 죽는 쪽이 제일 나쁩니다.
+  const odd = await serve((_, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end('<html><body>운항시간 : 05:00 ~ 12:00 자리 넉넉합니다 예약 받습니다</body></html>');
+  });
+  try {
+    // 같은 서버에 여러 번 붙으면 3초씩 쉬므로(pace) 한 값만 봅니다.
+    const html = await fetchHtml(odd.url, { mode: 'static', retries: 0, timeoutMs: 'abc' });
+    assert.match(html, /운항시간/);
+  } finally {
+    await odd.close();
+  }
+});
