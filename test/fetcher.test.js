@@ -226,3 +226,26 @@ test('timeoutMs에 문자열이 와도 그 요청만 실패하고 프로세스�
     await odd.close();
   }
 });
+
+// times 실행(run 35105080153)에서 10곳이 전부 "30000ms 안에 응답이 없습니다 — 5.0초 만에"
+// 였습니다. Node 19부터 globalAgent가 `keepAlive: true, timeout: 5000`으로 오는데, 그
+// 5초가 소켓에 걸리면 우리가 건 30초는 무시됩니다. 더 나쁘게는 `req.setTimeout(30000, cb)`의
+// **cb는 그대로 불려서** 5초 만에 끊긴 것을 30초 기다린 것처럼 보고합니다.
+// 해외 러너에서 국내 호스트에 붙는 데는 5초가 모자랍니다 — 기본 agent를 안 씁니다.
+test('기본 agent(5초 timeout)에 안 얹힌다', async () => {
+  const { globalAgent } = await import('node:http');
+  assert.equal(globalAgent.options.timeout, 5000, '이 시험이 막는 게 바로 이 기본값입니다');
+
+  const site = await serve((_, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end('<html><body>운항시간 : 05:00 ~ 12:00 자리 넉넉합니다 예약 받습니다</body></html>');
+  });
+  try {
+    await fetchHtml(site.url, { mode: 'static', retries: 0 });
+    // 기본 agent를 탔다면 여기에 소켓이 남습니다(keepAlive라 풀에 들어갑니다).
+    const pooled = [...Object.values(globalAgent.sockets), ...Object.values(globalAgent.freeSockets)];
+    assert.equal(pooled.length, 0, '기본 agent를 타면 그쪽 5초 timeout이 우리 값을 덮습니다');
+  } finally {
+    await site.close();
+  }
+});
