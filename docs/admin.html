@@ -354,6 +354,8 @@ function setRate(map, id, score) {
 // ── 별점 끝 ── (test/admin.test.js가 여기까지를 떼어내 돌려봅니다)
 
 let RATES = loadRates();
+// 수집이 실제로 읽어온 배 이름. 현황판은 이 이름(trip.boat)으로만 별점을 찾습니다.
+let OBSERVED = {};
 
 // 사이트 안의 배를 한 줄씩 펼쳐 별점을 따로 매깁니다. 배가 많은 함대형 사이트에서도
 // 아우라호처럼 원하는 배를 이름으로 찾아 바로 평가할 수 있어야 합니다.
@@ -365,6 +367,12 @@ function boatRatesCell(site) {
     td.textContent = '배 정보 없음';
     return td;
   }
+  // 현황판은 수집이 읽은 이름으로만 별점을 찾습니다. registry에 사람이 적어둔 표기가 그
+  // 이름과 다르면(raraho는 registry가 "라라호", 수집은 "오천항 라라호") 여기서 매긴 별점은
+  // 현황판에 **영원히 안 보입니다** — 두 이름이 같은 배인지는 우리가 알 수 없고, 비슷하다고
+  // 합치면 "마성호"와 "뉴마성호"처럼 다른 배까지 한 배가 됩니다. 그래서 합치는 대신
+  // 못 읽는 이름에는 별을 아예 안 답니다. 매길 수 있는데 안 보이는 것이 가장 나쁩니다.
+  const shown = new Set(Object.keys(OBSERVED[site.id] ?? {}));
   for (const boat of names) {
     const key = rateKey(site.id, boat);
     const row = document.createElement('div');
@@ -372,6 +380,17 @@ function boatRatesCell(site) {
     const label = document.createElement('span');
     label.className = 'boatlabel';
     label.textContent = boat;
+    if (!shown.has(boat)) {
+      const why = document.createElement('span');
+      why.className = 'kind';
+      why.textContent = shown.size ? '수집 이름 아님' : '수집 결과 없음';
+      why.title = shown.size
+        ? `현황판에는 수집이 읽은 이름(${[...shown].join(' · ')})으로 뜹니다. 별점은 그 이름에 매기세요.`
+        : '이 선사는 지금 수집된 출조가 없어 현황판에 뜨는 줄이 없습니다. 수집이 되면 별점을 매길 수 있습니다.';
+      row.append(label, why);
+      td.append(row);
+      continue;
+    }
     const box = document.createElement('span');
     box.className = 'stars';
     const score = rateOf(RATES, key);
@@ -849,7 +868,7 @@ async function load() {
 
   if (LOCAL) {
     const d = await api('api/sites').then((r) => r.json());
-    const observed = boatsFromTrips(data.trips);
+    const observed = OBSERVED = boatsFromTrips(data.trips);
     SITES = d.sites.map((site) => ({
       ...site,
       boats: { ...(observed[site.id] ?? {}), ...(site.boats ?? {}) },
@@ -872,7 +891,7 @@ async function load() {
   } else {
     const d = data;
     STATUS = d.sites ?? {};
-    const boatsBySite = boatsFromTrips(d.trips);
+    const boatsBySite = OBSERVED = boatsFromTrips(d.trips);
     // 정적 모드에서는 registry를 못 읽으므로 수집 결과에 남은 사이트만 보여줍니다.
     SITES = Object.entries(STATUS).map(([id, s]) => ({
       id, name: s.name, platformLabel: s.platform, url: s.url, port: s.port, phone: s.phone,

@@ -325,6 +325,22 @@ test('관리 화면: 사이트에 속한 배 이름을 별점 칸에 보여준�
     '읽기 전용 화면도 data.json 출조에서 배 이름을 복원해야 합니다');
 });
 
+// registry에 사람이 적어둔 표기와 수집이 읽은 이름이 갈리는 배가 있습니다(raraho는
+// "라라호" ↔ "오천항 라라호"). 현황판은 수집 이름으로만 별점을 찾으므로, registry 표기에
+// 매긴 별점은 영원히 안 보입니다. 매길 수 있는데 안 보이는 것이 가장 나쁩니다.
+test('관리 화면: 현황판이 못 읽는 배 이름에는 별을 달지 않는다', async () => {
+  const html = await readFile('docs/admin.html', 'utf8');
+  const inline = html.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
+
+  assert.match(inline, /OBSERVED = boatsFromTrips\(/,
+    '수집이 읽은 이름을 알아야 매길 수 있는 이름인지 가릅니다');
+  assert.match(inline, /const shown = new Set\(Object\.keys\(OBSERVED\[site\.id\] \?\? \{\}\)\);/);
+  assert.match(inline, /if \(!shown\.has\(boat\)\) \{/, '못 읽는 이름에도 별이 달립니다');
+
+  // 못 받은 것과 이름이 다른 것은 고칠 곳이 달라서 다르게 적습니다.
+  assert.match(inline, /'수집 이름 아님' : '수집 결과 없음'/);
+});
+
 // --- 최신화(git pull) + 재시작 ---
 //
 // 진짜 git을 부르면 테스트가 네트워크와 레포 상태를 타므로, 명령을 갈아끼워
