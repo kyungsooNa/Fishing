@@ -416,7 +416,11 @@ export function makeTrip(site, fields) {
   const departEnd = departThrough ?? rawDepartureWindow.through ?? throughFromGuide;
   const meetingFromGuide = !meetingAt && !meetingTime(rawStatus) && guideApplies ? toTime(guide.meetingAt) : null;
   const meet = meetingAt ?? meetingTime(rawStatus) ?? meetingFromGuide;
-  const back = returnAt ?? range.to;
+  // 공지가 적어둔 입항시각도 빈 칸을 메웁니다. 안 쓰면 "05시 출항 / 15시 입항"이라고
+  // 적힌 배가 오전배로 잡힙니다 — 길이를 모르니 sessionOf가 시작 시각만 보고 가릅니다.
+  // 예약판에 적힌 값이 언제나 먼저인 것은 출항시각과 같습니다.
+  const returnFromGuide = !returnAt && !range.to && guideApplies ? toTime(guide.returnAt) : null;
+  const back = returnAt ?? range.to ?? returnFromGuide;
   const timed = sessionOf(depart, back);
   // 시각으로 못 셌으면 배 이름에 적힌 오전·오후라도 씁니다(몬스터호처럼 그게 전부인 곳).
   const session = timed.session ?? sessionFromName(boatName);
