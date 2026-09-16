@@ -361,6 +361,22 @@ test('관리 화면: 현황판에 안 보이는 별점을 모아 옮기거나 �
   assert.match(inline, /renderLostRates\(\);/);
 });
 
+// 꺼져 있는 이유가 둘(고친 값 없음 / 읽기 전용)인데 버튼만 보면 고장과 구별이 안 됩니다.
+test('관리 화면: [변경 저장]이 꺼져 있는 이유를 버튼이 말한다', async () => {
+  const html = await readFile('docs/admin.html', 'utf8');
+  const inline = html.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
+
+  const paint = inline.match(/function paintSave\(\)[\s\S]*?\n\}/)?.[0] ?? '';
+  assert.match(paint, /save\.disabled = !LOCAL \|\| DIRTY\.size === 0;/);
+  assert.match(paint, /읽기 전용입니다/, '읽기 전용이라 못 쓰는 경우');
+  assert.match(paint, /고친 값이 없습니다/, '고친 값이 없어 할 일이 없는 경우');
+  assert.match(paint, /변경 저장 \(\$\{DIRTY\.size\}곳\)/);
+
+  // 상태가 바뀌는 곳마다 같이 고쳐 그려야 합니다. 한 군데라도 빠지면 다시 어긋납니다.
+  assert.equal(inline.split('paintSave()').length - 1 >= 4, true,
+    '고친 곳·저장 뒤·읽기 전용·로컬 확인 네 자리에서 다시 그려야 합니다');
+});
+
 // --- 최신화(git pull) + 재시작 ---
 //
 // 진짜 git을 부르면 테스트가 네트워크와 레포 상태를 타므로, 명령을 갈아끼워

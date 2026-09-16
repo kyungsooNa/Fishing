@@ -308,8 +308,21 @@ function markDirty(id, key, value) {
   bag[key] = value;
   DIRTY.set(id, bag);
   document.querySelector(`tr[data-id="${id}"]`)?.classList.add('dirty');
-  $('save').disabled = DIRTY.size === 0;
-  $('save').textContent = DIRTY.size ? `변경 저장 (${DIRTY.size}곳)` : '변경 저장';
+  paintSave();
+}
+
+// 버튼이 꺼져 있는 이유가 둘입니다 — 고친 값이 없거나, 읽기 전용이라 아예 못 쓰거나.
+// 버튼만 보면 그 둘이 고장 난 것과 구별이 안 돼서 "이 버튼은 왜 있나"가 됩니다.
+// 이 버튼을 없애면 표에서 고친 표기·항구·전화·켜짐을 registry에 쓸 길이 사라집니다.
+function paintSave() {
+  const save = $('save');
+  save.textContent = DIRTY.size ? `변경 저장 (${DIRTY.size}곳)` : '변경 저장';
+  save.disabled = !LOCAL || DIRTY.size === 0;
+  save.title = !LOCAL
+    ? '읽기 전용입니다 — 로컬에서 run.bat으로 띄웠을 때만 registry에 저장합니다'
+    : DIRTY.size
+      ? `고친 ${DIRTY.size}곳을 registry에 저장합니다`
+      : '고친 값이 없습니다 — 표에서 표기·항구·전화를 고치거나 켜고 끄면 켜집니다';
 }
 
 function textCell(site, key) {
@@ -661,7 +674,7 @@ async function save() {
     }
   }
   DIRTY.clear();
-  $('save').textContent = '변경 저장';
+  paintSave();
   document.querySelectorAll('tr.dirty').forEach((tr) => tr.classList.remove('dirty'));
   toast(failed.length ? '일부 실패: ' + failed.join(', ') : '저장했습니다');
   await load();
@@ -955,6 +968,7 @@ function staticMode(reason) {
     `읽기 전용입니다 (${reason}). 켜고 끄기·표기 수정·수집 재실행·정보 조사·종료는 로컬에서 run.bat으로 띄웠을 때만 됩니다.` +
     ' 별점과 즐겨찾기는 브라우저에 저장되는 값이라 여기서도 됩니다.';
   for (const id of ['save', 'update', 'collect', 'research', 'research-sites', 'research-pages', 'research-force', 'restart', 'quit']) $(id).disabled = true;
+  paintSave();   // 왜 못 쓰는지는 버튼도 말해야 합니다. 배너는 스크롤하면 안 보입니다.
 }
 
 // 로컬 registry에 boats가 없는 사이트도 실제 수집 결과에는 여러 배가 있을 수 있습니다.
@@ -1025,6 +1039,7 @@ async function load() {
     const res = await api('api/sites');
     if (res.ok) {
       LOCAL = true;
+      paintSave();
     } else if (res.status === 403) {
       staticMode('서버가 이 요청을 거절했습니다');
     } else {
