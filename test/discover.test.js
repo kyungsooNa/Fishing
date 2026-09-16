@@ -412,6 +412,21 @@ test('이미 timeGuide를 적어둔 곳은 다시 읽지 않는다', () => {
   assert.deepEqual(timeTargets(registry, timeQuality), []);
 });
 
+// 어종마다 갈리는 곳은 `timeGuides`로 여러 줄을 적습니다. 복수형을 안 보면 다 적어둔
+// 선사를 계속 "시각이 빈 곳"으로 세어 매주 같은 페이지를 다시 받습니다.
+test('timeGuides로 여러 줄 적어둔 곳도 다시 읽지 않는다', () => {
+  const registry = [
+    { id: 'empty', url: 'https://b.example', timeGuides: [{ departAt: '05:00' }] },
+    { id: 'perday', url: 'https://a.example', boats: { '가호': { timeGuides: [{ departAt: '05:00' }] } } },
+    { id: 'perboat', url: 'https://c.example', enabled: false },
+  ];
+  assert.deepEqual(timeTargets(registry, timeQuality), []);
+
+  // 빈 배열은 적은 것이 아닙니다 — 그대로 봐야 할 곳입니다.
+  const emptyList = [{ id: 'empty', url: 'https://b.example', timeGuides: [] }];
+  assert.deepEqual(timeTargets(emptyList, timeQuality).map((t) => t.id), ['empty']);
+});
+
 // 승선료는 registry에 사람이 적지만, 260곳이 넘는 홈페이지를 무작정 열 수는 없습니다.
 // 금액만 뽑으면 예약금·장비 대여료를 선비로 오인하므로 라벨과 근거 줄을 함께 봅니다.
 test('승선료 라벨과 금액이 함께 있는 줄만 후보로 준다', () => {

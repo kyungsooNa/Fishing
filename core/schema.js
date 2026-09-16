@@ -279,6 +279,41 @@ export function toSpecies(raw) {
 }
 
 /**
+ * 공지에서 옮겨 적은 출항·입항 시각에서 그 출조에 걸리는 것을 고릅니다.
+ *
+ * 한 배가 어종마다 다른 시각으로 뜨는 곳이 있습니다 — 나라2호는 한치·갈치가 13시,
+ * 먼바다 갑오징어·참돔이 04시, 내만 갑오징어·문어·쭈꾸미가 04시 30분입니다. 하나만
+ * 적을 수 있으면 셋을 버리거나 넷 다 못 적습니다. 그래서 `priceGuides`와 같은 모양으로
+ * **`timeGuides` 배열**을 받고, 앞에서부터 조건에 맞는 첫 줄을 씁니다(구체적인 것을
+ * 앞에 적으세요). 한 줄이면 예전처럼 `timeGuide` 하나로 적어도 됩니다.
+ *
+ * 배에 시각을 적어뒀으면 사이트 공통은 안 봅니다 — 배별로 갈리는 곳에서 사이트 공통이
+ * 뒤로 새어 들어오면, 그 배만 예외인 줄 알았는데 나머지 어종에 엉뚱한 시각이 붙습니다.
+ */
+function selectTimeGuide(site, boat, species, date) {
+  const boatConf = site.boats?.[boat] ?? {};
+  const own = boatConf.timeGuides ?? boatConf.timeGuide;
+  const conf = own ? boatConf : site;
+
+  // 유효기간이 없으면 안 씁니다. 다음 시즌에 낡은 시각이 조용히 붙는 쪽이 비어 있는
+  // 것보다 나쁩니다 — 승선료에서 같은 이유로 정한 규칙입니다.
+  const applies = (guide) => {
+    if (!guide?.validFrom || !guide.validThrough || !date) return false;
+    if (date < guide.validFrom || date > guide.validThrough) return false;
+    // 어종을 안 적은 공지는 그 선사(배별로 적었으면 그 배)의 모든 출조에 걸립니다. 공지가
+    // 어종을 안 가리는 곳이 실제로 있습니다 — 52fish는 "오전배 : 5시 출항 / 오후배 : 10시
+    // 30분 출항"처럼 배로만 갈리고, 바다사랑호는 어종 없이 "05시 30분 출항"이라고만 적습니다.
+    // 어종을 적었으면 그건 그 어종 출조 이야기라는 뜻이니 그대로 지킵니다.
+    const names = (Array.isArray(guide.species) ? guide.species : guide.species ? [guide.species] : [])
+      .map(toSpecies).filter(Boolean);
+    return names.length ? names.includes(species) : true;
+  };
+
+  const list = Array.isArray(conf.timeGuides) ? conf.timeGuides : [];
+  return list.find(applies) ?? (applies(conf.timeGuide) ? conf.timeGuide : null);
+}
+
+/**
  * registry에 적어둔 승선료에서 그 출조 조건에 맞는 값을 고릅니다.
  * 배별 priceGuides → 사이트 공통 priceGuides → 배별 prices/price → 사이트 공통 순.
  * 못 찾으면 null이고, 화면에서는 가격칸이 빈 채로 보입니다.
@@ -401,15 +436,8 @@ export function makeTrip(site, fields) {
   const rawDepartureWindow = departureWindow(rawStatus);
   const boatName = boat ? String(boat).trim() : null;
   const normalizedSpecies = toSpecies(species);
-  const guide = site.boats?.[boatName]?.timeGuide ?? site.timeGuide;
-  const guideSpecies = guide?.species?.map(toSpecies).filter(Boolean) ?? [];
-  // 어종을 안 적은 공지는 그 선사(배별로 적었으면 그 배)의 모든 출조에 걸립니다. 공지가
-  // 어종을 안 가리는 곳이 실제로 있습니다 — 52fish는 "오전배 : 5시 출항 / 오후배 : 10시
-  // 30분 출항"처럼 배로만 갈리고, 바다사랑호는 어종 없이 "05시 30분 출항"이라고만 적습니다.
-  // 어종을 적었으면 그건 그 어종 출조 이야기라는 뜻이니 그대로 지킵니다.
-  const speciesApplies = guideSpecies.length ? guideSpecies.includes(normalizedSpecies) : true;
-  const guideApplies = guide?.validFrom && guide?.validThrough && resolvedDate >= guide.validFrom &&
-    resolvedDate <= guide.validThrough && speciesApplies;
+  const guide = selectTimeGuide(site, boatName, normalizedSpecies, resolvedDate);
+  const guideApplies = Boolean(guide);
   const fromGuide = !departAt && !range.from && !rawDepartureWindow.from && guideApplies ? toTime(guide.departAt) : null;
   const depart = departAt ?? range.from ?? rawDepartureWindow.from ?? fromGuide;
   const throughFromGuide = !departThrough && !rawDepartureWindow.through && guideApplies ? toTime(guide.departThrough) : null;

@@ -153,6 +153,70 @@ test('선사 공지 보완은 유효기간·어종을 지키고 개별 예약 �
   assert.equal(individual.timeSource, undefined);
 });
 
+// 한 배가 어종마다 다른 시각으로 뜨는 곳이 있습니다. `timeGuide` 하나로는 그중
+// 하나밖에 못 적어서, 나머지 어종은 시각이 빈 채로 남습니다 — 지금 시각이 빈 출조
+// 3,162건 중 상당수가 어종이 둘 이상인 선사입니다(ssfish·bless·bestho …).
+test('어종마다 시각이 갈리면 timeGuides로 여러 줄을 적는다', () => {
+  const range = { validFrom: '2026-01-01', validThrough: '2026-12-31', source: 'https://example.com/notice' };
+  const guideSite = { ...site, timeGuides: [
+    { ...range, species: ['갈치'], departAt: '13:00', returnAt: '07:00' },
+    { ...range, species: ['문어', '주꾸미'], departAt: '04:30', returnAt: '15:00' },
+    { ...range, departAt: '05:00', returnAt: '14:00' },   // 어종을 안 적은 줄은 나머지 전부
+  ] };
+  const at = (species) => makeTrip(guideSite, { boat: '예시호', date: '2026-09-16', species });
+
+  assert.deepEqual([at('갈치').departAt, at('갈치').returnAt], ['13:00', '07:00']);
+  assert.deepEqual([at('문어').departAt, at('문어').returnAt], ['04:30', '15:00']);
+  assert.equal(at('주꾸미').departAt, '04:30', '한 줄에 어종을 여럿 적을 수 있습니다');
+  assert.equal(at('우럭').departAt, '05:00', '어종을 안 적은 줄이 나머지를 받습니다');
+  assert.equal(at('갈치').timeSource, 'notice');
+  assert.equal(at('갈치').timeSourceUrl, 'https://example.com/notice');
+});
+
+test('timeGuides도 앞에서부터 첫 줄이 이기고, 유효기간과 예약판 값을 지킨다', () => {
+  const range = { validFrom: '2026-01-01', validThrough: '2026-12-31', source: 'https://example.com/notice' };
+  const guideSite = { ...site, timeGuides: [
+    { ...range, departAt: '05:00' },                       // 먼저 적은 줄이 이깁니다
+    { ...range, species: ['갈치'], departAt: '13:00' },
+  ] };
+  const fields = { boat: '예시호', date: '2026-09-16', species: '갈치' };
+  assert.equal(makeTrip(guideSite, fields).departAt, '05:00', '구체적인 줄을 앞에 적어야 합니다');
+
+  // 유효기간이 없는 줄은 건너뜁니다 — 다음 시즌에 낡은 시각이 붙는 쪽이 더 나쁩니다.
+  const noRange = { ...site, timeGuides: [
+    { departAt: '13:00', source: 'https://example.com/notice' },
+    { ...range, departAt: '05:00' },
+  ] };
+  assert.equal(makeTrip(noRange, fields).departAt, '05:00');
+  assert.equal(makeTrip({ ...site, timeGuides: [{ departAt: '13:00' }] }, fields).departAt, null);
+
+  // 기간이 지나면 안 걸립니다. 예약판에 시각이 있으면 그게 언제나 먼저입니다.
+  assert.equal(makeTrip(guideSite, { ...fields, date: '2027-01-01' }).departAt, null);
+  const individual = makeTrip(guideSite, { ...fields, rawTime: '06:00~16:00' });
+  assert.equal(individual.departAt, '06:00');
+  assert.equal(individual.timeSource, undefined);
+});
+
+// 배에 시각을 적어뒀으면 사이트 공통은 안 봅니다. 뒤로 새어 들어오면 그 배만 예외인 줄
+// 알았는데 나머지 어종에 엉뚱한 시각이 붙습니다.
+test('배에 적은 시각이 있으면 사이트 공통은 안 본다', () => {
+  const range = { validFrom: '2026-01-01', validThrough: '2026-12-31', source: 'https://example.com/notice' };
+  const both = { ...site,
+    timeGuides: [{ ...range, departAt: '05:00' }],
+    boats: { 가호: { timeGuides: [{ ...range, species: ['갈치'], departAt: '13:00' }] }, 나호: {} } };
+  const at = (boat, species) => makeTrip(both, { boat, date: '2026-09-16', species });
+
+  assert.equal(at('가호', '갈치').departAt, '13:00');
+  assert.equal(at('가호', '문어').departAt, null, '배에 적었으면 사이트 공통으로 안 떨어집니다');
+  assert.equal(at('나호', '문어').departAt, '05:00', '배에 안 적은 곳은 사이트 공통을 씁니다');
+
+  // 예전처럼 배에 timeGuide 하나만 적어둔 곳도 그대로 동작합니다.
+  const single = { ...site,
+    timeGuides: [{ ...range, departAt: '05:00' }],
+    boats: { 가호: { timeGuide: { ...range, departAt: '10:30' } } } };
+  assert.equal(makeTrip(single, { boat: '가호', date: '2026-09-16' }).departAt, '10:30');
+});
+
 test('더피싱 예약판의 매장 도착 안내를 출항으로 바꾸지 않고 보존한다', () => {
   const [trip] = parseDetail(site, pc(`<tr><td>갤럭시호</td>
     <td>공지 쭈꾸미 출조 &lt;&lt; 정상출조 &gt;&gt; 04시30분까지 매장에 도착해주세요. 예약하기</td>
