@@ -160,6 +160,17 @@ export function createApp({
   // 그 사람이 받은 알림 이력뿐입니다.
   watchPublic = process.env.WATCH_PUBLIC === '1',
   alertsPath = ALERTS_PATH,
+  // 손으로 눌러야만 도는 기능은 아무도 안 누릅니다(항구 채우기를 주 1회 스스로 돌리게 한
+  // 것과 같은 이유). 수집이 한가할 때 몇 곳씩 조사해 두면 사람은 최신 보고서만 읽으면 됩니다.
+  // research.js가 선사마다 7일(실패는 6시간) 대기를 걸어두므로 자주 깨워도 같은 곳을 다시
+  // 두드리지 않습니다 — 이번에 볼 곳이 없으면 그냥 "대기 중"이라고 적고 끝납니다.
+  // 조사하는 동안에는 수집이 멈추므로(같은 예약 플랫폼을 동시에 두드리지 않으려는 것)
+  // 간격은 넉넉히 둡니다. RESEARCH_AUTO_HOURS=0이면 끕니다.
+  autoResearch = {
+    everyMs: Math.max(0, Number(process.env.RESEARCH_AUTO_HOURS ?? 6)) * 3600000,
+    limit: Math.max(1, Number(process.env.RESEARCH_AUTO_LIMIT ?? 3)),
+    pages: Math.max(1, Number(process.env.RESEARCH_AUTO_PAGES ?? 6)),
+  },
   exitProcess = process.exit,
   restartDelayMs = 100,
   monitor = null,
@@ -168,6 +179,66 @@ export function createApp({
   // 요청 간격을 서로 모르므로 같이 돌리면 같은 예약 플랫폼을 필요 이상으로 두드립니다.
   let job = null;
   let researchJob = null;
+
+  // 마지막으로 스스로 돈 때. 화면이 "언제 봤나"를 적을 수 있어야 합니다.
+  let lastAutoResearch = null;
+
+  /**
+   * 조사 프로세스를 띄웁니다. 손으로 누른 것(sites 지정)과 스스로 도는 것(limit로 우선순위
+   * 상위 몇 곳)이 같은 길을 씁니다 — 갈라 두면 한쪽만 고치게 됩니다.
+   * 조사하는 동안에는 수집을 멈춥니다. 별도 프로세스라 fetcher의 호스트당 간격을 서로
+   * 모르기 때문입니다.
+   */
+  async function beginResearch({ sites = [], pages, force = false, limit = null, auto = false }) {
+    const args = [...researchArgs];
+    if (sites.length) args.push('--sites', sites.join(','));
+    args.push('--pages', String(pages));
+    if (limit) args.push('--limit', String(limit));
+    if (force) args.push('--force');
+
+    researchJob = {
+      running: true, startedAt: new Date().toISOString(), sites, pages, force, auto,
+      log: [], report: null, code: null,
+    };
+    const current = researchJob;
+    if (auto) lastAutoResearch = current.startedAt;
+    if (monitor) await monitor.stop();
+
+    const child = spawn(process.execPath, args, { env: process.env, stdio: ['ignore', 'pipe', 'pipe'] });
+    const push = (buf) => {
+      for (const line of String(buf).split('\n')) if (line.trim()) current.log.push(line);
+      if (current.log.length > 500) current.log.splice(0, current.log.length - 500);
+    };
+    child.stdout.on('data', push);
+    child.stderr.on('data', push);
+    let finished = false;
+    const finish = async (code) => {
+      if (finished) return;
+      finished = true;
+      current.code = code;
+      current.report = await readFile(researchReport, 'utf8').catch(() => null);
+      current.running = false;
+      monitor?.start();
+    };
+    child.on('error', (err) => {
+      push(`실행 실패: ${err.message}`);
+      void finish(-1);
+    });
+    child.on('close', (code) => { void finish(code); });
+    return current;
+  }
+
+  // 수집이 도는 중이면 건너뛰고 다음 차례에 봅니다 — 기다렸다 끼어들면 감시가 밀립니다.
+  async function autoResearchTick() {
+    if (researchJob?.running || job?.running || monitor?.status?.().running) return false;
+    await beginResearch({ pages: autoResearch.pages, limit: autoResearch.limit, auto: true });
+    return true;
+  }
+
+  const autoResearchTimer = autoResearch.everyMs > 0
+    ? setInterval(() => { void autoResearchTick(); }, autoResearch.everyMs)
+    : null;
+  autoResearchTimer?.unref?.();
 
   // 명령 하나를 돌리고 출력과 종료 코드를 돌려줍니다.
   const run = ({ file, args }) => new Promise((resolve) => {
@@ -310,42 +381,24 @@ export function createApp({
       const unknown = sites.filter((id) => !known.has(id));
       if (unknown.length) return json(res, 400, { error: `등록되지 않은 선사: ${unknown.join(', ')}` });
 
-      const args = [...researchArgs, '--sites', sites.join(','), '--pages', String(pages)];
-      if (body.force === true) args.push('--force');
-      researchJob = {
-        running: true, startedAt: new Date().toISOString(), sites, pages,
-        force: body.force === true, log: [], report: null, code: null,
-      };
-      const current = researchJob;
-      if (monitor) await monitor.stop();
-      const child = spawn(process.execPath, args, { env: process.env, stdio: ['ignore', 'pipe', 'pipe'] });
-      const push = (buf) => {
-        for (const line of String(buf).split('\n')) if (line.trim()) current.log.push(line);
-        if (current.log.length > 500) current.log.splice(0, current.log.length - 500);
-      };
-      child.stdout.on('data', push);
-      child.stderr.on('data', push);
-      let finished = false;
-      const finish = async (code) => {
-        if (finished) return;
-        finished = true;
-        current.code = code;
-        current.report = await readFile(researchReport, 'utf8').catch(() => null);
-        current.running = false;
-        monitor?.start();
-      };
-      child.on('error', (err) => {
-        push(`실행 실패: ${err.message}`);
-        void finish(-1);
-      });
-      child.on('close', (code) => { void finish(code); });
+      await beginResearch({ sites, pages, force: body.force === true });
       return json(res, 202, { started: true, sites, pages });
     }
 
     if (path === '/api/research' && req.method === 'GET') {
-      return json(res, 200, researchJob ?? {
-        running: false, startedAt: null, sites: [], pages: null, force: false,
-        log: [], report: null, code: null,
+      // 화면이 "스스로 언제 보나"를 적을 수 있게 주기도 같이 싣습니다.
+      const auto = {
+        everyHours: autoResearch.everyMs / 3600000,
+        limit: autoResearch.limit,
+        pages: autoResearch.pages,
+        lastAt: lastAutoResearch,
+      };
+      return json(res, 200, {
+        ...(researchJob ?? {
+          running: false, startedAt: null, sites: [], pages: null, force: false, auto: false,
+          log: [], report: null, code: null,
+        }),
+        autoResearch: auto,
       });
     }
 
@@ -437,7 +490,10 @@ export function createApp({
       res.end('404');
     }
   });
-  server.on('close', () => { void monitor?.stop(); });
+  server.on('close', () => {
+    void monitor?.stop();
+    if (autoResearchTimer) clearInterval(autoResearchTimer);
+  });
   return server;
 }
 
