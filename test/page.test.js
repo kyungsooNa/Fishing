@@ -134,6 +134,16 @@ test('잔여 좌석을 공개하지 않은 예약 가능 출조는 빈칸 대신
   assert.equal(seatsLabel({ status: 'open', seatsLeft: 3, seatsTotal: 20 }), '3/20');
 });
 
+test('운항 칸은 집결시각과 출항 범위를 구분해 표시한다', () => {
+  const start = inline.indexOf('const runLabel');
+  const end = inline.indexOf('// "종일 13시간"');
+  assert.ok(start >= 0 && end > start, '운항 표시 함수를 찾지 못했습니다');
+  const { runLabel } = new Function(`${inline.slice(start, end)}\nreturn { runLabel };`)();
+  assert.equal(runLabel({ meetingAt: '04:30' }), '04:30까지 도착');
+  assert.equal(runLabel({ departAt: '05:00', departThrough: '05:30' }), '05:00~05:30 출항');
+  assert.equal(runLabel({ departAt: '05:00', returnAt: '15:00' }), '05:00~15:00');
+});
+
 test('빈자리 필터는 기본으로 켜져 있다', () => {
   assert.match(html, /id="f-open" checked/);
 });

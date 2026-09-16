@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { makeTrip, toTime, toTimeRange, tripTimeRange } from '../core/schema.js';
+import { makeTrip, toTime, toTimeRange, tripTimeRange, meetingTime, departureWindow } from '../core/schema.js';
 import { parseDetail } from '../adapters/thefishing.js';
 import { mergeDuplicates } from '../core/merge.js';
 
@@ -25,6 +25,21 @@ test('버스·문의·입금·물때 시각을 출항으로 오인하지 않는�
   }
   assert.deepEqual(tripTimeRange('버스 04:20 출발\n출항시간 05:30 입항시간 15:00'), { from: '05:30', to: '15:00' });
   assert.deepEqual(tripTimeRange('입항 16시, 출항 새벽 5시30분'), { from: '05:30', to: '16:00' });
+});
+
+test('집결시각과 출항 범위를 운항 종료시각과 구분한다', () => {
+  assert.equal(meetingTime('정상출조 04시30분까지 매장에 도착해주세요.'), '04:30');
+  assert.equal(meetingTime('늦어도 04시40분 부터 접안지역에 대기 바랍니다.'), '04:40');
+  assert.equal(meetingTime('05시30분 출항'), null);
+  assert.deepEqual(departureWindow('출항은 05시 에서 05시 30분 사이 출항합니다.'),
+    { from: '05:00', through: '05:30' });
+  const meeting = makeTrip(site, { boat: '가호', date: '2026-09-16', status: '04시30분까지 매장에 도착 예약가능' });
+  assert.equal(meeting.departAt, null);
+  assert.equal(meeting.meetingAt, '04:30');
+  const window = makeTrip(site, { boat: '나호', date: '2026-09-16', status: '출항은 05시에서 05시30분 사이 출항 예약가능' });
+  assert.equal(window.departAt, '05:00');
+  assert.equal(window.departThrough, '05:30');
+  assert.equal(window.returnAt, null);
 });
 
 test('출항·입항이 시각 하나를 두고 다투면 각자 제 표기를 집는다', () => {
@@ -136,4 +151,23 @@ test('선사 공지 보완은 유효기간·어종을 지키고 개별 예약 �
   const individual = makeTrip(guideSite, { ...fields, rawTime: '06:00~16:00' });
   assert.equal(individual.departAt, '06:00');
   assert.equal(individual.timeSource, undefined);
+});
+
+test('더피싱 예약판의 매장 도착 안내를 출항으로 바꾸지 않고 보존한다', () => {
+  const [trip] = parseDetail(site, pc(`<tr><td>갤럭시호</td>
+    <td>공지 쭈꾸미 출조 &lt;&lt; 정상출조 &gt;&gt; 04시30분까지 매장에 도착해주세요. 예약하기</td>
+    <td>남은자리 6명</td></tr>`));
+  assert.equal(trip.departAt, null);
+  assert.equal(trip.meetingAt, '04:30');
+  assert.equal(trip.seatsLeft, 6);
+});
+
+test('공지 근거의 집결시각과 출항 범위도 유효기간을 지킨다', () => {
+  const guideSite = { ...site, timeGuide: { departAt: '05:00', departThrough: '05:30', meetingAt: '04:40',
+    validFrom: '2026-09-01', validThrough: '2026-10-31', source: 'https://example.com/notice' } };
+  const trip = makeTrip(guideSite, { boat: '가호', date: '2026-09-16' });
+  assert.deepEqual([trip.departAt, trip.departThrough, trip.meetingAt], ['05:00', '05:30', '04:40']);
+  assert.equal(trip.timeSourceUrl, 'https://example.com/notice');
+  const expired = makeTrip(guideSite, { boat: '가호', date: '2027-09-16' });
+  assert.deepEqual([expired.departAt, expired.departThrough, expired.meetingAt], [null, undefined, undefined]);
 });
