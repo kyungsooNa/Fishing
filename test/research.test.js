@@ -143,3 +143,32 @@ test('반영 후보: registry에서 그 선사의 배 목록을 보고, 보고�
   assert.match(md, /막힘: 적용 기간 · 배 확인\(2척\)/);
   assert.match(md, /초안: \{"timeGuide"/);
 });
+
+// registry에 배를 안 적어둔 선사가 25곳(46척)입니다. registry만 보면 그 곳들은 "배가
+// 하나뿐"인 것처럼 보여, 공지가 어느 배인지 못 집는데도 경고조차 안 붙었습니다.
+test('반영 후보: 수집이 읽어온 배 이름도 같이 보고 공지의 배를 집는다', () => {
+  const base = plaza({ boats: ['레이디호', '베니스호', '시즌1호'] });
+
+  const [named] = proposeGuides({ ...base, evidence: [{
+    kind: 'departure', times: ['06시'], quote: '레이디호 06시 출항',
+    source: 'https://plaza.example/n/9', pageTitle: '안내',
+  }] }, {});   // registry에 boats가 없어도
+  assert.equal(named.boat, '레이디호');
+  assert.equal(named.path, 'boats.레이디호.timeGuide');
+  assert.ok(!named.missing.some((m) => m.startsWith('배 확인')), '배를 집었으면 막지 않습니다');
+
+  const [plain] = proposeGuides({ ...base, evidence: [{
+    kind: 'departure', times: ['06시'], quote: '06시 출항', source: 'https://plaza.example/n/9',
+  }] }, {});
+  assert.ok(plain.missing.includes('배 확인(3척)'), '못 집었으면 몇 척인지 알려줘야 합니다');
+});
+
+test('조사 대상에 그 선사의 수집된 배 이름이 실린다', () => {
+  const registry = [{ id: 'a', url: 'https://a.example' }];
+  const trip = { siteId: 'a', date: '2026-09-16', departAt: null, port: '항구', phone: '010-0000-0000',
+    species: '주꾸미', price: 1, seatsLeft: 1, seatsTotal: 1, returnAt: '12:00' };
+  const [row] = researchTargets(registry, {
+    trips: [{ ...trip, boat: '나중호' }, { ...trip, boat: '가나호' }, { ...trip, boat: '가나호' }],
+  }, '2026-09-16');
+  assert.deepEqual(row.boats, ['가나호', '나중호'], '중복 없이 이름순으로');
+});

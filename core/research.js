@@ -17,9 +17,12 @@ export function researchTargets(registry, data, today = kstDate()) {
     if (t.date && t.date < today) continue;
     const site = sites.get(t.siteId);
     if (!site) continue;
-    const row = rows.get(site.id) ?? { id: site.id, name: site.name, url: site.url, trips: 0, issues: new Map(), samples: [] };
+    const row = rows.get(site.id) ?? { id: site.id, name: site.name, url: site.url, trips: 0, issues: new Map(), samples: [], boats: new Set() };
     rows.set(site.id, row);
     row.trips++;
+    // 공지가 어느 배 이야기인지 맞춰보려면 배 이름을 알아야 합니다. registry에 적힌 것만
+    // 보면 안 적어둔 선사(2026-09-16 기준 25곳·46척)에서는 아무 배도 못 알아봅니다.
+    if (t.boat) row.boats.add(t.boat);
     const issues = [];
     for (const field of FIELDS) {
       // 마감/휴항의 잔여 숫자 빈칸은 미확인 좌석이 아닙니다. 0원·0석도 유효한 값입니다.
@@ -50,6 +53,7 @@ export function researchTargets(registry, data, today = kstDate()) {
   }
   return [...rows.values()].filter(r => r.issues.size).map(r => {
     const issues = [...r.issues.values()];
+    r.boats = [...r.boats].sort((a, b) => a.localeCompare(b, 'ko'));
     // 매일 달라지는 날짜·건수 대신 미확인 항목과 등록 근거가 바뀔 때 재조사합니다.
     const fingerprint = createHash('sha256').update(JSON.stringify([issues.map(i => [i.field, i.reason]).sort(), sites.get(r.id)])).digest('hex');
     return { ...r, issues, fingerprint, priority: issues.reduce((n, i) => n + i.count, 0) };
@@ -190,7 +194,10 @@ const PERIOD = /(\d{4})[.\-년]\s*(\d{1,2})[.\-월]\s*(\d{1,2})\s*일?\s*(?:부�
 const pad = (n) => String(n).padStart(2, '0');
 
 export function proposeGuides(result, site = {}) {
-  const boats = Object.keys(site.boats ?? {});
+  // registry에 적힌 이름과 수집이 읽어온 이름을 같이 봅니다. 공지가 어느 배인지 알아보는
+  // 일이라 출처를 가릴 이유가 없고, registry에 배를 안 적어둔 선사가 25곳이라 registry만
+  // 보면 그 곳들은 "배가 하나뿐"인 것처럼 보여 경고조차 안 붙었습니다.
+  const boats = [...new Set([...Object.keys(site.boats ?? {}), ...(result.boats ?? [])])];
   const wanted = new Set((result.issues ?? []).map((i) => i.field));
   const byField = new Map();
 
