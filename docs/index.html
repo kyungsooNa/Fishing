@@ -235,12 +235,48 @@
     body > .leaflet-control-container { font-size: 13px; }
     .wrap > details:last-child { margin-inline: 14px; }
   }
+
+  /* 왼쪽 탭바. 현황판과 시스템 관리는 파일이 둘이라 탭은 링크이고, 지금 보는 쪽에
+     aria-current를 답니다. 색은 각 화면의 --accent를 그대로 쓰므로 현황판에서는 파랗고
+     관리 화면에서는 주황입니다 — 어느 쪽에 있는지가 탭 말고도 한 번 더 보입니다.
+     이 조각은 두 화면에 똑같이 들어갑니다. 한쪽만 고치면 탭이 화면마다 다른 자리에
+     뜨므로 test/page.test.js가 둘을 맞춰 봅니다. */
+  :root { --nav-w: 172px; }
+  body { padding-left: var(--nav-w); }
+  .sidenav { position: fixed; z-index: 1200; top: 0; bottom: 0; left: 0; width: var(--nav-w);
+             display: flex; flex-direction: column; gap: 4px; padding: 16px 12px;
+             border-right: 1px solid var(--line); background: var(--card); }
+  .sidebrand { padding: 6px 10px 14px; color: var(--muted); font-size: 12px; font-weight: 700;
+               letter-spacing: .06em; }
+  .sidetab { display: flex; align-items: center; gap: 9px; padding: 9px 11px; border-radius: 9px;
+             color: var(--muted); font-size: 14px; font-weight: 600; text-decoration: none; }
+  .sidetab:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); color: var(--fg); }
+  .sidetab[aria-current="page"] { background: var(--accent-soft); color: var(--accent); font-weight: 800; }
+  .sidetab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .sideicon { flex: 0 0 auto; width: 17px; height: 17px;
+              fill: none; stroke: currentColor; stroke-width: 1.5;
+              stroke-linecap: round; stroke-linejoin: round; }
+  /* 작은 화면에서는 아래로 내립니다. 위쪽은 제목·필터·날짜 머리글이 sticky로 붙어 있어서
+     (top: 0 / 55px / 108px) 탭바를 거기 얹으면 그 값이 전부 어긋납니다. */
+  @media (max-width: 720px) {
+    body { padding-left: 0; padding-bottom: 64px; }
+    .sidenav { top: auto; right: 0; width: auto; flex-direction: row; gap: 6px;
+               padding: 6px 12px calc(6px + env(safe-area-inset-bottom));
+               border-right: 0; border-top: 1px solid var(--line); }
+    .sidebrand { display: none; }
+    .sidetab { flex: 1 1 0; justify-content: center; padding: 9px 6px; }
+  }
 </style>
 </head>
 <body>
+<nav class="sidenav" aria-label="화면 이동">
+  <div class="sidebrand">출조 레이더</div>
+  <a class="sidetab" href="index.html" aria-current="page"><svg class="sideicon" viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2.5" width="12" height="11" rx="2"></rect><path d="M2 6.5h12M6.5 6.5v7"></path></svg><span>현황</span></a>
+  <a class="sidetab" href="admin.html"><svg class="sideicon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 5h10M3 11h10"></path><circle cx="6" cy="5" r="1.9"></circle><circle cx="10.5" cy="11" r="1.9"></circle></svg><span>시스템</span></a>
+</nav>
 <div class="wrap">
   <h1>출조 찾기</h1>
-  <div class="sub"><a href="admin.html">시스템 관리 →</a> · <span id="meta">불러오는 중…</span></div>
+  <div class="sub"><span id="meta">불러오는 중…</span></div>
   <div class="sub" id="monitor-status" role="status">전체 목록은 약 60분 주기로 수집합니다. 관심 출조 감시는 로컬 서버에서 사용할 수 있습니다.</div>
   <details id="watch-panel" hidden><summary>감시 중인 출조 관리</summary><div id="watch-list" class="status"></div></details>
   <details id="alert-panel" hidden><summary>내가 받은 알림</summary><div id="alert-list" class="status"></div></details>
