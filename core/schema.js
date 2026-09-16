@@ -222,6 +222,24 @@ export function sessionOf(departAt, returnAt) {
 }
 
 /**
+ * 배 이름에만 적힌 오전·오후.
+ *
+ * 예약판에 시각도 구분도 없이 배 이름으로만 나누는 곳이 있습니다 — 오이도 몬스터호는
+ * `몬스터호 (오전배)`/`(오후배)`가 전부이고 출항 시각이 없습니다(`sessionOf`가 셀 것이
+ * 없습니다). 그대로 두면 그 배는 구분 칸이 비고 오전·오후 필터에서 통째로 빠집니다 —
+ * 우리가 아는 값인데 안 읽어서 못 거르는 것입니다.
+ *
+ * 낱말은 **끝에 붙고 앞에 빈칸이나 괄호가 있을 때만** 봅니다. 붙여 쓴 이름(`만선호오전배`)과
+ * 배 이름에 든 낱말(`종일호`)을 건드리지 않으려는 것입니다 — 한글에 `\b`가 없어 생기는
+ * 그 함정입니다. 화면도 같은 규칙으로 배 이름을 줄여 즐겨찾기·별점을 한 배로 봅니다
+ * (`docs/index.html`의 `SESSION_TAIL`).
+ */
+const NAME_SESSION = /[\s(（[]+\s*(오전|오후|종일|야간)\s*배?\s*[)）\]]*\s*$/;
+export function sessionFromName(boat) {
+  return (boat ? String(boat) : '').match(NAME_SESSION)?.[1] ?? null;
+}
+
+/**
  * 물때 표기(12물, 조금, 무시)를 그대로 살려 뽑습니다.
  * 서해 쪽은 "한객기·대객기"처럼 물 대신 객기로 세는 곳이 있습니다. 이걸 빼먹어서
  * 293건이 물때 없이 올라오고 있었습니다(수집 데이터에서 셌습니다).
@@ -399,7 +417,10 @@ export function makeTrip(site, fields) {
   const meetingFromGuide = !meetingAt && !meetingTime(rawStatus) && guideApplies ? toTime(guide.meetingAt) : null;
   const meet = meetingAt ?? meetingTime(rawStatus) ?? meetingFromGuide;
   const back = returnAt ?? range.to;
-  const { session, hours } = sessionOf(depart, back);
+  const timed = sessionOf(depart, back);
+  // 시각으로 못 셌으면 배 이름에 적힌 오전·오후라도 씁니다(몬스터호처럼 그게 전부인 곳).
+  const session = timed.session ?? sessionFromName(boatName);
+  const { hours } = timed;
   const seats = Number.isFinite(seatsLeft) ? seatsLeft : parseSeats(rawStatus);
   const selectedPrice = price != null
     ? { value: price }
