@@ -116,8 +116,11 @@
   .pager .count { margin-left: auto; color: var(--muted); }
   /* 표에서 바로 매깁니다. 안 매긴 배는 ☆ 하나만 흐리게 둡니다 — 모든 줄에 ☆☆☆☆☆가
      깔리면 표가 안 읽힙니다. 고르는 칸(.ratepop)은 화면에 하나만 만들어 옮겨 씁니다. */
-  .ratebtn { margin-left: 5px; padding: 0 2px; border: 0; background: none; color: var(--line);
-             font: inherit; font-size: 12px; letter-spacing: -1px; line-height: 1;
+  /* 안 매긴 별을 테두리색(--line)으로 뒀더니 흰 배경에서 **안 보였습니다** — 매길 수 있다는
+     것 자체를 모릅니다. 누를 수 있는 것은 눈에 보여야 합니다. 그렇다고 매긴 별과 같은
+     색이면 안 매긴 배가 매긴 것처럼 보이므로, 회색으로 또렷하게 두고 매긴 별만 색을 줍니다. */
+  .ratebtn { margin-left: 5px; padding: 0 2px; border: 0; background: none; color: var(--muted);
+             font: inherit; font-size: 14px; letter-spacing: -1px; line-height: 1;
              white-space: nowrap; cursor: pointer; }
   .ratebtn.on { color: var(--few); }
   .ratebtn:hover { color: var(--few); }
@@ -132,7 +135,7 @@
   .ratepop .clear { margin-left: 7px; font-size: 12px; color: var(--muted); }
   .ratepop .clear:hover { color: var(--off); }
   .star { border: 0; background: none; cursor: pointer; font-size: 15px; line-height: 1;
-          padding: 0 2px; color: var(--line); }
+          padding: 0 2px; color: var(--muted); }
   .star.on { color: var(--few); }
   .star:hover { color: var(--few); }
   td.starcell, th.starcell { width: 1%; padding-right: 4px; }
