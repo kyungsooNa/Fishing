@@ -258,14 +258,28 @@ test('두 줄로 뜨는 곳부터, 그다음은 출조가 많은 곳부터 본�
 
 test('채워져 있거나 끈 곳, 주소 없는 곳은 보지 않는다', () => {
   const registry = [
-    { id: 'has', url: 'https://a.example', port: '홍원항' },
+    { id: 'has', url: 'https://a.example', port: '홍원항', phone: '010-0000-0000' },
     { id: 'off', url: 'https://b.example', enabled: false },
     { id: 'nourl', port: null },
     // 배마다 항구를 적어둔 곳은 사이트에 port가 없어도 채워진 것입니다(core/schema.js의 pickPort).
-    { id: 'perboat', url: 'https://c.example', boats: { '가호': { port: '오천항' } } },
+    { id: 'perboat', url: 'https://c.example', boats: { '가호': { port: '오천항' } }, phone: '010-1111-1111' },
     { id: 'todo', url: 'https://d.example' },
   ];
   assert.deepEqual(portTargets(registry, null).map((t) => t.id), ['todo']);
+});
+
+// 페이지를 한 번 받아 둘 다 읽으므로(identity) 항구만 보고 전화를 버리면
+// 전화만 빈 49곳은 아무도 안 봅니다. 둘 다 같은 배를 알아보는 신원입니다.
+test('항구가 차 있어도 전화가 비면 본다 — 무엇이 빈지 적는다', () => {
+  const registry = [
+    { id: 'phoneonly', url: 'https://a.example', port: '홍원항' },
+    { id: 'portonly', url: 'https://b.example', phone: '010-2222-2222' },
+    { id: 'both', url: 'https://c.example' },
+    { id: 'done', url: 'https://d.example', port: '오천항', phone: '010-3333-3333' },
+  ];
+  const targets = portTargets(registry, null);
+  assert.deepEqual(targets.map((t) => t.id), ['both', 'phoneonly', 'portonly']);
+  assert.deepEqual(targets.map((t) => t.needs), [['항구', '전화'], ['전화'], ['항구']]);
 });
 
 test('수집 결과가 없어도 돌긴 돈다 — 순서만 거칠어집니다', () => {
@@ -287,6 +301,27 @@ test('registry에는 라벨로 찾은 값만, 빈 곳에만 채운다', () => {
   assert.match(parsed.sites[0].note, /출항지 오천항 — 페이지의 라벨에서 읽었습니다/);
   assert.equal(parsed.sites[1].port, '이미있음');
   assert.equal(parsed.sites[2].port, undefined);
+});
+
+test('전화도 빈 곳에만 채우고, 무엇을 왜 채웠는지 note에 남긴다', () => {
+  const parsed = { sites: [
+    { id: 'a' },
+    { id: 'b', phone: '010-0000-0000' },
+    { id: 'c', port: '이미있음' },
+  ] };
+  const filled = applyPorts(parsed, [
+    { id: 'a', port: '오천항', phone: '010-1234-5678' },
+    { id: 'b', phone: '010-9999-9999' },   // 사람이 적어둔 번호를 덮어쓰면 안 됩니다
+    { id: 'c', port: '남당항', phone: '010-5555-5555' },
+  ]);
+
+  assert.deepEqual(filled, ['a', 'c'], '전화만 채운 곳도 채운 곳입니다');
+  assert.equal(parsed.sites[0].phone, '010-1234-5678');
+  assert.match(parsed.sites[0].note, /전화 010-1234-5678 — 페이지에 번호가 하나뿐이라 읽었습니다/);
+  assert.equal(parsed.sites[1].phone, '010-0000-0000');
+  // 항구는 이미 있으니 전화만 들어갑니다.
+  assert.equal(parsed.sites[2].port, '이미있음');
+  assert.equal(parsed.sites[2].phone, '010-5555-5555');
 });
 
 test('registry가 배열로 적혀 있어도 채운다', () => {
