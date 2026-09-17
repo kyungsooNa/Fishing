@@ -1287,3 +1287,86 @@ test('항구순: 하루 안에서 지역끼리 모이고, 항구를 모르는 �
   // 날짜가 먼저라 정렬이 날짜를 넘지 않습니다.
   assert.match(inline, /\(a\.date \?\? ''\)\.localeCompare\(b\.date \?\? ''\)\s*\n?\s*\|\| byFav/);
 });
+
+// 관심 없는 선사·배·항구·지역을 내 화면에서만 숨깁니다(즐겨찾기·별점과 같은 개인 기록).
+// 수집을 끄는 것(registry의 enabled:false)과 다릅니다 — 그쪽은 모두에게 영향을 주고
+// 자리를 못 잡게 만듭니다. 그래서 여기서 가장 조심할 것은 **과하게 숨기는 것**입니다.
+test('숨기기: 합쳐진 줄은 출처가 모두 숨긴 선사일 때만 숨는다', () => {
+  const start = inline.indexOf('// ── 숨기기(관심 없는 것) ──');
+  const end = inline.indexOf('// ── 숨기기 끝 ──');
+  assert.ok(start >= 0 && end > start, '숨기기 부분을 찾지 못했습니다');
+
+  const store = new Map();
+  const localStorage = {
+    getItem: (k) => store.get(k) ?? null,
+    setItem: (k, v) => store.set(k, v),
+  };
+  const api = new Function('localStorage', 'favKey', 'portOf', 'regionOf', 'tripSources', '$', 'filtered',
+    `${inline.slice(start, end)}
+     return { MUTES, MUTE_KINDS, isMuted, toggleMute, muteCount, loadMutes, saveMutes };`)(
+    localStorage,
+    (t) => `${t.boat}|${t.port ?? ''}`,
+    (t) => t.port ?? '(항구 미상)',
+    (port) => (port ? String(port).split(/\s+/).slice(0, 2).join(' ') : '(항구 미상)'),
+    (t) => (t.sources?.length ? t.sources : [t]),
+    () => ({ textContent: '' }), () => {});
+
+  const merged = {
+    boat: '무적호', port: '충남 보령 오천항', siteName: '가나선사',
+    sources: [{ siteName: '가나선사' }, { siteName: '다라선사' }],
+  };
+  const single = { boat: '만선호', port: '강원 고성 대진항', siteName: '마바선사' };
+
+  assert.equal(api.isMuted(merged), false, '아무것도 안 숨겼으면 다 보입니다');
+  api.MUTES.site.add('가나선사');
+  assert.equal(api.isMuted(merged), false,
+    '한 곳이라도 안 숨긴 사이트에서 올라온 자리는 잡을 수 있습니다 — 숨기면 안 됩니다');
+  api.MUTES.site.add('다라선사');
+  assert.equal(api.isMuted(merged), true, '출처가 모두 숨긴 선사면 숨깁니다');
+
+  // 나머지 단위는 그 줄의 값 하나로 판정합니다.
+  api.MUTES.site.clear();
+  api.MUTES.boat.add('만선호|강원 고성 대진항');
+  assert.equal(api.isMuted(single), true);
+  assert.equal(api.isMuted(merged), false, '다른 배는 그대로입니다');
+  api.MUTES.boat.clear();
+  api.MUTES.port.add('충남 보령 오천항');
+  assert.equal(api.isMuted(merged), true);
+  api.MUTES.port.clear();
+  api.MUTES.region.add('강원 고성');
+  assert.equal(api.isMuted(single), true, '지역은 항구 앞 두 낱말입니다');
+  api.MUTES.region.clear();
+
+  // 저장 형식: 네 갈래 배열. 깨진 값이 들어와도 화면이 죽으면 안 됩니다.
+  api.MUTES.site.add('가나선사');
+  api.saveMutes();
+  assert.deepEqual(JSON.parse(store.get('fishing:muted')),
+    { site: ['가나선사'], boat: [], port: [], region: [] });
+  store.set('fishing:muted', '{"site":"글자","boat":null}');
+  assert.equal([...api.loadMutes().site].length, 0, '배열이 아니면 없는 셈 칩니다');
+  store.set('fishing:muted', '망가진 JSON');
+  assert.equal(api.muteCount.call(null), api.muteCount(), '읽다 죽지 않습니다');
+});
+
+test('숨기기: 거는 자리와 푸는 자리가 다 있고, 거르기에 반영된다', () => {
+  for (const id of ['mute-panel', 'mute-list', 'mute-summary', 'mute-note']) {
+    assert.ok(html.includes(`id="${id}"`), `숨김 패널 요소가 없습니다: ${id}`);
+  }
+  // 푸는 길이 없으면 "배가 안 뜬다"로 보이고 고장과 구별이 안 됩니다.
+  assert.match(inline, /function renderMutes\(\)/);
+  assert.match(inline, /undo\.textContent = '다시 보기';/);
+  assert.match(inline, /clear\.textContent = '전부 다시 보기';/);
+  assert.match(inline, /panel\.hidden = total === 0;/, '숨긴 게 없으면 패널도 없습니다');
+
+  // 거는 자리: 선사·항구·지역은 필터 메뉴에서, 배는 별점 칸에서.
+  assert.match(inline, /const MUTE_FROM_FILTER = \{ 'f-site': 'site', 'f-port': 'port', 'f-region': 'region' \};/);
+  assert.match(inline, /mute\.addEventListener\('click', \(e\) => \{ e\.preventDefault\(\); e\.stopPropagation\(\); toggleMute\(kind, v\); \}\);/,
+    '라벨 안에 있어 체크까지 켜지면 안 됩니다');
+  assert.match(inline, /if \(trip\) toggleMute\('boat', favKey\(trip\)\);/);
+
+  // 거르기에 반영되지 않으면 숨겨도 그대로 보입니다.
+  assert.match(inline, /!isMuted\(t\) &&/);
+  // 저장이 막히면 없던 일로 — 화면만 바뀌면 숨긴 줄 알고 창을 닫습니다.
+  const toggle = inline.match(/function toggleMute\([\s\S]*?\n\}/)?.[0] ?? '';
+  assert.match(toggle, /MUTES\[kind\] = before;/);
+});
