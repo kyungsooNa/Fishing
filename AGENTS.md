@@ -23,6 +23,9 @@ DEPLOY.md         상시 감시를 어디서 돌릴지 정한 기록. 잰 값과
 PLATFORMS.md      다음에 어디를 더 볼지. 후보와 우선순위, 그렇게 판단한 근거
 USERTEST.md       처음 온 사람에게 시켜볼 과제. 설명하지 않고 지켜보기 위한 목록
 IDENTITY.md       누구의 감시인지 어떻게 알 것인가. 계정을 만들지 않기로 한 이유
+.claude/agents/   서브에이전트. `ship`은 테스트→커밋→푸시→PR→CI→머지→최신화→재수행 담당
+.claude/hooks/    턴 끝 검사. ship-check가 "main 에 안 들어간 커밋"을 잡습니다
+                  (`.claude/settings.json`의 `hooks.Stop`에 등록돼 있어야 돕니다)
 collect.js        전체 수집 진입점 (Actions가 이걸 부릅니다)
 debug.js          어댑터 고칠 때 쓰는 도구. 한 사이트만 돌려보고 표로 보여줍니다
 discover.js       선사 후보를 자동으로 모으고 시험 수집합니다. 손으로 찾아 등록하는 대신
@@ -500,6 +503,16 @@ git push -u origin <작업이름>
 #   squash 머지 — 제목은 "<제목> (#N)"
 git checkout main && git pull origin main
 ```
+
+**이 흐름은 둘이 지킵니다 — 마무리 담당과 Stop 훅.**
+`.claude/agents/ship.md`가 서브에이전트(`ship`)로, 코드 작업을 마친 뒤 부르면 테스트부터
+머지·`main` 최신화·재수행까지 한 덩어리로 돕니다. 위 단계를 사람이 기억해서 부르는
+것으로는 안 굴러갑니다 — 실제로 커밋에서 멈춘 적이 있습니다. `.claude/hooks/ship-check.mjs`는
+그물입니다: 턴 끝에서 `origin/main`과 비교해 안 들어간 커밋이 있으면 턴을 막고 남은 단계를
+알려줍니다. **훅은 파일만 있다고 돌지 않습니다** — `.claude/settings.json`의 `hooks.Stop`에
+적혀 있어야 실행됩니다. 실제로 그 등록이 빠져 있어서 훅이 한 번도 안 돌았고, 그 사이
+PR을 안 여는 세션이 있었습니다. 한 번만 막으므로(`stop_hook_active`) 정말 멈춰야 할 때의
+탈출구는 그대로입니다(`SKIP_SHIP_CHECK=1`도 있습니다).
 
 **받아오기가 실패하면 "얼마나 걸려서"를 먼저 보세요.** `describeError`가 `— N초 만에`를
 같이 찍습니다. 30초를 기다린 것(상대가 붙여놓고 응답을 안 줌)과 2~5초 만에 끊긴 것
