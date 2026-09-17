@@ -710,7 +710,7 @@ test('쪽 넘기는 막대는 표 위아래에 있고, 한 쪽뿐이면 숨는�
   // 필터를 바꾸면 보던 쪽 번호는 의미가 없습니다.
   assert.match(inline, /const filtered = \(\) => \{ PAGE = 0; refresh\(\); \}/);
   assert.match(inline, /updateMultiLabel\(control\); filtered\(\);/);
-  assert.match(inline, /\$\('f-q'\)\.addEventListener\('input', queueSearch\)/);
+  assert.match(inline, /\$\('f-q'\)\.addEventListener\('input', \(\) => \{ paintSuggest\(\); queueSearch\(\); \}\)/);
 });
 
 test('날짜 머리글에서 그 날 출조만 접고 펼친다', () => {
@@ -739,19 +739,25 @@ test('검색어는 손이 멈춘 뒤에, 한글 조합이 끝난 뒤에 건다',
   const timers = [];
   const setTimeout = (fn) => (timers.push(fn), timers.length);
   const clearTimeout = (id) => { if (id) timers[id - 1] = null; };
-  new Function('$', 'filtered', 'setTimeout', 'clearTimeout', inline.slice(start, end))(
-    $, () => { ran += 1; }, setTimeout, clearTimeout);
+  // 후보 목록은 이 시험의 관심사가 아닙니다(따로 봅니다). 표를 언제 그리는지만 봅니다.
+  let suggested = 0;
+  new Function('$', 'filtered', 'setTimeout', 'clearTimeout', 'paintSuggest', 'closeSuggest',
+    inline.slice(start, end))(
+    $, () => { ran += 1; }, setTimeout, clearTimeout, () => { suggested += 1; }, () => {});
   const fire = () => { for (const fn of timers.splice(0)) fn?.(); };
 
   handlers.input(); handlers.input(); handlers.input();
   fire();
   assert.equal(ran, 1, '연달아 친 글자는 한 번만 겁니다');
+  assert.equal(suggested, 3, '후보는 글자마다 바로 — 기다리는 것은 표뿐입니다');
 
   ran = 0;
+  suggested = 0;
   handlers.compositionstart();
   handlers.input();
   fire();
-  assert.equal(ran, 0, '조합 중(ㅁ, 무)에는 그리지 않습니다');
+  assert.equal(ran, 0, '조합 중(ㅁ, 무)에는 표를 그리지 않습니다');
+  assert.equal(suggested, 1, '그래도 후보는 조합 중에 보여줍니다 — 그게 이 칸의 값입니다');
   handlers.compositionend();
   fire();
   assert.equal(ran, 1, '조합이 끝나면 겁니다');
@@ -1199,4 +1205,62 @@ test('한 날의 물때는 많이 쓰인 표기부터 보여준다', () => {
     { date: '2026-09-16', tide: '13물' },
   ];
   assert.deepEqual([...tidesByDate(rows).get('2026-09-16')], ['12물', '한객기', '13물']);
+});
+
+// 검색은 표를 통째로 다시 그립니다 — 6배 느린 CPU에서 672줄에 449ms입니다(CDP 스로틀로
+// 잰 값). 그래서 손이 멈춘 뒤에야 표가 바뀌는데, 그동안 아무 반응이 없어 "검색이 느리다"가
+// 됩니다. 이름 목록은 439개뿐이라 한 글자마다 골라도 3~4ms입니다. **비싼 쪽은 기다리게
+// 두고 싼 쪽을 먼저 보여준다** — 이 칸의 전부가 그것이라, 그 값 차이를 여기서 지킵니다.
+test('배 이름 자동완성: 이름은 수집을 받을 때 한 번만 세고, 고르는 것은 그 목록에서만 한다', () => {
+  const start = inline.indexOf('// ── 배 이름 자동완성 ──');
+  const end = inline.indexOf('// ── 배 이름 자동완성 끝 ──');
+  assert.ok(start >= 0 && end > start, '자동완성 부분을 찾지 못했습니다');
+  const { buildBoatNames, boatSuggestions, suggestWhere } = new Function(
+    `${inline.slice(start, end)}\nreturn { buildBoatNames, boatSuggestions, suggestWhere };`)();
+
+  const trips = [
+    { boat: '무적호', siteName: '가나선사' },
+    { boat: '무적호', siteName: '가나선사' },
+    { boat: '무적호', siteName: '다라선사' },
+    { boat: '거북선무적호', siteName: '가나선사' },
+    { boat: '만선호', siteName: '마바선사', sources: [{ siteName: '마바선사' }, { siteName: '사아선사' }] },
+    { boat: null, siteName: '이름없는선사' },
+  ];
+  const names = buildBoatNames(trips);
+  assert.deepEqual(names.map((r) => r.name), ['무적호', '거북선무적호', '만선호'],
+    '출조 많은 순입니다. 배 이름이 없는 출조는 목록에 없습니다');
+  assert.equal(names[0].trips, 3);
+  assert.deepEqual(names[0].sites, ['가나선사', '다라선사']);
+  assert.deepEqual(names[2].sites, ['마바선사', '사아선사'], '합쳐진 출조는 출처 선사를 다 셉니다');
+
+  // 앞에서부터 맞는 이름이 먼저입니다 — 안 그러면 다 친 이름이 아래에 묻힙니다.
+  assert.deepEqual(boatSuggestions(names, '무적').map((r) => r.name), ['무적호', '거북선무적호']);
+  assert.deepEqual(boatSuggestions(names, '선').map((r) => r.name), ['거북선무적호', '만선호']);
+  assert.deepEqual(boatSuggestions(names, ''), [], '빈 검색어에는 후보를 안 냅니다');
+  assert.deepEqual(boatSuggestions(names, '없는배'), []);
+  assert.deepEqual(boatSuggestions(names, '만선호'), [],
+    '다 친 이름 하나만 남으면 고를 것이 자기 자신뿐이라 표를 가리기만 합니다');
+  assert.equal(boatSuggestions(names, '호', 2).length, 2, '보여주는 수는 막습니다');
+
+  assert.equal(suggestWhere(names[0]), '가나선사 외 1곳 · 3건');
+  assert.equal(suggestWhere(names[1]), '가나선사 · 1건');
+});
+
+test('배 이름 자동완성: 치는 동안 후보는 기다리지 않고, 표만 디바운스한다', () => {
+  assert.ok(html.includes('id="q-suggest"'), '후보 칸이 없습니다');
+
+  // 후보는 input 마다 바로, 표는 queueSearch(디바운스)로.
+  assert.match(inline, /addEventListener\('input', \(\) => \{ paintSuggest\(\); queueSearch\(\); \}\)/);
+  // 한글은 조합이 끝나야 표를 그리지만(ㅁ→무→뭇), 후보는 조합 중에도 보여줍니다.
+  assert.match(inline, /compositionstart[\s\S]{0,120}composing = true/);
+  assert.match(inline, /'compositionend', \(\) => \{ composing = false; paintSuggest\(\); queueSearch\(\); \}/);
+  // IME가 쓰는 Enter·화살표를 가로채면 글자가 깨집니다.
+  assert.match(inline, /if \(e\.isComposing\) return;/);
+  // click은 blur 뒤에 와서 칸이 이미 닫혀 있습니다.
+  assert.match(inline, /addEventListener\('mousedown', \(e\) => \{ e\.preventDefault\(\); pickSuggest\(i\); \}\)/);
+  // 고르면 디바운스를 안 기다리고 그 자리에서 겁니다.
+  assert.match(inline, /function pickSuggest[\s\S]*?clearTimeout\(searchTimer\)[\s\S]*?filtered\(\);/);
+  // 목록은 수집을 받을 때 한 번만 만듭니다. 한 글자마다 8015건을 훑으면 안 됩니다.
+  assert.match(inline, /BOAT_NAMES = buildBoatNames\(d\.trips\);/);
+  assert.equal(inline.match(/buildBoatNames\(/g).length, 2, '만드는 곳은 한 군데여야 합니다');
 });
