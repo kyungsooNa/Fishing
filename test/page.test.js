@@ -1264,3 +1264,26 @@ test('배 이름 자동완성: 치는 동안 후보는 기다리지 않고, 표�
   assert.match(inline, /BOAT_NAMES = buildBoatNames\(d\.trips\);/);
   assert.equal(inline.match(/buildBoatNames\(/g).length, 2, '만드는 곳은 한 군데여야 합니다');
 });
+
+// 항구는 지역이 앞에 붙어 있어("충남 보령 오천항") 가나다순이면 같은 지역이 붙어 나옵니다.
+// 정렬은 날짜를 넘지 않습니다 — 표가 날짜로 끊겨 있고 쪽도 날짜로 나누기 때문입니다.
+test('항구순: 하루 안에서 지역끼리 모이고, 항구를 모르는 줄은 뒤로 간다', () => {
+  const start = inline.indexOf('function byText');
+  const end = inline.indexOf('/** 그 출조의 값을 마지막으로 확인한 때');
+  assert.ok(start >= 0 && end > start, 'byText 부분을 찾지 못했습니다');
+  const byText = new Function(`${inline.slice(start, end)}\nreturn byText;`)();
+  const byPort = byText((t) => t.port);
+
+  const rows = [
+    { port: null }, { port: '충남 보령 오천항' }, { port: '강원 고성 대진항' },
+    { port: '' }, { port: '충남 보령 대천항' },
+  ];
+  assert.deepEqual([...rows].sort(byPort).map((t) => t.port ?? 'X'),
+    ['강원 고성 대진항', '충남 보령 대천항', '충남 보령 오천항', 'X', ''],
+    '값 없는 줄은 방향과 상관없이 뒤입니다(byValue와 같은 규칙)');
+
+  assert.match(inline, /'port-asc': byText\(\(t\) => t\.port\)/);
+  assert.match(html, /<option value="port-asc">/, '정렬 메뉴에 없으면 고를 길이 없습니다');
+  // 날짜가 먼저라 정렬이 날짜를 넘지 않습니다.
+  assert.match(inline, /\(a\.date \?\? ''\)\.localeCompare\(b\.date \?\? ''\)\s*\n?\s*\|\| byFav/);
+});
