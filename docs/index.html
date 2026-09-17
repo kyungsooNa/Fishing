@@ -69,6 +69,16 @@
   .suggest .hit { color: var(--accent); font-weight: 700; }
   .suggest .where { margin-left: auto; color: var(--muted); font-size: 12px; white-space: nowrap; }
   .multi-menu label { display: flex; align-items: center; gap: 7px; padding: 5px 6px; white-space: nowrap; }
+  /* 숨기기는 "보기"(체크)와 다른 일이라 눈에 덜 띄게 두고, 그 줄에 올렸을 때 또렷해집니다.
+     늘 진하면 고르는 체크박스와 경쟁합니다. 대신 키보드로 오면 보여야 합니다. */
+  .mutebtn { margin-left: auto; padding: 0 4px; border: 0; border-radius: 5px; background: none;
+             color: var(--line); font: inherit; font-size: 13px; line-height: 1.4; cursor: pointer; }
+  .multi-menu label:hover .mutebtn, .mutebtn:focus-visible { color: var(--off); }
+  .muterow { display: flex; align-items: center; gap: 8px; padding: 4px 0; }
+  .mutekind { padding: 1px 7px; border: 1px solid var(--line); border-radius: 999px;
+              color: var(--muted); font-size: 12px; }
+  .ratepop .mute { color: var(--muted); }
+  .ratepop .mute:hover { color: var(--off); }
   .multi-menu label:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); }
   .date-menu { width: 252px; min-width: 252px; max-height: none; overflow: visible; padding: 10px; }
   .date-head { display: grid; grid-template-columns: 32px 1fr 32px; align-items: center; gap: 4px; }
@@ -372,6 +382,11 @@
   <div class="sub" id="monitor-status" role="status">전체 목록은 약 60분 주기로 수집합니다. 관심 출조 감시는 로컬 서버에서 사용할 수 있습니다.</div>
   <details id="watch-panel" hidden><summary>감시 중인 출조 관리</summary><div id="watch-list" class="status"></div></details>
   <details id="alert-panel" hidden><summary>내가 받은 알림</summary><div id="alert-list" class="status"></div></details>
+  <!-- 숨긴 것이 하나라도 있을 때만 보입니다. 숨겨놓고 푸는 길을 못 찾는 것이 가장 나쁩니다. -->
+  <details id="mute-panel" hidden><summary id="mute-summary">숨긴 것</summary>
+    <div id="mute-list" class="status"></div>
+    <div class="sub" id="mute-note"></div>
+  </details>
 
   <div class="controls">
     <div class="searchbar">
@@ -674,6 +689,70 @@ function toggleFav(t) {
 }
 let FAVS = loadFavs();
 
+// ── 숨기기(관심 없는 것) ──────────────────────────────────────────────────
+// 즐겨찾기·별점과 같은 급의 **개인 기록**입니다. 서버로 안 보내고 이 브라우저에만 남으며,
+// 읽기 전용(Pages)에서도 됩니다. 수집을 끄는 것(registry의 `enabled:false`)과는 다릅니다 —
+// 그쪽은 모두에게 영향을 주고 자리를 못 잡게 만듭니다. 이건 내 표에서만 안 보이게 합니다.
+//
+// **선사는 이름으로 숨깁니다**(id가 아니라). 화면이 registry를 못 읽어서 필터·표가 전부
+// 이름 기준이고(`t.siteName`), 이름을 바꾸면 숨김이 풀려 **다시 보이는 쪽으로** 틀립니다 —
+// 조용히 사라지는 것보다 낫습니다. 배는 즐겨찾기와 **같은 키**(`이름|항구`)라 오전·오후로
+// 나뉜 배가 한 번에 숨고, 다른 지역의 동명이배는 안 숨습니다(과하게 숨기면 자리를 놓칩니다).
+const MUTE_KEY = 'fishing:muted';
+const MUTE_KINDS = ['site', 'boat', 'port', 'region'];
+const MUTE_LABEL = { site: '선사', boat: '배', port: '항구', region: '지역' };
+
+function loadMutes() {
+  const empty = Object.fromEntries(MUTE_KINDS.map((kind) => [kind, new Set()]));
+  try {
+    const saved = JSON.parse(localStorage.getItem(MUTE_KEY) ?? '{}');
+    if (!saved || typeof saved !== 'object') return empty;
+    for (const kind of MUTE_KINDS) {
+      if (Array.isArray(saved[kind])) empty[kind] = new Set(saved[kind].filter(Boolean).map(String));
+    }
+    return empty;
+  } catch { return empty; }
+}
+function saveMutes() {
+  try {
+    localStorage.setItem(MUTE_KEY, JSON.stringify(
+      Object.fromEntries(MUTE_KINDS.map((kind) => [kind, [...MUTES[kind]]]))));
+    return true;
+  } catch { return false; }
+}
+let MUTES = loadMutes();
+const muteCount = () => MUTE_KINDS.reduce((n, kind) => n + MUTES[kind].size, 0);
+
+/**
+ * 이 출조를 숨길까. **합쳐진 줄은 출처가 모두 숨긴 선사일 때만 숨깁니다** — 한 곳이라도
+ * 안 숨긴 사이트에서 올라온 자리는 잡을 수 있습니다. 숨기기가 자리를 놓치는 쪽으로
+ * 기울면 안 됩니다(이 화면은 취소석을 잡으려고 보는 화면입니다).
+ */
+function isMuted(t) {
+  if (MUTES.boat.has(favKey(t))) return true;
+  if (MUTES.port.has(portOf(t))) return true;
+  if (MUTES.region.has(regionOf(t.port))) return true;
+  const names = tripSources(t).map((src) => src.siteName).filter(Boolean);
+  return names.length > 0 && names.every((name) => MUTES.site.has(name));
+}
+
+// 켜고 끄는 곳이 여럿(필터 메뉴·별점 칸·숨김 패널)이라 값을 고치는 곳은 하나로 둡니다.
+function toggleMute(kind, key) {
+  if (!MUTE_KINDS.includes(kind) || !key) return;
+  const before = new Set(MUTES[kind]);
+  if (!MUTES[kind].delete(key)) MUTES[kind].add(key);
+  // 저장이 막히면 없던 일로 되돌립니다 — 화면만 바뀌면 숨긴 줄 알고 창을 닫습니다.
+  if (!saveMutes()) {
+    MUTES[kind] = before;
+    $('mute-note').textContent = '저장이 막혀 숨기지 못했습니다(사생활 보호 모드일 수 있습니다).';
+    return;
+  }
+  $('mute-note').textContent = '';
+  renderMutes();
+  filtered();
+}
+// ── 숨기기 끝 ── (test/page.test.js가 여기까지를 떼어내 돌려봅니다)
+
 // 항구는 registry에서 오고 사람이 고칩니다. 고치면 키가 어긋나서 별을 눌러둔 배가
 // 조용히 사라집니다(바하호가 백사장항→구매항으로 바뀌면서 실제로 그랬습니다).
 // 같은 이름의 배가 지금 목록에 딱 하나뿐일 때만 새 키로 옮깁니다. 둘 이상이면
@@ -759,6 +838,18 @@ function ratePop() {
   clear.textContent = '지우기';
   clear.addEventListener('click', () => chooseRate(0));
   RATE_POP.append(clear);
+  // 배 단위로 숨기는 자리입니다. 이 칸은 이미 "이 배에 대한 내 표시"를 고르는 칸이라
+  // 같이 둡니다 — 표에 버튼을 하나 더 달면 1200줄에 1200개가 늘어납니다.
+  const mute = document.createElement('button');
+  mute.type = 'button';
+  mute.className = 'clear mute';
+  mute.textContent = '숨기기';
+  mute.addEventListener('click', () => {
+    const trip = RATE_POP_TRIP;
+    closeRatePop();
+    if (trip) toggleMute('boat', favKey(trip));
+  });
+  RATE_POP.append(mute);
   document.body.append(RATE_POP);
   return RATE_POP;
 }
@@ -1104,6 +1195,55 @@ function platformsOf(sites, trip) {
   return [...new Set(ids.map((id) => platformOf(sites, id)))];
 }
 
+// 숨긴 것을 모아 보여주고 되돌립니다. **숨기는 길보다 푸는 길이 먼저입니다** —
+// 어디서 풀 수 있는지 모르면 "배가 안 뜬다"로 보이고, 그건 고장과 구별이 안 됩니다.
+function renderMutes() {
+  const panel = $('mute-panel');
+  const total = muteCount();
+  panel.hidden = total === 0;
+  $('mute-summary').textContent = `숨긴 것 ${total}개`;
+  const box = $('mute-list');
+  box.textContent = '';
+  if (!total) return;
+
+  for (const kind of MUTE_KINDS) {
+    for (const key of [...MUTES[kind]].sort((a, b) => a.localeCompare(b, 'ko'))) {
+      const row = document.createElement('div');
+      row.className = 'muterow';
+      const tag = document.createElement('span');
+      tag.className = 'mutekind';
+      tag.textContent = MUTE_LABEL[kind];
+      const name = document.createElement('span');
+      // 배 키는 `이름|항구`입니다(즐겨찾기와 같은 키). 사람에게는 이름만 보여줍니다.
+      name.textContent = kind === 'boat' ? key.slice(0, key.indexOf('|')) || key : key;
+      if (kind === 'boat' && key.includes('|')) name.title = `출항지 ${key.slice(key.indexOf('|') + 1) || '미상'}`;
+      const undo = document.createElement('button');
+      undo.type = 'button';
+      undo.className = 'small';
+      undo.textContent = '다시 보기';
+      undo.addEventListener('click', () => toggleMute(kind, key));
+      row.append(tag, name, undo);
+      box.append(row);
+    }
+  }
+  const clear = document.createElement('button');
+  clear.type = 'button';
+  clear.className = 'small';
+  clear.textContent = '전부 다시 보기';
+  clear.addEventListener('click', () => {
+    for (const kind of MUTE_KINDS) MUTES[kind] = new Set();
+    saveMutes();
+    renderMutes();
+    filtered();
+  });
+  box.append(clear);
+}
+
+// 필터 메뉴의 항목마다 "숨기기"를 답니다. 관심 없는 선사를 고르는 생각이 일어나는 자리가
+// 바로 그 목록이라, 표에 버튼을 더 달지 않고 여기서 겁니다(한 쪽이 1200줄이라 표에 버튼을
+// 하나 더 다는 값이 쌉니다: 265곳짜리 메뉴는 수집을 받을 때 한 번만 그립니다).
+const MUTE_FROM_FILTER = { 'f-site': 'site', 'f-port': 'port', 'f-region': 'region' };
+
 function fillOptions(control, values, defaults = []) {
   const menu = control.querySelector('.multi-menu');
   if (control.dataset.loaded) defaults = [...selectedValues(control.id)];
@@ -1118,6 +1258,18 @@ function fillOptions(control, values, defaults = []) {
     input.dataset.text = v;
     input.addEventListener('change', () => { updateMultiLabel(control); filtered(); });
     label.append(input, input.dataset.text);
+    const kind = MUTE_FROM_FILTER[control.id];
+    if (kind) {
+      const mute = document.createElement('button');
+      mute.type = 'button';
+      mute.className = 'mutebtn';
+      mute.textContent = '✕';
+      mute.title = `${v} 숨기기 — 내 화면에서만 안 보입니다`;
+      mute.setAttribute('aria-label', `${v} 숨기기`);
+      // 체크(보기)와 숨기기는 다른 일입니다. 라벨 안에 있어 누르면 체크까지 켜집니다.
+      mute.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); toggleMute(kind, v); });
+      label.append(mute);
+    }
     menu.append(label);
   }
   updateMultiLabel(control);
@@ -1267,6 +1419,7 @@ function visibleTrips() {
     (!species.size || speciesOf(t).some((s) => species.has(s))) && inDateRange(t.date, dates) &&
     hasSelection(session, sessionOf(t)) &&
     showTripByTime(t, kst) &&
+    !isMuted(t) &&
     (!q || (t.boat ?? '').includes(q)) &&
     (!openOnly || t.status === 'open' || t.status === 'few'));
 }
@@ -1791,6 +1944,7 @@ function loadData() { return fetch('data.json?t=' + Date.now(), { cache: 'no-sto
     fillOptions($('f-species'), d.trips.flatMap(speciesOf), ['갑오징어', '주꾸미']);
     fillOptions($('f-session'), d.trips.map(sessionOf));
     BOAT_NAMES = buildBoatNames(d.trips);   // 자동완성 목록. 수집을 받을 때 한 번만 셉니다
+    renderMutes();
     fillDateRange(d.trips.map((t) => t.date));
     renderStatus();
     refresh();
