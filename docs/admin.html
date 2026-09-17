@@ -82,6 +82,9 @@
   .boatlabel { min-width: 0; overflow-wrap: anywhere; font-size: 13px; }
   tr.dirty { background: color-mix(in srgb, var(--few) 12%, transparent); }
   .kind { font-size: 12px; color: var(--muted); white-space: nowrap; }
+  /* 배마다 항구를 적어둔 곳은 사이트 칸이 빕니다. 지역순으로 보면 그 줄만 이유 없이
+     남의 지역에 끼어 보여서, 어느 항구로 줄을 세웠는지 밑에 적어둡니다. */
+  .porthint { margin-top: 3px; font-size: 12px; color: var(--muted); overflow-wrap: anywhere; }
   .stars { white-space: nowrap; }
   .stars button { padding: 0 1px; border: 0; border-radius: 0; background: none;
                   color: var(--line); font-size: 16px; line-height: 1; }
@@ -218,6 +221,12 @@
         <option value="phone">전화 없음</option>
       </select>
     </label>
+    <label>정렬
+      <select id="sort">
+        <option value="reg">등록순</option>
+        <option value="port">항구 지역순</option>
+      </select>
+    </label>
     <label>쪽당
       <select id="pagesize">
         <option value="25">25곳</option>
@@ -289,6 +298,7 @@ let PAGE = 0;           // 0부터. 목록이 바뀌면 범위를 벗어날 수 
 let PAGE_SIZE = 50;     // 0이면 전체
 let FILTER = 'all';     // all | manual | discover
 let MISSING = 'all';    // all | port | phone — 채워 넣어야 할 곳만 추립니다
+let SORT = 'reg';       // reg(registry 순서) | port(항구 지역순)
 let STATUS = {};        // 사이트별 마지막 수집 결과
 const DIRTY = new Map(); // id -> 바뀐 값들
 
@@ -325,6 +335,14 @@ function paintSave() {
       : '고친 값이 없습니다 — 표에서 표기·항구·전화를 고치거나 켜고 끄면 켜집니다';
 }
 
+// 저장 전에 고친 값은 DIRTY에만 있습니다. 표를 다시 그릴 때(정렬·필터·쪽 넘김) site를
+// 그대로 읽으면 방금 친 글자가 사라진 것처럼 보입니다 — 값은 DIRTY에 남아 저장되는데
+// 화면만 옛 값이라, 고친 사람은 지워진 줄 알고 다시 칩니다.
+const editedValue = (site, key) => {
+  const bag = DIRTY.get(site.id);
+  return bag && key in bag ? bag[key] : site[key];
+};
+
 function textCell(site, key) {
   const td = document.createElement('td');
   if (!LOCAL) {
@@ -334,7 +352,7 @@ function textCell(site, key) {
   }
   const input = document.createElement('input');
   input.type = 'text';
-  input.value = site[key] ?? '';
+  input.value = editedValue(site, key) ?? '';
   input.placeholder = '-';
   input.addEventListener('input', () => markDirty(site.id, key, input.value.trim()));
   td.append(input);
@@ -560,6 +578,33 @@ function boatRatesCell(site) {
 // 항구는 사이트에 하나로 적기도 하고 배마다 따로 적기도 합니다. 둘 다 없을 때만 "없음"입니다.
 const hasPort = (s) => Boolean(s.port) || Object.values(s.boats ?? {}).some((b) => b?.port);
 
+// 사이트 칸이 비어 있으면 배별 항구를 씁니다(`hasPort`와 같은 기준). 여기서 `site.port`만
+// 보면 배에만 적어둔 곳이 항구 없는 곳들 틈에 섞여, 채울 곳을 찾는 눈을 가립니다.
+const sitePort = (s) => s.port || Object.values(s.boats ?? {}).map((b) => b?.port).find(Boolean) || '';
+
+// 항구 이름 앞에는 지역이 붙어 있습니다("충남 보령 오천항"). 지역을 읽는 규칙은 현황판의
+// 지역 필터와 **글자까지 같아야** 합니다 — 갈리면 여기서 "충남 보령"으로 묶어 채운 것이
+// 현황판에서는 다른 묶음이 됩니다(`test/admin.test.js`가 두 함수를 맞춰 봅니다).
+const NO_PORT = '(항구 미상)';
+
+function regionOf(port) {
+  if (!port) return NO_PORT;
+  const parts = String(port).trim().split(/\s+/);
+  if (parts.length >= 3) return `${parts[0]} ${parts[1]}`;
+  if (parts.length >= 2 && /(?:시|군|구)$/.test(parts[1])) return `${parts[0]} ${parts[1]}`;
+  return parts[0] ?? NO_PORT;
+}
+
+// 지역 → 항구 이름 → id 차례로 봅니다. **항구를 모르는 곳은 방향과 상관없이 뒤로** 갑니다
+// (현황판의 `byValue`와 같은 규칙입니다) — 빈 값이 첫 쪽을 덮으면 지역별로 보려던 것을
+// 정작 못 봅니다. 뒤에 모이면 "항구 없음" 필터로 넘어가는 자리와도 같습니다.
+function byPort(a, b) {
+  const pa = sitePort(a), pb = sitePort(b);
+  const byId = String(a.id ?? '').localeCompare(String(b.id ?? ''));
+  if (!pa || !pb) return pa ? -1 : pb ? 1 : byId;
+  return regionOf(pa).localeCompare(regionOf(pb), 'ko') || pa.localeCompare(pb, 'ko') || byId;
+}
+
 /**
  * 화면에 보일 목록. 등록 출처와 "빠진 값"으로 거릅니다.
  * 자동 발견한 곳은 항구·전화가 비어 있는 채로 들어옵니다. 항구가 없으면 현황판의
@@ -572,7 +617,25 @@ function visibleSites() {
   if (FILTER === 'discover') list = list.filter((s) => s.addedBy);
   if (MISSING === 'port') list = list.filter((s) => !hasPort(s));
   if (MISSING === 'phone') list = list.filter((s) => !s.phone);
+  // 제자리에서 섞으면 registry 순서를 잃어 "등록순"으로 못 돌아옵니다.
+  if (SORT === 'port') list = [...list].sort(byPort);
   return list;
+}
+
+// 배별로만 적힌 항구는 사이트 칸이 비어 있습니다. 지역순으로 세우면 그 줄이 왜 거기
+// 있는지 표에 아무 데도 안 적혀 있어서, 줄을 세운 그 값을 칸 밑에 적어둡니다.
+// 고치는 칸은 그대로 사이트 항구입니다 — 배별 값은 registry를 손으로 고칩니다.
+function portCell(site) {
+  const td = textCell(site, 'port');
+  if (site.port) return td;
+  const ports = [...new Set(Object.values(site.boats ?? {}).map((b) => b?.port).filter(Boolean))];
+  if (!ports.length) return td;
+  const hint = document.createElement('div');
+  hint.className = 'porthint';
+  hint.textContent = ports.length > 1 ? `배별 ${ports[0]} 외 ${ports.length - 1}곳` : `배별 ${ports[0]}`;
+  hint.title = ports.join(' · ');
+  td.append(hint);
+  return td;
 }
 
 function addedTag(site) {
@@ -617,7 +680,7 @@ function render() {
     const st = STATUS[site.id];
     const tr = document.createElement('tr');
     tr.dataset.id = site.id;
-    const on = site.enabled !== false;
+    const on = editedValue(site, 'enabled') !== false;
     if (!on) tr.classList.add('off');
 
     const tdOn = document.createElement('td');
@@ -658,7 +721,7 @@ function render() {
     else tdLast.innerHTML = `<span class="fail">✗ ${st.error ?? '실패'}</span> <span class="muted">직전 ${st.count ?? 0}건 유지</span>`;
 
     tr.append(tdOn, tdId, textCell(site, 'name'), boatRatesCell(site), tdKind, addedTag(site),
-              textCell(site, 'port'), textCell(site, 'phone'), tdUrl, tdLast);
+              portCell(site), textCell(site, 'phone'), tdUrl, tdLast);
     // 저장 전에 다른 쪽으로 넘어갔다 돌아와도 고친 표시가 남아 있어야 합니다.
     if (DIRTY.has(site.id)) tr.classList.add('dirty');
     box.append(tr);
@@ -668,6 +731,8 @@ function render() {
 function bindPager() {
   $('filter').addEventListener('change', () => { FILTER = $('filter').value; PAGE = 0; render(); });
   $('missing').addEventListener('change', () => { MISSING = $('missing').value; PAGE = 0; render(); });
+  // 정렬을 바꾸면 보던 쪽의 줄이 통째로 달라집니다. 필터와 같이 첫 쪽으로 돌아갑니다.
+  $('sort').addEventListener('change', () => { SORT = $('sort').value; PAGE = 0; render(); });
   $('pagesize').addEventListener('change', () => { PAGE_SIZE = Number($('pagesize').value); PAGE = 0; render(); });
   $('prev').addEventListener('click', () => { PAGE -= 1; render(); });
   $('next').addEventListener('click', () => { PAGE += 1; render(); });

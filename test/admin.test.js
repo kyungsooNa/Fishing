@@ -574,9 +574,9 @@ test('관리 화면: 항구·전화가 빠진 곳만 추릴 수 있다', async (
   const end = inline.indexOf('function addedTag');
   assert.ok(start >= 0 && end > start, 'visibleSites 부분을 찾지 못했습니다');
 
-  // SITES·FILTER·MISSING만 있으면 도는 부분이라 떼어내 실제로 돌려봅니다.
-  const pick = (sites, missing) => new Function('SITES', 'FILTER', 'MISSING',
-    `${inline.slice(start, end)}\nreturn visibleSites();`)(sites, 'all', missing);
+  // SITES·FILTER·MISSING·SORT만 있으면 도는 부분이라 떼어내 실제로 돌려봅니다.
+  const pick = (sites, missing) => new Function('SITES', 'FILTER', 'MISSING', 'SORT',
+    `${inline.slice(start, end)}\nreturn visibleSites();`)(sites, 'all', missing, 'reg');
   const sites = [
     { id: 'a', port: '충남 보령 대천항' },
     { id: 'b' },
@@ -586,6 +586,75 @@ test('관리 화면: 항구·전화가 빠진 곳만 추릴 수 있다', async (
   assert.deepEqual(pick(sites, 'port').map((s) => s.id), ['b', 'd'], '배별로 적어둔 항구도 항구입니다');
   assert.deepEqual(pick(sites, 'phone').map((s) => s.id), ['a', 'b', 'c']);
   assert.deepEqual(pick(sites, 'all').map((s) => s.id), ['a', 'b', 'c', 'd']);
+});
+
+// 항구는 사람이 손으로 채우는 값이고, 그 일은 지역 단위로 몰아서 합니다 — id 순으로
+// 널뛰면 같은 지역 페이지를 몇 번씩 다시 찾습니다. 항구를 모르는 곳이 앞에 오면 정렬을
+// 켜자마자 빈 줄이 첫 쪽을 덮어서, 지역별로 보려던 것을 정작 못 봅니다.
+test('관리 화면: 항구를 지역별로 모아 볼 수 있다', async () => {
+  const html = await readFile('docs/admin.html', 'utf8');
+  assert.ok(html.includes('id="sort"'), '정렬 고르는 칸이 없습니다');
+  assert.match(html, /<option value="port">항구 지역순<\/option>/);
+
+  const inline = html.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
+  const start = inline.indexOf('// 항구는 사이트에 하나로');
+  const end = inline.indexOf('function portCell');
+  assert.ok(start >= 0 && end > start, '정렬 부분을 찾지 못했습니다');
+
+  const pick = (sites, sort) => new Function('SITES', 'FILTER', 'MISSING', 'SORT',
+    `${inline.slice(start, end)}\nreturn visibleSites();`)(sites, 'all', 'all', sort);
+  const sites = [
+    { id: 'a', port: '충남 보령 대천항' },
+    { id: 'b' },
+    { id: 'c', boats: { '한바다호': { port: '인천 옹진 영흥도' } } },
+    { id: 'd', port: '충남 보령 오천항' },
+    { id: 'e', port: '충남 태안 신진도항' },
+  ];
+  assert.deepEqual(pick(sites, 'port').map((s) => s.id), ['c', 'a', 'd', 'e', 'b'],
+    '지역 → 항구 차례로 모이고, 항구를 모르는 곳은 뒤로 갑니다');
+  assert.deepEqual(pick(sites, 'reg').map((s) => s.id), ['a', 'b', 'c', 'd', 'e'],
+    '등록순은 registry 순서 그대로여야 합니다');
+  assert.deepEqual(sites.map((s) => s.id), ['a', 'b', 'c', 'd', 'e'],
+    'SITES를 제자리에서 섞으면 등록순으로 못 돌아옵니다');
+
+  // 배별로만 적힌 항구로 줄을 세우면, 왜 거기 있는지 표에 적혀 있어야 합니다.
+  assert.match(inline, /function portCell\(site\)/);
+  assert.match(inline, /className = 'porthint'/);
+});
+
+// 정렬·필터·쪽 넘김은 표를 통째로 다시 그립니다. 저장 전에 고친 값은 DIRTY에만 있어서,
+// site를 그대로 읽어 그리면 방금 친 글자가 사라진 것처럼 보입니다 — 값은 저장되는데
+// 화면만 옛 값이라, 고친 사람은 지워진 줄 알고 다시 칩니다.
+test('관리 화면: 표를 다시 그려도 저장 전에 고친 값이 그대로 보인다', async () => {
+  const html = await readFile('docs/admin.html', 'utf8');
+  const inline = html.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
+
+  const start = inline.indexOf('const editedValue');
+  const end = inline.indexOf('function textCell');
+  assert.ok(start >= 0 && end > start, 'editedValue를 찾지 못했습니다');
+  const edited = new Function('DIRTY',
+    `${inline.slice(start, end)}\nreturn editedValue;`)(new Map([['a', { port: '충남 보령 오천항', enabled: false }]]));
+
+  assert.equal(edited({ id: 'a', port: '' }, 'port'), '충남 보령 오천항');
+  assert.equal(edited({ id: 'a', enabled: true }, 'enabled'), false, '켜짐도 고친 쪽이 먼저입니다');
+  assert.equal(edited({ id: 'b', port: '인천 옹진 영흥도' }, 'port'), '인천 옹진 영흥도',
+    '안 고친 곳은 registry 값 그대로입니다');
+
+  assert.match(inline, /input\.value = editedValue\(site, key\) \?\? '';/);
+  assert.match(inline, /const on = editedValue\(site, 'enabled'\) !== false;/);
+});
+
+// 관리 화면에서 "충남 보령"으로 묶어 채운 것이 현황판 지역 필터에서는 다른 묶음이면,
+// 채우는 사람은 자기가 뭘 묶었는지 모르는 채로 채웁니다.
+test('관리 화면과 현황판이 항구에서 지역을 같은 규칙으로 읽는다', async () => {
+  const [admin, board] = await Promise.all([
+    readFile('docs/admin.html', 'utf8'),
+    readFile('docs/index.html', 'utf8'),
+  ]);
+  const pick = (html) => html.match(/function regionOf\(port\) \{[\s\S]*?\n\}/)?.[0];
+  assert.ok(pick(admin), '관리 화면에 regionOf가 없습니다');
+  assert.equal(pick(admin), pick(board), '두 화면의 규칙이 갈렸습니다');
+  assert.match(admin, /const NO_PORT = '\(항구 미상\)';/, 'regionOf가 쓰는 값입니다');
 });
 
 test('관리 화면: 즐겨찾기를 글자로 내보내고 합쳐 가져온다', async () => {
