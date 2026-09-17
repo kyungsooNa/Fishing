@@ -409,6 +409,7 @@
       <option value="seats-asc">잔여석 적은순</option>
       <option value="price-asc">승선료 낮은순</option>
       <option value="rate-desc">내 별점 높은순</option>
+      <option value="port-asc">항구순 (지역 → 항구)</option>
       <option value="checked-desc">최신 확인순</option>
     </select>
     <label class="check"><input type="checkbox" id="f-open" checked> 빈자리만</label>
@@ -1350,6 +1351,9 @@ const SORTS = {
   'price-asc': byValue((t) => t.price, 'asc'),
   'rate-desc': byValue((t) => rateOfTrip(t) || null, 'desc'),
   'checked-desc': byValue(checkedAt, 'desc'),
+  // 항구는 지역이 앞에 붙어 있어 가나다순이면 같은 지역이 붙어 나옵니다. 하루 안에서만
+  // 겁니다(정렬은 날짜를 못 넘습니다) — 하루치 안에서 근처 항구끼리 모아 보는 용도입니다.
+  'port-asc': byText((t) => t.port),
 };
 
 // **빈자리가 있는 줄이 그 날의 위로 갑니다.** 날짜 다음, 고른 기준 앞입니다.
@@ -1388,6 +1392,20 @@ function byValue(pick, dir) {
     if (x === null) return 1;
     if (y === null) return -1;
     return dir === 'asc' ? x - y : y - x;
+  };
+}
+
+// 글자 기준 정렬도 `byValue`와 같은 규칙입니다 — **값이 없는 행은 방향과 상관없이 뒤로.**
+// 숫자 쪽을 그대로 못 쓰는 것은 `finite`가 글자를 전부 "값 없음"으로 만들기 때문입니다.
+// 항구 이름은 지역이 앞에 붙어 있어("충남 보령 오천항") 가나다순이 곧 지역별 묶음입니다.
+function byText(pick) {
+  return (a, b) => {
+    const x = pick(a) || null;
+    const y = pick(b) || null;
+    if (!x && !y) return 0;
+    if (!x) return 1;
+    if (!y) return -1;
+    return String(x).localeCompare(String(y), 'ko');
   };
 }
 

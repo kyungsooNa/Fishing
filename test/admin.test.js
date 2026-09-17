@@ -806,3 +806,25 @@ async function writeAlerts(records) {
   await writeFile(path, records.map((r) => JSON.stringify(r)).join('\n') + '\n');
   return path;
 }
+
+// 정렬 칸은 표 위에 있는데, 사람은 칸 머리글을 눌러 정렬하려 듭니다 — 실제로 그렇게 찾다가
+// "정렬이 없다"는 말이 나왔습니다. 두 문이 같은 정렬을 열되, 값을 정하는 곳은 하나여야
+// 합니다. 갈리면 머리글로 정렬해 놓고 정렬 칸에는 "등록순"이라고 적혀 있게 됩니다.
+test('관리 화면: 항구 머리글을 눌러도 정렬되고, 정렬 칸과 같은 상태를 본다', async () => {
+  const html = await readFile('docs/admin.html', 'utf8');
+  const inline = html.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
+
+  assert.ok(html.includes('id="sort-port"'), '누를 수 있는 항구 머리글이 없습니다');
+  assert.match(html, /<th id="th-port" aria-sort="none">/, '정렬 상태를 읽어주는 표시가 필요합니다');
+
+  // 상태를 정하는 곳이 하나인지 — 둘 다 setSort를 부릅니다.
+  assert.match(inline, /\$\('sort'\)\.addEventListener\('change', \(\) => setSort\(\$\('sort'\)\.value\)\);/);
+  assert.match(inline, /\$\('sort-port'\)\.addEventListener\('click', \(\) => setSort\(SORT === 'port' \? 'reg' : 'port'\)\);/,
+    '한 번 더 누르면 등록순으로 돌아와야 합니다');
+
+  const setSort = inline.match(/function setSort\(next\)[\s\S]*?\n\}/)?.[0] ?? '';
+  assert.match(setSort, /\$\('sort'\)\.value = next;/, '정렬 칸 표시가 갈리면 안 됩니다');
+  assert.match(setSort, /aria-sort', next === 'port' \? 'ascending' : 'none'/);
+  assert.match(setSort, /PAGE = 0;/, '정렬이 바뀌면 보던 쪽의 줄이 통째로 달라집니다');
+  assert.match(setSort, /render\(\);/);
+});
