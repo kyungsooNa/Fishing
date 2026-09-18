@@ -70,7 +70,10 @@ test('탭바는 접었다 펼 수 있고, 접은 상태는 두 화면이 같이 
       '접은 상태를 기억하지 않으면 화면을 옮길 때마다 다시 접어야 합니다');
     assert.match(script, /localStorage\.getItem\(NAV_FOLD_KEY\)/);
 
-    const fold = page.match(/@media \(min-width: 721px\) \{[\s\S]*?\n  \}/)?.[0] ?? '';
+    // 넓은 화면 규칙은 이 블록만이 아닙니다(표의 상태·잔여 폭도 여기 있습니다).
+    // 첫 블록을 집으면 위에 다른 min-width 규칙이 하나 생기는 순간 엉뚱한 것을 봅니다.
+    const fold = (page.match(/@media \(min-width: 721px\) \{[\s\S]*?\n  \}/g) ?? [])
+      .find((block) => block.includes('data-nav="fold"')) ?? '';
     assert.match(fold, /body\[data-nav="fold"\] \{ --nav-w: 58px; \}/,
       '접기는 넓은 화면에서만 — 아래로 내려간 탭바는 접을 폭이 없습니다');
     assert.match(fold, /\.sidetab span \{ display: none; \}/);
@@ -821,6 +824,22 @@ test('작은 화면에서 긴 확인 문구가 전화번호를 덮지 않는다'
   // 폭만 막고 안 접으면 글자가 칸 밖으로 나가고, 접기만 하면 칸이 제일 긴 줄만큼 넓어집니다.
   assert.match(html, /th, td\.nowrap, td\.num, td\.starcell, td\.watchcell \{ white-space: nowrap; \}/,
     '숫자 칸 자체는 한 줄로 둡니다 — 잔여석이 갈리면 읽기 나쁩니다');
+});
+
+// 잔여 칸의 확인 문구가 한 줄로 뻗으면 칸이 202px로 벌어지고, 숫자는 그 오른쪽 끝에
+// 찍혀 상태에서 215px 떨어집니다 — 상태 칸이 넓어 보이고 잔여석은 눈으로 다시 찾게 됩니다.
+test('넓은 화면에서 잔여 칸이 확인 문구만큼 벌어지지 않는다', () => {
+  // 문구는 화면 크기를 안 가리고 접습니다. 작은 화면만 접으면 넓은 화면이 202px로 남습니다.
+  const mobile = html.slice(html.indexOf('@media (max-width: 720px)'));
+  assert.ok(!/\.cell-seats \.freshness \{/.test(mobile),
+    '확인 문구 접기는 작은 화면 전용이 아닙니다');
+  // 접기만 하면 이번엔 칸이 숫자 폭(55px)까지 줄어 문구가 다섯 줄로 접힙니다(줄 높이 157px).
+  assert.match(html, /@media \(min-width: 721px\) \{\s*th\.cell-seats, td\.cell-seats \{ min-width: 128px; \}/,
+    '접히는 폭(108px)에 여백을 더한 만큼은 바닥으로 둬야 합니다');
+  assert.match(html, /td\.cell-seats \{ font-weight: 800; \}/, '잔여 숫자는 굵게 둡니다');
+  // 확인 문구까지 굵어지면 숫자와 구별이 안 됩니다.
+  assert.match(html, /\.freshness \{ display: block;[^}]*font-weight: normal;/,
+    '확인 문구는 잔여 칸 안에서도 가는 글씨로 남습니다');
 });
 
 test('모바일에서는 출조 한 건이 사진형 식별 타일을 둔 카드로 보인다', () => {
