@@ -76,6 +76,13 @@
                         border-radius: 6px; background: transparent; color: var(--fg); font: inherit; font-size: 14px; }
   td input[type=text]:hover { border-color: var(--line); }
   td input[type=text]:focus { border-color: var(--accent); outline: none; background: var(--bg); }
+  /* 선사 이름 칸은 고치는 칸(input)과 숨기는 ✕ 가 한 줄에 섭니다. */
+  td.namecell { display: flex; align-items: center; gap: 4px; }
+  td.namecell input[type=text] { flex: 1; }
+  td.namecell .hide { flex: none; padding: 0 2px; border: 0; background: none;
+    color: var(--muted); font: inherit; font-size: 13px; line-height: 1; cursor: pointer; }
+  td.namecell .hide:hover, td.namecell .hide.on { color: var(--off); }
+  tr.site-muted td:not(.namecell) { opacity: 0.5; }
   .boatrate { display: flex; align-items: center; justify-content: space-between; gap: 8px;
               padding: 3px 0; border-bottom: 1px dotted var(--line); }
   .boatrate:last-child { border-bottom: 0; }
@@ -303,7 +310,7 @@
       <thead><tr><th>종류</th><th>이름</th><th>상태</th><th></th></tr></thead>
       <tbody id="muterows"></tbody>
     </table>
-    <div class="empty" id="muteempty" hidden>숨긴 것이 없습니다. 위 표의 배별 칸 ✕(배), 현황판 필터 메뉴의 ✕(선사·항구·지역)로 숨깁니다.</div>
+    <div class="empty" id="muteempty" hidden>숨긴 것이 없습니다. 위 표의 선사 이름 옆 ✕(선사)와 배별 칸 ✕(배), 현황판 필터 메뉴의 ✕(항구·지역)로 숨깁니다.</div>
   </div>
   <div class="actions" style="margin-top: 10px;">
     <button id="muteclear" class="danger">전부 다시 보기</button>
@@ -394,6 +401,31 @@ function textCell(site, key) {
   return td;
 }
 
+// 선사를 숨기는 자리. **여기가 선사 목록입니다** — 현황판 필터 메뉴까지 건너가지 않고 표를
+// 훑다가 그 자리에서 뺍니다. 배의 ✕(`boatRatesCell`)와 같은 규칙입니다: 수집이 쓴 이름으로
+// 걸고, 수집된 출조가 없으면 아예 안 답니다(걸어도 현황판에서 안 숨습니다).
+function siteNameCell(site) {
+  const td = textCell(site, 'name');
+  const names = [...(SITENAMES[site.id] ?? [])].sort((a, b) => a.localeCompare(b, 'ko'));
+  if (!names.length) return td;
+
+  // 한 선사가 여러 이름으로 수집됐다면(표기를 고친 뒤 옛 출조가 남은 경우) 다 걸어야 숨습니다.
+  const off = names.every((name) => MUTED_SITES.has(name));
+  const hide = document.createElement('button');
+  hide.type = 'button';
+  hide.className = off ? 'hide on' : 'hide';
+  hide.textContent = off ? '↩' : '✕';
+  hide.title = off
+    ? `${names.join(' · ')} 다시 보기 — 지금은 현황판에서 숨기는 중입니다`
+    : `${names.join(' · ')} 숨기기 — 내 현황판에서만 안 보입니다 (수집은 그대로 돕니다)`;
+  hide.setAttribute('aria-label', hide.title);
+  hide.setAttribute('aria-pressed', String(off));
+  hide.addEventListener('click', () => toggleSiteMute(names, names.join(' · ')));
+  td.classList.add('namecell');
+  td.append(hide);
+  return td;
+}
+
 // ── 별점 ──────────────────────────────────────────────────────────────────
 // 배마다 매기는 개인 평가입니다. 서버로 보내지 않고 즐겨찾기처럼 이 브라우저의
 // localStorage에만 남습니다 — 그래서 registry를 못 고치는 읽기 전용 모드(Pages)에서도
@@ -444,6 +476,10 @@ let RATES = loadRates();
 let OBSERVED = {};
 // 사이트 → 배 → 즐겨찾기 키(`이름|항구`). 현황판의 ☆ 와 **같은 키**여야 합니다.
 let FAVKEYS = {};
+// 사이트 → 수집이 쓴 선사 이름. 현황판은 **이 이름으로** 숨깁니다(id가 아니라 `t.siteName`).
+let SITENAMES = {};
+// 지금 숨긴 선사 이름. 표를 그릴 때 한 번만 읽습니다.
+let MUTED_SITES = new Set();
 // 지금 담긴 즐겨찾기. 표를 그릴 때 한 번만 읽습니다(배마다 읽으면 한 쪽에 수백 번입니다).
 let FAVSET = new Set();
 // 지금 숨긴 배(`이름|항구`). 즐겨찾기와 같은 키라 같은 자리에서 같이 읽습니다.
@@ -751,11 +787,14 @@ function render() {
 
   // 배마다 읽으면 한 쪽에 수백 번입니다. 그릴 때 한 번 읽어 두고 씁니다.
   FAVSET = new Set(loadFavs());
-  MUTESET = new Set(loadMutes().boat);
+  const mutes = loadMutes();
+  MUTESET = new Set(mutes.boat);
+  MUTED_SITES = new Set(mutes.site);
 
   const rated = Object.values(RATES).filter((score) => rateOf({ score }, 'score')).length;
   $('ratemeta').textContent =
     (rated ? `별점 ${rated}척 · ` : '') + (FAVSET.size ? `즐겨찾기 ${FAVSET.size}척 · ` : '') +
+    (MUTED_SITES.size ? `숨긴 선사 ${MUTED_SITES.size}곳 · ` : '') +
     (MUTESET.size ? `숨긴 배 ${MUTESET.size}척 · ` : '') +
     '☆ · 별점 · ✕ 는 개인 기록입니다 — 이 브라우저에만 저장되고 현황판과 같은 값을 씁니다.';
 
@@ -810,7 +849,8 @@ function render() {
     else if (st.ok) tdLast.innerHTML = `<span class="ok">✓ ${st.count}건</span> <span class="muted">${when(st.at)}</span>`;
     else tdLast.innerHTML = `<span class="fail">✗ ${st.error ?? '실패'}</span> <span class="muted">직전 ${st.count ?? 0}건 유지</span>`;
 
-    tr.append(tdOn, tdId, textCell(site, 'name'), boatRatesCell(site), tdKind, addedTag(site),
+    if ([...(SITENAMES[site.id] ?? [])].some((name) => MUTED_SITES.has(name))) tr.classList.add('site-muted');
+    tr.append(tdOn, tdId, siteNameCell(site), boatRatesCell(site), tdKind, addedTag(site),
               portCell(site), textCell(site, 'phone'), tdUrl, tdLast);
     // 저장 전에 다른 쪽으로 넘어갔다 돌아와도 고친 표시가 남아 있어야 합니다.
     if (DIRTY.has(site.id)) tr.classList.add('dirty');
@@ -1087,6 +1127,19 @@ function toggleBoatMute(key, label) {
   toast(on ? `${label ?? key} 현황판에서 숨겼습니다` : `${label ?? key} 다시 보입니다`);
 }
 
+// 선사의 ✕. 배와 같은 꼴이되 이름이 여럿일 수 있어 **한 번에** 걸고 풉니다 — 반만 걸리면
+// 현황판에서는 안 숨는데 표에는 걸린 것처럼 보입니다.
+function toggleSiteMute(names, label) {
+  if (!names?.length) return;
+  const on = !names.every((name) => loadMutes().site.includes(name));
+  for (const name of names) {
+    if (!setMute('site', name, on)) return toast('브라우저가 저장을 막고 있습니다');
+  }
+  render();
+  renderMutes(TRIPS);
+  toast(on ? `${label} 현황판에서 숨겼습니다` : `${label} 다시 보입니다`);
+}
+
 // ── 즐겨찾기 옮기기 ────────────────────────────────────────────────────────
 // 서버가 없어서 즐겨찾기는 브라우저에만 남습니다. 폰과 PC, Pages와 로컬 서버가
 // 각각 다른 저장소라 서로 안 보입니다. 글자로 뽑아 옮기는 게 유일한 길입니다.
@@ -1349,6 +1402,19 @@ function favKeysFromTrips(trips) {
   return found;
 }
 
+// 현황판은 선사를 **이름으로** 숨깁니다(화면이 registry를 못 읽어 표·필터가 전부 `t.siteName`
+// 기준입니다). 그래서 registry 표기가 아니라 **수집이 쓴 이름**을 모읍니다 — 바로 옆이 그
+// 표기를 고치는 칸이라 더욱 그렇습니다. 합쳐진 출조는 출처마다 이름이 따로 붙습니다.
+function siteNamesFromTrips(trips) {
+  const found = {};
+  for (const trip of trips ?? []) {
+    for (const src of trip.sources?.length ? trip.sources : [trip]) {
+      if (src.siteId && src.siteName) (found[src.siteId] ??= new Set()).add(src.siteName);
+    }
+  }
+  return found;
+}
+
 async function load() {
   // 즐겨찾기 대조에 출조 목록이 필요합니다. 읽기 전용 모드에서는 사이트 표도 여기서 만듭니다.
   const data = await fetch('data.json?t=' + Date.now())
@@ -1357,6 +1423,7 @@ async function load() {
 
   TRIPS = data.trips ?? [];
   FAVKEYS = favKeysFromTrips(TRIPS);
+  SITENAMES = siteNamesFromTrips(TRIPS);
 
   if (LOCAL) {
     const d = await api('api/sites').then((r) => r.json());
