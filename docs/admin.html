@@ -284,6 +284,19 @@
   <textarea id="favtext" class="favio" rows="3" hidden placeholder='["배이름|항구", …]'></textarea>
   <div class="sub" id="favio"></div>
 
+  <h2 class="sec">숨긴 것</h2>
+  <div class="sub" id="mutemeta">불러오는 중…</div>
+  <div class="tablewrap">
+    <table class="favtable">
+      <thead><tr><th>종류</th><th>이름</th><th>상태</th><th></th></tr></thead>
+      <tbody id="muterows"></tbody>
+    </table>
+    <div class="empty" id="muteempty" hidden>숨긴 것이 없습니다. 현황판 필터 메뉴의 ✕(선사·항구·지역)와 별점 칸의 [숨기기](배)로 숨깁니다.</div>
+  </div>
+  <div class="actions" style="margin-top: 10px;">
+    <button id="muteclear" class="danger">전부 다시 보기</button>
+  </div>
+
   <h2 class="sec">현황판에 안 보이는 별점</h2>
   <div class="sub" id="lostmeta">불러오는 중…</div>
   <div class="tablewrap">
@@ -1083,13 +1096,132 @@ function renderFavs(trips) {
   };
 }
 
+// ── 숨긴 것 ────────────────────────────────────────────────────────────────
+// 현황판에서 숨긴 선사·배·항구·지역을 한 표에 모읍니다. **거는 곳은 현황판, 푸는 곳은 여기도**
+// 입니다 — 현황판의 `숨긴 것 N개` 패널은 숨긴 것이 있을 때만 열려서, "그 선사가 왜 안 뜨지"
+// 하고 관리 화면부터 열어보는 사람에게는 보이지 않습니다. 못 풀면 고장과 구별이 안 됩니다.
+// 저장 형식(`fishing:muted`)은 현황판과 **글자까지 같아야 합니다** — 갈리면 여기서 푼 것이
+// 현황판에서 안 풀립니다(`test/admin.test.js`가 두 화면을 맞춰 봅니다).
+const MUTE_KEY = 'fishing:muted';
+const MUTE_KINDS = ['site', 'boat', 'port', 'region'];
+const MUTE_LABEL = { site: '선사', boat: '배', port: '항구', region: '지역' };
+
+function loadMutes() {
+  const empty = Object.fromEntries(MUTE_KINDS.map((kind) => [kind, []]));
+  try {
+    const saved = JSON.parse(localStorage.getItem(MUTE_KEY) ?? '{}');
+    if (!saved || typeof saved !== 'object') return empty;
+    for (const kind of MUTE_KINDS) {
+      if (Array.isArray(saved[kind])) empty[kind] = [...new Set(saved[kind].filter(Boolean).map(String))];
+    }
+    return empty;
+  } catch { return empty; }
+}
+
+function saveMutes(mutes) {
+  try {
+    localStorage.setItem(MUTE_KEY, JSON.stringify(mutes));
+    return true;
+  } catch { return false; }
+}
+
+// 이 화면은 **푸는 일만** 합니다. 숨기려면 고를 목록이 있어야 하고 그건 현황판 필터에 있습니다.
+// 읽고 고쳐 쓰는 사이에 현황판 탭에서 바뀔 수 있으니 그때그때 다시 읽습니다.
+function unmute(kind, key) {
+  const mutes = loadMutes();
+  if (!MUTE_KINDS.includes(kind)) return false;
+  mutes[kind] = mutes[kind].filter((k) => k !== key);
+  return saveMutes(mutes);
+}
+// ── 숨긴 것 끝 ── (test/admin.test.js가 여기까지를 떼어내 돌려봅니다)
+
+// 그 숨김이 지금도 먹고 있나. 현황판은 **이름으로** 숨기므로 선사 표기가 바뀌면 숨김이 조용히
+// 풀려 다시 보입니다(자리를 놓치는 것보다 낫다고 판단한 쪽입니다). 그때 남는 값은 아무 일도
+// 안 하니, 왜 안 먹는지 적어주고 지울 수 있게만 합니다.
+function liveMuteKeys(trips) {
+  const live = Object.fromEntries(MUTE_KINDS.map((kind) => [kind, new Set()]));
+  for (const t of trips ?? []) {
+    for (const src of t.sources?.length ? t.sources : [t]) if (src.siteName) live.site.add(src.siteName);
+    if (t.boat) live.boat.add(favKey(t));
+    live.port.add(t.port ?? NO_PORT);
+    live.region.add(regionOf(t.port));
+  }
+  return live;
+}
+
+function renderMutes(trips) {
+  const mutes = loadMutes();
+  const live = liveMuteKeys(trips);
+  const rows = MUTE_KINDS.flatMap((kind) =>
+    [...mutes[kind]].sort((a, b) => a.localeCompare(b, 'ko')).map((key) => ({ kind, key })));
+  const box = $('muterows');
+  box.textContent = '';
+  $('muteempty').hidden = rows.length > 0;
+  $('muteclear').disabled = rows.length === 0;
+
+  const stale = rows.filter(({ kind, key }) => !live[kind].has(key)).length;
+  $('mutemeta').textContent = rows.length
+    ? `${rows.length}개 · 이 브라우저에만 저장됩니다 · 수집과 걸어둔 감시는 그대로 돕니다`
+      + (stale ? ` · 지금 목록에 없는 것 ${stale}개` : '')
+    : '현황판에서 숨긴 것이 여기 모입니다. 이 브라우저에만 저장되고 수집·감시에는 영향이 없습니다.';
+
+  for (const { kind, key } of rows) {
+    const tr = document.createElement('tr');
+    const tdKind = document.createElement('td');
+    tdKind.textContent = MUTE_LABEL[kind];
+
+    // 배 키는 `이름|항구`입니다(즐겨찾기와 같은 키). 사람에게는 이름을 보여주고 항구는 옆에 답니다
+    // — 다른 지역의 같은 이름 배는 안 숨는데, 어느 쪽을 숨겼는지는 항구를 봐야 압니다.
+    const tdName = document.createElement('td');
+    const cut = key.indexOf('|');
+    tdName.textContent = kind === 'boat' ? (cut > 0 ? key.slice(0, cut) : key) : key;
+    if (kind === 'boat' && cut >= 0) {
+      const tail = document.createElement('span');
+      tail.className = 'muted';
+      tail.textContent = ` · ${key.slice(cut + 1) || '항구 미상'}`;
+      tdName.append(tail);
+    }
+
+    const tdState = document.createElement('td');
+    if (live[kind].has(key)) tdState.innerHTML = '<span class="ok">숨기는 중</span>';
+    else {
+      tdState.innerHTML = '<span class="muted">지금 목록에 없음</span>';
+      tdState.title = '이름이 바뀌었거나 그 출조가 안 잡히고 있습니다. 숨김이 안 먹으니 현황판에는 보입니다.';
+      tr.classList.add('off');
+    }
+
+    const tdAct = document.createElement('td');
+    const btn = document.createElement('button');
+    btn.className = 'small';
+    btn.textContent = '다시 보기';
+    btn.addEventListener('click', () => {
+      if (!unmute(kind, key)) return toast('브라우저가 저장을 막고 있습니다');
+      renderMutes(trips);
+      toast('다시 보입니다');
+    });
+    tdAct.append(btn);
+
+    tr.append(tdKind, tdName, tdState, tdAct);
+    box.append(tr);
+  }
+
+  $('muteclear').onclick = () => {
+    if (!confirm(`숨긴 ${rows.length}개를 전부 다시 보이게 합니다. 계속할까요?`)) return;
+    if (!saveMutes(Object.fromEntries(MUTE_KINDS.map((kind) => [kind, []])))) {
+      return toast('브라우저가 저장을 막고 있습니다');
+    }
+    renderMutes(trips);
+    toast('전부 다시 보입니다');
+  };
+}
+
 function staticMode(reason) {
   LOCAL = false;
   $('banner').hidden = false;
   $('banner').className = 'banner warn';
   $('banner').textContent =
     `읽기 전용입니다 (${reason}). 켜고 끄기·표기 수정·수집 재실행·정보 조사·종료는 로컬에서 run.bat으로 띄웠을 때만 됩니다.` +
-    ' 별점과 즐겨찾기는 브라우저에 저장되는 값이라 여기서도 됩니다.';
+    ' 별점·즐겨찾기·숨긴 것은 브라우저에 저장되는 값이라 여기서도 됩니다.';
   for (const id of ['save', 'update', 'collect', 'research', 'research-sites', 'research-pages', 'research-force', 'restart', 'quit']) $(id).disabled = true;
   paintSave();   // 왜 못 쓰는지는 버튼도 말해야 합니다. 배너는 스크롤하면 안 보입니다.
 }
@@ -1155,6 +1287,7 @@ async function load() {
   }
   render();
   renderFavs(data.trips ?? []);
+  renderMutes(data.trips ?? []);
 }
 
 (async () => {
