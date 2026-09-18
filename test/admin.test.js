@@ -676,7 +676,7 @@ test('관리 화면: 숨긴 것을 모아 보고 되돌린다', async () => {
     setItem: (k, v) => store.set(k, v),
   };
   const m = new Function('localStorage',
-    `${inline.slice(start, end)}\nreturn { MUTE_KEY, MUTE_KINDS, loadMutes, saveMutes, unmute };`,
+    `${inline.slice(start, end)}\nreturn { MUTE_KEY, MUTE_KINDS, loadMutes, saveMutes, setMute, unmute };`,
   )(localStorage);
 
   assert.deepEqual(m.loadMutes(), { site: [], boat: [], port: [], region: [] },
@@ -687,6 +687,14 @@ test('관리 화면: 숨긴 것을 모아 보고 되돌린다', async () => {
     port: ['충남 보령 오천항'], region: ['강원 고성'],
   }));
   assert.deepEqual(m.loadMutes().site, ['가나선사'], '겹친 것과 빈 값은 버립니다');
+
+  assert.equal(m.setMute('site', '마바선사', true), true, '거는 것도 같은 문을 지납니다');
+  assert.deepEqual(m.loadMutes().site, ['가나선사', '마바선사']);
+  assert.equal(m.setMute('site', '마바선사', true), true);
+  assert.deepEqual(m.loadMutes().site, ['가나선사', '마바선사'], '두 번 걸어도 한 번만 들어갑니다');
+  assert.equal(m.setMute('site', '마바선사', false), true);
+  assert.equal(m.setMute('없는종류', '가나선사', true), false, '모르는 종류는 걸지 않습니다');
+  assert.equal(m.setMute('site', '', true), false, '빈 키는 걸지 않습니다');
 
   assert.equal(m.unmute('site', '가나선사'), true);
   assert.deepEqual(m.loadMutes().site, [], '푼 것은 저장까지 빠집니다');
@@ -700,6 +708,38 @@ test('관리 화면: 숨긴 것을 모아 보고 되돌린다', async () => {
 
   // 저장이 막히면 지운 척하면 안 됩니다 — 화면만 바뀌면 되돌린 줄 알고 창을 닫습니다.
   assert.match(inline, /if \(!unmute\(kind, key\)\) return toast\('브라우저가 저장을 막고 있습니다'\);/);
+});
+
+// 숨기고 싶은 배를 만나는 자리는 배 이름 목록입니다. 거기서 바로 못 걸면 현황판으로 건너가
+// 그 배를 다시 찾아야 하고, 그러면 아예 안 걸게 됩니다.
+test('관리 화면: 배 이름 옆에서 바로 숨기고 되돌린다', async () => {
+  const html = await readFile('docs/admin.html', 'utf8');
+  const inline = html.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
+  const cell = inline.slice(inline.indexOf('function boatRatesCell'), inline.indexOf('// 항구는 사이트에'));
+
+  // 숨김 키는 즐겨찾기와 **같은 키**입니다(`이름|항구`). 갈리면 여기서 건 것이 현황판에서
+  // 안 숨고, 그건 "숨기기가 안 먹는다"로 보입니다.
+  assert.ok(cell.includes('MUTESET.has(favEntry)'), '즐겨찾기와 같은 키로 숨겨야 합니다');
+  assert.ok(cell.includes('toggleBoatMute(favEntry'), '거는 곳도 같은 키를 넘깁니다');
+  assert.ok(!cell.includes('LOCAL'), '숨기기는 로컬 서버가 없어도 됩니다');
+  assert.ok(cell.indexOf('MUTESET.has(favEntry)') > cell.indexOf('shown.has(boat)'),
+    '수집에 없는 이름에는 ✕ 를 달지 않습니다 — 걸어도 현황판에서 안 숨습니다');
+
+  // 걸어놓고 푸는 길을 못 찾는 것이 가장 나쁩니다. 같은 자리에서 바로 되돌아와야 합니다.
+  assert.match(cell, /hide\.textContent = off \? '↩' : '✕';/, '숨긴 배는 그 자리에서 되돌립니다');
+  assert.match(cell, /hide\.setAttribute\('aria-pressed', String\(off\)\);/);
+
+  const toggle = inline.slice(inline.indexOf('function toggleBoatMute'), inline.indexOf('// ── 즐겨찾기 옮기기 ──'));
+  assert.match(toggle, /if \(!setMute\('boat', key, on\)\) return toast\('브라우저가 저장을 막고 있습니다'\);/,
+    '저장이 막히면 없던 일로 둡니다');
+  assert.match(toggle, /render\(\);/, '표의 ✕ 를 다시 칠해야 합니다');
+  assert.match(toggle, /renderMutes\(TRIPS\);/, '숨긴 것 목록도 같이 바뀌어야 합니다');
+
+  // 숨긴 것 표에서 되돌려도 위 표의 ✕ 가 같이 돌아와야 합니다. 한쪽만 바뀌면 어느 쪽이
+  // 맞는지 알 수 없습니다.
+  const panel = inline.slice(inline.indexOf('function renderMutes'), inline.indexOf('function staticMode'));
+  assert.match(panel, /if \(!unmute\(kind, key\)\) return toast\('브라우저가 저장을 막고 있습니다'\);\n\s*render\(\);/);
+  assert.ok(html.includes('위 표의 배별 칸 ✕(배)'), '숨긴 것이 없을 때 어디서 거는지 알려줘야 합니다');
 });
 
 // 두 화면이 같은 값을 쓰는데 열쇠나 종류가 갈리면, 관리 화면에서 되돌린 것이 현황판에서
@@ -794,7 +834,7 @@ test('관리 화면: 즐겨찾기를 글자로 내보내고 합쳐 가져온다'
 
 test('관리 화면: 배마다 별점을 매긴다', async () => {
   const html = await readFile('docs/admin.html', 'utf8');
-  assert.match(html, /<th>선사 표기<\/th><th>배별 즐겨찾기·별점<\/th>/, '배별 칸이 표에 없습니다');
+  assert.match(html, /<th>선사 표기<\/th><th>배별 즐겨찾기·별점·숨기기<\/th>/, '배별 칸이 표에 없습니다');
   assert.ok(html.includes('id="ratemeta"'), '별점이 어디 저장되는지 알려주는 줄이 없습니다');
 
   const inline = html.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';

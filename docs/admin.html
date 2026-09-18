@@ -55,14 +55,14 @@
   button.primary { border-color: var(--accent); background: var(--accent); color: #fff; font-weight: 700; }
   button.danger { border-color: var(--off); color: var(--off); }
   .tablewrap { overflow-x: auto; background: var(--card); border: 1px solid var(--line); border-radius: 10px; }
-  table { border-collapse: collapse; width: 100%; min-width: 1430px; table-layout: fixed; }
+  table { border-collapse: collapse; width: 100%; min-width: 1460px; table-layout: fixed; }
   th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: middle; }
   th { font-size: 12px; color: var(--muted); font-weight: 600; white-space: nowrap; }
   /* 칸 폭을 못박아 둡니다. 안 그러면 표기·항구가 눌려서 글자가 잘립니다. */
   th:nth-child(1), td:nth-child(1) { width: 48px; }
   th:nth-child(2), td:nth-child(2) { width: 116px; }
   th:nth-child(3), td:nth-child(3) { width: 180px; }
-  th:nth-child(4), td:nth-child(4) { width: 300px; }
+  th:nth-child(4), td:nth-child(4) { width: 330px; }
   th:nth-child(5), td:nth-child(5) { width: 76px; }
   th:nth-child(6), td:nth-child(6) { width: 70px; }
   th:nth-child(7), td:nth-child(7) { width: 150px; }
@@ -98,6 +98,13 @@
   .boatacts button.fav { padding: 0 1px; border: 0; border-radius: 0; background: none;
     color: var(--muted); font-size: 15px; line-height: 1; cursor: pointer; }
   .boatacts button.fav.on, .boatacts button.fav:hover { color: var(--accent); }
+  /* 현황판의 ✕ 는 메뉴 위에 올렸을 때만 또렷해지지만, 표에서는 늘 보이는 자리라 ☆ 만큼은
+     또렷해야 합니다 — 안 보이면 없는 기능입니다. */
+  .boatacts button.hide { padding: 0 2px; border: 0; border-radius: 0; background: none;
+    color: var(--muted); font: inherit; font-size: 13px; line-height: 1; cursor: pointer; }
+  .boatacts button.hide:hover, .boatacts button.hide.on { color: var(--off); }
+  /* 숨긴 배는 이 표에서도 눈에 덜 띄어야 "왜 현황판에 없지"가 안 생깁니다. */
+  .boatrate.muted-row .boatlabel, .boatrate.muted-row .stars { opacity: 0.5; }
   .stars { white-space: nowrap; }
   .stars button { padding: 0 1px; border: 0; border-radius: 0; background: none;
                   color: var(--line); font-size: 16px; line-height: 1; }
@@ -255,7 +262,7 @@
   <div class="tablewrap">
     <table>
       <thead><tr>
-        <th>켜짐</th><th>id</th><th>선사 표기</th><th>배별 즐겨찾기·별점</th><th>계열</th><th>등록</th>
+        <th>켜짐</th><th>id</th><th>선사 표기</th><th>배별 즐겨찾기·별점·숨기기</th><th>계열</th><th>등록</th>
         <th id="th-port" aria-sort="none"><button type="button" id="sort-port" class="thsort">항구<span class="caret"></span></button></th>
         <th>전화</th>
         <th>주소</th><th>최근 수집</th>
@@ -296,7 +303,7 @@
       <thead><tr><th>종류</th><th>이름</th><th>상태</th><th></th></tr></thead>
       <tbody id="muterows"></tbody>
     </table>
-    <div class="empty" id="muteempty" hidden>숨긴 것이 없습니다. 현황판 필터 메뉴의 ✕(선사·항구·지역)와 별점 칸의 [숨기기](배)로 숨깁니다.</div>
+    <div class="empty" id="muteempty" hidden>숨긴 것이 없습니다. 위 표의 배별 칸 ✕(배), 현황판 필터 메뉴의 ✕(선사·항구·지역)로 숨깁니다.</div>
   </div>
   <div class="actions" style="margin-top: 10px;">
     <button id="muteclear" class="danger">전부 다시 보기</button>
@@ -439,6 +446,8 @@ let OBSERVED = {};
 let FAVKEYS = {};
 // 지금 담긴 즐겨찾기. 표를 그릴 때 한 번만 읽습니다(배마다 읽으면 한 쪽에 수백 번입니다).
 let FAVSET = new Set();
+// 지금 숨긴 배(`이름|항구`). 즐겨찾기와 같은 키라 같은 자리에서 같이 읽습니다.
+let MUTESET = new Set();
 // 즐겨찾기 표를 다시 그리려면 출조 목록이 있어야 합니다(현황판에 있는 배인지 대조합니다).
 let TRIPS = [];
 
@@ -625,6 +634,26 @@ function boatRatesCell(site) {
       box.append(star);
     }
     acts.append(box);
+
+    // 숨기기는 담기·매기기와 **다른 일**입니다(내 현황판에서 빼는 일). 배 키는 즐겨찾기와
+    // 같은 `이름|항구`라 위에서 모은 키를 그대로 씁니다 — 갈리면 현황판에서 안 숨습니다.
+    for (const favEntry of favKeys) {
+      const off = MUTESET.has(favEntry);
+      const where = favKeys.length > 1 ? ` (${favEntry.slice(favEntry.indexOf('|') + 1) || '항구 미상'})` : '';
+      const hide = document.createElement('button');
+      hide.type = 'button';
+      hide.className = off ? 'hide on' : 'hide';
+      hide.textContent = off ? '↩' : '✕';
+      hide.title = off
+        ? `${boat}${where} 다시 보기 — 지금은 현황판에서 숨기는 중입니다`
+        : `${boat}${where} 숨기기 — 내 현황판에서만 안 보입니다`;
+      hide.setAttribute('aria-label', hide.title);
+      hide.setAttribute('aria-pressed', String(off));
+      hide.addEventListener('click', () => toggleBoatMute(favEntry, `${boat}${where}`));
+      acts.append(hide);
+      if (off) row.classList.add('muted-row');
+    }
+
     row.append(label, acts);
     td.append(row);
   }
@@ -722,11 +751,13 @@ function render() {
 
   // 배마다 읽으면 한 쪽에 수백 번입니다. 그릴 때 한 번 읽어 두고 씁니다.
   FAVSET = new Set(loadFavs());
+  MUTESET = new Set(loadMutes().boat);
 
   const rated = Object.values(RATES).filter((score) => rateOf({ score }, 'score')).length;
   $('ratemeta').textContent =
     (rated ? `별점 ${rated}척 · ` : '') + (FAVSET.size ? `즐겨찾기 ${FAVSET.size}척 · ` : '') +
-    '☆ 와 별점은 개인 기록입니다 — 이 브라우저에만 저장되고 현황판과 같은 값을 씁니다.';
+    (MUTESET.size ? `숨긴 배 ${MUTESET.size}척 · ` : '') +
+    '☆ · 별점 · ✕ 는 개인 기록입니다 — 이 브라우저에만 저장되고 현황판과 같은 값을 씁니다.';
 
   $('rowsempty').hidden = list.length > 0;
   $('pageinfo').textContent = list.length
@@ -1045,6 +1076,17 @@ function toggleFav(key, label) {
   toast(on ? `${label ?? key} 즐겨찾기에 담았습니다` : `${label ?? key} 즐겨찾기에서 뺐습니다`);
 }
 
+// 배별 칸의 ✕. 담기(`toggleFav`)와 같은 꼴입니다 — 저장이 막히면 없던 일로 두고, 표와
+// `숨긴 것` 목록을 같이 다시 그립니다. 한쪽만 바뀌면 어느 쪽이 맞는지 알 수 없습니다.
+function toggleBoatMute(key, label) {
+  if (!key) return;
+  const on = !loadMutes().boat.includes(key);
+  if (!setMute('boat', key, on)) return toast('브라우저가 저장을 막고 있습니다');
+  render();
+  renderMutes(TRIPS);
+  toast(on ? `${label ?? key} 현황판에서 숨겼습니다` : `${label ?? key} 다시 보입니다`);
+}
+
 // ── 즐겨찾기 옮기기 ────────────────────────────────────────────────────────
 // 서버가 없어서 즐겨찾기는 브라우저에만 남습니다. 폰과 PC, Pages와 로컬 서버가
 // 각각 다른 저장소라 서로 안 보입니다. 글자로 뽑아 옮기는 게 유일한 길입니다.
@@ -1173,14 +1215,15 @@ function saveMutes(mutes) {
   } catch { return false; }
 }
 
-// 이 화면은 **푸는 일만** 합니다. 숨기려면 고를 목록이 있어야 하고 그건 현황판 필터에 있습니다.
+// 거는 곳도 푸는 곳도 여럿(배별 칸의 ✕ · 숨긴 것 표 · 현황판)이라 값을 고치는 곳은 하나입니다.
 // 읽고 고쳐 쓰는 사이에 현황판 탭에서 바뀔 수 있으니 그때그때 다시 읽습니다.
-function unmute(kind, key) {
+function setMute(kind, key, on) {
+  if (!MUTE_KINDS.includes(kind) || !key) return false;
   const mutes = loadMutes();
-  if (!MUTE_KINDS.includes(kind)) return false;
-  mutes[kind] = mutes[kind].filter((k) => k !== key);
+  mutes[kind] = on ? [...new Set([...mutes[kind], key])] : mutes[kind].filter((k) => k !== key);
   return saveMutes(mutes);
 }
+const unmute = (kind, key) => setMute(kind, key, false);
 // ── 숨긴 것 끝 ── (test/admin.test.js가 여기까지를 떼어내 돌려봅니다)
 
 // 그 숨김이 지금도 먹고 있나. 현황판은 **이름으로** 숨기므로 선사 표기가 바뀌면 숨김이 조용히
@@ -1244,6 +1287,7 @@ function renderMutes(trips) {
     btn.textContent = '다시 보기';
     btn.addEventListener('click', () => {
       if (!unmute(kind, key)) return toast('브라우저가 저장을 막고 있습니다');
+      render();                 // 위 표의 ✕ 도 같이 돌아와야 합니다
       renderMutes(trips);
       toast('다시 보입니다');
     });
@@ -1258,6 +1302,7 @@ function renderMutes(trips) {
     if (!saveMutes(Object.fromEntries(MUTE_KINDS.map((kind) => [kind, []])))) {
       return toast('브라우저가 저장을 막고 있습니다');
     }
+    render();
     renderMutes(trips);
     toast('전부 다시 보입니다');
   };
