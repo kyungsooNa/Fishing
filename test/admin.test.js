@@ -739,7 +739,47 @@ test('관리 화면: 배 이름 옆에서 바로 숨기고 되돌린다', async 
   // 맞는지 알 수 없습니다.
   const panel = inline.slice(inline.indexOf('function renderMutes'), inline.indexOf('function staticMode'));
   assert.match(panel, /if \(!unmute\(kind, key\)\) return toast\('브라우저가 저장을 막고 있습니다'\);\n\s*render\(\);/);
-  assert.ok(html.includes('위 표의 배별 칸 ✕(배)'), '숨긴 것이 없을 때 어디서 거는지 알려줘야 합니다');
+  assert.ok(html.includes('배별 칸 ✕(배)'), '숨긴 것이 없을 때 어디서 거는지 알려줘야 합니다');
+});
+
+// 선사를 숨기려면 현황판 필터 메뉴까지 건너가야 했습니다. 관리 화면의 이 표가 선사 목록인데
+// 거기서 못 걸면, 표를 훑다가 "안 갈 곳"을 만나도 그냥 지나칩니다.
+test('관리 화면: 선사 이름 옆에서 바로 숨기고 되돌린다', async () => {
+  const html = await readFile('docs/admin.html', 'utf8');
+  const inline = html.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
+
+  // 현황판은 선사를 **이름으로** 숨깁니다(id가 아니라 `t.siteName`). 바로 옆이 그 표기를
+  // 고치는 칸이라, registry 표기로 걸면 현황판에서 안 숨는 것을 걸어두게 됩니다.
+  const names = new Function(
+    `${inline.slice(inline.indexOf('function siteNamesFromTrips'), inline.indexOf('async function load()'))}
+     return siteNamesFromTrips;`,
+  )();
+  const found = names([
+    { siteId: 'a', siteName: '가나선사' },
+    { siteId: 'a', siteName: '가나선사' },
+    // 합쳐진 출조는 출처마다 이름이 따로 붙습니다.
+    { siteId: 'b', siteName: '다라선사', sources: [{ siteId: 'b', siteName: '다라선사' }, { siteId: 'c', siteName: '마바선사' }] },
+    { siteId: 'd' },
+  ]);
+  assert.deepEqual([...found.a], ['가나선사'], '같은 이름은 한 번만');
+  assert.deepEqual([...found.b], ['다라선사']);
+  assert.deepEqual([...found.c], ['마바선사'], '출처마다 자기 이름으로 담깁니다');
+  assert.equal(found.d, undefined, '이름이 없으면 걸 수 없습니다');
+
+  const cell = inline.slice(inline.indexOf('function siteNameCell'), inline.indexOf('// ── 별점 ──'));
+  assert.ok(cell.includes('SITENAMES[site.id]'), '수집이 쓴 이름으로 걸어야 합니다');
+  assert.match(cell, /if \(!names\.length\) return td;/, '수집된 출조가 없으면 ✕ 를 안 답니다');
+  assert.ok(!cell.includes('LOCAL'), '숨기기는 로컬 서버가 없어도 됩니다');
+  assert.match(cell, /hide\.textContent = off \? '↩' : '✕';/, '같은 자리에서 되돌립니다');
+
+  // 이름이 여럿이면 반만 걸렸을 때가 가장 나쁩니다 — 현황판에서는 안 숨는데 표에는 걸린
+  // 것처럼 보입니다. 걸림 표시도 "모두 걸렸을 때"만입니다.
+  assert.match(cell, /const off = names\.every\(\(name\) => MUTED_SITES\.has\(name\)\);/);
+  const toggle = inline.slice(inline.indexOf('function toggleSiteMute'), inline.indexOf('// ── 즐겨찾기 옮기기 ──'));
+  assert.match(toggle, /for \(const name of names\) \{\n\s*if \(!setMute\('site', name, on\)\) return toast\('브라우저가 저장을 막고 있습니다'\);/);
+  assert.match(toggle, /render\(\);/, '표의 ✕ 를 다시 칠해야 합니다');
+  assert.match(toggle, /renderMutes\(TRIPS\);/, '숨긴 것 목록도 같이 바뀌어야 합니다');
+  assert.ok(html.includes('선사 이름 옆 ✕(선사)'), '숨긴 것이 없을 때 어디서 거는지 알려줘야 합니다');
 });
 
 // 두 화면이 같은 값을 쓰는데 열쇠나 종류가 갈리면, 관리 화면에서 되돌린 것이 현황판에서
