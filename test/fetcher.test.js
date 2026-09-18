@@ -177,6 +177,49 @@ test('일시적인 오류(HTTP 500)는 재시도한다', async () => {
   }
 });
 
+// 2026-09-17 08시부터 선상24가 IP당 요청량을 막으며 `HTTP 405`를 주기 시작했는데, 그걸
+// 세 번씩 다시 물었습니다 — 126곳이 한 실행에 378번. 한 곳당 4.0초가 10.7초가 됐고,
+// 이미 거절한 서버를 22분 더 두들겼습니다. 그러면 차단이 풀릴 일도 없습니다.
+test('거절(4xx)은 다시 묻지 않는다 — 같은 요청에 같은 답입니다', async () => {
+  for (const status of [400, 403, 404, 405]) {
+    let hits = 0;
+    const site = await serve((_, res) => { hits += 1; res.writeHead(status); res.end(); });
+    try {
+      await assert.rejects(
+        fetchHtml(site.url, { mode: 'static', retries: 2 }),
+        (err) => {
+          assert.equal(err.status, status, '상태코드가 오류에 그대로 달려 있어야 합니다');
+          assert.match(err.message, new RegExp(`HTTP ${status}`));
+          return true;
+        },
+      );
+      assert.equal(hits, 1, `HTTP ${status}는 한 번만 물어야 합니다 (${hits}번 물었습니다)`);
+    } finally {
+      await site.close();
+    }
+  }
+});
+
+// "지금은 말고 이따가"는 거절과 다릅니다. 기다렸다 다시 묻는 것이 맞는 답입니다.
+test('408·429는 기다렸다 다시 묻는다', async () => {
+  for (const status of [408, 429]) {
+    let hits = 0;
+    const site = await serve((_, res) => {
+      hits += 1;
+      if (hits < 2) { res.writeHead(status); res.end(); return; }
+      res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+      res.end('<html><body>운항시간 : 05:00 ~ 12:00</body></html>');
+    });
+    try {
+      const html = await fetchHtml(site.url, { mode: 'static', retries: 2 });
+      assert.match(html, /운항시간/);
+      assert.equal(hits, 2, `HTTP ${status}는 다시 물어야 합니다`);
+    } finally {
+      await site.close();
+    }
+  }
+});
+
 // times 실행(run 35103670154)에서 58곳이 "30000ms 안에 응답이 없습니다"로 죽었는데
 // 실제로는 한 곳당 2초대였습니다. 30초를 기다린 것과 2초 만에 끊긴 것은 손쓸 데가
 // 완전히 다른데 메시지만으로는 그 둘이 같아 보입니다 — 걸린 시간을 같이 남깁니다.

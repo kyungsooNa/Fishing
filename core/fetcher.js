@@ -104,7 +104,11 @@ function getStatic(url, { referer, timeoutMs = TIMEOUT_MS, redirects = MAX_REDIR
 
         if (statusCode >= 400) {
           res.resume();
-          return reject(new Error(`HTTP ${statusCode} ${statusMessage ?? ''}`.trim()));
+          // 상태코드를 오류에 **달아** 둡니다. 다시 걸어볼지 판단하는 쪽(`isHopeless`)이
+          // 메시지를 정규식으로 되읽으면, 본문에 "HTTP 404"가 적힌 페이지까지 걸립니다.
+          const err = new Error(`HTTP ${statusCode} ${statusMessage ?? ''}`.trim());
+          err.status = statusCode;
+          return reject(err);
         }
 
         const chunks = [];
@@ -182,9 +186,26 @@ async function getRendered(url, { waitFor, referer } = {}) {
 // 길어지고, 상대 서버 입장에서는 그저 두들기는 셈입니다.
 const HOPELESS = /ENOTFOUND|ECONNREFUSED|EHOSTUNREACH|ENETUNREACH|ETIMEDOUT|CERT_|ERR_TLS/;
 
+/**
+ * 4xx는 **같은 요청을 곧바로 다시 보내도 같은 답**입니다. 주소가 틀렸거나, 권한이 없거나,
+ * 그 서버가 우리를 안 받기로 한 것이라 1초 뒤에 달라질 값이 아닙니다.
+ *
+ * 이게 없어서 실제로 겪은 일: 2026-09-17 08시부터 선상24가 IP당 요청량을 막기 시작해
+ * `HTTP 405`를 주는데, 126곳을 **세 번씩** 다시 물었습니다(한 곳당 4.0초 → 10.7초,
+ * 한 실행에 126번이 378번). 이미 거절한 서버를 22분 더 두들긴 셈이고, 그러면 차단이
+ * 풀릴 일도 없습니다.
+ *
+ * **408·429는 뺍니다.** 그 둘은 "지금은 말고 이따가"라는 뜻이라 기다렸다 다시 묻는 것이
+ * 맞는 답입니다(`fetchHtml`이 2초·4초 쉬고 겁니다).
+ */
+const RETRY_ANYWAY = new Set([408, 429]);
+const isDeadEnd = (status) => Number.isInteger(status)
+  && status >= 400 && status < 500 && !RETRY_ANYWAY.has(status);
+
 function isHopeless(err) {
   if (/안에 응답이 없습니다/.test(String(err?.message ?? ''))) return true;
   for (let cur = err, depth = 0; cur && depth < 4; cur = cur.cause, depth++) {
+    if (isDeadEnd(cur.status)) return true;
     if (HOPELESS.test(cur.code ?? '') || HOPELESS.test(String(cur.message ?? ''))) return true;
   }
   return false;
