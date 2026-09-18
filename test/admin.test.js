@@ -657,6 +657,68 @@ test('관리 화면과 현황판이 항구에서 지역을 같은 규칙으로 �
   assert.match(admin, /const NO_PORT = '\(항구 미상\)';/, 'regionOf가 쓰는 값입니다');
 });
 
+// 숨기는 것은 현황판에서 하지만, 그 패널은 숨긴 것이 있을 때만 열립니다. "그 선사가 왜 안
+// 뜨지" 하고 관리 화면부터 여는 사람이 무엇을 숨겼는지 보고 되돌릴 수 있어야 합니다.
+test('관리 화면: 숨긴 것을 모아 보고 되돌린다', async () => {
+  const html = await readFile('docs/admin.html', 'utf8');
+  for (const id of ['mutemeta', 'muterows', 'muteempty', 'muteclear']) {
+    assert.ok(html.includes(`id="${id}"`), `숨긴 것 표의 요소가 없습니다: ${id}`);
+  }
+
+  const inline = html.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
+  const start = inline.indexOf('// ── 숨긴 것 ──');
+  const end = inline.indexOf('// ── 숨긴 것 끝 ──');
+  assert.ok(start >= 0 && end > start, '숨긴 것 부분을 찾지 못했습니다');
+
+  const store = new Map();
+  const localStorage = {
+    getItem: (k) => store.get(k) ?? null,
+    setItem: (k, v) => store.set(k, v),
+  };
+  const m = new Function('localStorage',
+    `${inline.slice(start, end)}\nreturn { MUTE_KEY, MUTE_KINDS, loadMutes, saveMutes, unmute };`,
+  )(localStorage);
+
+  assert.deepEqual(m.loadMutes(), { site: [], boat: [], port: [], region: [] },
+    '아무것도 없을 때도 네 종류가 다 있어야 뒤에서 안 터집니다');
+
+  store.set('fishing:muted', JSON.stringify({
+    site: ['가나선사', '가나선사', ''], boat: ['만선호|강원 고성 대진항'],
+    port: ['충남 보령 오천항'], region: ['강원 고성'],
+  }));
+  assert.deepEqual(m.loadMutes().site, ['가나선사'], '겹친 것과 빈 값은 버립니다');
+
+  assert.equal(m.unmute('site', '가나선사'), true);
+  assert.deepEqual(m.loadMutes().site, [], '푼 것은 저장까지 빠집니다');
+  assert.deepEqual(m.loadMutes().boat, ['만선호|강원 고성 대진항'], '다른 종류는 안 건드립니다');
+  assert.equal(m.unmute('없는종류', '가나선사'), false, '모르는 종류는 저장하지 않습니다');
+
+  store.set('fishing:muted', '망가진 JSON');
+  assert.deepEqual(m.loadMutes(), { site: [], boat: [], port: [], region: [] }, '읽다 죽지 않습니다');
+  store.set('fishing:muted', '{"site":"글자"}');
+  assert.deepEqual(m.loadMutes().site, [], '배열이 아니면 안 받습니다');
+
+  // 저장이 막히면 지운 척하면 안 됩니다 — 화면만 바뀌면 되돌린 줄 알고 창을 닫습니다.
+  assert.match(inline, /if \(!unmute\(kind, key\)\) return toast\('브라우저가 저장을 막고 있습니다'\);/);
+});
+
+// 두 화면이 같은 값을 쓰는데 열쇠나 종류가 갈리면, 관리 화면에서 되돌린 것이 현황판에서
+// 안 풀립니다. 그건 "되돌리기가 안 먹는다"로 보이고 고장과 구별이 안 됩니다.
+test('관리 화면과 현황판이 숨김을 같은 자리에 적는다', async () => {
+  const [admin, board] = await Promise.all([
+    readFile('docs/admin.html', 'utf8'),
+    readFile('docs/index.html', 'utf8'),
+  ]);
+  for (const html of [admin, board]) {
+    assert.match(html, /const MUTE_KEY = 'fishing:muted';/);
+    assert.match(html, /const MUTE_KINDS = \['site', 'boat', 'port', 'region'\];/);
+  }
+  // 배 키는 즐겨찾기와 같은 키입니다. 여기가 갈리면 관리 화면이 엉뚱한 배를 되돌립니다.
+  const favKey = (html) => html.match(/const favKey = .*/)?.[0];
+  assert.ok(favKey(admin), '관리 화면에 favKey가 없습니다');
+  assert.equal(favKey(admin), favKey(board), '배 키가 갈렸습니다');
+});
+
 test('관리 화면: 즐겨찾기를 글자로 내보내고 합쳐 가져온다', async () => {
   const html = await readFile('docs/admin.html', 'utf8');
   for (const id of ['favexport', 'favimport', 'favtext', 'favio']) {
@@ -738,7 +800,7 @@ test('관리 화면: 별점은 읽기 전용 모드에서도 매길 수 있다',
   const cell = inline.slice(inline.indexOf('function boatRatesCell'), inline.indexOf('// 항구는 사이트에'));
   assert.ok(cell.length > 100, 'boatRatesCell을 찾지 못했습니다');
   assert.ok(!cell.includes('LOCAL'), '별점은 로컬 서버가 없어도 매길 수 있어야 합니다');
-  assert.match(inline, /별점과 즐겨찾기는 브라우저에 저장되는 값이라 여기서도 됩니다/);
+  assert.match(inline, /별점·즐겨찾기·숨긴 것은 브라우저에 저장되는 값이라 여기서도 됩니다/);
 });
 
 // ── 밖에 열어도 되는 길과 아닌 길 ───────────────────────────────────────────
