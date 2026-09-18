@@ -93,6 +93,11 @@
   .thsort .caret::after { content: '↕'; opacity: .45; font-size: 11px; }
   th[aria-sort="ascending"] .thsort { color: var(--accent); }
   th[aria-sort="ascending"] .thsort .caret::after { content: '↑'; opacity: 1; }
+  /* ☆(즐겨찾기)와 ★★★(별점)은 다른 일입니다. 붙여 두되 색을 갈라 눈이 헷갈리지 않게 합니다. */
+  .boatacts { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+  .boatacts button.fav { padding: 0 1px; border: 0; border-radius: 0; background: none;
+    color: var(--muted); font-size: 15px; line-height: 1; cursor: pointer; }
+  .boatacts button.fav.on, .boatacts button.fav:hover { color: var(--accent); }
   .stars { white-space: nowrap; }
   .stars button { padding: 0 1px; border: 0; border-radius: 0; background: none;
                   color: var(--line); font-size: 16px; line-height: 1; }
@@ -250,7 +255,7 @@
   <div class="tablewrap">
     <table>
       <thead><tr>
-        <th>켜짐</th><th>id</th><th>선사 표기</th><th>배별 별점</th><th>계열</th><th>등록</th>
+        <th>켜짐</th><th>id</th><th>선사 표기</th><th>배별 즐겨찾기·별점</th><th>계열</th><th>등록</th>
         <th id="th-port" aria-sort="none"><button type="button" id="sort-port" class="thsort">항구<span class="caret"></span></button></th>
         <th>전화</th>
         <th>주소</th><th>최근 수집</th>
@@ -273,7 +278,7 @@
       <thead><tr><th>배</th><th>항구</th><th>상태</th><th></th></tr></thead>
       <tbody id="favrows"></tbody>
     </table>
-    <div class="empty" id="favempty" hidden>즐겨찾기가 없습니다. 현황판에서 배 왼쪽 ☆ 를 누르면 여기 담깁니다.</div>
+    <div class="empty" id="favempty" hidden>즐겨찾기가 없습니다. 위 표의 배별 칸이나 현황판에서 배 왼쪽 ☆ 를 누르면 여기 담깁니다.</div>
   </div>
   <div class="actions" style="margin-top: 10px;">
     <button id="favclear" class="danger">전체 비우기</button>
@@ -430,6 +435,12 @@ function setRate(map, id, score) {
 let RATES = loadRates();
 // 수집이 실제로 읽어온 배 이름. 현황판은 이 이름(trip.boat)으로만 별점을 찾습니다.
 let OBSERVED = {};
+// 사이트 → 배 → 즐겨찾기 키(`이름|항구`). 현황판의 ☆ 와 **같은 키**여야 합니다.
+let FAVKEYS = {};
+// 지금 담긴 즐겨찾기. 표를 그릴 때 한 번만 읽습니다(배마다 읽으면 한 쪽에 수백 번입니다).
+let FAVSET = new Set();
+// 즐겨찾기 표를 다시 그리려면 출조 목록이 있어야 합니다(현황판에 있는 배인지 대조합니다).
+let TRIPS = [];
 
 // 현황판은 수집이 읽은 이름으로만 별점을 찾습니다. 그 규칙이 생기기 전에 매긴 별점 중에는
 // registry 표기로 저장돼 **현황판에 영영 안 뜨는** 것이 있습니다(`raraho|라라호`). 매긴 사람은
@@ -570,6 +581,27 @@ function boatRatesCell(site) {
       td.append(row);
       continue;
     }
+    const acts = document.createElement('span');
+    acts.className = 'boatacts';
+    // 현황판의 ☆ 는 이름이 아니라 `이름|항구`로 담습니다(다른 지역의 동명이배까지 따라
+    // 담기면 안 됩니다). 그 항구는 **수집 결과에서 그대로** 가져옵니다 — registry에 적힌
+    // 항구로 키를 만들면 현황판이 못 찾는 즐겨찾기가 생깁니다(별점이 겪은 일입니다).
+    // 여기까지 온 배는 `shown`을 지났으므로 키가 적어도 하나는 있습니다.
+    const favKeys = [...(FAVKEYS[site.id]?.[boat] ?? [])].sort((a, b) => a.localeCompare(b, 'ko'));
+    for (const favEntry of favKeys) {
+      const on = FAVSET.has(favEntry);
+      const star = document.createElement('button');
+      star.type = 'button';
+      star.className = on ? 'fav on' : 'fav';
+      star.textContent = on ? '★' : '☆';
+      // 한 배가 여러 항구에서 뜨면 즐겨찾기도 항구마다 따로입니다. 어느 쪽인지 적습니다.
+      const where = favKeys.length > 1 ? ` (${favEntry.slice(favEntry.indexOf('|') + 1) || '항구 미상'})` : '';
+      star.title = `${boat}${where} ${on ? '즐겨찾기에서 빼기' : '즐겨찾기에 담기'}`;
+      star.setAttribute('aria-label', star.title);
+      star.addEventListener('click', () => toggleFav(favEntry, `${boat}${where}`));
+      acts.append(star);
+    }
+
     const box = document.createElement('span');
     box.className = 'stars';
     const score = rateOf(RATES, key);
@@ -592,7 +624,8 @@ function boatRatesCell(site) {
       });
       box.append(star);
     }
-    row.append(label, box);
+    acts.append(box);
+    row.append(label, acts);
     td.append(row);
   }
   return td;
@@ -687,10 +720,13 @@ function render() {
 
   renderLostRates();
 
+  // 배마다 읽으면 한 쪽에 수백 번입니다. 그릴 때 한 번 읽어 두고 씁니다.
+  FAVSET = new Set(loadFavs());
+
   const rated = Object.values(RATES).filter((score) => rateOf({ score }, 'score')).length;
   $('ratemeta').textContent =
-    (rated ? `별점 ${rated}척 · ` : '') +
-    '배별 별점은 개인 기록입니다 — 이 브라우저에만 저장되고, 현황판에는 읽기 전용으로 보입니다.';
+    (rated ? `별점 ${rated}척 · ` : '') + (FAVSET.size ? `즐겨찾기 ${FAVSET.size}척 · ` : '') +
+    '☆ 와 별점은 개인 기록입니다 — 이 브라우저에만 저장되고 현황판과 같은 값을 씁니다.';
 
   $('rowsempty').hidden = list.length > 0;
   $('pageinfo').textContent = list.length
@@ -994,6 +1030,21 @@ function saveFavs(list) {
   try { localStorage.setItem(FAV_KEY, JSON.stringify(list)); return true; } catch { return false; }
 }
 
+// 담고 빼는 곳이 둘(현황판의 ☆ · 이 화면의 표)이라 값을 고치는 곳은 하나로 둡니다.
+// 저장이 막히면 **없던 일로 둡니다** — 화면만 바뀌면 담은 줄 알고 창을 닫습니다(별점과 같습니다).
+// 읽고 고쳐 쓰는 사이에 현황판 탭에서 바뀔 수 있으니 그때그때 다시 읽습니다.
+function toggleFav(key, label) {
+  if (!key) return;
+  const before = loadFavs();
+  const on = !before.includes(key);
+  if (!saveFavs(on ? [...before, key] : before.filter((k) => k !== key))) {
+    return toast('브라우저가 저장을 막고 있습니다');
+  }
+  render();                 // 표의 ☆ 를 다시 칠합니다
+  renderFavs(TRIPS);        // 아래 즐겨찾기 목록도 같이 바뀌어야 합니다
+  toast(on ? `${label ?? key} 즐겨찾기에 담았습니다` : `${label ?? key} 즐겨찾기에서 뺐습니다`);
+}
+
 // ── 즐겨찾기 옮기기 ────────────────────────────────────────────────────────
 // 서버가 없어서 즐겨찾기는 브라우저에만 남습니다. 폰과 PC, Pages와 로컬 서버가
 // 각각 다른 저장소라 서로 안 보입니다. 글자로 뽑아 옮기는 게 유일한 길입니다.
@@ -1042,12 +1093,7 @@ function renderFavs(trips) {
     const btn = document.createElement('button');
     btn.className = 'small';
     btn.textContent = '지우기';
-    btn.addEventListener('click', () => {
-      const next = loadFavs().filter((k) => k !== key);
-      if (!saveFavs(next)) return toast('브라우저가 저장을 막고 있습니다');
-      renderFavs(trips);
-      toast('지웠습니다');
-    });
+    btn.addEventListener('click', () => toggleFav(key, boat || key));
     tdDel.append(btn);
 
     tr.append(tdBoat, tdPort, tdState, tdDel);
@@ -1083,6 +1129,7 @@ function renderFavs(trips) {
     const merged = [...new Set([...before, ...keys])];
     if (!saveFavs(merged)) return toast('브라우저가 저장을 막고 있습니다');
     const added = merged.length - before.length;
+    render();
     renderFavs(trips);
     $('favio').textContent =
       `${added}개를 새로 담았습니다 (이미 있던 것 ${keys.length - added}개) · 전체 ${merged.length}개.`;
@@ -1091,6 +1138,7 @@ function renderFavs(trips) {
   $('favclear').onclick = () => {
     if (!confirm(`즐겨찾기 ${loadFavs().length}개를 전부 지웁니다. 계속할까요?`)) return;
     if (!saveFavs([])) return toast('브라우저가 저장을 막고 있습니다');
+    render();
     renderFavs(trips);
     toast('전부 지웠습니다');
   };
@@ -1241,11 +1289,29 @@ function boatsFromTrips(trips) {
   return found;
 }
 
+// 현황판의 ☆ 와 같은 키를 수집 결과에서 그대로 모읍니다(`이름|항구`). 합쳐진 출조는 모든
+// 출처에 달아, 어느 선사 줄에서 담아도 현황판의 그 배에 별이 붙습니다.
+function favKeysFromTrips(trips) {
+  const found = {};
+  for (const trip of trips ?? []) {
+    if (!trip.boat) continue;
+    const ids = trip.sources?.length ? trip.sources.map((source) => source.siteId) : [trip.siteId];
+    for (const id of ids) {
+      if (!id) continue;
+      ((found[id] ??= {})[boatId(trip.boat)] ??= new Set()).add(favKey(trip));
+    }
+  }
+  return found;
+}
+
 async function load() {
   // 즐겨찾기 대조에 출조 목록이 필요합니다. 읽기 전용 모드에서는 사이트 표도 여기서 만듭니다.
   const data = await fetch('data.json?t=' + Date.now())
     .then((r) => r.json())
     .catch(() => ({ sites: {}, trips: [] }));
+
+  TRIPS = data.trips ?? [];
+  FAVKEYS = favKeysFromTrips(TRIPS);
 
   if (LOCAL) {
     const d = await api('api/sites').then((r) => r.json());
@@ -1286,8 +1352,8 @@ async function load() {
       `출조 ${d.trips?.length ?? 0}건 · 갱신 ${when(d.generatedAt) || '-'}`;
   }
   render();
-  renderFavs(data.trips ?? []);
-  renderMutes(data.trips ?? []);
+  renderFavs(TRIPS);
+  renderMutes(TRIPS);
 }
 
 (async () => {

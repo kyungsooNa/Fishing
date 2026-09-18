@@ -719,6 +719,56 @@ test('관리 화면과 현황판이 숨김을 같은 자리에 적는다', async
   assert.equal(favKey(admin), favKey(board), '배 키가 갈렸습니다');
 });
 
+// 담는 자리가 현황판에만 있어서, 선사 표를 훑다가 담고 싶으면 현황판으로 건너가 그 배를
+// 다시 찾아야 했습니다. 관리 화면의 배별 칸에서도 담습니다 — 다만 **현황판과 같은 키**여야
+// 하고, 그 키의 항구는 registry가 아니라 **수집 결과**에서 와야 합니다(별점이 겪은 일입니다).
+test('관리 화면: 배별 칸에서 즐겨찾기를 담는다', async () => {
+  const html = await readFile('docs/admin.html', 'utf8');
+  const inline = html.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
+
+  const keys = new Function('favKey', 'boatId',
+    `${inline.slice(inline.indexOf('function favKeysFromTrips'), inline.indexOf('async function load()'))}
+     return favKeysFromTrips;`,
+  )((t) => `${t.boat}|${t.port ?? ''}`, (b) => b);
+
+  const found = keys([
+    { siteId: 'a', boat: '만선호', port: '강원 고성 대진항' },
+    // 합쳐진 출조는 모든 출처에 답니다 — 어느 선사 줄에서 담아도 현황판의 그 배에 붙습니다.
+    { siteId: 'b', boat: '무적호', port: '충남 보령 오천항',
+      sources: [{ siteId: 'b' }, { siteId: 'c' }] },
+    { siteId: 'd', boat: '', port: '충남 태안 구매항' },
+  ]);
+  assert.deepEqual([...found.a['만선호']], ['만선호|강원 고성 대진항']);
+  assert.deepEqual([...found.b['무적호']], ['무적호|충남 보령 오천항']);
+  assert.deepEqual([...found.c['무적호']], ['무적호|충남 보령 오천항'], '출처마다 다 달립니다');
+  assert.equal(found.d, undefined, '이름 없는 배는 담을 길이 없습니다');
+
+  // 한 배가 여러 항구에서 뜨면 즐겨찾기도 항구마다 따로입니다(현황판의 키가 그렇습니다).
+  const two = keys([
+    { siteId: 'a', boat: '만선호', port: '강원 고성 대진항' },
+    { siteId: 'a', boat: '만선호', port: '충남 보령 오천항' },
+  ]);
+  assert.equal(two.a['만선호'].size, 2, '항구가 다르면 다른 즐겨찾기입니다');
+
+  // 별점처럼 registry 표기가 아니라 수집이 읽은 이름·항구를 씁니다. 그래서 ☆ 는 `shown`을
+  // 지난 배에만 답니다 — 못 찾을 키로 담아두면 현황판에서 영원히 안 보입니다.
+  const cell = inline.slice(inline.indexOf('function boatRatesCell'), inline.indexOf('// 항구는 사이트에'));
+  assert.ok(cell.includes('FAVKEYS[site.id]?.[boat]'), '수집에서 온 키로 담아야 합니다');
+  assert.ok(!cell.includes('LOCAL'), '즐겨찾기는 로컬 서버가 없어도 담을 수 있어야 합니다');
+  assert.ok(cell.indexOf('FAVKEYS[site.id]') > cell.indexOf("shown.has(boat)"),
+    '수집에 없는 이름에는 ☆ 를 달지 않습니다');
+
+  // 담고 빼는 곳이 둘이라 값을 고치는 곳은 하나여야 합니다. 갈리면 표의 ☆ 와 아래 목록이
+  // 어긋나고, 저장이 막혔을 때 한쪽만 되돌아갑니다.
+  const toggle = inline.slice(inline.indexOf('function toggleFav'), inline.indexOf('// ── 즐겨찾기 옮기기 ──'));
+  assert.match(toggle, /if \(!saveFavs\(.*\)\) \{\n\s*return toast\('브라우저가 저장을 막고 있습니다'\);/,
+    '저장이 막히면 없던 일로 둡니다');
+  assert.match(toggle, /render\(\);/, '표의 ☆ 를 다시 칠해야 합니다');
+  assert.match(toggle, /renderFavs\(TRIPS\);/, '아래 목록도 같이 바뀌어야 합니다');
+  assert.match(inline, /btn\.addEventListener\('click', \(\) => toggleFav\(key, boat \|\| key\)\);/,
+    '목록에서 지우는 것도 같은 문을 지나야 합니다');
+});
+
 test('관리 화면: 즐겨찾기를 글자로 내보내고 합쳐 가져온다', async () => {
   const html = await readFile('docs/admin.html', 'utf8');
   for (const id of ['favexport', 'favimport', 'favtext', 'favio']) {
@@ -744,7 +794,7 @@ test('관리 화면: 즐겨찾기를 글자로 내보내고 합쳐 가져온다'
 
 test('관리 화면: 배마다 별점을 매긴다', async () => {
   const html = await readFile('docs/admin.html', 'utf8');
-  assert.match(html, /<th>선사 표기<\/th><th>배별 별점<\/th>/, '배별 별점 칸이 표에 없습니다');
+  assert.match(html, /<th>선사 표기<\/th><th>배별 즐겨찾기·별점<\/th>/, '배별 칸이 표에 없습니다');
   assert.ok(html.includes('id="ratemeta"'), '별점이 어디 저장되는지 알려주는 줄이 없습니다');
 
   const inline = html.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
