@@ -13,6 +13,42 @@ import { makeTrip, STATUS } from './schema.js';
 export const REGISTRY_PATH = 'sites/registry.json';
 const PLATFORM_TIMEOUT_LIMIT = 3;
 
+/**
+ * 한 실행에 **이만큼만** 보고 다음 실행에서 이어서 보는 서버. `serverOf`가 내는 열쇠입니다.
+ *
+ * 선상24가 2026-09-17 08시부터 IP당 요청량을 막습니다. data.json 8번치를 재보면 매번
+ * **27~31곳 / 103~116초**에서 `HTTP 405`로 끊기고, **그 뒤 22분을 10.6초 간격으로 계속
+ * 물어도 성공이 0곳**입니다 — 간격을 늘려서 풀리는 종류가 아닙니다(그 22분이 이미 10초
+ * 간격 실험이었습니다). 그래서 간격 대신 **한 실행에 도는 수**를 줄입니다.
+ *
+ * 25는 관측된 하한(27)보다 한 칸 아래입니다. 활성 153곳이면 매시 수집으로 한 바퀴에
+ * **7시간**인데, **지금은 앞쪽 25곳만 매시간 갱신되고 나머지 128곳은 영원히 안 갱신됩니다**
+ * (registry 순서가 고정이라 매번 같은 앞쪽만 봅니다). 한 시간에 받아오는 양은 그대로고
+ * 나눠 쓰는 것이라, 갱신되는 곳이 25곳 → 153곳이 됩니다. 앞쪽 25곳의 신선도는 1시간에서
+ * 7시간으로 떨어지는데, 실시간 감시는 원래 로컬 서버(`core/monitor.js`)가 하는 일이고
+ * Actions는 넓게 훑는 쪽이라 이 교환이 맞습니다.
+ *
+ * 다음 실행들이 값을 말해줍니다: 25곳이 다 성공하면 창이 1시간 이하라 30~35까지 올려도
+ * 되고, 25곳인데 또 막히면 창이 더 길다는 뜻이라 줄이거나 수집 주기를 늦춰야 합니다.
+ *
+ * 어디까지 돌았는지는 **마지막으로 본 사이트 id**로 남깁니다(`data.json`의 `rotation`).
+ * 번호로 남기면 registry에 한 곳만 끼어들어도 차례가 통째로 밀립니다.
+ */
+export const ROTATE_PER_RUN = { 'sunsang24.com': 25 };
+
+/**
+ * 이번 실행에서 볼 곳과 미룰 곳을 가릅니다. 커서 다음 자리부터 세어 나가고 끝에 닿으면
+ * 처음으로 돌아옵니다 — 그래야 마지막 몇 곳이 영영 차례를 못 받는 일이 없습니다.
+ */
+export function rotationPlan(group, { limit = 0, cursor = null } = {}) {
+  if (!(limit > 0) || group.length <= limit) return { run: group, hold: [], cursor: null };
+  const at = group.findIndex((s) => s.id === cursor);
+  const start = at < 0 ? 0 : (at + 1) % group.length;
+  const run = Array.from({ length: limit }, (_, i) => group[(start + i) % group.length]);
+  const taken = new Set(run.map((s) => s.id));
+  return { run, hold: group.filter((s) => !taken.has(s.id)), cursor: run[run.length - 1].id };
+}
+
 export async function loadRegistry(path = REGISTRY_PATH) {
   const parsed = JSON.parse(await readFile(path, 'utf8'));
   const sites = Array.isArray(parsed) ? parsed : parsed.sites ?? [];
@@ -48,6 +84,7 @@ export async function runAll({
   timeoutBackoffHours = defaultTimeoutBackoffHours(),
   onProgress = null,
   collectFn = collectSite,
+  rotatePerRun = ROTATE_PER_RUN,
 } = {}) {
   const registry = await loadRegistry(registryPath);
   const targets = registry.filter((s) => (only ? s.id === only : s.enabled !== false));
@@ -111,6 +148,28 @@ export async function runAll({
       ...meta(site),
     });
     console.warn(`  ${site.id.padEnd(14)} 건너뜀: 더피싱 연속 timeout으로 이번 수집 보류`);
+    completed += 1;
+    progress(site.id);
+  };
+
+  // 차례가 아니라 **요청하지 않은** 곳입니다. 실패가 아니라 보류라 `skipped`를 답니다
+  // (`core/metrics.js`가 성공·실패·보류를 갈라 셉니다). 직전 행은 그대로 둬 화면과
+  // 취소석 비교가 갑자기 비지 않게 합니다 — 연속 timeout 보류와 같은 규칙입니다.
+  const holdForRotation = (site, server, limit) => {
+    const at = new Date().toISOString();
+    const prevStatus = prev.sites?.[site.id];
+    const kept = keepPrevious(site);
+    failed.add(site.id);
+    tripsById.set(site.id, kept);
+    statusById.set(site.id, {
+      ok: false,
+      at,
+      error: `${server}는 한 실행에 ${limit}곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다`,
+      count: kept.length,
+      keptFrom: prevStatus?.keptFrom ?? prevStatus?.at ?? prev.generatedAt ?? null,
+      skipped: 'rotation',
+      ...meta(site),
+    });
     completed += 1;
     progress(site.id);
   };
@@ -179,19 +238,30 @@ export async function runAll({
   // 284곳이 되자 한 바퀴가 한 시간을 넘겼습니다. 같은 서버(도메인)에 묶인 사이트는
   // 한 줄로 두고, 그 안에서는 fetcher가 3초 간격을 지킵니다. 상대에게 가는 부담은
   // 그대로고 기다리는 시간만 겹칩니다.
-  const groups = [...groupBy(targets, serverOf).values()];
-  await inParallel(groups, Number(process.env.PARALLEL ?? 6), async (group) => {
+  const groups = [...groupBy(targets, serverOf).entries()];
+  // 한 곳만 다시 보는 길(`only`, 관리 화면의 "선사 최신화")은 차례를 따지지 않습니다.
+  const nextCursors = new Map();
+  await inParallel(groups, Number(process.env.PARALLEL ?? 6), async ([server, group]) => {
+    const limit = only ? 0 : (rotatePerRun?.[server] ?? 0);
+    const plan = rotationPlan(group, { limit, cursor: prev.rotation?.[server] ?? null });
+    if (plan.hold.length) {
+      console.log(`  ${server}: ${plan.run.length}곳만 봅니다 (${plan.run[0].id} 부터)`
+        + ` — 나머지 ${plan.hold.length}곳은 다음 차례`);
+      for (const site of plan.hold) holdForRotation(site, server, plan.run.length);
+      nextCursors.set(server, plan.cursor);
+    }
+
     let consecutiveTimeouts = 0;
-    for (let index = 0; index < group.length; index++) {
-      const outcome = await collectOne(group[index]);
+    for (let index = 0; index < plan.run.length; index++) {
+      const outcome = await collectOne(plan.run[index]);
       if (outcome === 'timeout') consecutiveTimeouts += 1;
       else if (outcome !== 'held') consecutiveTimeouts = 0;
 
-      const tripCircuit = !only && group[index].adapter === 'thefishing' &&
+      const tripCircuit = !only && plan.run[index].adapter === 'thefishing' &&
         consecutiveTimeouts >= PLATFORM_TIMEOUT_LIMIT;
       if (!tripCircuit) continue;
 
-      for (const site of group.slice(index + 1)) holdForPlatformTimeout(site);
+      for (const site of plan.run.slice(index + 1)) holdForPlatformTimeout(site);
       break;
     }
   });
@@ -212,7 +282,18 @@ export async function runAll({
   const { places, missing } = usedPorts(trips, await loadPorts(portsPath));
   if (missing.length) console.warn(`  좌표 없는 항구: ${missing.join(', ')} — sites/ports.json에 추가하세요`);
 
-  const data = { generatedAt: startedAt.toISOString(), sites: status, ports: places, trips };
+  // 다음 실행이 이어서 볼 자리. 이번에 안 돈 서버의 커서는 **그대로 물려줍니다** —
+  // 한 곳만 다시 본 실행(`only`)이 전체 차례를 되감으면 안 됩니다.
+  const rotation = { ...(prev.rotation ?? {}), ...Object.fromEntries(nextCursors) };
+
+  const data = {
+    generatedAt: startedAt.toISOString(),
+    // 파일 끝이 아니라 앞에 둡니다. 뒤에 두면 trips 수천 줄 밑에 깔려 안 보입니다.
+    ...(Object.keys(rotation).length ? { rotation } : {}),
+    sites: status,
+    ports: places,
+    trips,
+  };
 
   if (!dryRun) await save(data, dataPath);
   // prevSites는 "그 사이트를 직전에 확인한 시각"입니다. 취소석을 얼마나 빨리 잡았는지는

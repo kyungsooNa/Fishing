@@ -381,3 +381,68 @@ test('dryRun이면 파일을 건드리지 않는다', async () => {
   assert.ok(data.trips.length > 0);
   await assert.rejects(readFile(dataPath, 'utf8'), '파일이 생기면 안 된다');
 });
+
+// 선상24가 2026-09-17 08시부터 IP당 요청량을 막습니다. 8번 실행 전부 27~31곳에서 405로
+// 끊기고, 그 뒤 22분을 10.6초 간격으로 물어도 성공이 0곳이었습니다 — 간격을 늘려 풀리는
+// 종류가 아닙니다. 그래서 한 실행에 도는 수를 줄이고 다음 실행에서 이어 봅니다. 안 그러면
+// 앞쪽 몇 곳만 매시간 갱신되고 나머지는 **영원히** 안 갱신됩니다.
+test('차례를 나눠 돌고, 다음 실행은 이어서 본다', async () => {
+  const sites = ['a', 'b', 'c', 'd', 'e'].map((id) => ({
+    ...mockSite, id, url: `https://${id}.shared.example`,
+  }));
+  const { registryPath, dataPath } = await fixture(sites);
+  const rotatePerRun = { 'shared.example': 2 };
+
+  const first = await runAll({ registryPath, dataPath, days: 21, rotatePerRun });
+  const seen = (d) => Object.entries(d.sites).filter(([, s]) => s.ok).map(([id]) => id);
+  const held = (d) => Object.entries(d.sites).filter(([, s]) => s.skipped === 'rotation').map(([id]) => id);
+
+  assert.deepEqual(seen(first.data), ['a', 'b'], '이번 차례만 봅니다');
+  assert.deepEqual(held(first.data), ['c', 'd', 'e'], '나머지는 보류입니다 — 실패가 아닙니다');
+  assert.equal(first.data.rotation['shared.example'], 'b', '어디까지 봤는지 남깁니다');
+
+  const second = await runAll({ registryPath, dataPath, days: 21, rotatePerRun });
+  assert.deepEqual(seen(second.data), ['c', 'd'], '다음 실행은 이어서 봅니다');
+
+  // 저장은 **registry 순서**입니다(본 순서가 아닙니다 — diff가 매번 뒤집히지 않도록).
+  // 그래서 여기서는 "무엇을 봤나"만 보고, 어디서 멈췄는지는 커서로 확인합니다.
+  const third = await runAll({ registryPath, dataPath, days: 21, rotatePerRun });
+  assert.deepEqual(seen(third.data).sort(), ['a', 'e'], '끝에 닿으면 처음으로 돌아옵니다');
+  assert.equal(third.data.rotation['shared.example'], 'a', '한 바퀴 돌아 a에서 멈춥니다');
+});
+
+// 미룬 곳이 화면에서 사라지면 "배가 없어졌다"로 보입니다. 연속 timeout 보류와 같은 규칙입니다.
+test('차례가 아닌 곳은 직전 결과를 그대로 남긴다', async () => {
+  const sites = ['a', 'b'].map((id) => ({ ...mockSite, id, url: `https://${id}.shared.example` }));
+  const { registryPath, dataPath } = await fixture(sites);
+  const rotatePerRun = { 'shared.example': 1 };
+
+  const first = await runAll({ registryPath, dataPath, days: 21, rotatePerRun });
+  const bTrips = first.data.trips.filter((t) => t.siteId === 'b').length;
+  assert.equal(bTrips, 0, '첫 실행에서 b는 아직 차례가 아닙니다');
+
+  const second = await runAll({ registryPath, dataPath, days: 21, rotatePerRun });
+  assert.ok(second.data.trips.some((t) => t.siteId === 'b'), '두 번째 실행에서 b를 봅니다');
+
+  const third = await runAll({ registryPath, dataPath, days: 21, rotatePerRun });
+  assert.ok(third.data.trips.some((t) => t.siteId === 'b'),
+    'b가 차례를 넘겨도 직전 출조는 화면에 남아야 합니다');
+  assert.equal(third.data.sites.b.skipped, 'rotation');
+  assert.equal(third.data.sites.b.ok, false);
+  assert.ok(third.data.sites.b.keptFrom, '지금 실린 값이 언제 것인지 같이 남깁니다');
+});
+
+// 관리 화면의 "선사 최신화"는 한 곳만 다시 봅니다. 거기서 차례를 따지면 누른 사람이
+// 아무 일도 안 일어나는 것을 봅니다. 전체 차례도 그 한 번에 되감기면 안 됩니다.
+test('한 곳만 다시 보는 길은 차례를 따지지 않고, 전체 차례도 안 건드린다', async () => {
+  const sites = ['a', 'b', 'c'].map((id) => ({ ...mockSite, id, url: `https://${id}.shared.example` }));
+  const { registryPath, dataPath } = await fixture(sites);
+  const rotatePerRun = { 'shared.example': 1 };
+
+  await runAll({ registryPath, dataPath, days: 21, rotatePerRun });          // a
+  const before = JSON.parse(await readFile(dataPath, 'utf8')).rotation['shared.example'];
+
+  const one = await runAll({ registryPath, dataPath, days: 21, rotatePerRun, only: 'c' });
+  assert.equal(one.data.sites.c.ok, true, '차례와 상관없이 봅니다');
+  assert.equal(one.data.rotation['shared.example'], before, '전체 차례는 그대로입니다');
+});
