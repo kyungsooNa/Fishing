@@ -121,8 +121,23 @@ function getStatic(url, { referer, timeoutMs = TIMEOUT_MS, redirects = MAX_REDIR
     // 'error'를 **먼저** 답니다. 뒤에 달면 그 사이에 나는 오류를 받을 사람이 없어
     // unhandled 'error' 이벤트로 프로세스가 죽습니다(위 주석의 그 경로입니다).
     req.on('error', reject);
-    // 붙는 동안에도 도는 시계입니다. 국내 호스트에 해외에서 붙을 때 이게 관건입니다.
     req.setTimeout(wait, () => req.destroy(new Error(`${wait}ms 안에 응답이 없습니다`)));
+
+    // **`req.setTimeout`은 붙는 동안에는 안 돕니다.** Node의 `_http_client.js`가 소켓이
+    // `connecting`이면 `sock.setTimeout(msecs)`를 'connect' 뒤로 미룹니다
+    // (`setSocketTimeout`). 그래서 상대가 SYN에 답을 안 하면 아무 시계도 안 돌고,
+    // **OS의 connect 재시도(~130초)를 그대로 기다립니다.** 2026-09-16 times 실행에서
+    // uijiho가 `connect ETIMEDOUT 211.51.221.170:80 — 133.9초 만에`로 죽으면서 실행을
+    // 2분 늘렸습니다. 죽은 호스트가 한 곳 늘 때마다 수집이 그만큼 길어집니다.
+    //
+    // 소켓을 받자마자 직접 겁니다 — `Socket.prototype.setTimeout`은 connecting이어도
+    // 바로 시계를 답니다. 미루는 것은 http 쪽 포장뿐입니다. 붙고 나면 Node가 미뤄뒀던
+    // 같은 값을 다시 걸어 **무응답 시계로 이어받습니다**(그때 시계가 새로 시작하는 것도
+    // 전과 같습니다). 터지는 자리는 그대로 위의 `req.setTimeout` 콜백입니다 —
+    // 소켓의 'timeout'은 http가 요청의 'timeout'으로 넘겨줍니다.
+    req.on('socket', (sock) => {
+      if (sock.connecting) sock.setTimeout(wait);
+    });
   });
 }
 
