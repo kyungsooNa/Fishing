@@ -292,3 +292,37 @@ test('기본 agent(5초 timeout)에 안 얹힌다', async () => {
     await site.close();
   }
 });
+
+// #288에서 남겨둔 것입니다. times 실행(run 35109121049)에서 uijiho 한 곳이
+// `connect ETIMEDOUT 211.51.221.170:80 — 133.9초 만에`로 죽어 실행을 2분 늘렸습니다.
+// 우리가 건 30초가 왜 안 걸렸나 보니, Node의 `_http_client.js`가 소켓이 connecting이면
+// `sock.setTimeout`을 **'connect' 뒤로 미룹니다**(`setSocketTimeout`). 붙는 동안은
+// 아무 시계도 안 돌고 OS의 connect 재시도(~130초)를 그대로 기다립니다.
+// 그래서 소켓을 받자마자 직접 겁니다 — `Socket.prototype.setTimeout`은 connecting이어도
+// 바로 답니다. 여기서 막는 게 "미루는 쪽으로 되돌아가는 것"입니다.
+test('붙는 동안에도 시계가 돈다 — Node는 connect 뒤로 미룹니다', async () => {
+  const { Socket } = await import('node:net');
+  const real = Socket.prototype.setTimeout;
+
+  const calls = [];
+  Socket.prototype.setTimeout = function patched(ms, cb) {
+    calls.push({ ms, connecting: this.connecting === true });
+    return real.call(this, ms, cb);
+  };
+
+  const site = await serve((_, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end('<html><body>운항시간 : 05:00 ~ 12:00 자리 넉넉합니다 예약 받습니다</body></html>');
+  });
+  try {
+    await fetchHtml(site.url, { mode: 'static', retries: 0, timeoutMs: 7000 });
+  } finally {
+    Socket.prototype.setTimeout = real;
+    await site.close();
+  }
+
+  assert.ok(
+    calls.some((c) => c.connecting && c.ms === 7000),
+    `붙기 전에 시계를 걸어야 합니다 — 건 시점: ${JSON.stringify(calls)}`,
+  );
+});
