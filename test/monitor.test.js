@@ -86,6 +86,22 @@ test('로컬 수집도 더피싱 먼 일정을 7일씩 채우고 재시작 뒤 �
   assert.deepEqual(resumed.futureData().trips.map((t) => t.date), ['2026-09-27']);
 });
 
+test('로컬 수집도 선상24 먼 일정을 다음 달부터 한 달씩 채운다', async () => {
+  const fleet = { id: 'fleet', name: '먼함대', adapter: 'sunsang24',
+    url: 'https://fleet.sunsang24.com' };
+  const calls = [];
+  const f = await fixture({ sites: [fleet], baseTrips: [], collect: async (site) => {
+    calls.push({ days: site.days, startDay: site.startDay });
+    return [{ siteId: 'fleet', siteName: '먼함대', boat: '먼함대호',
+      date: site.startDay === 26 ? '2026-10-15' : '2026-09-10', departAt: '05:00',
+      status: 'open', seatsLeft: 3 }];
+  } });
+  await f.monitor.tick(); await f.monitor.idle();
+  assert.deepEqual(calls, [{ days: 21, startDay: undefined }, { days: 0, startDay: 26 }]);
+  assert.equal(f.monitor.futureData().cursors.fleet, 57);
+  assert.deepEqual(f.monitor.futureData().trips.map((t) => t.date), ['2026-10-15']);
+});
+
 test('수동 최신화는 고른 선사 하나만 다음 수집 대상으로 만든다', async () => {
   const calls = [];
   const f = await fixture({ sites: [a, { ...b, url: 'https://other.net' }], baseTrips: [trip('a'), trip('b')],

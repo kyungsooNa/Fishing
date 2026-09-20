@@ -21,15 +21,10 @@ const PLATFORM_TIMEOUT_LIMIT = 3;
  * 물어도 성공이 0곳**입니다 — 간격을 늘려서 풀리는 종류가 아닙니다(그 22분이 이미 10초
  * 간격 실험이었습니다). 그래서 간격 대신 **한 실행에 도는 수**를 줄입니다.
  *
- * 25는 관측된 하한(27)보다 한 칸 아래입니다. 활성 153곳이면 매시 수집으로 한 바퀴에
- * **7시간**인데, **지금은 앞쪽 25곳만 매시간 갱신되고 나머지 128곳은 영원히 안 갱신됩니다**
- * (registry 순서가 고정이라 매번 같은 앞쪽만 봅니다). 한 시간에 받아오는 양은 그대로고
- * 나눠 쓰는 것이라, 갱신되는 곳이 25곳 → 153곳이 됩니다. 앞쪽 25곳의 신선도는 1시간에서
- * 7시간으로 떨어지는데, 실시간 감시는 원래 로컬 서버(`core/monitor.js`)가 하는 일이고
- * Actions는 넓게 훑는 쪽이라 이 교환이 맞습니다.
- *
- * 다음 실행들이 값을 말해줍니다: 25곳이 다 성공하면 창이 1시간 이하라 30~35까지 올려도
- * 되고, 25곳인데 또 막히면 창이 더 길다는 뜻이라 줄이거나 수집 주기를 늦춰야 합니다.
+ * 처음에는 관측된 하한(27)보다 한 칸 아래인 25곳을 돌렸습니다. 지금은 월별 주소로 가까운
+ * 1~2개 월과 먼 한 달을 받아 한 선사당 최대 3요청이므로, 같은 하한 아래에 머물도록 8곳을
+ * 돌립니다. 신선도는 떨어지지만 실시간 감시는 로컬 서버(`core/monitor.js`)가 맡고 Actions는
+ * 넓게 훑는 쪽입니다. 다음 실행의 실제 성공 요청 수를 재서 이 값은 다시 조정해야 합니다.
  *
  * 어디까지 돌았는지는 **마지막으로 본 사이트 id**로 남깁니다(`data.json`의 `rotation`).
  * 번호로 남기면 registry에 한 곳만 끼어들어도 차례가 통째로 밀립니다.
@@ -55,7 +50,26 @@ const PLATFORM_TIMEOUT_LIMIT = 3;
  * 다음 실행은 또 앞쪽 109곳부터 두들깁니다. 끊고 다시 두들기는 것을 매시간 반복하면
  * 차단이 풀릴 일이 없습니다 — 회전이 있어야 한 실행에 가는 양 자체가 줄어듭니다.
  */
-export const ROTATE_PER_RUN = { 'sunsang24.com': 25, 'thefishing.kr': 25 };
+// 선상24 목록형은 가까운 21일에 걸친 1~2개 월과 먼 일정 한 달을 받습니다. 한 사이트당
+// 최대 3요청이라 관측된 차단 하한(27요청) 안에 머물도록 한 실행은 8곳으로 제한합니다.
+export const ROTATE_PER_RUN = { 'sunsang24.com': 8, 'thefishing.kr': 25 };
+
+/** `after`가 속한 달 다음부터 한 달짜리 수집 창 하나를 고릅니다. */
+export function nextMonthWindow(saved, { minOffset, maxOffset, after, now = new Date() }) {
+  let offset = Number.isInteger(Number(saved)) ? Number(saved) : minOffset;
+  if (offset < minOffset || offset > maxOffset) offset = minOffset;
+  const afterYm = after.slice(0, 7);
+  while (offset <= maxOffset && kstDate(offset, now).slice(0, 7) <= afterYm) offset++;
+  if (offset > maxOffset) {
+    offset = minOffset;
+    while (offset <= maxOffset && kstDate(offset, now).slice(0, 7) <= afterYm) offset++;
+  }
+  if (offset > maxOffset) return null;
+  const ym = kstDate(offset, now).slice(0, 7);
+  let end = offset;
+  while (end < maxOffset && kstDate(end + 1, now).slice(0, 7) === ym) end++;
+  return { offset, from: kstDate(offset, now), to: kstDate(end, now), next: end + 1 };
+}
 
 /**
  * 이번 실행에서 볼 곳과 미룰 곳을 가릅니다. 커서 다음 자리부터 세어 나가고 끝에 닿으면
@@ -248,17 +262,13 @@ export async function runAll({
     }
 
     try {
-      // 월 이동 주소를 사람이 확인해 둔 선상24만 한 번에 장기 범위까지 받습니다. 주소를
-      // 모르는 152곳에는 임의의 월 파라미터를 붙이지 않습니다.
-      const baseDays = futureDataPath && horizonDays > days && site.adapter === 'sunsang24' && site.monthPath
-        ? horizonDays : days;
-      const trips = await collectFn({ days: baseDays, ...site });
+      const trips = await collectFn({ days, ...site });
       tripsById.set(site.id, trips);
       let futureTrips = keepFuture(site);
       let futureError = null;
 
       // 월 일정표 한 장이 가까운 범위보다 더 멀리 돌려준 경우 그 값도 버리지 않습니다.
-      // 선상24는 다음 달 주소를 모르는 사이트가 많지만, 적어도 현재 달 끝까지는 남습니다.
+      // 선상24는 가까운 범위가 걸친 마지막 달의 끝까지 한꺼번에 오므로 장기 파일에 남깁니다.
       const inherentFuture = trips.filter((t) => t.date > nearTo && t.date <= horizonTo);
       if (inherentFuture.length) {
         const dates = inherentFuture.map((t) => t.date).sort();
@@ -285,6 +295,25 @@ export async function runAll({
           // 가까운 21일은 성공했으므로 선사 전체를 실패로 만들지 않습니다. 먼 일정만 다음
           // 차례에 같은 구간을 재시도하고, 직전 장기 데이터는 그대로 둡니다.
           futureError = describeError(err).slice(0, 300);
+        }
+      }
+
+      // 선상24 목록형은 월 주소 하나로 한 달 전체가 옵니다. 90일치를 매번 3~4번 더
+      // 요청하지 않고, 가까운 범위 뒤의 한 달만 받아 다음 수집 차례에 이어갑니다.
+      const rollingSunsang = futureDataPath && horizonDays > days &&
+        site.adapter === 'sunsang24' && (site.monthPath || (site.path ?? 'schedule_fleet') === 'schedule_fleet');
+      if (rollingSunsang) {
+        const window = nextMonthWindow(futureCursors[site.id], {
+          minOffset: firstFarOffset, maxOffset: horizonDays, after: nearTo, now,
+        });
+        if (window) {
+          try {
+            const fresh = await collectFn({ ...site, days: 0, startDay: window.offset });
+            futureTrips = replaceFutureWindow(futureTrips, fresh, window.from, window.to);
+            futureCursors[site.id] = window.next > horizonDays ? firstFarOffset : window.next;
+          } catch (err) {
+            futureError = describeError(err).slice(0, 300);
+          }
         }
       }
 

@@ -87,6 +87,43 @@ test('먼 일정은 7일 창을 순환하며 별도 파일에 90일까지 쌓는
     '새 창을 받을 때 앞서 받은 먼 일정을 버리지 않습니다');
 });
 
+test('선상24 먼 일정은 가까운 달 뒤부터 한 달씩 순환해 쌓는다', async () => {
+  const site = {
+    id: 'farfleet', name: '먼함대', adapter: 'sunsang24',
+    url: 'https://farfleet.sunsang24.com',
+  };
+  const { registryPath, dataPath } = await fixture([site]);
+  const futureDataPath = join(tmpdir(), `future-fleet-${Date.now()}-${Math.random()}.json`);
+  const calls = [];
+  const collectFn = async (request) => {
+    calls.push({ days: request.days, startDay: request.startDay });
+    const date = request.startDay === 52 ? '2026-11-15'
+      : request.startDay === 82 ? '2026-12-05' : '2026-09-15';
+    return [{
+      siteId: request.id, siteName: request.name, boat: '먼함대호', date,
+      status: 'open', seatsLeft: 3, port: '전북 군산 비응항', phone: '010-0000-0000',
+    }];
+  };
+  const options = {
+    registryPath, dataPath, futureDataPath, collectFn,
+    days: 21, horizonDays: 90,
+    now: new Date('2026-09-10T00:00:00+09:00'), rotatePerRun: {},
+  };
+
+  await runAll(options);
+  let future = JSON.parse(await readFile(futureDataPath, 'utf8'));
+  assert.deepEqual(calls, [{ days: 21, startDay: undefined }, { days: 0, startDay: 52 }]);
+  assert.equal(future.cursors.farfleet, 82);
+  assert.deepEqual(future.trips.map((trip) => trip.date), ['2026-11-15']);
+
+  calls.length = 0;
+  await runAll(options);
+  future = JSON.parse(await readFile(futureDataPath, 'utf8'));
+  assert.deepEqual(calls, [{ days: 21, startDay: undefined }, { days: 0, startDay: 82 }]);
+  assert.equal(future.cursors.farfleet, 22, '90일 끝에 닿으면 첫 먼 달부터 다시 확인합니다');
+  assert.deepEqual(future.trips.map((trip) => trip.date), ['2026-11-15', '2026-12-05']);
+});
+
 test('수집 결과에 등록 출처를 실어 보낸다 — 서버 없는 화면도 수동/자동을 안다', async () => {
   const { registryPath, dataPath } = await fixture([
     { ...mockSite, addedBy: 'discover' },
@@ -505,5 +542,5 @@ test('회전 기본값은 두 플랫폼 서버에 gapKey 열쇠로 걸린다', a
   assert.equal(keyOf('nara'), 'sunsang24.com');
 
   assert.equal(ROTATE_PER_RUN[keyOf('plus')], 25, '더피싱도 한 실행에 25곳입니다');
-  assert.equal(ROTATE_PER_RUN[keyOf('nara')], 25, '선상24는 그대로 25곳입니다');
+  assert.equal(ROTATE_PER_RUN[keyOf('nara')], 8, '선상24는 월별 최대 3요청이라 8곳입니다');
 });

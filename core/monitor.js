@@ -1,7 +1,7 @@
 // 로컬 서버의 전체 수집과 관심 출조를 한 스케줄러에서 돌립니다.
 import { readFile, mkdir, writeFile, rename, stat } from 'node:fs/promises';
 import { dirname } from 'node:path';
-import { collectSite, loadRegistry, pruneOld, sortTrips } from './runner.js';
+import { collectSite, loadRegistry, nextMonthWindow, pruneOld, sortTrips } from './runner.js';
 import { load } from './store.js';
 import { gapKey } from './fetcher.js';
 import { mergeDuplicates } from './merge.js';
@@ -258,6 +258,20 @@ export function createMonitor({
           futureCursors[site.id] = offset + window > 90 ? 22 : offset + window;
         } catch (err) {
           addLog(`${site.name ?? site.id}: 장기 일정 ${from}~${to} 실패 — ${err.message}`);
+        }
+      }
+      if (site.adapter === 'sunsang24' && (site.monthPath || (site.path ?? 'schedule_fleet') === 'schedule_fleet')) {
+        const window = nextMonthWindow(futureCursors[site.id], {
+          minOffset: 22, maxOffset: 90, after: nearTo, now,
+        });
+        if (window) {
+          try {
+            const fresh = await collect({ ...site, days: 0, startDay: window.offset });
+            mine = replace(mine, fresh, window.from, window.to);
+            futureCursors[site.id] = window.next > 90 ? 22 : window.next;
+          } catch (err) {
+            addLog(`${site.name ?? site.id}: 장기 일정 ${window.from}~${window.to} 실패 — ${err.message}`);
+          }
         }
       }
       futureTrips = [

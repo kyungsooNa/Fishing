@@ -6,6 +6,7 @@ import assert from 'node:assert/strict';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { subdomainsFromCrt, hostsFromCdx, linksFrom, adapterPlan, pickPhone, pickPort, idFor, entryFor, portTargets, applyPorts, timeHints, timeTargets, portEvidence, priceHints, priceTargets, pricePageUrls } from '../discover.js';
+import { monthUrls } from '../adapters/sunsang24.js';
 
 test('인증서 로그에서 선사 서브도메인만 추린다', () => {
   const rows = [
@@ -510,10 +511,11 @@ test('승선료가 많이 빈 곳부터 보고 일부만 채운 곳도 다시 �
 });
 
 test('승선료는 홈페이지보다 어댑터가 실제 읽는 일정표를 먼저 본다', async () => {
-  assert.deepEqual(await pricePageUrls({
+  const site = {
     id: 'sample', adapter: 'sunsang24', url: 'https://sample.sunsang24.com',
-  }), [
-    'https://sample.sunsang24.com/ship/schedule_fleet',
+  };
+  assert.deepEqual(await pricePageUrls(site), [
+    monthUrls(site)[0],
     'https://sample.sunsang24.com',
   ]);
 });

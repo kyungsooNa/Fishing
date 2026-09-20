@@ -889,7 +889,7 @@ export async function pricePageUrls(site) {
   } catch {
     // 전용 어댑터가 targets를 내지 않거나 불러오지 못해도 홈페이지 후보 수집은 계속합니다.
   }
-  return [...new Set([...collected.slice(0, 2), originOf(site.url)])];
+  return [...new Set([...collected.slice(0, 1), originOf(site.url)])];
 }
 
 async function pricesAll() {

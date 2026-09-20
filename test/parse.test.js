@@ -961,23 +961,36 @@ test('diff: 본체 사이트가 바뀌어도 알림이 끊기지 않는다', () 
 });
 
 // ── sunsang24 월 페이지 주소 ────────────────────────────────────────────────
-test('sunsang24: 기본은 경로 하나만 부른다', () => {
-  // 실제 사이트들이 쓰는 주소는 /ship/schedule_fleet 입니다. 뒤에 붙는 숫자는
-  // 연월이 아니라 배 번호로 보여서, 월을 임의로 붙이지 않습니다.
+test('sunsang24: 기본 목록형은 실제 월 이동 주소로 범위에 걸친 달을 부른다', () => {
+  // 서로 다른 실제 사이트 네 곳의 월 버튼과 이동 스크립트에서 이 경로를 확인했습니다.
   const urls = monthUrls({ url: 'https://akbari.sunsang24.com', days: 21 }, new Date(2026, 8, 2));
-  assert.deepEqual(urls, ['https://akbari.sunsang24.com/ship/schedule_fleet']);
+  assert.deepEqual(urls, ['https://akbari.sunsang24.com/ship/schedule_fleet/202609']);
 });
 
-test('sunsang24: monthPath를 적어준 사이트만 달을 넘겨가며 받는다', () => {
+test('sunsang24: 날짜 범위가 다음 달에 걸치면 월 페이지를 둘 다 받는다', () => {
   const site = {
     url: 'https://akbari.sunsang24.com',
-    monthPath: '/ship/schedule_fleet/{ym}',
     days: 40,
   };
   assert.deepEqual(monthUrls(site, new Date(2026, 8, 2)), [
     'https://akbari.sunsang24.com/ship/schedule_fleet/202609',
     'https://akbari.sunsang24.com/ship/schedule_fleet/202610',
   ]);
+});
+
+test('sunsang24: 먼 일정 수집은 시작일이 속한 달 하나만 받는다', () => {
+  const urls = monthUrls({
+    url: 'https://akbari.sunsang24.com', days: 0, startDay: 42,
+  }, new Date(2026, 8, 20));
+  assert.deepEqual(urls, ['https://akbari.sunsang24.com/ship/schedule_fleet/202611']);
+});
+
+test('sunsang24: 확인해 적은 별도 월 경로도 그대로 쓴다', () => {
+  const urls = monthUrls({
+    url: 'https://custom.sunsang24.com', path: 'schedule_fleet/1359',
+    monthPath: '/ship/month/{year}/{month}', days: 0,
+  }, new Date(2026, 8, 2));
+  assert.deepEqual(urls, ['https://custom.sunsang24.com/ship/month/2026/09']);
 });
 
 test('sunsang24: path에 배 번호를 붙여도 그대로 따른다', () => {
@@ -1171,8 +1184,8 @@ test('describeError: 원인이 겹겹이 쌓여 있어도 따라간다', () => {
 test('targets: 진단 도구가 어댑터와 같은 주소를 본다', async () => {
   // --dump가 site.url을 받으면 sunsang24는 일정이 없는 메인만 저장됩니다.
   const sunsang = await import('../adapters/sunsang24.js');
-  assert.deepEqual(sunsang.targets({ url: 'https://akbari.sunsang24.com' }),
-    ['https://akbari.sunsang24.com/ship/schedule_fleet']);
+  const fleet = { url: 'https://akbari.sunsang24.com' };
+  assert.deepEqual(sunsang.targets(fleet), sunsang.monthUrls(fleet));
   assert.deepEqual(sunsang.targets({
     url: 'https://fishinggate.sunsang24.com',
     path: 'schedule_fleet_simple_top',

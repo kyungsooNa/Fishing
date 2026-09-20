@@ -11,7 +11,7 @@ import { fetchHtml } from '../core/fetcher.js';
 import * as cheerio from 'cheerio';
 import { parseRows, speciesIn, matchBoatName } from './_rows.js';
 import { makeTrip, toDate, toTide } from '../core/schema.js';
-import { kstDate, kstYm } from '../core/when.js';
+import { kstDate } from '../core/when.js';
 
 const CALENDAR_PATH = 'schedule_fleet_simple_top';
 
@@ -43,21 +43,22 @@ async function collectByMonth(site) {
 /**
  * 받아올 주소 목록.
  *
- * 실제 사이트들이 쓰는 주소는 `/ship/schedule_fleet` 하나뿐이고, 뒤에 숫자가 붙은
- * 경우(`/ship/schedule_fleet/1359`, `/0`)도 연월이 아니라 배 번호로 보입니다.
- * 그래서 월을 임의로 붙이지 않고 경로 하나만 부릅니다 — 요청도 한 번이면 끝납니다.
+ * 기본 목록형 템플릿의 월 버튼이 `/ship/schedule_fleet/202609` 형식으로 이동하는 것을
+ * 서로 다른 선상24 네 곳의 실제 HTML에서 확인했습니다. 따라서 기본 목록형은 요청 범위에
+ * 걸친 월을 직접 받습니다. 별도 경로를 쓰는 곳은 검증 없이 숫자를 붙이지 않습니다.
  *
- * 다음 달 일정까지 주소로 넘길 수 있는 사이트를 찾으면 registry에 monthPath를 적으세요.
+ * 다른 월 경로를 확인한 사이트는 registry에 monthPath를 적을 수 있습니다.
  * ({ym}=202609, {year}=2026, {month}=09)
  * 배가 여러 척이라 배별 페이지를 봐야 하면 path에 번호까지 적으면 됩니다
  * (예: "path": "schedule_fleet/1359").
  */
 export function monthUrls(site, now = new Date()) {
   const path = site.path ?? 'schedule_fleet';
-  if (!site.monthPath) return [joinUrl(site.url, `/ship/${path}`)];
+  const monthPath = site.monthPath ?? (path === 'schedule_fleet' ? '/ship/schedule_fleet/{ym}' : null);
+  if (!monthPath) return [joinUrl(site.url, `/ship/${path}`)];
 
-  return monthsInRange(site.days ?? 21, now).map((ym) =>
-    joinUrl(site.url, site.monthPath.replace('{ym}', ym).replace('{year}', ym.slice(0, 4)).replace('{month}', ym.slice(4))),
+  return monthsInRange(site.days ?? 21, now, site.startDay ?? 0).map((ym) =>
+    joinUrl(site.url, monthPath.replace('{ym}', ym).replace('{year}', ym.slice(0, 4)).replace('{month}', ym.slice(4))),
   );
 }
 
@@ -90,15 +91,12 @@ async function collectByDay(site) {
 }
 
 // ── 잡동사니 ────────────────────────────────────────────────────────────────
-function monthsInRange(days, now = new Date()) {
-  const last = kstDate(days, now).slice(0, 7).replace('-', '');
-  const out = [];
-  for (let i = 0; i < 12; i++) {
-    const ym = kstYm(i, now);
-    out.push(ym);
-    if (ym >= last) break;
+function monthsInRange(days, now = new Date(), startDay = 0) {
+  const out = new Set();
+  for (let i = 0; i <= Math.max(0, days); i++) {
+    out.add(kstDate(startDay + i, now).slice(0, 7).replace('-', ''));
   }
-  return out;
+  return [...out];
 }
 
 // date는 "2026-09-04" 꼴입니다.
