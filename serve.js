@@ -484,6 +484,7 @@ export function createApp({
     const path = join(root, rel === '' ? 'index.html' : rel);
     try {
       if (rel === 'data.json' && monitor) return json(res, 200, monitor.data());
+      if (rel === 'future.json' && monitor) return json(res, 200, monitor.futureData());
       const body = await readFile(path);
       res.writeHead(200, { 'Content-Type': TYPES[extname(path)] ?? 'application/octet-stream', 'Cache-Control': 'no-store' });
       res.end(body);

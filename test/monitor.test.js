@@ -65,6 +65,27 @@ test('관심 출조는 3분, 나머지는 60분에 확인하고 변경만 즉시
   assert.equal(calls.filter((id) => id === 'b').length, 2);
 });
 
+test('로컬 수집도 더피싱 먼 일정을 7일씩 채우고 재시작 뒤 보존한다', async () => {
+  const fish = { id: 'fish', name: '먼바다호', adapter: 'thefishing', source: 'detail',
+    url: 'https://fish.thefishing.kr/index.php?mid=bk' };
+  const calls = [];
+  const f = await fixture({ sites: [fish], baseTrips: [], collect: async (site) => {
+    calls.push({ days: site.days, startDay: site.startDay });
+    return [{ siteId: 'fish', siteName: '먼바다호', boat: '먼바다호',
+      date: site.startDay ? '2026-09-27' : '2026-09-05', departAt: '23:00',
+      status: 'open', seatsLeft: 3 }];
+  } });
+  await f.monitor.tick(); await f.monitor.idle();
+  assert.deepEqual(calls, [{ days: 21, startDay: undefined }, { days: 7, startDay: 22 }]);
+  assert.equal(f.monitor.futureData().cursors.fish, 29);
+  assert.deepEqual(f.monitor.futureData().trips.map((t) => t.date), ['2026-09-27']);
+
+  const resumed = createMonitor(f.opts);
+  await resumed.init();
+  assert.equal(resumed.futureData().cursors.fish, 29);
+  assert.deepEqual(resumed.futureData().trips.map((t) => t.date), ['2026-09-27']);
+});
+
 test('수동 최신화는 고른 선사 하나만 다음 수집 대상으로 만든다', async () => {
   const calls = [];
   const f = await fixture({ sites: [a, { ...b, url: 'https://other.net' }], baseTrips: [trip('a'), trip('b')],
@@ -270,6 +291,8 @@ test('로컬 API는 헤더를 검사하고 감시 결과를 제공하며 원래 
 
     await f.monitor.tick(); await f.monitor.idle();
     assert.equal((await fetch(base + '/data.json').then((r) => r.json())).sites.a.ok, true);
+    assert.equal((await fetch(base + '/future.json').then((r) => r.json())).horizonDays, 90,
+      '로컬 화면도 모니터가 모은 장기 일정 파일을 받아야 합니다');
     assert.equal(await readFile(f.opts.dataPath, 'utf8'), before);
     const res2 = await fetch(base + '/api/collect', { method: 'POST', headers: { 'X-Admin': '1' } });
     assert.equal(res2.status, 202);

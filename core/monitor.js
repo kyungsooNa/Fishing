@@ -12,6 +12,7 @@ import { notify } from './notify.js';
 import { alertRecords, appendAlerts, dropRepeats, rememberSent } from './alerts.js';
 import { loadWatchers, listOf, allWatches, setList, MAX_WATCHES } from './watchers.js';
 import { loadPorts, usedPorts } from './ports.js';
+import { kstDate } from './when.js';
 
 export const FULL_MS = 60 * 60 * 1000;
 export const WATCH_MS = 3 * 60 * 1000;
@@ -25,6 +26,9 @@ export function createMonitor({
   // legacy는 사용자 구분이 없던 시절의 목록입니다 — 주인을 모르니 아무에게나 주지 않고,
   // 로컬 화면이 처음 붙을 때 그 사람에게 넘깁니다(adopt).
   let base, baseMark = null, ports = {}, sites = [], watchers = {}, legacy = [], records = {}, timer, stopped = false;
+  // GitHub 러너에서 더피싱이 막혀도 국내 PC의 로컬 수집이 3개월 일정을 채울 수 있습니다.
+  // 가까운 출조와 섞으면 3분 감시 대상까지 불어나므로 상태 파일 안에서 따로 보관합니다.
+  let futureTrips = [], futureCursors = {};
   // 이미 보낸 소식. 3분마다 보니 같은 자리가 붙었다 떨어졌다 하면 계속 울립니다(core/alerts.js).
   let sentAlerts = {};
   let saving = Promise.resolve(), ticking = false, fullRun = null;
@@ -43,7 +47,11 @@ export function createMonitor({
     return r.attempted + delay;
   };
   const persist = () => {
-    const text = JSON.stringify({ watchers, ...(legacy.length ? { watches: legacy } : {}), records, sentAlerts });
+    const text = JSON.stringify({
+      watchers, ...(legacy.length ? { watches: legacy } : {}), records, sentAlerts,
+      ...(futureTrips.length ? { futureTrips } : {}),
+      ...(Object.keys(futureCursors).length ? { futureCursors } : {}),
+    });
     const operation = saving.catch(() => {}).then(async () => {
       await mkdir(dirname(statePath), { recursive: true });
       await writeFile(statePath + '.next', text);
@@ -79,6 +87,8 @@ export function createMonitor({
       ({ watchers, legacy } = loadWatchers(saved));
       records = saved.records ?? {};
       sentAlerts = rememberSent(saved.sentAlerts, [], { now: clock() });
+      futureTrips = Array.isArray(saved.futureTrips) ? saved.futureTrips : [];
+      futureCursors = saved.futureCursors && typeof saved.futureCursors === 'object' ? saved.futureCursors : {};
     } catch { /* 첫 실행 */ }
   }
 
@@ -126,6 +136,15 @@ export function createMonitor({
     const times = Object.values(records).map((r) => r.status?.at).filter(Boolean).sort();
     return { ...base, trips, sites: status, ports: usedPorts(trips, ports).places,
       generatedAt: times.at(-1) ?? base.generatedAt };
+  }
+
+  function futureData() {
+    const now = new Date(clock());
+    const nearTo = kstDate(21, now);
+    const trips = sortTrips(mergeDuplicates(
+      pruneOld(futureTrips, 90, now).filter((t) => t.date > nearTo),
+    ));
+    return { generatedAt: new Date(clock()).toISOString(), horizonDays: 90, cursors: futureCursors, trips };
   }
 
   /**
@@ -203,7 +222,9 @@ export function createMonitor({
     const old = records[site.id];
     const attempted = clock();
     try {
-      const trips = mergeDuplicates(pruneOld(await collect({ ...site, days: 21 }), 21, new Date(clock())));
+      const now = new Date(clock());
+      const raw = await collect({ ...site, days: 21 });
+      const trips = mergeDuplicates(pruneOld(raw, 21, now));
       const at = new Date(clock()).toISOString();
       records[site.id] = { attempted, failures: 0, trips,
         status: { ok: true, at, count: trips.length } };
@@ -211,6 +232,38 @@ export function createMonitor({
       const keys = new Set(activeWatches().map(tripKey));
       const openings = findOpenings(old?.trips ?? [], trips).filter((t) => keys.has(tripKey(t)));
       addLog(`${site.name ?? site.id}: ${trips.length}건 확인${openings.length ? ` · 취소석/자리 증가 ${openings.length}건` : ''}`);
+
+      // 먼 일정은 한 시간 수집 차례마다 7일 창 하나만 더 봅니다. 이 PC에서 더피싱이
+      // 열리는 경우 Actions의 해외 IP 차단과 무관하게 약 열 차례에 90일 범위를 채웁니다.
+      const nearTo = kstDate(21, now);
+      const horizonTo = kstDate(90, now);
+      let mine = futureTrips.filter((t) => t.siteId === site.id && t.date > nearTo && t.date <= horizonTo);
+      const replace = (rows, fresh, from, to) => [
+        ...rows.filter((t) => t.date < from || t.date > to),
+        ...fresh.filter((t) => t.date >= from && t.date <= to),
+      ];
+      const inherent = raw.filter((t) => t.date > nearTo && t.date <= horizonTo);
+      if (inherent.length) {
+        const dates = inherent.map((t) => t.date).sort();
+        mine = replace(mine, inherent, dates[0], dates.at(-1));
+      }
+      if (site.adapter === 'thefishing' && site.source === 'detail') {
+        const saved = Number(futureCursors[site.id]);
+        const offset = Number.isInteger(saved) && saved >= 22 && saved <= 90 ? saved : 22;
+        const window = Math.min(7, 91 - offset);
+        const from = kstDate(offset, now), to = kstDate(offset + window - 1, now);
+        try {
+          const fresh = await collect({ ...site, days: window, startDay: offset });
+          mine = replace(mine, fresh, from, to);
+          futureCursors[site.id] = offset + window > 90 ? 22 : offset + window;
+        } catch (err) {
+          addLog(`${site.name ?? site.id}: 장기 일정 ${from}~${to} 실패 — ${err.message}`);
+        }
+      }
+      futureTrips = [
+        ...futureTrips.filter((t) => t.siteId !== site.id && t.date > nearTo && t.date <= horizonTo),
+        ...mine,
+      ];
       await persist();
       if (openings.length) {
         // 같은 소식을 다시 울리지 않습니다. 몇 번 헛울리면 사람이 알림을 꺼버리고,
@@ -291,6 +344,6 @@ export function createMonitor({
     addLog(`${site.name ?? id}: 수동 최신화 요청`);
     return { siteId: id, requested: true };
   }
-  return { init, data, status, setWatch, adopt, tick, start, stop, requestFull, requestSite,
+  return { init, data, futureData, status, setWatch, adopt, tick, start, stop, requestFull, requestSite,
     idle: () => Promise.allSettled([...pending]) };
 }
