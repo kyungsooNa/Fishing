@@ -575,9 +575,9 @@ test('관리 화면: 항구·전화가 빠진 곳만 추릴 수 있다', async (
   const end = inline.indexOf('function addedTag');
   assert.ok(start >= 0 && end > start, 'visibleSites 부분을 찾지 못했습니다');
 
-  // SITES·FILTER·MISSING·SORT만 있으면 도는 부분이라 떼어내 실제로 돌려봅니다.
-  const pick = (sites, missing) => new Function('SITES', 'FILTER', 'MISSING', 'SORT',
-    `${inline.slice(start, end)}\nreturn visibleSites();`)(sites, 'all', missing, 'reg');
+  // SITES·필터 값만 있으면 도는 부분이라 떼어내 실제로 돌려봅니다.
+  const pick = (sites, missing) => new Function('SITES', 'FILTER', 'MISSING', 'SORT', 'SEARCH', 'FAVKEYS', 'FAVSET', 'RATES', 'rateOf', 'rateKey',
+    `${inline.slice(start, end)}\nreturn visibleSites();`)(sites, 'all', missing, 'reg', '', {}, new Set(), {}, () => 0, () => '');
   const sites = [
     { id: 'a', port: '충남 보령 대천항' },
     { id: 'b' },
@@ -602,8 +602,8 @@ test('관리 화면: 항구를 지역별로 모아 볼 수 있다', async () => 
   const end = inline.indexOf('function portCell');
   assert.ok(start >= 0 && end > start, '정렬 부분을 찾지 못했습니다');
 
-  const pick = (sites, sort) => new Function('SITES', 'FILTER', 'MISSING', 'SORT',
-    `${inline.slice(start, end)}\nreturn visibleSites();`)(sites, 'all', 'all', sort);
+  const pick = (sites, sort) => new Function('SITES', 'FILTER', 'MISSING', 'SORT', 'SEARCH', 'FAVKEYS', 'FAVSET', 'RATES', 'rateOf', 'rateKey',
+    `${inline.slice(start, end)}\nreturn visibleSites();`)(sites, 'all', 'all', sort, '', {}, new Set(), {}, () => 0, () => '');
   const sites = [
     { id: 'a', port: '충남 보령 대천항' },
     { id: 'b' },
@@ -621,6 +621,32 @@ test('관리 화면: 항구를 지역별로 모아 볼 수 있다', async () => 
   // 배별로만 적힌 항구로 줄을 세우면, 왜 거기 있는지 표에 적혀 있어야 합니다.
   assert.match(inline, /function portCell\(site\)/);
   assert.match(inline, /className = 'porthint'/);
+});
+
+test('관리 화면: 즐겨찾기·별점 정렬과 선사 검색이 있다', async () => {
+  const html = await readFile('docs/admin.html', 'utf8');
+  assert.match(html, /<option value="fav">즐겨찾기 우선<\/option>/);
+  assert.match(html, /<option value="rate">별점 높은순<\/option>/);
+  assert.match(html, /id="search"/, '선사 검색칸이 없습니다');
+  const inline = html.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
+  const start = inline.indexOf('// 항구는 사이트에 하나로');
+  const end = inline.indexOf('function portCell');
+  const pick = (sites, sort, search, favs, rates) => new Function(
+    'SITES', 'FILTER', 'MISSING', 'SORT', 'SEARCH', 'FAVKEYS', 'FAVSET', 'RATES', 'rateOf', 'rateKey',
+    `${inline.slice(start, end)}\nreturn visibleSites();`,
+  )(sites, 'all', 'all', sort, search, {
+    a: { '가나호': new Set(['가나호|항구']) }, b: { '다라호': new Set(['다라호|항구']) },
+  }, new Set(favs), rates, (map, key) => Number(map[key]) || 0, (id, boat) => `${id}|${boat}`);
+  const sites = [
+    { id: 'a', name: '가나선사', boats: { '가나호': {} } },
+    { id: 'b', name: '다라피싱', boats: { '다라호': {} } },
+    { id: 'c', name: '마바사', boats: { '마바호': {} } },
+  ];
+  assert.deepEqual(pick(sites, 'fav', '', ['다라호|항구'], {}).map((s) => s.id), ['b', 'a', 'c']);
+  assert.deepEqual(pick(sites, 'rate', '', [], { 'a|가나호': 3, 'b|다라호': 5 }).map((s) => s.id), ['b', 'a', 'c']);
+  assert.deepEqual(pick(sites, 'reg', '다라', [], {}).map((s) => s.id), ['b']);
+  assert.deepEqual(pick(sites, 'reg', '마바호', [], {}).map((s) => s.id), ['c'], '배 이름으로도 찾습니다');
+  assert.match(inline, /\$\('search'\)\.addEventListener\('input'/, '검색할 때 바로 다시 그립니다');
 });
 
 // 정렬·필터·쪽 넘김은 표를 통째로 다시 그립니다. 저장 전에 고친 값은 DIRTY에만 있어서,

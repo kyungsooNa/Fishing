@@ -152,6 +152,9 @@
   .tag.manual { border-color: #9aa7b8; color: #46546a; font-weight: 600; }
   .pager { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 10px 0; font-size: 13px; }
   .pager select { padding: 3px 6px; }
+  .pager input[type=search] { width: min(230px, 55vw); padding: 4px 7px; border: 1px solid var(--line);
+    border-radius: 6px; background: var(--card); color: var(--fg); font: inherit; }
+  .pager input[type=search]:focus { border-color: var(--accent); outline: none; }
   .pager .count { color: var(--muted); }
   @media (max-width: 720px) {
     .wrap { padding: 12px 10px 40px; }
@@ -263,10 +266,15 @@
         <option value="phone">전화 없음</option>
       </select>
     </label>
+    <label>선사 검색
+      <input id="search" type="search" placeholder="선사명 · id · 배 이름" autocomplete="off">
+    </label>
     <label>정렬
       <select id="sort">
         <option value="reg">등록순</option>
         <option value="port">항구 지역순</option>
+        <option value="fav">즐겨찾기 우선</option>
+        <option value="rate">별점 높은순</option>
       </select>
     </label>
     <label>쪽당
@@ -368,7 +376,8 @@ let PAGE = 0;           // 0부터. 목록이 바뀌면 범위를 벗어날 수 
 let PAGE_SIZE = 50;     // 0이면 전체
 let FILTER = 'all';     // all | manual | discover
 let MISSING = 'all';    // all | port | phone — 채워 넣어야 할 곳만 추립니다
-let SORT = 'reg';       // reg(registry 순서) | port(항구 지역순)
+let SORT = 'reg';       // reg | port | fav(즐겨찾기 우선) | rate(별점 높은순)
+let SEARCH = '';        // 선사명·id·배 이름 검색어
 let STATUS = {};        // 사이트별 마지막 수집 결과
 const DIRTY = new Map(); // id -> 바뀐 값들
 
@@ -792,6 +801,35 @@ function byPort(a, b) {
   return regionOf(pa).localeCompare(regionOf(pb), 'ko') || pa.localeCompare(pb, 'ko') || byId;
 }
 
+// 즐겨찾기는 배·항구마다 적지만, 관리 목록에서는 그 배가 하나라도 담긴 선사를 앞으로
+// 보냅니다. 한 선사에 즐겨찾기가 여러 개여도 선사 한 줄이므로 같은 우선순위입니다.
+function hasFav(site) {
+  return Object.values(FAVKEYS[site.id] ?? {}).some((keys) => [...keys].some((key) => FAVSET.has(key)));
+}
+
+// 별점은 배마다 매기므로 선사 정렬에는 그 선사 배 중 가장 높은 점수를 씁니다. 점수가 없는
+// 선사는 0점이 아니라 "안 매김"이라 항상 뒤에 두고, 같은 점수는 등록 순서를 그대로 둡니다.
+function siteRate(site) {
+  return Math.max(0, ...Object.keys(site.boats ?? {}).map((boat) => rateOf(RATES, rateKey(site.id, boat))));
+}
+
+function byFav(a, b) {
+  return Number(hasFav(b)) - Number(hasFav(a));
+}
+
+function byRate(a, b) {
+  const ar = siteRate(a), br = siteRate(b);
+  if (!ar || !br) return ar ? -1 : br ? 1 : 0;
+  return br - ar;
+}
+
+function matchesSearch(site) {
+  const query = SEARCH.trim().toLocaleLowerCase('ko');
+  if (!query) return true;
+  return [site.id, site.name, ...Object.keys(site.boats ?? {})]
+    .some((value) => String(value ?? '').toLocaleLowerCase('ko').includes(query));
+}
+
 /**
  * 화면에 보일 목록. 등록 출처와 "빠진 값"으로 거릅니다.
  * 자동 발견한 곳은 항구·전화가 비어 있는 채로 들어옵니다. 항구가 없으면 현황판의
@@ -804,8 +842,11 @@ function visibleSites() {
   if (FILTER === 'discover') list = list.filter((s) => s.addedBy);
   if (MISSING === 'port') list = list.filter((s) => !hasPort(s));
   if (MISSING === 'phone') list = list.filter((s) => !s.phone);
+  if (SEARCH.trim()) list = list.filter(matchesSearch);
   // 제자리에서 섞으면 registry 순서를 잃어 "등록순"으로 못 돌아옵니다.
   if (SORT === 'port') list = [...list].sort(byPort);
+  if (SORT === 'fav') list = [...list].sort(byFav);
+  if (SORT === 'rate') list = [...list].sort(byRate);
   return list;
 }
 
@@ -841,6 +882,8 @@ function render() {
   const box = $('rows');
   box.textContent = '';
 
+  // 정렬은 이 개인 기록을 기준으로 하므로 목록을 거르기 **전에** 한 번 읽습니다.
+  FAVSET = new Set(loadFavs());
   const list = visibleSites();
   const size = PAGE_SIZE || list.length || 1;
   const pages = Math.max(1, Math.ceil(list.length / size));
@@ -851,8 +894,7 @@ function render() {
 
   renderLostRates();
 
-  // 배마다 읽으면 한 쪽에 수백 번입니다. 그릴 때 한 번 읽어 두고 씁니다.
-  FAVSET = new Set(loadFavs());
+  // 배마다 읽으면 한 쪽에 수백 번입니다. 위 정렬에서도 쓴 값을 그대로 씁니다.
   const mutes = loadMutes();
   MUTESET = new Set(mutes.boat);
   MUTED_SITES = new Set(mutes.site);
@@ -940,6 +982,7 @@ function setSort(next) {
 function bindPager() {
   $('filter').addEventListener('change', () => { FILTER = $('filter').value; PAGE = 0; render(); });
   $('missing').addEventListener('change', () => { MISSING = $('missing').value; PAGE = 0; render(); });
+  $('search').addEventListener('input', () => { SEARCH = $('search').value; PAGE = 0; render(); });
   // 정렬을 바꾸면 보던 쪽의 줄이 통째로 달라집니다. 필터와 같이 첫 쪽으로 돌아갑니다.
   $('sort').addEventListener('change', () => setSort($('sort').value));
   // 머리글도 같은 정렬을 겁니다. 한 번 더 누르면 등록순으로 돌아옵니다 — 누른 것을
