@@ -528,14 +528,7 @@ test('한 곳만 다시 보는 길은 차례를 따지지 않고, 전체 차례�
   assert.equal(one.data.rotation['shared.example'], before, '전체 차례는 그대로입니다');
 });
 
-// 회전을 거는 **열쇠**는 사람이 적은 문자열이 아니라 `gapKey`가 내는 값이어야 합니다.
-// 'thefishing.co.kr'이나 'ssfish.thefishing.kr'처럼 한 글자만 어긋나도 조용히 아무 곳에도
-// 안 걸리고, 그러면 109곳이 그대로 매시간 다시 돕니다 — 실패가 아니라 **무효**라 로그에도
-// 안 남습니다. 그래서 registry의 진짜 주소로 열쇠를 만들어 맞춰 봅니다.
-//
-// 더피싱을 넣은 이유는 선상24와 같습니다: 09-19 05:31~22:57 줄곧 0/109였고, 유일한 부분
-// 성공이 01:25의 31/109로 선상24에서 잰 27~31과 같은 띠였습니다(core/runner.js).
-test('회전 기본값은 두 플랫폼 서버에 gapKey 열쇠로 걸린다', async () => {
+test('회전 기본값은 실제 수집 그룹 열쇠에 걸린다', async () => {
   const { ROTATE_PER_RUN } = await import('../core/runner.js');
   const { gapKey } = await import('../core/fetcher.js');
 
@@ -547,6 +540,33 @@ test('회전 기본값은 두 플랫폼 서버에 gapKey 열쇠로 걸린다', a
   assert.equal(keyOf('plus'), 'thefishing.kr');
   assert.equal(keyOf('nara'), 'sunsang24.com');
 
-  assert.equal(ROTATE_PER_RUN[keyOf('plus')], 25, '더피싱도 한 실행에 25곳입니다');
+  // 더피싱은 자체 도메인도 공통 백엔드라 serverOf가 URL 대신 이 고정 열쇠로 묶습니다.
+  assert.equal(ROTATE_PER_RUN['platform:thefishing'], 25, '더피싱도 한 실행에 25곳입니다');
+  assert.equal(ROTATE_PER_RUN[keyOf('plus')], undefined,
+    'URL 도메인 열쇠에 걸면 실제 platform 그룹에는 적용되지 않습니다');
   assert.equal(ROTATE_PER_RUN[keyOf('nara')], 8, '선상24는 월별 최대 3요청이라 8곳입니다');
+});
+
+test('기본 회전은 자체 도메인 더피싱도 합쳐 25곳만 요청한다', async () => {
+  const sites = Array.from({ length: 30 }, (_, i) => ({
+    id: `fish${String(i).padStart(2, '0')}`,
+    name: `더피싱 ${i}`,
+    adapter: 'thefishing', source: 'detail',
+    url: `https://custom${i}.example.com/index.php?mid=bk`,
+  }));
+  const { registryPath, dataPath } = await fixture(sites);
+  const calls = [];
+  const { data } = await runAll({
+    registryPath, dataPath, days: 21,
+    now: new Date('2026-09-10T00:00:00+09:00'),
+    collectFn: async (site) => {
+      calls.push(site.id);
+      return [{ siteId: site.id, siteName: site.name, boat: `${site.id}호`,
+        date: '2026-09-15', status: 'open', seatsLeft: 3 }];
+    },
+  });
+
+  assert.equal(calls.length, 25);
+  assert.equal(data.rotation['platform:thefishing'], 'fish24');
+  assert.equal(Object.values(data.sites).filter((site) => site.skipped === 'rotation').length, 5);
 });

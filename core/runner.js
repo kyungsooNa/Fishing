@@ -52,7 +52,7 @@ const PLATFORM_TIMEOUT_LIMIT = 3;
  */
 // 선상24 목록형은 가까운 21일에 걸친 1~2개 월과 먼 일정 한 달을 받습니다. 한 사이트당
 // 최대 3요청이라 관측된 차단 하한(27요청) 안에 머물도록 한 실행은 8곳으로 제한합니다.
-export const ROTATE_PER_RUN = { 'sunsang24.com': 8, 'thefishing.kr': 25 };
+export const ROTATE_PER_RUN = { 'sunsang24.com': 8, 'platform:thefishing': 25 };
 
 /** `after`가 속한 달 다음부터 한 달짜리 수집 창 하나를 고릅니다. */
 export function nextMonthWindow(saved, { minOffset, maxOffset, after, now = new Date() }) {
