@@ -266,7 +266,7 @@ export function createMonitor({
         });
         if (window) {
           try {
-            const fresh = await collect({ ...site, days: 0, startDay: window.offset });
+            const fresh = await collect({ ...site, days: 0, startDay: window.offset, allowEmpty: true });
             mine = replace(mine, fresh, window.from, window.to);
             futureCursors[site.id] = window.next > 90 ? 22 : window.next;
           } catch (err) {

@@ -36,7 +36,11 @@ async function collectByMonth(site) {
     }
   }
 
-  if (!trips.length) throw new Error('출조 행을 못 찾았습니다 — 레이아웃이 바뀌었는지 확인하세요 (--dump)');
+  // 먼 달은 아직 일정을 열지 않아 0건일 수 있습니다. 그 달을 실패로 붙들면 커서가 다음
+  // 달로 영원히 못 넘어가므로 장기 순환 요청만 빈 결과를 정상으로 받습니다.
+  if (!trips.length && !site.allowEmpty) {
+    throw new Error('출조 행을 못 찾았습니다 — 레이아웃이 바뀌었는지 확인하세요 (--dump)');
+  }
   return fillMissingSeatTotals(trips);
 }
 

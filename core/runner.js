@@ -308,7 +308,7 @@ export async function runAll({
         });
         if (window) {
           try {
-            const fresh = await collectFn({ ...site, days: 0, startDay: window.offset });
+            const fresh = await collectFn({ ...site, days: 0, startDay: window.offset, allowEmpty: true });
             futureTrips = replaceFutureWindow(futureTrips, fresh, window.from, window.to);
             futureCursors[site.id] = window.next > horizonDays ? firstFarOffset : window.next;
           } catch (err) {

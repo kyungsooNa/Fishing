@@ -96,7 +96,7 @@ test('선상24 먼 일정은 가까운 달 뒤부터 한 달씩 순환해 쌓는
   const futureDataPath = join(tmpdir(), `future-fleet-${Date.now()}-${Math.random()}.json`);
   const calls = [];
   const collectFn = async (request) => {
-    calls.push({ days: request.days, startDay: request.startDay });
+    calls.push({ days: request.days, startDay: request.startDay, allowEmpty: request.allowEmpty });
     const date = request.startDay === 52 ? '2026-11-15'
       : request.startDay === 82 ? '2026-12-05' : '2026-09-15';
     return [{
@@ -112,14 +112,20 @@ test('선상24 먼 일정은 가까운 달 뒤부터 한 달씩 순환해 쌓는
 
   await runAll(options);
   let future = JSON.parse(await readFile(futureDataPath, 'utf8'));
-  assert.deepEqual(calls, [{ days: 21, startDay: undefined }, { days: 0, startDay: 52 }]);
+  assert.deepEqual(calls, [
+    { days: 21, startDay: undefined, allowEmpty: undefined },
+    { days: 0, startDay: 52, allowEmpty: true },
+  ]);
   assert.equal(future.cursors.farfleet, 82);
   assert.deepEqual(future.trips.map((trip) => trip.date), ['2026-11-15']);
 
   calls.length = 0;
   await runAll(options);
   future = JSON.parse(await readFile(futureDataPath, 'utf8'));
-  assert.deepEqual(calls, [{ days: 21, startDay: undefined }, { days: 0, startDay: 82 }]);
+  assert.deepEqual(calls, [
+    { days: 21, startDay: undefined, allowEmpty: undefined },
+    { days: 0, startDay: 82, allowEmpty: true },
+  ]);
   assert.equal(future.cursors.farfleet, 22, '90일 끝에 닿으면 첫 먼 달부터 다시 확인합니다');
   assert.deepEqual(future.trips.map((trip) => trip.date), ['2026-11-15', '2026-12-05']);
 });

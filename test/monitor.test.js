@@ -91,13 +91,16 @@ test('로컬 수집도 선상24 먼 일정을 다음 달부터 한 달씩 채운
     url: 'https://fleet.sunsang24.com' };
   const calls = [];
   const f = await fixture({ sites: [fleet], baseTrips: [], collect: async (site) => {
-    calls.push({ days: site.days, startDay: site.startDay });
+    calls.push({ days: site.days, startDay: site.startDay, allowEmpty: site.allowEmpty });
     return [{ siteId: 'fleet', siteName: '먼함대', boat: '먼함대호',
       date: site.startDay === 26 ? '2026-10-15' : '2026-09-10', departAt: '05:00',
       status: 'open', seatsLeft: 3 }];
   } });
   await f.monitor.tick(); await f.monitor.idle();
-  assert.deepEqual(calls, [{ days: 21, startDay: undefined }, { days: 0, startDay: 26 }]);
+  assert.deepEqual(calls, [
+    { days: 21, startDay: undefined, allowEmpty: undefined },
+    { days: 0, startDay: 26, allowEmpty: true },
+  ]);
   assert.equal(f.monitor.futureData().cursors.fleet, 57);
   assert.deepEqual(f.monitor.futureData().trips.map((t) => t.date), ['2026-10-15']);
 });
