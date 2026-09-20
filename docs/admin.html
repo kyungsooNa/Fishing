@@ -55,7 +55,7 @@
   button.primary { border-color: var(--accent); background: var(--accent); color: #fff; font-weight: 700; }
   button.danger { border-color: var(--off); color: var(--off); }
   .tablewrap { overflow-x: auto; background: var(--card); border: 1px solid var(--line); border-radius: 10px; }
-  table { border-collapse: collapse; width: 100%; min-width: 1460px; table-layout: fixed; }
+  table { border-collapse: collapse; width: 100%; min-width: 1540px; table-layout: fixed; }
   th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: middle; }
   th { font-size: 12px; color: var(--muted); font-weight: 600; white-space: nowrap; }
   /* 칸 폭을 못박아 둡니다. 안 그러면 표기·항구가 눌려서 글자가 잘립니다. */
@@ -67,8 +67,23 @@
   th:nth-child(6), td:nth-child(6) { width: 70px; }
   th:nth-child(7), td:nth-child(7) { width: 150px; }
   th:nth-child(8), td:nth-child(8) { width: 150px; }
-  th:nth-child(9), td:nth-child(9) { width: 160px; }
-  th:nth-child(10), td:nth-child(10) { width: 180px; }
+  th:nth-child(9), td:nth-child(9) { width: 88px; }
+  th:nth-child(10), td:nth-child(10) { width: 160px; }
+  th:nth-child(11), td:nth-child(11) { width: 180px; }
+  /* 메모는 표에 긴 문장을 늘어놓지 않습니다. 버튼을 누른 사람만 내용을 읽고 고칩니다. */
+  .memo { padding: 3px 8px; font-size: 12px; white-space: nowrap; }
+  .memo.has-note { border-color: var(--accent); color: var(--accent); }
+  dialog.memo-dialog { width: min(560px, calc(100vw - 28px)); border: 1px solid var(--line);
+    border-radius: 12px; padding: 0; color: var(--fg); background: var(--card); box-shadow: 0 18px 50px #0005; }
+  dialog.memo-dialog::backdrop { background: #0007; }
+  .memo-dialog form { padding: 18px; }
+  .memo-dialog h2 { margin: 0 0 4px; font-size: 17px; }
+  .memo-dialog p { margin: 0 0 12px; color: var(--muted); font-size: 13px; }
+  .memo-dialog textarea { width: 100%; min-height: 180px; resize: vertical; padding: 9px;
+    border: 1px solid var(--line); border-radius: 7px; background: var(--bg); color: var(--fg); font: inherit; }
+  .memo-dialog textarea:focus { border-color: var(--accent); outline: none; }
+  .memo-actions { display: flex; justify-content: flex-end; align-items: center; gap: 8px; margin-top: 12px; }
+  .memo-state { margin-right: auto; color: var(--muted); font-size: 12px; }
   tbody tr:last-child td { border-bottom: 0; }
   tr.off td { opacity: 0.55; }
   td.id { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; white-space: nowrap; }
@@ -271,7 +286,7 @@
       <thead><tr>
         <th>켜짐</th><th>id</th><th>선사 표기</th><th>배별 즐겨찾기·별점·숨기기</th><th>계열</th><th>등록</th>
         <th id="th-port" aria-sort="none"><button type="button" id="sort-port" class="thsort">항구<span class="caret"></span></button></th>
-        <th>전화</th>
+        <th>전화</th><th>메모</th>
         <th>주소</th><th>최근 수집</th>
       </tr></thead>
       <tbody id="rows"></tbody>
@@ -328,6 +343,19 @@
 
   <div class="log" id="log"></div>
 </div>
+
+<dialog class="memo-dialog" id="memodialog" aria-labelledby="memotitle">
+  <form method="dialog">
+    <h2 id="memotitle">선사 메모</h2>
+    <p id="memosub"></p>
+    <textarea id="memotext" placeholder="이 선사에 대해 기억할 내용을 적습니다"></textarea>
+    <div class="memo-actions">
+      <span class="memo-state" id="memostate"></span>
+      <button type="button" id="memoset" class="primary">메모 반영</button>
+      <button value="cancel">닫기</button>
+    </div>
+  </form>
+</dialog>
 
 <script>
 const $ = (id) => document.getElementById(id);
@@ -399,6 +427,44 @@ function textCell(site, key) {
   input.addEventListener('input', () => markDirty(site.id, key, input.value.trim()));
   td.append(input);
   return td;
+}
+
+// 긴 메모를 표 칸에 다 펴면 훑기 어렵고 표 폭도 계속 달라집니다. 버튼을 눌렀을 때만
+// 대화창으로 열어 읽고 고칩니다. 메모도 표기·항구처럼 registry의 note에 저장합니다.
+let MEMO_SITE = null;
+function memoCell(site) {
+  const td = document.createElement('td');
+  const note = editedValue(site, 'note') ?? '';
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = note ? 'memo has-note' : 'memo';
+  button.textContent = note ? '메모 보기' : '메모';
+  button.title = note ? '선사 메모를 봅니다' : LOCAL ? '선사 메모를 적습니다' : '등록된 선사 메모가 없습니다';
+  button.addEventListener('click', () => openMemo(site));
+  td.append(button);
+  return td;
+}
+
+function openMemo(site) {
+  MEMO_SITE = site;
+  $('memotitle').textContent = `${editedValue(site, 'name') || site.id} 메모`;
+  $('memosub').textContent = LOCAL
+    ? '내용을 바꾼 뒤 메모 반영을 누르고, 마지막에 상단 변경 저장을 누르세요.'
+    : '읽기 전용입니다.';
+  $('memotext').value = editedValue(site, 'note') ?? '';
+  $('memotext').readOnly = !LOCAL;
+  $('memoset').hidden = !LOCAL;
+  $('memostate').textContent = LOCAL ? '' : '이 화면에서는 수정할 수 없습니다';
+  $('memodialog').showModal();
+  if (LOCAL) $('memotext').focus();
+}
+
+function applyMemo() {
+  if (!MEMO_SITE) return;
+  markDirty(MEMO_SITE.id, 'note', $('memotext').value.trim());
+  $('memodialog').close();
+  render();
+  toast('메모 변경을 반영했습니다 — 상단 변경 저장을 누르세요');
 }
 
 // 선사를 숨기는 자리. **여기가 선사 목록입니다** — 현황판 필터 메뉴까지 건너가지 않고 표를
@@ -851,7 +917,7 @@ function render() {
 
     if ([...(SITENAMES[site.id] ?? [])].some((name) => MUTED_SITES.has(name))) tr.classList.add('site-muted');
     tr.append(tdOn, tdId, siteNameCell(site), boatRatesCell(site), tdKind, addedTag(site),
-              portCell(site), textCell(site, 'phone'), tdUrl, tdLast);
+              portCell(site), textCell(site, 'phone'), memoCell(site), tdUrl, tdLast);
     // 저장 전에 다른 쪽으로 넘어갔다 돌아와도 고친 표시가 남아 있어야 합니다.
     if (DIRTY.has(site.id)) tr.classList.add('dirty');
     box.append(tr);
@@ -1488,6 +1554,7 @@ async function load() {
 
 bindPager();
 $('save').addEventListener('click', save);
+$('memoset').addEventListener('click', applyMemo);
 $('update').addEventListener('click', update);
 $('collect').addEventListener('click', collect);
 $('research').addEventListener('click', research);

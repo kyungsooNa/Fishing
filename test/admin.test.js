@@ -55,12 +55,12 @@ test('사이트 목록에 registry와 수집 결과가 같이 온다', async () 
   });
 });
 
-test('표기와 켜짐을 고치면 registry에 남는다', async () => {
+test('표기와 켜짐, 메모를 고치면 registry에 남는다', async () => {
   await withServer(async ({ base, registry }) => {
     const res = await admin(base, '/api/sites/bbb', {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ enabled: true, name: '새 이름', phone: '010-1234-5678' }),
+      body: JSON.stringify({ enabled: true, name: '새 이름', phone: '010-1234-5678', note: '전화 전 확인할 것' }),
     });
     assert.equal(res.status, 200);
 
@@ -69,6 +69,7 @@ test('표기와 켜짐을 고치면 registry에 남는다', async () => {
     assert.equal(site.enabled, true);
     assert.equal(site.name, '새 이름');
     assert.equal(site.phone, '010-1234-5678');
+    assert.equal(site.note, '전화 전 확인할 것');
     // 나머지 값은 건드리지 않습니다.
     assert.equal(site.adapter, 'thefishing');
     assert.equal(saved.$comment, '테스트용');
@@ -780,6 +781,19 @@ test('관리 화면: 선사 이름 옆에서 바로 숨기고 되돌린다', asy
   assert.match(toggle, /render\(\);/, '표의 ✕ 를 다시 칠해야 합니다');
   assert.match(toggle, /renderMutes\(TRIPS\);/, '숨긴 것 목록도 같이 바뀌어야 합니다');
   assert.ok(html.includes('선사 이름 옆 ✕(선사)'), '숨긴 것이 없을 때 어디서 거는지 알려줘야 합니다');
+});
+
+test('관리 화면: 선사 메모는 버튼으로 열고 기존 변경 저장 흐름에 넣는다', async () => {
+  const html = await readFile('docs/admin.html', 'utf8');
+  const inline = html.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
+  assert.match(html, /<th>전화<\/th><th>메모<\/th>/, '메모 칸이 선사 표에 있어야 합니다');
+  assert.match(html, /id="memodialog"/, '메모 버튼은 내용을 열 대화창이 필요합니다');
+  const memo = inline.slice(inline.indexOf('function memoCell'), inline.indexOf('// ── 별점 ──'));
+  assert.match(memo, /button\.textContent = note \? '메모 보기' : '메모';/);
+  assert.match(memo, /button\.addEventListener\('click', \(\) => openMemo\(site\)\);/);
+  assert.match(memo, /markDirty\(MEMO_SITE\.id, 'note', \$\('memotext'\)\.value\.trim\(\)\);/,
+    '메모도 저장 전 변경 목록에 넣어야 합니다');
+  assert.match(memo, /\$\('memodialog'\)\.showModal\(\);/, '클릭하면 내용이 보이는 대화창을 엽니다');
 });
 
 // 두 화면이 같은 값을 쓰는데 열쇠나 종류가 갈리면, 관리 화면에서 되돌린 것이 현황판에서
