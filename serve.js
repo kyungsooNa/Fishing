@@ -215,8 +215,10 @@ export function createApp({
     const finish = async (code) => {
       if (finished) return;
       finished = true;
-      current.code = code;
+      // API는 code가 생기면 완료로 판단합니다. 코드를 먼저 공개하면 그 찰나에 읽은 화면은
+      // 완료됐다고 보면서 보고서는 null로 받습니다. 보고서까지 준비한 뒤 한꺼번에 끝냅니다.
       current.report = await readFile(researchReport, 'utf8').catch(() => null);
+      current.code = code;
       current.running = false;
       monitor?.start();
     };

@@ -97,6 +97,9 @@ export async function collectSite(site) {
 export async function runAll({
   only = null,
   days = 21,
+  horizonDays = days,
+  futureDataPath = null,
+  farWindowDays = 7,
   registryPath,
   dataPath,
   portsPath,
@@ -121,8 +124,15 @@ export async function runAll({
     throw new Error(`registry에 '${only}' 가 없습니다. 등록된 id: ${registry.map((s) => s.id).join(', ')}`);
   }
 
-  const prev = await load(dataPath);
+  const [prev, prevFuture] = await Promise.all([
+    load(dataPath),
+    futureDataPath ? load(futureDataPath) : Promise.resolve({ generatedAt: null, cursors: {}, trips: [] }),
+  ]);
   const prevBySite = groupBy(prev.trips ?? [], (t) => t.siteId);
+  const prevFutureBySite = groupBy(prevFuture.trips ?? [], (t) => t.siteId);
+  const nearTo = kstDate(days, now);
+  const horizonTo = kstDate(horizonDays, now);
+  const firstFarOffset = days + 1;
 
   // 사이트별로 같이 남기는 값. 화면(특히 서버 없는 GitHub Pages의 관리 페이지)은
   // registry를 못 읽으므로, 주소·항구·전화를 여기 실어 보내야 표에 나옵니다.
@@ -140,7 +150,9 @@ export async function runAll({
   const startedAt = new Date();
   const timeoutBackoffMs = Math.max(0, Number(timeoutBackoffHours) || 0) * 60 * 60 * 1000;
   const tripsById = new Map();
+  const futureTripsById = new Map();
   const statusById = new Map();
+  const futureCursors = { ...(prevFuture.cursors ?? {}) };
 
   const keepPrevious = (site) =>
     (prevBySite.get(site.id) ?? [])
@@ -149,6 +161,18 @@ export async function runAll({
       // 같은 이유로 예전 파서가 배로 읽은 더피싱 공지 카드도 보존 단계에서 걷어냅니다.
       .filter((t) => t && t.date && !site.excludeBoats?.includes(t.boat) && !isNoticeShell(t))
       .map((t) => refreshKeptTrip(site, t));
+
+  const keepFuture = (site) =>
+    (prevFutureBySite.get(site.id) ?? [])
+      .filter((t) => t && t.date > nearTo && t.date <= horizonTo && !site.excludeBoats?.includes(t.boat))
+      .map((t) => refreshKeptTrip(site, t));
+
+  // 한 구간만 새로 받았을 때 그 날짜 구간만 갈아끼웁니다. 나머지 먼 일정은 다음 순환까지
+  // 보존해야 7일 창을 열 번 도는 동안 3개월치가 차곡차곡 쌓입니다.
+  const replaceFutureWindow = (previous, fresh, from, to) => [
+    ...previous.filter((t) => t.date < from || t.date > to),
+    ...fresh.filter((t) => t.date >= from && t.date <= to),
+  ];
 
   // 더피싱 공통 서버가 잠시 막혔을 때 100곳 넘게 같은 timeout을 반복하지 않습니다.
   // 실제로 요청하지 않은 곳은 실패가 아니라 보류이며, 다음 수집에서는 백오프 없이
@@ -159,6 +183,7 @@ export async function runAll({
     const kept = keepPrevious(site);
     failed.add(site.id);
     tripsById.set(site.id, kept);
+    futureTripsById.set(site.id, keepFuture(site));
     statusById.set(site.id, {
       ok: false,
       at,
@@ -182,6 +207,7 @@ export async function runAll({
     const kept = keepPrevious(site);
     failed.add(site.id);
     tripsById.set(site.id, kept);
+    futureTripsById.set(site.id, keepFuture(site));
     statusById.set(site.id, {
       ok: false,
       at,
@@ -201,6 +227,7 @@ export async function runAll({
     if (!only && inTimeoutBackoff(prevStatus, timeoutBackoffMs, now)) {
       failed.add(site.id);
       const kept = keepPrevious(site);
+      futureTripsById.set(site.id, keepFuture(site));
       const retryAt = new Date(Date.parse(prevStatus.at) + backoffMsFor(prevStatus, timeoutBackoffMs)).toISOString();
       const error = `${baseTimeoutError(prevStatus.error)} — 최근 timeout이라 ${retryAt}까지 재시도 보류`;
       tripsById.set(site.id, kept);
@@ -221,9 +248,53 @@ export async function runAll({
     }
 
     try {
-      const trips = await collectFn({ days, ...site });
+      // 월 이동 주소를 사람이 확인해 둔 선상24만 한 번에 장기 범위까지 받습니다. 주소를
+      // 모르는 152곳에는 임의의 월 파라미터를 붙이지 않습니다.
+      const baseDays = futureDataPath && horizonDays > days && site.adapter === 'sunsang24' && site.monthPath
+        ? horizonDays : days;
+      const trips = await collectFn({ days: baseDays, ...site });
       tripsById.set(site.id, trips);
-      statusById.set(site.id, { ok: true, at, count: trips.length, ...meta(site) });
+      let futureTrips = keepFuture(site);
+      let futureError = null;
+
+      // 월 일정표 한 장이 가까운 범위보다 더 멀리 돌려준 경우 그 값도 버리지 않습니다.
+      // 선상24는 다음 달 주소를 모르는 사이트가 많지만, 적어도 현재 달 끝까지는 남습니다.
+      const inherentFuture = trips.filter((t) => t.date > nearTo && t.date <= horizonTo);
+      if (inherentFuture.length) {
+        const dates = inherentFuture.map((t) => t.date).sort();
+        futureTrips = replaceFutureWindow(futureTrips, inherentFuture, dates[0], dates.at(-1));
+      }
+
+      // 더피싱 상세는 한 요청에 7일치입니다. 매시간 90일 전부를 다시 받으면 요청이 4배로
+      // 늘어 차단되므로, 이번 차례에는 먼 구간 하나만 받고 다음 차례에 이어서 봅니다.
+      const rollingFuture = futureDataPath && horizonDays > days &&
+        site.adapter === 'thefishing' && site.source === 'detail';
+      if (rollingFuture) {
+        const saved = Number(prevFuture.cursors?.[site.id]);
+        const offset = Number.isInteger(saved) && saved >= firstFarOffset && saved <= horizonDays
+          ? saved : firstFarOffset;
+        const window = Math.min(Math.max(1, farWindowDays), horizonDays - offset + 1);
+        const from = kstDate(offset, now);
+        const to = kstDate(offset + window - 1, now);
+        try {
+          const fresh = await collectFn({ ...site, days: window, startDay: offset });
+          futureTrips = replaceFutureWindow(futureTrips, fresh, from, to);
+          const next = offset + window;
+          futureCursors[site.id] = next > horizonDays ? firstFarOffset : next;
+        } catch (err) {
+          // 가까운 21일은 성공했으므로 선사 전체를 실패로 만들지 않습니다. 먼 일정만 다음
+          // 차례에 같은 구간을 재시도하고, 직전 장기 데이터는 그대로 둡니다.
+          futureError = describeError(err).slice(0, 300);
+        }
+      }
+
+      futureTripsById.set(site.id, futureTrips);
+      statusById.set(site.id, {
+        ok: true, at, count: trips.filter((t) => t.date <= nearTo).length,
+        ...(futureTrips.length ? { futureCount: futureTrips.length } : {}),
+        ...(futureError ? { futureError } : {}),
+        ...meta(site),
+      });
       console.log(`  ${site.id.padEnd(14)} ${String(trips.length).padStart(4)}건`);
       completed += 1;
       progress(site.id);
@@ -231,6 +302,7 @@ export async function runAll({
     } catch (err) {
       failed.add(site.id);
       const kept = keepPrevious(site);
+      futureTripsById.set(site.id, keepFuture(site));
       const error = describeError(err).slice(0, 300);
       // 연달아 timeout이면 다음 대기가 길어집니다. 다른 이유로 실패했으면 세지 않습니다.
       const streak = isTimeoutError(error) ? timeoutStreakOf(prevStatus) + 1 : 0;
@@ -292,15 +364,19 @@ export async function runAll({
   // 저장은 registry 순서로. 동시에 받으면 끝나는 순서가 매번 달라지는데, 그대로 쓰면
   // data.json이 실행마다 통째로 뒤집혀 커밋 diff가 쓸모없어집니다.
   const collected = targets.flatMap((site) => tripsById.get(site.id) ?? []);
+  const collectedFuture = targets.flatMap((site) => futureTripsById.get(site.id) ?? keepFuture(site));
   const status = Object.fromEntries(
     targets.filter((site) => statusById.has(site.id)).map((site) => [site.id, statusById.get(site.id)]),
   );
 
   const trips = sortTrips(mergeDuplicates(pruneOld(collected, days, now)));
+  const futureTrips = sortTrips(mergeDuplicates(
+    pruneOld(collectedFuture, horizonDays, now).filter((t) => t.date > nearTo),
+  ));
   const openings = findOpenings(prev.trips ?? [], trips, failed);
 
   // 지도에 찍을 항구. 좌표가 없는 항구는 지도에서 빠지므로 로그로 알려줍니다.
-  const { places, missing } = usedPorts(trips, await loadPorts(portsPath));
+  const { places, missing } = usedPorts([...trips, ...futureTrips], await loadPorts(portsPath));
   if (missing.length) console.warn(`  좌표 없는 항구: ${missing.join(', ')} — sites/ports.json에 추가하세요`);
 
   // 다음 실행이 이어서 볼 자리. 이번에 안 돈 서버의 커서는 **그대로 물려줍니다** —
@@ -317,6 +393,14 @@ export async function runAll({
   };
 
   if (!dryRun) await save(data, dataPath);
+  if (!dryRun && futureDataPath) {
+    await save({
+      generatedAt: startedAt.toISOString(),
+      horizonDays,
+      cursors: futureCursors,
+      trips: futureTrips,
+    }, futureDataPath);
+  }
   // prevSites는 "그 사이트를 직전에 확인한 시각"입니다. 취소석을 얼마나 빨리 잡았는지는
   // 그 시각과 이번 시각 사이의 폭으로만 알 수 있어서(core/alerts.js) 같이 돌려줍니다.
   return { data, openings, failed: [...failed], prevSites: prev.sites ?? {} };

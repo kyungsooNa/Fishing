@@ -1943,16 +1943,37 @@ function renderStatus() {
   }
 }
 
-function loadData() { return fetch('data.json?t=' + Date.now(), { cache: 'no-store' })
-  .then((r) => r.json())
-  .then((d) => {
+// 가까운 21일은 30초마다 다시 읽지만, 22~90일 일정은 한 시간에 한 번만 바뀝니다.
+// 큰 장기 파일을 30초마다 다시 내려받으면 파일을 나눈 뜻이 없으므로 브라우저에서도
+// 한 시간 동안 재사용합니다. 파일이 아직 없는 배포에서는 조용히 빈 목록으로 시작합니다.
+let FUTURE = { generatedAt: null, trips: [] };
+let FUTURE_READ_AT = 0;
+async function loadFuture() {
+  if (FUTURE_READ_AT && Date.now() - FUTURE_READ_AT < 60 * 60 * 1000) return FUTURE;
+  FUTURE_READ_AT = Date.now();
+  try {
+    const response = await fetch('future.json?t=' + Date.now(), { cache: 'no-store' });
+    if (!response.ok) throw new Error(String(response.status));
+    FUTURE = await response.json();
+  } catch { FUTURE = { generatedAt: null, trips: [] }; }
+  return FUTURE;
+}
+
+async function loadData() {
+  try {
+    const [near, future] = await Promise.all([
+      fetch('data.json?t=' + Date.now(), { cache: 'no-store' }).then((r) => r.json()),
+      loadFuture(),
+    ]);
+    const d = { ...near, trips: [...(near.trips ?? []), ...(future.trips ?? [])] };
     DATA = d;
     RATES = loadRates();   // 관리 화면에서 매긴 별점이 다음 갱신 때 따라옵니다
     clearRateCache();
     const failed = Object.values(d.sites).filter((s) => !s.ok && !s.skipped).length;
     const held = Object.values(d.sites).filter((s) => !s.ok && s.skipped).length;
     $('meta').textContent =
-      `출조 ${d.trips.length}건 · 갱신 ${d.generatedAt ? new Date(d.generatedAt).toLocaleString('ko-KR') : '-'}` +
+      `출조 ${d.trips.length}건` + (future.trips?.length ? ` (장기 ${future.trips.length}건)` : '') +
+      ` · 갱신 ${d.generatedAt ? new Date(d.generatedAt).toLocaleString('ko-KR') : '-'}` +
       (failed ? ` · 갱신 실패 ${failed}곳` : '') + (held ? ` · 보류 ${held}곳` : '');
     migrateFavs(d.trips);
     fillOptions($('f-platform'), d.trips.flatMap((t) => platformsOf(d.sites, t)));
@@ -1966,8 +1987,10 @@ function loadData() { return fetch('data.json?t=' + Date.now(), { cache: 'no-sto
     fillDateRange(d.trips.map((t) => t.date));
     renderStatus();
     refresh();
-  })
-  .catch((e) => { $('meta').textContent = 'data.json을 못 읽었습니다: ' + e.message; }); }
+  } catch (e) {
+    $('meta').textContent = 'data.json을 못 읽었습니다: ' + e.message;
+  }
+}
 
 // 감시 서버는 내 PC일 수도, 상시 서버일 수도 있습니다(DEPLOY.md). 주소로 짐작하지 않고
 // 같은 곳에 물어봅니다. 정적 호스팅(GitHub Pages)이면 그 길이 아예 없어서 404·403이

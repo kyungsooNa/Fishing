@@ -49,6 +49,44 @@ test('전체 수집 진행률은 시작과 사이트별 완료를 알려준다',
   assert.equal(progress.at(-1).total, 2);
 });
 
+test('먼 일정은 7일 창을 순환하며 별도 파일에 90일까지 쌓는다', async () => {
+  const site = {
+    id: 'farfish', name: '먼바다호', adapter: 'thefishing', source: 'detail',
+    url: 'https://farfish.thefishing.kr/index.php?mid=bk',
+  };
+  const { registryPath, dataPath } = await fixture([site]);
+  const futureDataPath = join(tmpdir(), `future-${Date.now()}-${Math.random()}.json`);
+  const calls = [];
+  const collectFn = async (request) => {
+    calls.push({ days: request.days, startDay: request.startDay });
+    const date = request.startDay === 22 ? '2026-10-02'
+      : request.startDay === 29 ? '2026-10-09' : '2026-09-15';
+    return [{
+      siteId: request.id, siteName: request.name, boat: '먼바다호', date,
+      status: 'open', seatsLeft: 3, port: '충남 보령 오천항', phone: '010-0000-0000',
+    }];
+  };
+  const options = {
+    registryPath, dataPath, futureDataPath, collectFn,
+    days: 21, horizonDays: 90, farWindowDays: 7,
+    now: new Date('2026-09-10T00:00:00+09:00'), rotatePerRun: {},
+  };
+
+  await runAll(options);
+  let future = JSON.parse(await readFile(futureDataPath, 'utf8'));
+  assert.deepEqual(calls, [{ days: 21, startDay: undefined }, { days: 7, startDay: 22 }]);
+  assert.equal(future.cursors.farfish, 29);
+  assert.deepEqual(future.trips.map((trip) => trip.date), ['2026-10-02']);
+
+  calls.length = 0;
+  await runAll(options);
+  future = JSON.parse(await readFile(futureDataPath, 'utf8'));
+  assert.deepEqual(calls, [{ days: 21, startDay: undefined }, { days: 7, startDay: 29 }]);
+  assert.equal(future.cursors.farfish, 36);
+  assert.deepEqual(future.trips.map((trip) => trip.date), ['2026-10-02', '2026-10-09'],
+    '새 창을 받을 때 앞서 받은 먼 일정을 버리지 않습니다');
+});
+
 test('수집 결과에 등록 출처를 실어 보낸다 — 서버 없는 화면도 수동/자동을 안다', async () => {
   const { registryPath, dataPath } = await fixture([
     { ...mockSite, addedBy: 'discover' },

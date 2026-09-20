@@ -40,6 +40,7 @@ jobs:
       - run: node collect.js
         env:
           DAYS: '21'
+          HORIZON_DAYS: '90'
           TIMEOUT_BACKOFF_HOURS: '6'
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -62,15 +63,17 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add docs/data.json
+          git add docs/data.json docs/future.json
           git diff --cached --quiet && echo "변한 게 없어 커밋하지 않습니다" && exit 0
 
           cp docs/data.json "$RUNNER_TEMP/data.json"
+          cp docs/future.json "$RUNNER_TEMP/future.json"
           for attempt in 1 2 3; do
             git fetch origin main
             git reset --hard origin/main
             cp "$RUNNER_TEMP/data.json" docs/data.json
-            git add docs/data.json
+            cp "$RUNNER_TEMP/future.json" docs/future.json
+            git add docs/data.json docs/future.json
             if git diff --cached --quiet; then
               echo "그 사이 같은 내용이 올라왔습니다 — 커밋하지 않습니다"
               exit 0

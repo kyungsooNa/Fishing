@@ -83,12 +83,14 @@ function cellSeats(cell) {
 // ── detail: 예약 페이지를 날짜 창 단위로 ────────────────────────────────────
 async function collectFromDetail(site) {
   const days = site.days ?? 21;
+  const startDay = Math.max(0, Number(site.startDay) || 0);
   const windowDays = site.windowDays ?? 7;    // 한 요청에 며칠치가 오는지
   const trips = [];
 
-  for (let offset = 0; offset < days; offset += windowDays) {
-    const day = new Date(Date.now() + offset * 86400e3);
-    const url = detailUrl(site.url, day);
+  for (let offset = startDay; offset < startDay + days; offset += windowDays) {
+    // Date.now()에 24시간씩 더하면 실행 환경의 시간대와 DST에 따라 날짜가 밀릴 수 있습니다.
+    // 수집·정리와 같은 한국 날짜 함수를 써서 먼 일정도 정확히 같은 날을 요청합니다.
+    const url = detailUrl(site.url, kstDate(offset));
     const html = await fetchHtml(url, { mode: site.mode ?? 'static' });
     trips.push(...parseDetail(site, html, url));
   }

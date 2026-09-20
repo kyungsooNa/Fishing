@@ -7,12 +7,15 @@ import { alertRecords, appendAlerts, ALERTS_PATH } from './core/alerts.js';
 import { acquireCollectorLock } from './core/collector-lock.js';
 
 const days = Number(process.env.DAYS ?? 21);
+const horizonDays = Number(process.env.HORIZON_DAYS ?? 90);
 
-console.log(`수집 시작 (앞으로 ${days}일)`);
+console.log(`수집 시작 (가까운 일정 ${days}일 · 장기 일정 ${horizonDays}일)`);
 const release = await acquireCollectorLock();
 try {
   const { data, openings, failed, prevSites } = await runAll({
     days,
+    horizonDays,
+    futureDataPath: 'docs/future.json',
     onProgress: (progress) => process.send?.({ type: 'collect-progress', ...progress }),
   });
 
