@@ -933,6 +933,20 @@
       "port": "충남 태안 구매항"
     },
     {
+      "id": "eagleho",
+      "name": "오천항 월드레저",
+      "adapter": "thefishing",
+      "url": "http://www.eagleho.com/m/index.php?mid=bk",
+      "source": "detail",
+      "port": "충남 보령 오천항",
+      "windowDays": 7,
+      "enabled": true,
+      "boats": {
+        "독수리호": {}
+      },
+      "note": "네이버 '오천항' 자동완성에 뜨는 선사 중 등록이 빠져 있던 곳입니다. 주소는 오천항의 다른 자체 사이트들과 같은 더피싱 예약모듈(/m/index.php?mid=bk)이라 adapter는 thefishing, source는 detail입니다. 2026-09-21 peek(Actions)로 대조했습니다 — 페이지 제목 '예약하기 - 오천항 월드레저', 배는 독수리호 하나, 주꾸미·갑오징어 6건이 읽혔습니다. HTTPS는 인증서가 다른 도메인(새만금낚시.com)으로 발급돼 있어 HTTP 주소를 씁니다(blueseaho와 같은 경우) — robots.txt도 같은 이유로 HTTP로 확인했고 * 그룹이 Allow: / 였습니다. 예약판에 출항 시각이 없어 hours가 비고, 승선료도 페이지에 없어 prices를 못 적었습니다. 전화번호·정원은 아직 미확인입니다 — 전화가 비어 있는 동안에는 다른 사이트의 같은 배와 합쳐지지 않습니다(ports 워크플로로 채우세요)."
+    },
+    {
       "id": "eagles",
       "name": "블랙이글스호",
       "port": "강원 고성 공현진항",
