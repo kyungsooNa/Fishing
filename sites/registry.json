@@ -322,6 +322,36 @@
       "note": "충남 보령 오천면 소성리. 광어·우럭·문어·갑오징어·백조기. seatsTotal 22는 선박소개(9.77톤 22인승)에서 옮긴 값이라 미확인 — index 방식에서는 안 씁니다. 오천항 여섯 번째 선사입니다."
     },
     {
+      "id": "napoliho",
+      "name": "오천항 나폴리",
+      "adapter": "thefishing",
+      "url": "https://www.napoliho.net/m/index.php?mid=bk",
+      "source": "detail",
+      "port": "충남 보령 오천항",
+      "windowDays": 7,
+      "enabled": true,
+      "note": "네이버 '오천항' 자동완성에 뜨는데 등록이 빠져 있던 곳입니다(PLATFORMS.md 3-1). 주소를 사람이 확인해 받았습니다(www.napoliho.net/m/). 예약판에 나폴리(신조선)·나폴리2·나폴리7·뉴나폴리·엠피닉스(나폴리9)가 함께 뜹니다 — 전부 같은 선단이라 사이트 공통 port를 둡니다. 배 이름·전화번호·정원은 peek으로 대조한 뒤 채웁니다."
+    },
+    {
+      "id": "bumblebee",
+      "name": "오천항 범블비호",
+      "adapter": "thefishing",
+      "url": "http://xn--xk3bm1aee249g.com/m/index.php?mid=bk",
+      "source": "detail",
+      "phone": "010-8807-4366",
+      "windowDays": 7,
+      "enabled": true,
+      "boats": {
+        "범블비호": {
+          "port": "충남 보령 오천항"
+        },
+        "돌돌호": {
+          "port": "충남 보령 무창포항"
+        }
+      },
+      "note": "범블비호.com(punycode xn--xk3bm1aee249g.com). 네이버 '오천항' 자동완성에 뜨는데 등록이 빠져 있던 곳입니다(PLATFORMS.md 3-1). **사이트 공통 port를 두지 않습니다** — 이 예약판에는 오천항 범블비호와 함께 무창포 돌돌호가 뜹니다. 공통값을 두면 돌돌호까지 오천항으로 찍힙니다(mansour가 겪은 일). 전화 010-8807-4366은 페이지 '예약 및 문의전화'에서 읽은 값이고, 배 이름 표기와 함께 peek으로 대조해야 합니다."
+    },
+    {
       "id": "chungma",
       "name": "영종도 청마피싱",
       "adapter": "thefishing",
