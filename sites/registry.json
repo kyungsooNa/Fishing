@@ -933,6 +933,20 @@
       "port": "충남 태안 구매항"
     },
     {
+      "id": "eagleho",
+      "name": "오천항 독수리호",
+      "adapter": "thefishing",
+      "url": "http://www.eagleho.com/m/index.php?mid=bk",
+      "source": "detail",
+      "port": "충남 보령 오천항",
+      "windowDays": 7,
+      "enabled": true,
+      "boats": {
+        "독수리호": {}
+      },
+      "note": "네이버 '오천항' 자동완성에 뜨는 선사 중 등록이 빠져 있던 곳입니다. 주소는 오천항의 다른 자체 사이트들과 같은 더피싱 예약모듈(/m/index.php?mid=bk)이라 adapter를 thefishing·source를 detail로 적었습니다. 이름·배 이름·출항지·전화번호·정원은 아직 미확인입니다 — 개발 환경에서 이 도메인이 막혀 있어 peek(Actions)로 대조한 뒤 고치세요. 전화번호가 비어 있는 동안에는 다른 사이트의 같은 배와 합쳐지지 않습니다."
+    },
+    {
       "id": "eagles",
       "name": "블랙이글스호",
       "port": "강원 고성 공현진항",
