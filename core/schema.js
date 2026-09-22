@@ -133,7 +133,8 @@ export function departureWindow(raw) {
   return { from: toTime(times[0]), through: toTime(times[1]) };
 }
 
-const DEPART_LABEL = '출항(?:\\s*시간)?|정상출조|출조\\s*시간';
+const DEPART_LABEL = '출항(?:\\s*시간)?|정상출조';
+const FALLBACK_DEPART_LABEL = '출조\\s*시간';
 const ARRIVE_LABEL = '입항(?:\\s*시간)?|귀항(?:\\s*시간)?';
 
 /** 예약 안내의 버스·입금·일몰 시각을 배의 출항으로 쓰지 않습니다. */
@@ -150,11 +151,24 @@ export function tripTimeRange(raw) {
   const timeAfter = (label) => find(new RegExp(`(?:${label})\\s*[:：]?\\s*(${TIME_TOKEN})(?!\\s*까지)`, 'di'));
   const timeBefore = (label) => find(new RegExp(`(${TIME_TOKEN})\\s*(?:에\\s*)?(?:${label})`, 'di'));
 
-  const departAfter = timeAfter(DEPART_LABEL);
-  const departBefore = timeBefore(DEPART_LABEL);
+  // `출조시간`은 출조점·버스가 출발하는 시각으로 쓰는 곳이 있습니다. 같은 문장에 실제
+  // `출항시간`이 있으면 반드시 그 값을 씁니다. 출항 표기가 전혀 없는 사이트와의 호환을
+  // 위해 출조시간은 마지막 대안으로만 둡니다.
+  const explicitDepartAfter = timeAfter(DEPART_LABEL);
+  const explicitDepartBefore = timeBefore(DEPART_LABEL);
+  const fallbackDepartAfter = timeAfter(FALLBACK_DEPART_LABEL);
+  const fallbackDepartBefore = timeBefore(FALLBACK_DEPART_LABEL);
+  // 라벨이 시각 앞에 있느냐 뒤에 있느냐보다 `출항`인지 `출조시간`인지가 우선입니다.
+  // `04시 출항, 출조시간 02:30`에서 단순히 "라벨 뒤 시각"을 먼저 고르면 출조점 출발을
+  // 배 출항으로 되돌리는 셈입니다.
+  const departAfter = explicitDepartAfter ?? fallbackDepartAfter;
+  // 명시적인 출항 표기가 하나라도 있으면 충돌 보정에서도 출조시간으로 물러서지 않습니다.
+  // 입항시각이 빠진 `02:30 출조시간, 출항시간 05:00 입항`은 05:00을 출항으로 남겨야 합니다.
+  const departBefore = explicitDepartBefore
+    ?? (explicitDepartAfter ? null : fallbackDepartBefore);
   const arriveAfter = timeAfter(ARRIVE_LABEL);
   const arriveBefore = timeBefore(ARRIVE_LABEL);
-  let from = departAfter ?? departBefore;
+  let from = explicitDepartAfter ?? explicitDepartBefore ?? fallbackDepartAfter ?? fallbackDepartBefore;
   let to = arriveAfter ?? arriveBefore;
 
   // "예진호 5시 출항 3시 입항" — 라벨 사이에 시각이 하나뿐이면 출항이 뒤를, 입항이 앞을 집어

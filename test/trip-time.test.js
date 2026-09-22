@@ -27,6 +27,18 @@ test('버스·문의·입금·물때 시각을 출항으로 오인하지 않는�
   assert.deepEqual(tripTimeRange('입항 16시, 출항 새벽 5시30분'), { from: '05:30', to: '16:00' });
 });
 
+test('출조점 출발과 배 출항이 함께 있으면 출항시간을 우선한다', () => {
+  const text = '출조시간 : 02시30분(본점출발) 출항시간 : 05시(조식후 출항) 입항시간 : 16시';
+  assert.deepEqual(tripTimeRange(text), { from: '05:00', to: '16:00' });
+  assert.equal(tripTimeRange('04시 출항, 출조시간 02:30').from, '04:00', '라벨 위치보다 출항 표기를 우선합니다');
+  assert.deepEqual(
+    tripTimeRange('02:30 출조시간, 출항시간 05:00 입항'),
+    { from: '05:00', to: null },
+    '입항시각이 빠져도 충돌 보정이 출조점 출발로 물러서면 안 됩니다',
+  );
+  assert.equal(tripTimeRange('출조시간 04:30').from, '04:30', '출항 표기가 없는 기존 예약판은 유지합니다');
+});
+
 test('집결시각과 출항 범위를 운항 종료시각과 구분한다', () => {
   assert.equal(meetingTime('정상출조 04시30분까지 매장에 도착해주세요.'), '04:30');
   assert.equal(meetingTime('늦어도 04시40분 부터 접안지역에 대기 바랍니다.'), '04:40');

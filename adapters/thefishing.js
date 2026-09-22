@@ -142,7 +142,7 @@ export function parseDetail(site, html, url) {
     const filled = countTakenSeats(text, mode);
     const explicit = detailSeats(text);
     const seatsTotal = site.seatsTotal ?? guessTotal(text, mode, explicit, filled, site.seatCount);
-    const boat = pickBoat(site, block.boat ?? text);
+    const boat = pickBoat(site, block.boat, text);
     if (site.excludeBoats?.includes(boat)) continue;
 
     const time = tripTimeRange(text);
@@ -410,13 +410,17 @@ function textWithBreaks($, el) {
   return copy.text();
 }
 
-function pickBoat(site, text) {
+function pickBoat(site, heading, text = heading) {
+  const primary = String(heading ?? '');
+  const detail = String(text ?? '');
   const known = Object.keys(site.boats ?? {});
-  const hit = known.find((b) => text.includes(b));
-  const half = text.match(/(오전배|오후배|1부|2부)/);
+  // 선박명 칸을 먼저 믿되, 여행사형 예약판처럼 그 칸에 `갈치`만 쓰고 실제 배는
+  // `출조선사: 스텔론호`로 공지에 적는 곳은 행 본문까지 봅니다.
+  const hit = known.find((b) => primary.includes(b)) ?? known.find((b) => detail.includes(b));
+  const half = `${primary} ${detail}`.match(/(오전배|오후배|1부|2부)/);
   if (hit) return half ? `${hit} (${half[1]})` : hit;
   // "상호" 같은 안내문 낱말은 배로 치지 않습니다(matchBoatName).
-  const named = matchBoatName(text);
+  const named = matchBoatName(primary) ?? matchBoatName(detail);
   if (named) return half ? `${named} (${half[1]})` : named;
   // 오전배·오후배만 구분되는 사이트는 그 표기를 배 이름 대신 씁니다.
   return half ? `${site.name ?? site.id} ${half[1]}` : site.name ?? site.id;

@@ -72,6 +72,7 @@ test('어종 표기의 띄어쓰기·구분자와 반복 오타를 같은 값으
   assert.equal(toSpecies(speciesIn('갑 오징어 출조')), '갑오징어');
   assert.equal(toSpecies(speciesIn('어종 : 꽃개')), '꽃게');
   assert.equal(toSpecies(speciesIn('어종 : 붉바리 / 생미끼 외수질')), '붉바리');
+  assert.equal(speciesIn('갈치 출조 안내 뒤쪽 참고: 한치 장비'), '갈치', '행에서 먼저 적은 어종이 대표입니다');
   assert.equal(speciesIn('독립좌대 예약'), null, '원문에 없는 어종은 추측하지 않는다');
 });
 
@@ -473,6 +474,18 @@ test('thefishing: detail — PC판의 날짜 뒤 텍스트 물때도 그대로 �
 
   const [trip] = parseDetail(site, html, 'https://x');
   assert.equal(trip.tide, '4물');
+});
+
+test('thefishing: 선박명 칸이 어종뿐이면 출조 안내의 실제 배 이름을 읽는다', () => {
+  const html = `<table>
+    <tr><td>2026년 09월 23일, 수요일, 4물</td></tr>
+    <tr><th>선박명</th><th>예약현황</th><th>남은자리</th></tr>
+    <tr><td>갈치</td><td>출조안내 출조선사 : 여수 스텔론호 출항시간 13시 예약하기</td><td>9명</td></tr>
+  </table>`;
+  const [row] = parseDetail({ id: 'tour', name: '여행사' }, html);
+  assert.equal(row.boat, '스텔론호');
+  assert.equal(row.departAt, '13:00');
+  assert.equal(row.species, '갈치');
 });
 
 test('thefishing: detail — 입금 명단의 좌석번호를 세서 잔여석을 구한다', () => {

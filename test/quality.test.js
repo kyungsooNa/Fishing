@@ -100,6 +100,24 @@ test('양쪽 다 신원을 갖춘 배는 막힌 것이 아니다', () => {
   assert.deepEqual(q.identity.blocked, []);
 });
 
+test('이름이 같아도 확정 항구가 다르면 동명이배라 합치기 후보가 아니다', () => {
+  const q = collectQuality(registry, {
+    trips: [
+      trip('sun', '청룡호', { port: '충남 당진 장고항', phone: null }),
+      trip('fish', '청룡호', { port: '강원 고성 아야진항' }),
+    ],
+  });
+  assert.deepEqual(q.identity.blocked, []);
+});
+
+test('이름과 항구가 같고 신원이 비었으면 합치기 후보다', () => {
+  const q = collectQuality(registry, {
+    trips: [trip('sun', '가호', { phone: null }), trip('fish', '가호')],
+  });
+  assert.equal(q.identity.blocked.length, 1);
+  assert.equal(q.identity.blocked[0].boat, '가호');
+});
+
 test('배 이름의 공백 차이는 같은 배로 본다', () => {
   const q = collectQuality(registry, {
     trips: [trip('sun', '가 호', { port: null }), trip('fish', '가호')],
@@ -174,6 +192,16 @@ test('registry에 없는 사이트의 출조도 흘리지 않는다', () => {
   assert.equal(q.adapters.find((a) => a.key === '미등록').trips, 1);
   assert.equal(q.sites[0].platform, '선상24', '수집 결과에 남은 표기라도 씁니다');
   assert.equal(q.sites.reduce((sum, s) => sum + s.trips, 0), q.trips);
+});
+
+test('registry에서 끈 사이트는 다음 수집 전이라도 품질 집계에서 뺀다', () => {
+  const q = collectQuality(
+    [{ id: 'on', adapter: 'generic' }, { id: 'off', adapter: 'generic', enabled: false }],
+    { trips: [trip('on', '가호'), trip('off', '나호', { port: null })] },
+  );
+  assert.equal(q.trips, 1);
+  assert.equal(q.identity.boats, 1);
+  assert.deepEqual(q.sites.map((site) => site.key), ['on']);
 });
 
 test('그 항목이 빠진 사이트 id를 그대로 집어낼 수 있다', () => {

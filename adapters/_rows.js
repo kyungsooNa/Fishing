@@ -21,7 +21,13 @@ export function speciesIn(text) {
   const compact = String(text ?? '').replace(/\s+/g, '');
   if (/(?:쭈|주)(?:꾸미)?[.,/+&·]*(?:갑(?:오징어)?)/.test(compact)) return '쭈갑';
   if (compact.includes('꽃개')) return '꽃게'; // 예약판에서 반복되는 오타
-  return SPECIES.find((name) => compact.includes(name)) ?? null;
+  // 한 행에 공지·준비물처럼 다른 어종이 뒤따르는 곳이 있습니다. 고정 목록에서 먼저 찾으면
+  // 앞에 `갈치 출조`라고 적혀 있어도 목록상 앞선 `한치`가 뒤쪽에 한 번 나온 이유로 한치가
+  // 됩니다. 원문에서 먼저 적은 어종을 그 행의 대표값으로 씁니다.
+  return SPECIES
+    .map((name, order) => ({ name, order, at: compact.indexOf(name) }))
+    .filter((candidate) => candidate.at >= 0)
+    .sort((a, b) => a.at - b.at || a.order - b.order)[0]?.name ?? null;
 }
 
 // ── 파싱 ────────────────────────────────────────────────────────────────────

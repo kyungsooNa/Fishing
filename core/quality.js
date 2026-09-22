@@ -38,10 +38,14 @@ export const FIELDS = [
 
 const has = (trip, key) => (key === 'phone' ? normPhone(trip.phone) !== null : trip[key] !== null && trip[key] !== undefined && trip[key] !== '');
 const boatKey = (name) => (name ? String(name).replace(/\s+/g, '') : '');
+const identityText = (value) => (value ? String(value).replace(/\s+/g, '') : null);
 
 export function collectQuality(registry, data) {
-  const trips = data.trips ?? [];
   const siteById = new Map(registry.map((site) => [site.id, site]));
+  // registry에서 끈 중복 사이트는 다음 전체 수집 전까지 data.json에 남아 있을 수 있습니다.
+  // 그 행을 계속 세면 이미 정리한 선사가 품질 우선순위에 남아 로컬 변경이 안 먹은 것처럼
+  // 보입니다. 미등록 사이트는 유실 여부를 알 수 있게 남기고, 명시적으로 끈 곳만 뺍니다.
+  const trips = (data.trips ?? []).filter((trip) => siteById.get(trip.siteId)?.enabled !== false);
 
   const fields = FIELDS.map((field) => {
     const missing = trips.filter((trip) => !has(trip, field.key));
@@ -117,9 +121,9 @@ export function seatGaps(trips) {
  *               확인해 registry의 timeGuide(유효기간·어종·출처까지)에 적어야 합니다.
  *   섞임        같은 사이트인데 갈립니다. 다시 둘로 나눕니다.
  *     배마다     그 배만 시각을 안 적어둔 것. 다른 배는 읽히고 있으니 파서 문제가 아닙니다.
- *     날짜마다   같은 배인데 어느 날은 읽히고 어느 날은 안 읽힙니다. **파서를 의심할 곳은
- *                여기뿐입니다.** 다만 지금까지 열어본 열 곳은 전부 그 날 예약판에 시각 줄
- *                자체가 없었습니다 — 의심할 곳과 고칠 곳은 다릅니다.
+ *     날짜마다   같은 배인데 어느 날은 읽히고 어느 날은 안 읽힙니다. 파서 문제와 그 날 원문
+ *                생략이 섞일 수 있어 실제 예약판을 대조할 대상입니다. 2026-09-21 전체를 다시
+ *                확인했을 때 대부분은 원문 생략이었고, worldfishing 한 곳의 파서 오류를 고쳤습니다.
  */
 export function timeGaps(trips) {
   const sites = new Map();
@@ -164,11 +168,14 @@ function identityGaps(trips) {
   const boats = new Map();
   for (const trip of trips) {
     const key = `${trip.siteId}|${boatKey(trip.boat)}`;
-    if (!boats.has(key)) boats.set(key, { siteId: trip.siteId, boat: trip.boat, port: false, phone: false, trips: 0 });
+    if (!boats.has(key)) boats.set(key, {
+      siteId: trip.siteId, boat: trip.boat, port: false, phone: false, portValue: null, trips: 0,
+    });
     const row = boats.get(key);
     row.trips += 1;
     row.port ||= has(trip, 'port');
     row.phone ||= has(trip, 'phone');
+    row.portValue ??= identityText(trip.port);
   }
 
   const rows = [...boats.values()];
@@ -184,8 +191,24 @@ function identityGaps(trips) {
     byName.get(key).push(row);
   }
 
-  const blocked = [...byName.values()]
-    .filter((group) => new Set(group.map((row) => row.siteId)).size > 1 && !group.every(complete))
+  const possibleMatches = [...byName.values()].flatMap((group) => {
+    if (new Set(group.map((row) => row.siteId)).size <= 1) return [];
+
+    // 이름이 같아도 서로 다른 확정 항구에서 뜨는 배는 동명이배입니다. 전화번호가 비었다는
+    // 이유만으로 합치기 후보에 올리면 장고항 청룡호와 아야진항 청룡호처럼 합치면 안 되는
+    // 배부터 고치라고 안내하게 됩니다. 항구가 하나라도 비었으면 어느 쪽인지 아직 모르므로
+    // 전체를 후보로 두고, 모두 있으면 같은 항구끼리만 후보로 묶습니다.
+    if (group.some((row) => !row.portValue)) return [group];
+    const byPort = new Map();
+    for (const row of group) {
+      if (!byPort.has(row.portValue)) byPort.set(row.portValue, []);
+      byPort.get(row.portValue).push(row);
+    }
+    return [...byPort.values()].filter((rowsAtPort) => rowsAtPort.length > 1);
+  });
+
+  const blocked = possibleMatches
+    .filter((group) => !group.every(complete))
     .map((group) => ({
       boat: group[0].boat,
       trips: group.reduce((sum, row) => sum + row.trips, 0),

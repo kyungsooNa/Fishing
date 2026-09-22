@@ -51,8 +51,8 @@ console.log(`  갖춘 배 ${n(identity.complete)} / ${n(identity.boats)}`
   + ` · 항구 없음 ${n(identity.portMissing)} · 전화번호 없음 ${n(identity.phoneMissing)} · 둘 다 없음 ${n(identity.bothMissing)}`);
 
 if (identity.blocked.length) {
-  console.log(`\n  같은 이름으로 여러 사이트에 올라와 있는데 신원이 없어 못 합치는 배 ${n(identity.blocked.length)}척`);
-  console.log('  — 지금 현황판에 두 줄로 뜨고 있는 것들입니다. 여기부터 registry에 채우면 됩니다.');
+  console.log(`\n  같은 이름·항구로 여러 사이트에 올라와 있는데 신원이 없어 못 합치는 배 ${n(identity.blocked.length)}척`);
+  console.log('  — 동명이배는 뺐습니다. 여기부터 registry의 빠진 신원을 확인하면 됩니다.');
   for (const b of identity.blocked.slice(0, argv.includes('--all') ? Infinity : 12)) {
     const where = b.sites.map((s) => `${s.siteId}(${missingMark(s)})`).join(' · ');
     console.log(`    ${b.boat}  ${n(b.trips)}건  ${where}`);
@@ -104,7 +104,7 @@ if (time.none.length) {
 }
 
 if (time.byDate.length) {
-  console.log(`\n  같은 배인데 날짜마다 갈리는 ${n(time.byDate.length)}곳(${n(time.missing.byDate)}건) — 파서를 의심할 곳은 여기뿐입니다.`);
+  console.log(`\n  같은 배인데 날짜마다 갈리는 ${n(time.byDate.length)}곳(${n(time.missing.byDate)}건) — 원문 생략인지 파서 문제인지 예약판을 대조할 곳입니다.`);
   console.log(`    ${idList(time.byDate)}`);
 }
 if (time.byBoat.length) {

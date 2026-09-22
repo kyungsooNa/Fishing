@@ -1,6 +1,6 @@
 // 수집 결과가 어느 플랫폼에 얼마나 기대고 있는지 숫자로 봅니다.
-// 출조 건수만 크면 같은 일정표를 여러 번 센 것일 수도 있으므로, 활성 사이트와 성공률도 같이 냅니다.
-// 성공률만으로는 부족합니다 — 백오프로 보류 중인 곳은 실패가 아니지만 값은 낡았습니다.
+// 출조 건수만 크면 같은 일정표를 여러 번 센 것일 수도 있으므로, 활성 사이트와 갱신률도 같이 냅니다.
+// 회차 갱신률만으로는 부족합니다 — 순환 수집·백오프로 보류 중인 곳은 실패가 아니지만 값은 낡았습니다.
 // 그래서 상태를 성공·실패·보류·미수집 넷으로 나누고, 시각은 "언제 시도했나"가 아니라
 // "지금 화면에 실린 값이 언제 것인가"로 셉니다.
 
@@ -42,6 +42,10 @@ export function collectMetrics(registry, data, now = new Date()) {
   // 플랫폼별 합계를 더하면 화면의 전체 출조 수와 정확히 맞습니다.
   for (const trip of data.trips ?? []) {
     const site = siteById.get(trip.siteId);
+    // registry에서 막 끈 중복 사이트는 다음 전체 수집 전까지 data.json에 남아 있을 수 있습니다.
+    // 활성 사이트의 커버리지를 보는 표이므로 명시적으로 끈 곳의 묵은 행은 세지 않습니다.
+    // 미등록 사이트는 수집 결과 유실을 드러내기 위해 기존처럼 남깁니다.
+    if (site?.enabled === false) continue;
     const label = site ? platformFamily(site) : (data.sites?.[trip.siteId]?.platform ?? '미등록');
     groupFor(label.replace(/\(상세\)$/, '')).trips++;
   }
@@ -99,11 +103,16 @@ function confirmedAt(status) {
 }
 
 function withRate(row) {
-  return { ...row, successRate: row.sites ? row.success / row.sites : null };
+  const attempted = row.success + row.failed;
+  return {
+    ...row,
+    refreshRate: row.sites ? row.success / row.sites : null,
+    attemptSuccessRate: attempted ? row.success / attempted : null,
+  };
 }
 
 export function formatMetrics(metrics) {
-  const header = ['플랫폼', '활성', '성공', '실패', '보류', '미수집', '성공률', '출조'];
+  const header = ['플랫폼', '활성', '성공', '실패', '보류', '미수집', '회차갱신', '시도성공', '출조'];
   const rows = [...metrics.platforms, metrics.totals].map((row) => [
     row.platform,
     String(row.sites),
@@ -111,7 +120,8 @@ export function formatMetrics(metrics) {
     String(row.failed),
     String(row.held),
     String(row.uncollected),
-    percent(row.successRate),
+    percent(row.refreshRate),
+    percent(row.attemptSuccessRate),
     String(row.trips),
   ]);
   const widths = header.map((value, i) => Math.max(displayWidth(value), ...rows.map((row) => displayWidth(row[i]))));

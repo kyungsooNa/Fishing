@@ -30,16 +30,16 @@ test('더피싱 상세 수집은 커버리지에서 더피싱 하나로 센다',
   assert.equal(platformFamily(registry[1]), '더피싱');
 });
 
-test('플랫폼별 활성 사이트·성공률·출조 수를 합계가 맞게 센다', () => {
+test('플랫폼별 활성 사이트·회차 갱신률·시도 성공률·출조 수를 합계가 맞게 센다', () => {
   const result = collectMetrics(registry, data, NOW);
 
   assert.deepEqual(result.platforms, [
-    { platform: '선상24', sites: 1, success: 1, failed: 0, held: 0, uncollected: 0, trips: 2, successRate: 1 },
-    { platform: '더피싱', sites: 1, success: 0, failed: 1, held: 0, uncollected: 0, trips: 1, successRate: 0 },
-    { platform: '자체', sites: 1, success: 0, failed: 0, held: 0, uncollected: 1, trips: 1, successRate: 0 },
+    { platform: '선상24', sites: 1, success: 1, failed: 0, held: 0, uncollected: 0, trips: 2, refreshRate: 1, attemptSuccessRate: 1 },
+    { platform: '더피싱', sites: 1, success: 0, failed: 1, held: 0, uncollected: 0, trips: 1, refreshRate: 0, attemptSuccessRate: 0 },
+    { platform: '자체', sites: 1, success: 0, failed: 0, held: 0, uncollected: 1, trips: 1, refreshRate: 0, attemptSuccessRate: null },
   ]);
   assert.deepEqual(result.totals,
-    { platform: '합계', sites: 3, success: 1, failed: 1, held: 0, uncollected: 1, trips: 4, successRate: 1 / 3 });
+    { platform: '합계', sites: 3, success: 1, failed: 1, held: 0, uncollected: 1, trips: 4, refreshRate: 1 / 3, attemptSuccessRate: 1 / 2 });
   assert.equal(result.platforms.reduce((sum, row) => sum + row.trips, 0), data.trips.length);
 });
 
@@ -57,8 +57,9 @@ test('마지막 확인 시각을 겹치지 않는 구간으로 나눈다', () =>
 
 test('사람이 읽는 표에 합계와 확인 시각 분포가 나온다', () => {
   const text = formatMetrics(collectMetrics(registry, data, NOW));
-  assert.match(text, /선상24\s+1\s+1\s+0\s+0\s+0\s+100\.0%\s+2/);
-  assert.match(text, /합계\s+3\s+1\s+1\s+0\s+1\s+33\.3%\s+4/);
+  assert.match(text, /회차갱신\s+시도성공/);
+  assert.match(text, /선상24\s+1\s+1\s+0\s+0\s+0\s+100\.0%\s+100\.0%\s+2/);
+  assert.match(text, /합계\s+3\s+1\s+1\s+0\s+1\s+33\.3%\s+50\.0%\s+4/);
   assert.match(text, /15분 이내 1곳/);
   assert.match(text, /미확인 1곳/);
 });
@@ -80,6 +81,16 @@ test('백오프로 건너뛴 곳은 실패와 나눠 센다', () => {
   assert.equal(row.held, 1);
   assert.equal(result.totals.held, 1);
   assert.equal(row.sites, row.success + row.failed + row.held + row.uncollected, '어느 칸에도 안 들어가면 안 됩니다');
+});
+
+test('registry에서 끈 사이트의 묵은 출조는 다음 수집 전이라도 세지 않는다', () => {
+  const result = collectMetrics(
+    [...registry, { id: 'off', adapter: 'generic', enabled: false }],
+    { ...data, trips: [...data.trips, { siteId: 'off' }] },
+    NOW,
+  );
+  assert.equal(result.totals.sites, 3);
+  assert.equal(result.totals.trips, data.trips.length);
 });
 
 // 실패한 사이트는 직전 결과를 그대로 씁니다. 시도 시각으로 세면 며칠 묵은 값이
