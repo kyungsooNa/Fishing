@@ -33,6 +33,9 @@ test('schema: 표기 정규화', () => {
   assert.equal(toStatus('배 점검으로 예약을 받지 않습니다 남은자리 배정비일', 20), STATUS.OFF,
     '정비일은 자리가 남은 채로 옵니다 — 잔여석보다 우선해야 예약가능으로 안 뜹니다');
   assert.equal(toStatus('선박 정비중', 5), STATUS.OFF);
+  assert.equal(toStatus('출조취소', 5), STATUS.OFF);
+  assert.equal(toStatus('★ 쭈꾸미 갑오징어 전문 ★출조 취소자 강영국님(1)', 20), STATUS.OPEN,
+    '취소자 명단은 휴항이 아니라 자리가 났다는 뜻입니다');
   assert.equal(toStatus('장비점검 끝났습니다 예약하기', 7), STATUS.OPEN,
     '한글에는 \\b가 없어서 앞 글자가 붙은 말이 그대로 통과합니다 — 배·선박이 붙은 것만 봅니다');
   assert.equal(toStatus('채비 정비 안내 남은자리 7명', 7), STATUS.OPEN);

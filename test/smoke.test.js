@@ -13,8 +13,8 @@ import { join } from 'node:path';
 import { runAll } from '../core/runner.js';
 import { kstDate } from '../core/when.js';
 
-// 날짜를 오늘 기준으로 만듭니다. 고정 날짜로 두면 그 날이 지나는 순간
-// "지난 날짜 정리"에 걸려 테스트가 저절로 깨집니다.
+// 페이지 날짜와 수집 기준 시각(`NOW`)은 같은 시각에서 셉니다. 둘이 어긋나면 그 차이가
+// 수집 범위를 넘는 순간 "지난 날짜 정리"에 걸려 테스트가 저절로 깨집니다.
 function schedulePage(days) {
   const rows = days.map(({ date, boat, time, species, seats }) => `
     <tr>
@@ -31,8 +31,13 @@ function schedulePage(days) {
   return `<html><body><table>${rows}</table></body></html>`;
 }
 
+// 수집 기준 시각은 고정합니다(장기 일정의 월 계산이 달력에 따라 달라지지 않게). 그러면
+// 페이지 날짜도 **같은 시각**을 기준으로 만들어야 합니다 — 하나는 고정, 하나는 오늘로
+// 두었더니 고정 시각에서 21일이 지나자 모든 출조가 수집 범위 밖으로 잘려 테스트가 깨졌습니다.
+const NOW = new Date('2026-09-03T15:00:00Z');
+
 const label = (offset) => {
-  const [, m, d] = kstDate(offset).split('-');
+  const [, m, d] = kstDate(offset, NOW).split('-');
   return `${Number(m)}월 ${Number(d)}일`;
 };
 
@@ -64,7 +69,7 @@ test('수집 한 바퀴 — 받아오고, 읽고, 합치고, 저장한다', asyn
 
   try {
     const { data, failed } = await runAll({
-      registryPath, dataPath, days: 21, now: new Date('2026-09-03T15:00:00Z'),
+      registryPath, dataPath, days: 21, now: NOW,
     });
 
     assert.deepEqual(failed, [], '실패한 사이트가 없어야 한다');
@@ -72,7 +77,7 @@ test('수집 한 바퀴 — 받아오고, 읽고, 합치고, 저장한다', asyn
 
     const [first, second] = data.trips;
     assert.equal(first.boat, '악바리호');
-    assert.equal(first.date, kstDate(0));
+    assert.equal(first.date, kstDate(0, NOW));
     assert.equal(first.seatsLeft, 16, '21명 정원에 5명 예약');
     assert.equal(first.session, '종일');
     assert.equal(first.price, 100000);
@@ -112,12 +117,12 @@ test('수집 한 바퀴 — 자리가 나면 알림거리로 잡힌다', async (
   await writeFile(dataPath, JSON.stringify({
     generatedAt: '2026-01-01T00:00:00.000Z',
     sites: {},
-    trips: [{ siteId: 'local', boat: '악바리호', date: kstDate(0), departAt: '05:00', status: 'closed', seatsLeft: 0 }],
+    trips: [{ siteId: 'local', boat: '악바리호', date: kstDate(0, NOW), departAt: '05:00', status: 'closed', seatsLeft: 0 }],
   }));
 
   try {
     const { openings } = await runAll({
-      registryPath, dataPath, days: 21, now: new Date('2026-09-03T15:00:00Z'),
+      registryPath, dataPath, days: 21, now: NOW,
     });
     assert.equal(openings.length, 1, '마감이던 배에 자리가 났으면 알린다');
     assert.equal(openings[0].reason, 'reopened');
