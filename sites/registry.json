@@ -412,7 +412,7 @@
       "name": "영목항 청광호",
       "adapter": "thefishing",
       "url": "http://chungkwangho.net/index.php?mid=bk",
-      "port": "영목항",
+      "port": "충남 태안 영목항",
       "phone": "010-4008-1622",
       "source": "detail",
       "windowDays": 7,
@@ -435,7 +435,7 @@
     {
       "id": "chungnamho",
       "name": "충남호",
-      "port": "영목항",
+      "port": "충남 태안 영목항",
       "adapter": "thefishing",
       "url": "http://www.chungnamho.com/index.php?mid=bk",
       "phone": "010-8820-6514",
@@ -534,7 +534,7 @@
     {
       "id": "bj",
       "name": "bj",
-      "port": "영목항",
+      "port": "충남 태안 영목항",
       "adapter": "sunsang24",
       "url": "https://bj.sunsang24.com",
       "mode": "static",
@@ -2175,7 +2175,7 @@
           "price": 90000
         },
         "맥가이버호": {
-          "port": "영목항"
+          "port": "충남 태안 영목항"
         },
         "스마트호": {
           "phone": "010-3356-2973"
@@ -2920,7 +2920,7 @@
     {
       "id": "star",
       "name": "파티호",
-      "port": "영목항",
+      "port": "충남 태안 영목항",
       "adapter": "sunsang24",
       "url": "https://star.sunsang24.com",
       "phone": "010-3334-7777",

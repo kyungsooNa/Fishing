@@ -103,7 +103,7 @@ const ADDRESS_LABEL =
 /** "충남 태안 신진도항" → { region: '충남 태안', name: '신진도항' }. 형식이 다르면 null. */
 export function splitPortKey(key) {
   const parts = String(key ?? '').trim().split(/\s+/);
-  if (parts.length < 3) return null;      // "영목항"처럼 시·군이 없는 옛 열쇠는 건너뜁니다
+  if (parts.length < 3) return null;      // 시·군이 없는 열쇠("영목항" 같은 옛 표기)는 건너뜁니다
   return { region: parts.slice(0, -1).join(' '), name: parts.at(-1) };
 }
 
@@ -177,4 +177,21 @@ export function qualifyPort(name, regions, ports, { requireRegion = false } = {}
   if (regions?.size) return null;
 
   return keys.length === 1 ? keys[0].key : null;
+}
+
+/**
+ * 출조에 붙은 항구를 ports.json 열쇠로 맞춥니다. 선상24 공지의 "○○항 출항"은 사이트에
+ * 항구가 안 적혀 있으면 앞에 지역을 붙일 수 없어 "구매항"·"도두항" 같은 맨 이름으로
+ * 들어왔습니다. 그러면 지도에서 빠지고, 신원이 달라져 다른 사이트의 같은 배와도 안
+ * 합쳐집니다. 이름이 아는 항구 중 **하나뿐일 때만** 열쇠로 올리고(`qualifyPort`),
+ * 지역이 붙어 있으면 그 지역 안에서만 찾습니다. 못 맞추면 받은 값을 그대로 둡니다 —
+ * 좌표 없는 항구는 수집 로그가 따로 알려줍니다.
+ */
+export function canonicalPort(port, ports) {
+  const raw = String(port ?? '').trim();
+  if (!raw || ports?.[raw]) return port;
+  const parts = raw.split(/\s+/);
+  const name = parts.at(-1);
+  const regions = parts.length > 1 ? new Set([parts.slice(0, -1).join(' ')]) : null;
+  return qualifyPort(name, regions, ports, { requireRegion: Boolean(regions) }) ?? port;
 }

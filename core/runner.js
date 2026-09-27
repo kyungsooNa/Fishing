@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 import { mergeDuplicates } from './merge.js';
 import { platformOf } from './platform.js';
 import { kstDate, kstMinutes } from './when.js';
-import { loadPorts, usedPorts } from './ports.js';
+import { canonicalPort, loadPorts, usedPorts } from './ports.js';
 import { closeBrowser, describeError, gapKey } from './fetcher.js';
 import { load, save } from './store.js';
 import { findOpenings } from './diff.js';
@@ -392,8 +392,14 @@ export async function runAll({
 
   // 저장은 registry 순서로. 동시에 받으면 끝나는 순서가 매번 달라지는데, 그대로 쓰면
   // data.json이 실행마다 통째로 뒤집혀 커밋 diff가 쓸모없어집니다.
-  const collected = targets.flatMap((site) => tripsById.get(site.id) ?? []);
-  const collectedFuture = targets.flatMap((site) => futureTripsById.get(site.id) ?? keepFuture(site));
+  // 항구는 합치기 전에 ports.json 열쇠로 맞춥니다 — 신원이라 맨 이름이 섞이면 같은 배가 안 합쳐집니다.
+  const ports = await loadPorts(portsPath);
+  const withPort = (t) => {
+    const port = canonicalPort(t.port, ports);
+    return port === t.port ? t : { ...t, port };
+  };
+  const collected = targets.flatMap((site) => tripsById.get(site.id) ?? []).map(withPort);
+  const collectedFuture = targets.flatMap((site) => futureTripsById.get(site.id) ?? keepFuture(site)).map(withPort);
   const status = Object.fromEntries(
     targets.filter((site) => statusById.has(site.id)).map((site) => [site.id, statusById.get(site.id)]),
   );
@@ -405,7 +411,7 @@ export async function runAll({
   const openings = findOpenings(prev.trips ?? [], trips, failed);
 
   // 지도에 찍을 항구. 좌표가 없는 항구는 지도에서 빠지므로 로그로 알려줍니다.
-  const { places, missing } = usedPorts([...trips, ...futureTrips], await loadPorts(portsPath));
+  const { places, missing } = usedPorts([...trips, ...futureTrips], ports);
   if (missing.length) console.warn(`  좌표 없는 항구: ${missing.join(', ')} — sites/ports.json에 추가하세요`);
 
   // 다음 실행이 이어서 볼 자리. 이번에 안 돈 서버의 커서는 **그대로 물려줍니다** —

@@ -3,7 +3,7 @@
 
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { usedPorts, looksLikePort, portNameKnown } from '../core/ports.js';
+import { usedPorts, looksLikePort, portNameKnown, canonicalPort } from '../core/ports.js';
 
 const ports = {
   '충남 보령 오천항': { lat: 36.4, lng: 126.5 },
@@ -114,4 +114,21 @@ test('항구 이름이 아닌 것은 조용히 지나간다', () => {
   assert.equal(looksLikePort('오천'), false, '"항"으로 끝나지 않습니다');
   assert.equal(looksLikePort(' 홍원항 '), true, '앞뒤 공백은 값이 아닙니다');
   assert.equal(looksLikePort('충남 태안 백사장항'), true, '앞에 지역이 붙어도 항구입니다');
+});
+
+// 선상24 공지의 "구매항 출항"은 사이트에 항구가 없으면 맨 이름으로 들어옵니다.
+// 그대로 두면 지도에서 빠지고 다른 사이트의 같은 배와 신원이 갈립니다(yong·ninedragon).
+test('출조 항구의 맨 이름은 하나뿐인 열쇠로 올리고, 애매하면 그대로 둔다', () => {
+  const known = {
+    '충남 태안 구매항': {}, '제주 제주시 도두항': {},
+    '인천 옹진 진두항': {}, '전남 여수 진두항': {},
+  };
+  assert.equal(canonicalPort('구매항', known), '충남 태안 구매항');
+  assert.equal(canonicalPort('도두항', known), '제주 제주시 도두항');
+  assert.equal(canonicalPort('충남 태안 구매항', known), '충남 태안 구매항', '이미 열쇠면 그대로');
+  assert.equal(canonicalPort('진두항', known), '진두항', '같은 이름이 둘이면 고르지 않는다');
+  assert.equal(canonicalPort('인천 옹진 진두항', known), '인천 옹진 진두항');
+  assert.equal(canonicalPort('충남 태안 도두항', known), '충남 태안 도두항', '지역이 붙어 있으면 다른 지역 것으로 바꾸지 않는다');
+  assert.equal(canonicalPort('어은돌항', known), '어은돌항', '모르는 항구는 그대로 — 좌표 없음 로그가 알려준다');
+  assert.equal(canonicalPort(null, known), null);
 });
