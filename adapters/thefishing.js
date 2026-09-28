@@ -11,7 +11,7 @@
 import * as cheerio from 'cheerio';
 import { fetchHtml } from '../core/fetcher.js';
 import { makeTrip, toDate, tripTimeRange, toTide, toStatus, STATUS } from '../core/schema.js';
-import { matchBoatName, speciesIn } from './_rows.js';
+import { matchBoatName, mentionsBoat, speciesIn } from './_rows.js';
 import { kstDate } from '../core/when.js';
 
 export async function collect(site) {
@@ -419,7 +419,7 @@ function pickBoat(site, heading, text = heading) {
   // 선박명 칸에 "청마_호"처럼 밑줄·공백을 끼워 쓰는 곳이 있어 그 둘은 빼고 맞춥니다 —
   // 안 빼면 등록된 배 5척이 전부 못 맞춰져 선사 이름 한 줄로 뭉칩니다(chungma).
   const bare = (s) => String(s).replace(/[\s_]+/g, '');
-  const hit = known.find((b) => bare(primary).includes(bare(b))) ?? known.find((b) => bare(detail).includes(bare(b)));
+  const hit = known.find((b) => mentionsBoat(bare(primary), bare(b))) ?? known.find((b) => mentionsBoat(bare(detail), bare(b)));
   const half = `${primary} ${detail}`.match(/(오전배|오후배|1부|2부)/);
   if (hit) return half ? `${hit} (${half[1]})` : hit;
   // "상호" 같은 안내문 낱말은 배로 치지 않습니다(matchBoatName).

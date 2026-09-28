@@ -107,18 +107,53 @@ export const BOAT_NAME = /([가-힣A-Za-z0-9]{1,12}호)(?![가-힣])/;
  */
 const NOT_BOAT = /^(상호|기호|신호|구호|암호|번호|[가-힣]{0,6}번호)$/;
 
-/** 본문에서 배 이름으로 볼 만한 첫 "○○호". 안내문 낱말은 건너뜁니다. */
+/**
+ * 숫자만 있는 "○호"가 봉돌·채비 규격인지. 쭈꾸미·갑오징어 공지에는 "봉돌 8~20호",
+ * "추:12~20호", "(봉돌30호~40호사용)"이 늘 붙어 있는데, 이걸 배 이름으로 읽어 discover가
+ * registry에 "20호"·"30호"를 배로 넣었고(secretbus·marinestar·winner), 그 뒤로는 봉돌 안내가
+ * 적힌 출조마다 그 "배"로 맞춰졌습니다. 앞에 규격 낱말이나 범위 기호가 있거나 뒤가 범위로
+ * 이어지면 배가 아닙니다. "진프로 1호"처럼 선단 번호로 쓰는 경우는 그대로 둡니다.
+ */
+const SINKER_WORD = /^(?:봉돌|추|합사|원줄|목줄|쇼크리더)[\d.]+호$/;
+
+function sinkerAt(text, index, length) {
+  const before = text.slice(Math.max(0, index - 12), index);
+  const after = text.slice(index + length, index + length + 3);
+  return /(봉돌|추|합사|원줄|목줄|쇼크리더|[~∼])\s*[:：]?\s*[\d.,~∼\s-]*$/.test(before) || /^\s*[~∼]/.test(after);
+}
+
+/** 본문에서 배 이름으로 볼 만한 첫 "○○호". 안내문 낱말과 봉돌 규격은 건너뜁니다. */
 export function matchBoatName(text) {
-  for (const m of String(text ?? '').matchAll(/([가-힣A-Za-z0-9]{1,12}호)(?![가-힣])/g)) {
-    if (!NOT_BOAT.test(m[1])) return m[1];
+  const src = String(text ?? '');
+  for (const m of src.matchAll(/([가-힣A-Za-z0-9]{1,12}호)(?![가-힣])/g)) {
+    if (NOT_BOAT.test(m[1])) continue;
+    // 띄어 쓰지 않으면 "봉돌30호"처럼 규격 낱말까지 한 덩어리로 잡힙니다.
+    if (SINKER_WORD.test(m[1])) continue;
+    if (/^\d+호$/.test(m[1]) && sinkerAt(src, m.index, m[1].length)) continue;
+    return m[1];
   }
   return null;
+}
+
+/**
+ * 본문에 등록된 배 이름이 적혀 있는지. 숫자만 있는 이름("6호")은 봉돌 규격 자리에 나온
+ * 것을 빼고 봅니다 — 안 빼면 "봉돌 6호"가 적힌 다른 배 출조가 그 배로 맞춰집니다.
+ */
+export function mentionsBoat(text, name) {
+  const src = String(text ?? '');
+  if (!/^\d+호$/.test(name)) return src.includes(name);
+  for (let at = src.indexOf(name); at >= 0; at = src.indexOf(name, at + 1)) {
+    // "16호" 안의 "6호"는 다른 숫자입니다.
+    if (/\d/.test(src[at - 1] ?? '')) continue;
+    if (!sinkerAt(src, at, name.length)) return true;
+  }
+  return false;
 }
 
 function pickBoat(site, cells, text) {
   // "마성호"가 "뉴마성호" 안에서 먼저 잡히지 않도록 긴 이름부터 봅니다.
   const known = Object.keys(site.boats ?? {}).sort((a, b) => b.length - a.length);
-  const hit = known.find((b) => text.includes(b));
+  const hit = known.find((b) => mentionsBoat(text, b));
   if (hit) return hit;
   // registry에 안 적힌 배는 "○○호" 표기를 그대로 씁니다. 한 사이트에 배가 여럿이어도 잡힙니다.
   return matchBoatName(`${cells.join(' ')} ${text}`) ?? site.name ?? null;
