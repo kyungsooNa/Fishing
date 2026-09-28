@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { monthUrls, parseFleet, parseSimpleDay } from '../adapters/sunsang24.js';
 import { parseIndex } from '../adapters/thefishing.js';
-import { matchBoatName, speciesIn } from '../adapters/_rows.js';
+import { matchBoatName, mentionsBoat, speciesIn } from '../adapters/_rows.js';
 import { parseRows } from '../adapters/_rows.js';
 import { pageUrls } from '../adapters/generic.js';
 import { platformOf, needsBrowser } from '../core/platform.js';
@@ -249,6 +249,21 @@ test('안내문의 "상호"를 배 이름으로 읽지 않는다', () => {
   assert.equal(matchBoatName('계좌번호 123-456 문의번호 010-0000-0000'), null);
   assert.equal(matchBoatName('상호 : 바다수산 / 청룡호 운항시간 05:00'), '청룡호');
   assert.equal(matchBoatName('일출호 예약하기'), '일출호');
+
+  // 봉돌·채비 규격은 배가 아닙니다. 이걸 배로 읽어 registry에 "20호"·"30호"가 배로 들어갔습니다.
+  assert.equal(matchBoatName('전국 시크릿 블랙 예약하기 쭈꾸미 봉돌 20호'), null);
+  assert.equal(matchBoatName('쭈꾸미 05:00출항 - 봉돌 8~20호 사용'), null);
+  assert.equal(matchBoatName('추:12~20호 채비:쭈꾸미채비'), null);
+  assert.equal(matchBoatName('외연도 문어 탐사 출조 （봉돌30호~40호사용)'), null);
+  assert.equal(matchBoatName('합사1호/봉돌16~40호'), null);
+  assert.equal(matchBoatName('봉돌 20호 필수 / 마린스타3호 예약하기'), '마린스타3호', '규격을 건너뛰고 배를 찾는다');
+  assert.equal(matchBoatName('진프로 1호 바로예약'), '1호', '선단 번호는 그대로 배입니다');
+  assert.equal(matchBoatName('1호(10톤)또는2,3호(5톤)'), '1호');
+
+  assert.equal(mentionsBoat('스페셜드림 6호 바로예약', '6호'), true);
+  assert.equal(mentionsBoat('스페셜드림 5호 봉돌 6호 사용', '6호'), false, '봉돌 규격 자리의 6호는 그 배가 아니다');
+  assert.equal(mentionsBoat('스페셜드림 16호', '6호'), false, '16호 안의 6호는 다른 숫자');
+  assert.equal(mentionsBoat('봉돌 20호 청룡호', '청룡호'), true);
 });
 
 test('더피싱: 메인 요약표를 읽는다 — 표기 사이에 공백이 있어도', () => {
