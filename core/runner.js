@@ -12,6 +12,9 @@ import { makeTrip, STATUS } from './schema.js';
 
 export const REGISTRY_PATH = 'sites/registry.json';
 const PLATFORM_TIMEOUT_LIMIT = 3;
+// 차단의 첫 단계는 timeout이 아니라 **200으로 오되 출조가 0건인 페이지**입니다(아래 주석).
+// 한두 곳은 원래 그렇게 오는 선사가 있어서(늘 2곳쯤) timeout보다 넉넉히 셉니다.
+const PLATFORM_FAILURE_LIMIT = 5;
 
 /**
  * 한 실행에 **이만큼만** 보고 다음 실행에서 이어서 보는 서버. `serverOf`가 내는 열쇠입니다.
@@ -52,7 +55,23 @@ const PLATFORM_TIMEOUT_LIMIT = 3;
  */
 // 선상24 목록형은 가까운 21일에 걸친 1~2개 월과 먼 일정 한 달을 받습니다. 한 사이트당
 // 최대 3요청이라 관측된 차단 하한(27요청) 안에 머물도록 한 실행은 8곳으로 제한합니다.
-export const ROTATE_PER_RUN = { 'sunsang24.com': 8, 'platform:thefishing': 25 };
+//
+// ## 더피싱 25곳 상한은 거뒀습니다 (2026-09-28)
+//
+// 더피싱은 선상24와 막히는 모양이 다릅니다. 09-18~28 data.json을 다시 재보면 한 실행은
+// **처음부터 막히거나(첫 3곳 timeout) 끝까지 되거나** 둘 중 하나입니다 — 되는 러너에서는
+// 109곳 전부가 성공했습니다(09-18 14:25 107곳, 09-20 01:01 104곳, 09-20 13:49 104곳 —
+// 마지막은 먼 일정까지 한 곳당 4요청). 러너 IP가 매번 바뀌니 막힌 IP를 받느냐의 문제입니다.
+// 중간에 막힌 적은 한 번(위의 31/109 — 31곳 뒤로 연결 거부)뿐이고, 그 모양은 지금 회로가
+// 3곳째에서 끊습니다.
+// 그런데 25곳 상한은 **되는 러너를 받은 드문 실행**(09-24~28에 20번 중 4번)에서도 25곳만
+// 보고 멈춰서, 한 바퀴에 되는 실행 4~5번 — 나흘이 걸렸습니다. 그래서 되는 실행에서는 전부
+// 봅니다. 막힌 실행은 3곳 timeout(`PLATFORM_TIMEOUT_LIMIT`)이나 출조 0건 페이지 연속
+// (`PLATFORM_FAILURE_LIMIT`)에서 회로가 끊고, 커서가 그 자리에서 멈춰 다음 실행이 이어 봅니다.
+// 상한(120)은 registry가 불어날 때 한 실행이 무한정 길어지지 않게 하는 안전판입니다 —
+// 한 곳에 4요청 × 3초라 108곳이면 약 22분입니다. 순서를 돌리는 것(커서)은 그대로 둡니다:
+// 중간에 막혀도 매번 앞쪽만 갱신되지 않도록.
+export const ROTATE_PER_RUN = { 'sunsang24.com': 8, 'platform:thefishing': 120 };
 
 /** `after`가 속한 달 다음부터 한 달짜리 수집 창 하나를 고릅니다. */
 export function nextMonthWindow(saved, { minOffset, maxOffset, after, now = new Date() }) {
@@ -76,10 +95,12 @@ export function nextMonthWindow(saved, { minOffset, maxOffset, after, now = new 
  * 처음으로 돌아옵니다 — 그래야 마지막 몇 곳이 영영 차례를 못 받는 일이 없습니다.
  */
 export function rotationPlan(group, { limit = 0, cursor = null } = {}) {
-  if (!(limit > 0) || group.length <= limit) return { run: group, hold: [], cursor: null };
+  if (!(limit > 0) || !group.length) return { run: group, hold: [], cursor: null };
+  // 상한이 무리보다 커도 커서 다음부터 셉니다. 중간에 회로가 끊긴 실행 다음에 또 맨 앞부터
+  // 보면, 늘 끊기는 자리 뒤쪽 선사는 영영 차례를 못 받습니다.
   const at = group.findIndex((s) => s.id === cursor);
   const start = at < 0 ? 0 : (at + 1) % group.length;
-  const run = Array.from({ length: limit }, (_, i) => group[(start + i) % group.length]);
+  const run = Array.from({ length: Math.min(limit, group.length) }, (_, i) => group[(start + i) % group.length]);
   const taken = new Set(run.map((s) => s.id));
   return { run, hold: group.filter((s) => !taken.has(s.id)), cursor: run[run.length - 1].id };
 }
@@ -123,6 +144,8 @@ export async function runAll({
   onProgress = null,
   collectFn = collectSite,
   rotatePerRun = ROTATE_PER_RUN,
+  // 해외 러너(Actions)인가. `domesticOnly` 선사는 여기서 요청하지 않습니다.
+  overseas = process.env.GITHUB_ACTIONS === 'true',
 } = {}) {
   const registry = await loadRegistry(registryPath);
   const targets = registry.filter((s) => (only ? s.id === only : s.enabled !== false));
@@ -191,7 +214,7 @@ export async function runAll({
   // 더피싱 공통 서버가 잠시 막혔을 때 100곳 넘게 같은 timeout을 반복하지 않습니다.
   // 실제로 요청하지 않은 곳은 실패가 아니라 보류이며, 다음 수집에서는 백오프 없이
   // 다시 시험합니다. 직전 행은 그대로 둬 화면과 취소석 비교가 갑자기 비지 않게 합니다.
-  const holdForPlatformTimeout = (site) => {
+  const holdForPlatformTimeout = (site, reason = `${PLATFORM_TIMEOUT_LIMIT}곳 연속 timeout`) => {
     const at = new Date().toISOString();
     const prevStatus = prev.sites?.[site.id];
     const kept = keepPrevious(site);
@@ -201,13 +224,13 @@ export async function runAll({
     statusById.set(site.id, {
       ok: false,
       at,
-      error: `더피싱에서 ${PLATFORM_TIMEOUT_LIMIT}곳 연속 timeout — 이번 수집 보류`,
+      error: `더피싱에서 ${reason} — 이번 수집 보류`,
       count: kept.length,
       keptFrom: prevStatus?.keptFrom ?? prevStatus?.at ?? prev.generatedAt ?? null,
       skipped: 'platform-timeout',
       ...meta(site),
     });
-    console.warn(`  ${site.id.padEnd(14)} 건너뜀: 더피싱 연속 timeout으로 이번 수집 보류`);
+    console.warn(`  ${site.id.padEnd(14)} 건너뜀: 더피싱 ${reason}으로 이번 수집 보류`);
     completed += 1;
     progress(site.id);
   };
@@ -238,6 +261,28 @@ export async function runAll({
   const collectOne = async (site) => {
     const at = new Date().toISOString();
     const prevStatus = prev.sites?.[site.id];
+    // 국내에서만 열리는 선사입니다(friendho: 러너에서 한 번도 못 받았고 국내에서는 열립니다).
+    // 러너에서 매번 30초 timeout을 기다리고 실패로 세면, 값은 로컬 모니터가 채우는데도
+    // 현황판에는 "실패"로 뜹니다. 요청하지 않은 것이니 보류입니다. `only`는 사람이 누른
+    // 것이라 그대로 시도합니다.
+    if (overseas && site.domesticOnly && !only) {
+      const kept = keepPrevious(site);
+      failed.add(site.id);
+      tripsById.set(site.id, kept);
+      futureTripsById.set(site.id, keepFuture(site));
+      statusById.set(site.id, {
+        ok: false,
+        at,
+        error: '국내에서만 열리는 선사라 해외 러너에서는 요청하지 않습니다 — 로컬 모니터가 수집합니다',
+        count: kept.length,
+        keptFrom: prevStatus?.keptFrom ?? prevStatus?.at ?? prev.generatedAt ?? null,
+        skipped: 'domestic-only',
+        ...meta(site),
+      });
+      completed += 1;
+      progress(site.id);
+      return 'held';
+    }
     if (!only && inTimeoutBackoff(prevStatus, timeoutBackoffMs, now)) {
       failed.add(site.id);
       const kept = keepPrevious(site);
@@ -370,25 +415,30 @@ export async function runAll({
       console.log(`  ${server}: ${plan.run.length}곳만 봅니다 (${plan.run[0].id} 부터)`
         + ` — 나머지 ${plan.hold.length}곳은 다음 차례`);
       for (const site of plan.hold) holdForRotation(site, server, plan.run.length);
-      nextCursors.set(server, plan.cursor);
     }
+    if (plan.cursor) nextCursors.set(server, plan.cursor);
 
     let consecutiveTimeouts = 0;
+    let consecutiveFailures = 0;
     for (let index = 0; index < plan.run.length; index++) {
       const outcome = await collectOne(plan.run[index]);
       if (outcome === 'timeout') consecutiveTimeouts += 1;
       else if (outcome !== 'held') consecutiveTimeouts = 0;
+      if (outcome === 'timeout' || outcome === 'failed') consecutiveFailures += 1;
+      else if (outcome !== 'held') consecutiveFailures = 0;
 
-      const tripCircuit = !only && plan.run[index].adapter === 'thefishing' &&
-        consecutiveTimeouts >= PLATFORM_TIMEOUT_LIMIT;
+      const reason = consecutiveTimeouts >= PLATFORM_TIMEOUT_LIMIT
+        ? `${PLATFORM_TIMEOUT_LIMIT}곳 연속 timeout`
+        : consecutiveFailures >= PLATFORM_FAILURE_LIMIT ? `${PLATFORM_FAILURE_LIMIT}곳 연속 실패` : null;
+      const tripCircuit = !only && plan.run[index].adapter === 'thefishing' && reason;
       if (!tripCircuit) continue;
 
-      for (const site of plan.run.slice(index + 1)) holdForPlatformTimeout(site);
+      for (const site of plan.run.slice(index + 1)) holdForPlatformTimeout(site, reason);
       // 커서는 **실제로 물어본 곳**까지만 옮깁니다. 이번 차례 25곳을 다 본 것처럼 넘기면
       // 회로가 막아 요청도 안 한 22곳이 한 바퀴(약 5실행)를 통째로 건너뜁니다. 실제로
       // 2026-09-24~28 수집 20번 중 16번이 "3곳 timeout + 22곳 보류"였는데 커서는 매번
       // 25칸씩 나아가, 더피싱 선사의 화면 값이 중앙값 42시간·최악 305시간 묵었습니다.
-      if (plan.hold.length) nextCursors.set(server, plan.run[index].id);
+      if (plan.cursor) nextCursors.set(server, plan.run[index].id);
       break;
     }
   });

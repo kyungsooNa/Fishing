@@ -541,7 +541,8 @@ test('회전 기본값은 실제 수집 그룹 열쇠에 걸린다', async () =>
   assert.equal(keyOf('nara'), 'sunsang24.com');
 
   // 더피싱은 자체 도메인도 공통 백엔드라 serverOf가 URL 대신 이 고정 열쇠로 묶습니다.
-  assert.equal(ROTATE_PER_RUN['platform:thefishing'], 25, '더피싱도 한 실행에 25곳입니다');
+  assert.equal(ROTATE_PER_RUN['platform:thefishing'], 120,
+    '더피싱은 되는 러너에서 전부 봅니다 — 상한은 registry가 불어날 때의 안전판입니다');
   assert.equal(ROTATE_PER_RUN[keyOf('plus')], undefined,
     'URL 도메인 열쇠에 걸면 실제 platform 그룹에는 적용되지 않습니다');
   assert.equal(ROTATE_PER_RUN[keyOf('nara')], 8, '선상24는 월별 최대 3요청이라 8곳입니다');
@@ -582,9 +583,9 @@ test('더피싱 회로가 끊기면 커서는 실제로 물어본 곳까지만 �
     '다음 실행은 보류했던 곳부터 봅니다');
 });
 
-test('기본 회전은 자체 도메인 더피싱도 합쳐 25곳만 요청한다', async () => {
-  const sites = Array.from({ length: 30 }, (_, i) => ({
-    id: `fish${String(i).padStart(2, '0')}`,
+test('기본 회전은 자체 도메인 더피싱도 합쳐 상한까지만 요청한다', async () => {
+  const sites = Array.from({ length: 125 }, (_, i) => ({
+    id: `fish${String(i).padStart(3, '0')}`,
     name: `더피싱 ${i}`,
     adapter: 'thefishing', source: 'detail',
     url: `https://custom${i}.example.com/index.php?mid=bk`,
@@ -601,7 +602,74 @@ test('기본 회전은 자체 도메인 더피싱도 합쳐 25곳만 요청한�
     },
   });
 
-  assert.equal(calls.length, 25);
-  assert.equal(data.rotation['platform:thefishing'], 'fish24');
+  assert.equal(calls.length, 120, 'URL 도메인이 달라도 한 무리로 세야 상한이 걸립니다');
+  assert.equal(data.rotation['platform:thefishing'], 'fish119');
   assert.equal(Object.values(data.sites).filter((site) => site.skipped === 'rotation').length, 5);
+});
+
+// 상한이 무리보다 커도 차례는 돌립니다. 중간에 끊긴 실행 다음에 또 맨 앞부터 보면
+// 끊기는 자리 뒤쪽은 영영 못 봅니다.
+test('상한이 무리보다 커도 다음 실행은 커서 다음부터 본다', async () => {
+  const sites = ['a', 'b', 'c', 'd'].map((id) => ({ ...mockSite, id, url: `https://${id}.shared.example` }));
+  const { registryPath, dataPath } = await fixture(sites, {
+    generatedAt: null, rotation: { 'shared.example': 'b' }, sites: {}, trips: [],
+  });
+  const calls = [];
+  const { data } = await runAll({
+    registryPath, dataPath, days: 21, rotatePerRun: { 'shared.example': 10 },
+    collectFn: async (site) => { calls.push(site.id); return []; },
+  });
+  assert.deepEqual(calls, ['c', 'd', 'a', 'b']);
+  assert.equal(data.rotation['shared.example'], 'b');
+  assert.equal(Object.values(data.sites).filter((s) => s.skipped === 'rotation').length, 0);
+});
+
+// 차단의 첫 단계는 timeout이 아니라 200으로 오되 출조가 0건인 페이지입니다(2026-09-19
+// 109곳 전부). timeout 회로로는 이걸 못 잡아 22분을 헛돌았습니다.
+test('더피싱이 5곳 연속 출조 0건이면 남은 곳은 보류한다', async () => {
+  const sites = Array.from({ length: 8 }, (_, i) => ({
+    id: `fish${i}`, name: `더피싱 ${i}`, adapter: 'thefishing', source: 'detail',
+    url: `https://boat${i}.thefishing.kr/index.php?mid=bk`,
+  }));
+  const { registryPath, dataPath } = await fixture(sites);
+  const calls = [];
+  const { data } = await runAll({
+    registryPath, dataPath, days: 21, timeoutBackoffHours: 0,
+    collectFn: async (site) => {
+      calls.push(site.id);
+      throw new Error('예약 페이지에서 출조를 못 찾았습니다');
+    },
+  });
+  assert.equal(calls.length, 5);
+  assert.equal(data.sites.fish5.skipped, 'platform-timeout');
+  assert.match(data.sites.fish5.error, /5곳 연속 실패/);
+  assert.equal(data.rotation['platform:thefishing'], 'fish4', '다음 실행은 보류한 곳부터');
+});
+
+// 해외 러너에서 한 번도 못 받은 선사(friendho)를 매번 30초 기다려 "실패"로 세면, 로컬
+// 모니터가 값을 채우는데도 현황판에는 실패로 뜹니다. 러너에서는 요청하지 않고 보류합니다.
+test('국내 전용 선사는 해외 러너에서 요청하지 않고 직전 결과를 남긴다', async () => {
+  const site = { ...mockSite, id: 'home', domesticOnly: true };
+  const prevData = {
+    generatedAt: '2026-09-09T00:00:00.000Z',
+    sites: { home: { ok: true, at: '2026-09-09T00:00:00.000Z', count: 1 } },
+    trips: [{ siteId: 'home', siteName: '예시', boat: '예시호', date: '2026-09-11', status: 'open', seatsLeft: 3 }],
+  };
+  const { registryPath, dataPath } = await fixture([site], prevData);
+  const calls = [];
+  const collectFn = async (s) => { calls.push(s.id); return []; };
+  const now = new Date('2026-09-10T00:00:00.000Z');
+
+  const abroad = await runAll({ registryPath, dataPath, days: 21, now, overseas: true, collectFn, dryRun: true });
+  assert.deepEqual(calls, [], '해외 러너에서는 요청하지 않습니다');
+  assert.equal(abroad.data.sites.home.skipped, 'domestic-only', '실패가 아니라 보류입니다');
+  assert.equal(abroad.data.sites.home.keptFrom, '2026-09-09T00:00:00.000Z');
+  assert.equal(abroad.data.trips.length, 1, '직전 출조는 그대로 남깁니다');
+
+  await runAll({ registryPath, dataPath, days: 21, now, overseas: false, collectFn, dryRun: true });
+  assert.deepEqual(calls, ['home'], '국내(로컬)에서는 그대로 받습니다');
+
+  calls.length = 0;
+  await runAll({ registryPath, dataPath, days: 21, now, overseas: true, collectFn, dryRun: true, only: 'home' });
+  assert.deepEqual(calls, ['home'], '사람이 누른 선사 최신화는 그대로 시도합니다');
 });

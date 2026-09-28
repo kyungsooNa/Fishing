@@ -358,6 +358,7 @@
       "url": "http://www.friendho.com/",
       "port": "충남 보령 오천항",
       "mode": "auto",
+      "domesticOnly": true,
       "enabled": true,
       "boats": {
         "팀프랜드호": {
