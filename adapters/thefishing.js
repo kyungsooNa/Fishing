@@ -416,7 +416,10 @@ function pickBoat(site, heading, text = heading) {
   const known = Object.keys(site.boats ?? {});
   // 선박명 칸을 먼저 믿되, 여행사형 예약판처럼 그 칸에 `갈치`만 쓰고 실제 배는
   // `출조선사: 스텔론호`로 공지에 적는 곳은 행 본문까지 봅니다.
-  const hit = known.find((b) => primary.includes(b)) ?? known.find((b) => detail.includes(b));
+  // 선박명 칸에 "청마_호"처럼 밑줄·공백을 끼워 쓰는 곳이 있어 그 둘은 빼고 맞춥니다 —
+  // 안 빼면 등록된 배 5척이 전부 못 맞춰져 선사 이름 한 줄로 뭉칩니다(chungma).
+  const bare = (s) => String(s).replace(/[\s_]+/g, '');
+  const hit = known.find((b) => bare(primary).includes(bare(b))) ?? known.find((b) => bare(detail).includes(bare(b)));
   const half = `${primary} ${detail}`.match(/(오전배|오후배|1부|2부)/);
   if (hit) return half ? `${hit} (${half[1]})` : hit;
   // "상호" 같은 안내문 낱말은 배로 치지 않습니다(matchBoatName).

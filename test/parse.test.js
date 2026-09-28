@@ -491,6 +491,18 @@ test('thefishing: 선박명 칸이 어종뿐이면 출조 안내의 실제 배 �
   assert.equal(row.species, '갈치');
 });
 
+test('thefishing: 선박명 칸의 밑줄·공백은 빼고 등록된 배와 맞춘다', () => {
+  const html = `<table>
+    <tr><td>2026년 09월 28일, 월요일, 9물</td></tr>
+    <tr><th>선박명</th><th>예약현황</th><th>남은자리</th></tr>
+    <tr><td>청마_호</td><td>예약하기 낚시종류 쭈꾸미</td><td>9명</td></tr>
+    <tr><td>제우스 호</td><td>예약하기 낚시종류 쭈꾸미</td><td>5명</td></tr>
+  </table>`;
+  const site = { id: 'chungma', name: '영종도 청마피싱', boats: { 청마호: {}, 제우스호: {} } };
+  const rows = parseDetail(site, html);
+  assert.deepEqual(rows.map((r) => r.boat), ['청마호', '제우스호'], '선사 이름 한 줄로 뭉치지 않는다');
+});
+
 test('thefishing: detail — 입금 명단의 좌석번호를 세서 잔여석을 구한다', () => {
   const site = { id: 'monster', name: '몬스터', seatsTotal: 20, url: 'https://x?mid=bk' };
   const [trip] = parseDetail(site, fx.THEFISHING_DETAIL, 'https://x');
