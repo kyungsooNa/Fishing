@@ -40,8 +40,10 @@ export function effectiveMode(site) {
  * 브라우저로 넘어갑니다. 그때 브라우저가 없으면 그 사이트는 그냥 실패합니다.
  * 그래서 auto까지 세고, 전부 static이 되는 날 설치 단계가 저절로 건너뛰어집니다.
  */
-export function needsBrowser(sites) {
+export function needsBrowser(sites, { overseas = false } = {}) {
   return sites
     .filter((s) => s.enabled !== false)
+    // 해외 러너가 건너뛰는 선사(`domesticOnly`) 때문에 브라우저를 받을 이유는 없습니다.
+    .filter((s) => !(overseas && s.domesticOnly))
     .some((s) => ['js', 'auto'].includes(effectiveMode(s)));
 }

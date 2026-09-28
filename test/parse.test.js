@@ -1182,6 +1182,12 @@ test('needsBrowser: mode에 따라 브라우저 설치가 필요한지 가른다
   assert.equal(needsBrowser([{ adapter: 'sunsang24', path: 'schedule_fleet_simple_top' }]), true, '달력형 기본은 js');
 });
 
+test('needsBrowser: 해외 러너는 국내 전용 선사 때문에 브라우저를 받지 않는다', () => {
+  const sites = [{ adapter: 'generic', domesticOnly: true }, { adapter: 'thefishing' }];
+  assert.equal(needsBrowser(sites, { overseas: true }), false);
+  assert.equal(needsBrowser(sites), true, '국내(로컬)에서는 그 선사도 받으므로 셉니다');
+});
+
 test('needsBrowser: 꺼둔 사이트는 세지 않는다', () => {
   assert.equal(needsBrowser([{ adapter: 'generic', enabled: false }, { adapter: 'thefishing' }]), false);
 });
