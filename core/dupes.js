@@ -223,3 +223,50 @@ export function explainPair(trips, idA, idB) {
     diffs,
   };
 }
+
+/**
+ * 전화번호가 같은 켜진 사이트들. 위의 `findDuplicates`는 **배 이름**이 겹쳐야 보는데,
+ * 같은 선사를 자체 도메인과 더피싱 서브도메인으로 두 번 등록하면 배 이름이 달라지는 일이
+ * 흔합니다("대천한프로호"/"한프로호", 이름을 못 읽어 id가 그대로 뜬 "daejin"). 그런 쌍은
+ * 여기서만 보입니다. 같은 출조점을 쓰는 다른 배(무창포 ssfish·healing)도 걸리므로 끄지는
+ * 않고 사람에게 넘깁니다 — 날짜가 많이 겹치고 잔여석까지 같으면 같은 일정표입니다.
+ */
+export function sharedPhones(sites, trips) {
+  const digits = (p) => String(p ?? '').replace(/\D/g, '');
+  const byPhone = new Map();
+  for (const site of sites) {
+    if (site.enabled === false || !digits(site.phone)) continue;
+    const key = digits(site.phone);
+    if (!byPhone.has(key)) byPhone.set(key, []);
+    byPhone.get(key).push(site);
+  }
+
+  // 날짜별로 잔여석/정원을 모아 비교합니다 — 배 이름이 달라도 같은 일정표면 같습니다.
+  const days = new Map();
+  for (const t of trips) {
+    if (!t?.siteId || !t.date) continue;
+    if (!days.has(t.siteId)) days.set(t.siteId, new Map());
+    const d = days.get(t.siteId);
+    d.set(t.date, [...(d.get(t.date) ?? []), `${t.seatsLeft ?? '-'}/${t.seatsTotal ?? '-'}`]);
+  }
+  const dayValue = (id, date) => (days.get(id)?.get(date) ?? []).sort().join(',');
+
+  const out = [];
+  for (const [phone, group] of byPhone) {
+    if (group.length < 2) continue;
+    for (let i = 0; i < group.length; i++) {
+      for (let j = i + 1; j < group.length; j++) {
+        const [a, b] = [group[i], group[j]];
+        const dates = [...(days.get(a.id)?.keys() ?? [])].filter((d) => days.get(b.id)?.has(d));
+        out.push({
+          phone: group[0].phone ?? phone,
+          sites: [a.id, b.id],
+          ports: [a.port ?? null, b.port ?? null],
+          dates: dates.length,
+          sameDays: dates.filter((d) => dayValue(a.id, d) === dayValue(b.id, d)).length,
+        });
+      }
+    }
+  }
+  return out.sort((x, y) => y.sameDays - x.sameDays || y.dates - x.dates || x.sites[0].localeCompare(y.sites[0]));
+}
