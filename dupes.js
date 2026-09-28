@@ -12,7 +12,7 @@
 
 import { readFile, writeFile } from 'node:fs/promises';
 import { load, DATA_PATH } from './core/store.js';
-import { findDuplicates, disableInRegistry, activeTrips, explainPair } from './core/dupes.js';
+import { findDuplicates, disableInRegistry, activeTrips, explainPair, sharedPhones } from './core/dupes.js';
 import { loadRegistry, REGISTRY_PATH } from './core/runner.js';
 
 const flags = process.argv.slice(2).filter((a) => a.startsWith('--'));
@@ -42,7 +42,8 @@ if (flags.includes('--why')) {
 
 // 이미 꺼둔 곳은 뺍니다. 끄고 나서 수집이 아직 안 돌면 결과에 그대로 남아 있어서,
 // 그냥 두면 이미 끈 곳을 또 끄라고 합니다.
-const { trips, skipped } = activeTrips(data.trips, await loadRegistry());
+const registry = await loadRegistry();
+const { trips, skipped } = activeTrips(data.trips, registry);
 
 const { groups, reviews } = findDuplicates(trips);
 console.log(`${dataPath} — 출조 ${trips.length}건 / 사이트 ${Object.keys(data.sites ?? {}).length}곳`);
@@ -79,6 +80,20 @@ if (reviews.length) {
     console.log(`\n  … 외 ${reviews.length - shown.length}쌍 (겹침이 적어 동명이배로 보입니다. --all 로 전부)`);
   }
   console.log('\n  peek으로 양쪽 페이지를 대조해서 같은 배인지 보세요 — Actions 탭 → peek → Run workflow.');
+}
+
+// 배 이름이 달라 위에서 안 걸리는 중복. 자체 도메인과 더피싱 서브도메인으로 두 번
+// 등록된 선사가 이렇게 숨어 있었습니다(daejin/daejinmcp, hanpro2/hanpro).
+const phones = sharedPhones(registry, trips);
+if (phones.length) {
+  console.log('\n■ 전화번호가 같은 켜진 사이트 — 배 이름이 달라 위에서 안 잡히는 중복일 수 있습니다');
+  for (const p of phones) {
+    const port = p.ports[0] === p.ports[1] ? p.ports[0] ?? '항구 없음' : p.ports.map((x) => x ?? '항구 없음').join(' / ');
+    console.log(`\n  ${p.sites.join(' / ')} — ${p.phone} · ${port}`);
+    console.log(`    같은 날짜 ${p.dates}일 중 잔여석·정원까지 같은 날 ${p.sameDays}일`);
+  }
+  console.log('\n  같은 날이 많으면 같은 일정표입니다. 더 최근에 수집된 쪽을 남기고 registry에서 끄세요.');
+  console.log('  같은 출조점을 쓰는 다른 배일 수도 있어 자동으로 끄지는 않습니다.');
 }
 
 if (flags.includes('--disable')) {
@@ -121,6 +136,12 @@ function why(a, b) {
   console.log(`  겹치는 자리 ${r.slots}건 · ${a}에만 ${r.onlyA}건 · ${b}에만 ${r.onlyB}건`);
   console.log(`  겹치는 배: ${r.boats.join(', ')}`);
 
+  if (!r.slots) {
+    // 겹치는 자리가 없는데 "값이 전부 같다"고 하면 같은 일정표로 읽힙니다. 배 이름이 다르면
+    // 자리가 안 겹치니 그 경우일 수 있다고 알려줍니다.
+    console.log('\n  겹치는 자리가 없어 비교할 값이 없습니다 — 배 이름이 다르면 이렇게 나옵니다.');
+    return;
+  }
   if (!total) {
     console.log('\n  겹치는 자리의 값이 전부 같습니다 — 같은 일정표입니다.');
     return;

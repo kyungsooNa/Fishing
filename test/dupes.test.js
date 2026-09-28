@@ -3,7 +3,7 @@
 
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { findDuplicates, disableInRegistry, activeTrips, explainPair } from '../core/dupes.js';
+import { findDuplicates, disableInRegistry, activeTrips, explainPair, sharedPhones } from '../core/dupes.js';
 
 const trip = (siteId, boat, date, extra = {}) => ({
   siteId, boat, date, departAt: '05:00', seatsLeft: 3, seatsTotal: 20, species: '주꾸미', ...extra,
@@ -205,4 +205,29 @@ test('겹치는 자리의 값이 전부 같으면 다른 값이 하나도 없다
 test('수집 결과에 없는 id를 물으면 알려준다', () => {
   const rows = [trip('a', '가호', '2026-09-07')];
   assert.throws(() => explainPair(rows, 'a', '없음'), /없습니다/);
+});
+
+// 같은 선사를 자체 도메인과 더피싱 서브도메인으로 두 번 등록하면 배 이름이 달라
+// findDuplicates가 못 봅니다(hanpro "대천한프로호" / hanpro2 "한프로호"). 전화로 찾습니다.
+test('전화번호가 같은 켜진 사이트를 날짜별 잔여석과 함께 짝지어 준다', () => {
+  const sites = [
+    { id: 'hanpro', phone: '010-3530-7103', port: '충남 보령 대천항' },
+    { id: 'hanpro2', phone: '01035307103', port: '충남 보령 대천항' },
+    { id: 'off', phone: '010-3530-7103', enabled: false },
+    { id: 'other', phone: '010-0000-0000' },
+    { id: 'nophone' },
+  ];
+  const trips = [
+    { siteId: 'hanpro', boat: '대천한프로호', date: '2026-10-01', seatsLeft: 21, seatsTotal: 21 },
+    { siteId: 'hanpro2', boat: '한프로호', date: '2026-10-01', seatsLeft: 21, seatsTotal: 21 },
+    { siteId: 'hanpro', boat: '대천한프로호', date: '2026-10-02', seatsLeft: 0, seatsTotal: null },
+    { siteId: 'hanpro2', boat: '한프로호', date: '2026-10-02', seatsLeft: 5, seatsTotal: 21 },
+    { siteId: 'hanpro', boat: '대천한프로호', date: '2026-10-03', seatsLeft: 3, seatsTotal: 21 },
+  ];
+  assert.equal(findDuplicates(trips).reviews.length, 0, '배 이름이 달라 이름으로는 안 걸립니다');
+  const pairs = sharedPhones(sites, trips);
+  assert.equal(pairs.length, 1, '꺼진 곳·전화 없는 곳은 빼고, 형식이 달라도 숫자로 맞춘다');
+  assert.deepEqual(pairs[0].sites, ['hanpro', 'hanpro2']);
+  assert.equal(pairs[0].dates, 2);
+  assert.equal(pairs[0].sameDays, 1);
 });
