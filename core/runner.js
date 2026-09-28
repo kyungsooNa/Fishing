@@ -384,6 +384,11 @@ export async function runAll({
       if (!tripCircuit) continue;
 
       for (const site of plan.run.slice(index + 1)) holdForPlatformTimeout(site);
+      // 커서는 **실제로 물어본 곳**까지만 옮깁니다. 이번 차례 25곳을 다 본 것처럼 넘기면
+      // 회로가 막아 요청도 안 한 22곳이 한 바퀴(약 5실행)를 통째로 건너뜁니다. 실제로
+      // 2026-09-24~28 수집 20번 중 16번이 "3곳 timeout + 22곳 보류"였는데 커서는 매번
+      // 25칸씩 나아가, 더피싱 선사의 화면 값이 중앙값 42시간·최악 305시간 묵었습니다.
+      if (plan.hold.length) nextCursors.set(server, plan.run[index].id);
       break;
     }
   });
