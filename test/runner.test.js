@@ -547,6 +547,41 @@ test('회전 기본값은 실제 수집 그룹 열쇠에 걸린다', async () =>
   assert.equal(ROTATE_PER_RUN[keyOf('nara')], 8, '선상24는 월별 최대 3요청이라 8곳입니다');
 });
 
+// 회로가 막아 요청도 안 한 곳까지 "봤다"고 커서를 넘기면, 그 곳들은 한 바퀴를 통째로
+// 건너뜁니다. 더피싱은 수집 20번 중 16번이 3곳 timeout 뒤 22곳 보류였습니다.
+test('더피싱 회로가 끊기면 커서는 실제로 물어본 곳까지만 나아간다', async () => {
+  const sites = Array.from({ length: 10 }, (_, i) => ({
+    id: `fish${i}`, name: `더피싱 ${i}`, adapter: 'thefishing', source: 'detail',
+    url: `https://boat${i}.thefishing.kr/index.php?mid=bk`,
+  }));
+  const { registryPath, dataPath } = await fixture(sites);
+  const rotatePerRun = { 'platform:thefishing': 6 };
+  const calls = [];
+  const blocked = await runAll({
+    registryPath, dataPath, days: 21, rotatePerRun, timeoutBackoffHours: 0,
+    collectFn: async (site) => {
+      calls.push(site.id);
+      throw new Error('30000ms 안에 응답이 없습니다');
+    },
+  });
+
+  assert.deepEqual(calls, ['fish0', 'fish1', 'fish2']);
+  assert.equal(blocked.data.rotation['platform:thefishing'], 'fish2',
+    '보류한 fish3~5는 아직 차례를 받지 못했습니다');
+
+  calls.length = 0;
+  await runAll({
+    registryPath, dataPath, days: 21, rotatePerRun, timeoutBackoffHours: 0,
+    collectFn: async (site) => {
+      calls.push(site.id);
+      return [{ siteId: site.id, siteName: site.name, boat: `${site.id}호`,
+        date: '2026-09-15', status: 'open', seatsLeft: 3 }];
+    },
+  });
+  assert.deepEqual(calls, ['fish3', 'fish4', 'fish5', 'fish6', 'fish7', 'fish8'],
+    '다음 실행은 보류했던 곳부터 봅니다');
+});
+
 test('기본 회전은 자체 도메인 더피싱도 합쳐 25곳만 요청한다', async () => {
   const sites = Array.from({ length: 30 }, (_, i) => ({
     id: `fish${String(i).padStart(2, '0')}`,
