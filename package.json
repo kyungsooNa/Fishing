@@ -15,6 +15,7 @@
     "quality": "node quality.js",
     "robots": "node robots.js",
     "serve": "node serve.js",
+    "usage": "node usage.js",
     "test": "node --test test/*.test.js",
     "needs-browser": "node --input-type=module -e \"import {loadRegistry} from './core/runner.js'; import {needsBrowser} from './core/platform.js'; process.stdout.write(String(needsBrowser(await loadRegistry(), { overseas: process.env.GITHUB_ACTIONS === 'true' })))\""
   },
