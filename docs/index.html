@@ -443,6 +443,7 @@
       <option value="price-asc">승선료 낮은순</option>
       <option value="rate-desc">내 별점 높은순</option>
       <option value="port-asc">항구순 (지역 → 항구)</option>
+      <option value="near-asc">가까운 항구순 (내 위치)</option>
       <option value="checked-desc">최신 확인순</option>
     </select>
     <label class="check"><input type="checkbox" id="f-open" checked> 빈자리만</label>
@@ -1527,6 +1528,8 @@ const SORTS = {
   // 항구는 지역이 앞에 붙어 있어 가나다순이면 같은 지역이 붙어 나옵니다. 하루 안에서만
   // 겁니다(정렬은 날짜를 못 넘습니다) — 하루치 안에서 근처 항구끼리 모아 보는 용도입니다.
   'port-asc': byText((t) => t.port),
+  // 내 위치에서 항구까지 곧은 거리입니다. 항구·좌표를 모르는 줄은 값이 없어 뒤로 갑니다.
+  'near-asc': byValue(portDistance, 'asc'),
 };
 
 // **빈자리가 있는 줄이 그 날의 위로 갑니다.** 날짜 다음, 고른 기준 앞입니다.
@@ -1596,6 +1599,31 @@ function checkedAt(t) {
   return Number.isFinite(oldest) ? oldest : null;
 }
 
+// ── 내 위치 ──────────────────────────────────────────────────────────────
+// "가까운 항구순"을 고를 때만 브라우저에 묻습니다. 받은 위치는 **이 탭의 메모리에만** 둡니다 —
+// 주소(#)에도 localStorage에도 적지 않습니다. 링크를 남에게 주면 정렬 이름만 가고, 받은 쪽은
+// 자기 위치로 다시 묻습니다. 새로고침하면 다시 묻지만 권한은 브라우저가 기억해 창이 또 뜨지는 않습니다.
+// 거리는 곧은 거리(하버사인)입니다. 도로 거리는 아니지만 "어느 항이 가까운가"를 가르기에는 충분하고,
+// 좌표부터 대략값(approx)인 항구가 많아 더 정밀하게 재 봐야 얻을 게 없습니다.
+let ORIGIN = null;
+
+function setOrigin(coords) {
+  ORIGIN = coords && Number.isFinite(coords.latitude) && Number.isFinite(coords.longitude)
+    ? { lat: coords.latitude, lng: coords.longitude } : null;
+}
+
+function distanceKm(a, b) {
+  const rad = (deg) => deg * Math.PI / 180;
+  const dLat = rad(b.lat - a.lat), dLng = rad(b.lng - a.lng);
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(rad(a.lat)) * Math.cos(rad(b.lat)) * Math.sin(dLng / 2) ** 2;
+  return 6371 * 2 * Math.asin(Math.sqrt(h));
+}
+
+function portDistance(t) {
+  const port = ORIGIN && t.port ? DATA.ports?.[t.port] : null;
+  return port && Number.isFinite(port.lat) && Number.isFinite(port.lng) ? distanceKm(ORIGIN, port) : null;
+}
+
 function sortTrips(trips, key = $('f-sort').value) {
   const by = SORTS[key];
   // data.json이 이미 날짜·출항시각·선사·배 순으로 정렬돼 옵니다(core/runner.js). 그 순서를
@@ -1606,6 +1634,12 @@ function sortTrips(trips, key = $('f-sort').value) {
   return [...trips].sort((a, b) =>
     (a.date ?? '').localeCompare(b.date ?? '')
     || byFav(a, b) || byRate(a, b) || byVacancy(a, b) || (by ? by(a, b) : 0));
+}
+
+// 대략 좌표(approx)라 1km 단위까지만 적습니다. 그보다 잘게 적으면 정확한 것처럼 보입니다.
+function portWithDistance(t) {
+  const km = portDistance(t);
+  return km == null ? t.port ?? '' : `${t.port} · ${km < 1 ? '1km 안' : `${Math.round(km)}km`}`;
 }
 
 // ── 쪽 나누기 ─────────────────────────────────────────────────────────────
@@ -1714,6 +1748,8 @@ function render(all = sortTrips(visibleTrips())) {
   // 조각에 다 모은 다음 한 번에 갈아 끼웁니다.
   const frag = document.createDocumentFragment();
   const tides = tidesByDate(rows);
+  // 거리로 줄을 세웠으면 그 거리를 항구 옆에 적습니다. 순서만 보여주면 얼마나 먼지 모릅니다.
+  const near = $('f-sort').value === 'near-asc' && ORIGIN;
   ROW_BUTTONS.length = 0;
   let prevDate = null;
   let currentDayRows = [];
@@ -1781,7 +1817,7 @@ function render(all = sortTrips(visibleTrips())) {
       ['boat', t.boat ?? ''],
       ['status', null],
       ['seats', seatsLabel(t)],
-      ['port', t.port ?? ''],
+      ['port', near ? portWithDistance(t) : t.port ?? ''],
       ['species', t.species ?? ''],
       ['price', won(t.price)],
       ['run', runLabel(t)],
@@ -2100,6 +2136,8 @@ async function loadData() {
     renderStatus();
     refresh();
     if (url) switchView(url.view === 'map');
+    // 받은 링크가 가까운 항구순이면 이 사람의 위치로 다시 묻습니다(위치는 링크에 안 실립니다).
+    if (url) sortFromUrl();
   } catch (e) {
     $('meta').textContent = 'data.json을 못 읽었습니다: ' + e.message;
   }
@@ -2184,9 +2222,54 @@ window.addEventListener('hashchange', () => {
   PAGE = 0;
   refresh();
   switchView(url.view === 'map');
+  sortFromUrl();
 });
 // 정렬은 보이는 날짜를 바꾸지 않으므로 보던 쪽에 그대로 있습니다(필터와 다른 점입니다).
-$('f-sort').addEventListener('change', () => refresh());
+// 가까운 항구순은 위치가 있어야 뜻이 있습니다. 못 받으면(권한 거절·위치 꺼짐) 고르기 전
+// 정렬로 되돌리고 그 이유를 메뉴 글자에 적습니다 — 거리 없이 "가까운 항구순"이라고 써 둔 채
+// 기본순으로 그리면 사람은 가까운 순이라고 믿습니다.
+const NEAR_LABEL = '가까운 항구순 (내 위치)';
+let SORT_BEFORE = 'default';
+
+function locate() {
+  const option = $('f-sort').querySelector('option[value="near-asc"]');
+  if (!navigator.geolocation) {
+    option.textContent = `${NEAR_LABEL} — 이 브라우저는 위치를 못 줍니다`;
+    return Promise.resolve(false);
+  }
+  option.textContent = '가까운 항구순 (위치 확인 중…)';
+  // `timeout`은 권한 창이 떠 있는 동안은 안 셉니다. 창을 무시하면 영영 "확인 중"이라
+  // 우리 쪽 시계를 따로 둡니다. 늦게 온 답은 버리지 않고 위치만 받아 둡니다(다음에 고를 때 씁니다).
+  return new Promise((resolve) => {
+    let done = false;
+    const finish = (ok, why = '') => {
+      if (done) return;
+      done = true;
+      clearTimeout(timer);
+      option.textContent = ok ? NEAR_LABEL : `${NEAR_LABEL} — ${why}`;
+      resolve(ok);
+    };
+    const timer = setTimeout(() => finish(false, '위치를 못 받았습니다'), 20000);
+    navigator.geolocation.getCurrentPosition(
+      (pos) => { setOrigin(pos.coords); finish(Boolean(ORIGIN), '위치를 못 받았습니다'); },
+      (err) => finish(false, err.code === 1 ? '위치 권한이 필요합니다' : '위치를 못 받았습니다'),
+      { maximumAge: 10 * 60 * 1000, timeout: 15000 },
+    );
+  });
+}
+
+async function chooseSort(fallback) {
+  if ($('f-sort').value === 'near-asc' && !ORIGIN && !(await locate())) $('f-sort').value = fallback;
+  SORT_BEFORE = $('f-sort').value;
+  refresh();
+}
+$('f-sort').addEventListener('change', () => chooseSort(SORT_BEFORE));
+// 주소에서 옮겨 온 정렬. 거리순인데 아직 위치가 없을 때만 묻고 다시 그립니다 — 다른 정렬은
+// 이미 그렸으니 되돌아갈 자리만 기억합니다(한 번 더 그리면 1만 줄을 또 훑습니다).
+function sortFromUrl() {
+  if ($('f-sort').value === 'near-asc' && !ORIGIN) chooseSort('default');
+  else SORT_BEFORE = $('f-sort').value;
+}
 // 지금 보이는 후보와, 키보드로 고른 자리(-1이면 아무것도 안 고름).
 let SUGGEST = [];
 let SUGGEST_AT = -1;
