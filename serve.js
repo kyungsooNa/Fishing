@@ -18,6 +18,7 @@ import { platformOf, effectiveMode } from './core/platform.js';
 import { createMonitor } from './core/monitor.js';
 import { watcherId } from './core/watchers.js';
 import { readAlerts, alertsFor, ALERTS_PATH } from './core/alerts.js';
+import { usageRecord, appendUsage, USAGE_PATH } from './core/usage.js';
 import { acquireCollectorLock } from './core/collector-lock.js';
 
 const TYPES = {
@@ -105,8 +106,15 @@ function adminAllowed(req) {
   return req.headers['x-admin'] === '1';
 }
 
-/** 밖에서도 쓸 수 있는 길. 지금은 감시 목록뿐입니다 — 사람마다 나뉘고 남의 것은 못 봅니다. */
-const PUBLIC_PATHS = new Set(['/api/monitor', '/api/alerts']);
+/**
+ * 밖에서도 쓸 수 있는 길. 감시 목록·알림 이력은 사람마다 나뉘고 남의 것은 못 봅니다.
+ * `/api/usage`는 예약처로 넘어간 횟수를 **적기만** 합니다 — 읽는 길은 없고(`node usage.js`),
+ * 적는 것도 아는 칸만 골라 적습니다(core/usage.js).
+ */
+const PUBLIC_PATHS = new Set(['/api/monitor', '/api/alerts', '/api/usage']);
+
+/** 이용 기록을 1분에 몇 줄까지 받을지. 밖에 열린 길이라 누가 두드려도 파일이 무한히 크지 않게. */
+export const USAGE_PER_MINUTE = 600;
 
 /**
  * 이 요청을 어디까지 받아줄지. `admin`은 registry를 고치고 프로세스를 띄우는 길이라
@@ -160,6 +168,7 @@ export function createApp({
   // 그 사람이 받은 알림 이력뿐입니다.
   watchPublic = process.env.WATCH_PUBLIC === '1',
   alertsPath = ALERTS_PATH,
+  usagePath = USAGE_PATH,
   // 손으로 눌러야만 도는 기능은 아무도 안 누릅니다(항구 채우기를 주 1회 스스로 돌리게 한
   // 것과 같은 이유). 수집이 한가할 때 몇 곳씩 조사해 두면 사람은 최신 보고서만 읽으면 됩니다.
   // research.js가 선사마다 7일(실패는 6시간) 대기를 걸어두므로 자주 깨워도 같은 곳을 다시
@@ -179,6 +188,8 @@ export function createApp({
   // 요청 간격을 서로 모르므로 같이 돌리면 같은 예약 플랫폼을 필요 이상으로 두드립니다.
   let job = null;
   let researchJob = null;
+  // 이용 기록을 받은 분과 그 분에 받은 줄 수(USAGE_PER_MINUTE).
+  let usageWindow = { minute: -1, count: 0 };
 
   // 마지막으로 스스로 돈 때. 화면이 "언제 봤나"를 적을 수 있어야 합니다.
   let lastAutoResearch = null;
@@ -286,6 +297,17 @@ export function createApp({
       const id = watcherId(req.headers['x-watcher']);
       const { records } = await readAlerts(alertsPath);
       return json(res, 200, { alerts: alertsFor(records, id) });
+    }
+
+    // 방문과 예약처 이동. 기록이 실패해도 사람의 이동을 막지 않도록 화면은 답을 안 기다립니다.
+    if (path === '/api/usage' && req.method === 'POST') {
+      const record = usageRecord(await readJsonBody(req, 2048));
+      if (!record) return json(res, 400, { error: '모르는 이용 기록입니다' });
+      const minute = Math.floor(Date.now() / 60000);
+      if (usageWindow.minute !== minute) usageWindow = { minute, count: 0 };
+      if (++usageWindow.count > USAGE_PER_MINUTE) return json(res, 429, { error: '잠시 뒤에 다시 보내세요' });
+      await appendUsage(record, usagePath);
+      return json(res, 200, { ok: true });
     }
 
     if (path === '/api/sites' && req.method === 'GET') {

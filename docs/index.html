@@ -558,6 +558,7 @@ function alertRow(a) {
     const link = document.createElement('a');
     link.href = a.url; link.target = '_blank'; link.rel = 'noopener noreferrer';
     link.textContent = a.urlDated ? '예약 화면' : '일정표';
+    markOutbound(link, a, 'alert');
     row.append(link, ' ');
   }
 
@@ -1845,6 +1846,7 @@ function render(all = sortTrips(visibleTrips())) {
             const a = document.createElement('a');
             a.href = src.url; a.target = '_blank'; a.rel = 'noopener noreferrer';
             a.textContent = src.siteName ?? '';
+            markOutbound(a, src, 'table');
             if (Number.isFinite(src.seatsLeft)) a.title = `이 사이트 기준 잔여 ${src.seatsLeft}`;
             td.append(a);
           }
@@ -2159,6 +2161,53 @@ async function probeAdmin() {
   } catch { ADMIN_API = false; }
 }
 
+// ── 예약처로 넘어간 기록 ────────────────────────────────────────────────────
+// PRODUCT.md의 "목록에서 원본 예약처로 이동한 비율"을 세려고 남깁니다(core/usage.js).
+// 방문 id는 페이지를 열 때마다 새로 뽑고 어디에도 저장하지 않습니다 — 다음 방문과 이어지지
+// 않습니다. 배·날짜는 안 보내고 선사 id와 플랫폼만 보냅니다.
+// 받을 서버가 있을 때(로컬·상시 감시 서버)만 보냅니다. GitHub Pages에서는 아무것도 안 나갑니다.
+const VISIT = (() => {
+  try { return crypto.randomUUID(); } catch { return `v-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`; }
+})();
+let VISIT_SENT = false;
+
+function markOutbound(link, src, from) {
+  link.dataset.out = from;
+  link.dataset.siteId = src.siteId ?? '';
+  link.dataset.dated = src.urlDated ? '1' : '';
+}
+
+const usageReady = () => WATCH_API || ADMIN_API;
+
+// keepalive라 새 탭이 열리며 이 페이지가 뒤로 가도 요청은 끝까지 갑니다. 답은 안 기다립니다 —
+// 기록이 늦거나 실패했다고 예약처로 가는 길을 막으면 안 됩니다.
+function sendUsage(event) {
+  if (!usageReady()) return;
+  try {
+    fetch('/api/usage', {
+      method: 'POST', keepalive: true,
+      headers: watchHeaders({ 'Content-Type': 'application/json' }),
+      body: JSON.stringify({ visit: VISIT, ...event }),
+    }).catch(() => {});
+  } catch { /* 기록은 덤입니다 */ }
+}
+
+function trackOutbound(e) {
+  const link = e.target.closest?.('a[data-out]');
+  if (!link || !link.dataset.siteId) return;
+  // 가운데 버튼(auxclick)도 새 탭으로 여는 길입니다. 오른쪽 버튼은 메뉴라 안 셉니다.
+  if (e.type === 'auxclick' && e.button !== 1) return;
+  sendUsage({
+    kind: 'outbound',
+    siteId: link.dataset.siteId,
+    platform: platformOf(DATA.sites, link.dataset.siteId),
+    from: link.dataset.out,
+    urlDated: link.dataset.dated === '1',
+  });
+}
+document.addEventListener('click', trackOutbound);
+document.addEventListener('auxclick', trackOutbound);
+
 async function reload() {
   try {
     await probeAdmin();
@@ -2185,6 +2234,8 @@ async function reload() {
     $('monitor-status').textContent = '감시 서버에 연결할 수 없습니다. 서버 실행 상태를 확인하세요.';
   }
   await loadData();
+  // 방문은 한 번만, 받을 서버가 있는지 안 뒤에 셉니다.
+  if (!VISIT_SENT && usageReady()) { VISIT_SENT = true; sendUsage({ kind: 'visit' }); }
 }
 reload();
 // 응답이 늦어져도 화면 갱신 요청을 겹쳐 보내지 않습니다.
