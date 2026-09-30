@@ -1267,7 +1267,9 @@ function fillOptions(control, values, defaults = []) {
   if (control.dataset.loaded) defaults = [...selectedValues(control.id)];
   control.dataset.loaded = '1';
   menu.textContent = '';
-  for (const v of [...new Set(values.filter(Boolean))].sort()) {
+  // 고른 값은 오늘 수집에 없어도 메뉴에 남깁니다. 받은 링크의 항구에 지금 배가 없다고
+  // 체크가 사라지면 필터가 조용히 "전체"로 넓어져, 빈 결과 대신 엉뚱한 배를 보게 됩니다.
+  for (const v of [...new Set([...values, ...defaults].filter(Boolean))].sort()) {
     const label = document.createElement('label');
     const input = document.createElement('input');
     input.type = 'checkbox';
@@ -1959,6 +1961,122 @@ async function loadFuture() {
   return FUTURE;
 }
 
+// ── 주소에 필터 남기기 ─────────────────────────────────────────────────────
+// 고른 조건을 주소의 # 뒤에 적습니다. 새로고침해도 그대로고, 링크 하나로 폰에 옮기거나
+// 남에게 줄 수 있습니다. 서버도 계정도 필요 없습니다(IDENTITY.md) — #은 서버로 안 갑니다.
+// 즐겨찾기·별점·숨김은 적지 않습니다. 그건 그 브라우저의 개인 기록이라 링크로 옮길 것이
+// 아닙니다("★ 즐겨찾기만"이 켜졌다는 사실만 옮깁니다 — 받은 쪽에서는 자기 즐겨찾기로 겁니다).
+//
+// 기본값과 같은 것은 적지 않습니다. 아무것도 안 고른 화면의 주소는 깨끗하게 둡니다.
+// 어종만 기본 선택이 있어서(갑오징어·주꾸미) **전부 푼 것**을 `species=` 로 따로 적습니다 —
+// 안 적으면 받은 쪽에서 기본 두 어종으로 되돌아갑니다.
+const URL_MULTI = {
+  platform: 'f-platform', site: 'f-site', region: 'f-region',
+  port: 'f-port', species: 'f-species', session: 'f-session',
+};
+const DEFAULT_SPECIES = ['갑오징어', '주꾸미'];
+const DATE_TEXT = /^\d{4}-\d{2}-\d{2}$/;
+
+function readUrlState(hash) {
+  const params = new URLSearchParams(hash.replace(/^#/, ''));
+  const multi = {};
+  for (const key of Object.keys(URL_MULTI)) {
+    if (params.has(key)) multi[key] = params.getAll(key).filter(Boolean);
+  }
+  const [start = '', end = ''] = (params.get('date') ?? '').split('~');
+  return {
+    multi,
+    date: { start: DATE_TEXT.test(start) ? start : null, end: DATE_TEXT.test(end) ? end : null },
+    q: params.get('q') ?? '',
+    open: params.get('open') !== '0',
+    fav: params.get('fav') === '1',
+    rated: params.get('rated') === '1',
+    sort: params.get('sort') ?? 'default',
+    view: params.get('view') === 'map' ? 'map' : 'table',
+  };
+}
+
+const sameValues = (a, b) => a.length === b.length && a.every((v) => b.includes(v));
+
+function urlStateHash(state) {
+  const params = new URLSearchParams();
+  for (const key of Object.keys(URL_MULTI)) {
+    const values = state.multi[key] ?? [];
+    if (key === 'species') {
+      if (sameValues(values, DEFAULT_SPECIES)) continue;
+      if (!values.length) { params.append(key, ''); continue; }
+    }
+    for (const v of [...values].sort()) params.append(key, v);
+  }
+  const { start, end } = state.date;
+  if (start || end) params.set('date', `${start ?? ''}~${end ?? ''}`);
+  if (state.q) params.set('q', state.q);
+  if (!state.open) params.set('open', '0');
+  if (state.fav) params.set('fav', '1');
+  if (state.rated) params.set('rated', '1');
+  if (state.sort && state.sort !== 'default') params.set('sort', state.sort);
+  if (state.view === 'map') params.set('view', 'map');
+  return params.toString();
+}
+
+function currentUrlState() {
+  const multi = {};
+  for (const [key, id] of Object.entries(URL_MULTI)) multi[key] = [...selectedValues(id)];
+  return {
+    multi,
+    date: dateRange(),
+    q: $('f-q').value.trim(),
+    open: $('f-open').checked,
+    fav: $('f-fav').checked,
+    rated: $('f-rated').checked,
+    sort: $('f-sort').value,
+    view: $('view-map').classList.contains('on') ? 'map' : 'table',
+  };
+}
+
+// 기록이 쌓이지 않게 replaceState로 바꿔 씁니다. 필터를 누를 때마다 뒤로가기가 한 칸씩
+// 늘면 뒤로가기로 페이지를 떠날 수가 없습니다. 바꿔 써도 hashchange는 안 울립니다.
+function writeUrlState() {
+  const hash = urlStateHash(currentUrlState());
+  if (hash === location.hash.replace(/^#/, '')) return;
+  try {
+    history.replaceState(history.state, '', hash ? `#${hash}` : location.pathname + location.search);
+  } catch { /* 주소를 못 바꿔도 화면은 그대로 돕니다 */ }
+}
+
+// 주소에 적힌 조건은 **처음 한 번**(그리고 주소를 직접 고쳤을 때) 화면에 옮깁니다.
+// 30초마다 다시 받을 때 주소로 되돌리면, 그 사이 사람이 바꾼 필터가 풀립니다.
+let URL_STATE = readUrlState(location.hash);
+
+function applyUrlState() {
+  const url = URL_STATE;
+  URL_STATE = null;
+  // 이미 채운 메뉴는 지금 체크를 이어받습니다(fillOptions). 주소 값으로 새로 채우게 풉니다.
+  for (const id of Object.values(URL_MULTI)) delete $(id).dataset.loaded;
+  DATE_RANGE = { ...url.date };
+  DATE_MONTH = '';
+  $('f-q').value = url.q;
+  $('f-open').checked = url.open;
+  $('f-fav').checked = url.fav;
+  $('f-rated').checked = url.rated;
+  $('f-sort').value = url.sort in SORTS ? url.sort : 'default';
+  return url;
+}
+
+// 필터 메뉴를 수집 결과로 채웁니다. 주소에 조건이 남아 있으면 그걸로 고르고 그 조건을 돌려줍니다.
+function fillFilters(d) {
+  const url = URL_STATE ? applyUrlState() : null;
+  const chosen = (key, defaults = []) => url?.multi[key] ?? defaults;
+  fillOptions($('f-platform'), d.trips.flatMap((t) => platformsOf(d.sites, t)), chosen('platform'));
+  fillOptions($('f-site'), d.trips.map((t) => t.siteName), chosen('site'));
+  fillOptions($('f-region'), d.trips.map((t) => regionOf(t.port)), chosen('region'));
+  fillOptions($('f-port'), d.trips.map(portOf), chosen('port'));
+  fillOptions($('f-species'), d.trips.flatMap(speciesOf), chosen('species', DEFAULT_SPECIES));
+  fillOptions($('f-session'), d.trips.map(sessionOf), chosen('session'));
+  fillDateRange(d.trips.map((t) => t.date));
+  return url;
+}
+
 async function loadData() {
   try {
     const [near, future] = await Promise.all([
@@ -1976,17 +2094,12 @@ async function loadData() {
       ` · 갱신 ${d.generatedAt ? new Date(d.generatedAt).toLocaleString('ko-KR') : '-'}` +
       (failed ? ` · 갱신 실패 ${failed}곳` : '') + (held ? ` · 보류 ${held}곳` : '');
     migrateFavs(d.trips);
-    fillOptions($('f-platform'), d.trips.flatMap((t) => platformsOf(d.sites, t)));
-    fillOptions($('f-site'), d.trips.map((t) => t.siteName));
-    fillOptions($('f-region'), d.trips.map((t) => regionOf(t.port)));
-    fillOptions($('f-port'), d.trips.map(portOf));
-    fillOptions($('f-species'), d.trips.flatMap(speciesOf), ['갑오징어', '주꾸미']);
-    fillOptions($('f-session'), d.trips.map(sessionOf));
+    const url = fillFilters(d);
     BOAT_NAMES = buildBoatNames(d.trips);   // 자동완성 목록. 수집을 받을 때 한 번만 셉니다
     renderMutes();
-    fillDateRange(d.trips.map((t) => t.date));
     renderStatus();
     refresh();
+    if (url) switchView(url.view === 'map');
   } catch (e) {
     $('meta').textContent = 'data.json을 못 읽었습니다: ' + e.message;
   }
@@ -2041,7 +2154,8 @@ async function pollData() { await reload(); setTimeout(pollData, 30000); }
 setTimeout(pollData, 30000);
 
 // 거르는 일은 한 번만 합니다. 표와 지도가 각자 거르면 같은 1만 건을 두 번 훑습니다.
-const refresh = () => { const trips = sortTrips(visibleTrips()); render(trips); drawMap(trips); };
+// 다 그린 뒤 지금 조건을 주소에 적습니다 — 필터·정렬·검색이 모두 이 길을 지납니다.
+const refresh = () => { const trips = sortTrips(visibleTrips()); render(trips); drawMap(trips); writeUrlState(); };
 // 관리창을 다른 탭에 열어 별점을 바꾸면 localStorage는 즉시 바뀌지만 이 탭의 RATES는
 // 옛 객체를 들고 있습니다. 다음 30초 수집 갱신까지 기다리지 않고 바로 다시 그립니다.
 window.addEventListener('storage', (event) => {
@@ -2060,6 +2174,16 @@ $('f-date-clear').addEventListener('click', () => {
   updateDateRangeLabel();
   renderDateCalendar();
   filtered();
+});
+// 받은 링크를 이미 열린 탭의 주소창에 붙여 넣으면 페이지는 다시 안 뜨고 #만 바뀝니다.
+// 그때도 그 조건으로 다시 겁니다. 아직 수집을 못 받았으면 첫 로드가 이어서 겁니다.
+window.addEventListener('hashchange', () => {
+  URL_STATE = readUrlState(location.hash);
+  if (!DATA.trips.length) return;
+  const url = fillFilters(DATA);
+  PAGE = 0;
+  refresh();
+  switchView(url.view === 'map');
 });
 // 정렬은 보이는 날짜를 바꾸지 않으므로 보던 쪽에 그대로 있습니다(필터와 다른 점입니다).
 $('f-sort').addEventListener('change', () => refresh());
@@ -2250,6 +2374,7 @@ function switchView(toMap) {
   $('maphint').hidden = !toMap;
   $('tablewrap').hidden = toMap;
   for (const id of ['pager-top', 'pager-bottom']) $(id).hidden = toMap || $(id).textContent === '';
+  writeUrlState();
   if (!toMap) return;
   ensureMap();
   // 숨겨진 채로 만들어진 지도는 자기 크기를 모릅니다.

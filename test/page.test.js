@@ -170,7 +170,8 @@ test('수집 보류는 실제 실패와 다른 문구로 표시한다', () => {
 });
 
 test('어종 필터는 갑오징어·주꾸미를 기본 선택한다', () => {
-  assert.match(inline, /fillOptions\(\$\('f-species'\),[\s\S]*\['갑오징어', '주꾸미'\]\)/);
+  assert.match(inline, /const DEFAULT_SPECIES = \['갑오징어', '주꾸미'\];/);
+  assert.match(inline, /fillOptions\(\$\('f-species'\), d\.trips\.flatMap\(speciesOf\), chosen\('species', DEFAULT_SPECIES\)\)/);
   assert.match(inline, /input\.checked = defaults\.includes\(v\)/);
 });
 
@@ -248,7 +249,7 @@ test('시각 포맷터는 한 번만 만든다', () => {
 
 // 표와 지도가 각자 거르면 같은 1만 건을 두 번(예전엔 세 번) 훑습니다.
 test('한 번 거른 결과를 표와 지도가 나눠 쓴다', () => {
-  assert.match(inline, /const refresh = \(\) => \{ const trips = sortTrips\(visibleTrips\(\)\); render\(trips\); drawMap\(trips\); \}/);
+  assert.match(inline, /const refresh = \(\) => \{ const trips = sortTrips\(visibleTrips\(\)\); render\(trips\); drawMap\(trips\); writeUrlState\(\); \}/);
   assert.match(inline, /function render\(all = sortTrips\(visibleTrips\(\)\)\)/, '혼자 부르는 자리도 있어 기본값을 둡니다');
   assert.match(inline, /function drawMap\(trips = visibleTrips\(\)\)/);
   assert.ok(!/const hidden = visibleTrips\(\)/.test(inline), '지도가 다시 거르면 안 됩니다');
@@ -1396,4 +1397,81 @@ test('숨기기: 거는 자리와 푸는 자리가 다 있고, 거르기에 반�
   // 저장이 막히면 없던 일로 — 화면만 바뀌면 숨긴 줄 알고 창을 닫습니다.
   const toggle = inline.match(/function toggleMute\([\s\S]*?\n\}/)?.[0] ?? '';
   assert.match(toggle, /MUTES\[kind\] = before;/);
+});
+
+// ── 주소에 필터 남기기 ─────────────────────────────────────────────────────
+function urlFns() {
+  const start = inline.indexOf('const URL_MULTI = {');
+  const end = inline.indexOf('function currentUrlState');
+  assert.ok(start >= 0 && end > start, '주소 상태 함수를 찾지 못했습니다');
+  return new Function(`${inline.slice(start, end)}\nreturn { readUrlState, urlStateHash, DEFAULT_SPECIES };`)();
+}
+
+const baseState = (over = {}) => ({
+  multi: { species: ['갑오징어', '주꾸미'] }, date: { start: null, end: null },
+  q: '', open: true, fav: false, rated: false, sort: 'default', view: 'table', ...over,
+});
+
+test('아무것도 안 고른 화면의 주소는 깨끗하다', () => {
+  const { urlStateHash, readUrlState } = urlFns();
+  assert.equal(urlStateHash(baseState()), '', '기본값은 주소에 적지 않습니다');
+  const read = readUrlState('');
+  assert.deepEqual(read.multi, {}, '주소에 없으면 각 필터의 기본값을 씁니다');
+  assert.equal(read.open, true, '빈자리만은 기본으로 켜져 있습니다');
+  assert.equal(read.sort, 'default');
+});
+
+test('고른 조건은 주소로 적었다가 그대로 읽힌다', () => {
+  const { urlStateHash, readUrlState } = urlFns();
+  const state = baseState({
+    multi: { region: ['충남 보령', '전북 군산'], port: ['오천항'], species: ['주꾸미'], platform: ['더피싱'] },
+    date: { start: '2026-10-03', end: '2026-10-05' },
+    q: '라라호', open: false, fav: true, rated: true, sort: 'seats-desc', view: 'map',
+  });
+  const hash = urlStateHash(state);
+  const read = readUrlState(`#${hash}`);
+
+  assert.deepEqual(read.multi.region.sort(), ['전북 군산', '충남 보령']);
+  assert.deepEqual(read.multi.port, ['오천항']);
+  assert.deepEqual(read.multi.species, ['주꾸미']);
+  assert.deepEqual(read.multi.platform, ['더피싱']);
+  assert.equal(read.multi.site, undefined, '안 고른 필터는 주소에 없고, 읽을 때도 기본값으로 둡니다');
+  assert.deepEqual(read.date, { start: '2026-10-03', end: '2026-10-05' });
+  assert.equal(read.q, '라라호');
+  assert.equal(read.open, false);
+  assert.equal(read.fav, true);
+  assert.equal(read.rated, true);
+  assert.equal(read.sort, 'seats-desc');
+  assert.equal(read.view, 'map');
+  assert.equal(urlStateHash(read), hash, '다시 적어도 같은 주소입니다 — 30초 갱신마다 주소가 바뀌면 안 됩니다');
+});
+
+test('어종을 전부 풀면 그렇다고 적는다 — 안 적으면 기본 두 어종으로 돌아간다', () => {
+  const { urlStateHash, readUrlState } = urlFns();
+  const hash = urlStateHash(baseState({ multi: { species: [] } }));
+  assert.equal(hash, 'species=');
+  assert.deepEqual(readUrlState(`#${hash}`).multi.species, [], '빈 값은 "전체 어종"입니다');
+  assert.equal(readUrlState('#region=x').multi.species, undefined, '어종을 안 적은 링크는 기본값을 씁니다');
+});
+
+test('한쪽 끝만 고른 날짜와 잘못 적힌 날짜', () => {
+  const { urlStateHash, readUrlState } = urlFns();
+  const hash = urlStateHash(baseState({ date: { start: '2026-10-03', end: null } }));
+  assert.deepEqual(readUrlState(`#${hash}`).date, { start: '2026-10-03', end: null });
+  assert.deepEqual(readUrlState('#date=내일~2026-13').date, { start: null, end: null },
+    '손으로 고친 주소가 깨져 있어도 날짜로 읽지 않습니다');
+});
+
+test('주소 조건은 처음 한 번과 주소를 고쳤을 때만 옮긴다', () => {
+  assert.match(inline, /let URL_STATE = readUrlState\(location\.hash\);/);
+  assert.match(inline, /const url = URL_STATE \? applyUrlState\(\) : null;/);
+  assert.match(inline, /URL_STATE = null;/, '옮긴 뒤 비워야 30초 갱신이 사람이 바꾼 필터를 되돌리지 않습니다');
+  assert.match(inline, /window\.addEventListener\('hashchange'/);
+  assert.match(inline, /history\.replaceState\(/, '필터마다 뒤로가기 기록이 쌓이면 안 됩니다');
+  assert.doesNotMatch(inline, /history\.pushState\(/);
+  assert.match(inline, /url\.sort in SORTS \? url\.sort : 'default'/, '모르는 정렬 이름은 기본순으로 둡니다');
+});
+
+test('고른 값은 오늘 수집에 없어도 메뉴에 남는다 — 링크가 조용히 넓어지지 않게', () => {
+  assert.match(inline, /for \(const v of \[\.\.\.new Set\(\[\.\.\.values, \.\.\.defaults\]\.filter\(Boolean\)\)\]\.sort\(\)\)/);
 });
