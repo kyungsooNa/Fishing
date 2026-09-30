@@ -169,6 +169,8 @@ export function createApp({
   watchPublic = process.env.WATCH_PUBLIC === '1',
   alertsPath = ALERTS_PATH,
   usagePath = USAGE_PATH,
+  usagePerMinute = USAGE_PER_MINUTE,
+  now = Date.now,
   // 손으로 눌러야만 도는 기능은 아무도 안 누릅니다(항구 채우기를 주 1회 스스로 돌리게 한
   // 것과 같은 이유). 수집이 한가할 때 몇 곳씩 조사해 두면 사람은 최신 보고서만 읽으면 됩니다.
   // research.js가 선사마다 7일(실패는 6시간) 대기를 걸어두므로 자주 깨워도 같은 곳을 다시
@@ -303,9 +305,9 @@ export function createApp({
     if (path === '/api/usage' && req.method === 'POST') {
       const record = usageRecord(await readJsonBody(req, 2048));
       if (!record) return json(res, 400, { error: '모르는 이용 기록입니다' });
-      const minute = Math.floor(Date.now() / 60000);
+      const minute = Math.floor(now() / 60000);
       if (usageWindow.minute !== minute) usageWindow = { minute, count: 0 };
-      if (++usageWindow.count > USAGE_PER_MINUTE) return json(res, 429, { error: '잠시 뒤에 다시 보내세요' });
+      if (++usageWindow.count > usagePerMinute) return json(res, 429, { error: '잠시 뒤에 다시 보내세요' });
       await appendUsage(record, usagePath);
       return json(res, 200, { ok: true });
     }

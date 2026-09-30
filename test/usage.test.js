@@ -84,7 +84,11 @@ test('/api/usage는 적기만 하고, 모르는 것은 400, 너무 많으면 429
   const dir = await mkdtemp(join(tmpdir(), 'usage-api-'));
   const usagePath = join(dir, 'usage.jsonl');
   await writeFile(join(dir, 'data.json'), JSON.stringify({ sites: {}, trips: [] }));
-  const server = createApp({ root: dir, registry: join(dir, 'registry.json'), restartable: false, usagePath, autoResearch: { everyMs: 0 } });
+  const server = createApp({
+    root: dir, registry: join(dir, 'registry.json'), restartable: false, usagePath, usagePerMinute: 3,
+    now: () => AT.getTime(),   // 분이 바뀌면 창이 새로 열려 429를 못 봅니다
+    autoResearch: { everyMs: 0 },
+  });
   await new Promise((r) => server.listen(0, '127.0.0.1', r));
   const base = `http://127.0.0.1:${server.address().port}`;
   const post = (body) => fetch(base + '/api/usage', {
@@ -104,9 +108,10 @@ test('/api/usage는 적기만 하고, 모르는 것은 400, 너무 많으면 429
     assert.deepEqual(lines.map((l) => l.kind), ['visit', 'outbound']);
     assert.equal(lines[1].boat, undefined);
 
-    let last = 200;
-    for (let i = 0; i < USAGE_PER_MINUTE && last === 200; i++) last = (await post({ kind: 'visit', visit: VISIT })).status;
-    assert.equal(last, 429, '1분에 받는 줄 수에 한도가 있습니다');
+    assert.equal((await post({ kind: 'visit', visit: VISIT })).status, 200, '받은 줄은 셋째');
+    assert.equal((await post({ kind: 'visit', visit: VISIT })).status, 429, '1분에 받는 줄 수에 한도가 있습니다');
+    assert.equal((await readFile(usagePath, 'utf8')).trim().split('\n').length, 3, '넘친 것은 안 적습니다');
+    assert.equal(USAGE_PER_MINUTE, 600);
   } finally {
     server.close();
   }
