@@ -1065,14 +1065,15 @@ test('머리글과 줄이 같은 칸 이름을 쓴다 — 하나만 숨으면 �
 // ── 정렬 ────────────────────────────────────────────────────────────────────
 // 값이 없는 행이 어디로 가는지가 이 기능의 거의 전부입니다. 승선료는 지금 99%가 비어 있어서
 // (node quality.js) 낮은순으로 올리면 첫 화면이 빈 칸으로 덮입니다.
-function sortFns(sites = {}, { favs = [], rates = {} } = {}) {
+function sortFns(sites = {}, { favs = [], rates = {}, ports = {}, origin = null } = {}) {
   const start = inline.indexOf('const SORTS = {');
   const end = inline.indexOf('// ── 쪽 나누기');
   assert.ok(start >= 0 && end > start, '정렬 함수를 찾지 못했습니다');
-  const stub = `const DATA = ${JSON.stringify({ sites })};\nconst $ = () => ({ value: 'default' });\n`;
+  const stub = `const DATA = ${JSON.stringify({ sites, ports })};\nconst $ = () => ({ value: 'default' });\n`;
   // 즐겨찾기·별점은 다른 블록에 있습니다. 여기서는 그 둘을 넣어주고 차례만 봅니다.
   return new Function('FAVS', 'favKey', 'rateOfTrip',
-    `${stub}${inline.slice(start, end)}\nreturn { sortTrips, checkedAt };`,
+    `${stub}${inline.slice(start, end)}\nsetOrigin(${JSON.stringify(origin)});\n`
+    + 'return { sortTrips, checkedAt, portDistance, portWithDistance, distanceKm };',
   )(
     new Set(favs),
     (trip) => `${trip.boat ?? ''}|${trip.port ?? ''}`,
@@ -1216,7 +1217,10 @@ test('정렬 메뉴가 있고 바꾸면 다시 그린다', () => {
     assert.match(html, new RegExp(`value="${value}"`));
   }
   // 정렬은 보이는 날짜를 바꾸지 않으므로 첫 쪽으로 돌아가지 않습니다(필터와 다른 점).
-  assert.match(inline, /\$\('f-sort'\)\.addEventListener\('change', \(\) => refresh\(\)\)/);
+  assert.match(inline, /\$\('f-sort'\)\.addEventListener\('change', \(\) => chooseSort\(SORT_BEFORE\)\)/);
+  const choose = inline.slice(inline.indexOf('async function chooseSort'), inline.indexOf("$('f-sort').addEventListener"));
+  assert.match(choose, /\n  refresh\(\);\n/);
+  assert.doesNotMatch(choose, /filtered\(\)/);
 });
 
 // 한 날에 표기가 여럿이면 그 날 대부분의 선사가 부르는 이름이 앞에 와야 자기 물때표와
@@ -1474,4 +1478,60 @@ test('주소 조건은 처음 한 번과 주소를 고쳤을 때만 옮긴다', 
 
 test('고른 값은 오늘 수집에 없어도 메뉴에 남는다 — 링크가 조용히 넓어지지 않게', () => {
   assert.match(inline, /for \(const v of \[\.\.\.new Set\(\[\.\.\.values, \.\.\.defaults\]\.filter\(Boolean\)\)\]\.sort\(\)\)/);
+});
+
+// ── 가까운 항구순 ───────────────────────────────────────────────────────────
+const PORTS = {
+  '충남 보령 오천항': { lat: 36.44, lng: 126.52 },
+  '전북 군산 비응항': { lat: 35.94, lng: 126.53 },
+  '전남 여수 국동항': { lat: 34.73, lng: 127.72 },
+};
+const DAECHEON = { latitude: 36.33, longitude: 126.60 };   // 보령 대천 근처
+
+test('거리는 곧은 거리를 km로 잰다', () => {
+  const { distanceKm } = sortFns();
+  // 서울시청 → 부산시청은 곧은 거리로 약 325km입니다.
+  const km = distanceKm({ lat: 37.5663, lng: 126.9779 }, { lat: 35.1798, lng: 129.0750 });
+  assert.ok(Math.abs(km - 325) < 5, `${km}`);
+  assert.equal(distanceKm({ lat: 36, lng: 126 }, { lat: 36, lng: 126 }), 0);
+});
+
+test('가까운 항구순은 내 위치에서 가까운 항구부터, 항구·좌표를 모르면 뒤로', () => {
+  const { sortTrips } = sortFns({}, { ports: PORTS, origin: DAECHEON });
+  const rows = [
+    t({ boat: '여수', port: '전남 여수 국동항' }),
+    t({ boat: '모름', port: null }),
+    t({ boat: '좌표없음', port: '경북 어딘가항' }),
+    t({ boat: '군산', port: '전북 군산 비응항' }),
+    t({ boat: '보령', port: '충남 보령 오천항' }),
+  ];
+  assert.deepEqual(sortTrips(rows, 'near-asc').map((x) => x.boat), ['보령', '군산', '여수', '모름', '좌표없음']);
+});
+
+test('위치가 없으면 거리도 없다 — 거리순을 기본순처럼 그리지 않게 화면이 먼저 위치를 묻는다', () => {
+  const { portDistance, sortTrips } = sortFns({}, { ports: PORTS, origin: null });
+  assert.equal(portDistance(t({ port: '충남 보령 오천항' })), null);
+  const rows = [t({ boat: '여수', port: '전남 여수 국동항' }), t({ boat: '보령', port: '충남 보령 오천항' })];
+  assert.deepEqual(sortTrips(rows, 'near-asc').map((x) => x.boat), ['여수', '보령'], '받은 순서 그대로');
+
+  assert.match(html, /<option value="near-asc">가까운 항구순 \(내 위치\)<\/option>/);
+  assert.match(inline, /if \(\$\('f-sort'\)\.value === 'near-asc' && !ORIGIN && !\(await locate\(\)\)\) \$\('f-sort'\)\.value = fallback;/,
+    '위치를 못 받으면 고르기 전 정렬로 되돌립니다');
+  assert.match(inline, /위치 권한이 필요합니다/, '되돌린 이유를 메뉴 글자에 적습니다');
+});
+
+test('거리순이면 항구 옆에 거리를 적는다 — 대략 좌표라 1km 단위까지만', () => {
+  const { portWithDistance } = sortFns({}, { ports: PORTS, origin: DAECHEON });
+  assert.match(portWithDistance(t({ port: '충남 보령 오천항' })), /^충남 보령 오천항 · \d+km$/);
+  assert.equal(portWithDistance(t({ port: null })), '');
+  assert.equal(portWithDistance(t({ port: '경북 어딘가항' })), '경북 어딘가항');
+  const here = sortFns({}, { ports: PORTS, origin: { latitude: 36.44, longitude: 126.52 } });
+  assert.equal(here.portWithDistance(t({ port: '충남 보령 오천항' })), '충남 보령 오천항 · 1km 안');
+  assert.match(inline, /\['port', near \? portWithDistance\(t\) : t\.port \?\? ''\]/);
+});
+
+test('내 위치는 주소에도 저장소에도 적지 않는다', () => {
+  const block = inline.slice(inline.indexOf('let ORIGIN = null;'), inline.indexOf('function sortTrips'));
+  assert.doesNotMatch(block, /localStorage/);
+  assert.doesNotMatch(inline.slice(inline.indexOf('function urlStateHash'), inline.indexOf('function currentUrlState')), /ORIGIN/);
 });
