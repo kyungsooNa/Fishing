@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { mkdtemp, writeFile, readFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { createMonitor, WATCH_MS, FULL_MS } from '../core/monitor.js';
+import { createMonitor, WATCH_MS, FULL_MS, BLOCK_MS } from '../core/monitor.js';
 import { acquireCollectorLock } from '../core/collector-lock.js';
 import { tripKey } from '../core/schema.js';
 import { createApp } from '../serve.js';
@@ -219,6 +219,58 @@ test('로컬만 실패한 선사는 받아온 결과가 더 새것이면 그쪽�
   assert.equal(site.at, fetchedAt);
   assert.equal(site.localError, 'fetch failed', '이 PC의 수집이 깨진 것은 남깁니다');
   assert.equal(f.monitor.data().trips[0].seatsLeft, 7, '며칠 묵은 로컬 결과로 덮지 않습니다');
+});
+
+// 선상24는 한 IP가 27~31요청을 넘기면 405로 막고, 천천히 물어도 안 풀립니다. 로컬 모니터가
+// 매시간 153곳을 다 두드리면 풀릴 틈이 없어 화면이 며칠 전 값으로 멈춰 있었습니다.
+test('서버가 405로 막으면 그 서버의 선사는 쉬고, 풀리면 안 본 곳부터 본다', async () => {
+  const s1 = { ...a, id: 's1', url: 'https://one.sunsang24.com' };
+  const s2 = { ...a, id: 's2', url: 'https://two.sunsang24.com' };
+  const other = { ...a, id: 'o', url: 'https://other.example.com' };
+  let blockedNow = true;
+  const calls = [];
+  const f = await fixture({ sites: [s1, s2, other], baseTrips: [],
+    collect: async (site) => {
+      calls.push(site.id);
+      if (site.id !== 'o' && blockedNow) {
+        const err = new Error('HTTP 405 Not Allowed'); err.status = 405; throw err;
+      }
+      return [trip(site.id)];
+    } });
+  await f.monitor.tick(); await f.monitor.idle();
+  await f.monitor.tick(); await f.monitor.idle();
+  assert.deepEqual(calls.sort(), ['o', 's1'], '막힌 서버의 다음 선사는 두드리지 않습니다');
+  assert.match(f.monitor.data().sites.s2.localError, /HTTP 405 — 서버가 이 PC를 막아/);
+  assert.equal(f.monitor.status().running, false, '쉬는 선사 때문에 계속 도는 것으로 보이지 않습니다');
+
+  // 사람이 누른 선사 최신화는 쉬는 중에도 시도합니다.
+  f.monitor.requestSite('s2');
+  await f.monitor.tick(); await f.monitor.idle();
+  assert.equal(calls.filter((id) => id === 's2').length, 1);
+
+  calls.length = 0;
+  blockedNow = false;
+  f.advance(4 * BLOCK_MS);   // 두 번 막혀 2시간을 쉬는 중입니다
+  await f.monitor.tick(); await f.monitor.idle();
+  await f.monitor.tick(); await f.monitor.idle();
+  assert.ok(calls.includes('s1') && calls.includes('s2'));
+  assert.equal(f.monitor.data().sites.s1.ok, true);
+  assert.equal(f.monitor.data().sites.s2.localError, undefined, '풀리면 막힘 표시를 지웁니다');
+});
+
+test('404처럼 그 선사만의 문제는 서버째 쉬지 않는다', async () => {
+  const s1 = { ...a, id: 's1', url: 'https://one.sunsang24.com' };
+  const s2 = { ...a, id: 's2', url: 'https://two.sunsang24.com' };
+  const calls = [];
+  const f = await fixture({ sites: [s1, s2], baseTrips: [],
+    collect: async (site) => {
+      calls.push(site.id);
+      if (site.id === 's1') { const err = new Error('HTTP 404'); err.status = 404; throw err; }
+      return [trip(site.id)];
+    } });
+  await f.monitor.tick(); await f.monitor.idle();
+  await f.monitor.tick(); await f.monitor.idle();
+  assert.deepEqual(calls, ['s1', 's2']);
 });
 
 test('성공한 로컬 수집은 받아온 결과보다 새것이 아니어도 유지한다', async () => {

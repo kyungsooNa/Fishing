@@ -17,6 +17,24 @@ import { kstDate } from './when.js';
 export const FULL_MS = 60 * 60 * 1000;
 export const WATCH_MS = 3 * 60 * 1000;
 
+/**
+ * 서버가 "이 IP는 그만"이라고 답한 상태코드. 선상24는 2026-09-17부터 한 IP가 27~31요청을
+ * 넘기면 `HTTP 405`를 주고, 그 뒤로는 10초 간격으로 천천히 물어도 22분 동안 성공이 0곳이었습니다
+ * (`core/runner.js`의 `ROTATE_PER_RUN` 설명). 로컬 모니터는 그 상한 없이 한 시간에 선상24
+ * 153곳 × 최대 3요청을 보내서, 이 PC도 같은 식으로 막히면 매시간 다시 두드려 **풀릴 틈이
+ * 없습니다** — 화면에는 Actions가 순서상 미뤄둔 며칠 전 값이 "수집 보류"로 계속 남습니다.
+ * 404처럼 그 선사 하나만의 문제인 것은 넣지 않습니다.
+ */
+const BLOCK_STATUSES = new Set([403, 405, 429]);
+export const BLOCK_MS = 60 * 60 * 1000;
+const BLOCK_MAX_MS = 6 * 60 * 60 * 1000;
+const blockStatusOf = (err) => {
+  for (let cur = err, depth = 0; cur && depth < 4; cur = cur.cause, depth++) {
+    if (BLOCK_STATUSES.has(cur.status)) return cur.status;
+  }
+  return null;
+};
+
 export function createMonitor({
   registryPath = 'sites/registry.json', dataPath = 'docs/data.json',
   statePath = 'tmp/monitor.json', collect = collectSite, send = notify, writeAlerts = appendAlerts,
@@ -31,6 +49,12 @@ export function createMonitor({
   let futureTrips = [], futureCursors = {};
   // 이미 보낸 소식. 3분마다 보니 같은 자리가 붙었다 떨어졌다 하면 계속 울립니다(core/alerts.js).
   let sentAlerts = {};
+  // 막힌 서버(gapKey 단위)와 언제까지 쉬는지. 한 선사가 막히면 같은 서버의 나머지도 같은
+  // 답을 받으니 서버째 쉽니다. 연달아 막히면 1·2·4시간으로 늘려 6시간에서 멈춥니다.
+  // 쉬는 동안 안 본 선사는 `attempted`가 그대로라 풀리면 그쪽부터 봅니다 — 앞쪽만 갱신되지 않습니다.
+  let blocked = {};
+  // 사람이 누른 "선사 최신화". 서버가 쉬는 중이어도 그 한 곳은 시도합니다.
+  const forced = new Set();
   let saving = Promise.resolve(), ticking = false, fullRun = null;
   const busy = new Set(), pending = new Set();
   const log = [];
@@ -40,6 +64,11 @@ export function createMonitor({
   const watchesOf = (id) => pruneOld(listOf(watchers, id), 21, new Date(clock()));
   const interested = (id) => activeWatches().some((w) => w.siteId === id);
   const interval = (id) => interested(id) ? WATCH_MS : FULL_MS;
+  const groupOf = (site) => site.url ? gapKey(site.url) : site.id;
+  const blockOf = (site) => {
+    const b = blocked[groupOf(site)];
+    return b && clock() < Date.parse(b.until) ? b : null;
+  };
   const nextAt = (s) => {
     const r = records[s.id];
     if (!r) return 0;
@@ -49,6 +78,7 @@ export function createMonitor({
   const persist = () => {
     const text = JSON.stringify({
       watchers, ...(legacy.length ? { watches: legacy } : {}), records, sentAlerts,
+      ...(Object.keys(blocked).length ? { blocked } : {}),
       ...(futureTrips.length ? { futureTrips } : {}),
       ...(Object.keys(futureCursors).length ? { futureCursors } : {}),
     });
@@ -87,6 +117,7 @@ export function createMonitor({
       ({ watchers, legacy } = loadWatchers(saved));
       records = saved.records ?? {};
       sentAlerts = rememberSent(saved.sentAlerts, [], { now: clock() });
+      blocked = saved.blocked && typeof saved.blocked === 'object' ? saved.blocked : {};
       futureTrips = Array.isArray(saved.futureTrips) ? saved.futureTrips : [];
       futureCursors = saved.futureCursors && typeof saved.futureCursors === 'object' ? saved.futureCursors : {};
     } catch { /* 첫 실행 */ }
@@ -132,10 +163,18 @@ export function createMonitor({
       // 받아온 값을 쓰기로 한 선사는 그 값의 시각·건수를 그대로 답니다. 다만 이 PC의
       // 수집이 깨진 것은 남겨야 합니다 — 그래야 3분 감시가 왜 안 도는지 알 수 있습니다.
       ...(stalled(s.id) ? { localError: records[s.id].status.error } : records[s.id]?.status ?? {}),
+      // 서버가 이 PC를 막아 쉬는 중인데 직접 확인한 값이 없는 선사. 받아온 값을 싣고 있어도
+      // 그게 왜 안 갱신되는지 화면에 남겨야 "수집 보류"가 며칠씩 가는 이유를 압니다.
+      ...(!records[s.id] && blockOf(s) ? { localError: blockNote(blockOf(s)) } : {}),
     }]));
     const times = Object.values(records).map((r) => r.status?.at).filter(Boolean).sort();
     return { ...base, trips, sites: status, ports: usedPorts(trips, ports).places,
       generatedAt: times.at(-1) ?? base.generatedAt };
+  }
+
+  function blockNote(b) {
+    const until = new Date(b.until).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul', hour12: false });
+    return `${b.error} — 서버가 이 PC를 막아 ${until}까지 쉽니다`;
   }
 
   function futureData() {
@@ -153,7 +192,7 @@ export function createMonitor({
    */
   function status(watcherId = null) {
     const enabled = sites.filter((s) => s.enabled !== false);
-    const running = busy.size > 0 || enabled.some((s) => nextAt(s) <= clock());
+    const running = busy.size > 0 || enabled.some((s) => nextAt(s) <= clock() && !blockOf(s));
     const done = fullRun ? fullRun.total - fullRun.pending.size : 0;
     return {
       watches: watchesOf(watcherId), fullMinutes: 60, watchMinutes: 3,
@@ -228,6 +267,10 @@ export function createMonitor({
       const at = new Date(clock()).toISOString();
       records[site.id] = { attempted, failures: 0, trips,
         status: { ok: true, at, count: trips.length } };
+      if (blocked[groupOf(site)]) {
+        delete blocked[groupOf(site)];
+        addLog(`${groupOf(site)}: 다시 열렸습니다`);
+      }
       // 이전에 직접 확인한 원문끼리만 비교합니다. 초기 통합값은 출처별 기준이 아닙니다.
       const keys = new Set(activeWatches().map(tripKey));
       const openings = findOpenings(old?.trips ?? [], trips).filter((t) => keys.has(tripKey(t)));
@@ -307,6 +350,14 @@ export function createMonitor({
           keptFrom: previous?.ok ? previous.at : previous?.keptFrom,
           count: old?.trips?.length ?? previous?.count ?? 0 } };
       addLog(`${site.id}: 실패 — ${err.message}`);
+      const code = blockStatusOf(err);
+      if (code) {
+        const group = groupOf(site);
+        const streak = (blocked[group]?.streak ?? 0) + 1;
+        const ms = Math.min(BLOCK_MS * 2 ** Math.min(streak - 1, 20), BLOCK_MAX_MS);
+        blocked[group] = { until: new Date(clock() + ms).toISOString(), streak, error: `HTTP ${code}` };
+        addLog(`${group}: HTTP ${code}로 막혔습니다 — ${Math.round(ms / 60000)}분 동안 이 서버는 쉽니다`);
+      }
       await persist();
     } finally {
       fullRun?.pending.delete(site.id);
@@ -324,11 +375,16 @@ export function createMonitor({
       }
       if (stopped) return;
       const due = sites.filter((s) => s.enabled !== false && nextAt(s) <= clock());
+      // 쉬는 서버의 선사는 이번 전체 수집에서 못 봅니다. 진행률이 거기서 멈추지 않게 뺍니다.
+      for (const s of due) if (blockOf(s) && !forced.has(s.id)) fullRun?.pending.delete(s.id);
       // 같은 플랫폼은 한 번에 하나, 전체 동시 실행은 여섯 개까지입니다.
       due.sort((a, b) => Number(interested(b.id)) - Number(interested(a.id)) || nextAt(a) - nextAt(b));
       for (const site of due) {
-        const group = site.url ? gapKey(site.url) : site.id;
+        const group = groupOf(site);
         if (busy.has(group) || busy.size >= 6) continue;
+        // 서버가 쉬는 중이면 건너뜁니다. 사람이 누른 "선사 최신화"만 시도합니다.
+        if (blockOf(site) && !forced.has(site.id)) continue;
+        forced.delete(site.id);
         busy.add(group);
         const task = collectOne(site).catch((e) => addLog(`저장 실패: ${e.message}`)).finally(() => {
           busy.delete(group); pending.delete(task);
@@ -355,6 +411,7 @@ export function createMonitor({
     if (site.enabled === false) throw new Error('꺼진 선사는 최신화할 수 없습니다');
     // 다음 tick에서 이 선사만 즉시 대상이 됩니다. 다른 선사의 주기는 건드리지 않습니다.
     if (records[id]) records[id].attempted = 0;
+    forced.add(id);
     addLog(`${site.name ?? id}: 수동 최신화 요청`);
     return { siteId: id, requested: true };
   }

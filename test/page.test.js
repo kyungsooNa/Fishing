@@ -163,10 +163,27 @@ test('날짜 기간은 시작일과 종료일을 모두 포함한다', () => {
 });
 
 test('수집 보류는 실제 실패와 다른 문구로 표시한다', () => {
-  assert.match(inline, /s\.skipped \? 'held' : 'fail'/);
+  assert.match(inline, /s\.skipped && !s\.localError \? 'held' : 'fail'/);
   assert.match(inline, /갱신 보류/);
   assert.match(inline, /수집 보류 · 직전/);
-  assert.match(inline, /!s\.ok && !s\.skipped/);
+});
+
+// 선상24는 Actions에서 차례가 안 와 "보류"인데 로컬도 막혀 못 받으면, 며칠 묵은 값이
+// "수집 보류"로만 보여서 기다리면 될 일처럼 읽혔습니다. 그건 실패입니다.
+test('받아온 쪽이 보류여도 이 PC 수집이 깨졌으면 실패로 표시한다', () => {
+  const start = inline.indexOf('function freshness');
+  const end = inline.indexOf('/**', start);
+  assert.ok(start >= 0 && end > start, 'freshness를 찾지 못했습니다');
+  const at = new Date(Date.now() - 3 * 86400000).toISOString();
+  const check = (site) => new Function('DATA', `${inline.slice(start, end)}\nreturn freshness;`)(
+    { sites: { a: site } })({ siteId: 'a' });
+  const held = check({ ok: false, skipped: 'rotation', keptFrom: at });
+  assert.match(held.text, /^수집 보류 · 직전 3일 전 확인$/);
+  assert.equal(held.failed, false);
+  const broken = check({ ok: false, skipped: 'rotation', keptFrom: at, localError: 'HTTP 405' });
+  assert.match(broken.text, /^수집 실패 · 직전 3일 전 확인$/);
+  assert.equal(broken.failed, true);
+  assert.match(inline, /const local = s\.localError \?/, '보류인 선사에도 이 PC의 실패 사유를 적습니다');
 });
 
 test('어종 필터는 갑오징어·주꾸미를 기본 선택한다', () => {
