@@ -1430,7 +1430,24 @@ function urlFns() {
 
 const baseState = (over = {}) => ({
   multi: { species: ['갑오징어', '주꾸미'] }, date: { start: null, end: null },
-  q: '', open: true, fav: false, rated: false, sort: 'default', view: 'table', ...over,
+  q: '', open: true, fav: false, rated: false, sort: 'default', view: 'table', seats: 0, ...over,
+});
+
+test('예약 가능 인원 필터는 그만큼 남은 출조만 남기고, 잔여 비공개·마감은 뺀다', () => {
+  const start = inline.indexOf('function hasSeatsFor');
+  const end = inline.indexOf('// 표와 지도가 같은 기준을 보도록');
+  assert.ok(start >= 0 && end > start, 'hasSeatsFor를 찾지 못했습니다');
+  const { hasSeatsFor } = new Function(`${inline.slice(start, end)}\nreturn { hasSeatsFor };`)();
+  assert.equal(hasSeatsFor({ status: 'open', seatsLeft: 4 }, 4), true);
+  assert.equal(hasSeatsFor({ status: 'few', seatsLeft: 3 }, 4), false);
+  assert.equal(hasSeatsFor({ status: 'open', seatsLeft: null }, 2), false, '몇 명 탈 수 있는지 모르는 출조');
+  assert.equal(hasSeatsFor({ status: 'closed', seatsLeft: 6 }, 2), false);
+  assert.equal(hasSeatsFor({ status: 'open', seatsLeft: null }, 0), true, '인원 무관이면 그대로 둡니다');
+  assert.match(inline, /hasSeatsFor\(t, seats\)/);
+  assert.match(html, /<select id="f-seats"/);
+
+  const { readUrlState } = urlFns();
+  assert.equal(readUrlState('#seats=7').seats, 0, '메뉴에 없는 인원은 무관으로 받습니다');
 });
 
 test('아무것도 안 고른 화면의 주소는 깨끗하다', () => {
@@ -1447,7 +1464,7 @@ test('고른 조건은 주소로 적었다가 그대로 읽힌다', () => {
   const state = baseState({
     multi: { region: ['충남 보령', '전북 군산'], port: ['오천항'], species: ['주꾸미'], platform: ['더피싱'] },
     date: { start: '2026-10-03', end: '2026-10-05' },
-    q: '라라호', open: false, fav: true, rated: true, sort: 'seats-desc', view: 'map',
+    q: '라라호', open: false, fav: true, rated: true, sort: 'seats-desc', view: 'map', seats: 4,
   });
   const hash = urlStateHash(state);
   const read = readUrlState(`#${hash}`);
@@ -1464,6 +1481,7 @@ test('고른 조건은 주소로 적었다가 그대로 읽힌다', () => {
   assert.equal(read.rated, true);
   assert.equal(read.sort, 'seats-desc');
   assert.equal(read.view, 'map');
+  assert.equal(read.seats, 4);
   assert.equal(urlStateHash(read), hash, '다시 적어도 같은 주소입니다 — 30초 갱신마다 주소가 바뀌면 안 됩니다');
 });
 

@@ -53,7 +53,7 @@
   .multi-menu { position: absolute; z-index: 1000; top: calc(100% + 4px); left: 0; min-width: 220px;
                 max-height: 300px; overflow: auto; padding: 6px; border: 1px solid var(--line);
                 border-radius: 7px; background: var(--card); box-shadow: 0 8px 24px rgba(0,0,0,.14); }
-  select#f-sort { border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--fg);
+  select#f-sort, select#f-seats { border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--fg);
                   padding: 7px 9px; font-size: 14px; font-family: inherit; }
   /* 배 이름 후보 칸. 표는 한 번 그리는 데 수백 ms가 들어(6배 느린 CPU에서 672줄 449ms)
      손이 멈춘 뒤에야 바뀌지만, 이 목록은 이름 439개만 훑으면 되는 자리라 한 글자마다
@@ -445,6 +445,16 @@
       <option value="port-asc">항구순 (지역 → 항구)</option>
       <option value="near-asc">가까운 항구순 (내 위치)</option>
       <option value="checked-desc">최신 확인순</option>
+    </select>
+    <select id="f-seats" aria-label="예약 가능 인원">
+      <option value="0">인원 무관</option>
+      <option value="2">2명 이상</option>
+      <option value="3">3명 이상</option>
+      <option value="4">4명 이상</option>
+      <option value="5">5명 이상</option>
+      <option value="6">6명 이상</option>
+      <option value="8">8명 이상</option>
+      <option value="10">10명 이상</option>
     </select>
     <label class="check"><input type="checkbox" id="f-open" checked> 빈자리만</label>
     <label class="check"><input type="checkbox" id="f-fav"> <span id="f-fav-label">★ 즐겨찾기만</span></label>
@@ -1425,12 +1435,21 @@ function changeDateMonth(delta) {
   renderDateCalendar();
 }
 
+// 일행 수만큼 자리가 남은 출조. 잔여석을 공개하지 않은 출조("선사 확인")는 몇 명이 탈 수
+// 있는지 모르니 인원을 고르면 뺍니다 — 넣으면 "4명 이상"에 1석짜리가 섞여 있을 수 있습니다.
+// 마감·휴항은 숫자가 남아 있어도 못 타는 자리라 뺍니다.
+function hasSeatsFor(t, n) {
+  if (!(n > 0)) return true;
+  return Number.isFinite(t.seatsLeft) && t.seatsLeft >= n && t.status !== 'closed' && t.status !== 'off';
+}
+
 // 표와 지도가 같은 기준을 보도록 필터는 한 군데서만 겁니다.
 function visibleTrips() {
   const platform = selectedValues('f-platform');
   const site = selectedValues('f-site'), region = selectedValues('f-region'), port = selectedValues('f-port');
   const species = selectedValues('f-species'), dates = dateRange(), session = selectedValues('f-session');
   const q = $('f-q').value.trim(), openOnly = $('f-open').checked;
+  const seats = Number($('f-seats').value) || 0;
   const favOnly = $('f-fav').checked, ratedOnly = $('f-rated').checked;
   const kst = kstParts();
 
@@ -1445,7 +1464,8 @@ function visibleTrips() {
     showTripByTime(t, kst) &&
     !isMuted(t) &&
     (!q || (t.boat ?? '').includes(q)) &&
-    (!openOnly || t.status === 'open' || t.status === 'few'));
+    (!openOnly || t.status === 'open' || t.status === 'few') &&
+    hasSeatsFor(t, seats));
 }
 
 // ── 칸 고르기 ─────────────────────────────────────────────────────────────
@@ -2018,6 +2038,8 @@ const URL_MULTI = {
 };
 const DEFAULT_SPECIES = ['갑오징어', '주꾸미'];
 const DATE_TEXT = /^\d{4}-\d{2}-\d{2}$/;
+// 고를 수 있는 인원. 주소에 다른 숫자가 와도 이 중 하나로만 받습니다(메뉴에 없는 값은 무관).
+const SEAT_STEPS = [2, 3, 4, 5, 6, 8, 10];
 
 function readUrlState(hash) {
   const params = new URLSearchParams(hash.replace(/^#/, ''));
@@ -2035,6 +2057,7 @@ function readUrlState(hash) {
     rated: params.get('rated') === '1',
     sort: params.get('sort') ?? 'default',
     view: params.get('view') === 'map' ? 'map' : 'table',
+    seats: SEAT_STEPS.includes(Number(params.get('seats'))) ? Number(params.get('seats')) : 0,
   };
 }
 
@@ -2058,6 +2081,7 @@ function urlStateHash(state) {
   if (state.rated) params.set('rated', '1');
   if (state.sort && state.sort !== 'default') params.set('sort', state.sort);
   if (state.view === 'map') params.set('view', 'map');
+  if (state.seats > 0) params.set('seats', String(state.seats));
   return params.toString();
 }
 
@@ -2073,6 +2097,7 @@ function currentUrlState() {
     rated: $('f-rated').checked,
     sort: $('f-sort').value,
     view: $('view-map').classList.contains('on') ? 'map' : 'table',
+    seats: Number($('f-seats').value) || 0,
   };
 }
 
@@ -2101,6 +2126,7 @@ function applyUrlState() {
   $('f-open').checked = url.open;
   $('f-fav').checked = url.fav;
   $('f-rated').checked = url.rated;
+  $('f-seats').value = String(url.seats);
   $('f-sort').value = url.sort in SORTS ? url.sort : 'default';
   return url;
 }
@@ -2259,7 +2285,7 @@ window.addEventListener('storage', (event) => {
 });
 // 필터를 바꾸면 보던 쪽 번호는 의미가 없습니다. 첫 주부터 다시 봅니다.
 const filtered = () => { PAGE = 0; refresh(); };
-for (const id of ['f-open', 'f-fav', 'f-rated']) $(id).addEventListener('change', filtered);
+for (const id of ['f-open', 'f-fav', 'f-rated', 'f-seats']) $(id).addEventListener('change', filtered);
 $('f-date-prev').addEventListener('click', () => changeDateMonth(-1));
 $('f-date-next').addEventListener('click', () => changeDateMonth(1));
 $('f-date-clear').addEventListener('click', () => {
