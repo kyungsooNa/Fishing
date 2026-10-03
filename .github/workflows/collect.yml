@@ -5,6 +5,11 @@ on:
     # 매시 10분. 관심 출조의 3분 감시는 로컬 서버에서 실행합니다.
     - cron: '10 * * * *'
   workflow_dispatch:
+    inputs:
+      only:
+        description: '특정 선사 ID만 즉시 갱신(비우면 전체 회전 수집)'
+        required: false
+        type: string
 
 concurrency:
   group: collect
@@ -39,6 +44,7 @@ jobs:
 
       - run: node collect.js
         env:
+          ONLY: ${{ inputs.only }}
           DAYS: '21'
           HORIZON_DAYS: '90'
           TIMEOUT_BACKOFF_HOURS: '6'

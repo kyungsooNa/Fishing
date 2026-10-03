@@ -140,9 +140,15 @@ function getStatic(url, { referer, timeoutMs = TIMEOUT_MS, redirects = MAX_REDIR
   });
 }
 
-export function usesEnvProxy(env = process.env) {
+export function usesEnvProxy(env = process.env, url = null) {
   const enabled = ['1', 'true'].includes(String(env.NODE_USE_ENV_PROXY ?? '').toLowerCase());
   const proxy = env.HTTPS_PROXY ?? env.https_proxy ?? env.HTTP_PROXY ?? env.http_proxy;
+  // 테스트 서버와 로컬 대시보드는 프록시 대상이 아닙니다. 환경 프록시가 켜진 클라우드에서
+  // localhost까지 fetch 경로로 보내면 NO_PROXY 처리에 실행환경 차이가 생깁니다.
+  if (url) {
+    const host = new URL(url).hostname;
+    if (host === 'localhost' || host === '127.0.0.1' || host === '::1') return false;
+  }
   return enabled && Boolean(proxy) && typeof globalThis.fetch === 'function';
 }
 
@@ -305,7 +311,7 @@ export async function fetchHtml(url, { mode = 'auto', waitFor, referer, retries 
     const startedAt = Date.now();      // pace로 기다린 시간은 빼고 잽니다
     try {
       if (mode === 'js') return await getRendered(url, { waitFor, referer });
-      const html = usesEnvProxy()
+      const html = usesEnvProxy(process.env, url)
         ? await getStaticViaFetch(url, { referer, timeoutMs })
         : await getStatic(url, { referer, timeoutMs });
       if (mode === 'auto' && looksEmpty(html)) return await getRendered(url, { waitFor, referer });

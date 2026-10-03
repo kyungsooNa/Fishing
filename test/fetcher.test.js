@@ -33,10 +33,12 @@ function fakeResponse(status, body = '', headers = {}) {
 }
 
 test('클라우드 프록시 모드는 시작 환경변수와 프록시가 모두 있을 때만 켠다', () => {
-  assert.equal(usesEnvProxy({ NODE_USE_ENV_PROXY: '1', HTTPS_PROXY: 'http://proxy:8080' }), true);
+  const env = { NODE_USE_ENV_PROXY: '1', HTTPS_PROXY: 'http://proxy:8080' };
+  assert.equal(usesEnvProxy(env), true);
   assert.equal(usesEnvProxy({ NODE_USE_ENV_PROXY: 'true', https_proxy: 'http://proxy:8080' }), true);
   assert.equal(usesEnvProxy({ HTTPS_PROXY: 'http://proxy:8080' }), false);
   assert.equal(usesEnvProxy({ NODE_USE_ENV_PROXY: '1' }), false);
+  assert.equal(usesEnvProxy(env, 'http://127.0.0.1:8080/'), false);
 });
 
 test('클라우드 프록시 fetch 경로도 HTML 인코딩과 HTTP 상태를 보존한다', async () => {

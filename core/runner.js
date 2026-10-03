@@ -453,11 +453,25 @@ export async function runAll({
     const port = canonicalPort(t.port, ports);
     return port === t.port ? t : { ...t, port };
   };
-  const collected = targets.flatMap((site) => tripsById.get(site.id) ?? []).map(withPort);
-  const collectedFuture = targets.flatMap((site) => futureTripsById.get(site.id) ?? keepFuture(site)).map(withPort);
-  const status = Object.fromEntries(
-    targets.filter((site) => statusById.has(site.id)).map((site) => [site.id, statusById.get(site.id)]),
-  );
+  // 한 곳만 최신화할 때는 그 한 곳만 새 값으로 갈아끼웁니다. 예전에는 `only`가 대상만
+  // 남긴 data.json을 써서, 이 경로를 CLI/Actions에서 쓰면 다른 선사 수천 건을 지울 수
+  // 있었습니다. 관리 화면의 단일 최신화와 같은 의미가 되도록 나머지는 그대로 둡니다.
+  const untouchedTrips = only ? (prev.trips ?? []).filter((t) => t.siteId !== only) : [];
+  const untouchedFuture = only ? (prevFuture.trips ?? []).filter((t) => t.siteId !== only) : [];
+  const collected = [
+    ...untouchedTrips,
+    ...targets.flatMap((site) => tripsById.get(site.id) ?? []),
+  ].map(withPort);
+  const collectedFuture = [
+    ...untouchedFuture,
+    ...targets.flatMap((site) => futureTripsById.get(site.id) ?? keepFuture(site)),
+  ].map(withPort);
+  const status = {
+    ...(only ? prev.sites ?? {} : {}),
+    ...Object.fromEntries(
+      targets.filter((site) => statusById.has(site.id)).map((site) => [site.id, statusById.get(site.id)]),
+    ),
+  };
 
   const trips = sortTrips(mergeDuplicates(pruneOld(collected, days, now)));
   const futureTrips = sortTrips(mergeDuplicates(
