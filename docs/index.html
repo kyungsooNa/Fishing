@@ -517,15 +517,18 @@ const watched = (t) => MONITOR?.watches.some((w) => (t.sources ?? [t]).some((s) 
 
 function freshness(t) {
   const states = (t.sources ?? [t]).map((s) => DATA.sites[s.siteId]);
-  // 받아온 쪽은 "차례가 아니라 보류"여도 이 PC의 수집이 깨져 있으면(`localError`) 보류가
-  // 아니라 실패입니다. 보류로 적으면 기다리면 될 일처럼 보여서 며칠 묵은 값을 그대로 믿습니다.
-  const failed = states.some((s) => !s?.ok && (!s?.skipped || s?.localError));
+  // 클라우드 값은 받아왔지만 이 PC의 3분 감시만 막힌 경우가 있습니다. 둘을 모두
+  // "수집 실패"로 합치면 클라우드 갱신까지 실패한 것으로 오해하므로 따로 표시합니다.
+  const failed = states.some((s) => !s?.ok && !s?.skipped);
+  const localFailed = states.some((s) => Boolean(s?.localError));
   const held = !failed && states.some((s) => !s?.ok && s?.skipped);
   const times = states.map((s) => Date.parse(s?.ok ? s.at : s?.keptFrom));
   const time = Math.min(...times);
   if (!Number.isFinite(time)) {
-    const prefix = failed ? '수집 실패 · ' : held ? '수집 보류 · ' : '';
-    return { text: `${prefix}확인 시각 없음`, stale: true, failed };
+    const text = failed ? '수집 실패 · 확인 시각 없음'
+      : localFailed ? '클라우드 확인 시각 없음 · 이 PC 감시 불가'
+        : held ? '수집 보류 · 확인 시각 없음' : '확인 시각 없음';
+    return { text, stale: true, failed };
   }
   const minutes = Math.max(0, Math.floor((Date.now() - time) / 60000));
   const age = minutes >= 1440
@@ -533,8 +536,10 @@ function freshness(t) {
     : minutes >= 60
       ? `${Math.floor(minutes / 60)}시간 ${minutes % 60}분 전 확인`
       : `${minutes}분 전 확인`;
-  const prefix = failed ? '수집 실패 · 직전 ' : held ? '수집 보류 · 직전 ' : '';
-  return { text: `${prefix}${age}`, stale: failed || held || minutes >= 30, failed };
+  const text = failed ? `수집 실패 · 직전 ${age}`
+    : localFailed ? `클라우드 ${age} · 이 PC 감시 불가`
+      : held ? `수집 보류 · 직전 ${age}` : age;
+  return { text, stale: failed || localFailed || held || minutes >= 30, failed };
 }
 
 /**
