@@ -241,6 +241,10 @@ export async function runAll({
   const holdForRotation = (site, server, limit) => {
     const at = new Date().toISOString();
     const prevStatus = prev.sites?.[site.id];
+    // `at`은 이번 실행에서 보류했다고 기록하는 시각이라 실제로 차례를 받은 때가 아닙니다.
+    // 마지막 선택 시각을 따로 이어야 실패한 오래된 선사가 매 실행 8칸을 독차지하지 않습니다.
+    const lastSelectedAt = prevStatus?.lastSelectedAt ??
+      (prevStatus?.skipped === 'rotation' ? prevStatus?.keptFrom : prevStatus?.at);
     const kept = keepPrevious(site);
     failed.add(site.id);
     tripsById.set(site.id, kept);
@@ -251,6 +255,7 @@ export async function runAll({
       error: `${server}는 한 실행에 ${limit}곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다`,
       count: kept.length,
       keptFrom: prevStatus?.keptFrom ?? prevStatus?.at ?? prev.generatedAt ?? null,
+      ...(lastSelectedAt ? { lastSelectedAt } : {}),
       skipped: 'rotation',
       ...meta(site),
     });
@@ -276,6 +281,7 @@ export async function runAll({
         error: '국내에서만 열리는 선사라 해외 러너에서는 요청하지 않습니다 — 로컬 모니터가 수집합니다',
         count: kept.length,
         keptFrom: prevStatus?.keptFrom ?? prevStatus?.at ?? prev.generatedAt ?? null,
+        lastSelectedAt: at,
         skipped: 'domestic-only',
         ...meta(site),
       });
@@ -296,6 +302,7 @@ export async function runAll({
         error,
         count: kept.length,
         keptFrom: prevStatus.keptFrom ?? prevStatus.at ?? prev.generatedAt ?? null,
+        lastSelectedAt: at,
         retryAt,
         skipped: 'timeout-backoff',
         ...meta(site),
@@ -364,7 +371,7 @@ export async function runAll({
 
       futureTripsById.set(site.id, futureTrips);
       statusById.set(site.id, {
-        ok: true, at, count: trips.filter((t) => t.date <= nearTo).length,
+        ok: true, at, lastSelectedAt: at, count: trips.filter((t) => t.date <= nearTo).length,
         ...(futureTrips.length ? { futureCount: futureTrips.length } : {}),
         ...(futureError ? { futureError } : {}),
         ...meta(site),
@@ -391,6 +398,7 @@ export async function runAll({
         // 보입니다(한솔호가 9/13부터 한 번도 성공 못 했는데 화면에는 "0.8시간 전"이었습니다).
         // 위의 보류·백오프 경로는 원래 이렇게 이어받고 있었고 여기만 빠져 있었습니다.
         keptFrom: prevStatus?.keptFrom ?? prevStatus?.at ?? prev.generatedAt ?? null,
+        lastSelectedAt: at,
         ...(streak ? { timeoutStreak: streak } : {}),
         ...meta(site),
       });
@@ -416,7 +424,11 @@ export async function runAll({
     .flatMap((t) => (t.sources ?? [t]).map((source) => source.siteId)));
   const previousAt = (id) => {
     const status = prev.sites?.[id];
-    return Date.parse(status?.ok ? status.at : status?.keptFrom) || 0;
+    // 오래된 실제 데이터(`keptFrom`)가 아니라 마지막으로 수집 차례를 준 시각으로 돌립니다.
+    // 성공할 때까지 keptFrom만 보면 영구 503인 몇 곳이 모든 실행을 독차지합니다.
+    const at = status?.lastSelectedAt ??
+      (status?.skipped === 'rotation' ? status?.keptFrom : status?.at);
+    return Date.parse(at) || 0;
   };
   await inParallel(groups, Number(process.env.PARALLEL ?? 6), async ([server, group]) => {
     const limit = only ? 0 : (rotatePerRun?.[server] ?? 0);

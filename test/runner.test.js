@@ -517,6 +517,44 @@ test('선상24 회전은 빈자리가 남은 선사를 먼저 최신화한다', 
   assert.deepEqual(calls, ['c'], '빈자리 정보가 묵지 않도록 일반 회전보다 먼저 봅니다');
 });
 
+test('선상24 우선 수집에서 실패한 선사가 다음 실행까지 독차지하지 않는다', async () => {
+  const sites = ['a', 'b', 'c'].map((id) => ({
+    ...mockSite, id, adapter: 'sunsang24', url: `https://${id}.sunsang24.com`,
+  }));
+  const prev = {
+    generatedAt: '2026-09-09T00:00:00.000Z',
+    sites: {
+      a: { ok: true, at: '2026-09-09T03:00:00.000Z', count: 0 },
+      b: { ok: true, at: '2026-09-09T02:00:00.000Z', count: 1 },
+      c: { ok: true, at: '2026-09-09T01:00:00.000Z', count: 1 },
+    },
+    trips: [
+      { siteId: 'b', siteName: 'B', boat: 'B호', date: '2026-09-11', status: 'few', seatsLeft: 1 },
+      { siteId: 'c', siteName: 'C', boat: 'C호', date: '2026-09-11', status: 'few', seatsLeft: 1 },
+    ],
+  };
+  const { registryPath, dataPath } = await fixture(sites, prev);
+  const calls = [];
+  const collectFn = async (site) => {
+    calls.push(site.id);
+    if (site.id === 'c') throw new Error('HTTP 503 Service Unavailable');
+    return [];
+  };
+
+  await runAll({
+    registryPath, dataPath, days: 21,
+    now: new Date('2026-09-10T00:00:00+09:00'),
+    rotatePerRun: { 'sunsang24.com': 1 }, collectFn,
+  });
+  await runAll({
+    registryPath, dataPath, days: 21,
+    now: new Date('2026-09-10T00:05:00+09:00'),
+    rotatePerRun: { 'sunsang24.com': 1 }, collectFn,
+  });
+
+  assert.deepEqual(calls, ['c', 'b'], '실패해도 다음 빈자리 선사에 차례를 넘깁니다');
+});
+
 // 미룬 곳이 화면에서 사라지면 "배가 없어졌다"로 보입니다. 연속 timeout 보류와 같은 규칙입니다.
 test('차례가 아닌 곳은 직전 결과를 그대로 남긴다', async () => {
   const sites = ['a', 'b'].map((id) => ({ ...mockSite, id, url: `https://${id}.shared.example` }));
