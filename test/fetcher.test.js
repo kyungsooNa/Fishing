@@ -5,7 +5,13 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createServer } from 'node:http';
-import { fetchHtml, describeError, gapKey } from '../core/fetcher.js';
+import {
+  fetchHtml,
+  describeError,
+  gapKey,
+  getStaticViaFetch,
+  usesEnvProxy,
+} from '../core/fetcher.js';
 
 // 포트를 매번 새로 잡습니다. fetcher가 호스트별로 3초씩 쉬는데, 포트가 다르면
 // 다른 호스트로 보므로 테스트가 기다리지 않습니다.
@@ -15,6 +21,60 @@ async function serve(handler) {
   const { port } = server.address();
   return { url: `http://127.0.0.1:${port}/`, close: () => new Promise((r) => server.close(r)) };
 }
+
+function fakeResponse(status, body = '', headers = {}) {
+  const bytes = Buffer.isBuffer(body) ? body : Buffer.from(body);
+  return {
+    status,
+    statusText: status === 200 ? 'OK' : 'Service Unavailable',
+    headers: { get: (name) => headers[name.toLowerCase()] ?? null },
+    arrayBuffer: async () => bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength),
+  };
+}
+
+test('클라우드 프록시 모드는 시작 환경변수와 프록시가 모두 있을 때만 켠다', () => {
+  assert.equal(usesEnvProxy({ NODE_USE_ENV_PROXY: '1', HTTPS_PROXY: 'http://proxy:8080' }), true);
+  assert.equal(usesEnvProxy({ NODE_USE_ENV_PROXY: 'true', https_proxy: 'http://proxy:8080' }), true);
+  assert.equal(usesEnvProxy({ HTTPS_PROXY: 'http://proxy:8080' }), false);
+  assert.equal(usesEnvProxy({ NODE_USE_ENV_PROXY: '1' }), false);
+});
+
+test('클라우드 프록시 fetch 경로도 HTML 인코딩과 HTTP 상태를 보존한다', async () => {
+  const eucKr = Buffer.from([0xc7, 0xd1, 0xb1, 0xdb]); // "한글"
+  const html = await getStaticViaFetch('https://example.com/', {
+    fetcher: async () => fakeResponse(200, eucKr, { 'content-type': 'text/html; charset=euc-kr' }),
+  });
+  assert.equal(html, '한글');
+
+  await assert.rejects(
+    getStaticViaFetch('https://example.com/', {
+      fetcher: async () => fakeResponse(503),
+    }),
+    (err) => err.status === 503 && /HTTP 503/.test(err.message),
+  );
+});
+
+test('클라우드 프록시 fetch 경로도 리다이렉트 제한을 지킨다', async () => {
+  const seen = [];
+  const fetcher = async (url) => {
+    seen.push(url);
+    if (url.endsWith('/start')) return fakeResponse(302, '', { location: '/finish' });
+    return fakeResponse(200, '<html>도착</html>', { 'content-type': 'text/html; charset=utf-8' });
+  };
+  assert.equal(
+    await getStaticViaFetch('https://example.com/start', { fetcher }),
+    '<html>도착</html>',
+  );
+  assert.deepEqual(seen, ['https://example.com/start', 'https://example.com/finish']);
+
+  await assert.rejects(
+    getStaticViaFetch('https://example.com/start', {
+      redirects: 0,
+      fetcher: async () => fakeResponse(302, '', { location: '/again' }),
+    }),
+    /리다이렉트가 너무 많습니다/,
+  );
+});
 
 test('요청 간격은 호스트가 아니라 서버(도메인) 단위로 센다', () => {
   // 선사 사이트는 대부분 플랫폼 서브도메인이라 호스트만 다르고 서버는 하나입니다.

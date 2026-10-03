@@ -5,10 +5,9 @@ import https from 'node:https';
 
 
 const MIN_GAP_MS = 3000;        // 같은 서버에 연속 요청할 때 최소 간격
-// 러너는 해외에 있고 상대는 전부 국내 호스트입니다. Node fetch의 기본 연결 제한시간
-// 10초로는 멀쩡한 사이트가 UND_ERR_CONNECT_TIMEOUT으로 무더기로 떨어집니다.
-// undici Agent로 늘려보려다 내장 fetch와 버전이 안 맞아 모든 요청을 깨뜨린 적이 있어,
-// 지금은 node:http/https로 직접 받아옵니다. 붙는 시간과 기다리는 시간을 다 덮습니다.
+// 러너는 해외에 있고 상대는 전부 국내 호스트입니다. 일반 실행은 node:http/https로
+// 직접 받아 붙는 시간과 기다리는 시간을 다 덮습니다. 다만 직접 소켓을 열 수 없는
+// Codex 클라우드는 NODE_USE_ENV_PROXY=1로 시작한 Node의 내장 fetch를 써야 합니다.
 const TIMEOUT_MS = 30000;
 const MAX_REDIRECTS = 5;
 const UA =
@@ -141,6 +140,74 @@ function getStatic(url, { referer, timeoutMs = TIMEOUT_MS, redirects = MAX_REDIR
   });
 }
 
+export function usesEnvProxy(env = process.env) {
+  const enabled = ['1', 'true'].includes(String(env.NODE_USE_ENV_PROXY ?? '').toLowerCase());
+  const proxy = env.HTTPS_PROXY ?? env.https_proxy ?? env.HTTP_PROXY ?? env.http_proxy;
+  return enabled && Boolean(proxy) && typeof globalThis.fetch === 'function';
+}
+
+/**
+ * Node 24의 --use-env-proxy/NODE_USE_ENV_PROXY는 내장 fetch에만 적용됩니다.
+ * node:https는 HTTPS_PROXY를 읽지 않으므로 직접 통신이 막힌 클라우드에서는 DNS 오류가
+ * 납니다. 이 경로는 환경 프록시가 명시적으로 켜진 때만 사용해 기존 러너 동작은 지킵니다.
+ */
+export async function getStaticViaFetch(
+  url,
+  {
+    referer,
+    timeoutMs = TIMEOUT_MS,
+    redirects = MAX_REDIRECTS,
+    fetcher = globalThis.fetch,
+  } = {},
+) {
+  const ms = Number(timeoutMs);
+  const wait = Number.isFinite(ms) && ms > 0 ? ms : TIMEOUT_MS;
+  let res;
+  try {
+    res = await fetcher(url, {
+      redirect: 'manual',
+      signal: AbortSignal.timeout(wait),
+      headers: {
+        'User-Agent': UA,
+        'Accept-Language': 'ko-KR,ko;q=0.9',
+        Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        ...(referer ? { Referer: referer } : {}),
+      },
+    });
+  } catch (err) {
+    if (err?.name === 'TimeoutError' || err?.name === 'AbortError') {
+      throw new Error(`${wait}ms 안에 응답이 없습니다`, { cause: err });
+    }
+    throw err;
+  }
+
+  if ([301, 302, 303, 307, 308].includes(res.status) && res.headers.get('location')) {
+    if (redirects <= 0) throw new Error('리다이렉트가 너무 많습니다');
+    const location = res.headers.get('location');
+    let next;
+    try {
+      next = new URL(location, url).toString();
+    } catch {
+      throw new Error(`리다이렉트 주소를 읽을 수 없습니다: ${String(location).slice(0, 60)}`);
+    }
+    return getStaticViaFetch(next, {
+      referer,
+      timeoutMs,
+      redirects: redirects - 1,
+      fetcher,
+    });
+  }
+
+  if (res.status >= 400) {
+    const err = new Error(`HTTP ${res.status} ${res.statusText ?? ''}`.trim());
+    err.status = res.status;
+    throw err;
+  }
+
+  const bytes = Buffer.from(await res.arrayBuffer());
+  return decode(bytes, res.headers.get('content-type') ?? '');
+}
+
 // 국내 예약 사이트는 아직 EUC-KR이 흔합니다. 잘못 읽으면 파싱이 통째로 깨집니다.
 function decode(buf, contentType) {
   const head = buf.subarray(0, 2048).toString('latin1');
@@ -238,7 +305,9 @@ export async function fetchHtml(url, { mode = 'auto', waitFor, referer, retries 
     const startedAt = Date.now();      // pace로 기다린 시간은 빼고 잽니다
     try {
       if (mode === 'js') return await getRendered(url, { waitFor, referer });
-      const html = await getStatic(url, { referer, timeoutMs });
+      const html = usesEnvProxy()
+        ? await getStaticViaFetch(url, { referer, timeoutMs })
+        : await getStatic(url, { referer, timeoutMs });
       if (mode === 'auto' && looksEmpty(html)) return await getRendered(url, { waitFor, referer });
       return html;
     } catch (err) {

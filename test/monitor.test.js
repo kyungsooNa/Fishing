@@ -167,6 +167,53 @@ test('같은 플랫폼은 겹치지 않고 관심 선사를 다음 순서로 우
   assert.deepEqual(calls, ['b', 'a']);
 });
 
+test('로컬 선상24는 한 시간에 8슬롯만 쓰고 다음 시간에는 안 본 곳부터 잇는다', async () => {
+  const sites = Array.from({ length: 10 }, (_, i) => ({
+    ...a, id: `s${i}`, name: `S${i}`, adapter: 'sunsang24',
+    url: `https://s${i}.sunsang24.com`,
+  }));
+  const calls = [];
+  const f = await fixture({ sites, baseTrips: [], collect: async (site) => {
+    if (site.days !== 0) calls.push(site.id);
+    return [trip(site.id)];
+  } });
+
+  for (let i = 0; i < 12; i++) {
+    await f.monitor.tick(); await f.monitor.idle();
+  }
+  assert.deepEqual(calls, sites.slice(0, 8).map((site) => site.id));
+  assert.equal(f.monitor.status().running, false, '예산을 다 쓰면 계속 수집 중으로 보이지 않습니다');
+
+  const resumed = createMonitor(f.opts);
+  await resumed.init();
+  await resumed.tick(); await resumed.idle();
+  assert.equal(calls.length, 8, '재시작해도 같은 시간의 사용량을 잊지 않습니다');
+
+  f.advance(FULL_MS);
+  await resumed.tick(); await resumed.idle();
+  await resumed.tick(); await resumed.idle();
+  assert.deepEqual(calls.slice(8), ['s8', 's9'], '다음 시간에는 아직 안 본 곳이 먼저입니다');
+});
+
+test('날짜별 요청이 많은 선상24 사이트는 실제 요청량에 맞춰 여러 슬롯을 쓴다', async () => {
+  const daily = { ...a, id: 'daily', adapter: 'sunsang24',
+    url: 'https://daily.sunsang24.com', path: 'schedule_fleet_simple_top', days: 10 };
+  const fleets = Array.from({ length: 6 }, (_, i) => ({
+    ...a, id: `s${i}`, adapter: 'sunsang24', url: `https://s${i}.sunsang24.com`,
+  }));
+  const calls = [];
+  const f = await fixture({ sites: [daily, ...fleets], baseTrips: [], collect: async (site) => {
+    if (site.days !== 0) calls.push(site.id);
+    return [trip(site.id)];
+  } });
+
+  for (let i = 0; i < 10; i++) {
+    await f.monitor.tick(); await f.monitor.idle();
+  }
+  assert.deepEqual(calls, ['daily', 's0', 's1', 's2', 's3'],
+    '10회 요청 사이트는 4슬롯, 목록형은 1슬롯씩 써서 합계 8을 넘지 않습니다');
+});
+
 test('수집 실패는 이전 좌석과 확인 시각을 보존하고 재시도 간격을 늘린다', async () => {
   let failing = false, calls = 0, notices = 0;
   const f = await fixture({ collect: async () => {
@@ -243,10 +290,10 @@ test('서버가 405로 막으면 그 서버의 선사는 쉬고, 풀리면 안 �
   assert.match(f.monitor.data().sites.s2.localError, /HTTP 405 — 서버가 이 PC를 막아/);
   assert.equal(f.monitor.status().running, false, '쉬는 선사 때문에 계속 도는 것으로 보이지 않습니다');
 
-  // 사람이 누른 선사 최신화는 쉬는 중에도 시도합니다.
+  // 사람이 눌러도 차단 중에는 즉시 다시 두드리지 않습니다. 재시도가 차단을 연장했습니다.
   f.monitor.requestSite('s2');
   await f.monitor.tick(); await f.monitor.idle();
-  assert.equal(calls.filter((id) => id === 's2').length, 1);
+  assert.equal(calls.filter((id) => id === 's2').length, 0);
 
   calls.length = 0;
   blockedNow = false;
@@ -272,6 +319,13 @@ test('서버가 503으로 막아도 그 서버의 선사는 쉰다', async () =>
   await f.monitor.tick(); await f.monitor.idle();
   assert.deepEqual(calls, ['s1'], '막힌 서버의 다음 선사는 두드리지 않습니다');
   assert.match(f.monitor.data().sites.s2.localError, /HTTP 503 — 서버가 이 PC를 막아/);
+
+  f.advance(BLOCK_MS);
+  await f.monitor.tick(); await f.monitor.idle();
+  assert.deepEqual(calls, ['s1'], '503은 한 시간 뒤 곧바로 재시도하지 않습니다');
+  f.advance(5 * BLOCK_MS);
+  await f.monitor.tick(); await f.monitor.idle();
+  assert.deepEqual(calls, ['s1', 's2'], '6시간 냉각 뒤에는 아직 못 본 곳부터 확인합니다');
 });
 
 test('404처럼 그 선사만의 문제는 서버째 쉬지 않는다', async () => {
