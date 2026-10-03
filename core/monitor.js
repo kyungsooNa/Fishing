@@ -16,6 +16,10 @@ import { kstDate } from './when.js';
 
 export const FULL_MS = 60 * 60 * 1000;
 export const WATCH_MS = 3 * 60 * 1000;
+export const REMOTE_REFRESH_MS = 5 * 60 * 1000;
+export const DEFAULT_REMOTE_DATA_URL =
+  'https://raw.githubusercontent.com/kyungsooNa/Fishing/main/docs/data.json';
+const MAX_REMOTE_BYTES = 20 * 1024 * 1024;
 
 /**
  * 서버가 "이 IP는 그만"이라고 답한 상태코드. 선상24는 2026-09-17부터 한 IP가 27~31요청을
@@ -44,11 +48,13 @@ export function createMonitor({
   registryPath = 'sites/registry.json', dataPath = 'docs/data.json',
   statePath = 'tmp/monitor.json', collect = collectSite, send = notify, writeAlerts = appendAlerts,
   clock = Date.now, readRegistry = () => loadRegistry(registryPath),
+  remoteDataUrl = null, remoteRefreshMs = REMOTE_REFRESH_MS, fetchRemote = globalThis.fetch,
 } = {}) {
   // 감시 목록은 사람(브라우저 토큰의 해시)마다 따로 둡니다(core/watchers.js).
   // legacy는 사용자 구분이 없던 시절의 목록입니다 — 주인을 모르니 아무에게나 주지 않고,
   // 로컬 화면이 처음 붙을 때 그 사람에게 넘깁니다(adopt).
-  let base, baseMark = null, ports = {}, sites = [], watchers = {}, legacy = [], records = {}, timer, stopped = false;
+  let base, baseMark = null, remoteEtag = null, remoteAttempted = -Infinity;
+  let ports = {}, sites = [], watchers = {}, legacy = [], records = {}, timer, stopped = false;
   // GitHub 러너에서 더피싱이 막혀도 국내 PC의 로컬 수집이 3개월 일정을 채울 수 있습니다.
   // 가까운 출조와 섞으면 3분 감시 대상까지 불어나므로 상태 파일 안에서 따로 보관합니다.
   let futureTrips = [], futureCursors = {};
@@ -111,16 +117,52 @@ export function createMonitor({
    * tick마다 다시 파싱할 수는 없으니, 파일이 바뀐 것이 보일 때만 읽습니다.
    * 못 읽을 때(파일이 없거나 받는 중)는 들고 있던 것을 그대로 씁니다.
    */
+  const baseTime = (value) => {
+    const generated = Date.parse(value?.generatedAt);
+    if (Number.isFinite(generated)) return generated;
+    return Math.max(0, ...Object.values(value?.sites ?? {}).map((s) =>
+      Date.parse(s?.ok ? s.at : s?.keptFrom) || 0));
+  };
+  const validBase = (value) => value && Array.isArray(value.trips)
+    && value.sites && typeof value.sites === 'object' && !Array.isArray(value.sites);
+
   async function refreshBase() {
     const mark = await stat(dataPath).then(({ mtimeMs, size }) => `${mtimeMs}:${size}`, () => null);
     if (base && (mark === null || mark === baseMark)) return false;
-    base = await load(dataPath);
+    const candidate = await load(dataPath);
     baseMark = mark;
+    if (!validBase(candidate)) throw new Error('로컬 data.json 형식이 올바르지 않습니다');
+    if (base && baseTime(candidate) < baseTime(base)) return false;
+    base = candidate;
+    return true;
+  }
+
+  async function refreshRemote({ force = false } = {}) {
+    if (!remoteDataUrl || typeof fetchRemote !== 'function') return false;
+    const now = clock();
+    if (!force && now - remoteAttempted < remoteRefreshMs) return false;
+    remoteAttempted = now;
+
+    const res = await fetchRemote(remoteDataUrl, {
+      cache: 'no-store',
+      headers: remoteEtag ? { 'If-None-Match': remoteEtag } : {},
+      signal: AbortSignal.timeout(15000),
+    });
+    if (res.status === 304) return false;
+    if (!res.ok) throw new Error(`원격 수집 데이터 HTTP ${res.status}`);
+    const text = await res.text();
+    if (Buffer.byteLength(text) > MAX_REMOTE_BYTES) throw new Error('원격 수집 데이터가 너무 큽니다');
+    const candidate = JSON.parse(text);
+    if (!validBase(candidate)) throw new Error('원격 수집 데이터 형식이 올바르지 않습니다');
+    remoteEtag = res.headers.get('etag') ?? remoteEtag;
+    if (base && baseTime(candidate) <= baseTime(base)) return false;
+    base = candidate;
     return true;
   }
 
   async function init() {
     await refreshBase();
+    await refreshRemote({ force: true }).catch((err) => addLog(`원격 수집 데이터 확인 실패: ${err.message}`));
     ports = await loadPorts();
     sites = await readRegistry();
     try {
@@ -415,9 +457,12 @@ export function createMonitor({
     try {
       sites = await readRegistry();
       // run.bat이 받아온(또는 collect.js가 새로 쓴) 결과가 있으면 그때 집어 올립니다.
-      if (await refreshBase().catch((err) => { addLog(`받아온 결과 읽기 실패: ${err.message}`); return false; })) {
-        addLog('받아온 수집 결과(docs/data.json)를 다시 읽었습니다');
-      }
+      const localChanged = await refreshBase()
+        .catch((err) => { addLog(`받아온 결과 읽기 실패: ${err.message}`); return false; });
+      const remoteChanged = await refreshRemote()
+        .catch((err) => { addLog(`원격 수집 데이터 확인 실패: ${err.message}`); return false; });
+      if (localChanged) addLog('받아온 수집 결과(docs/data.json)를 다시 읽었습니다');
+      if (remoteChanged) addLog('GitHub의 최신 수집 결과를 자동으로 받아왔습니다');
       if (stopped) return;
       const due = sites.filter((s) => s.enabled !== false && nextAt(s) <= clock());
       // 쉬거나 시간당 예산을 다 쓴 서버의 선사는 이번 전체 수집에서 못 봅니다.

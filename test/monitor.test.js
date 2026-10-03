@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { mkdtemp, writeFile, readFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { createMonitor, WATCH_MS, FULL_MS, BLOCK_MS } from '../core/monitor.js';
+import { createMonitor, WATCH_MS, FULL_MS, BLOCK_MS, REMOTE_REFRESH_MS } from '../core/monitor.js';
 import { acquireCollectorLock } from '../core/collector-lock.js';
 import { tripKey } from '../core/schema.js';
 import { createApp } from '../serve.js';
@@ -19,7 +19,7 @@ const b = { ...a, id: 'b', name: 'B', url: 'https://b.example.com' };
 const trip = (siteId = 'a', seatsLeft = 0) => ({ siteId, boat: '테스트호', date, departAt: '23:00',
   status: seatsLeft ? 'open' : 'closed', seatsLeft });
 
-async function fixture({ sites = [a], collect, send, writeAlerts, baseTrips = [trip()] } = {}) {
+async function fixture({ sites = [a], collect, send, writeAlerts, baseTrips = [trip()], monitorOptions = {} } = {}) {
   const dir = await mkdtemp(join(tmpdir(), 'monitor-'));
   let now = Date.parse('2026-09-05T00:00:00Z');
   const dataPath = join(dir, 'data.json');
@@ -31,11 +31,51 @@ async function fixture({ sites = [a], collect, send, writeAlerts, baseTrips = [t
   const alerts = [];
   const opts = { dataPath, statePath, readRegistry: async () => sites, clock: () => now,
     collect: collect ?? (async (s) => [trip(s.id)]), send: send ?? (async () => {}),
-    writeAlerts: writeAlerts ?? (async (records) => { alerts.push(...records); }) };
+    writeAlerts: writeAlerts ?? (async (records) => { alerts.push(...records); }), ...monitorOptions };
   const monitor = createMonitor(opts);
   await monitor.init();
   return { monitor, opts, dir, alerts, advance: (ms) => { now += ms; } };
 }
+
+test('로컬 서버가 GitHub 수집 데이터를 자동으로 받아오고 작업 파일은 건드리지 않는다', async () => {
+  const remoteAt = '2026-09-05T00:01:00.000Z';
+  const remote = {
+    generatedAt: remoteAt,
+    trips: [trip('a', 7)],
+    sites: { a: { ok: true, at: remoteAt, count: 1 } },
+  };
+  const requests = [];
+  const f = await fixture({ monitorOptions: {
+    remoteDataUrl: 'https://example.test/data.json',
+    fetchRemote: async (_, options) => {
+      requests.push(options);
+      return new Response(JSON.stringify(remote), { status: 200, headers: { ETag: '"remote-v1"' } });
+    },
+  } });
+
+  assert.equal(requests.length, 1, '서버를 켤 때 최신 원격 값을 한 번 확인합니다');
+  assert.equal(f.monitor.data().trips[0].seatsLeft, 7);
+  assert.equal(f.monitor.data().sites.a.at, remoteAt);
+
+  const disk = JSON.parse(await readFile(f.opts.dataPath, 'utf8'));
+  assert.equal(disk.trips[0].seatsLeft, 0, 'Git 작업 파일을 덮어써 로컬 변경을 만들면 안 됩니다');
+
+  f.advance(REMOTE_REFRESH_MS - 1);
+  await f.monitor.tick(); await f.monitor.idle();
+  assert.equal(requests.length, 1, '5분이 되기 전에는 큰 파일을 다시 받지 않습니다');
+  f.advance(1);
+  await f.monitor.tick(); await f.monitor.idle();
+  assert.equal(requests.length, 2);
+  assert.equal(requests[1].headers['If-None-Match'], '"remote-v1"', '바뀌지 않았으면 304로 끝낼 조건을 보냅니다');
+});
+
+test('원격 데이터 동기화가 실패해도 로컬 서버는 기존 결과로 시작한다', async () => {
+  const f = await fixture({ monitorOptions: {
+    remoteDataUrl: 'https://example.test/data.json',
+    fetchRemote: async () => { throw new Error('offline'); },
+  } });
+  assert.equal(f.monitor.data().trips[0].seatsLeft, 0);
+});
 
 test('관심 출조는 3분, 나머지는 60분에 확인하고 변경만 즉시 알린다', async () => {
   let seats = 0;

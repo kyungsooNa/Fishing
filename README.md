@@ -90,7 +90,10 @@ npm run serve                     # http://localhost:8080 (관리는 /admin.html
 잔여석 아래에 마지막 확인 시각을 표시하며, 30분 이상 경과하거나 수집 실패 시 강조합니다.
 감시 목록과 수집 원문은 `tmp/monitor.json`에 저장해 재시작 후 이어갑니다.
 로컬 결과는 `docs/data.json`을 덮어쓰지 않으며 GitHub Pages에는 올라가지 않습니다.
-Pages는 GitHub Actions가 매시간 수집해 배포하는 결과를 보여줍니다.
+Pages는 GitHub Actions가 매시간 수집해 배포하는 결과를 보여줍니다. 로컬 서버도 GitHub의 최신
+`docs/data.json`을 5분마다 자동 확인하므로 데이터 때문에 **최신 코드 받기**를 누를 필요는 없습니다.
+코드와 registry 변경은 기존처럼 최신 코드 받기와 재시작이 필요합니다. 폐쇄망에서 원격 데이터
+동기화만 끄려면 서버를 시작하기 전에 `REMOTE_DATA_URL=off`를 설정합니다.
 
 외부 알림은 서버를 실행하는 환경에 `TELEGRAM_BOT_TOKEN`·`TELEGRAM_CHAT_ID` 또는
 `DISCORD_WEBHOOK`을 설정해야 합니다. GitHub Secrets는 로컬 서버로 전달되지 않습니다.
