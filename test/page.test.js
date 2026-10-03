@@ -168,9 +168,9 @@ test('수집 보류는 실제 실패와 다른 문구로 표시한다', () => {
   assert.match(inline, /수집 보류 · 직전/);
 });
 
-// 선상24는 Actions에서 차례가 안 와 "보류"인데 로컬도 막혀 못 받으면, 며칠 묵은 값이
-// "수집 보류"로만 보여서 기다리면 될 일처럼 읽혔습니다. 그건 실패입니다.
-test('받아온 쪽이 보류여도 이 PC 수집이 깨졌으면 실패로 표시한다', () => {
+// 클라우드 값은 최신인데 로컬 IP만 막힌 경우까지 통째로 "수집 실패"라고 하면, 사용자는
+// 클라우드가 성공한 것도 실패로 오해합니다. 데이터 확인과 이 PC의 3분 감시를 나눠 적습니다.
+test('클라우드 값과 이 PC 감시 실패를 구분해 표시한다', () => {
   const start = inline.indexOf('function freshness');
   const end = inline.indexOf('/**', start);
   assert.ok(start >= 0 && end > start, 'freshness를 찾지 못했습니다');
@@ -181,8 +181,9 @@ test('받아온 쪽이 보류여도 이 PC 수집이 깨졌으면 실패로 표�
   assert.match(held.text, /^수집 보류 · 직전 3일 전 확인$/);
   assert.equal(held.failed, false);
   const broken = check({ ok: false, skipped: 'rotation', keptFrom: at, localError: 'HTTP 405' });
-  assert.match(broken.text, /^수집 실패 · 직전 3일 전 확인$/);
-  assert.equal(broken.failed, true);
+  assert.match(broken.text, /^클라우드 3일 전 확인 · 이 PC 감시 불가$/);
+  assert.equal(broken.failed, false, '클라우드 데이터 자체의 실패로 표시하지 않습니다');
+  assert.equal(broken.stale, true, '3분 감시가 안 되는 경고는 계속 보여줍니다');
   assert.match(inline, /const local = s\.localError \?/, '보류인 선사에도 이 PC의 실패 사유를 적습니다');
 });
 
