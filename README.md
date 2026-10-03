@@ -10,7 +10,7 @@
 GitHub Actions가 주기적으로 수집해 `docs/data.json`으로 커밋하고, GitHub Pages가 그 페이지를 서빙합니다. 서버는 필요 없습니다.
 
 ```
-.github/workflows/collect.yml   4시간마다 수집 → data.json 커밋
+.github/workflows/collect.yml   5분마다 순환 수집 → data.json 커밋
 sites/registry.json             ★ 사이트 목록 (여기만 손대면 됩니다)
 adapters/                       사이트 유형별 파서
   sunsang24.js                  sunsang24(산다고) 호스팅 선사 — 서브도메인만 바꾸면 재사용
@@ -90,7 +90,9 @@ npm run serve                     # http://localhost:8080 (관리는 /admin.html
 잔여석 아래에 마지막 확인 시각을 표시하며, 30분 이상 경과하거나 수집 실패 시 강조합니다.
 감시 목록과 수집 원문은 `tmp/monitor.json`에 저장해 재시작 후 이어갑니다.
 로컬 결과는 `docs/data.json`을 덮어쓰지 않으며 GitHub Pages에는 올라가지 않습니다.
-Pages는 GitHub Actions가 매시간 수집해 배포하는 결과를 보여줍니다. 로컬 서버도 GitHub의 최신
+Pages는 GitHub Actions가 5분마다 순환 수집해 배포하는 결과를 보여줍니다. 선상24는 요청 차단을
+피하려고 한 실행에 8곳씩 이어서 확인하므로, 현재 규모에서는 전체 한 바퀴가 약 95분입니다.
+로컬 서버도 GitHub의 최신
 `docs/data.json`을 5분마다 자동 확인하므로 데이터 때문에 **최신 코드 받기**를 누를 필요는 없습니다.
 코드와 registry 변경은 기존처럼 최신 코드 받기와 재시작이 필요합니다. 폐쇄망에서 원격 데이터
 동기화만 끄려면 서버를 시작하기 전에 `REMOTE_DATA_URL=off`를 설정합니다.
@@ -854,5 +856,5 @@ git checkout main && git pull origin main
   `"auto"`도 본문이 비면 브라우저로 넘어가므로 같이 셉니다.
 - 셀렉터가 바뀌면 해당 사이트만 0건이 됩니다. 페이지 하단 "수집 상태"와 목록의 "갱신 실패" 표시로 확인할 수 있고, 그 사이의 데이터는 지워지지 않고 남습니다.
 - 요청 간격은 호스트당 3초로 잡혀 있습니다(`core/fetcher.js`의 `MIN_GAP_MS`). 사이트가 민감하면 늘리세요.
-- 수집 주기는 `collect.yml`의 cron에서 바꿉니다. 현재 매시 10분에 실행합니다.
+- 수집 주기는 `collect.yml`의 cron에서 바꿉니다. 현재 매시 2분부터 5분 간격으로 실행합니다.
 # Fishing
