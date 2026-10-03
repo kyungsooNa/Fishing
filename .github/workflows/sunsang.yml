@@ -1,17 +1,14 @@
-name: collect
+name: sunsang
 
 on:
   schedule:
-    # 전체 플랫폼 수집. 선상24의 빠른 순환은 sunsang.yml이 별도로 맡습니다.
-    - cron: '10 * * * *'
+    # 선상24는 IP당 요청 차단을 피하려고 새 러너에서 8곳씩 이어 봅니다.
+    # 정각 혼잡을 피하려고 2분부터 시작합니다.
+    - cron: '2-57/5 * * * *'
   workflow_dispatch:
-    inputs:
-      only:
-        description: '특정 선사 ID만 즉시 갱신(비우면 전체 회전 수집)'
-        required: false
-        type: string
 
 concurrency:
+  # 전체 수집과 데이터 커밋이 겹치지 않게 같은 그룹을 씁니다.
   group: collect
   cancel-in-progress: false
 
@@ -31,9 +28,6 @@ jobs:
 
       - run: npm ci --no-audit --no-fund
 
-      # 브라우저는 필요할 때만 받습니다. registry가 전부 static이 되면 이 단계는
-      # 저절로 건너뛰어져서 1~2분 빨라집니다. "js"뿐 아니라 "auto"도 본문이 비면
-      # 브라우저로 넘어가므로 같이 셉니다.
       - name: 브라우저가 필요한지 확인
         id: browser
         run: echo "needed=$(npm run -s needs-browser)" >> "$GITHUB_OUTPUT"
@@ -42,9 +36,10 @@ jobs:
         if: steps.browser.outputs.needed == 'true'
         run: npx playwright install --with-deps chromium
 
-      - run: node collect.js
+      - name: 선상24 다음 8곳 수집
+        run: node collect.js
         env:
-          ONLY: ${{ inputs.only }}
+          ONLY_ADAPTER: sunsang24
           DAYS: '21'
           HORIZON_DAYS: '90'
           TIMEOUT_BACKOFF_HOURS: '6'
@@ -52,18 +47,6 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
 
-      # 사이트를 늘리면 같은 함대 일정표를 두 번 긁는 일이 생깁니다(선상24는 어느
-      # 서브도메인으로 들어가든 함대 전체를 돌려줍니다). 수집 결과가 있어야 판정할 수
-      # 있으므로 여기서 봅니다 — 사람이 기억해서 돌리는 것으로는 안 굴러갑니다.
-      # 수집은 이미 끝났으니 이 단계가 실패해도 결과를 버리지 않습니다.
-      - name: 중복 감사
-        continue-on-error: true
-        run: node dupes.js
-
-      # 수집이 15~20분 걸립니다. 그 사이 main에 다른 커밋이 들어오면 push가 거부되고,
-      # 방금 받아온 결과가 통째로 버려집니다(실제로 한 번 그랬습니다). 거부되면 최신
-      # main 위에 결과만 다시 얹습니다 — data.json은 수집할 때마다 통째로 다시 쓰는
-      # 파일이라 남의 변경과 섞을 게 없습니다.
       - name: commit data.json
         run: |
           git config user.name  "github-actions[bot]"
@@ -84,7 +67,7 @@ jobs:
               echo "그 사이 같은 내용이 올라왔습니다 — 커밋하지 않습니다"
               exit 0
             fi
-            git commit -m "chore: 수집 $(date -u +'%Y-%m-%d %H:%M') UTC"
+            git commit -m "chore: 선상24 수집 $(date -u +'%Y-%m-%d %H:%M') UTC"
             if git push; then exit 0; fi
             echo "push가 거부됐습니다($attempt/3) — main을 다시 받아 얹습니다"
           done

@@ -131,6 +131,7 @@ export async function collectSite(site) {
  */
 export async function runAll({
   only = null,
+  onlyAdapter = null,
   days = 21,
   horizonDays = days,
   futureDataPath = null,
@@ -148,7 +149,11 @@ export async function runAll({
   overseas = process.env.GITHUB_ACTIONS === 'true',
 } = {}) {
   const registry = await loadRegistry(registryPath);
-  const targets = registry.filter((s) => (only ? s.id === only : s.enabled !== false));
+  const targets = registry.filter((s) => (only
+    ? s.id === only
+    : s.enabled !== false && (!onlyAdapter || s.adapter === onlyAdapter)));
+  const partial = Boolean(only || onlyAdapter);
+  const targetIds = new Set(targets.map((site) => site.id));
   let completed = 0;
   // 진행 표시가 끊겨도 수집 자체는 계속돼야 합니다(IPC가 먼저 닫히는 경우 등).
   const progress = (siteId = null) => {
@@ -159,6 +164,9 @@ export async function runAll({
 
   if (only && !targets.length) {
     throw new Error(`registry에 '${only}' 가 없습니다. 등록된 id: ${registry.map((s) => s.id).join(', ')}`);
+  }
+  if (onlyAdapter && !targets.length) {
+    throw new Error(`registry에 '${onlyAdapter}' 어댑터가 없습니다`);
   }
 
   const [prev, prevFuture] = await Promise.all([
@@ -498,8 +506,8 @@ export async function runAll({
   // 한 곳만 최신화할 때는 그 한 곳만 새 값으로 갈아끼웁니다. 예전에는 `only`가 대상만
   // 남긴 data.json을 써서, 이 경로를 CLI/Actions에서 쓰면 다른 선사 수천 건을 지울 수
   // 있었습니다. 관리 화면의 단일 최신화와 같은 의미가 되도록 나머지는 그대로 둡니다.
-  const untouchedTrips = only ? (prev.trips ?? []).filter((t) => t.siteId !== only) : [];
-  const untouchedFuture = only ? (prevFuture.trips ?? []).filter((t) => t.siteId !== only) : [];
+  const untouchedTrips = partial ? (prev.trips ?? []).filter((t) => !targetIds.has(t.siteId)) : [];
+  const untouchedFuture = partial ? (prevFuture.trips ?? []).filter((t) => !targetIds.has(t.siteId)) : [];
   const collected = [
     ...untouchedTrips,
     ...targets.flatMap((site) => tripsById.get(site.id) ?? []),
@@ -509,7 +517,7 @@ export async function runAll({
     ...targets.flatMap((site) => futureTripsById.get(site.id) ?? keepFuture(site)),
   ].map(withPort);
   const status = {
-    ...(only ? prev.sites ?? {} : {}),
+    ...(partial ? prev.sites ?? {} : {}),
     ...Object.fromEntries(
       targets.filter((site) => statusById.has(site.id)).map((site) => [site.id, statusById.get(site.id)]),
     ),
