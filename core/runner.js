@@ -408,9 +408,39 @@ export async function runAll({
   const groups = [...groupBy(targets, serverOf).entries()];
   // 한 곳만 다시 보는 길(`only`, 관리 화면의 "선사 최신화")은 차례를 따지지 않습니다.
   const nextCursors = new Map();
+  // 선상24 요청량을 줄여 순환하는 동안에도 실제 빈자리가 남은 선사는 먼저 다시 봅니다.
+  // 취소석이 이미 찼는데 하루 전 값으로 계속 보이면 사용자가 헛걸음합니다. 여러 곳이면
+  // 직전 확인이 오래된 순서로 골라, 같은 앞쪽 선사만 계속 차지하지 않게 합니다.
+  const openSunsang = new Set((prev.trips ?? [])
+    .filter((t) => Number(t.seatsLeft) > 0 && !['closed', 'off'].includes(t.status))
+    .flatMap((t) => (t.sources ?? [t]).map((source) => source.siteId)));
+  const previousAt = (id) => {
+    const status = prev.sites?.[id];
+    return Date.parse(status?.ok ? status.at : status?.keptFrom) || 0;
+  };
   await inParallel(groups, Number(process.env.PARALLEL ?? 6), async ([server, group]) => {
     const limit = only ? 0 : (rotatePerRun?.[server] ?? 0);
-    const plan = rotationPlan(group, { limit, cursor: prev.rotation?.[server] ?? null });
+    let plan;
+    if (server === 'sunsang24.com' && limit > 0) {
+      const priority = group.filter((site) => openSunsang.has(site.id))
+        .sort((a, b) => previousAt(a.id) - previousAt(b.id) || a.id.localeCompare(b.id))
+        .slice(0, limit);
+      const picked = new Set(priority.map((site) => site.id));
+      const regular = priority.length >= limit
+        ? { run: [], hold: group.filter((site) => !picked.has(site.id)), cursor: null }
+        : rotationPlan(group.filter((site) => !picked.has(site.id)), {
+          limit: limit - priority.length,
+          cursor: prev.rotation?.[server] ?? null,
+        });
+      const runIds = new Set([...priority, ...regular.run].map((site) => site.id));
+      plan = {
+        run: [...priority, ...regular.run],
+        hold: group.filter((site) => !runIds.has(site.id)),
+        cursor: regular.cursor ?? prev.rotation?.[server] ?? null,
+      };
+    } else {
+      plan = rotationPlan(group, { limit, cursor: prev.rotation?.[server] ?? null });
+    }
     if (plan.hold.length) {
       console.log(`  ${server}: ${plan.run.length}곳만 봅니다 (${plan.run[0].id} 부터)`
         + ` — 나머지 ${plan.hold.length}곳은 다음 차례`);

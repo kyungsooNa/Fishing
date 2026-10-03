@@ -492,6 +492,31 @@ test('차례를 나눠 돌고, 다음 실행은 이어서 본다', async () => {
   assert.equal(third.data.rotation['shared.example'], 'a', '한 바퀴 돌아 a에서 멈춥니다');
 });
 
+test('선상24 회전은 빈자리가 남은 선사를 먼저 최신화한다', async () => {
+  const sites = ['a', 'b', 'c'].map((id) => ({
+    ...mockSite, id, adapter: 'sunsang24', url: `https://${id}.sunsang24.com`,
+  }));
+  const prevAt = '2026-09-09T00:00:00.000Z';
+  const prev = {
+    generatedAt: prevAt,
+    sites: Object.fromEntries(sites.map((s) => [s.id, { ok: true, at: prevAt, count: 1 }])),
+    trips: [{
+      siteId: 'c', siteName: 'C', boat: '빈자리호', date: '2026-09-11',
+      status: 'few', seatsLeft: 1,
+    }],
+  };
+  const { registryPath, dataPath } = await fixture(sites, prev);
+  const calls = [];
+  await runAll({
+    registryPath, dataPath, days: 21,
+    now: new Date('2026-09-10T00:00:00+09:00'),
+    rotatePerRun: { 'sunsang24.com': 1 },
+    collectFn: async (site) => { calls.push(site.id); return []; },
+  });
+
+  assert.deepEqual(calls, ['c'], '빈자리 정보가 묵지 않도록 일반 회전보다 먼저 봅니다');
+});
+
 // 미룬 곳이 화면에서 사라지면 "배가 없어졌다"로 보입니다. 연속 timeout 보류와 같은 규칙입니다.
 test('차례가 아닌 곳은 직전 결과를 그대로 남긴다', async () => {
   const sites = ['a', 'b'].map((id) => ({ ...mockSite, id, url: `https://${id}.shared.example` }));

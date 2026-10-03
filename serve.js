@@ -15,7 +15,7 @@ import { spawn } from 'node:child_process';
 import { extname, join, normalize } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { platformOf, effectiveMode } from './core/platform.js';
-import { createMonitor } from './core/monitor.js';
+import { createMonitor, DEFAULT_REMOTE_DATA_URL } from './core/monitor.js';
 import { watcherId } from './core/watchers.js';
 import { readAlerts, alertsFor, ALERTS_PATH } from './core/alerts.js';
 import { usageRecord, appendUsage, USAGE_PATH } from './core/usage.js';
@@ -530,7 +530,12 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   // 기본은 루프백입니다. /api/*가 파일을 고치고 프로세스를 띄우므로 밖에 열지 않습니다.
   const HOST = process.env.HOST ?? '127.0.0.1';
   const release = await acquireCollectorLock();
-  const monitor = createMonitor();
+  // 코드 전체를 git pull하지 않아도 Actions가 커밋한 최신 수집 결과는 5분마다 자동으로
+  // 가져옵니다. REMOTE_DATA_URL=off면 폐쇄망 등에서 이 동기화만 끌 수 있습니다.
+  const remoteDataUrl = process.env.REMOTE_DATA_URL === 'off'
+    ? null
+    : process.env.REMOTE_DATA_URL || DEFAULT_REMOTE_DATA_URL;
+  const monitor = createMonitor({ remoteDataUrl });
   try { await monitor.init(); }
   catch (err) { await release(); throw err; }
   createApp({ monitor }).listen(PORT, HOST, () => {
