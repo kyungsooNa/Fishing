@@ -1,7 +1,7 @@
 // 로컬 서버의 전체 수집과 관심 출조를 한 스케줄러에서 돌립니다.
 import { readFile, mkdir, writeFile, rename, stat } from 'node:fs/promises';
 import { dirname } from 'node:path';
-import { collectSite, loadRegistry, nextMonthWindow, pruneOld, sortTrips } from './runner.js';
+import { collectSite, loadRegistry, nextMonthWindow, pruneOld, ROTATE_PER_RUN, sortTrips } from './runner.js';
 import { load } from './store.js';
 import { gapKey } from './fetcher.js';
 import { mergeDuplicates } from './merge.js';
@@ -58,7 +58,12 @@ export function createMonitor({
   // 답을 받으니 서버째 쉽니다. 연달아 막히면 1·2·4시간으로 늘려 6시간에서 멈춥니다.
   // 쉬는 동안 안 본 선사는 `attempted`가 그대로라 풀리면 그쪽부터 봅니다 — 앞쪽만 갱신되지 않습니다.
   let blocked = {};
-  // 사람이 누른 "선사 최신화". 서버가 쉬는 중이어도 그 한 곳은 시도합니다.
+  // Actions와 같은 선상24 상한을 로컬에도 둡니다. 차단된 뒤 쉬기만 하면, 차단이 풀릴
+  // 때마다 153곳을 다시 훑다가 또 막힙니다. 시간당 슬롯을 다 쓰면 다음 시간까지
+  // 기다리고, 확인한 곳의 attempted가 뒤로 가므로 다음 창에는 안 본 곳부터 이어집니다.
+  // 날짜별 AJAX 사이트는 한 번 수집에 요청이 많아 3요청당 한 슬롯으로 넉넉히 셉니다.
+  let requestBudgets = {};
+  // 사람이 누른 "선사 최신화". 차단·예산이 풀리는 다음 차례에 이 한 곳을 우선합니다.
   const forced = new Set();
   let saving = Promise.resolve(), ticking = false, fullRun = null;
   const busy = new Set(), pending = new Set();
@@ -84,6 +89,7 @@ export function createMonitor({
     const text = JSON.stringify({
       watchers, ...(legacy.length ? { watches: legacy } : {}), records, sentAlerts,
       ...(Object.keys(blocked).length ? { blocked } : {}),
+      ...(Object.keys(requestBudgets).length ? { requestBudgets } : {}),
       ...(futureTrips.length ? { futureTrips } : {}),
       ...(Object.keys(futureCursors).length ? { futureCursors } : {}),
     });
@@ -123,6 +129,8 @@ export function createMonitor({
       records = saved.records ?? {};
       sentAlerts = rememberSent(saved.sentAlerts, [], { now: clock() });
       blocked = saved.blocked && typeof saved.blocked === 'object' ? saved.blocked : {};
+      requestBudgets = saved.requestBudgets && typeof saved.requestBudgets === 'object'
+        ? saved.requestBudgets : {};
       futureTrips = Array.isArray(saved.futureTrips) ? saved.futureTrips : [];
       futureCursors = saved.futureCursors && typeof saved.futureCursors === 'object' ? saved.futureCursors : {};
     } catch { /* 첫 실행 */ }
@@ -149,6 +157,31 @@ export function createMonitor({
   const stalled = (id) => {
     const local = records[id]?.status;
     return Boolean(local) && !local.ok && snapAt(base.sites[id]) > snapAt(local);
+  };
+
+  const slotCost = (site) => {
+    if (site.adapter === 'sunsang24' && site.path === 'schedule_fleet_simple_top') {
+      return Math.max(1, Math.ceil((Number(site.days) || 10) / 3));
+    }
+    return 1;
+  };
+  const budgetOf = (site) => {
+    const group = groupOf(site);
+    const limit = ROTATE_PER_RUN[group];
+    if (!(limit > 0)) return null;
+    const saved = requestBudgets[group];
+    if (!saved || clock() >= Number(saved.until)) {
+      requestBudgets[group] = { used: 0, until: clock() + FULL_MS };
+    }
+    return { group, limit, state: requestBudgets[group], cost: slotCost(site) };
+  };
+  const hasBudget = (site) => {
+    const budget = budgetOf(site);
+    return !budget || budget.state.used + budget.cost <= budget.limit;
+  };
+  const useBudget = (site) => {
+    const budget = budgetOf(site);
+    if (budget) budget.state.used += budget.cost;
   };
 
   function data() {
@@ -197,7 +230,8 @@ export function createMonitor({
    */
   function status(watcherId = null) {
     const enabled = sites.filter((s) => s.enabled !== false);
-    const running = busy.size > 0 || enabled.some((s) => nextAt(s) <= clock() && !blockOf(s));
+    const running = busy.size > 0 || enabled.some((s) =>
+      nextAt(s) <= clock() && !blockOf(s) && hasBudget(s));
     const done = fullRun ? fullRun.total - fullRun.pending.size : 0;
     return {
       watches: watchesOf(watcherId), fullMinutes: 60, watchMinutes: 3,
@@ -267,7 +301,9 @@ export function createMonitor({
     const attempted = clock();
     try {
       const now = new Date(clock());
-      const raw = await collect({ ...site, days: 21 });
+      // registry의 짧은 범위를 보존합니다. 피싱게이트는 날짜별 AJAX라 days:10인데 이를
+      // 21로 덮으면 한 번 확인할 때 21요청을 보내 차단을 스스로 만들었습니다.
+      const raw = await collect({ ...site, days: site.days ?? 21 });
       const trips = mergeDuplicates(pruneOld(raw, 21, now));
       const at = new Date(clock()).toISOString();
       records[site.id] = { attempted, failures: 0, trips,
@@ -359,7 +395,11 @@ export function createMonitor({
       if (code) {
         const group = groupOf(site);
         const streak = (blocked[group]?.streak ?? 0) + 1;
-        const ms = Math.min(BLOCK_MS * 2 ** Math.min(streak - 1, 20), BLOCK_MAX_MS);
+        // 선상24의 503은 한 시간 뒤에도 그대로였고, 재시도가 차단 시간을 늘렸습니다.
+        // 첫 503부터 관측된 안전 상한인 6시간을 온전히 쉽니다.
+        const ms = code === 503
+          ? BLOCK_MAX_MS
+          : Math.min(BLOCK_MS * 2 ** Math.min(streak - 1, 20), BLOCK_MAX_MS);
         blocked[group] = { until: new Date(clock() + ms).toISOString(), streak, error: `HTTP ${code}` };
         addLog(`${group}: HTTP ${code}로 막혔습니다 — ${Math.round(ms / 60000)}분 동안 이 서버는 쉽니다`);
       }
@@ -380,15 +420,21 @@ export function createMonitor({
       }
       if (stopped) return;
       const due = sites.filter((s) => s.enabled !== false && nextAt(s) <= clock());
-      // 쉬는 서버의 선사는 이번 전체 수집에서 못 봅니다. 진행률이 거기서 멈추지 않게 뺍니다.
-      for (const s of due) if (blockOf(s) && !forced.has(s.id)) fullRun?.pending.delete(s.id);
+      // 쉬거나 시간당 예산을 다 쓴 서버의 선사는 이번 전체 수집에서 못 봅니다.
+      // 진행률이 거기서 멈추지 않게 빼고, 다음 시간 자동 수집에서 이어 봅니다.
+      for (const s of due) if (blockOf(s) || !hasBudget(s)) fullRun?.pending.delete(s.id);
       // 같은 플랫폼은 한 번에 하나, 전체 동시 실행은 여섯 개까지입니다.
-      due.sort((a, b) => Number(interested(b.id)) - Number(interested(a.id)) || nextAt(a) - nextAt(b));
+      due.sort((a, b) => Number(forced.has(b.id)) - Number(forced.has(a.id)) ||
+        Number(interested(b.id)) - Number(interested(a.id)) || nextAt(a) - nextAt(b));
       for (const site of due) {
         const group = groupOf(site);
         if (busy.has(group) || busy.size >= 6) continue;
-        // 서버가 쉬는 중이면 건너뜁니다. 사람이 누른 "선사 최신화"만 시도합니다.
-        if (blockOf(site) && !forced.has(site.id)) continue;
+        // 수동 요청도 차단·예산을 우회하지 않습니다. 계속 누르면 회복 시각만 늦어집니다.
+        if (blockOf(site) || !hasBudget(site)) {
+          fullRun?.pending.delete(site.id);
+          continue;
+        }
+        useBudget(site);
         forced.delete(site.id);
         busy.add(group);
         const task = collectOne(site).catch((e) => addLog(`저장 실패: ${e.message}`)).finally(() => {
@@ -414,7 +460,7 @@ export function createMonitor({
     const site = sites.find((candidate) => candidate.id === id);
     if (!site) throw new Error('등록되지 않은 선사입니다');
     if (site.enabled === false) throw new Error('꺼진 선사는 최신화할 수 없습니다');
-    // 다음 tick에서 이 선사만 즉시 대상이 됩니다. 다른 선사의 주기는 건드리지 않습니다.
+    // 다음 가능한 tick에서 이 선사를 우선합니다. 서버 차단·시간당 예산은 우회하지 않습니다.
     if (records[id]) records[id].attempted = 0;
     forced.add(id);
     addLog(`${site.name ?? id}: 수동 최신화 요청`);
