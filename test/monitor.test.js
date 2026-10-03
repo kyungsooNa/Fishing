@@ -258,6 +258,22 @@ test('서버가 405로 막으면 그 서버의 선사는 쉬고, 풀리면 안 �
   assert.equal(f.monitor.data().sites.s2.localError, undefined, '풀리면 막힘 표시를 지웁니다');
 });
 
+// 2026-10-03에 선상24가 이 PC에만 모든 선사 503을 줬습니다(같은 시각 Actions에는 503이 없었습니다).
+test('서버가 503으로 막아도 그 서버의 선사는 쉰다', async () => {
+  const s1 = { ...a, id: 's1', url: 'https://one.sunsang24.com' };
+  const s2 = { ...a, id: 's2', url: 'https://two.sunsang24.com' };
+  const calls = [];
+  const f = await fixture({ sites: [s1, s2], baseTrips: [],
+    collect: async (site) => {
+      calls.push(site.id);
+      const err = new Error('HTTP 503 Service Unavailable'); err.status = 503; throw err;
+    } });
+  await f.monitor.tick(); await f.monitor.idle();
+  await f.monitor.tick(); await f.monitor.idle();
+  assert.deepEqual(calls, ['s1'], '막힌 서버의 다음 선사는 두드리지 않습니다');
+  assert.match(f.monitor.data().sites.s2.localError, /HTTP 503 — 서버가 이 PC를 막아/);
+});
+
 test('404처럼 그 선사만의 문제는 서버째 쉬지 않는다', async () => {
   const s1 = { ...a, id: 's1', url: 'https://one.sunsang24.com' };
   const s2 = { ...a, id: 's2', url: 'https://two.sunsang24.com' };
