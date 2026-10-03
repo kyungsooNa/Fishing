@@ -594,6 +594,35 @@ test('한 곳만 다시 보는 길은 차례를 따지지 않고, 전체 차례�
   assert.ok(one.data.sites.a, '이번 대상이 아닌 선사의 수집 상태도 그대로 보존합니다');
 });
 
+test('어댑터 전용 수집은 다른 어댑터의 출조와 상태를 그대로 보존한다', async () => {
+  const sites = [
+    { ...mockSite, id: 'sun', adapter: 'sunsang24', url: 'https://sun.sunsang24.com' },
+    { ...mockSite, id: 'other', adapter: 'mock', url: 'https://other.example' },
+  ];
+  const prev = {
+    generatedAt: '2026-09-09T00:00:00.000Z',
+    sites: {
+      sun: { ok: true, at: '2026-09-09T00:00:00.000Z', count: 1 },
+      other: { ok: true, at: '2026-09-09T00:00:00.000Z', count: 1 },
+    },
+    trips: [
+      { siteId: 'sun', siteName: '선상', boat: '선상호', date: '2026-09-11', status: 'open', seatsLeft: 1 },
+      { siteId: 'other', siteName: '다른곳', boat: '다른호', date: '2026-09-11', status: 'open', seatsLeft: 2 },
+    ],
+  };
+  const { registryPath, dataPath } = await fixture(sites, prev);
+  const calls = [];
+  const { data } = await runAll({
+    registryPath, dataPath, days: 21, onlyAdapter: 'sunsang24',
+    now: new Date('2026-09-10T00:00:00+09:00'),
+    collectFn: async (site) => { calls.push(site.id); return []; },
+  });
+
+  assert.deepEqual(calls, ['sun']);
+  assert.ok(data.trips.some((trip) => trip.siteId === 'other'), '다른 어댑터 출조가 남습니다');
+  assert.deepEqual(data.sites.other, prev.sites.other, '다른 어댑터 상태도 그대로 남습니다');
+});
+
 test('회전 기본값은 실제 수집 그룹 열쇠에 걸린다', async () => {
   const { ROTATE_PER_RUN } = await import('../core/runner.js');
   const { gapKey } = await import('../core/fetcher.js');
