@@ -261,6 +261,12 @@ test('주소로 날짜를 못 가는 링크는 그렇다고 적는다', () => {
   assert.match(listing, /일정표 — 날짜는 직접 고르세요/);
 });
 
+test('선사 전화번호가 있으면 알림에서 바로 걸 수 있게 따로 한 줄로 간다', () => {
+  const text = format([opening({ phone: '010-4757-4753' })]);
+  assert.match(text, /\n  ☎ 010-4757-4753\n/);
+  assert.equal(format([opening()]).includes('☎'), false, '번호를 모르면 그 줄은 빠집니다');
+});
+
 test('주소가 없으면 그 줄만 빠지고 나머지는 간다', () => {
   const text = format([opening({ url: null })]);
   assert.match(text, /가호/);

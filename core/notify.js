@@ -3,7 +3,7 @@
 const MAX_LINES = 20;
 
 /**
- * 한 건이 두 줄입니다. 알림을 받고 **바로 예약하러 갈 수 있어야** 하는데, 첫 줄에 다 넣으면
+ * 한 건이 두세 줄입니다(전화번호가 있으면 한 줄 더). 알림을 받고 **바로 예약하러 갈 수 있어야** 하는데, 첫 줄에 다 넣으면
  * 주소가 잘리거나 줄이 접혀서 정작 링크가 안 보였습니다. 배·시각은 첫 줄, 주소는 그 아래.
  *
  * 주소는 그 출조의 예약 화면입니다. 사이트가 주소로 날짜를 못 받으면(`urlDated`가 없으면)
@@ -21,6 +21,10 @@ export function line(opening) {
   ].filter(Boolean);
 
   const rows = ['• ' + bits.join(' | ')];
+  // 취소석은 전화가 제일 빠릅니다. 폰의 텔레그램·디스코드는 번호를 눌러 바로 걸게 해 주므로
+  // 링크 형식(tel:)으로 감싸지 않고 적어둔 표기 그대로 한 줄에 둡니다 — 텔레그램은 tel: 링크를
+  // 받지 않습니다. 번호를 모르는 선사는 이 줄이 빠집니다.
+  if (opening.phone) rows.push(`  ☎ ${opening.phone}`);
   if (opening.url) rows.push(`  ${opening.url}${opening.urlDated ? '' : ' (일정표 — 날짜는 직접 고르세요)'}`);
   return rows.join('\n');
 }
