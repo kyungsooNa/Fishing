@@ -526,6 +526,9 @@ test('한 곳만 다시 보는 길은 차례를 따지지 않고, 전체 차례�
   const one = await runAll({ registryPath, dataPath, days: 21, rotatePerRun, only: 'c' });
   assert.equal(one.data.sites.c.ok, true, '차례와 상관없이 봅니다');
   assert.equal(one.data.rotation['shared.example'], before, '전체 차례는 그대로입니다');
+  assert.ok(one.data.trips.some((t) => t.siteId === 'a'),
+    '한 곳만 최신화해도 다른 선사의 기존 출조를 지우면 안 됩니다');
+  assert.ok(one.data.sites.a, '이번 대상이 아닌 선사의 수집 상태도 그대로 보존합니다');
 });
 
 test('회전 기본값은 실제 수집 그룹 열쇠에 걸린다', async () => {
