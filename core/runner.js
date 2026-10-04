@@ -442,9 +442,13 @@ export async function runAll({
     const limit = only ? 0 : (rotatePerRun?.[server] ?? 0);
     let plan;
     if (server === 'sunsang24.com' && limit > 0) {
+      // 취소석은 빨리 다시 봐야 하지만, 우선 대상이 매번 상한을 전부 차지하면
+      // 만석·일정 없는 선사는 영영 회전하지 못합니다. 한 칸은 작은 실행도
+      // 취소석을 확인할 수 있게 남기고, 큰 실행에서는 적어도 3/4을 전체 회전에 둡니다.
+      const priorityLimit = Math.max(1, Math.floor(limit / 4));
       const priority = group.filter((site) => openSunsang.has(site.id))
         .sort((a, b) => previousAt(a.id) - previousAt(b.id) || a.id.localeCompare(b.id))
-        .slice(0, limit);
+        .slice(0, priorityLimit);
       const picked = new Set(priority.map((site) => site.id));
       const regular = priority.length >= limit
         ? { run: [], hold: group.filter((site) => !picked.has(site.id)), cursor: null }
