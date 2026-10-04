@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-04T00:35:47.423Z",
+  "generatedAt": "2026-10-04T01:17:23.321Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -128,14 +128,14 @@
     "veteranfishing": 58,
     "viking": 58,
     "vtrfishing": 58,
-    "wangnuni": 22,
-    "welcome": 22,
-    "yejiqueen": 22,
-    "yeongjae": 22,
-    "yong": 22,
-    "yongma": 22,
-    "ysoceanstar": 22,
-    "yurimho": 22,
+    "wangnuni": 58,
+    "welcome": 58,
+    "yejiqueen": 58,
+    "yeongjae": 58,
+    "yong": 58,
+    "yongma": 58,
+    "ysoceanstar": 58,
+    "yurimho": 58,
     "eungabi": 22,
     "ocpro": 22,
     "supernova": 22,
@@ -6193,6 +6193,27 @@
       "url": "https://hunterfishing.sunsang24.com/ship/schedule_fleet/202610"
     },
     {
+      "siteId": "yongma",
+      "siteName": "용마호",
+      "boat": "용마호",
+      "port": "강원 고성 공현진항",
+      "phone": "010-7711-7889",
+      "date": "2026-10-26",
+      "departAt": "05:50",
+      "meetingAt": "05:50",
+      "returnAt": "13:00",
+      "session": "오전",
+      "hours": 7.2,
+      "species": "대구",
+      "tide": "8물",
+      "status": "open",
+      "statusText": "용마호 바로예약 어종 : 대구 운항시간 : 05:50 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
+      "seatsLeft": 12,
+      "seatsTotal": 12,
+      "price": null,
+      "url": "https://yongma.sunsang24.com/ship/schedule_fleet/202610"
+    },
+    {
       "siteId": "gagaho",
       "siteName": "가가호",
       "boat": "가가호",
@@ -7184,27 +7205,6 @@
       "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202610"
-    },
-    {
-      "siteId": "yongma",
-      "siteName": "용마호",
-      "boat": "용마호",
-      "port": "강원 고성 공현진항",
-      "phone": "010-7711-7889",
-      "date": "2026-10-26",
-      "departAt": "06:30",
-      "meetingAt": "06:30",
-      "returnAt": "14:00",
-      "session": "오전",
-      "hours": 7.5,
-      "species": "대구",
-      "tide": "8물",
-      "status": "open",
-      "statusText": "용마호 바로예약 어종 : 대구 운항시간 : 06:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
-      "seatsLeft": 12,
-      "seatsTotal": 12,
-      "price": null,
-      "url": "https://yongma.sunsang24.com/ship/schedule_fleet/202610"
     },
     {
       "siteId": "genieyonghan",
@@ -13937,8 +13937,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "8물",
       "status": "open",
-      "statusText": "예지퀸호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
-      "seatsLeft": 19,
+      "statusText": "예지퀸호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/1명",
+      "seatsLeft": 18,
       "seatsTotal": 19,
       "price": null,
       "url": "https://yejiqueen.sunsang24.com/ship/schedule_fleet/202610"
@@ -14375,6 +14375,27 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://hunterfishing.sunsang24.com/ship/schedule_fleet/202610"
+    },
+    {
+      "siteId": "yongma",
+      "siteName": "용마호",
+      "boat": "용마호",
+      "port": "강원 고성 공현진항",
+      "phone": "010-7711-7889",
+      "date": "2026-10-27",
+      "departAt": "05:50",
+      "meetingAt": "05:50",
+      "returnAt": "13:00",
+      "session": "오전",
+      "hours": 7.2,
+      "species": "대구",
+      "tide": "9물",
+      "status": "open",
+      "statusText": "용마호 바로예약 어종 : 대구 운항시간 : 05:50 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
+      "seatsLeft": 12,
+      "seatsTotal": 12,
+      "price": null,
+      "url": "https://yongma.sunsang24.com/ship/schedule_fleet/202610"
     },
     {
       "siteId": "gagaho",
@@ -15346,27 +15367,6 @@
       "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202610"
-    },
-    {
-      "siteId": "yongma",
-      "siteName": "용마호",
-      "boat": "용마호",
-      "port": "강원 고성 공현진항",
-      "phone": "010-7711-7889",
-      "date": "2026-10-27",
-      "departAt": "06:30",
-      "meetingAt": "06:30",
-      "returnAt": "14:00",
-      "session": "오전",
-      "hours": 7.5,
-      "species": "대구",
-      "tide": "9물",
-      "status": "open",
-      "statusText": "용마호 바로예약 어종 : 대구 운항시간 : 06:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
-      "seatsLeft": 12,
-      "seatsTotal": 12,
-      "price": null,
-      "url": "https://yongma.sunsang24.com/ship/schedule_fleet/202610"
     },
     {
       "siteId": "genieyonghan",
@@ -22476,6 +22476,27 @@
       "url": "https://hunterfishing.sunsang24.com/ship/schedule_fleet/202610"
     },
     {
+      "siteId": "yongma",
+      "siteName": "용마호",
+      "boat": "용마호",
+      "port": "강원 고성 공현진항",
+      "phone": "010-7711-7889",
+      "date": "2026-10-28",
+      "departAt": "05:50",
+      "meetingAt": "05:50",
+      "returnAt": "13:00",
+      "session": "오전",
+      "hours": 7.2,
+      "species": "대구",
+      "tide": "10물",
+      "status": "open",
+      "statusText": "용마호 바로예약 어종 : 대구 운항시간 : 05:50 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
+      "seatsLeft": 12,
+      "seatsTotal": 12,
+      "price": null,
+      "url": "https://yongma.sunsang24.com/ship/schedule_fleet/202610"
+    },
+    {
       "siteId": "gagaho",
       "siteName": "가가호",
       "boat": "가가호",
@@ -23466,27 +23487,6 @@
       "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202610"
-    },
-    {
-      "siteId": "yongma",
-      "siteName": "용마호",
-      "boat": "용마호",
-      "port": "강원 고성 공현진항",
-      "phone": "010-7711-7889",
-      "date": "2026-10-28",
-      "departAt": "06:30",
-      "meetingAt": "06:30",
-      "returnAt": "14:00",
-      "session": "오전",
-      "hours": 7.5,
-      "species": "대구",
-      "tide": "10물",
-      "status": "open",
-      "statusText": "용마호 바로예약 어종 : 대구 운항시간 : 06:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
-      "seatsLeft": 12,
-      "seatsTotal": 12,
-      "price": null,
-      "url": "https://yongma.sunsang24.com/ship/schedule_fleet/202610"
     },
     {
       "siteId": "genieyonghan",
@@ -30049,8 +30049,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "10물",
       "status": "open",
-      "statusText": "예지퀸호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/9명",
-      "seatsLeft": 10,
+      "statusText": "예지퀸호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/11명",
+      "seatsLeft": 8,
       "seatsTotal": 19,
       "price": null,
       "url": "https://yejiqueen.sunsang24.com/ship/schedule_fleet/202610"
@@ -30487,6 +30487,27 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://hunterfishing.sunsang24.com/ship/schedule_fleet/202610"
+    },
+    {
+      "siteId": "yongma",
+      "siteName": "용마호",
+      "boat": "용마호",
+      "port": "강원 고성 공현진항",
+      "phone": "010-7711-7889",
+      "date": "2026-10-29",
+      "departAt": "05:50",
+      "meetingAt": "05:50",
+      "returnAt": "13:00",
+      "session": "오전",
+      "hours": 7.2,
+      "species": "대구",
+      "tide": "11물",
+      "status": "open",
+      "statusText": "용마호 바로예약 어종 : 대구 운항시간 : 05:50 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
+      "seatsLeft": 12,
+      "seatsTotal": 12,
+      "price": null,
+      "url": "https://yongma.sunsang24.com/ship/schedule_fleet/202610"
     },
     {
       "siteId": "gagaho",
@@ -31437,27 +31458,6 @@
       "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202610"
-    },
-    {
-      "siteId": "yongma",
-      "siteName": "용마호",
-      "boat": "용마호",
-      "port": "강원 고성 공현진항",
-      "phone": "010-7711-7889",
-      "date": "2026-10-29",
-      "departAt": "06:30",
-      "meetingAt": "06:30",
-      "returnAt": "14:00",
-      "session": "오전",
-      "hours": 7.5,
-      "species": "대구",
-      "tide": "11물",
-      "status": "open",
-      "statusText": "용마호 바로예약 어종 : 대구 운항시간 : 06:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
-      "seatsLeft": 12,
-      "seatsTotal": 12,
-      "price": null,
-      "url": "https://yongma.sunsang24.com/ship/schedule_fleet/202610"
     },
     {
       "siteId": "genieyonghan",
@@ -37570,6 +37570,27 @@
       "url": "https://hunterfishing.sunsang24.com/ship/schedule_fleet/202610"
     },
     {
+      "siteId": "yongma",
+      "siteName": "용마호",
+      "boat": "용마호",
+      "port": "강원 고성 공현진항",
+      "phone": "010-7711-7889",
+      "date": "2026-10-30",
+      "departAt": "05:50",
+      "meetingAt": "05:50",
+      "returnAt": "13:00",
+      "session": "오전",
+      "hours": 7.2,
+      "species": "대구",
+      "tide": "12물",
+      "status": "open",
+      "statusText": "용마호 바로예약 어종 : 대구 운항시간 : 05:50 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/3명",
+      "seatsLeft": 9,
+      "seatsTotal": 12,
+      "price": null,
+      "url": "https://yongma.sunsang24.com/ship/schedule_fleet/202610"
+    },
+    {
       "siteId": "gagaho",
       "siteName": "가가호",
       "boat": "가가호",
@@ -38535,27 +38556,6 @@
       "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202610"
-    },
-    {
-      "siteId": "yongma",
-      "siteName": "용마호",
-      "boat": "용마호",
-      "port": "강원 고성 공현진항",
-      "phone": "010-7711-7889",
-      "date": "2026-10-30",
-      "departAt": "06:30",
-      "meetingAt": "06:30",
-      "returnAt": "14:00",
-      "session": "오전",
-      "hours": 7.5,
-      "species": "대구",
-      "tide": "12물",
-      "status": "open",
-      "statusText": "용마호 바로예약 어종 : 대구 운항시간 : 06:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/3명",
-      "seatsLeft": 9,
-      "seatsTotal": 12,
-      "price": null,
-      "url": "https://yongma.sunsang24.com/ship/schedule_fleet/202610"
     },
     {
       "siteId": "genieyonghan",
@@ -45209,6 +45209,27 @@
       "url": "https://hunterfishing.sunsang24.com/ship/schedule_fleet/202610"
     },
     {
+      "siteId": "yongma",
+      "siteName": "용마호",
+      "boat": "용마호",
+      "port": "강원 고성 공현진항",
+      "phone": "010-7711-7889",
+      "date": "2026-10-31",
+      "departAt": "05:50",
+      "meetingAt": "05:50",
+      "returnAt": "13:00",
+      "session": "오전",
+      "hours": 7.2,
+      "species": "대구",
+      "tide": "13물",
+      "status": "open",
+      "statusText": "용마호 바로예약 어종 : 대구 운항시간 : 05:50 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/1명",
+      "seatsLeft": 11,
+      "seatsTotal": 12,
+      "price": null,
+      "url": "https://yongma.sunsang24.com/ship/schedule_fleet/202610"
+    },
+    {
       "siteId": "keoyang",
       "siteName": "거양호",
       "boat": "거양호",
@@ -46117,27 +46138,6 @@
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202610"
     },
     {
-      "siteId": "yongma",
-      "siteName": "용마호",
-      "boat": "용마호",
-      "port": "강원 고성 공현진항",
-      "phone": "010-7711-7889",
-      "date": "2026-10-31",
-      "departAt": "06:30",
-      "meetingAt": "06:30",
-      "returnAt": "14:00",
-      "session": "오전",
-      "hours": 7.5,
-      "species": "대구",
-      "tide": "13물",
-      "status": "open",
-      "statusText": "용마호 바로예약 어종 : 대구 운항시간 : 06:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/1명",
-      "seatsLeft": 11,
-      "seatsTotal": 12,
-      "price": null,
-      "url": "https://yongma.sunsang24.com/ship/schedule_fleet/202610"
-    },
-    {
       "siteId": "genieyonghan",
       "siteName": "지니호",
       "boat": "용한호",
@@ -46698,9 +46698,9 @@
       "hours": 4,
       "species": "주꾸미",
       "tide": "12물",
-      "status": "open",
-      "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 5만원 어종 : 주꾸미 / 다운샷,선상 운항시간 : 13:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리3명예약/14명",
-      "seatsLeft": 3,
+      "status": "few",
+      "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 5만원 어종 : 주꾸미 / 다운샷,선상 운항시간 : 13:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/16명",
+      "seatsLeft": 1,
       "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202610"
@@ -49921,7 +49921,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -54792,7 +54792,7 @@
       "status": "open",
       "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -55422,7 +55422,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -57499,7 +57499,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -59535,9 +59535,9 @@
       "hours": 10,
       "species": "주꾸미·갑오징어",
       "tide": "조금",
-      "status": "open",
-      "statusText": "예지퀸호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리4명예약/15명",
-      "seatsLeft": 4,
+      "status": "few",
+      "statusText": "예지퀸호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/17명",
+      "seatsLeft": 2,
       "seatsTotal": 19,
       "price": null,
       "url": "https://yejiqueen.sunsang24.com/ship/schedule_fleet/202611"
@@ -61396,8 +61396,8 @@
       "species": "문어",
       "tide": "조금",
       "status": "open",
-      "statusText": "오션스타2호 바로예약 어종 : 문어 / 루어 운항시간 : 06:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명예약/4명",
-      "seatsLeft": 16,
+      "statusText": "오션스타2호 바로예약 어종 : 문어 / 루어 운항시간 : 06:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/9명",
+      "seatsLeft": 11,
       "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
@@ -62289,7 +62289,7 @@
       "status": "open",
       "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -62877,7 +62877,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -64847,7 +64847,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -68633,8 +68633,8 @@
       "species": "문어",
       "tide": "1물",
       "status": "open",
-      "statusText": "오션스타2호 바로예약 어종 : 문어 / 루어 운항시간 : 06:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/2명",
-      "seatsLeft": 18,
+      "statusText": "오션스타2호 바로예약 어종 : 문어 / 루어 운항시간 : 06:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/5명",
+      "seatsLeft": 15,
       "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
@@ -69547,7 +69547,7 @@
       "status": "open",
       "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -70156,7 +70156,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -72064,7 +72064,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -74052,8 +74052,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "1물",
       "status": "open",
-      "statusText": "예지퀸호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/11명",
-      "seatsLeft": 8,
+      "statusText": "예지퀸호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/13명",
+      "seatsLeft": 6,
       "seatsTotal": 19,
       "price": null,
       "url": "https://yejiqueen.sunsang24.com/ship/schedule_fleet/202611"
@@ -75806,8 +75806,8 @@
       "species": "문어",
       "tide": "2물",
       "status": "open",
-      "statusText": "오션스타2호 바로예약 어종 : 문어 / 루어 운항시간 : 06:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명예약/3명",
-      "seatsLeft": 17,
+      "statusText": "오션스타2호 바로예약 어종 : 문어 / 루어 운항시간 : 06:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/8명",
+      "seatsLeft": 12,
       "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
@@ -76720,7 +76720,7 @@
       "status": "open",
       "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -77371,7 +77371,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -79280,7 +79280,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -81291,8 +81291,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "2물",
       "status": "open",
-      "statusText": "예지퀸호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/13명",
-      "seatsLeft": 6,
+      "statusText": "예지퀸호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/14명",
+      "seatsLeft": 5,
       "seatsTotal": 19,
       "price": null,
       "url": "https://yejiqueen.sunsang24.com/ship/schedule_fleet/202611"
@@ -83854,7 +83854,7 @@
       "status": "open",
       "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -84484,7 +84484,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -86284,7 +86284,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -88273,9 +88273,9 @@
       "hours": 10,
       "species": "주꾸미·갑오징어",
       "tide": "3물",
-      "status": "few",
-      "statusText": "예지퀸호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/18명",
-      "seatsLeft": 1,
+      "status": "closed",
+      "statusText": "예지퀸호 대기하기 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 19명 예약/19명",
+      "seatsLeft": 0,
       "seatsTotal": 19,
       "price": null,
       "url": "https://yejiqueen.sunsang24.com/ship/schedule_fleet/202611"
@@ -90858,7 +90858,7 @@
       "status": "open",
       "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -91488,7 +91488,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -92863,7 +92863,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -96996,8 +96996,8 @@
       "species": "주꾸미",
       "tide": "4물",
       "status": "open",
-      "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 6만원 어종 : 주꾸미 / 선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/5명",
-      "seatsLeft": 12,
+      "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 6만원 어종 : 주꾸미 / 선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리4명예약/13명",
+      "seatsLeft": 4,
       "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202611"
@@ -97336,7 +97336,7 @@
       "status": "open",
       "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -98008,7 +98008,7 @@
       "status": "closed",
       "statusText": "왔어호 대기하기 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 14명",
       "seatsLeft": 0,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -100723,7 +100723,7 @@
       "status": "closed",
       "statusText": "왔어호 대기하기 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 14명",
       "seatsLeft": 0,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -104685,9 +104685,9 @@
       "hours": 11,
       "species": "갑오징어",
       "tide": "6물",
-      "status": "open",
-      "statusText": "오션스타2호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 06:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/15명",
-      "seatsLeft": 5,
+      "status": "closed",
+      "statusText": "오션스타2호 어종 : 갑오징어 / 루어 운항시간 : 06:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/20명",
+      "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
@@ -105684,7 +105684,7 @@
       "status": "open",
       "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -106354,9 +106354,9 @@
       "species": "오징어",
       "tide": "6물",
       "status": "open",
-      "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
-      "seatsLeft": 14,
-      "seatsTotal": null,
+      "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/2명",
+      "seatsLeft": 12,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -108534,7 +108534,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -113368,7 +113368,7 @@
       "status": "open",
       "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -114019,7 +114019,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -116449,7 +116449,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -121325,7 +121325,7 @@
       "status": "open",
       "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -121976,7 +121976,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -124385,7 +124385,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -129217,7 +129217,7 @@
       "status": "open",
       "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -129847,7 +129847,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -132277,7 +132277,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -137069,7 +137069,7 @@
       "status": "open",
       "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -137699,7 +137699,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -140086,7 +140086,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -143922,8 +143922,8 @@
       "species": "갑오징어",
       "tide": "12물",
       "status": "open",
-      "statusText": "오션스타2호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 06:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/2명",
-      "seatsLeft": 18,
+      "statusText": "오션스타2호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 06:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명예약/3명",
+      "seatsLeft": 17,
       "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
@@ -144899,9 +144899,9 @@
       "species": "갈치",
       "tide": "12물",
       "status": "open",
-      "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
-      "seatsLeft": 16,
-      "seatsTotal": null,
+      "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/1명",
+      "seatsLeft": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -145531,7 +145531,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -147727,7 +147727,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -151489,11 +151489,11 @@
       "returnAt": "13:00",
       "session": "오전",
       "hours": 7,
-      "species": "우럭",
+      "species": "방어",
       "tide": "13물",
       "status": "open",
-      "statusText": "영재호 바로예약 어종으로 출조합니다.♧ 선입금자분께서는 예약 후 선장에게 전화(010-9855-2676), 문자 또는 메모란칸에 출조어종을 남겨주세요. ♧ 예약 後 3시간이내 선비 미 입금시 예약이 자동취소됩니다. ♧ 자리선정은 선착순이며, 선수(선탑)에 2인까지 자리선점 가능합니다.♧ 출조 최소인원 3인 이상입니다. 어종 : 우럭,대구,방어 운항시간 : 06:00 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
-      "seatsLeft": 10,
+      "statusText": "영재호 바로예약 어종 : 방어 / 캐스팅 운항시간 : 06:00 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/5명",
+      "seatsLeft": 5,
       "seatsTotal": 10,
       "price": null,
       "url": "https://yeongjae.sunsang24.com/ship/schedule_fleet/202611"
@@ -152511,7 +152511,7 @@
       "status": "open",
       "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -153183,7 +153183,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -155276,7 +155276,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -158700,11 +158700,11 @@
       "returnAt": "13:00",
       "session": "오전",
       "hours": 7,
-      "species": "우럭",
+      "species": "방어",
       "tide": "14물",
       "status": "open",
-      "statusText": "영재호 바로예약 어종으로 출조합니다.♧ 선입금자분께서는 예약 후 선장에게 전화(010-9855-2676), 문자 또는 메모란칸에 출조어종을 남겨주세요. ♧ 예약 後 3시간이내 선비 미 입금시 예약이 자동취소됩니다. ♧ 자리선정은 선착순이며, 선수(선탑)에 2인까지 자리선점 가능합니다.♧ 출조 최소인원 3인 이상입니다. 어종 : 우럭,대구,방어 운항시간 : 06:00 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
-      "seatsLeft": 10,
+      "statusText": "영재호 바로예약 어종 : 방어 / 캐스팅 운항시간 : 06:00 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리4명예약/6명",
+      "seatsLeft": 4,
       "seatsTotal": 10,
       "price": null,
       "url": "https://yeongjae.sunsang24.com/ship/schedule_fleet/202611"
@@ -159676,7 +159676,7 @@
       "status": "open",
       "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -160306,7 +160306,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -162132,7 +162132,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -163921,8 +163921,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "조금",
       "status": "open",
-      "statusText": "예지퀸호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/8명",
-      "seatsLeft": 11,
+      "statusText": "예지퀸호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/12명",
+      "seatsLeft": 7,
       "seatsTotal": 19,
       "price": null,
       "url": "https://yejiqueen.sunsang24.com/ship/schedule_fleet/202611"
@@ -166450,7 +166450,7 @@
       "status": "open",
       "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -167017,7 +167017,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -168800,7 +168800,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -173160,7 +173160,7 @@
       "status": "open",
       "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -173748,7 +173748,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -175489,7 +175489,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -179849,7 +179849,7 @@
       "status": "open",
       "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -180437,7 +180437,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -182219,7 +182219,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -184029,8 +184029,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "2물",
       "status": "open",
-      "statusText": "예지퀸호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/7명",
-      "seatsLeft": 12,
+      "statusText": "예지퀸호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/9명",
+      "seatsLeft": 10,
       "seatsTotal": 19,
       "price": null,
       "url": "https://yejiqueen.sunsang24.com/ship/schedule_fleet/202611"
@@ -186600,7 +186600,7 @@
       "status": "open",
       "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -187188,7 +187188,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -188929,7 +188929,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -193268,7 +193268,7 @@
       "status": "open",
       "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -193877,7 +193877,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -195881,7 +195881,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -197732,9 +197732,9 @@
       "hours": 10,
       "species": "주꾸미·갑오징어",
       "tide": "4물",
-      "status": "few",
-      "statusText": "예지퀸호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/17명",
-      "seatsLeft": 2,
+      "status": "closed",
+      "statusText": "예지퀸호 대기하기 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 19명 예약/19명",
+      "seatsLeft": 0,
       "seatsTotal": 19,
       "price": null,
       "url": "https://yejiqueen.sunsang24.com/ship/schedule_fleet/202611"
@@ -199309,8 +199309,8 @@
       "species": "갑오징어",
       "tide": "5물",
       "status": "open",
-      "statusText": "오션스타2호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 06:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/13명",
-      "seatsLeft": 7,
+      "statusText": "오션스타2호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 06:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/15명",
+      "seatsLeft": 5,
       "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
@@ -200281,7 +200281,7 @@
       "status": "open",
       "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -200890,7 +200890,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -202269,7 +202269,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -206392,7 +206392,7 @@
       "status": "open",
       "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -206980,7 +206980,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -208177,7 +208177,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -211241,8 +211241,8 @@
       "species": "갑오징어",
       "tide": "7물",
       "status": "open",
-      "statusText": "오션스타2호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
+      "statusText": "오션스타2호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명예약/4명",
+      "seatsLeft": 16,
       "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
@@ -212132,7 +212132,7 @@
       "status": "open",
       "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -212699,7 +212699,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -213916,7 +213916,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -217848,7 +217848,7 @@
       "status": "open",
       "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -218415,7 +218415,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -219632,7 +219632,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -223564,7 +223564,7 @@
       "status": "open",
       "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -224131,7 +224131,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -225328,7 +225328,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -229260,7 +229260,7 @@
       "status": "open",
       "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -229827,7 +229827,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -231084,7 +231084,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -235058,7 +235058,7 @@
       "status": "open",
       "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -235625,7 +235625,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -236687,7 +236687,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -238628,8 +238628,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "11물",
       "status": "open",
-      "statusText": "예지퀸호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/4명",
-      "seatsLeft": 15,
+      "statusText": "예지퀸호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/5명",
+      "seatsLeft": 14,
       "seatsTotal": 19,
       "price": null,
       "url": "https://yejiqueen.sunsang24.com/ship/schedule_fleet/202611"
@@ -240747,7 +240747,7 @@
       "status": "open",
       "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -241356,7 +241356,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -242169,7 +242169,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -246184,7 +246184,7 @@
       "status": "open",
       "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -246772,7 +246772,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -247464,7 +247464,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 01:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -251437,7 +251437,7 @@
       "status": "open",
       "statusText": "오션스타1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -252004,7 +252004,7 @@
       "status": "open",
       "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": null,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
     },
