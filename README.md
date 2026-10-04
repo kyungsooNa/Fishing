@@ -11,7 +11,7 @@ GitHub Actions가 주기적으로 수집해 `docs/data.json`으로 커밋하고,
 
 ```
 .github/workflows/collect.yml   매시간 전체 플랫폼 수집 → data.json 커밋
-.github/workflows/sunsang.yml   5분마다 선상24 8곳씩 순환 수집
+.github/workflows/sunsang.yml   5분마다 선상24를 새 러너 8개로 순환 수집
 sites/registry.json             ★ 사이트 목록 (여기만 손대면 됩니다)
 adapters/                       사이트 유형별 파서
   sunsang24.js                  sunsang24(산다고) 호스팅 선사 — 서브도메인만 바꾸면 재사용
@@ -92,8 +92,9 @@ npm run serve                     # http://localhost:8080 (관리는 /admin.html
 감시 목록과 수집 원문은 `tmp/monitor.json`에 저장해 재시작 후 이어갑니다.
 로컬 결과는 `docs/data.json`을 덮어쓰지 않으며 GitHub Pages에는 올라가지 않습니다.
 Pages는 GitHub Actions가 수집해 배포하는 결과를 보여줍니다. 전체 수집은 매시간, 선상24는 5분마다
-전용 워크플로가 순환 수집합니다. 선상24는 요청 차단을
-피하려고 한 실행에 8곳씩 이어서 확인하므로, 현재 규모에서는 전체 한 바퀴가 약 95분입니다.
+전용 워크플로가 순환 수집합니다. 선상24는 요청 차단을 피하려고 **러너 한 대당 8곳**만 확인하되,
+한 예약 실행에서 새 러너 8대가 순서대로 다음 묶음을 이어받습니다. GitHub의 예약 실행이 늦어져도
+한 번에 최대 64곳이 진행되며, 현재 규모에서는 약 세 번의 예약 실행 안에 전체를 훑습니다.
 로컬 서버도 GitHub의 최신
 `docs/data.json`을 5분마다 자동 확인하므로 데이터 때문에 **최신 코드 받기**를 누를 필요는 없습니다.
 코드와 registry 변경은 기존처럼 최신 코드 받기와 재시작이 필요합니다. 폐쇄망에서 원격 데이터
