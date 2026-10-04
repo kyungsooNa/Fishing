@@ -517,6 +517,31 @@ test('선상24 회전은 빈자리가 남은 선사를 먼저 최신화한다', 
   assert.deepEqual(calls, ['c'], '빈자리 정보가 묵지 않도록 일반 회전보다 먼저 봅니다');
 });
 
+test('선상24 빈자리 우선은 회전 전체를 막지 않는다', async () => {
+  const sites = ['a', 'b', 'c', 'd'].map((id) => ({
+    ...mockSite, id, adapter: 'sunsang24', url: `https://${id}.sunsang24.com`,
+  }));
+  const prev = {
+    generatedAt: '2026-09-09T00:00:00.000Z',
+    sites: Object.fromEntries(sites.map((s) => [s.id, { ok: true, at: '2026-09-09T00:00:00.000Z', count: 1 }])),
+    trips: [
+      { siteId: 'c', siteName: 'C', boat: 'C호', date: '2026-09-11', status: 'few', seatsLeft: 1 },
+      { siteId: 'd', siteName: 'D', boat: 'D호', date: '2026-09-11', status: 'few', seatsLeft: 1 },
+    ],
+  };
+  const { registryPath, dataPath } = await fixture(sites, prev);
+  const calls = [];
+  await runAll({
+    registryPath, dataPath, days: 21,
+    rotatePerRun: { 'sunsang24.com': 4 },
+    collectFn: async (site) => { calls.push(site.id); return []; },
+  });
+
+  assert.equal(calls.length, 4);
+  assert.ok(calls.includes('c'), '취소석 선사를 먼저 포함합니다');
+  assert.ok(calls.includes('a') && calls.includes('b'), '나머지 자리는 전체 회전에 남깁니다');
+});
+
 test('선상24 우선 수집에서 실패한 선사가 다음 실행까지 독차지하지 않는다', async () => {
   const sites = ['a', 'b', 'c'].map((id) => ({
     ...mockSite, id, adapter: 'sunsang24', url: `https://${id}.sunsang24.com`,
