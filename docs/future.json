@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-04T01:55:46.741Z",
+  "generatedAt": "2026-10-04T02:31:46.533Z",
   "horizonDays": 90,
   "cursors": {
     "7": 89,
@@ -186,8 +186,8 @@
     "goaraho": 58,
     "gonghyeonjin": 58,
     "gosu": 58,
-    "gsseven": 22,
-    "gudiho": 22,
+    "gsseven": 58,
+    "gudiho": 58,
     "gukbo": 90,
     "gull": 22,
     "gundam": 22,
@@ -242,12 +242,12 @@
     "pro": 58,
     "redfox": 58,
     "redpulsegs": 58,
-    "richard": 22,
-    "rise": 22,
-    "rkclgh": 22,
-    "rosemary": 22,
-    "samdeok": 22,
-    "seamanho": 22,
+    "richard": 58,
+    "rise": 58,
+    "rkclgh": 58,
+    "rosemary": 58,
+    "samdeok": 58,
+    "seamanho": 58,
     "seo": 22,
     "seongyeon": 22,
     "sharkmarine": 22,
@@ -8400,7 +8400,7 @@
       "status": "open",
       "statusText": "삼덕레저호 바로예약 어종 : 무늬오징어 운항시간 : 16:00 ~ 01:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 18,
       "price": null,
       "url": "https://samdeok.sunsang24.com/ship/schedule_fleet/202610"
     },
@@ -16646,7 +16646,7 @@
       "status": "open",
       "statusText": "삼덕레저호 바로예약 어종 : 무늬오징어 운항시간 : 16:00 ~ 01:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 18,
       "price": null,
       "url": "https://samdeok.sunsang24.com/ship/schedule_fleet/202610"
     },
@@ -24744,7 +24744,7 @@
       "status": "open",
       "statusText": "삼덕레저호 바로예약 어종 : 무늬오징어 운항시간 : 16:00 ~ 01:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 18,
       "price": null,
       "url": "https://samdeok.sunsang24.com/ship/schedule_fleet/202610"
     },
@@ -32758,7 +32758,7 @@
       "status": "open",
       "statusText": "삼덕레저호 바로예약 어종 : 무늬오징어 운항시간 : 16:00 ~ 01:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 18,
       "price": null,
       "url": "https://samdeok.sunsang24.com/ship/schedule_fleet/202610"
     },
@@ -40022,7 +40022,7 @@
       "status": "open",
       "statusText": "삼덕레저호 바로예약 어종 : 무늬오징어 운항시간 : 16:00 ~ 01:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 18,
       "price": null,
       "url": "https://samdeok.sunsang24.com/ship/schedule_fleet/202610"
     },
@@ -47729,7 +47729,7 @@
       "status": "open",
       "statusText": "삼덕레저호 바로예약 어종 : 무늬오징어 운항시간 : 16:00 ~ 01:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 18,
       "price": null,
       "url": "https://samdeok.sunsang24.com/ship/schedule_fleet/202610"
     },
@@ -54768,7 +54768,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": null,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -62240,8 +62240,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "조금",
       "status": "open",
-      "statusText": "까치선장 자이언트호 바로예약 명 예약이나 독선 단체 예약시 선사에서 자동으로 예약이 삭제 처리 됩니다. 그러니 신중히 예약을 해주시기 바랍니다.)​3. 예약 당일 이내에 선비 입금를 하셔야 예약확정이 됩니다. ​*입금시 \"출조날짜\" \"성함\" 표기 하셔야합니다.예) 9/1 홍길동, 10/23 홍길동 4. 예약 당일 입금 확인이 안되시는 분들은 자동으로 취소됩니다.​(예약후 당일 입금이 힘드신분들은 꼭 문자 또는 유선 전화로 입금 날짜를 알려 주시기 바랍니다).5. 예약 취소는 꼭 출조일 7일 이전에 취소 하여야 환불이 가능합니다.(선사 환불 규정을 꼭 숙지 하시기 바랍니다)​ *** 까치선장 자이언트호 밴드 https://band.us/@rkclgh <===== 클릭*** 다음카페 \"까치선장\" 검색하시면\"까치선장 다잡아\" 장비/채비 안내등 더많은 자료를 보실수 있습니다.*** https://cafe.naver.com/rkclgh<=====클릭 --출항 1시간전에 자리추첨을 진행합니다-- (예약하신 성함옆에 추첨된 번호가 부여됩니다)예(자리12번) : 홍길동12님(1) 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/10명",
-      "seatsLeft": 11,
+      "statusText": "까치선장 자이언트호 바로예약 명 예약이나 독선 단체 예약시 선사에서 자동으로 예약이 삭제 처리 됩니다. 그러니 신중히 예약을 해주시기 바랍니다.)​3. 예약 당일 이내에 선비 입금를 하셔야 예약확정이 됩니다. ​*입금시 \"출조날짜\" \"성함\" 표기 하셔야합니다.예) 9/1 홍길동, 10/23 홍길동 4. 예약 당일 입금 확인이 안되시는 분들은 자동으로 취소됩니다.​(예약후 당일 입금이 힘드신분들은 꼭 문자 또는 유선 전화로 입금 날짜를 알려 주시기 바랍니다).5. 예약 취소는 꼭 출조일 7일 이전에 취소 하여야 환불이 가능합니다.(선사 환불 규정을 꼭 숙지 하시기 바랍니다)​ *** 까치선장 자이언트호 밴드 https://band.us/@rkclgh <===== 클릭*** 다음카페 \"까치선장\" 검색하시면\"까치선장 다잡아\" 장비/채비 안내등 더많은 자료를 보실수 있습니다.*** https://cafe.naver.com/rkclgh<=====클릭 --출항 1시간전에 자리추첨을 진행합니다-- (예약하신 성함옆에 추첨된 번호가 부여됩니다)예(자리12번) : 홍길동12님(1) 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/9명",
+      "seatsLeft": 12,
       "seatsTotal": 21,
       "price": null,
       "url": "https://rkclgh.sunsang24.com/ship/schedule_fleet/202611"
@@ -62387,8 +62387,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "조금",
       "status": "open",
-      "statusText": "라이즈호 바로예약 어종 : 쭈꾸미,갑오징어 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/8명",
-      "seatsLeft": 12,
+      "statusText": "라이즈호 바로예약 어종 : 쭈꾸미,갑오징어 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명예약/7명",
+      "seatsLeft": 13,
       "seatsTotal": 20,
       "price": null,
       "url": "https://rise.sunsang24.com/ship/schedule_fleet/202611"
@@ -62410,7 +62410,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": null,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -69664,9 +69664,9 @@
       "hours": 9.5,
       "species": "주꾸미·갑오징어",
       "tide": "무시",
-      "status": "few",
-      "statusText": "까치선장 자이언트호 바로예약 명 예약이나 독선 단체 예약시 선사에서 자동으로 예약이 삭제 처리 됩니다. 그러니 신중히 예약을 해주시기 바랍니다.)​3. 예약 당일 이내에 선비 입금를 하셔야 예약확정이 됩니다. ​*입금시 \"출조날짜\" \"성함\" 표기 하셔야합니다.예) 9/1 홍길동, 10/23 홍길동 4. 예약 당일 입금 확인이 안되시는 분들은 자동으로 취소됩니다.​(예약후 당일 입금이 힘드신분들은 꼭 문자 또는 유선 전화로 입금 날짜를 알려 주시기 바랍니다).5. 예약 취소는 꼭 출조일 7일 이전에 취소 하여야 환불이 가능합니다.(선사 환불 규정을 꼭 숙지 하시기 바랍니다)​ *** 까치선장 자이언트호 밴드 https://band.us/@rkclgh <===== 클릭*** 다음카페 \"까치선장\" 검색하시면\"까치선장 다잡아\" 장비/채비 안내등 더많은 자료를 보실수 있습니다.*** https://cafe.naver.com/rkclgh<=====클릭 --출항 1시간전에 자리추첨을 진행합니다-- (예약하신 성함옆에 추첨된 번호가 부여됩니다)예(자리12번) : 홍길동12님(1) 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/19명",
-      "seatsLeft": 2,
+      "status": "closed",
+      "statusText": "까치선장 자이언트호 대기하기 명 예약이나 독선 단체 예약시 선사에서 자동으로 예약이 삭제 처리 됩니다. 그러니 신중히 예약을 해주시기 바랍니다.)​3. 예약 당일 이내에 선비 입금를 하셔야 예약확정이 됩니다. ​*입금시 \"출조날짜\" \"성함\" 표기 하셔야합니다.예) 9/1 홍길동, 10/23 홍길동 4. 예약 당일 입금 확인이 안되시는 분들은 자동으로 취소됩니다.​(예약후 당일 입금이 힘드신분들은 꼭 문자 또는 유선 전화로 입금 날짜를 알려 주시기 바랍니다).5. 예약 취소는 꼭 출조일 7일 이전에 취소 하여야 환불이 가능합니다.(선사 환불 규정을 꼭 숙지 하시기 바랍니다)​ *** 까치선장 자이언트호 밴드 https://band.us/@rkclgh <===== 클릭*** 다음카페 \"까치선장\" 검색하시면\"까치선장 다잡아\" 장비/채비 안내등 더많은 자료를 보실수 있습니다.*** https://cafe.naver.com/rkclgh<=====클릭 --출항 1시간전에 자리추첨을 진행합니다-- (예약하신 성함옆에 추첨된 번호가 부여됩니다)예(자리12번) : 홍길동12님(1) 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 21명 예약/21명",
+      "seatsLeft": 0,
       "seatsTotal": 21,
       "price": null,
       "url": "https://rkclgh.sunsang24.com/ship/schedule_fleet/202611"
@@ -69793,7 +69793,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": null,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -77068,8 +77068,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "1물",
       "status": "open",
-      "statusText": "라이즈호 바로예약 어종 : 쭈꾸미,갑오징어 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명예약/3명",
-      "seatsLeft": 17,
+      "statusText": "라이즈호 바로예약 어종 : 쭈꾸미,갑오징어 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명예약/7명",
+      "seatsLeft": 13,
       "seatsTotal": 20,
       "price": null,
       "url": "https://rise.sunsang24.com/ship/schedule_fleet/202611"
@@ -77091,7 +77091,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": null,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -84330,7 +84330,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": null,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -91416,8 +91416,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "3물",
       "status": "open",
-      "statusText": "라이즈호 바로예약 어종 : 쭈꾸미,갑오징어 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/13명",
-      "seatsLeft": 7,
+      "statusText": "라이즈호 바로예약 어종 : 쭈꾸미,갑오징어 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/15명",
+      "seatsLeft": 5,
       "seatsTotal": 20,
       "price": null,
       "url": "https://rise.sunsang24.com/ship/schedule_fleet/202611"
@@ -91439,7 +91439,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": null,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -98021,7 +98021,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": null,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -98904,8 +98904,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "4물",
       "status": "open",
-      "statusText": "라이즈호 바로예약 어종 : 쭈꾸미,갑오징어 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 15:30 ~ 18:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/11명",
-      "seatsLeft": 9,
+      "statusText": "라이즈호 바로예약 어종 : 쭈꾸미,갑오징어 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 15:30 ~ 18:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리3명예약/17명",
+      "seatsLeft": 3,
       "seatsTotal": 20,
       "price": null,
       "url": "https://rise.sunsang24.com/ship/schedule_fleet/202611"
@@ -99009,8 +99009,8 @@
       "species": "갈치",
       "tide": "5물",
       "status": "open",
-      "statusText": "리차드호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/4명",
-      "seatsLeft": 14,
+      "statusText": "리차드호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/11명",
+      "seatsLeft": 7,
       "seatsTotal": 18,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202611"
@@ -101787,8 +101787,8 @@
       "species": "갑오징어",
       "tide": "5물",
       "status": "open",
-      "statusText": "해맨호 바로예약 어종 : 갑오징어 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명예약/8명",
-      "seatsLeft": 13,
+      "statusText": "해맨호 바로예약 어종 : 갑오징어 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/10명",
+      "seatsLeft": 11,
       "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202611"
@@ -106513,10 +106513,10 @@
       "hours": 8,
       "species": null,
       "tide": "6물",
-      "status": "open",
-      "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
-      "seatsLeft": 5,
-      "seatsTotal": null,
+      "status": "few",
+      "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/4명",
+      "seatsLeft": 1,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -114325,7 +114325,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": null,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -122408,7 +122408,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": null,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -130384,7 +130384,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": null,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -138341,7 +138341,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": null,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -146299,7 +146299,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": null,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -153995,7 +153995,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": null,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -161309,7 +161309,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": null,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -168249,7 +168249,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": null,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -175043,7 +175043,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": null,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -181837,7 +181837,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": null,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -188693,7 +188693,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": null,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -195466,7 +195466,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": null,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -202564,7 +202564,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": null,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -208842,7 +208842,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": null,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -214729,7 +214729,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": null,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -220529,7 +220529,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": null,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -226350,7 +226350,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": null,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -232151,7 +232151,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": null,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -238054,7 +238054,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": null,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -243848,7 +243848,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": null,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -249471,7 +249471,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": null,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -254871,7 +254871,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": null,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
