@@ -17,9 +17,20 @@ permissions:
 
 jobs:
   collect:
+    # 예약 실행이 GitHub 사정으로 늦어져도 한 번에 8곳만 보면 이틀씩 밀립니다.
+    # 각 묶음은 새 러너에서 시작해 IP당 요청 상한은 그대로 지키고, 앞 묶음의 커밋을
+    # 다음 묶음이 이어받도록 한 번에 8회까지 직렬 실행합니다.
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        batch: [1, 2, 3, 4, 5, 6, 7, 8]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # matrix의 다음 job은 앞 job이 커밋한 최신 회전 위치를 받아야 합니다.
+          ref: main
 
       - uses: actions/setup-node@v4
         with:
@@ -36,7 +47,7 @@ jobs:
         if: steps.browser.outputs.needed == 'true'
         run: npx playwright install --with-deps chromium
 
-      - name: 선상24 다음 8곳 수집
+      - name: 선상24 다음 8곳 수집 (${{ matrix.batch }}/8)
         run: node collect.js
         env:
           ONLY_ADAPTER: sunsang24
