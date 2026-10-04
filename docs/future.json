@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-04T19:59:38.562Z",
+  "generatedAt": "2026-10-04T20:00:39.231Z",
   "horizonDays": 90,
   "cursors": {
     "7": 57,
@@ -153,14 +153,14 @@
     "arirang": 57,
     "art": 57,
     "asiaho": 57,
-    "badalove": 22,
-    "baekya": 22,
-    "bigboss24": 22,
-    "bluefc": 89,
-    "boas": 89,
-    "boss": 89,
-    "busung": 89,
-    "chambada": 89,
+    "badalove": 57,
+    "baekya": 57,
+    "bigboss24": 57,
+    "bluefc": 22,
+    "boas": 22,
+    "boss": 22,
+    "busung": 22,
+    "chambada": 22,
     "cherryfish": 89,
     "chf": 89,
     "cjh": 89,
@@ -3324,7 +3324,7 @@
       "status": "open",
       "statusText": "몬스터호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202610"
     },
@@ -8485,7 +8485,7 @@
       "status": "open",
       "statusText": "백야호 바로예약 어종 : 갈치 / 선상 운항시간 : 19:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": 16,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://baekya.sunsang24.com/ship/schedule_fleet/202610"
     },
@@ -11466,7 +11466,7 @@
       "status": "open",
       "statusText": "몬스터호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202610"
     },
@@ -16561,7 +16561,7 @@
       "status": "open",
       "statusText": "백야호 바로예약 어종 : 갈치 / 선상 운항시간 : 19:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": 16,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://baekya.sunsang24.com/ship/schedule_fleet/202610"
     },
@@ -19496,7 +19496,7 @@
       "status": "open",
       "statusText": "몬스터호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202610"
     },
@@ -24573,7 +24573,7 @@
       "status": "open",
       "statusText": "백야호 바로예약 어종 : 갈치 / 선상 운항시간 : 19:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": 16,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://baekya.sunsang24.com/ship/schedule_fleet/202610"
     },
@@ -26748,7 +26748,7 @@
       "status": "open",
       "statusText": "몬스터호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202610"
     },
@@ -31794,7 +31794,7 @@
       "status": "open",
       "statusText": "백야호 바로예약 어종 : 갈치 / 선상 운항시간 : 19:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": 16,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://baekya.sunsang24.com/ship/schedule_fleet/202610"
     },
@@ -39500,7 +39500,7 @@
       "status": "open",
       "statusText": "백야호 바로예약 어종 : 갈치 / 선상 운항시간 : 19:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명",
       "seatsLeft": 14,
-      "seatsTotal": 16,
+      "seatsTotal": 14,
       "price": null,
       "url": "https://baekya.sunsang24.com/ship/schedule_fleet/202610"
     },
