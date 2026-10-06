@@ -235,6 +235,9 @@
                            white-space: normal; word-break: keep-all; }
   .freshness.stale { color: var(--few); }
   .freshness.failed { color: var(--off); }
+  /* 오래 전에 확인한 빈자리(seatDoubt)는 숫자를 흐리게 둡니다. 모바일 카드는 잔여 칸 색을
+     따로 주므로 같은 특이도로 덮습니다. */
+  td.cell-seats.doubtful { color: var(--muted); }
 
   /* 선상24 모바일 목록의 장점인 "작은 카드 안에 필요한 값이 모두 보이는 밀도"만 가져옵니다.
      사진 데이터는 없으므로 남의 이미지를 복제하지 않고 배 이름 첫 글자를 식별 타일로 씁니다. */
@@ -1570,7 +1573,36 @@ const SORTS = {
 // 모르는 배로 첫 화면을 덮느니 마감된 줄과 같이 뒤에서 수집 순서를 지키는 게 낫습니다
 // (값이 없는 행을 뒤로 보내는 byValue와 같은 이유입니다).
 const hasSeat = (t) => t.status === 'open' || t.status === 'few';
-const byVacancy = (a, b) => (hasSeat(b) ? 1 : 0) - (hasSeat(a) ? 1 : 0);
+
+/**
+ * **확인한 지 오래된 빈자리는 이미 찼을 수 있습니다.** 수집이 드문 때(Actions 예약 실행은
+ * 하루 몇 번만 돌고, 더피싱은 이틀씩 보류되기도 합니다) 40시간 전 "예약가능"이 방금 확인한
+ * 빈자리와 같은 줄에 섞여 첫 화면을 차지했습니다.
+ *
+ * 기준은 수집 이력(2026-09-09~10-06, 같은 선사를 다시 확인한 쌍)에서 잰 값입니다. "예약가능"이
+ * 다음 확인 때 이미 마감돼 있던 비율이 **10% 안팎이 되는 시점**을 잘랐습니다.
+ *   출항까지 0~1일:  6시간 6.6% · 12시간 11.0% · 24시간 18.3% · 48시간 25.4%
+ *   출항까지 2~6일: 12시간 3.5% · 24시간  6.4% · 48시간  9.9%
+ *   출항까지 7일~ : 48시간 3.6% — 멀리 있는 출조는 거의 안 바뀌어 기준을 두지 않습니다.
+ * 숨기지는 않습니다. 실제로 남아 있는 자리일 수도 있어서, 그 날 안에서 최근에 확인한 빈자리
+ * 뒤로 보내고 잔여 칸에 "지금은 다를 수 있음"을 답니다.
+ */
+const DOUBT_AFTER_HOURS = [[1, 12], [6, 48]];
+
+function seatDoubt(t, now = Date.now()) {
+  if (!hasSeat(t) || !t.date) return false;
+  // 한국은 서머타임이 없어 +9시간이면 오늘 날짜가 맞습니다(정렬마다 Intl을 만들지 않습니다).
+  const today = new Date(now + 9 * 3600000).toISOString().slice(0, 10);
+  const lead = Math.round((Date.parse(t.date) - Date.parse(today)) / 86400000);
+  const limit = DOUBT_AFTER_HOURS.find(([days]) => lead <= days)?.[1];
+  if (limit === undefined) return false;
+  const at = checkedAt(t);
+  // 확인 시각을 모르면 믿을 근거도 없습니다.
+  return at === null || (now - at) / 3600000 >= limit;
+}
+
+// 하루 안의 빈자리 차례: 최근에 확인한 빈자리 → 오래된 빈자리 → 나머지.
+const vacancyRank = (t, now) => (hasSeat(t) ? (seatDoubt(t, now) ? 1 : 2) : 0);
 
 /**
  * **내가 표시해 둔 줄이 그 날의 맨 위입니다 — 즐겨찾기가 먼저, 그다음 별점.**
@@ -1652,16 +1684,18 @@ function portDistance(t) {
   return port && Number.isFinite(port.lat) && Number.isFinite(port.lng) ? distanceKm(ORIGIN, port) : null;
 }
 
-function sortTrips(trips, key = $('f-sort').value) {
+function sortTrips(trips, key = $('f-sort').value, now = Date.now()) {
   const by = SORTS[key];
+  // 비교마다 날짜 계산을 다시 하면 1만 건 정렬이 눈에 띄게 느려집니다. 줄마다 한 번만 셉니다.
+  const rank = new Map(trips.map((t) => [t, vacancyRank(t, now)]));
   // data.json이 이미 날짜·출항시각·선사·배 순으로 정렬돼 옵니다(core/runner.js). 그 순서를
   // 동점자 규칙으로 그대로 쓰려면 안정 정렬이어야 합니다 — Array.sort는 안정입니다.
   // 기본순도 빈자리를 올려야 해서 여기서는 원본을 그대로 돌려주지 않습니다.
-  // 하루 안의 차례: 즐겨찾기 → 별점 → 빈자리 → 고른 기준. 앞의 둘은 내가 적어둔 값이라
+  // 하루 안의 차례: 즐겨찾기 → 별점 → 빈자리(최근 확인이 먼저) → 고른 기준. 앞의 둘은 내가 적어둔 값이라
   // 어떤 정렬을 고르든 그대로 앞에 옵니다(정렬은 그 뒤를 정합니다).
   return [...trips].sort((a, b) =>
     (a.date ?? '').localeCompare(b.date ?? '')
-    || byFav(a, b) || byRate(a, b) || byVacancy(a, b) || (by ? by(a, b) : 0));
+    || byFav(a, b) || byRate(a, b) || rank.get(b) - rank.get(a) || (by ? by(a, b) : 0));
 }
 
 // 대략 좌표(approx)라 1km 단위까지만 적습니다. 그보다 잘게 적으면 정확한 것처럼 보입니다.
@@ -1934,6 +1968,11 @@ function render(all = sortTrips(visibleTrips())) {
         const age = freshness(t), hint = document.createElement('small');
         hint.className = 'freshness' + (age.failed ? ' failed' : age.stale ? ' stale' : '');
         hint.textContent = age.text;
+        if (seatDoubt(t)) {
+          td.classList.add('doubtful');
+          hint.textContent += ' · 지금은 다를 수 있음';
+          td.title = '확인한 지 오래돼 이미 찼을 수 있습니다. 예약처에서 확인해 주세요.';
+        }
         td.append(hint);
       }
       tr.append(td);
