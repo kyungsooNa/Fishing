@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-07T19:33:47.886Z",
+  "generatedAt": "2026-10-07T19:34:48.197Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -234,14 +234,14 @@
     "np": 85,
     "nurifish": 22,
     "orion": 85,
-    "pacific": 55,
-    "parkpro": 55,
-    "pigho": 55,
-    "poseidon": 55,
-    "princeho": 55,
-    "pro": 55,
-    "redfox": 55,
-    "redpulsegs": 55,
+    "pacific": 85,
+    "parkpro": 85,
+    "pigho": 85,
+    "poseidon": 85,
+    "princeho": 85,
+    "pro": 85,
+    "redfox": 85,
+    "redpulsegs": 85,
     "richard": 55,
     "rise": 55,
     "rkclgh": 55,
@@ -9018,9 +9018,9 @@
       "hours": null,
       "species": "대구",
       "tide": "13물",
-      "status": "few",
-      "statusText": "태평양호 바로예약 어종 : 대구 / 선상 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/9명",
-      "seatsLeft": 2,
+      "status": "open",
+      "statusText": "태평양호 바로예약 어종 : 대구 / 선상 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리3명예약/8명",
+      "seatsLeft": 3,
       "seatsTotal": 11,
       "price": null,
       "url": "https://pacific.sunsang24.com/ship/schedule_fleet/202610"
@@ -10575,9 +10575,9 @@
       "hours": 10,
       "species": "주꾸미·갑오징어",
       "tide": "12물",
-      "status": "few",
-      "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/18명",
-      "seatsLeft": 2,
+      "status": "closed",
+      "statusText": "슈퍼마린호 대기하기 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/20명",
+      "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202610"
@@ -10597,8 +10597,8 @@
       "species": "갑오징어",
       "tide": "12물",
       "status": "open",
-      "statusText": "신성호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/10명",
-      "seatsLeft": 10,
+      "statusText": "신성호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/14명",
+      "seatsLeft": 6,
       "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202610"
@@ -252503,7 +252503,7 @@
       "status": "open",
       "statusText": "에르메스호 바로예약 어종 : 문어 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -256129,7 +256129,7 @@
       "status": "open",
       "statusText": "에르메스호 바로예약 어종 : 문어 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -259796,7 +259796,7 @@
       "status": "open",
       "statusText": "에르메스호 바로예약 어종 : 문어 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -263559,9 +263559,9 @@
       "species": "문어",
       "tide": "3물",
       "status": "open",
-      "statusText": "에르메스호 바로예약 어종 : 문어 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
-      "seatsTotal": null,
+      "statusText": "에르메스호 바로예약 어종 : 문어 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명예약/1명",
+      "seatsLeft": 19,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -264441,8 +264441,8 @@
       "species": "광어",
       "tide": "3물",
       "status": "open",
-      "statusText": "프로호 바로예약 어종 : 광어,우럭 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/6명",
-      "seatsLeft": 14,
+      "statusText": "프로호 바로예약 어종 : 광어,우럭 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명예약/7명",
+      "seatsLeft": 13,
       "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
@@ -266785,7 +266785,7 @@
       "status": "open",
       "statusText": "에르메스호 바로예약 어종 : 문어 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -270537,7 +270537,7 @@
       "status": "open",
       "statusText": "에르메스호 바로예약 어종 : 광어,우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -273743,7 +273743,7 @@
       "status": "open",
       "statusText": "에르메스호 바로예약 어종 : 광어,우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -276928,7 +276928,7 @@
       "status": "open",
       "statusText": "에르메스호 바로예약 어종 : 광어,우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -280091,7 +280091,7 @@
       "status": "open",
       "statusText": "에르메스호 바로예약 어종 : 광어,우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -283313,7 +283313,7 @@
       "status": "open",
       "statusText": "에르메스호 바로예약 어종 : 광어,우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -286681,7 +286681,7 @@
       "status": "open",
       "statusText": "에르메스호 바로예약 어종 : 광어,우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -290030,7 +290030,7 @@
       "status": "open",
       "statusText": "에르메스호 바로예약 어종 : 광어,우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -292986,7 +292986,7 @@
       "status": "open",
       "statusText": "에르메스호 바로예약 어종 : 광어,우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -295498,7 +295498,7 @@
       "status": "open",
       "statusText": "에르메스호 바로예약 어종 : 광어,우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -298009,7 +298009,7 @@
       "status": "open",
       "statusText": "에르메스호 바로예약 어종 : 광어,우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -300476,7 +300476,7 @@
       "status": "open",
       "statusText": "에르메스호 바로예약 어종 : 광어,우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -302984,7 +302984,7 @@
       "status": "open",
       "statusText": "에르메스호 바로예약 어종 : 광어,우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -305696,7 +305696,7 @@
       "status": "open",
       "statusText": "에르메스호 바로예약 어종 : 광어,우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -308325,7 +308325,7 @@
       "status": "open",
       "statusText": "에르메스호 바로예약 어종 : 광어,우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -310875,7 +310875,7 @@
       "status": "open",
       "statusText": "에르메스호 바로예약 어종 : 광어,우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -313257,7 +313257,7 @@
       "status": "open",
       "statusText": "에르메스호 바로예약 어종 : 광어,우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -315639,7 +315639,7 @@
       "status": "open",
       "statusText": "에르메스호 바로예약 어종 : 광어,우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -318021,7 +318021,7 @@
       "status": "open",
       "statusText": "에르메스호 바로예약 어종 : 광어,우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -320545,7 +320545,7 @@
       "status": "open",
       "statusText": "에르메스호 바로예약 어종 : 광어,우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -323089,7 +323089,7 @@
       "status": "open",
       "statusText": "에르메스호 바로예약 어종 : 광어,우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -325572,7 +325572,7 @@
       "status": "open",
       "statusText": "에르메스호 바로예약 어종 : 광어,우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -327974,7 +327974,7 @@
       "status": "open",
       "statusText": "에르메스호 바로예약 어종 : 광어,우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -330356,7 +330356,7 @@
       "status": "open",
       "statusText": "에르메스호 바로예약 어종 : 광어,우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -332716,7 +332716,7 @@
       "status": "open",
       "statusText": "에르메스호 바로예약 어종 : 광어,우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -335118,7 +335118,7 @@
       "status": "open",
       "statusText": "에르메스호 바로예약 어종 : 광어,우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
