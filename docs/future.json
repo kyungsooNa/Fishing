@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-07T00:27:10.559Z",
+  "generatedAt": "2026-10-07T00:28:12.491Z",
   "horizonDays": 90,
   "cursors": {
     "7": 86,
@@ -181,13 +181,13 @@
     "gagaho": 55,
     "galchiho": 55,
     "gdcompany": 55,
-    "genieyonghan": 22,
-    "giant": 22,
-    "goaraho": 22,
-    "gonghyeonjin": 22,
-    "gosu": 22,
-    "gsseven": 22,
-    "gudiho": 22,
+    "genieyonghan": 55,
+    "giant": 55,
+    "goaraho": 55,
+    "gonghyeonjin": 55,
+    "gosu": 55,
+    "gsseven": 55,
+    "gudiho": 55,
     "gukbo": 55,
     "gull": 22,
     "gundam": 22,
@@ -263,7 +263,7 @@
     "napoliho": 50,
     "bumblebee": 50,
     "eagleho": 43,
-    "goldatsr": 86
+    "goldatsr": 22
   },
   "trips": [
     {
@@ -27363,9 +27363,9 @@
       "hours": 10,
       "species": "주꾸미·갑오징어",
       "tide": "13물",
-      "status": "open",
-      "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/6명",
-      "seatsLeft": 15,
+      "status": "few",
+      "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/19명",
+      "seatsLeft": 2,
       "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202611"
