@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-08T00:07:45.637Z",
+  "generatedAt": "2026-10-08T02:58:54.894Z",
   "horizonDays": 90,
   "cursors": {
     "7": 54,
@@ -179,13 +179,13 @@
     "fishbank": 22,
     "fishhunter": 22,
     "gagaho": 22,
-    "galchiho": 86,
-    "gdcompany": 86,
-    "genieyonghan": 86,
-    "giant": 86,
-    "goaraho": 86,
-    "gonghyeonjin": 86,
-    "gosu": 86,
+    "galchiho": 22,
+    "gdcompany": 22,
+    "genieyonghan": 22,
+    "giant": 22,
+    "goaraho": 22,
+    "gonghyeonjin": 22,
+    "gosu": 22,
     "gsseven": 86,
     "gudiho": 85,
     "gukbo": 22,
@@ -263,7 +263,7 @@
     "napoliho": 50,
     "bumblebee": 50,
     "eagleho": 43,
-    "goldatsr": 55
+    "goldatsr": 85
   },
   "trips": [
     {
