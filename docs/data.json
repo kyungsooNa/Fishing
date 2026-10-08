@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-08T22:26:50.246Z",
+  "generatedAt": "2026-10-08T23:58:26.523Z",
   "rotation": {
     "sunsang24.com": "fishbank",
     "platform:thefishing": "linkus"
@@ -3071,11 +3071,12 @@
     },
     "joen": {
       "ok": false,
-      "at": "2026-10-08T19:51:22.364Z",
-      "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
+      "at": "2026-10-08T23:58:26.529Z",
+      "error": "30000ms 안에 응답이 없습니다 — 30.2초 만에",
       "count": 36,
       "keptFrom": "2026-10-04T23:16:38.673Z",
-      "skipped": "platform-timeout",
+      "lastSelectedAt": "2026-10-08T23:58:26.529Z",
+      "timeoutStreak": 2,
       "name": "독립좌대1호",
       "platform": "더피싱(상세)",
       "url": "https://joen.thefishing.kr/index.php?mid=bk",
