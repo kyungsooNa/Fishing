@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-09T16:19:18.277Z",
+  "generatedAt": "2026-10-09T16:20:20.401Z",
   "horizonDays": 90,
   "cursors": {
     "7": 53,
@@ -184,13 +184,13 @@
     "genieyonghan": 22,
     "giant": 22,
     "goaraho": 22,
-    "gonghyeonjin": 84,
-    "gosu": 84,
-    "gsseven": 84,
-    "gudiho": 84,
-    "gukbo": 22,
-    "gull": 84,
-    "gundam": 84,
+    "gonghyeonjin": 22,
+    "gosu": 22,
+    "gsseven": 22,
+    "gudiho": 22,
+    "gukbo": 52,
+    "gull": 22,
+    "gundam": 22,
     "gunsannaksi": 84,
     "gyeongjuho": 84,
     "haemaho": 84,
@@ -263,7 +263,7 @@
     "napoliho": 50,
     "bumblebee": 50,
     "eagleho": 43,
-    "goldatsr": 53
+    "goldatsr": 83
   },
   "trips": [
     {
@@ -65289,8 +65289,8 @@
       "species": "갑오징어",
       "tide": "7물",
       "status": "open",
-      "statusText": "신출항호 바로예약 어종 : 갑오징어 운항시간 : 04:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/5명",
-      "seatsLeft": 12,
+      "statusText": "신출항호 바로예약 어종 : 갑오징어 운항시간 : 04:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/6명",
+      "seatsLeft": 11,
       "seatsTotal": 17,
       "price": null,
       "url": "https://gukbo.sunsang24.com/ship/schedule_fleet/202611"
@@ -73644,8 +73644,8 @@
       "species": "갑오징어",
       "tide": "8물",
       "status": "open",
-      "statusText": "신출항호 바로예약 어종 : 갑오징어 운항시간 : 04:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/3명",
-      "seatsLeft": 14,
+      "statusText": "신출항호 바로예약 어종 : 갑오징어 운항시간 : 04:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명예약/1명",
+      "seatsLeft": 16,
       "seatsTotal": 17,
       "price": null,
       "url": "https://gukbo.sunsang24.com/ship/schedule_fleet/202611"
@@ -129591,8 +129591,8 @@
       "species": "갑오징어",
       "tide": "무시",
       "status": "open",
-      "statusText": "신출항호 바로예약 어종 : 갑오징어 운항시간 : 04:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/7명",
-      "seatsLeft": 10,
+      "statusText": "신출항호 바로예약 어종 : 갑오징어 운항시간 : 04:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/10명",
+      "seatsLeft": 7,
       "seatsTotal": 17,
       "price": null,
       "url": "https://gukbo.sunsang24.com/ship/schedule_fleet/202611"
