@@ -1,20 +1,20 @@
 {
-  "generatedAt": "2026-10-09T21:01:45.385Z",
+  "generatedAt": "2026-10-09T21:02:51.480Z",
   "horizonDays": 90,
   "cursors": {
     "7": 53,
-    "sky": 53,
+    "sky": 83,
     "eugeneho": 57,
     "mansu": 57,
-    "smgfishing": 53,
+    "smgfishing": 83,
     "lureschool": 57,
-    "specialdream": 53,
+    "specialdream": 83,
     "jstar": 57,
-    "stallone": 53,
+    "stallone": 83,
     "teamhanpro": 57,
-    "star": 53,
+    "star": 83,
     "blackpig": 57,
-    "stealth": 53,
+    "stealth": 83,
     "healing": 57,
     "daejinmcp": 57,
     "hanpro": 57,
@@ -254,8 +254,8 @@
     "ship": 22,
     "sinara": 22,
     "sinjinho": 22,
-    "skyho": 84,
-    "sseondeo": 84,
+    "skyho": 22,
+    "sseondeo": 22,
     "myway": 58,
     "monster": 50,
     "ssfish": 50,
@@ -238682,7 +238682,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -242308,7 +242308,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -245954,7 +245954,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -249718,7 +249718,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -252979,9 +252979,9 @@
       "species": "우럭",
       "tide": "4물",
       "status": "open",
-      "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
-      "seatsTotal": null,
+      "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/2명",
+      "seatsLeft": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -255935,7 +255935,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -259120,7 +259120,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -262305,7 +262305,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -265468,7 +265468,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -268669,7 +268669,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -272015,7 +272015,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -275383,7 +275383,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -278360,7 +278360,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -280872,7 +280872,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -283383,7 +283383,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -285871,7 +285871,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -288400,7 +288400,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -291027,7 +291027,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -293739,7 +293739,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -296226,7 +296226,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -298587,7 +298587,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -300969,7 +300969,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -303351,7 +303351,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -305854,7 +305854,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -308377,7 +308377,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -310880,7 +310880,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -313261,7 +313261,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -315622,7 +315622,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -318003,7 +318003,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -320405,7 +320405,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
