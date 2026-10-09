@@ -1091,7 +1091,7 @@ function sortFns(sites = {}, { favs = [], rates = {}, ports = {}, origin = null 
   // 즐겨찾기·별점은 다른 블록에 있습니다. 여기서는 그 둘을 넣어주고 차례만 봅니다.
   return new Function('FAVS', 'favKey', 'rateOfTrip',
     `${stub}${inline.slice(start, end)}\nsetOrigin(${JSON.stringify(origin)});\n`
-    + 'return { sortTrips, checkedAt, portDistance, portWithDistance, distanceKm };',
+    + 'return { sortTrips, checkedAt, seatDoubt, portDistance, portWithDistance, distanceKm };',
   )(
     new Set(favs),
     (trip) => `${trip.boat ?? ''}|${trip.port ?? ''}`,
@@ -1128,6 +1128,48 @@ test('승선료도 없는 값은 뒤로 간다', () => {
   const { sortTrips } = sortFns();
   const rows = [t({ boat: '없음', price: null }), t({ boat: '비쌈', price: 120000 }), t({ boat: '쌈', price: 90000 })];
   assert.deepEqual(sortTrips(rows, 'price-asc').map((x) => x.boat), ['쌈', '비쌈', '없음']);
+});
+
+// 수집이 드물면 40시간 전 "예약가능"이 방금 본 빈자리와 섞여 첫 화면을 차지합니다.
+// 기준(출항 1일 이내 12시간, 6일 이내 48시간)은 수집 이력에서 잰 마감 비율입니다 — 화면 주석 참고.
+test('확인한 지 오래된 빈자리는 그 날의 최근 빈자리 뒤로 가고 표시가 붙는다', () => {
+  const now = Date.parse('2026-10-06T03:00:00.000Z'); // 한국 10월 6일 12시
+  const hoursAgo = (h) => new Date(now - h * 3600000).toISOString();
+  const sites = {
+    fresh: { ok: true, at: hoursAgo(1) },
+    old13: { ok: false, skipped: 'rotation', keptFrom: hoursAgo(13) },
+    old40: { ok: false, skipped: 'platform-timeout', keptFrom: hoursAgo(40) },
+    old11: { ok: true, at: hoursAgo(11) },
+  };
+  const { sortTrips, seatDoubt } = sortFns(sites);
+  const row = (siteId, date, status = 'open') => t({ siteId, date, status, boat: siteId });
+
+  // 내일 출항: 12시간이 경계입니다.
+  assert.equal(seatDoubt(row('old11', '2026-10-07'), now), false);
+  assert.equal(seatDoubt(row('old13', '2026-10-07'), now), true);
+  // 오늘 출항도 같은 기준입니다.
+  assert.equal(seatDoubt(row('old13', '2026-10-06'), now), true);
+  // 2~6일 뒤는 48시간까지 믿습니다.
+  assert.equal(seatDoubt(row('old40', '2026-10-10'), now), false);
+  assert.equal(seatDoubt(row('old40', '2026-10-12'), now), false);
+  // 일주일 넘게 남은 출조는 거의 안 바뀌어 기준을 두지 않습니다.
+  assert.equal(seatDoubt(row('old40', '2026-10-20'), now), false);
+  // 자리가 없는 줄과 확인 시각 모르는 줄
+  assert.equal(seatDoubt(row('old40', '2026-10-07', 'closed'), now), false, '마감 줄은 의심할 자리가 없습니다');
+  assert.equal(seatDoubt(row('nobody', '2026-10-07'), now), true, '확인 시각을 모르면 믿을 근거가 없습니다');
+
+  const day = '2026-10-07';
+  const rows = [row('old40', day), row('fresh', day, 'closed'), row('old13', day), row('fresh', day), row('old11', day)];
+  assert.deepEqual(sortTrips(rows, 'default', now).map((x) => `${x.siteId}:${x.status}`),
+    ['fresh:open', 'old11:open', 'old40:open', 'old13:open', 'fresh:closed'],
+    '최근 빈자리 → 오래된 빈자리(원래 순서 유지) → 마감');
+  // 즐겨찾기는 여전히 맨 위입니다 — 내가 찍어 둔 배는 오래됐어도 보고 싶습니다.
+  const favored = sortFns(sites, { favs: ['old40|'] }).sortTrips(rows, 'default', now);
+  assert.equal(favored[0].siteId, 'old40');
+
+  assert.match(inline, /if \(seatDoubt\(t\)\) \{\s*td\.classList\.add\('doubtful'\);/);
+  assert.match(inline, /지금은 다를 수 있음/);
+  assert.match(html, /td\.cell-seats\.doubtful \{ color: var\(--muted\); \}/);
 });
 
 test('최신 확인순은 그 사이트를 마지막으로 확인한 때로 센다', () => {
