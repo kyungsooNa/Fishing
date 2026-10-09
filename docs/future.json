@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-09T21:08:18.937Z",
+  "generatedAt": "2026-10-09T21:09:18.431Z",
   "horizonDays": 90,
   "cursors": {
     "7": 83,
@@ -151,14 +151,14 @@
     "aqua": 83,
     "arakhaeng": 83,
     "arirang": 83,
-    "art": 53,
-    "asiaho": 53,
-    "badalove": 53,
-    "baekya": 53,
-    "bigboss24": 53,
-    "bluefc": 22,
-    "boas": 22,
-    "boss": 22,
+    "art": 83,
+    "asiaho": 83,
+    "badalove": 83,
+    "baekya": 83,
+    "bigboss24": 83,
+    "bluefc": 52,
+    "boas": 52,
+    "boss": 52,
     "busung": 22,
     "chambada": 22,
     "cherryfish": 22,
@@ -5424,10 +5424,10 @@
       "hours": 9.5,
       "species": "주꾸미",
       "tide": "14물",
-      "status": "few",
-      "statusText": "몬스터호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/19명",
-      "seatsLeft": 1,
-      "seatsTotal": 20,
+      "status": "closed",
+      "statusText": "몬스터호 대기하기 어종 : 주꾸미 / 루어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 21명 예약/21명",
+      "seatsLeft": 0,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -13361,7 +13361,7 @@
       "status": "open",
       "statusText": "몬스터호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -21058,7 +21058,7 @@
       "status": "open",
       "statusText": "몬스터호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -28627,7 +28627,7 @@
       "status": "open",
       "statusText": "몬스터호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -34213,8 +34213,8 @@
       "species": "갑오징어",
       "tide": "2물",
       "status": "open",
-      "statusText": "테슬란호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 04:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/13명",
-      "seatsLeft": 7,
+      "statusText": "테슬란호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 04:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리3명예약/17명",
+      "seatsLeft": 3,
       "seatsTotal": 20,
       "price": null,
       "url": "https://bluefc.sunsang24.com/ship/schedule_fleet/202611"
@@ -36344,7 +36344,7 @@
       "status": "open",
       "statusText": "몬스터호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -46395,8 +46395,8 @@
       "species": "갈치",
       "tide": "4물",
       "status": "open",
-      "statusText": "보아스호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
+      "statusText": "보아스호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/5명",
+      "seatsLeft": 15,
       "seatsTotal": 20,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202611"
@@ -49116,8 +49116,8 @@
       "species": "문어",
       "tide": "5물",
       "status": "open",
-      "statusText": "몬스터호 바로예약 어종 : 문어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/10명",
-      "seatsLeft": 10,
+      "statusText": "몬스터호 바로예약 어종 : 문어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리4명예약/16명",
+      "seatsLeft": 4,
       "seatsTotal": 20,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202611"
@@ -57508,7 +57508,7 @@
       "status": "open",
       "statusText": "몬스터호 바로예약 어종 : 문어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -65673,7 +65673,7 @@
       "status": "open",
       "statusText": "몬스터호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -74049,7 +74049,7 @@
       "status": "open",
       "statusText": "몬스터호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -82402,7 +82402,7 @@
       "status": "open",
       "statusText": "몬스터호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -90775,7 +90775,7 @@
       "status": "open",
       "statusText": "몬스터호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -98961,7 +98961,7 @@
       "status": "open",
       "statusText": "몬스터호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -103430,8 +103430,8 @@
       "species": "갈치",
       "tide": "12물",
       "status": "open",
-      "statusText": "보아스호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
+      "statusText": "보아스호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/2명",
+      "seatsLeft": 18,
       "seatsTotal": 20,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202611"
@@ -116340,8 +116340,8 @@
       "species": "주꾸미",
       "tide": "14물",
       "status": "open",
-      "statusText": "몬스터호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/13명",
-      "seatsLeft": 7,
+      "statusText": "몬스터호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/15명",
+      "seatsLeft": 5,
       "seatsTotal": 20,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202611"
@@ -123574,7 +123574,7 @@
       "status": "open",
       "statusText": "몬스터호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -131380,7 +131380,7 @@
       "status": "open",
       "statusText": "몬스터호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -139345,7 +139345,7 @@
       "status": "open",
       "statusText": "몬스터호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -147391,7 +147391,7 @@
       "status": "open",
       "statusText": "몬스터호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -155376,7 +155376,7 @@
       "status": "open",
       "statusText": "몬스터호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -169838,7 +169838,7 @@
       "status": "open",
       "statusText": "몬스터호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -176734,7 +176734,7 @@
       "status": "open",
       "statusText": "몬스터호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -184186,7 +184186,7 @@
       "status": "open",
       "statusText": "몬스터호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -191853,7 +191853,7 @@
       "status": "open",
       "statusText": "몬스터호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -199542,7 +199542,7 @@
       "status": "open",
       "statusText": "몬스터호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -207228,7 +207228,7 @@
       "status": "open",
       "statusText": "몬스터호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -214908,7 +214908,7 @@
       "status": "open",
       "statusText": "몬스터호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -222419,7 +222419,7 @@
       "status": "open",
       "statusText": "몬스터호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -231130,7 +231130,7 @@
       "status": "open",
       "statusText": "몬스터호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202611"
     },
