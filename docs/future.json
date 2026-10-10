@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-10T17:29:36.071Z",
+  "generatedAt": "2026-10-10T17:30:57.471Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -228,14 +228,14 @@
     "muldori": 82,
     "nara": 82,
     "newhanlyo": 82,
-    "newsky": 52,
-    "newtaejinho": 52,
-    "ninedragon": 52,
-    "np": 52,
-    "nurifish": 83,
-    "orion": 52,
-    "pacific": 52,
-    "parkpro": 52,
+    "newsky": 82,
+    "newtaejinho": 82,
+    "ninedragon": 82,
+    "np": 82,
+    "nurifish": 22,
+    "orion": 82,
+    "pacific": 82,
+    "parkpro": 82,
     "pigho": 52,
     "poseidon": 52,
     "princeho": 52,
@@ -7651,7 +7651,7 @@
       "status": "open",
       "statusText": "뉴태진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://newtaejinho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -15389,7 +15389,7 @@
       "status": "open",
       "statusText": "뉴태진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://newtaejinho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -23042,7 +23042,7 @@
       "status": "open",
       "statusText": "뉴태진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://newtaejinho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -23896,8 +23896,8 @@
       "species": "갈치",
       "tide": "3물",
       "status": "open",
-      "statusText": "구룡호 바로예약 어종 : 갈치 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/5명",
-      "seatsLeft": 7,
+      "statusText": "구룡호 바로예약 어종 : 갈치 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/6명",
+      "seatsLeft": 6,
       "seatsTotal": 12,
       "price": null,
       "url": "https://ninedragon.sunsang24.com/ship/schedule_fleet/202611"
@@ -30696,7 +30696,7 @@
       "status": "open",
       "statusText": "뉴태진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://newtaejinho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -31528,8 +31528,8 @@
       "species": "갈치",
       "tide": "4물",
       "status": "open",
-      "statusText": "구룡호 바로예약 어종 : 갈치 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리4명예약/8명",
-      "seatsLeft": 4,
+      "statusText": "구룡호 바로예약 어종 : 갈치 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리3명예약/9명",
+      "seatsLeft": 3,
       "seatsTotal": 12,
       "price": null,
       "url": "https://ninedragon.sunsang24.com/ship/schedule_fleet/202611"
@@ -38158,7 +38158,7 @@
       "status": "open",
       "statusText": "뉴태진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://newtaejinho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -43032,9 +43032,9 @@
       "hours": 10,
       "species": "참돔",
       "tide": "5물",
-      "status": "few",
-      "statusText": "거금 박프로호 바로예약 어종 : 참돔,우럭,농어,붉바리 운항시간 : 05:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/19명",
-      "seatsLeft": 1,
+      "status": "open",
+      "statusText": "거금 박프로호 바로예약 어종 : 참돔,우럭,농어,붉바리 운항시간 : 05:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/15명",
+      "seatsLeft": 5,
       "seatsTotal": 20,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202611"
@@ -45160,7 +45160,7 @@
       "status": "open",
       "statusText": "뉴태진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://newtaejinho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -46000,6 +46000,26 @@
       "seatsTotal": 11,
       "price": null,
       "url": "https://gyeongjuho.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
+      "siteId": "ninedragon",
+      "siteName": "구룡호",
+      "boat": "구룡호",
+      "port": "제주 제주시 도두항",
+      "phone": "010-2890-5744",
+      "date": "2026-11-08",
+      "departAt": null,
+      "returnAt": null,
+      "session": null,
+      "hours": null,
+      "species": "갈치",
+      "tide": "6물",
+      "status": "open",
+      "statusText": "구룡호 바로예약 어종 : 갈치 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/1명",
+      "seatsLeft": 11,
+      "seatsTotal": 12,
+      "price": null,
+      "url": "https://ninedragon.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "newsj",
@@ -53948,7 +53968,7 @@
       "status": "open",
       "statusText": "뉴태진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://newtaejinho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -62134,7 +62154,7 @@
       "status": "open",
       "statusText": "뉴태진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://newtaejinho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -70594,7 +70614,7 @@
       "status": "open",
       "statusText": "뉴태진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://newtaejinho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -78987,7 +79007,7 @@
       "status": "open",
       "statusText": "뉴태진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://newtaejinho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -87341,7 +87361,7 @@
       "status": "open",
       "statusText": "뉴태진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://newtaejinho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -95655,7 +95675,7 @@
       "status": "open",
       "statusText": "뉴태진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://newtaejinho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -103748,7 +103768,7 @@
       "status": "open",
       "statusText": "뉴태진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://newtaejinho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -111333,7 +111353,7 @@
       "status": "open",
       "statusText": "뉴태진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://newtaejinho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -118588,7 +118608,7 @@
       "status": "open",
       "statusText": "뉴태진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://newtaejinho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -126677,7 +126697,7 @@
       "status": "open",
       "statusText": "뉴태진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://newtaejinho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -134705,7 +134725,7 @@
       "status": "open",
       "statusText": "뉴태진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://newtaejinho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -142835,7 +142855,7 @@
       "status": "open",
       "statusText": "뉴태진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://newtaejinho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -150904,7 +150924,7 @@
       "status": "open",
       "statusText": "뉴태진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://newtaejinho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -156852,8 +156872,8 @@
       "species": "갑오징어",
       "tide": "4물",
       "status": "open",
-      "statusText": "뉴스카이호 바로예약 어종 : 갑오징어 / 선상 운항시간 : 05:30 ~ 16:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
+      "statusText": "뉴스카이호 바로예약 어종 : 갑오징어 / 선상 운항시간 : 05:30 ~ 16:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/2명",
+      "seatsLeft": 18,
       "seatsTotal": 20,
       "price": null,
       "url": "https://newsky.sunsang24.com/ship/schedule_fleet/202611"
@@ -159170,7 +159190,7 @@
       "status": "open",
       "statusText": "뉴태진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://newtaejinho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -166602,7 +166622,7 @@
       "status": "open",
       "statusText": "뉴태진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://newtaejinho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -173275,7 +173295,7 @@
       "status": "open",
       "statusText": "뉴태진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://newtaejinho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -181048,7 +181068,7 @@
       "status": "open",
       "statusText": "뉴태진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://newtaejinho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -188778,7 +188798,7 @@
       "status": "open",
       "statusText": "뉴태진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://newtaejinho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -196551,7 +196571,7 @@
       "status": "open",
       "statusText": "뉴태진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://newtaejinho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -204342,7 +204362,7 @@
       "status": "open",
       "statusText": "뉴태진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://newtaejinho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -219657,7 +219677,7 @@
       "status": "open",
       "statusText": "뉴태진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://newtaejinho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -226923,7 +226943,7 @@
       "status": "open",
       "statusText": "뉴태진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://newtaejinho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -267540,8 +267560,8 @@
       "species": "참돔",
       "tide": "11물",
       "status": "open",
-      "statusText": "거금 박프로호 바로예약 어종:붉바리.참돔.방어 타이라바 출항합니다.♡주차안내박프로호2호(뱅가드)승선하시는 조사님은방파제 옆 또는 큰 주차장에 주차 바랍니다 어종 : 참돔 운항시간 : 05:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
-      "seatsLeft": 18,
+      "statusText": "거금 박프로호 바로예약 어종:붉바리.참돔.방어 타이라바 출항합니다.♡주차안내박프로호2호(뱅가드)승선하시는 조사님은방파제 옆 또는 큰 주차장에 주차 바랍니다 어종 : 참돔 운항시간 : 05:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명예약/1명",
+      "seatsLeft": 17,
       "seatsTotal": 18,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202612"
