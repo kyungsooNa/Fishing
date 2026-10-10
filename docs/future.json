@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-10T17:39:30.598Z",
+  "generatedAt": "2026-10-10T18:27:49.062Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -135,13 +135,13 @@
     "yong": 82,
     "yongma": 82,
     "ysoceanstar": 82,
-    "yurimho": 22,
-    "eungabi": 22,
-    "ocpro": 22,
-    "supernova": 52,
-    "goldenbaek": 22,
-    "blueocean2": 22,
-    "daehan": 22,
+    "yurimho": 82,
+    "eungabi": 82,
+    "ocpro": 82,
+    "supernova": 82,
+    "goldenbaek": 82,
+    "blueocean2": 82,
+    "daehan": 82,
     "nature": 22,
     "bj": 22,
     "dongmun": 52,
@@ -7797,7 +7797,7 @@
       "status": "open",
       "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://yurimho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -15050,7 +15050,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -15346,7 +15346,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 13:00 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -15598,7 +15598,7 @@
       "status": "open",
       "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://yurimho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -22724,7 +22724,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -23020,7 +23020,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 13:00 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -23293,7 +23293,7 @@
       "status": "open",
       "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://yurimho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -27025,9 +27025,9 @@
       "hours": 11,
       "species": "주꾸미",
       "tide": "2물",
-      "status": "few",
-      "statusText": "은가비호 바로예약 어종 : 주꾸미 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/18명",
-      "seatsLeft": 2,
+      "status": "open",
+      "statusText": "은가비호 바로예약 어종 : 주꾸미 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리3명예약/17명",
+      "seatsLeft": 3,
       "seatsTotal": 20,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202611"
@@ -30420,7 +30420,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -30716,7 +30716,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 13:00 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -30989,7 +30989,7 @@
       "status": "open",
       "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://yurimho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -37032,8 +37032,8 @@
       "species": "갑오징어",
       "tide": "3물",
       "status": "open",
-      "statusText": "대한호 바로예약 어종 : 갑오징어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/11명",
-      "seatsLeft": 8,
+      "statusText": "대한호 바로예약 어종 : 갑오징어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/10명",
+      "seatsLeft": 9,
       "seatsTotal": 19,
       "price": null,
       "url": "https://daehan.sunsang24.com/ship/schedule_fleet/202611"
@@ -38493,7 +38493,7 @@
       "status": "open",
       "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://yurimho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -45537,7 +45537,7 @@
       "status": "open",
       "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://yurimho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -53773,9 +53773,9 @@
       "hours": 5,
       "species": "주꾸미·갑오징어",
       "tide": "5물",
-      "status": "open",
-      "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리4명예약/11명",
-      "seatsLeft": 4,
+      "status": "closed",
+      "statusText": "황금백호 대기하기 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 15명 예약/15명",
+      "seatsLeft": 0,
       "seatsTotal": 15,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
@@ -54114,7 +54114,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 13:00 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -54387,7 +54387,7 @@
       "status": "open",
       "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://yurimho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -62003,7 +62003,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -62342,7 +62342,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 13:00 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -62615,7 +62615,7 @@
       "status": "open",
       "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://yurimho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -70505,7 +70505,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -70823,7 +70823,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 13:00 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -71117,7 +71117,7 @@
       "status": "open",
       "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://yurimho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -75210,7 +75210,7 @@
       "status": "open",
       "statusText": "은가비호 바로예약 어종 : 주꾸미 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -78940,7 +78940,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -79279,7 +79279,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 13:00 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -79552,7 +79552,7 @@
       "status": "open",
       "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://yurimho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -87336,7 +87336,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -87675,7 +87675,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 13:00 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -87948,7 +87948,7 @@
       "status": "open",
       "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://yurimho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -92018,8 +92018,8 @@
       "species": "주꾸미",
       "tide": "11물",
       "status": "open",
-      "statusText": "은가비호 바로예약 어종 : 주꾸미 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/6명",
-      "seatsLeft": 14,
+      "statusText": "은가비호 바로예약 어종 : 주꾸미 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명예약/7명",
+      "seatsLeft": 13,
       "seatsTotal": 20,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202611"
@@ -95712,7 +95712,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -96324,7 +96324,7 @@
       "status": "open",
       "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://yurimho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -104436,9 +104436,9 @@
       "species": "갈치",
       "tide": "13물",
       "status": "open",
-      "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
-      "seatsLeft": 16,
-      "seatsTotal": null,
+      "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/1명",
+      "seatsLeft": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://yurimho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -111393,7 +111393,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -111729,7 +111729,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 13:00 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -112023,7 +112023,7 @@
       "status": "open",
       "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://yurimho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -118689,7 +118689,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -119005,7 +119005,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 13:00 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -119278,7 +119278,7 @@
       "status": "open",
       "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://yurimho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -126755,7 +126755,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -127094,7 +127094,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 13:00 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -127367,7 +127367,7 @@
       "status": "open",
       "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://yurimho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -134783,7 +134783,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -135122,7 +135122,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 13:00 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -135395,7 +135395,7 @@
       "status": "open",
       "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://yurimho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -142913,7 +142913,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -143252,7 +143252,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 13:00 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -143525,7 +143525,7 @@
       "status": "open",
       "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://yurimho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -150961,7 +150961,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -151300,7 +151300,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 13:00 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -151594,7 +151594,7 @@
       "status": "open",
       "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://yurimho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -155863,9 +155863,9 @@
       "hours": 11,
       "species": "주꾸미",
       "tide": "4물",
-      "status": "few",
-      "statusText": "은가비호 바로예약 어종 : 주꾸미 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/19명",
-      "seatsLeft": 1,
+      "status": "closed",
+      "statusText": "은가비호 대기하기 어종 : 주꾸미 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/20명",
+      "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202611"
@@ -159207,7 +159207,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -159860,7 +159860,7 @@
       "status": "open",
       "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://yurimho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -166660,7 +166660,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -166998,7 +166998,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 13:00 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -167292,7 +167292,7 @@
       "status": "open",
       "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://yurimho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -170507,7 +170507,7 @@
       "status": "open",
       "statusText": "은가비호 바로예약 어종 : 주꾸미 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -173354,7 +173354,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -173671,7 +173671,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 13:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -173944,7 +173944,7 @@
       "status": "open",
       "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://yurimho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -178001,7 +178001,7 @@
       "status": "open",
       "statusText": "은가비호 바로예약 어종 : 주꾸미 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -181107,7 +181107,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -181423,7 +181423,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 13:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -181696,7 +181696,7 @@
       "status": "open",
       "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://yurimho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -188816,7 +188816,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -189132,7 +189132,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 13:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -189405,7 +189405,7 @@
       "status": "open",
       "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://yurimho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -193441,7 +193441,7 @@
       "status": "open",
       "statusText": "은가비호 바로예약 어종 : 주꾸미 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -196568,7 +196568,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -196884,7 +196884,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 13:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -197157,7 +197157,7 @@
       "status": "open",
       "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://yurimho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -201169,7 +201169,7 @@
       "status": "open",
       "statusText": "은가비호 바로예약 어종 : 주꾸미 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -204338,7 +204338,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -204927,7 +204927,7 @@
       "status": "open",
       "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://yurimho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -212061,7 +212061,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -212712,7 +212712,7 @@
       "status": "open",
       "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://yurimho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -216422,8 +216422,8 @@
       "species": "주꾸미",
       "tide": "12물",
       "status": "open",
-      "statusText": "은가비호 바로예약 어종 : 주꾸미 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/9명",
-      "seatsLeft": 11,
+      "statusText": "은가비호 바로예약 어종 : 주꾸미 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/11명",
+      "seatsLeft": 9,
       "seatsTotal": 20,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202611"
@@ -219570,7 +219570,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -219906,7 +219906,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 13:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -220200,7 +220200,7 @@
       "status": "open",
       "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://yurimho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -226856,7 +226856,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -227172,7 +227172,7 @@
       "status": "open",
       "statusText": "황금백호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 13:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://golden.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -227445,7 +227445,7 @@
       "status": "open",
       "statusText": "유림호 바로예약 어종 : 갈치 / 생미끼 외수질 운항시간 : 14:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://yurimho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -234458,8 +234458,8 @@
       "species": "광어",
       "tide": "무시",
       "status": "open",
-      "statusText": "슈퍼노바호 바로예약 어종 : 광어,우럭 / 다운샷 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/6명",
-      "seatsLeft": 14,
+      "statusText": "슈퍼노바호 바로예약 어종 : 광어,우럭 / 다운샷 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명예약/7명",
+      "seatsLeft": 13,
       "seatsTotal": 20,
       "price": null,
       "url": "https://supernova.sunsang24.com/ship/schedule_fleet/202612"
