@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-10T17:30:57.471Z",
+  "generatedAt": "2026-10-10T17:32:23.323Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -236,14 +236,14 @@
     "orion": 82,
     "pacific": 82,
     "parkpro": 82,
-    "pigho": 52,
-    "poseidon": 52,
-    "princeho": 52,
-    "pro": 52,
-    "redfox": 52,
-    "redpulsegs": 52,
-    "richard": 52,
-    "rise": 52,
+    "pigho": 82,
+    "poseidon": 82,
+    "princeho": 82,
+    "pro": 82,
+    "redfox": 82,
+    "redpulsegs": 82,
+    "richard": 82,
+    "rise": 82,
     "rkclgh": 52,
     "rosemary": 52,
     "samdeok": 52,
@@ -1291,6 +1291,26 @@
       "price": null,
       "url": "https://wsd.thefishing.kr/index.php?mid=bk&year=2026&month=11&day=2",
       "urlDated": true
+    },
+    {
+      "siteId": "pro",
+      "siteName": "샤크호",
+      "boat": "샤크호",
+      "port": "전북 군산 비응항",
+      "phone": "010-9475-6936",
+      "date": "2026-11-02",
+      "departAt": null,
+      "returnAt": null,
+      "session": null,
+      "hours": null,
+      "species": "문어",
+      "tide": "조금",
+      "status": "open",
+      "statusText": "샤크호 바로예약 어종 : 문어 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/6명",
+      "seatsLeft": 14,
+      "seatsTotal": 20,
+      "price": null,
+      "url": "https://pro.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "venus",
@@ -2797,8 +2817,8 @@
       "species": "문어",
       "tide": "조금",
       "status": "open",
-      "statusText": "해무니호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명예약/3명",
-      "seatsLeft": 17,
+      "statusText": "해무니호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명예약/7명",
+      "seatsLeft": 13,
       "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202611"
@@ -6192,7 +6212,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -8008,7 +8028,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -8155,7 +8175,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -10646,8 +10666,8 @@
       "species": "문어",
       "tide": "무시",
       "status": "open",
-      "statusText": "해무니호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명예약/1명",
-      "seatsLeft": 19,
+      "statusText": "해무니호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/2명",
+      "seatsLeft": 18,
       "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202611"
@@ -13909,7 +13929,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -15767,7 +15787,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -15914,7 +15934,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -16791,8 +16811,8 @@
       "species": "문어",
       "tide": "1물",
       "status": "open",
-      "statusText": "샤크호 바로예약 어종 : 문어 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/6명",
-      "seatsLeft": 14,
+      "statusText": "샤크호 바로예약 어종 : 문어 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/8명",
+      "seatsLeft": 12,
       "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202611"
@@ -18217,8 +18237,8 @@
       "species": "갑오징어",
       "tide": "1물",
       "status": "open",
-      "statusText": "먹깨비호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명예약/2명",
-      "seatsLeft": 19,
+      "statusText": "먹깨비호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/3명",
+      "seatsLeft": 18,
       "seatsTotal": 21,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202611"
@@ -20913,8 +20933,8 @@
       "species": "갑오징어",
       "tide": "1물",
       "status": "open",
-      "statusText": "에르메스호 바로예약 어종 : 갑오징어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명예약/3명",
-      "seatsLeft": 17,
+      "statusText": "에르메스호 바로예약 어종 : 갑오징어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/6명",
+      "seatsLeft": 14,
       "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202611"
@@ -21541,7 +21561,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -23441,7 +23461,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -23588,7 +23608,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -25932,8 +25952,8 @@
       "species": "갑오징어",
       "tide": "2물",
       "status": "open",
-      "statusText": "먹깨비호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/6명",
-      "seatsLeft": 15,
+      "statusText": "먹깨비호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/7명",
+      "seatsLeft": 14,
       "seatsTotal": 21,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202611"
@@ -26037,8 +26057,8 @@
       "species": "문어",
       "tide": "2물",
       "status": "open",
-      "statusText": "해무니호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/9명",
-      "seatsLeft": 11,
+      "statusText": "해무니호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/12명",
+      "seatsLeft": 8,
       "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202611"
@@ -29321,7 +29341,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -31074,7 +31094,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -31221,7 +31241,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -34279,8 +34299,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "3물",
       "status": "few",
-      "statusText": "꽃돼지호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 입금완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/19명",
-      "seatsLeft": 2,
+      "statusText": "꽃돼지호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 입금완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/20명",
+      "seatsLeft": 1,
       "seatsTotal": 21,
       "price": null,
       "url": "https://pigho.sunsang24.com/ship/schedule_fleet/202611"
@@ -36783,7 +36803,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -38599,7 +38619,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -38725,7 +38745,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -42739,7 +42759,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갑오징어 / 선상 운항시간 : 05:20 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -43095,9 +43115,9 @@
       "hours": 9.5,
       "species": "갑오징어",
       "tide": "4물",
-      "status": "closed",
-      "statusText": "토르호 대기하기 어종 : 갑오징어 / 루어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/20명",
-      "seatsLeft": 0,
+      "status": "open",
+      "statusText": "토르호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리3명예약/17명",
+      "seatsLeft": 3,
       "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202611"
@@ -45727,7 +45747,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -48754,8 +48774,8 @@
       "species": "갑오징어",
       "tide": "5물",
       "status": "open",
-      "statusText": "먹깨비호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/12명",
-      "seatsLeft": 9,
+      "statusText": "먹깨비호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/13명",
+      "seatsLeft": 8,
       "seatsTotal": 21,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202611"
@@ -51396,7 +51416,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갑오징어 / 선상 운항시간 : 05:20 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -54388,7 +54408,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -54556,7 +54576,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -55744,8 +55764,8 @@
       "species": "갑오징어",
       "tide": "7물",
       "status": "open",
-      "statusText": "슈퍼마린호 바로예약 어종 : 갑오징어 / 루어 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/5명",
-      "seatsLeft": 15,
+      "statusText": "슈퍼마린호 바로예약 어종 : 갑오징어 / 루어 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/6명",
+      "seatsLeft": 14,
       "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202611"
@@ -60589,7 +60609,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -62553,7 +62573,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -62721,7 +62741,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -65547,8 +65567,8 @@
       "species": "광어",
       "tide": "8물",
       "status": "open",
-      "statusText": "프로호 바로예약 어종 : 광어,우럭 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/2명",
-      "seatsLeft": 18,
+      "statusText": "프로호 바로예약 어종 : 광어,우럭 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명예약/4명",
+      "seatsLeft": 16,
       "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202611"
@@ -69049,7 +69069,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -70992,7 +71012,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -71160,7 +71180,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -72494,8 +72514,8 @@
       "species": "갑오징어",
       "tide": "9물",
       "status": "open",
-      "statusText": "슈퍼마린호 바로예약 어종 : 갑오징어 / 루어 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/12명",
-      "seatsLeft": 8,
+      "statusText": "슈퍼마린호 바로예약 어종 : 갑오징어 / 루어 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/14명",
+      "seatsLeft": 6,
       "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202611"
@@ -77463,7 +77483,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -79385,7 +79405,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -79553,7 +79573,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -85922,7 +85942,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -87739,7 +87759,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -87907,7 +87927,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -93566,8 +93586,8 @@
       "species": "갑오징어",
       "tide": "11물",
       "status": "open",
-      "statusText": "에르메스호 바로예약 어종 : 갑오징어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명예약/1명",
-      "seatsLeft": 19,
+      "statusText": "에르메스호 바로예약 어종 : 갑오징어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명예약/3명",
+      "seatsLeft": 17,
       "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202611"
@@ -94236,7 +94256,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -96095,7 +96115,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -96242,7 +96262,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -101640,8 +101660,8 @@
       "species": "갑오징어",
       "tide": "12물",
       "status": "open",
-      "statusText": "에르메스호 바로예약 어종 : 갑오징어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/11명",
-      "seatsLeft": 9,
+      "statusText": "에르메스호 바로예약 어종 : 갑오징어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/13명",
+      "seatsLeft": 7,
       "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202611"
@@ -102289,7 +102309,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:00 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -103132,9 +103152,9 @@
       "hours": 8,
       "species": "주꾸미·갑오징어",
       "tide": "12물",
-      "status": "closed",
-      "statusText": "라이즈호 대기하기 어종 : 쭈꾸미,갑오징어 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/20명",
-      "seatsLeft": 0,
+      "status": "few",
+      "statusText": "라이즈호 바로예약 어종 : 쭈꾸미,갑오징어 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/18명",
+      "seatsLeft": 2,
       "seatsTotal": 20,
       "price": null,
       "url": "https://rise.sunsang24.com/ship/schedule_fleet/202611"
@@ -104081,8 +104101,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "12물",
       "status": "open",
-      "statusText": "라이즈호 바로예약 어종 : 쭈꾸미,갑오징어 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 15:30 ~ 18:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/14명",
-      "seatsLeft": 6,
+      "statusText": "라이즈호 바로예약 어종 : 쭈꾸미,갑오징어 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 15:30 ~ 18:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리3명예약/17명",
+      "seatsLeft": 3,
       "seatsTotal": 20,
       "price": null,
       "url": "https://rise.sunsang24.com/ship/schedule_fleet/202611"
@@ -104335,7 +104355,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -107710,9 +107730,9 @@
       "hours": 10,
       "species": "주꾸미·갑오징어",
       "tide": "13물",
-      "status": "few",
-      "statusText": "꽃돼지호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 입금완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/20명",
-      "seatsLeft": 1,
+      "status": "closed",
+      "statusText": "꽃돼지호 대기하기 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 입금완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 21명 예약/21명",
+      "seatsLeft": 0,
       "seatsTotal": 21,
       "price": null,
       "url": "https://pigho.sunsang24.com/ship/schedule_fleet/202611"
@@ -109941,7 +109961,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:00 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -110761,9 +110781,9 @@
       "hours": 8,
       "species": "주꾸미·갑오징어",
       "tide": "13물",
-      "status": "open",
-      "statusText": "라이즈호 바로예약 어종 : 쭈꾸미,갑오징어 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리3명예약/17명",
-      "seatsLeft": 3,
+      "status": "closed",
+      "statusText": "라이즈호 대기하기 어종 : 쭈꾸미,갑오징어 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/20명",
+      "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
       "url": "https://rise.sunsang24.com/ship/schedule_fleet/202611"
@@ -111752,7 +111772,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -111899,7 +111919,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -114222,10 +114242,10 @@
       "returnAt": "15:00",
       "session": "종일",
       "hours": 11,
-      "species": "광어",
+      "species": "문어",
       "tide": "조금",
       "status": "open",
-      "statusText": "프로호 바로예약 어종 : 광어,우럭 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
+      "statusText": "프로호 바로예약 어종 : 문어 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
@@ -117236,7 +117256,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -118944,7 +118964,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -119091,7 +119111,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -121890,10 +121910,10 @@
       "returnAt": "15:00",
       "session": "종일",
       "hours": 11,
-      "species": "광어",
+      "species": "문어",
       "tide": "무시",
       "status": "open",
-      "statusText": "프로호 바로예약 어종 : 광어,우럭 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
+      "statusText": "프로호 바로예약 어종 : 문어 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
@@ -125218,7 +125238,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -127054,7 +127074,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -127201,7 +127221,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -133225,7 +133245,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -135082,7 +135102,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -135229,7 +135249,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -138006,10 +138026,10 @@
       "returnAt": "15:00",
       "session": "종일",
       "hours": 11,
-      "species": "광어",
+      "species": "문어",
       "tide": "2물",
       "status": "open",
-      "statusText": "프로호 바로예약 어종 : 광어,우럭 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
+      "statusText": "프로호 바로예약 어종 : 문어 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
@@ -140135,8 +140155,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "2물",
       "status": "open",
-      "statusText": "포세이돈호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명예약/1명",
-      "seatsLeft": 19,
+      "statusText": "포세이돈호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/2명",
+      "seatsLeft": 18,
       "seatsTotal": 20,
       "price": null,
       "url": "https://poseidon.sunsang24.com/ship/schedule_fleet/202611"
@@ -141334,7 +141354,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -143212,7 +143232,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -143359,7 +143379,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -146075,10 +146095,10 @@
       "returnAt": "15:00",
       "session": "종일",
       "hours": 11,
-      "species": "광어",
+      "species": "문어",
       "tide": "3물",
       "status": "open",
-      "statusText": "프로호 바로예약 어종 : 광어,우럭 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
+      "statusText": "프로호 바로예약 어종 : 문어 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
       "seatsTotal": 20,
       "price": null,
@@ -149382,7 +149402,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -151300,8 +151320,8 @@
       "species": "갈치",
       "tide": "4물",
       "status": "open",
-      "statusText": "리차드호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명예약/1명",
-      "seatsLeft": 17,
+      "statusText": "리차드호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/3명",
+      "seatsLeft": 15,
       "seatsTotal": 18,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202611"
@@ -151449,7 +151469,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -157713,7 +157733,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:00 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -159547,7 +159567,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -159694,7 +159714,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -162075,9 +162095,9 @@
       "hours": 11,
       "species": "문어",
       "tide": "5물",
-      "status": "few",
-      "statusText": "해무니호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/18명",
-      "seatsLeft": 2,
+      "status": "closed",
+      "statusText": "해무니호 대기하기 어종 : 문어 / 루어,선상 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/20명",
+      "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202611"
@@ -164333,8 +164353,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "5물",
       "status": "open",
-      "statusText": "포세이돈호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/9명",
-      "seatsLeft": 11,
+      "statusText": "포세이돈호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/10명",
+      "seatsLeft": 10,
       "seatsTotal": 20,
       "price": null,
       "url": "https://poseidon.sunsang24.com/ship/schedule_fleet/202611"
@@ -165184,7 +165204,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -166979,7 +166999,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -167105,7 +167125,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -171899,7 +171919,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -173715,7 +173735,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -173841,7 +173861,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -179630,7 +179650,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -181425,7 +181445,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -181572,7 +181592,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -187360,7 +187380,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -189155,7 +189175,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -189302,7 +189322,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -195133,7 +195153,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -196928,7 +196948,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -197075,7 +197095,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -202903,7 +202923,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -204740,7 +204760,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -204887,7 +204907,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -210648,7 +210668,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:00 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -212693,7 +212713,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -218158,7 +218178,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:00 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -220055,7 +220075,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -220202,7 +220222,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -225485,7 +225505,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -227279,7 +227299,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 갈치 / 루어,선상,지깅 운항시간 : 16:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -227426,7 +227446,7 @@
       "status": "open",
       "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -246839,8 +246859,8 @@
       "species": "문어",
       "tide": "4물",
       "status": "open",
-      "statusText": "먹깨비호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/13명",
-      "seatsLeft": 8,
+      "statusText": "먹깨비호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/16명",
+      "seatsLeft": 5,
       "seatsTotal": 21,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
