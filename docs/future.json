@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-10T00:45:12.148Z",
+  "generatedAt": "2026-10-10T00:46:16.025Z",
   "horizonDays": 90,
   "cursors": {
     "7": 83,
@@ -183,13 +183,13 @@
     "gdcompany": 52,
     "genieyonghan": 52,
     "giant": 52,
-    "goaraho": 22,
-    "gonghyeonjin": 22,
-    "gosu": 22,
-    "gsseven": 22,
-    "gudiho": 22,
-    "gukbo": 52,
-    "gull": 22,
+    "goaraho": 52,
+    "gonghyeonjin": 52,
+    "gosu": 52,
+    "gsseven": 52,
+    "gudiho": 52,
+    "gukbo": 83,
+    "gull": 52,
     "gundam": 22,
     "gunsannaksi": 22,
     "gyeongjuho": 22,
@@ -263,7 +263,7 @@
     "napoliho": 50,
     "bumblebee": 50,
     "eagleho": 43,
-    "goldatsr": 83
+    "goldatsr": 22
   },
   "trips": [
     {
@@ -7807,7 +7807,7 @@
       "status": "open",
       "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": null,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -10740,8 +10740,8 @@
       "species": "문어",
       "tide": "조금",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/12명",
-      "seatsLeft": 8,
+      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/10명",
+      "seatsLeft": 10,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -15784,7 +15784,7 @@
       "status": "open",
       "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": null,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -23502,7 +23502,7 @@
       "status": "open",
       "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": null,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -31155,7 +31155,7 @@
       "status": "open",
       "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": null,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -38809,7 +38809,7 @@
       "status": "open",
       "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": null,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -41443,8 +41443,8 @@
       "species": "문어",
       "tide": "3물",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/12명",
-      "seatsLeft": 8,
+      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/13명",
+      "seatsLeft": 7,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -46271,7 +46271,7 @@
       "status": "open",
       "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": null,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -50039,9 +50039,9 @@
       "hours": 10,
       "species": "주꾸미·갑오징어",
       "tide": "4물",
-      "status": "open",
-      "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리3명예약/18명",
-      "seatsLeft": 3,
+      "status": "closed",
+      "statusText": "아라호 대기하기 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 21명 예약/21명",
+      "seatsLeft": 0,
       "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202611"
@@ -53271,9 +53271,9 @@
       "species": "갈치",
       "tide": "5물",
       "status": "open",
-      "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
-      "seatsLeft": 15,
-      "seatsTotal": null,
+      "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명예약/2명",
+      "seatsLeft": 13,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -56804,8 +56804,8 @@
       "species": "문어",
       "tide": "5물",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/11명",
-      "seatsLeft": 9,
+      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/14명",
+      "seatsLeft": 6,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -62061,7 +62061,7 @@
       "status": "open",
       "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": null,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -70247,7 +70247,7 @@
       "status": "open",
       "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": null,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -73577,8 +73577,8 @@
       "species": "문어",
       "tide": "8물",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/10명",
-      "seatsLeft": 10,
+      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/9명",
+      "seatsLeft": 11,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -78707,7 +78707,7 @@
       "status": "open",
       "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": null,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -87100,7 +87100,7 @@
       "status": "open",
       "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": null,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -95454,7 +95454,7 @@
       "status": "open",
       "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": null,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -98657,8 +98657,8 @@
       "species": "문어",
       "tide": "11물",
       "status": "open",
-      "statusText": "갈매기호 바로예약 어종 : 문어 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/5명",
-      "seatsLeft": 15,
+      "statusText": "갈매기호 바로예약 어종 : 문어 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/6명",
+      "seatsLeft": 14,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -103768,7 +103768,7 @@
       "status": "open",
       "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": null,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -111861,7 +111861,7 @@
       "status": "open",
       "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": null,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -112279,8 +112279,8 @@
       "species": "문어",
       "tide": "12물",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 문어 / 루어 운항시간 : 16:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/11명",
-      "seatsLeft": 9,
+      "statusText": "홈런호 바로예약 어종 : 문어 / 루어 운항시간 : 16:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/15명",
+      "seatsLeft": 5,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -114813,8 +114813,8 @@
       "species": "문어",
       "tide": "13물",
       "status": "few",
-      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/18명",
-      "seatsLeft": 2,
+      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/19명",
+      "seatsLeft": 1,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -119446,7 +119446,7 @@
       "status": "open",
       "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": null,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -126701,7 +126701,7 @@
       "status": "open",
       "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": null,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -134790,7 +134790,7 @@
       "status": "open",
       "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": null,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -142818,7 +142818,7 @@
       "status": "open",
       "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": null,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -150948,7 +150948,7 @@
       "status": "open",
       "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": null,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -159017,7 +159017,7 @@
       "status": "open",
       "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": null,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -167283,7 +167283,7 @@
       "status": "open",
       "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": null,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -170022,8 +170022,8 @@
       "species": "문어",
       "tide": "5물",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/5명",
-      "seatsLeft": 15,
+      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/8명",
+      "seatsLeft": 12,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -174715,7 +174715,7 @@
       "status": "open",
       "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": null,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -175070,8 +175070,8 @@
       "species": "문어",
       "tide": "5물",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 문어 / 루어 운항시간 : 16:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
+      "statusText": "홈런호 바로예약 어종 : 문어 / 루어 운항시간 : 16:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/9명",
+      "seatsLeft": 11,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -177044,8 +177044,8 @@
       "species": "문어",
       "tide": "6물",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
+      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/8명",
+      "seatsLeft": 12,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -181368,7 +181368,7 @@
       "status": "open",
       "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": null,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -181786,8 +181786,8 @@
       "species": "문어",
       "tide": "6물",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 문어 / 루어 운항시간 : 16:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
+      "statusText": "홈런호 바로예약 어종 : 문어 / 루어 운항시간 : 16:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/2명",
+      "seatsLeft": 18,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -189141,7 +189141,7 @@
       "status": "open",
       "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": null,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -196871,7 +196871,7 @@
       "status": "open",
       "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": null,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -204644,7 +204644,7 @@
       "status": "open",
       "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": null,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -212435,7 +212435,7 @@
       "status": "open",
       "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": null,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -220241,7 +220241,7 @@
       "status": "open",
       "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": null,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -227750,7 +227750,7 @@
       "status": "open",
       "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": null,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -235016,7 +235016,7 @@
       "status": "open",
       "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": null,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
     },
