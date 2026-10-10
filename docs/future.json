@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-10T20:43:43.511Z",
+  "generatedAt": "2026-10-10T20:45:08.243Z",
   "horizonDays": 90,
   "cursors": {
     "7": 82,
@@ -173,14 +173,14 @@
     "dream": 22,
     "eagles": 22,
     "ebada": 22,
-    "emerald": 83,
-    "enjoy": 83,
-    "eunhasuho": 83,
-    "fishbank": 83,
-    "fishhunter": 83,
-    "gagaho": 83,
-    "galchiho": 83,
-    "gdcompany": 83,
+    "emerald": 22,
+    "enjoy": 22,
+    "eunhasuho": 22,
+    "fishbank": 22,
+    "fishhunter": 22,
+    "gagaho": 22,
+    "galchiho": 22,
+    "gdcompany": 22,
     "genieyonghan": 83,
     "giant": 83,
     "goaraho": 83,
@@ -3640,7 +3640,7 @@
       "status": "open",
       "statusText": "홍단호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -4470,8 +4470,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "조금",
       "status": "open",
-      "statusText": "엔조이호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/12명",
-      "seatsLeft": 8,
+      "statusText": "엔조이호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리3명예약/17명",
+      "seatsLeft": 3,
       "seatsTotal": 20,
       "price": null,
       "url": "https://enjoy.sunsang24.com/ship/schedule_fleet/202611"
@@ -4738,7 +4738,7 @@
       "status": "open",
       "statusText": "효성호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 12,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -6426,6 +6426,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "emerald",
+      "siteName": "에메랄드호",
+      "boat": "에메랄드호",
+      "port": null,
+      "phone": "010-9659-8252",
+      "date": "2026-11-02",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "부시리",
+      "tide": "조금",
+      "status": "open",
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "macgyver",
       "siteName": "영목항 맥가이버호",
       "boat": "레드맨호",
@@ -7395,7 +7416,7 @@
       "status": "open",
       "statusText": "피쉬뱅크호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 10:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -7502,7 +7523,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -11487,8 +11508,8 @@
       "species": "갑오징어",
       "tide": "무시",
       "status": "open",
-      "statusText": "안흥 스페이스호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
-      "seatsLeft": 19,
+      "statusText": "안흥 스페이스호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/4명",
+      "seatsLeft": 15,
       "seatsTotal": 19,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
@@ -11531,7 +11552,7 @@
       "status": "open",
       "statusText": "홍단호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -12582,7 +12603,7 @@
       "status": "open",
       "statusText": "효성호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 12,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -13905,8 +13926,8 @@
       "species": "갑오징어",
       "tide": "무시",
       "status": "open",
-      "statusText": "가가호 바로예약 어종 : 갑오징어 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/12명",
-      "seatsLeft": 8,
+      "statusText": "가가호 바로예약 어종 : 갑오징어 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/13명",
+      "seatsLeft": 7,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
@@ -14183,6 +14204,27 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
+      "siteId": "emerald",
+      "siteName": "에메랄드호",
+      "boat": "에메랄드호",
+      "port": null,
+      "phone": "010-9659-8252",
+      "date": "2026-11-03",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "부시리",
+      "tide": "1물",
+      "status": "open",
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "macgyver",
@@ -15175,7 +15217,7 @@
       "status": "open",
       "statusText": "피쉬뱅크호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 10:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -15282,7 +15324,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -19228,7 +19270,7 @@
       "status": "open",
       "statusText": "홍단호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -20277,7 +20319,7 @@
       "status": "open",
       "statusText": "효성호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 12,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -20741,8 +20783,8 @@
       "species": "갑오징어",
       "tide": "1물",
       "status": "open",
-      "statusText": "청용호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 05:30 ~ 16:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
+      "statusText": "청용호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 05:30 ~ 16:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/3명",
+      "seatsLeft": 18,
       "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
@@ -21859,6 +21901,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "emerald",
+      "siteName": "에메랄드호",
+      "boat": "에메랄드호",
+      "port": null,
+      "phone": "010-9659-8252",
+      "date": "2026-11-04",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "부시리",
+      "tide": "2물",
+      "status": "open",
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "macgyver",
       "siteName": "영목항 맥가이버호",
       "boat": "레드맨호",
@@ -22849,7 +22912,7 @@
       "status": "open",
       "statusText": "피쉬뱅크호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 10:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -22956,7 +23019,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -27006,7 +27069,7 @@
       "status": "open",
       "statusText": "홍단호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -28078,7 +28141,7 @@
       "status": "open",
       "statusText": "효성호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 12,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -29401,8 +29464,8 @@
       "species": "갑오징어",
       "tide": "2물",
       "status": "open",
-      "statusText": "가가호 바로예약 어종 : 갑오징어 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/9명",
-      "seatsLeft": 11,
+      "statusText": "가가호 바로예약 어종 : 갑오징어 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/12명",
+      "seatsLeft": 8,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
@@ -29658,6 +29721,27 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
+      "siteId": "emerald",
+      "siteName": "에메랄드호",
+      "boat": "에메랄드호",
+      "port": null,
+      "phone": "010-9659-8252",
+      "date": "2026-11-05",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "부시리",
+      "tide": "3물",
+      "status": "open",
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "macgyver",
@@ -30545,7 +30629,7 @@
       "status": "open",
       "statusText": "피쉬뱅크호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 10:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -30652,7 +30736,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -35602,7 +35686,7 @@
       "status": "open",
       "statusText": "효성호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 12,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -37205,6 +37289,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "emerald",
+      "siteName": "에메랄드호",
+      "boat": "에메랄드호",
+      "port": null,
+      "phone": "010-9659-8252",
+      "date": "2026-11-06",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "부시리",
+      "tide": "4물",
+      "status": "open",
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "macgyver",
       "siteName": "영목항 맥가이버호",
       "boat": "레드맨호",
@@ -38197,7 +38302,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -42630,7 +42735,7 @@
       "status": "open",
       "statusText": "효성호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 12,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -43005,9 +43110,9 @@
       "hours": 9,
       "species": "문어",
       "tide": "5물",
-      "status": "open",
-      "statusText": "흑룡호 바로예약 어종 : 문어 / 다운샷,선상 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리4명예약/16명",
-      "seatsLeft": 4,
+      "status": "few",
+      "statusText": "흑룡호 바로예약 어종 : 문어 / 다운샷,선상 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/19명",
+      "seatsLeft": 1,
       "seatsTotal": 20,
       "price": null,
       "url": "https://fishhunter.sunsang24.com/ship/schedule_fleet/202611"
@@ -44187,6 +44292,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "emerald",
+      "siteName": "에메랄드호",
+      "boat": "에메랄드호",
+      "port": null,
+      "phone": "010-9659-8252",
+      "date": "2026-11-07",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "부시리",
+      "tide": "5물",
+      "status": "open",
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "macgyver",
       "siteName": "영목항 맥가이버호",
       "boat": "레드맨호",
@@ -45070,7 +45196,7 @@
       "status": "open",
       "statusText": "피쉬뱅크호 바로예약 어종일(7시~15시) 출조 ※ 신분증 필수!※ 점심미제공 8만 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -52909,6 +53035,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "emerald",
+      "siteName": "에메랄드호",
+      "boat": "에메랄드호",
+      "port": null,
+      "phone": "010-9659-8252",
+      "date": "2026-11-08",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "부시리",
+      "tide": "6물",
+      "status": "open",
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "macgyver",
       "siteName": "영목항 맥가이버호",
       "boat": "레드맨호",
@@ -53941,7 +54088,7 @@
       "status": "open",
       "statusText": "피쉬뱅크호 바로예약 어종일(7시~15시) 출조 ※ 신분증 필수!※ 점심미제공 8만 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -54090,7 +54237,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -58287,8 +58434,8 @@
       "species": "갑오징어",
       "tide": "7물",
       "status": "open",
-      "statusText": "여명호 바로예약 어종 : 갑오징어 / 지깅 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
+      "statusText": "여명호 바로예약 어종 : 갑오징어 / 지깅 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/3명",
+      "seatsLeft": 18,
       "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
@@ -58310,7 +58457,7 @@
       "status": "open",
       "statusText": "홍단호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -59490,7 +59637,7 @@
       "status": "open",
       "statusText": "효성호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 12,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -61178,6 +61325,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "emerald",
+      "siteName": "에메랄드호",
+      "boat": "에메랄드호",
+      "port": null,
+      "phone": "010-9659-8252",
+      "date": "2026-11-09",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "부시리",
+      "tide": "8물",
+      "status": "open",
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "macgyver",
       "siteName": "영목항 맥가이버호",
       "boat": "레드맨호",
@@ -62189,7 +62357,7 @@
       "status": "open",
       "statusText": "피쉬뱅크호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 10:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -62318,7 +62486,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -66812,7 +66980,7 @@
       "status": "open",
       "statusText": "홍단호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -67950,7 +68118,7 @@
       "status": "open",
       "statusText": "효성호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 12,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -69381,7 +69549,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 갑오징어 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -69657,6 +69825,27 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
+      "siteId": "emerald",
+      "siteName": "에메랄드호",
+      "boat": "에메랄드호",
+      "port": null,
+      "phone": "010-9659-8252",
+      "date": "2026-11-10",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "부시리",
+      "tide": "9물",
+      "status": "open",
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "macgyver",
@@ -70670,7 +70859,7 @@
       "status": "open",
       "statusText": "피쉬뱅크호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 10:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -70799,7 +70988,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -75249,7 +75438,7 @@
       "status": "open",
       "statusText": "홍단호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -76385,7 +76574,7 @@
       "status": "open",
       "statusText": "효성호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 12,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -77837,7 +78026,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 갑오징어 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -78113,6 +78302,27 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
+      "siteId": "emerald",
+      "siteName": "에메랄드호",
+      "boat": "에메랄드호",
+      "port": null,
+      "phone": "010-9659-8252",
+      "date": "2026-11-11",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "부시리",
+      "tide": "10물",
+      "status": "open",
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "macgyver",
@@ -79126,7 +79336,7 @@
       "status": "open",
       "statusText": "피쉬뱅크호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 10:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -79255,7 +79465,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -83706,7 +83916,7 @@
       "status": "open",
       "statusText": "홍단호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -84907,7 +85117,7 @@
       "status": "open",
       "statusText": "효성호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 12,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -86338,7 +86548,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 갑오징어 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -86614,6 +86824,27 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
+      "siteId": "emerald",
+      "siteName": "에메랄드호",
+      "boat": "에메랄드호",
+      "port": null,
+      "phone": "010-9659-8252",
+      "date": "2026-11-12",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "부시리",
+      "tide": "11물",
+      "status": "open",
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "macgyver",
@@ -87522,7 +87753,7 @@
       "status": "open",
       "statusText": "피쉬뱅크호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 10:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -87651,7 +87882,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -92038,7 +92269,7 @@
       "status": "open",
       "statusText": "홍단호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -93262,7 +93493,7 @@
       "status": "open",
       "statusText": "효성호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 12,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -94714,7 +94945,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 갑오징어 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -94990,6 +95221,27 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
+      "siteId": "emerald",
+      "siteName": "에메랄드호",
+      "boat": "에메랄드호",
+      "port": null,
+      "phone": "010-9659-8252",
+      "date": "2026-11-13",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "부시리",
+      "tide": "12물",
+      "status": "open",
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "macgyver",
@@ -95898,7 +96150,7 @@
       "status": "open",
       "statusText": "피쉬뱅크호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 10:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -96027,7 +96279,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -100328,8 +100580,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "12물",
       "status": "open",
-      "statusText": "홍단호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/10명",
-      "seatsLeft": 10,
+      "statusText": "홍단호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리3명예약/17명",
+      "seatsLeft": 3,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
@@ -101487,7 +101739,7 @@
       "status": "open",
       "statusText": "효성호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 12,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -103066,6 +103318,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "emerald",
+      "siteName": "에메랄드호",
+      "boat": "에메랄드호",
+      "port": null,
+      "phone": "010-9659-8252",
+      "date": "2026-11-14",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "부시리",
+      "tide": "13물",
+      "status": "open",
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "macgyver",
       "siteName": "영목항 맥가이버호",
       "boat": "레드맨호",
@@ -103950,7 +104223,7 @@
       "status": "open",
       "statusText": "피쉬뱅크호 바로예약 어종일(7시~15시) 출조 ※ 신분증 필수!※ 점심미제공 8만 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -104099,7 +104372,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -108294,8 +108567,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "13물",
       "status": "open",
-      "statusText": "홍단호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명예약/1명",
-      "seatsLeft": 19,
+      "statusText": "홍단호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/2명",
+      "seatsLeft": 18,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
@@ -110718,6 +110991,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "emerald",
+      "siteName": "에메랄드호",
+      "boat": "에메랄드호",
+      "port": null,
+      "phone": "010-9659-8252",
+      "date": "2026-11-15",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "부시리",
+      "tide": "14물",
+      "status": "open",
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "macgyver",
       "siteName": "영목항 맥가이버호",
       "boat": "레드맨호",
@@ -111579,7 +111873,7 @@
       "status": "open",
       "statusText": "피쉬뱅크호 바로예약 어종일(7시~15시) 출조 ※ 신분증 필수!※ 점심미제공 8만 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -111705,7 +111999,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -115654,7 +115948,7 @@
       "status": "open",
       "statusText": "홍단호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -116546,7 +116840,7 @@
       "status": "open",
       "statusText": "효성호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 12,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -117732,8 +118026,8 @@
       "species": "갑오징어",
       "tide": "조금",
       "status": "open",
-      "statusText": "가가호 바로예약 어종 : 갑오징어 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/2명",
-      "seatsLeft": 18,
+      "statusText": "가가호 바로예약 어종 : 갑오징어 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/5명",
+      "seatsLeft": 15,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
@@ -118011,6 +118305,27 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
+      "siteId": "emerald",
+      "siteName": "에메랄드호",
+      "boat": "에메랄드호",
+      "port": null,
+      "phone": "010-9659-8252",
+      "date": "2026-11-16",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "부시리",
+      "tide": "조금",
+      "status": "open",
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "macgyver",
@@ -118875,7 +119190,7 @@
       "status": "open",
       "statusText": "피쉬뱅크호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 10:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -118981,7 +119296,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -123408,7 +123723,7 @@
       "status": "open",
       "statusText": "홍단호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -124369,7 +124684,7 @@
       "status": "open",
       "statusText": "효성호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 12,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -125716,7 +126031,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 갑오징어 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -125951,6 +126266,27 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
+      "siteId": "emerald",
+      "siteName": "에메랄드호",
+      "boat": "에메랄드호",
+      "port": null,
+      "phone": "010-9659-8252",
+      "date": "2026-11-17",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "부시리",
+      "tide": "1물",
+      "status": "open",
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "macgyver",
@@ -126941,7 +127277,7 @@
       "status": "open",
       "statusText": "피쉬뱅크호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 10:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -127070,7 +127406,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -131436,7 +131772,7 @@
       "status": "open",
       "statusText": "홍단호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -132397,7 +132733,7 @@
       "status": "open",
       "statusText": "효성호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 12,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -133723,7 +134059,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 갑오징어 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -133979,6 +134315,27 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
+      "siteId": "emerald",
+      "siteName": "에메랄드호",
+      "boat": "에메랄드호",
+      "port": null,
+      "phone": "010-9659-8252",
+      "date": "2026-11-18",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "부시리",
+      "tide": "2물",
+      "status": "open",
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "macgyver",
@@ -134969,7 +135326,7 @@
       "status": "open",
       "statusText": "피쉬뱅크호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 10:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -135098,7 +135455,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -139524,7 +139881,7 @@
       "status": "open",
       "statusText": "홍단호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -140485,7 +140842,7 @@
       "status": "open",
       "statusText": "효성호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 12,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -141832,7 +142189,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 갑오징어 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -142109,6 +142466,27 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
+      "siteId": "emerald",
+      "siteName": "에메랄드호",
+      "boat": "에메랄드호",
+      "port": null,
+      "phone": "010-9659-8252",
+      "date": "2026-11-19",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "부시리",
+      "tide": "3물",
+      "status": "open",
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "macgyver",
@@ -143099,7 +143477,7 @@
       "status": "open",
       "statusText": "피쉬뱅크호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 10:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -143228,7 +143606,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -147593,7 +147971,7 @@
       "status": "open",
       "statusText": "홍단호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -148533,7 +148911,7 @@
       "status": "open",
       "statusText": "효성호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 12,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -149880,7 +150258,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 갑오징어 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -150136,6 +150514,27 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
+      "siteId": "emerald",
+      "siteName": "에메랄드호",
+      "boat": "에메랄드호",
+      "port": null,
+      "phone": "010-9659-8252",
+      "date": "2026-11-20",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "부시리",
+      "tide": "4물",
+      "status": "open",
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "macgyver",
@@ -151276,7 +151675,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -156927,7 +157326,7 @@
       "status": "open",
       "statusText": "효성호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 12,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -158469,6 +158868,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "emerald",
+      "siteName": "에메랄드호",
+      "boat": "에메랄드호",
+      "port": null,
+      "phone": "010-9659-8252",
+      "date": "2026-11-21",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "부시리",
+      "tide": "5물",
+      "status": "open",
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "macgyver",
       "siteName": "영목항 맥가이버호",
       "boat": "레드맨호",
@@ -159393,7 +159813,7 @@
       "status": "open",
       "statusText": "피쉬뱅크호 바로예약 어종일(7시~15시) 출조 ※ 신분증 필수!※ 점심미제공 8만 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -159542,7 +159962,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -163480,9 +163900,9 @@
       "hours": 11,
       "species": "갑오징어",
       "tide": "5물",
-      "status": "open",
-      "statusText": "가가호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리3명예약/7명",
-      "seatsLeft": 3,
+      "status": "closed",
+      "statusText": "가가호 대기하기 어종 : 갑오징어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 10명 예약/10명",
+      "seatsLeft": 0,
       "seatsTotal": 10,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
@@ -165961,6 +166381,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "emerald",
+      "siteName": "에메랄드호",
+      "boat": "에메랄드호",
+      "port": null,
+      "phone": "010-9659-8252",
+      "date": "2026-11-22",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "부시리",
+      "tide": "6물",
+      "status": "open",
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "macgyver",
       "siteName": "영목항 맥가이버호",
       "boat": "레드맨호",
@@ -166846,7 +167287,7 @@
       "status": "open",
       "statusText": "피쉬뱅크호 바로예약 어종일(7시~15시) 출조 ※ 신분증 필수!※ 점심미제공 8만 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -166974,7 +167415,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -170525,7 +170966,7 @@
       "status": "open",
       "statusText": "홍단호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -171532,7 +171973,7 @@
       "status": "open",
       "statusText": "효성호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 12,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -172398,7 +172839,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 갑오징어 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -172653,6 +173094,27 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
+      "siteId": "emerald",
+      "siteName": "에메랄드호",
+      "boat": "에메랄드호",
+      "port": null,
+      "phone": "010-9659-8252",
+      "date": "2026-11-23",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "부시리",
+      "tide": "7물",
+      "status": "open",
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "macgyver",
@@ -173540,7 +174002,7 @@
       "status": "open",
       "statusText": "피쉬뱅크호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 10:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -173647,7 +174109,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -178040,7 +178502,7 @@
       "status": "open",
       "statusText": "홍단호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -179045,7 +179507,7 @@
       "status": "open",
       "statusText": "효성호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 12,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -180086,7 +180548,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 갑오징어 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -180363,6 +180825,27 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
+      "siteId": "emerald",
+      "siteName": "에메랄드호",
+      "boat": "에메랄드호",
+      "port": null,
+      "phone": "010-9659-8252",
+      "date": "2026-11-24",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "부시리",
+      "tide": "8물",
+      "status": "open",
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "macgyver",
@@ -181293,7 +181776,7 @@
       "status": "open",
       "statusText": "피쉬뱅크호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 10:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -181399,7 +181882,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -185749,7 +186232,7 @@
       "status": "open",
       "statusText": "홍단호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -186754,7 +187237,7 @@
       "status": "open",
       "statusText": "효성호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 12,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -187795,7 +188278,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 갑오징어 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -188072,6 +188555,27 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
+      "siteId": "emerald",
+      "siteName": "에메랄드호",
+      "boat": "에메랄드호",
+      "port": null,
+      "phone": "010-9659-8252",
+      "date": "2026-11-25",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "부시리",
+      "tide": "9물",
+      "status": "open",
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "macgyver",
@@ -189002,7 +189506,7 @@
       "status": "open",
       "statusText": "피쉬뱅크호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 10:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -189108,7 +189612,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -193480,7 +193984,7 @@
       "status": "open",
       "statusText": "홍단호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -194506,7 +195010,7 @@
       "status": "open",
       "statusText": "효성호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 12,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -195547,7 +196051,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 갑오징어 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -195824,6 +196328,27 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
+      "siteId": "emerald",
+      "siteName": "에메랄드호",
+      "boat": "에메랄드호",
+      "port": null,
+      "phone": "010-9659-8252",
+      "date": "2026-11-26",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "부시리",
+      "tide": "10물",
+      "status": "open",
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "macgyver",
@@ -196754,7 +197279,7 @@
       "status": "open",
       "statusText": "피쉬뱅크호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 10:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -196860,7 +197385,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -201208,7 +201733,7 @@
       "status": "open",
       "statusText": "홍단호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -202255,7 +202780,7 @@
       "status": "open",
       "statusText": "효성호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 12,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -203296,7 +203821,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 갑오징어 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -203573,6 +204098,27 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
+      "siteId": "emerald",
+      "siteName": "에메랄드호",
+      "boat": "에메랄드호",
+      "port": null,
+      "phone": "010-9659-8252",
+      "date": "2026-11-27",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "부시리",
+      "tide": "11물",
+      "status": "open",
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "macgyver",
@@ -204524,7 +205070,7 @@
       "status": "open",
       "statusText": "피쉬뱅크호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 10:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -204630,7 +205176,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -208738,8 +209284,8 @@
       "species": "돌돔",
       "tide": "12물",
       "status": "open",
-      "statusText": "흑룡호 바로예약 어종:돌돔,쥐치,열기,볼락,왕전갱이 등등♦️예약확정: 예약➡️입금➡️예약확정♦️입금예시:7월9일(김흑룡) 입금시 위와같이 작성후 입금후 문자남겨주세요 어종 : 돌돔,쥐치 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명예약/4명",
-      "seatsLeft": 16,
+      "statusText": "흑룡호 바로예약 어종:돌돔,쥐치,열기,볼락,왕전갱이 등등♦️예약확정: 예약➡️입금➡️예약확정♦️입금예시:7월9일(김흑룡) 입금시 위와같이 작성후 입금후 문자남겨주세요 어종 : 돌돔,쥐치 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/6명",
+      "seatsLeft": 14,
       "seatsTotal": 20,
       "price": null,
       "url": "https://fishhunter.sunsang24.com/ship/schedule_fleet/202611"
@@ -208846,7 +209392,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -208909,7 +209455,7 @@
       "status": "open",
       "statusText": "홍단호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -210000,7 +210546,7 @@
       "status": "open",
       "statusText": "효성호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 12,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -211299,6 +211845,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "emerald",
+      "siteName": "에메랄드호",
+      "boat": "에메랄드호",
+      "port": null,
+      "phone": "010-9659-8252",
+      "date": "2026-11-28",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "부시리",
+      "tide": "12물",
+      "status": "open",
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "macgyver",
       "siteName": "영목항 맥가이버호",
       "boat": "레드맨호",
@@ -212268,7 +212835,7 @@
       "status": "open",
       "statusText": "피쉬뱅크호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 10:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -212373,7 +212940,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -216379,7 +216946,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -218809,6 +219376,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "emerald",
+      "siteName": "에메랄드호",
+      "boat": "에메랄드호",
+      "port": null,
+      "phone": "010-9659-8252",
+      "date": "2026-11-29",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "부시리",
+      "tide": "13물",
+      "status": "open",
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "macgyver",
       "siteName": "영목항 맥가이버호",
       "boat": "레드맨호",
@@ -219777,7 +220365,7 @@
       "status": "open",
       "statusText": "피쉬뱅크호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 10:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -219882,7 +220470,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -223727,7 +224315,7 @@
       "status": "open",
       "statusText": "홍단호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -224774,7 +225362,7 @@
       "status": "open",
       "statusText": "효성호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 12,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -225815,7 +226403,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 갑오징어 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -226113,6 +226701,27 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
+      "siteId": "emerald",
+      "siteName": "에메랄드호",
+      "boat": "에메랄드호",
+      "port": null,
+      "phone": "010-9659-8252",
+      "date": "2026-11-30",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "부시리",
+      "tide": "14물",
+      "status": "open",
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "macgyver",
@@ -227042,7 +227651,7 @@
       "status": "open",
       "statusText": "피쉬뱅크호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 10:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -227148,7 +227757,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
