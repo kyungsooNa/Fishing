@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-10T17:35:13.031Z",
+  "generatedAt": "2026-10-10T17:36:37.481Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -12,9 +12,9 @@
     "jstar": 57,
     "stallone": 82,
     "teamhanpro": 57,
-    "star": 22,
+    "star": 82,
     "blackpig": 57,
-    "stealth": 22,
+    "stealth": 82,
     "healing": 57,
     "daejinmcp": 57,
     "hanpro": 57,
@@ -113,12 +113,12 @@
     "yjong": 64,
     "yongsa": 57,
     "ysho": 57,
-    "sunghoon": 22,
-    "sunstarho": 22,
-    "taeanfishing": 22,
-    "taegeukho": 22,
-    "taesung": 22,
-    "tamra": 22,
+    "sunghoon": 82,
+    "sunstarho": 82,
+    "taeanfishing": 82,
+    "taegeukho": 82,
+    "taesung": 82,
+    "tamra": 82,
     "thales": 22,
     "tpho": 22,
     "twin": 22,
@@ -6780,7 +6780,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
       "seatsLeft": 12,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -8112,7 +8112,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 16:00 ~ 01:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -12776,7 +12776,7 @@
       "status": "open",
       "statusText": "태극호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -14497,7 +14497,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
       "seatsLeft": 12,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -15871,7 +15871,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 16:00 ~ 01:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -22129,7 +22129,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
       "seatsLeft": 12,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -23545,7 +23545,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 16:00 ~ 01:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -28188,7 +28188,7 @@
       "status": "open",
       "statusText": "태극호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -29783,7 +29783,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
       "seatsLeft": 12,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -31178,7 +31178,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 16:00 ~ 01:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -38451,7 +38451,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 무늬오징어 / 선상 운항시간 : 15:00 ~ 04:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -42547,8 +42547,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "4물",
       "status": "open",
-      "statusText": "태극호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명예약/1명",
-      "seatsLeft": 19,
+      "statusText": "태극호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명예약/3명",
+      "seatsLeft": 17,
       "seatsTotal": 20,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
@@ -45453,7 +45453,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 무늬오징어 / 선상 운항시간 : 15:00 ~ 04:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -52971,7 +52971,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
       "seatsLeft": 12,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -54492,7 +54492,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 16:00 ~ 01:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -59413,7 +59413,7 @@
       "status": "open",
       "statusText": "태극호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -61176,7 +61176,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
       "seatsLeft": 12,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -62657,7 +62657,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 16:00 ~ 01:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -67265,8 +67265,8 @@
       "species": "갑오징어",
       "tide": "8물",
       "status": "open",
-      "statusText": "어해루호 바로예약 어종 : 갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:30 입금완료 예약 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/7명",
-      "seatsLeft": 14,
+      "statusText": "어해루호 바로예약 어종 : 갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:30 입금완료 예약 취소대기 취소완료 예약대기 출조대기 남은자리13명예약/8명",
+      "seatsLeft": 13,
       "seatsTotal": 21,
       "price": null,
       "url": "https://taeanfishing.sunsang24.com/ship/schedule_fleet/202611"
@@ -67852,7 +67852,7 @@
       "status": "open",
       "statusText": "태극호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -69615,7 +69615,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
       "seatsLeft": 12,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -71096,7 +71096,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 16:00 ~ 01:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -76245,7 +76245,7 @@
       "status": "open",
       "statusText": "태극호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -78029,7 +78029,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
       "seatsLeft": 12,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -79489,7 +79489,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 16:00 ~ 01:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -84704,7 +84704,7 @@
       "status": "open",
       "statusText": "태극호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -86383,7 +86383,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
       "seatsLeft": 12,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -87843,7 +87843,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 16:00 ~ 01:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -92997,7 +92997,7 @@
       "status": "open",
       "statusText": "태극호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -94697,7 +94697,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
       "seatsLeft": 12,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -95968,7 +95968,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 무늬오징어 / 선상 운항시간 : 15:00 ~ 04:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -101048,8 +101048,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "12물",
       "status": "open",
-      "statusText": "태극1호(아버지배) 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
-      "seatsLeft": 19,
+      "statusText": "태극1호(아버지배) 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명예약/2명",
+      "seatsLeft": 17,
       "seatsTotal": 19,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
@@ -101764,9 +101764,9 @@
       "hours": 10,
       "species": "갑오징어",
       "tide": "12물",
-      "status": "few",
-      "statusText": "어해루2호 바로예약 어종 : 갑오징어 / 루어,선상 운항시간 : 05:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/15명",
-      "seatsLeft": 2,
+      "status": "closed",
+      "statusText": "어해루2호 대기하기 어종 : 갑오징어 / 루어,선상 운항시간 : 05:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 17명 예약/17명",
+      "seatsLeft": 0,
       "seatsTotal": 17,
       "price": null,
       "url": "https://taeanfishing.sunsang24.com/ship/schedule_fleet/202611"
@@ -102729,7 +102729,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
       "seatsLeft": 12,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -102855,8 +102855,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "12물",
       "status": "open",
-      "statusText": "은아3호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 06:20 ~ 11:00 예약완료 예약명단(입금하면 100% 확정이니 입금확인전화 절대하지마세요) 취소대기 취소완료 예약대기 출조대기 남은자리42명예약/7명",
-      "seatsLeft": 42,
+      "statusText": "은아3호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 06:20 ~ 11:00 예약완료 예약명단(입금하면 100% 확정이니 입금확인전화 절대하지마세요) 취소대기 취소완료 예약대기 출조대기 남은자리39명예약/10명",
+      "seatsLeft": 39,
       "seatsTotal": 49,
       "price": null,
       "url": "https://sunstarho.sunsang24.com/ship/schedule_fleet/202611"
@@ -103429,8 +103429,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "12물",
       "status": "open",
-      "statusText": "은아3호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 12:00 ~ 17:00 예약완료 예약명단(입금하면 100% 확정이니 입금확인전화 절대하지마세요) 취소대기 취소완료 예약대기 출조대기 남은자리43명예약/6명",
-      "seatsLeft": 43,
+      "statusText": "은아3호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 12:00 ~ 17:00 예약완료 예약명단(입금하면 100% 확정이니 입금확인전화 절대하지마세요) 취소대기 취소완료 예약대기 출조대기 남은자리39명예약/10명",
+      "seatsLeft": 39,
       "seatsTotal": 49,
       "price": null,
       "url": "https://sunstarho.sunsang24.com/ship/schedule_fleet/202611"
@@ -104061,7 +104061,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 무늬오징어 / 선상 운항시간 : 15:00 ~ 04:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -108793,7 +108793,7 @@
       "status": "open",
       "statusText": "태극호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -109485,8 +109485,8 @@
       "species": "갑오징어",
       "tide": "13물",
       "status": "open",
-      "statusText": "어해루2호 바로예약 어종 : 갑오징어 / 루어,선상 운항시간 : 05:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/7명",
-      "seatsLeft": 10,
+      "statusText": "어해루2호 바로예약 어종 : 갑오징어 / 루어,선상 운항시간 : 05:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/9명",
+      "seatsLeft": 8,
       "seatsTotal": 17,
       "price": null,
       "url": "https://taeanfishing.sunsang24.com/ship/schedule_fleet/202611"
@@ -110382,7 +110382,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
       "seatsLeft": 12,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -111835,7 +111835,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 16:00 ~ 01:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -116088,7 +116088,7 @@
       "status": "open",
       "statusText": "태극호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -117698,7 +117698,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
       "seatsLeft": 12,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -119027,7 +119027,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 16:00 ~ 01:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -123957,7 +123957,7 @@
       "status": "open",
       "statusText": "태극호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -125743,7 +125743,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
       "seatsLeft": 12,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -127137,7 +127137,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 16:00 ~ 01:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -131985,7 +131985,7 @@
       "status": "open",
       "statusText": "태극호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -133771,7 +133771,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
       "seatsLeft": 12,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -135165,7 +135165,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 16:00 ~ 01:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -137671,9 +137671,9 @@
       "hours": 12.5,
       "species": "우럭",
       "tide": "2물",
-      "status": "few",
-      "statusText": "자연호 바로예약 어종 : 우럭 운항시간 : 03:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/18명",
-      "seatsLeft": 2,
+      "status": "open",
+      "statusText": "자연호 바로예약 어종 : 우럭 운항시간 : 03:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리4명예약/16명",
+      "seatsLeft": 4,
       "seatsTotal": 20,
       "price": null,
       "url": "https://taeanfishing.sunsang24.com/ship/schedule_fleet/202611"
@@ -140073,7 +140073,7 @@
       "status": "open",
       "statusText": "태극호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -141901,7 +141901,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
       "seatsLeft": 12,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -143295,7 +143295,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 16:00 ~ 01:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -148142,7 +148142,7 @@
       "status": "open",
       "statusText": "태극호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -149928,7 +149928,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
       "seatsLeft": 12,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -151385,7 +151385,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 무늬오징어 / 선상 운항시간 : 16:00 ~ 04:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -156576,8 +156576,8 @@
       "species": "갑오징어",
       "tide": "4물",
       "status": "open",
-      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/12명",
-      "seatsLeft": 9,
+      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/13명",
+      "seatsLeft": 8,
       "seatsTotal": 21,
       "price": null,
       "url": "https://star.sunsang24.com/ship/schedule_fleet/202611"
@@ -158175,7 +158175,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
       "seatsLeft": 12,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -158301,8 +158301,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "4물",
       "status": "open",
-      "statusText": "은아3호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 06:20 ~ 11:00 예약완료 예약명단(입금하면 100% 확정이니 입금확인전화 절대하지마세요) 취소대기 취소완료 예약대기 출조대기 남은자리41명예약/8명",
-      "seatsLeft": 41,
+      "statusText": "은아3호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 06:20 ~ 11:00 예약완료 예약명단(입금하면 100% 확정이니 입금확인전화 절대하지마세요) 취소대기 취소완료 예약대기 출조대기 남은자리39명예약/10명",
+      "seatsLeft": 39,
       "seatsTotal": 49,
       "price": null,
       "url": "https://sunstarho.sunsang24.com/ship/schedule_fleet/202611"
@@ -159630,7 +159630,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 무늬오징어 / 선상 운항시간 : 16:00 ~ 04:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -163620,9 +163620,9 @@
       "hours": 12,
       "species": "주꾸미·갑오징어",
       "tide": "5물",
-      "status": "open",
-      "statusText": "썬스타호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리4명예약/16명",
-      "seatsLeft": 4,
+      "status": "few",
+      "statusText": "썬스타호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/18명",
+      "seatsLeft": 2,
       "seatsTotal": 20,
       "price": null,
       "url": "https://sunstarho.sunsang24.com/ship/schedule_fleet/202611"
@@ -164271,7 +164271,7 @@
       "status": "open",
       "statusText": "태극호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -165667,7 +165667,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
       "seatsLeft": 12,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -167062,7 +167062,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 16:00 ~ 01:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -171074,7 +171074,7 @@
       "status": "open",
       "statusText": "태극호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -172382,7 +172382,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
       "seatsLeft": 12,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -173777,7 +173777,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 16:00 ~ 01:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -178608,7 +178608,7 @@
       "status": "open",
       "statusText": "태극호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -180092,7 +180092,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
       "seatsLeft": 12,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -181466,7 +181466,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 16:00 ~ 01:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -186317,7 +186317,7 @@
       "status": "open",
       "statusText": "태극호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -187801,7 +187801,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
       "seatsLeft": 12,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -189175,7 +189175,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 16:00 ~ 01:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -194069,7 +194069,7 @@
       "status": "open",
       "statusText": "태극호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -195553,7 +195553,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
       "seatsLeft": 12,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -196927,7 +196927,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 16:00 ~ 01:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -201818,7 +201818,7 @@
       "status": "open",
       "statusText": "태극호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -203302,7 +203302,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
       "seatsLeft": 12,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -204718,7 +204718,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 무늬오징어 / 선상 운항시간 : 16:00 ~ 04:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -209205,27 +209205,6 @@
     {
       "siteId": "taeanfishing",
       "siteName": "어해루호",
-      "boat": "어해루2호",
-      "port": "충남 태안 신진도항",
-      "phone": null,
-      "date": "2026-11-28",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "15:30",
-      "session": "종일",
-      "hours": 10.5,
-      "species": "광어",
-      "tide": "11물",
-      "status": "open",
-      "statusText": "어해루2호 바로예약 어종 : 광어,우럭 / 루어,선상 운항시간 : 05:00 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/5명",
-      "seatsLeft": 12,
-      "seatsTotal": 17,
-      "price": null,
-      "url": "https://taeanfishing.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "taeanfishing",
-      "siteName": "어해루호",
       "boat": "어해루호",
       "port": "충남 태안 신진도항",
       "phone": null,
@@ -210113,6 +210092,27 @@
       "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
+      "siteId": "taeanfishing",
+      "siteName": "어해루호",
+      "boat": "어해루2호",
+      "port": "충남 태안 신진도항",
+      "phone": null,
+      "date": "2026-11-28",
+      "departAt": "05:30",
+      "meetingAt": "05:30",
+      "returnAt": "15:30",
+      "session": "종일",
+      "hours": 10,
+      "species": "갑오징어",
+      "tide": "11물",
+      "status": "open",
+      "statusText": "어해루2호 바로예약 어종 : 갑오징어 / 루어,선상 운항시간 : 05:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/5명",
+      "seatsLeft": 12,
+      "seatsTotal": 17,
+      "price": null,
+      "url": "https://taeanfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "flex",
@@ -211026,7 +211026,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
       "seatsLeft": 12,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -212503,7 +212503,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 무늬오징어 / 선상 운항시간 : 16:00 ~ 04:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -214675,8 +214675,8 @@
       "species": "우럭",
       "tide": "12물",
       "status": "open",
-      "statusText": "자연호 바로예약 어종 : 우럭 운항시간 : 03:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/14명",
-      "seatsLeft": 6,
+      "statusText": "자연호 바로예약 어종 : 우럭 운항시간 : 03:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/15명",
+      "seatsLeft": 5,
       "seatsTotal": 20,
       "price": null,
       "url": "https://taeanfishing.sunsang24.com/ship/schedule_fleet/202611"
@@ -216538,8 +216538,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "12물",
       "status": "open",
-      "statusText": "썬스타호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
+      "statusText": "썬스타호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/2명",
+      "seatsLeft": 18,
       "seatsTotal": 20,
       "price": null,
       "url": "https://sunstarho.sunsang24.com/ship/schedule_fleet/202611"
@@ -216711,27 +216711,6 @@
       "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "taeanfishing",
-      "siteName": "어해루호",
-      "boat": "어해루2호",
-      "port": "충남 태안 신진도항",
-      "phone": null,
-      "date": "2026-11-29",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "15:30",
-      "session": "종일",
-      "hours": 10.5,
-      "species": "광어",
-      "tide": "12물",
-      "status": "open",
-      "statusText": "어해루2호 바로예약 어종 : 광어,우럭 / 루어,선상 운항시간 : 05:00 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/5명",
-      "seatsLeft": 12,
-      "seatsTotal": 17,
-      "price": null,
-      "url": "https://taeanfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "taeanfishing",
@@ -217094,7 +217073,7 @@
       "status": "open",
       "statusText": "태극호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -217623,6 +217602,27 @@
       "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
+      "siteId": "taeanfishing",
+      "siteName": "어해루호",
+      "boat": "어해루2호",
+      "port": "충남 태안 신진도항",
+      "phone": null,
+      "date": "2026-11-29",
+      "departAt": "05:30",
+      "meetingAt": "05:30",
+      "returnAt": "15:30",
+      "session": "종일",
+      "hours": 10,
+      "species": "갑오징어",
+      "tide": "12물",
+      "status": "open",
+      "statusText": "어해루2호 바로예약 어종 : 갑오징어 / 루어,선상 운항시간 : 05:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/5명",
+      "seatsLeft": 12,
+      "seatsTotal": 17,
+      "price": null,
+      "url": "https://taeanfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "flex",
@@ -218493,7 +218493,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
       "seatsLeft": 12,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -219991,7 +219991,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 16:00 ~ 01:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -224337,7 +224337,7 @@
       "status": "open",
       "statusText": "태극호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -225799,7 +225799,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
       "seatsLeft": 12,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -227194,7 +227194,7 @@
       "status": "open",
       "statusText": "태성호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 16:00 ~ 01:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://taesung.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -228663,7 +228663,7 @@
       "status": "open",
       "statusText": "스텔스호 바로예약 어종 : 우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://stealth.sunsang24.com/ship/schedule_fleet/202612"
     },
