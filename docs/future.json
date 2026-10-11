@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-11T15:44:51.770Z",
+  "generatedAt": "2026-10-11T15:46:16.737Z",
   "horizonDays": 90,
   "cursors": {
     "7": 81,
@@ -179,13 +179,13 @@
     "fishbank": 22,
     "fishhunter": 22,
     "gagaho": 22,
-    "galchiho": 82,
-    "gdcompany": 82,
-    "genieyonghan": 82,
-    "giant": 82,
-    "goaraho": 82,
-    "gonghyeonjin": 82,
-    "gosu": 82,
+    "galchiho": 22,
+    "gdcompany": 22,
+    "genieyonghan": 22,
+    "giant": 22,
+    "goaraho": 22,
+    "gonghyeonjin": 22,
+    "gosu": 22,
     "gsseven": 82,
     "gudiho": 82,
     "gukbo": 22,
@@ -263,7 +263,7 @@
     "napoliho": 50,
     "bumblebee": 50,
     "eagleho": 43,
-    "goldatsr": 22
+    "goldatsr": 81
   },
   "trips": [
     {
@@ -43556,9 +43556,9 @@
       "hours": 10,
       "species": "갑오징어",
       "tide": "5물",
-      "status": "open",
-      "statusText": "자이언트호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리3명예약/17명",
-      "seatsLeft": 3,
+      "status": "closed",
+      "statusText": "자이언트호 대기하기 어종 : 갑오징어 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/20명",
+      "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
       "url": "https://giant.sunsang24.com/ship/schedule_fleet/202611"
@@ -169446,8 +169446,8 @@
       "species": "방어",
       "tide": "7물",
       "status": "open",
-      "statusText": "지디1호 바로예약 어종 : 방어 / 선상 운행시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명예약/2명",
-      "seatsLeft": 20,
+      "statusText": "지디1호 바로예약 어종 : 방어 / 선상 운행시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명예약/3명",
+      "seatsLeft": 19,
       "seatsTotal": 22,
       "price": null,
       "url": "https://gdcompany.sunsang24.com/ship/schedule_fleet/202611"
@@ -223777,6 +223777,27 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
+    },
+    {
+      "siteId": "goldatsr",
+      "siteName": "금성호",
+      "boat": "금성호",
+      "port": "강원 삼척 임원항",
+      "phone": "010-5376-4829",
+      "date": "2026-12-01",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "14:00",
+      "session": "종일",
+      "hours": 8,
+      "species": "대구",
+      "tide": "조금",
+      "status": "open",
+      "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
+      "seatsLeft": 10,
+      "seatsTotal": 10,
+      "price": null,
+      "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "gonghyeonjin",
