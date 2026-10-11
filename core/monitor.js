@@ -19,6 +19,9 @@ export const WATCH_MS = 3 * 60 * 1000;
 export const REMOTE_REFRESH_MS = 5 * 60 * 1000;
 export const DEFAULT_REMOTE_DATA_URL =
   'https://raw.githubusercontent.com/kyungsooNa/Fishing/main/docs/data.json';
+// 상시 서버에서는 코드와 상태를 분리해 둡니다. 배포나 git pull로 작업 폴더가
+// 바뀌어도 감시 목록·수집 원문·백오프 위치가 사라지면 안 됩니다.
+export const MONITOR_PATH = process.env.MONITOR_PATH ?? 'tmp/monitor.json';
 const MAX_REMOTE_BYTES = 20 * 1024 * 1024;
 
 /**
@@ -46,7 +49,7 @@ const blockStatusOf = (err) => {
 
 export function createMonitor({
   registryPath = 'sites/registry.json', dataPath = 'docs/data.json',
-  statePath = 'tmp/monitor.json', collect = collectSite, send = notify, writeAlerts = appendAlerts,
+  statePath = MONITOR_PATH, collect = collectSite, send = notify, writeAlerts = appendAlerts,
   clock = Date.now, readRegistry = () => loadRegistry(registryPath),
   remoteDataUrl = null, remoteRefreshMs = REMOTE_REFRESH_MS, fetchRemote = globalThis.fetch,
 } = {}) {

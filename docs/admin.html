@@ -38,6 +38,11 @@
             background: var(--card); font-size: 13px; margin-bottom: 14px; }
   .banner.warn { border-color: var(--few); color: var(--few); }
   .actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 14px; }
+  .cloudstate { padding: 5px 9px; border: 1px solid var(--line); border-radius: 7px;
+                background: var(--card); color: var(--muted); font-size: 13px; }
+  .cloudstate.success { border-color: var(--open); color: var(--open); }
+  .cloudstate.partial { border-color: var(--few); color: var(--few); font-weight: 700; }
+  .cloudstate.failure { border-color: var(--off); color: var(--off); font-weight: 700; }
   .researchbar { padding: 10px 12px; border: 1px solid var(--line); border-radius: 9px;
                  background: var(--card); }
   .researchbar label { display: flex; align-items: center; gap: 5px; font-size: 13px; color: var(--muted); }
@@ -218,6 +223,7 @@
     <button type="button" class="navfold" id="navfold" aria-controls="sidenav" aria-expanded="true" aria-label="탭바 접기" title="탭바 접기"><svg class="sideicon" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3.5 5.5 8l4.5 4.5"></path></svg></button>
   </div>
   <a class="sidetab" href="index.html" title="현황"><svg class="sideicon" viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2.5" width="12" height="11" rx="2"></rect><path d="M2 6.5h12M6.5 6.5v7"></path></svg><span>현황</span></a>
+  <a class="sidetab" href="log.html" title="출조기록"><svg class="sideicon" viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3.5" width="12" height="10.5" rx="2"></rect><path d="M5 2v3M11 2v3M2 7h12M5 10h2"></path></svg><span>출조기록</span></a>
   <a class="sidetab" href="admin.html" title="시스템" aria-current="page"><svg class="sideicon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 5h10M3 11h10"></path><circle cx="6" cy="5" r="1.9"></circle><circle cx="10.5" cy="11" r="1.9"></circle></svg><span>시스템</span></a>
 </nav>
 <div class="wrap">
@@ -233,8 +239,10 @@
     <button id="save" class="primary" disabled>변경 저장</button>
     <button id="update">최신 코드 받기</button>
     <button id="collect">수집 다시 실행</button>
+    <button id="cloud-collect" disabled>클라우드 전체 재수집</button>
     <button id="restart">앱 재실행</button>
     <button id="quit" class="danger">서버 종료</button>
+    <span class="cloudstate" id="cloud-state" hidden></span>
     <span class="toast" id="toast"></span>
   </div>
 
@@ -379,6 +387,10 @@ let MISSING = 'all';    // all | port | phone — 채워 넣어야 할 곳만 �
 let SORT = 'reg';       // reg | port | fav(즐겨찾기 우선) | rate(별점 높은순)
 let SEARCH = '';        // 선사명·id·배 이름 검색어
 let STATUS = {};        // 사이트별 마지막 수집 결과
+let CLOUD_COLLECT_CONFIGURED = false;
+let CLOUD_COLLECT_ACTIVE = false;
+let CLOUD_COLLECTION = null; // data.json에 저장된 실제 성공·실패·보류 요약
+let LAST_CLOUD_TASK = null;
 const DIRTY = new Map(); // id -> 바뀐 값들
 
 const api = (path, opt = {}) => fetch(path, { ...opt, headers: { ...HEAD, ...(opt.headers ?? {}) } });
@@ -956,6 +968,16 @@ function render() {
     if (!st) tdLast.innerHTML = '<span class="muted">수집 기록 없음</span>';
     else if (st.ok) tdLast.innerHTML = `<span class="ok">✓ ${st.count}건</span> <span class="muted">${when(st.at)}</span>`;
     else tdLast.innerHTML = `<span class="fail">✗ ${st.error ?? '실패'}</span> <span class="muted">직전 ${st.count ?? 0}건 유지</span>`;
+    const cloud = document.createElement('button');
+    cloud.type = 'button';
+    cloud.className = 'small';
+    cloud.textContent = '클라우드 재수집';
+    cloud.disabled = !LOCAL || !CLOUD_COLLECT_CONFIGURED || CLOUD_COLLECT_ACTIVE || !on;
+    cloud.title = !CLOUD_COLLECT_CONFIGURED
+      ? 'GitHub CLI 로그인 또는 CLOUD_COLLECT_TOKEN이 필요합니다'
+      : !on ? '꺼진 선사는 재수집하지 않습니다' : `${site.name ?? site.id}만 GitHub Actions에서 수집합니다`;
+    cloud.addEventListener('click', () => requestCloudCollect(site.id, cloud));
+    tdLast.append(document.createElement('br'), cloud);
 
     if ([...(SITENAMES[site.id] ?? [])].some((name) => MUTED_SITES.has(name))) tr.classList.add('site-muted');
     tr.append(tdOn, tdId, siteNameCell(site), boatRatesCell(site), tdKind, addedTag(site),
@@ -1047,6 +1069,140 @@ async function collect() {
     return;
   }
   polling = setInterval(pollCollect, 1500);
+}
+
+let cloudRefreshTimer = null;
+function refreshAfterCloudCollect() {
+  clearInterval(cloudRefreshTimer);
+  let checks = 0;
+  // Actions 완료 직후 raw.githubusercontent.com과 로컬 모니터 반영에는 시차가 있을 수 있습니다.
+  // 화면만 주기적으로 다시 읽고 10분 뒤에는 저절로 멈춥니다.
+  cloudRefreshTimer = setInterval(async () => {
+    if (++checks > 20) { clearInterval(cloudRefreshTimer); cloudRefreshTimer = null; return; }
+    await load();
+  }, 30_000);
+}
+
+let cloudPolling = null;
+let cloudFinished = null;
+function collectionMatches(task, summary = CLOUD_COLLECTION) {
+  if (!summary?.startedAt || !task?.at) return false;
+  if (Date.parse(summary.startedAt) < Date.parse(task.at)) return false;
+  if (task.siteId) return summary.scope?.type === 'site' && summary.scope.value === task.siteId;
+  return summary.scope?.type === 'all';
+}
+
+function collectionText(summary) {
+  if (!summary) return '';
+  return `${summary.success}/${summary.total}곳 성공 · 실패 ${summary.failed} · 보류 ${summary.skipped}`;
+}
+
+function paintCloudCollect(task) {
+  LAST_CLOUD_TASK = task ?? LAST_CLOUD_TASK;
+  const box = $('cloud-state');
+  box.hidden = false;
+  box.textContent = '';
+  const latestSummary = CLOUD_COLLECTION;
+  const matched = collectionMatches(task, latestSummary);
+  // Actions 탭에서 직접 돌린 실행도 data.json의 runId가 더 새로우면 그 결과를 보여줍니다.
+  const directSummary = latestSummary?.runId
+    && String(latestSummary.runId) !== String(task?.runId ?? '')
+    && (!task?.at || Date.parse(latestSummary.startedAt) > Date.parse(task.at));
+  if (!task?.status && !latestSummary) {
+    CLOUD_COLLECT_ACTIVE = false;
+    box.hidden = true;
+    return;
+  }
+  const shownSummary = matched || directSummary || !task?.status ? latestSummary : null;
+  const scope = shownSummary?.scope;
+  const siteId = shownSummary && scope?.type === 'site' ? scope.value : task?.siteId;
+  const target = siteId
+    ? (SITES.find((site) => site.id === siteId)?.name ?? siteId)
+    : scope?.type === 'adapter' ? `${scope.value} 어댑터` : '전체 선사';
+  const partly = shownSummary && shownSummary.success < shownSummary.total;
+  box.className = `cloudstate ${task?.conclusion && task.conclusion !== 'success'
+    ? 'failure' : partly ? 'partial' : task?.status === 'completed' || !task?.status ? 'success' : ''}`;
+  const labels = {
+    requested: '요청됨', queued: '대기 중', pending: '대기 중', waiting: '대기 중',
+    in_progress: '수집 중', completed: task?.conclusion === 'success'
+      ? (shownSummary ? (partly ? '부분 완료' : '완료') : '완료 · 결과 반영 확인 중')
+      : `실패 (${task?.conclusion ?? '결과 없음'})`,
+  };
+  CLOUD_COLLECT_ACTIVE = Boolean(task?.runId) && task.status !== 'completed';
+  const statusLabel = task?.status
+    ? (labels[task.status] ?? task.status)
+    : partly ? '최근 부분 완료' : '최근 완료';
+  box.append(`${target} · ${statusLabel}`);
+  if (shownSummary) box.append(` · ${collectionText(shownSummary)}`);
+  const runUrl = shownSummary?.runUrl ?? task?.runUrl;
+  if (runUrl) {
+    const link = document.createElement('a');
+    link.href = runUrl;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.textContent = ' Actions 보기';
+    box.append(link);
+  }
+  if (task?.trackingWarning) box.append(` · ${task.trackingWarning}`);
+  $('cloud-collect').disabled = !LOCAL || !CLOUD_COLLECT_CONFIGURED || CLOUD_COLLECT_ACTIVE;
+}
+
+async function pollCloudCollect() {
+  try {
+    const res = await api('api/cloud-collect');
+    const task = await res.json();
+    if (!res.ok) throw new Error(task.error ?? `HTTP ${res.status}`);
+    paintCloudCollect(task);
+    if (task.status !== 'completed') return;
+    clearInterval(cloudPolling);
+    cloudPolling = null;
+    const finishKey = `${task.runId ?? task.at}|${task.conclusion}`;
+    if (cloudFinished !== finishKey) {
+      cloudFinished = finishKey;
+      await load();
+      const summary = collectionMatches(task) ? CLOUD_COLLECTION : null;
+      toast(task.conclusion === 'success'
+        ? (summary && summary.success < summary.total
+          ? `클라우드 재수집 부분 완료: ${collectionText(summary)}`
+          : '클라우드 재수집이 완료됐습니다')
+        : `클라우드 재수집 실패: ${task.conclusion ?? '결과 없음'}`);
+      refreshAfterCloudCollect();
+    }
+  } catch (err) {
+    $('cloud-state').textContent = `클라우드 상태 확인 실패: ${err.message}`;
+  }
+}
+
+function resumeCloudCollect(task) {
+  paintCloudCollect(task);
+  if (!CLOUD_COLLECT_ACTIVE || cloudPolling) return;
+  void pollCloudCollect();
+  cloudPolling = setInterval(pollCloudCollect, 5_000);
+}
+
+async function requestCloudCollect(siteId = null, button = $('cloud-collect')) {
+  if (!siteId && !confirm('등록된 전체 선사의 클라우드 재수집을 요청할까요?')) return;
+  const label = button.textContent;
+  button.disabled = true;
+  button.textContent = '클라우드 요청 중…';
+  try {
+    const res = await api('api/cloud-collect' + (siteId ? `/${encodeURIComponent(siteId)}` : ''), { method: 'POST' });
+    const reply = await res.json();
+    if (!res.ok) throw new Error(reply.error ?? `HTTP ${res.status}`);
+    const name = siteId ? (SITES.find((site) => site.id === siteId)?.name ?? siteId) : '전체 선사';
+    toast(`${name} 클라우드 재수집을 요청했습니다`);
+    if (reply.trackingWarning) toast(reply.trackingWarning);
+    resumeCloudCollect(reply);
+    if (!reply.runId) refreshAfterCloudCollect();
+    render();
+  } catch (err) {
+    toast(err.message);
+  } finally {
+    button.textContent = label;
+    // 서버도 1분 중복 요청을 막습니다. 화면은 다시 누를 수 있게 두어 서버의 정확한 이유를 보여줍니다.
+    const site = siteId ? SITES.find((candidate) => candidate.id === siteId) : null;
+    button.disabled = !LOCAL || !CLOUD_COLLECT_CONFIGURED || CLOUD_COLLECT_ACTIVE || site?.enabled === false;
+  }
 }
 
 // 스스로 도는 조사는 눌러서 시작한 것이 아니라 화면이 말해주지 않으면 도는 줄도 모릅니다.
@@ -1477,7 +1633,7 @@ function staticMode(reason) {
   $('banner').textContent =
     `읽기 전용입니다 (${reason}). 켜고 끄기·표기 수정·수집 재실행·정보 조사·종료는 로컬에서 run.bat으로 띄웠을 때만 됩니다.` +
     ' 별점·즐겨찾기·숨긴 것은 브라우저에 저장되는 값이라 여기서도 됩니다.';
-  for (const id of ['save', 'update', 'collect', 'research', 'research-sites', 'research-pages', 'research-force', 'restart', 'quit']) $(id).disabled = true;
+  for (const id of ['save', 'update', 'collect', 'cloud-collect', 'research', 'research-sites', 'research-pages', 'research-force', 'restart', 'quit']) $(id).disabled = true;
   paintSave();   // 왜 못 쓰는지는 버튼도 말해야 합니다. 배너는 스크롤하면 안 보입니다.
 }
 
@@ -1530,6 +1686,7 @@ async function load() {
     .then((r) => r.json())
     .catch(() => ({ sites: {}, trips: [] }));
 
+  CLOUD_COLLECTION = data.collection ?? null;
   TRIPS = data.trips ?? [];
   FAVKEYS = favKeysFromTrips(TRIPS);
   SITENAMES = siteNamesFromTrips(TRIPS);
@@ -1543,6 +1700,12 @@ async function load() {
     }));
     STATUS = d.status;
     RESTARTABLE = d.restartable;
+    CLOUD_COLLECT_CONFIGURED = d.cloudCollectConfigured === true;
+    resumeCloudCollect(d.lastCloudCollect);
+    $('cloud-collect').disabled = !CLOUD_COLLECT_CONFIGURED || CLOUD_COLLECT_ACTIVE;
+    $('cloud-collect').title = CLOUD_COLLECT_CONFIGURED
+      ? 'GitHub Actions collect 워크플로에 전체 재수집을 요청합니다'
+      : 'GitHub CLI 로그인 또는 CLOUD_COLLECT_TOKEN이 필요합니다';
     $('update').textContent = RESTARTABLE ? '최신 코드 받고 재시작' : '최신 코드 받기';
     $('update').title = RESTARTABLE
       ? 'git pull 후 서버를 다시 띄웁니다'
@@ -1571,6 +1734,9 @@ async function load() {
       `자동 ${SITES.filter((s) => s.addedBy).length}) · ` +
       `항구 없음 ${SITES.filter((s) => !hasPort(s)).length}곳 · ` +
       `출조 ${d.trips?.length ?? 0}건 · 갱신 ${when(d.generatedAt) || '-'}`;
+    // Pages는 실행을 시작하거나 조회 API를 부를 수 없지만, data.json에 실린 마지막 성과는
+    // 읽을 수 있습니다. 읽기 전용이라고 성공·실패·보류까지 숨길 이유는 없습니다.
+    paintCloudCollect(null);
   }
   render();
   renderFavs(TRIPS);
@@ -1600,6 +1766,7 @@ $('save').addEventListener('click', save);
 $('memoset').addEventListener('click', applyMemo);
 $('update').addEventListener('click', update);
 $('collect').addEventListener('click', collect);
+$('cloud-collect').addEventListener('click', () => requestCloudCollect());
 $('research').addEventListener('click', research);
 $('restart').addEventListener('click', restart);
 $('quit').addEventListener('click', quit);

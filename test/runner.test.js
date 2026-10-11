@@ -33,6 +33,14 @@ test('서버가 다른 사이트는 동시에 받고, 결과 순서는 registry 
 
   assert.deepEqual(Object.keys(data.sites), ['a', 'b', 'c'], 'registry 순서 그대로여야 합니다');
   assert.ok(data.trips.length > 0);
+  assert.deepEqual(data.collection, {
+    startedAt: data.generatedAt,
+    scope: { type: 'all' },
+    total: 3,
+    success: 3,
+    failed: 0,
+    skipped: 0,
+  });
 });
 
 test('전체 수집 진행률은 시작과 사이트별 완료를 알려준다', async () => {
@@ -47,6 +55,17 @@ test('전체 수집 진행률은 시작과 사이트별 완료를 알려준다',
   assert.deepEqual(progress[0], { done: 0, total: 2, siteId: null });
   assert.deepEqual(progress.map((p) => p.done).sort((a, b) => a - b), [0, 1, 2]);
   assert.equal(progress.at(-1).total, 2);
+});
+
+test('Actions 실행 id와 링크를 수집 성과에 남긴다', async () => {
+  const { registryPath, dataPath } = await fixture([mockSite]);
+  const { data } = await runAll({
+    registryPath, dataPath, days: 21, dryRun: true,
+    runId: '12345', runUrl: 'https://github.com/example/repo/actions/runs/12345',
+  });
+
+  assert.equal(data.collection.runId, '12345');
+  assert.equal(data.collection.runUrl, 'https://github.com/example/repo/actions/runs/12345');
 });
 
 test('먼 일정은 7일 창을 순환하며 별도 파일에 90일까지 쌓는다', async () => {
@@ -687,6 +706,14 @@ test('더피싱 회로가 끊기면 커서는 실제로 물어본 곳까지만 �
   });
 
   assert.deepEqual(calls, ['fish0', 'fish1', 'fish2']);
+  assert.deepEqual(blocked.data.collection, {
+    startedAt: blocked.data.generatedAt,
+    scope: { type: 'all' },
+    total: 10,
+    success: 0,
+    failed: 3,
+    skipped: 7,
+  }, '직접 실패와 회로·회전 보류를 나눠야 합니다');
   assert.equal(blocked.data.rotation['platform:thefishing'], 'fish2',
     '보류한 fish3~5는 아직 차례를 받지 못했습니다');
 

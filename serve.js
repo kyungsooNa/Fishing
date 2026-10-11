@@ -10,9 +10,9 @@
 // 주인을 잃고 서버만 백그라운드에 남기 때문입니다.
 
 import { createServer } from 'node:http';
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, rename } from 'node:fs/promises';
 import { spawn } from 'node:child_process';
-import { extname, join, normalize } from 'node:path';
+import { dirname, extname, join, normalize } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { platformOf, effectiveMode } from './core/platform.js';
 import { createMonitor, DEFAULT_REMOTE_DATA_URL } from './core/monitor.js';
@@ -116,6 +116,14 @@ const PUBLIC_PATHS = new Set(['/api/monitor', '/api/alerts', '/api/usage']);
 /** 이용 기록을 1분에 몇 줄까지 받을지. 밖에 열린 길이라 누가 두드려도 파일이 무한히 크지 않게. */
 export const USAGE_PER_MINUTE = 600;
 
+const defaultCloudCollect = () => ({
+  token: process.env.CLOUD_COLLECT_TOKEN ?? process.env.GH_TOKEN ?? process.env.GITHUB_TOKEN ?? '',
+  useGh: process.env.CLOUD_COLLECT_USE_GH !== '0',
+  repository: process.env.CLOUD_COLLECT_REPOSITORY ?? process.env.GITHUB_REPOSITORY ?? 'kyungsooNa/Fishing',
+  workflow: process.env.CLOUD_COLLECT_WORKFLOW ?? 'collect.yml',
+  ref: process.env.CLOUD_COLLECT_REF ?? 'main',
+});
+
 /**
  * 이 요청을 어디까지 받아줄지. `admin`은 registry를 고치고 프로세스를 띄우는 길이라
  * 루프백에서만 열고, `watch`는 상시 감시 서버가 밖에 있을 때(DEPLOY.md) 브라우저가
@@ -170,6 +178,13 @@ export function createApp({
   alertsPath = ALERTS_PATH,
   usagePath = USAGE_PATH,
   usagePerMinute = USAGE_PER_MINUTE,
+  cloudCollect = defaultCloudCollect(),
+  cloudFetch = globalThis.fetch,
+  cloudRun = null,
+  cloudCollectCooldownMs = 60_000,
+  // 테스트의 createApp은 작업 폴더에 상태를 남기지 않습니다. 직접 실행할 때만 아래 main에서
+  // 기본 경로를 넘기고, 상시 서버는 CLOUD_COLLECT_STATE_PATH로 코드와 분리합니다.
+  cloudCollectStatePath = process.env.CLOUD_COLLECT_STATE_PATH ?? null,
   now = Date.now,
   // 손으로 눌러야만 도는 기능은 아무도 안 누릅니다(항구 채우기를 주 1회 스스로 돌리게 한
   // 것과 같은 이유). 수집이 한가할 때 몇 곳씩 조사해 두면 사람은 최신 보고서만 읽으면 됩니다.
@@ -192,6 +207,51 @@ export function createApp({
   let researchJob = null;
   // 이용 기록을 받은 분과 그 분에 받은 줄 수(USAGE_PER_MINUTE).
   let usageWindow = { minute: -1, count: 0 };
+  // 마지막 실행 id와 요청 시각을 기억해 상태를 잇고, 짧은 시간에 같은 버튼을 여러 번 눌러
+  // 대기열만 늘리는 일도 막습니다. 직접 실행할 때는 파일에도 남겨 재시작 뒤 이어갑니다.
+  let lastCloudCollect = null;
+  let cloudStateLoaded = false;
+
+  const cleanCloudState = (raw) => {
+    if (!raw || typeof raw !== 'object') return null;
+    if (raw.repository !== cloudCollect?.repository || raw.workflow !== cloudCollect?.workflow || raw.ref !== cloudCollect?.ref) return null;
+    if (!Number.isFinite(Date.parse(raw.at))) return null;
+    const state = {
+      at: raw.at,
+      siteId: typeof raw.siteId === 'string' ? raw.siteId : null,
+      repository: raw.repository,
+      workflow: raw.workflow,
+      ref: raw.ref,
+      status: typeof raw.status === 'string' ? raw.status : 'requested',
+      conclusion: typeof raw.conclusion === 'string' ? raw.conclusion : null,
+    };
+    if (Number.isInteger(raw.runId) && raw.runId > 0) state.runId = raw.runId;
+    if (typeof raw.runUrl === 'string' && /^https:\/\/github\.com\//.test(raw.runUrl)) state.runUrl = raw.runUrl;
+    if (Number.isFinite(Date.parse(raw.updatedAt))) state.updatedAt = raw.updatedAt;
+    return state;
+  };
+
+  async function loadCloudState() {
+    if (cloudStateLoaded) return;
+    cloudStateLoaded = true;
+    if (!cloudCollectStatePath) return;
+    try {
+      lastCloudCollect = cleanCloudState(JSON.parse(await readFile(cloudCollectStatePath, 'utf8')));
+    } catch { /* 첫 실행·깨진 파일은 요청 이력이 없는 셈으로 시작합니다. */ }
+  }
+
+  async function saveCloudState() {
+    if (!cloudCollectStatePath || !lastCloudCollect) return null;
+    try {
+      await mkdir(dirname(cloudCollectStatePath), { recursive: true });
+      const next = cloudCollectStatePath + '.next';
+      await writeFile(next, JSON.stringify(lastCloudCollect, null, 2) + '\n', 'utf8');
+      await rename(next, cloudCollectStatePath);
+      return null;
+    } catch (err) {
+      return err.message;
+    }
+  }
 
   // 마지막으로 스스로 돈 때. 화면이 "언제 봤나"를 적을 수 있어야 합니다.
   let lastAutoResearch = null;
@@ -281,7 +341,9 @@ export function createApp({
     // 응답에는 그 사람 것만 싣습니다 — 목록만 봐도 누가 어느 배를 노리는지 드러납니다.
     if (path === '/api/monitor' && req.method === 'GET' && monitor) {
       const id = watcherId(req.headers['x-watcher']);
-      await monitor.adopt(id, { local: isLoopback(req) });
+      // 리버스 프록시(Caddy/nginx)를 거친 외부 요청도 소켓 주소는 127.0.0.1입니다.
+      // 그것만 보고 로컬로 치면 첫 외부 사용자가 주인 없는 옛 감시 목록을 가져갑니다.
+      await monitor.adopt(id, { local: access === 'admin' });
       return json(res, 200, monitor.status(id));
     }
     if (path === '/api/monitor' && req.method === 'POST' && monitor) {
@@ -291,7 +353,7 @@ export function createApp({
       }
       const id = watcherId(req.headers['x-watcher']);
       if (!id) return json(res, 400, { error: '감시를 걸려면 브라우저 식별자(X-Watcher)가 필요합니다' });
-      return json(res, 200, await monitor.setWatch(body.key, body.enabled, id, { local: isLoopback(req) }));
+      return json(res, 200, await monitor.setWatch(body.key, body.enabled, id, { local: access === 'admin' }));
     }
 
     // 내 감시가 잡은 알림만. 남의 알림이 내 화면에 뜨면 목록을 나눠 둔 뜻이 없습니다.
@@ -312,7 +374,174 @@ export function createApp({
       return json(res, 200, { ok: true });
     }
 
+    const cloudMatch = path.match(/^\/api\/cloud-collect(?:\/([\w-]+))?$/);
+    if (path === '/api/cloud-collect' && req.method === 'GET') {
+      await loadCloudState();
+      if (!lastCloudCollect) {
+        return json(res, 200, {
+          configured: Boolean(cloudCollect?.token || cloudCollect?.useGh),
+          status: null,
+        });
+      }
+      if (!lastCloudCollect.runId) {
+        return json(res, 200, { ...lastCloudCollect, status: 'requested', conclusion: null });
+      }
+
+      const { token, repository } = cloudCollect;
+      let runInfo;
+      if (token) {
+        const [owner, repo] = repository.split('/');
+        let response;
+        try {
+          response = await cloudFetch(
+            `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}` +
+            `/actions/runs/${lastCloudCollect.runId}`,
+            {
+              headers: {
+                Accept: 'application/vnd.github+json', Authorization: `Bearer ${token}`,
+                'User-Agent': 'fishing-board', 'X-GitHub-Api-Version': '2026-03-10',
+              },
+              signal: AbortSignal.timeout(15_000),
+            },
+          );
+        } catch (err) {
+          return json(res, 502, { error: `GitHub Actions 상태 확인 실패: ${err.message}` });
+        }
+        if (!response.ok) {
+          return json(res, 502, { error: `GitHub Actions 상태 확인 실패 (HTTP ${response.status})` });
+        }
+        const body = await response.json();
+        runInfo = {
+          status: body.status, conclusion: body.conclusion ?? null,
+          runUrl: body.html_url ?? lastCloudCollect.runUrl,
+          updatedAt: body.updated_at ?? null,
+        };
+      } else {
+        const result = await (cloudRun ?? run)({
+          file: 'gh',
+          args: ['run', 'view', String(lastCloudCollect.runId), '--repo', repository,
+            '--json', 'status,conclusion,url,updatedAt'],
+        });
+        if (result.code !== 0) {
+          return json(res, 502, {
+            error: 'GitHub CLI로 클라우드 수집 상태를 확인하지 못했습니다',
+            detail: result.out.trim().slice(0, 500),
+          });
+        }
+        try {
+          const body = JSON.parse(result.out);
+          runInfo = {
+            status: body.status, conclusion: body.conclusion || null,
+            runUrl: body.url ?? lastCloudCollect.runUrl,
+            updatedAt: body.updatedAt ?? null,
+          };
+        } catch {
+          return json(res, 502, { error: 'GitHub CLI가 알아볼 수 없는 실행 상태를 돌려줬습니다' });
+        }
+      }
+      lastCloudCollect = { ...lastCloudCollect, ...runInfo };
+      const trackingWarning = await saveCloudState();
+      return json(res, 200, {
+        ...lastCloudCollect,
+        ...(trackingWarning ? { trackingWarning: `상태 저장 실패: ${trackingWarning}` } : {}),
+      });
+    }
+
+    if (cloudMatch && req.method === 'POST') {
+      await loadCloudState();
+      const { token, useGh, repository, workflow, ref } = cloudCollect ?? {};
+      if (!token && !useGh) return json(res, 409, { error: '클라우드 수집 인증이 설정되지 않았습니다' });
+      if (!/^[\w.-]+\/[\w.-]+$/.test(repository ?? '') || !/^[\w.-]+$/.test(workflow ?? '') || !ref) {
+        return json(res, 500, { error: '클라우드 수집 저장소·워크플로·브랜치 설정을 확인하세요' });
+      }
+
+      const siteId = cloudMatch[1] ?? null;
+      if (siteId) {
+        const reg = await readRegistry();
+        const site = reg.sites.find((candidate) => candidate.id === siteId);
+        if (!site) return json(res, 404, { error: '등록되지 않은 선사입니다' });
+        if (site.enabled === false) return json(res, 409, { error: '꺼진 선사는 재수집할 수 없습니다' });
+      }
+
+      if (lastCloudCollect && now() - Date.parse(lastCloudCollect.at) < cloudCollectCooldownMs) {
+        return json(res, 429, {
+          error: '방금 클라우드 수집을 요청했습니다. 잠시 뒤 다시 시도하세요',
+          last: lastCloudCollect,
+        });
+      }
+
+      const [owner, repo] = repository.split('/');
+      let dispatched = {};
+      if (token) {
+        let response;
+        try {
+          response = await cloudFetch(
+            `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}` +
+            `/actions/workflows/${encodeURIComponent(workflow)}/dispatches`,
+            {
+              method: 'POST',
+              headers: {
+                Accept: 'application/vnd.github+json',
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json',
+                'User-Agent': 'fishing-board',
+                'X-GitHub-Api-Version': '2026-03-10',
+              },
+              body: JSON.stringify({ ref, inputs: { only: siteId ?? '' } }),
+              signal: AbortSignal.timeout(15_000),
+            },
+          );
+        } catch (err) {
+          return json(res, 502, { error: `GitHub Actions 요청 실패: ${err.message}` });
+        }
+        if (response.status !== 200 && response.status !== 204) {
+          const detail = (await response.text()).slice(0, 500);
+          return json(res, response.status === 401 || response.status === 403 ? 403 : 502, {
+            error: `GitHub Actions가 요청을 거절했습니다 (HTTP ${response.status})`,
+            detail,
+          });
+        }
+        if (response.status === 200) {
+          try {
+            const body = await response.json();
+            if (typeof body?.workflow_run_id === 'number') dispatched.runId = body.workflow_run_id;
+            if (typeof body?.html_url === 'string') dispatched.runUrl = body.html_url;
+          } catch { /* 예전 API는 본문 없이 204를 돌려줍니다. */ }
+        }
+      } else {
+        const result = await (cloudRun ?? run)({
+          file: 'gh',
+          args: ['api', '--method', 'POST', '-H', 'Accept: application/vnd.github+json',
+            '-H', 'X-GitHub-Api-Version: 2026-03-10',
+            `repos/${repository}/actions/workflows/${workflow}/dispatches`,
+            '-f', `ref=${ref}`, '-f', `inputs[only]=${siteId ?? ''}`],
+        });
+        if (result.code !== 0) {
+          return json(res, 502, {
+            error: 'GitHub CLI로 클라우드 수집을 요청하지 못했습니다',
+            detail: result.out.trim().slice(0, 500),
+          });
+        }
+        try {
+          const body = JSON.parse(result.out);
+          if (Number.isFinite(Number(body?.workflow_run_id))) dispatched.runId = Number(body.workflow_run_id);
+          if (typeof body?.html_url === 'string') dispatched.runUrl = body.html_url;
+        } catch { /* GitHub 구버전은 성공해도 본문을 돌려주지 않습니다. */ }
+      }
+
+      lastCloudCollect = {
+        at: new Date(now()).toISOString(), siteId, repository, workflow, ref,
+        status: dispatched.runId ? 'queued' : 'requested', conclusion: null, ...dispatched,
+      };
+      const trackingWarning = await saveCloudState();
+      return json(res, 202, {
+        requested: true, ...lastCloudCollect,
+        ...(trackingWarning ? { trackingWarning: `상태 저장 실패: ${trackingWarning}` } : {}),
+      });
+    }
+
     if (path === '/api/sites' && req.method === 'GET') {
+      await loadCloudState();
       const [reg, data] = await Promise.all([
         readRegistry(),
         monitor ? monitor.data() : readFile(join(root, 'data.json'), 'utf8').then(JSON.parse).catch(() => ({ sites: {}, trips: [] })),
@@ -324,6 +553,8 @@ export function createApp({
         generatedAt: data.generatedAt ?? null,
         trips: data.trips?.length ?? 0,
         restartable,
+        cloudCollectConfigured: Boolean(cloudCollect?.token || cloudCollect?.useGh),
+        lastCloudCollect,
       });
     }
 
@@ -496,6 +727,19 @@ export function createApp({
     }
     const apiPath = '/' + rel.replace(/\\/g, '/');
 
+    // 외부 감시가 서버 프로세스와 수집 루프를 따로 확인할 수 있는 최소 상태입니다.
+    // 감시 목록·로그·선사 이름은 싣지 않습니다.
+    if (apiPath === '/healthz' && req.method === 'GET') {
+      const status = monitor?.status?.() ?? { running: false, overdue: 0, notificationConfigured: false };
+      return json(res, 200, {
+        ok: true,
+        monitor: Boolean(monitor),
+        running: status.running,
+        overdue: status.overdue,
+        notificationConfigured: status.notificationConfigured,
+      });
+    }
+
     if (apiPath.startsWith('/api/')) {
       try {
         await handleApi(req, res, apiPath);
@@ -538,7 +782,10 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   const monitor = createMonitor({ remoteDataUrl });
   try { await monitor.init(); }
   catch (err) { await release(); throw err; }
-  createApp({ monitor }).listen(PORT, HOST, () => {
+  createApp({
+    monitor,
+    cloudCollectStatePath: process.env.CLOUD_COLLECT_STATE_PATH ?? 'tmp/cloud-collect.json',
+  }).listen(PORT, HOST, () => {
     monitor.start();
     console.log(`현황판  http://localhost:${PORT}`);
     console.log(`관리    http://localhost:${PORT}/admin.html`);

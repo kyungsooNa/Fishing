@@ -48,6 +48,27 @@ test('schema: 표기 정규화', () => {
   assert.equal(parseSeats('예약마감'), 0);
 });
 
+test('공유 함대 일정표는 배별 선사 정보와 공식 예약 도메인을 쓴다', () => {
+  const site = {
+    id: 'fleet', name: '파티호', url: 'https://star.sunsang24.com', port: '영목항', phone: '010-1111-1111',
+    boats: {
+      아라온피싱호: {
+        siteName: '안면도 아라온피싱', url: 'https://araonfishing.sunsang24.com',
+        port: '구매항', phone: '010-2222-2222',
+      },
+    },
+  };
+  const trip = makeTrip(site, {
+    boat: '아라온피싱호', date: '2026-10-09',
+    url: 'https://star.sunsang24.com/ship/schedule_fleet/202610?from=list',
+  });
+
+  assert.equal(trip.siteName, '안면도 아라온피싱');
+  assert.equal(trip.port, '구매항');
+  assert.equal(trip.phone, '010-2222-2222');
+  assert.equal(trip.url, 'https://araonfishing.sunsang24.com/ship/schedule_fleet/202610?from=list');
+});
+
 // 선상24 예약판은 **모든 행에** 상태 범례를 같이 적습니다 — "예약완료 입금대기 취소대기
 // 취소완료 예약대기 출조대기 점검일". 그래서 "점검"을 낱말 단위로 거르지 않고 그냥 찾으면
 // 그 판의 거의 모든 행이 휴항이 됩니다(2026-09-14 수집본에서 "점검" 글자가 든 행이 129건이고

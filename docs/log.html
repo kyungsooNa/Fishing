@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>출조기록 · 출조 레이더</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f7f7f5; --card: #fff; --fg: #1c1b19; --muted: #6b6862; --line: #e3e1dc;
+    --accent: #087fb5; --accent-soft: #e8f6fc; --danger: #a03030;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #17171a; --card: #201f23; --fg: #e9e7e2; --muted: #aaa69e; --line: #3b3941;
+      --accent: #73c7ef; --accent-soft: #183544; --danger: #ef8585;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg);
+         font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; }
+  button, input, textarea { font: inherit; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 20px 16px 60px; }
+  h1 { margin: 0 0 4px; font-size: 20px; }
+  .sub { margin: 0 0 18px; color: var(--muted); font-size: 13px; }
+  .monthbar { display: grid; grid-template-columns: 42px 1fr 42px; align-items: center; gap: 8px;
+              margin-bottom: 10px; }
+  .month-label { justify-self: center; padding: 5px 12px; border: 0; border-radius: 8px;
+                 background: transparent; color: var(--fg); font-size: 18px; font-weight: 700; cursor: pointer; }
+  .month-label:hover, .month-label[aria-expanded="true"] { background: var(--accent-soft); color: var(--accent); }
+  .monthbar button, .actions button { border: 1px solid var(--line); border-radius: 8px;
+                                     background: var(--card); color: var(--fg); cursor: pointer; }
+  .monthbar button { height: 38px; font-size: 20px; }
+  .monthbar button:hover, .actions button:hover { border-color: var(--accent); color: var(--accent); }
+  .week, .calendar { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 5px; }
+  .month-jump { display: flex; align-items: end; justify-content: center; gap: 8px; margin: -2px 0 12px;
+                padding: 12px; border: 1px solid var(--line); border-radius: 9px; background: var(--card); }
+  .month-jump[hidden] { display: none; }
+  .month-jump label { width: 112px; }
+  .month-jump select { width: 100%; padding: 9px 10px; border: 1px solid var(--line); border-radius: 8px;
+                       background: var(--bg); color: var(--fg); font: inherit; }
+  .month-jump button { padding: 9px 16px; border: 1px solid var(--accent); border-radius: 8px;
+                       background: var(--accent); color: var(--card); font: inherit; font-weight: 700; cursor: pointer; }
+  .week { margin-bottom: 5px; color: var(--muted); font-size: 12px; text-align: center; }
+  .calendar { margin-bottom: 18px; }
+  .blank, .day { min-height: 98px; }
+  .day { position: relative; display: flex; flex-direction: column; align-items: stretch; gap: 3px;
+         min-width: 0; padding: 7px; border: 1px solid var(--line); border-radius: 9px;
+         background: var(--card); color: var(--fg); text-align: left; cursor: pointer; }
+  .day:hover, .day:focus-visible { border-color: var(--accent); outline: none; }
+  .day.today .number { display: grid; place-items: center; width: 25px; height: 25px;
+                       margin: -2px 0 0 -2px; border-radius: 50%; background: var(--accent); color: var(--card); }
+  .day.has-log { border-color: color-mix(in srgb, var(--accent) 55%, var(--line));
+                 background: color-mix(in srgb, var(--accent) 7%, var(--card)); }
+  .number { align-self: flex-start; font-size: 13px; font-weight: 700; }
+  .tide { color: var(--muted); font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .catch { margin-top: auto; color: var(--accent); font-size: 17px; font-weight: 800; }
+  .memo-preview { overflow: hidden; color: var(--muted); font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+  .editor { padding: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); }
+  .editor[hidden] { display: none; }
+  .editor h2 { margin: 0 0 13px; font-size: 17px; }
+  .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  label { display: flex; flex-direction: column; gap: 5px; color: var(--muted); font-size: 12px; }
+  label.memo { grid-column: 1 / -1; }
+  input, textarea { width: 100%; padding: 9px 10px; border: 1px solid var(--line); border-radius: 8px;
+                    background: var(--bg); color: var(--fg); }
+  input:focus, textarea:focus { border-color: var(--accent); outline: 2px solid var(--accent-soft); }
+  textarea { min-height: 92px; resize: vertical; }
+  .actions { display: flex; gap: 8px; margin-top: 12px; }
+  .actions button { padding: 8px 14px; }
+  .actions .save { border-color: var(--accent); background: var(--accent); color: var(--card); font-weight: 700; }
+  .actions .delete { margin-left: auto; color: var(--danger); }
+  .save-status { min-height: 20px; margin: 8px 0 0; color: var(--muted); font-size: 12px; }
+  .backup { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 14px; }
+  .backup button { padding: 7px 11px; border: 1px solid var(--line); border-radius: 8px;
+                   background: var(--card); color: var(--fg); font: inherit; font-size: 13px; cursor: pointer; }
+  .backup button:hover { border-color: var(--accent); color: var(--accent); }
+  .backup .save-status { flex: 1 1 240px; margin: 0; }
+  .backup .auto-backup { flex-direction: row; align-items: center; width: auto; padding: 7px 2px;
+                         color: var(--fg); font-size: 13px; }
+  .backup .auto-backup input { width: auto; }
+
+  body { --nav-w: 172px; padding-left: var(--nav-w); }
+  .sidenav { position: fixed; z-index: 1200; top: 0; bottom: 0; left: 0; width: var(--nav-w);
+             display: flex; flex-direction: column; gap: 4px; padding: 16px 12px;
+             border-right: 1px solid var(--line); background: var(--card); }
+  .sidehead { display: flex; align-items: center; gap: 4px; padding: 6px 2px 14px 10px; }
+  .sidebrand { flex: 1 1 auto; color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .06em; }
+  .navfold { flex: 0 0 auto; display: grid; place-items: center; width: 28px; height: 28px; padding: 0;
+             border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--muted); cursor: pointer; }
+  .navfold:hover { border-color: var(--accent); color: var(--accent); }
+  .navfold:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  @media (min-width: 721px) {
+    body[data-nav="fold"] { --nav-w: 58px; }
+    body[data-nav="fold"] .sidenav { padding-inline: 9px; }
+    body[data-nav="fold"] .sidehead { justify-content: center; padding: 6px 0 14px; }
+    body[data-nav="fold"] .sidebrand,
+    body[data-nav="fold"] .sidetab span { display: none; }
+    body[data-nav="fold"] .sidetab { justify-content: center; padding: 10px 0; }
+    body[data-nav="fold"] .navfold svg { transform: rotate(180deg); }
+  }
+  .sidetab { display: flex; align-items: center; gap: 9px; padding: 9px 11px; border-radius: 9px;
+             color: var(--muted); font-size: 14px; font-weight: 600; text-decoration: none; }
+  .sidetab:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); color: var(--fg); }
+  .sidetab[aria-current="page"] { background: var(--accent-soft); color: var(--accent); font-weight: 800; }
+  .sidetab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .sideicon { flex: 0 0 auto; width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.5;
+              stroke-linecap: round; stroke-linejoin: round; }
+  @media (max-width: 720px) {
+    body { padding-left: 0; padding-bottom: 64px; }
+    .sidenav { top: auto; right: 0; width: auto; flex-direction: row; gap: 6px;
+               padding: 6px 12px calc(6px + env(safe-area-inset-bottom)); border-right: 0; border-top: 1px solid var(--line); }
+    .sidehead { display: none; }
+    .sidetab { flex: 1 1 0; justify-content: center; padding: 9px 6px; }
+    .blank, .day { min-height: 78px; }
+    .day { padding: 5px; }
+    .catch { font-size: 14px; }
+    .memo-preview { display: none; }
+  }
+</style>
+</head>
+<body>
+<nav class="sidenav" id="sidenav" aria-label="화면 이동">
+  <div class="sidehead">
+    <span class="sidebrand">출조 레이더</span>
+    <button type="button" class="navfold" id="navfold" aria-controls="sidenav" aria-expanded="true" aria-label="탭바 접기" title="탭바 접기"><svg class="sideicon" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3.5 5.5 8l4.5 4.5"></path></svg></button>
+  </div>
+  <a class="sidetab" href="index.html" title="현황"><svg class="sideicon" viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2.5" width="12" height="11" rx="2"></rect><path d="M2 6.5h12M6.5 6.5v7"></path></svg><span>현황</span></a>
+  <a class="sidetab" href="log.html" title="출조기록" aria-current="page"><svg class="sideicon" viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3.5" width="12" height="10.5" rx="2"></rect><path d="M5 2v3M11 2v3M2 7h12M5 10h2"></path></svg><span>출조기록</span></a>
+  <a class="sidetab" href="admin.html" title="시스템"><svg class="sideicon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 5h10M3 11h10"></path><circle cx="6" cy="5" r="1.9"></circle><circle cx="10.5" cy="11" r="1.9"></circle></svg><span>시스템</span></a>
+</nav>
+
+<main class="wrap">
+  <h1>출조기록</h1>
+  <p class="sub">날짜를 누르고 마릿수 두 개와 메모를 남기세요. 달력의 <strong>34/10</strong>은 마릿수 1이 34마리, 마릿수 2가 10마리라는 뜻입니다. 물때는 날짜에서 자동으로 계산합니다.</p>
+  <div class="backup">
+    <button type="button" id="backup-export">백업 내보내기</button>
+    <button type="button" id="backup-import">백업 가져오기</button>
+    <label class="auto-backup"><input type="checkbox" id="backup-auto"> 저장할 때 자동 백업</label>
+    <input type="file" id="backup-file" accept="application/json,.json" hidden>
+    <p class="save-status" id="backup-status" role="status">컴퓨터를 바꾸기 전에 백업 파일을 받아두세요.</p>
+  </div>
+  <div class="monthbar">
+    <button type="button" id="month-prev" aria-label="이전 달">‹</button>
+    <button type="button" class="month-label" id="month-label" aria-live="polite"
+            aria-expanded="false" aria-controls="month-jump" title="연도와 월을 바로 고르기"></button>
+    <button type="button" id="month-next" aria-label="다음 달">›</button>
+  </div>
+  <div class="month-jump" id="month-jump" hidden>
+    <label>연도
+      <input id="jump-year" type="number" min="1900" max="2200" inputmode="numeric">
+    </label>
+    <label>월
+      <select id="jump-month" aria-label="이동할 월">
+        <option value="01">1월</option><option value="02">2월</option><option value="03">3월</option>
+        <option value="04">4월</option><option value="05">5월</option><option value="06">6월</option>
+        <option value="07">7월</option><option value="08">8월</option><option value="09">9월</option>
+        <option value="10">10월</option><option value="11">11월</option><option value="12">12월</option>
+      </select>
+    </label>
+    <button type="button" id="jump-go">이동</button>
+  </div>
+  <div class="week" aria-hidden="true"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div>
+  <div class="calendar" id="calendar" role="grid" aria-label="출조기록 달력"></div>
+
+  <section class="editor" id="editor" hidden>
+    <h2 id="editor-title"></h2>
+    <div class="fields">
+      <label>마릿수 1
+        <input id="catch-count-1" type="number" min="0" step="1" inputmode="numeric" placeholder="예: 34">
+      </label>
+      <label>마릿수 2
+        <input id="catch-count-2" type="number" min="0" step="1" inputmode="numeric" placeholder="예: 10">
+      </label>
+      <label class="memo">메모
+        <textarea id="memo" maxlength="1000" placeholder="배, 어종, 채비, 날씨처럼 다음 출조에 참고할 내용을 적으세요"></textarea>
+      </label>
+    </div>
+    <p class="save-status" id="auto-tide"></p>
+    <div class="actions">
+      <button type="button" class="save" id="save">저장</button>
+      <button type="button" id="cancel">닫기</button>
+      <button type="button" class="delete" id="delete">기록 삭제</button>
+    </div>
+    <p class="save-status" id="save-status" role="status"></p>
+  </section>
+</main>
+
+<script>
+const LOG_KEY = 'fishing:trip-log';
+const AUTO_BACKUP_KEY = 'fishing:trip-log-auto-backup';
+const NAV_FOLD_KEY = 'fishing:nav-fold';
+const $ = (id) => document.getElementById(id);
+const pad = (n) => String(n).padStart(2, '0');
+
+function kstToday(now = new Date()) {
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit'
+  }).formatToParts(now).reduce((out, part) => (out[part.type] = part.value, out), {});
+  return `${parts.year}-${parts.month}-${parts.day}`;
+}
+
+function cleanLogs(raw) {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return {};
+  const logs = {};
+  for (const [date, value] of Object.entries(raw)) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || !value || typeof value !== 'object') continue;
+    // count는 마릿수가 하나였던 첫 판의 값입니다. 이미 적은 기록을 버리지 않고 1번으로 옮깁니다.
+    const rawCount1 = value.count1 ?? value.count;
+    const count1 = rawCount1 === '' || rawCount1 == null ? null : Number(rawCount1);
+    const count2 = value.count2 === '' || value.count2 == null ? null : Number(value.count2);
+    logs[date] = {
+      count1: Number.isInteger(count1) && count1 >= 0 ? count1 : null,
+      count2: Number.isInteger(count2) && count2 >= 0 ? count2 : null,
+      tide: String(value.tide ?? '').trim().slice(0, 20),
+      memo: String(value.memo ?? '').trim().slice(0, 1000),
+    };
+  }
+  return logs;
+}
+
+function loadLogs() {
+  try { return cleanLogs(JSON.parse(localStorage.getItem(LOG_KEY) ?? '{}')); }
+  catch { return {}; }
+}
+
+function saveLogs(logs) {
+  try { localStorage.setItem(LOG_KEY, JSON.stringify(logs)); return true; }
+  catch { return false; }
+}
+
+function loadAutoBackup() {
+  try { return localStorage.getItem(AUTO_BACKUP_KEY) !== '0'; }
+  catch { return true; }
+}
+
+function saveAutoBackup(enabled) {
+  try { localStorage.setItem(AUTO_BACKUP_KEY, enabled ? '1' : '0'); }
+  catch { /* 선택을 기억하지 못해도 현재 탭에서는 체크값대로 동작합니다 */ }
+}
+
+function backupPayload(logs, exportedAt = new Date().toISOString()) {
+  return { type: 'fishing-trip-log', version: 1, exportedAt, logs: cleanLogs(logs) };
+}
+
+function logsFromBackup(value) {
+  if (!value || value.type !== 'fishing-trip-log' || value.version !== 1 || !value.logs ||
+      typeof value.logs !== 'object' || Array.isArray(value.logs)) return null;
+  const logs = cleanLogs(value.logs);
+  // 기록이 든 파일인데 유효한 날짜가 하나도 없다면 조용히 빈 백업으로 덮지 않습니다.
+  if (Object.keys(value.logs).length && !Object.keys(logs).length) return null;
+  return logs;
+}
+
+function calculatedTide(date) {
+  try {
+    // 국내 물때표의 15일 주기를 음력 날짜에 맞춥니다. 지역에 따라 하루쯤 다른 표기를 쓰므로
+    // 수집 결과가 있는 날짜는 tidesByDate의 실제 표기를 이 계산값보다 먼저 씁니다.
+    const lunarDay = Number(new Intl.DateTimeFormat('en-u-ca-chinese', {
+      timeZone: 'Asia/Seoul', day: 'numeric'
+    }).formatToParts(new Date(`${date}T12:00:00+09:00`)).find((part) => part.type === 'day')?.value);
+    if (!Number.isInteger(lunarDay)) return '';
+    const tide = ((lunarDay + 5) % 15) + 1;
+    return tide === 14 ? '조금' : tide === 15 ? '무시' : `${tide}물`;
+  } catch { return ''; }
+}
+
+function tideForDate(date, log, tides) {
+  return log?.tide || tides.get(date) || calculatedTide(date);
+}
+
+function calendarMark(log) {
+  if (!log) return '';
+  const first = Number.isInteger(log.count1) ? String(log.count1) : '';
+  const second = Number.isInteger(log.count2) ? String(log.count2) : '';
+  if (second) return `${first || '-'}/${second}`;
+  return first || '기록';
+}
+
+function tidesByDate(rows) {
+  const counts = new Map();
+  for (const trip of rows ?? []) {
+    if (!trip?.date || !trip.tide) continue;
+    if (!counts.has(trip.date)) counts.set(trip.date, new Map());
+    const day = counts.get(trip.date);
+    day.set(trip.tide, (day.get(trip.tide) ?? 0) + 1);
+  }
+  const tides = new Map();
+  for (const [date, day] of counts) {
+    tides.set(date, [...day.entries()].sort((a, b) => b[1] - a[1])[0][0]);
+  }
+  return tides;
+}
+
+let LOGS = loadLogs();
+let TIDES = new Map();
+let SELECTED = null;
+let MONTH = kstToday().slice(0, 7);
+
+function moveMonth(month, delta) {
+  const [year, number] = month.split('-').map(Number);
+  const date = new Date(Date.UTC(year, number - 1 + delta, 1));
+  return `${date.getUTCFullYear()}-${pad(date.getUTCMonth() + 1)}`;
+}
+
+function dayLabel(value) {
+  const [year, month, day] = value.split('-').map(Number);
+  const weekday = ['일', '월', '화', '수', '목', '금', '토'][new Date(Date.UTC(year, month - 1, day)).getUTCDay()];
+  return `${year}년 ${month}월 ${day}일 ${weekday}요일`;
+}
+
+function renderCalendar() {
+  const [year, month] = MONTH.split('-').map(Number);
+  $('month-label').textContent = `${year}년 ${month}월`;
+  const firstWeekday = new Date(Date.UTC(year, month - 1, 1)).getUTCDay();
+  const lastDay = new Date(Date.UTC(year, month, 0)).getUTCDate();
+  const frag = document.createDocumentFragment();
+  for (let i = 0; i < firstWeekday; i++) {
+    const blank = document.createElement('span'); blank.className = 'blank'; frag.append(blank);
+  }
+  for (let day = 1; day <= lastDay; day++) {
+    const value = `${MONTH}-${pad(day)}`;
+    const log = LOGS[value];
+    const knownTide = tideForDate(value, log, TIDES);
+    const button = document.createElement('button');
+    button.type = 'button'; button.className = 'day'; button.dataset.date = value;
+    if (value === kstToday()) button.classList.add('today');
+    if (log) button.classList.add('has-log');
+    button.setAttribute('role', 'gridcell');
+    button.setAttribute('aria-label', `${dayLabel(value)}${knownTide ? `, ${knownTide}` : ''}${log ? `, ${calendarMark(log)}` : ''}`);
+
+    const number = document.createElement('span'); number.className = 'number'; number.textContent = day;
+    button.append(number);
+    if (knownTide) {
+      const tide = document.createElement('span'); tide.className = 'tide'; tide.textContent = knownTide; button.append(tide);
+    }
+    if (log) {
+      const mark = document.createElement('span'); mark.className = 'catch'; mark.textContent = calendarMark(log); button.append(mark);
+      if (log.memo) {
+        const memo = document.createElement('span'); memo.className = 'memo-preview'; memo.textContent = log.memo; button.append(memo);
+      }
+    }
+    button.addEventListener('click', () => openEditor(value));
+    frag.append(button);
+  }
+  $('calendar').replaceChildren(frag);
+}
+
+function toggleMonthJump(show = $('month-jump').hidden) {
+  $('month-jump').hidden = !show;
+  $('month-label').setAttribute('aria-expanded', String(show));
+  if (!show) return;
+  const [year, month] = MONTH.split('-');
+  $('jump-year').value = year;
+  $('jump-month').value = month;
+  $('jump-year').focus();
+}
+
+function jumpToMonth() {
+  const year = Number($('jump-year').value);
+  const month = $('jump-month').value;
+  if (!Number.isInteger(year) || year < 1900 || year > 2200) {
+    $('jump-year').focus();
+    return;
+  }
+  MONTH = `${year}-${month}`;
+  toggleMonthJump(false);
+  $('editor').hidden = true;
+  renderCalendar();
+}
+
+function openEditor(date) {
+  SELECTED = date;
+  const log = LOGS[date];
+  $('editor-title').textContent = dayLabel(date);
+  $('catch-count-1').value = Number.isInteger(log?.count1) ? log.count1 : '';
+  $('catch-count-2').value = Number.isInteger(log?.count2) ? log.count2 : '';
+  const tide = tideForDate(date, log, TIDES);
+  $('auto-tide').textContent = tide ? `물때 ${tide} · 자동` : '물때를 계산하지 못했습니다.';
+  $('memo').value = log?.memo || '';
+  $('delete').hidden = !log;
+  $('save-status').textContent = '';
+  $('editor').hidden = false;
+  $('catch-count-1').focus({ preventScroll: true });
+  $('editor').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function saveSelected() {
+  if (!SELECTED) return;
+  const rawCount1 = $('catch-count-1').value.trim();
+  const rawCount2 = $('catch-count-2').value.trim();
+  const count1 = rawCount1 === '' ? null : Number(rawCount1);
+  const count2 = rawCount2 === '' ? null : Number(rawCount2);
+  if ([count1, count2].some((count) => count != null && (!Number.isInteger(count) || count < 0))) {
+    $('save-status').textContent = '마릿수는 0 이상의 정수로 적어주세요.'; return;
+  }
+  const next = { ...LOGS, [SELECTED]: {
+    count1,
+    count2,
+    tide: tideForDate(SELECTED, LOGS[SELECTED], TIDES),
+    memo: $('memo').value.trim().slice(0, 1000),
+  } };
+  if (!saveLogs(next)) {
+    $('save-status').textContent = '브라우저 저장소에 기록하지 못했습니다. 저장 공간이나 개인정보 보호 설정을 확인하세요.'; return;
+  }
+  LOGS = next;
+  $('save-status').textContent = '저장했습니다.';
+  $('delete').hidden = false;
+  renderCalendar();
+  autoBackup();
+}
+
+function deleteSelected() {
+  if (!SELECTED || !LOGS[SELECTED]) return;
+  const next = { ...LOGS }; delete next[SELECTED];
+  if (!saveLogs(next)) {
+    $('save-status').textContent = '기록을 지우지 못했습니다. 브라우저 저장소 설정을 확인하세요.'; return;
+  }
+  LOGS = next;
+  $('editor').hidden = true;
+  renderCalendar();
+  autoBackup();
+}
+
+function exportBackup(automatic = false) {
+  const blob = new Blob([JSON.stringify(backupPayload(LOGS), null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `출조기록-${kstToday()}.json`;
+  link.hidden = true;
+  document.body.append(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+  $('backup-status').textContent = automatic
+    ? `저장과 함께 최신 기록 ${Object.keys(LOGS).length}건을 자동 백업했습니다.`
+    : `출조기록 ${Object.keys(LOGS).length}건을 파일로 내보냈습니다.`;
+}
+
+function autoBackup() {
+  if ($('backup-auto').checked) exportBackup(true);
+}
+
+async function importBackup(file) {
+  try {
+    const imported = logsFromBackup(JSON.parse(await file.text()));
+    if (!imported) throw new Error('backup-format');
+    const next = { ...LOGS, ...imported };
+    if (!saveLogs(next)) {
+      $('backup-status').textContent = '브라우저 저장소에 기록하지 못했습니다.';
+      return;
+    }
+    LOGS = next;
+    $('backup-status').textContent = `백업 ${Object.keys(imported).length}건을 가져왔습니다. 같은 날짜는 백업 기록으로 바꿨습니다.`;
+    renderCalendar();
+  } catch {
+    $('backup-status').textContent = '출조기록 백업 파일이 아닙니다. 파일을 확인해주세요.';
+  } finally {
+    $('backup-file').value = '';
+  }
+}
+
+async function loadTides() {
+  try {
+    const [near, future] = await Promise.all([
+      fetch('data.json?t=' + Date.now()).then((response) => response.ok ? response.json() : { trips: [] }),
+      fetch('future.json?t=' + Date.now()).then((response) => response.ok ? response.json() : { trips: [] }),
+    ]);
+    TIDES = tidesByDate([...(near.trips ?? []), ...(future.trips ?? [])]);
+    renderCalendar();
+  } catch { /* 기록 화면은 수집 파일을 못 읽어도 저장한 기록으로 계속 씁니다 */ }
+}
+
+$('month-prev').addEventListener('click', () => { MONTH = moveMonth(MONTH, -1); renderCalendar(); });
+$('month-next').addEventListener('click', () => { MONTH = moveMonth(MONTH, 1); renderCalendar(); });
+$('month-label').addEventListener('click', () => toggleMonthJump());
+$('jump-go').addEventListener('click', jumpToMonth);
+$('month-jump').addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') jumpToMonth();
+  if (event.key === 'Escape') toggleMonthJump(false);
+});
+$('save').addEventListener('click', saveSelected);
+$('cancel').addEventListener('click', () => { $('editor').hidden = true; });
+$('delete').addEventListener('click', deleteSelected);
+$('backup-export').addEventListener('click', () => exportBackup(false));
+$('backup-import').addEventListener('click', () => $('backup-file').click());
+$('backup-file').addEventListener('change', () => {
+  const file = $('backup-file').files?.[0];
+  if (file) importBackup(file);
+});
+$('backup-auto').checked = loadAutoBackup();
+$('backup-auto').addEventListener('change', () => {
+  saveAutoBackup($('backup-auto').checked);
+  $('backup-status').textContent = $('backup-auto').checked
+    ? '자동 백업을 켰습니다. 기록을 저장하거나 삭제할 때 백업 파일을 받습니다.'
+    : '자동 백업을 껐습니다. 필요할 때 백업 내보내기를 눌러주세요.';
+});
+
+function paintNavFold(fold) {
+  document.body.dataset.nav = fold ? 'fold' : 'open';
+  const label = fold ? '탭바 펼치기' : '탭바 접기';
+  $('navfold').setAttribute('aria-expanded', String(!fold));
+  $('navfold').setAttribute('aria-label', label); $('navfold').title = label;
+}
+try { paintNavFold(localStorage.getItem(NAV_FOLD_KEY) === '1'); } catch { paintNavFold(false); }
+$('navfold').addEventListener('click', () => {
+  const fold = document.body.dataset.nav !== 'fold'; paintNavFold(fold);
+  try { localStorage.setItem(NAV_FOLD_KEY, fold ? '1' : '0'); } catch { /* 현재 화면에서만 접습니다 */ }
+});
+
+renderCalendar();
+loadTides();
+</script>
+</body>
+</html>

@@ -112,6 +112,13 @@ Pages는 GitHub Actions가 수집해 배포하는 결과를 보여줍니다. 전
 - **켜고 끄기**를 체크박스로 합니다. `registry.json`의 `enabled`를 고칩니다.
 - **표기 수정** — 선사 이름·항구·전화번호를 그 자리에서 고칩니다. 이 셋은 [같은 배 합치기](#같은-배가-여러-사이트에-올라와-있을-때)의 기준값이라 손볼 일이 잦습니다.
 - **수집 다시 실행** — 자동 수집기에 전체 사이트의 재확인을 요청하고 로그를 보여줍니다.
+- **클라우드 재수집** — 이 PC에서 막힌 선사는 GitHub Actions의 `collect` 워크플로에 다시
+  확인해 달라고 요청합니다. 표의 버튼은 그 선사만(`only=<사이트 id>`), 위쪽 버튼은 전체를
+  요청합니다. 예약 크론을 기다리지 않지만, 이미 도는 수집이 있으면 Actions 대기열에 섭니다.
+  요청 뒤에는 실행 id로 **대기 중 → 수집 중 → 완료/실패**를 확인하고 Actions 링크를 보여줍니다.
+  Actions 자체가 성공했어도 일부 사이트만 확인됐을 수 있으므로, 결과 파일에 실제
+  **성공·실패·보류 수**를 남겨 `완료`와 `부분 완료`를 구분합니다. Actions 탭에서 직접 실행한
+  경우도 실행 id가 결과에 남아 관리 화면에서 최신 수집 성과와 링크를 확인할 수 있습니다.
 - **최신 코드 받고 재시작** — `git pull --ff-only` 후 서버를 새 코드로 다시 띄웁니다. 화면은 서버가 돌아오면 저절로 새로고침됩니다.
 - **서버 종료** — 로컬 서버를 내립니다. `run.bat` 창도 같이 끝납니다.
 - **별점(개인 리뷰)** — 선사에 속한 배마다 별 다섯 개로 매깁니다. 같은 별을 다시 누르면 지웁니다. [아래](#별점개인-리뷰)를 보세요.
@@ -120,6 +127,25 @@ Pages는 GitHub Actions가 수집해 배포하는 결과를 보여줍니다. 전
 - **숨긴 것** — 숨긴 선사·배·항구·지역을 한 표로 보고 되돌립니다. 이것도 브라우저에 저장되는 값입니다. [아래](#관심-없는-것-숨기기)를 보세요.
 
 `url`·`adapter`·`seatsTotal`처럼 **잘못 넣으면 수집이 통째로 죽는 값은 여기서 못 고칩니다.** `registry.json`에서 직접 고치세요.
+
+클라우드 재수집은 이 PC의 GitHub CLI(`gh auth login`) 로그인을 기본으로 씁니다. `gh`를 쓰지
+않는 서버에서는 fine-grained personal access token을 만들고 저장소는 이 레포만, repository
+permission은 **Actions: Read and write**만 줍니다. 토큰은 브라우저에 보내지 않고 로컬 서버
+프로세스의 환경변수로만 읽습니다.
+
+```powershell
+$env:CLOUD_COLLECT_TOKEN = 'github_pat_...'
+$env:CLOUD_COLLECT_REPOSITORY = 'kyungsooNa/Fishing'  # 기본값이라 생략 가능
+$env:CLOUD_COLLECT_STATE_PATH = 'tmp/cloud-collect.json' # 기본값이라 생략 가능
+npm run serve
+```
+
+토큰이 있으면 토큰을 먼저 쓰고, 없으면 `gh workflow run`을 실행합니다. 둘 다 쓰지 않으려면
+`CLOUD_COLLECT_USE_GH=0`으로 끕니다. 인증이 없거나 권한이 부족하면 GitHub가 거절한 이유를
+화면에 표시합니다. 요청을 여러 번 눌러 대기열만 늘리지 않도록 서버가 1분 동안 중복 요청을 막습니다.
+마지막 Actions 실행 id와 상태는 `CLOUD_COLLECT_STATE_PATH`에 원자적으로 저장하므로 로컬 서버를
+재시작해도 진행 중이던 실행을 이어서 확인합니다. 상시 서버에서는 예시 환경 파일처럼
+`/var/lib/fishing/cloud-collect.json`에 둡니다.
 
 ### 최신화는 두 군데서 됩니다
 
@@ -131,7 +157,7 @@ Pages는 GitHub Actions가 수집해 배포하는 결과를 보여줍니다. 전
 ### GitHub Pages에서는 읽기 전용입니다
 
 파일을 고치고 프로세스를 띄우려면 서버가 있어야 하는데, Pages에는 없습니다. 배포된 주소로 열면
-`docs/data.json`에 남은 수집 결과만 표로 보여주고 편집·버튼은 잠깁니다.
+`docs/data.json`에 남은 수집 결과와 마지막 성공·실패·보류 요약만 보여주고 편집·실행 버튼은 잠깁니다.
 
 ### 로컬 전용으로 잠가둔 것
 
@@ -506,14 +532,29 @@ registry에 있는데 `ports.json`에 없는 항구는 지도에서 빠지고, �
 
 ```bash
 git clone <이 레포> && cd Fishing && npm ci --omit=dev
-HOST=0.0.0.0 PORT=8080 WATCH_PUBLIC=1 ALERTS_PATH=var/alerts.jsonl node serve.js
+HOST=127.0.0.1 PORT=8080 WATCH_PUBLIC=1 \
+MONITOR_PATH=/var/lib/fishing/monitor.json \
+ALERTS_PATH=/var/lib/fishing/alerts.jsonl \
+USAGE_PATH=/var/lib/fishing/usage.jsonl node serve.js
 ```
 
-- `HOST=0.0.0.0` — 밖에서 화면에 들어올 수 있게 합니다. **이것만으로는 아무것도 못 씁니다.**
+- `HOST=127.0.0.1` — Node는 밖에 직접 열지 않고 같은 서버의 HTTPS 리버스 프록시만 받습니다.
 - `WATCH_PUBLIC=1` — 감시 목록 API(`/api/monitor`)만 밖에 엽니다. 두 개를 다 켜야 열립니다.
   주소만 바꿨다가 쓰기 길이 같이 열리는 일이 없게 나눠뒀습니다.
+- `MONITOR_PATH` — 감시 목록·최근 수집·순환 위치·백오프를 남길 곳입니다. 코드 작업 폴더의
+  `tmp/`에 두면 재배포 때 같이 없어질 수 있으므로 상시 서버에서는 `/var/lib/fishing`에 둡니다.
 - `ALERTS_PATH` — 알림 이력을 남길 곳. 기본값 `tmp/`는 청소 대상이라 서버에서는 옮깁니다.
+- `USAGE_PATH` — 방문·원본 예약처 이동 이력을 남길 곳입니다.
 - 텔레그램·디스코드 환경변수를 같이 주면 알림이 나갑니다(아래 "자리 났을 때 알림 받기").
+
+저장소의 `deploy/fishing.service`와 `deploy/fishing.env.example`을 각각
+`/etc/systemd/system/fishing.service`, `/etc/fishing/fishing.env`로 복사해 쓸 수 있습니다.
+유닛의 `StateDirectory=fishing`이 `/var/lib/fishing`을 만들고 `fishing` 사용자에게 맡깁니다.
+환경 파일은 비밀값이 있으므로 권한을 `600`으로 둡니다. 서버 상태는
+`https://<도메인>/healthz`에서 확인합니다. 응답에는 감시 목록이나 수집 로그를 싣지 않습니다.
+
+브라우저의 감시 토큰이 오가므로 공개 접속은 HTTP가 아니라 HTTPS여야 합니다. 같은 서버에 Caddy를
+두고 `deploy/Caddyfile.example`의 도메인만 바꾸면 Node의 `127.0.0.1:8080`으로 전달합니다.
 
 **관리 API는 밖에서 못 부릅니다.** `/api/sites`·`/api/collect`·`/api/restart`는 registry를
 고치고 프로세스를 띄우므로 루프백 + Host 검사 + `X-Admin` 세 겹 그대로입니다. 서버의 관리
@@ -526,20 +567,10 @@ ssh -N -L 8080:127.0.0.1:8080 <서버>     # 그다음 http://localhost:8080/adm
 꺼져도 다시 뜨게 하려면 systemd에 맡깁니다.
 
 ```ini
-# /etc/systemd/system/fishing.service
-[Unit]
-Description=Fishing 상시 감시
-After=network-online.target
-
-[Service]
-WorkingDirectory=/srv/fishing
-Environment=HOST=0.0.0.0 PORT=8080 WATCH_PUBLIC=1 ALERTS_PATH=/srv/fishing/var/alerts.jsonl
-ExecStart=/usr/bin/node serve.js
-Restart=always
-RestartSec=5
-
-[Install]
-WantedBy=multi-user.target
+# 저장소에 준비된 유닛과 환경 파일을 설치한 뒤
+sudo systemctl daemon-reload
+sudo systemctl enable --now fishing
+curl --fail https://<도메인>/healthz
 ```
 
 운영 상태는 서버에서 이 둘로 봅니다 — `node metrics.js`(플랫폼별 커버리지·값의 나이),

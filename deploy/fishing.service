@@ -1,0 +1,22 @@
+[Unit]
+Description=Fishing cancellation-seat monitor
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=fishing
+Group=fishing
+WorkingDirectory=/srv/fishing
+EnvironmentFile=/etc/fishing/fishing.env
+ExecStart=/usr/bin/node /srv/fishing/serve.js
+Restart=always
+RestartSec=5
+UMask=0077
+StateDirectory=fishing
+StateDirectoryMode=0700
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

@@ -55,6 +55,152 @@ test('사이트 목록에 registry와 수집 결과가 같이 온다', async () 
   });
 });
 
+test('클라우드 선사 재수집은 collect workflow에 only를 넘긴다', async () => {
+  const calls = [];
+  await withServer(async ({ base }) => {
+    const res = await admin(base, '/api/cloud-collect/aaa', { method: 'POST' });
+    assert.equal(res.status, 202);
+    const reply = await res.json();
+    assert.equal(reply.siteId, 'aaa');
+    assert.equal(calls.length, 1);
+    assert.equal(calls[0].url,
+      'https://api.github.com/repos/kyungsooNa/Fishing/actions/workflows/collect.yml/dispatches');
+    assert.deepEqual(JSON.parse(calls[0].options.body), { ref: 'main', inputs: { only: 'aaa' } });
+    assert.equal(calls[0].options.headers.Authorization, 'Bearer test-token');
+  }, {
+    cloudCollect: { token: 'test-token', repository: 'kyungsooNa/Fishing', workflow: 'collect.yml', ref: 'main' },
+    cloudFetch: async (url, options) => {
+      calls.push({ url, options });
+      return new Response(null, { status: 204 });
+    },
+  });
+});
+
+test('클라우드 전체 재수집은 only를 비우고 연속 요청은 막는다', async () => {
+  let calls = 0;
+  await withServer(async ({ base }) => {
+    const first = await admin(base, '/api/cloud-collect', { method: 'POST' });
+    assert.equal(first.status, 202);
+    const second = await admin(base, '/api/cloud-collect', { method: 'POST' });
+    assert.equal(second.status, 429);
+    assert.match((await second.json()).error, /방금/);
+    assert.equal(calls, 1);
+  }, {
+    cloudCollect: { token: 'test-token', repository: 'kyungsooNa/Fishing', workflow: 'collect.yml', ref: 'main' },
+    cloudFetch: async (_url, options) => {
+      calls++;
+      assert.deepEqual(JSON.parse(options.body), { ref: 'main', inputs: { only: '' } });
+      return new Response(null, { status: 204 });
+    },
+  });
+});
+
+test('토큰이 없으면 로그인된 GitHub CLI로 클라우드 재수집을 요청한다', async () => {
+  const calls = [];
+  await withServer(async ({ base }) => {
+    const res = await admin(base, '/api/cloud-collect/aaa', { method: 'POST' });
+    assert.equal(res.status, 202);
+    assert.deepEqual(calls, [{
+      file: 'gh',
+      args: ['api', '--method', 'POST', '-H', 'Accept: application/vnd.github+json',
+        '-H', 'X-GitHub-Api-Version: 2026-03-10',
+        'repos/kyungsooNa/Fishing/actions/workflows/collect.yml/dispatches',
+        '-f', 'ref=main', '-f', 'inputs[only]=aaa'],
+    }]);
+  }, {
+    cloudCollect: { token: '', useGh: true, repository: 'kyungsooNa/Fishing', workflow: 'collect.yml', ref: 'main' },
+    cloudRun: async (command) => {
+      calls.push(command);
+      return { code: 0, out: '{"workflow_run_id":123,"html_url":"https://github.test/runs/123"}' };
+    },
+  });
+});
+
+test('클라우드 실행 id로 대기·실행·완료 상태를 확인한다', async () => {
+  let statusChecks = 0;
+  await withServer(async ({ base }) => {
+    const started = await admin(base, '/api/cloud-collect/aaa', { method: 'POST' }).then((r) => r.json());
+    assert.equal(started.runId, 321);
+    assert.equal(started.status, 'queued');
+
+    const running = await admin(base, '/api/cloud-collect').then((r) => r.json());
+    assert.equal(running.status, 'in_progress');
+    assert.equal(running.conclusion, null);
+
+    const completed = await admin(base, '/api/cloud-collect').then((r) => r.json());
+    assert.equal(completed.status, 'completed');
+    assert.equal(completed.conclusion, 'success');
+    assert.equal(completed.runUrl, 'https://github.test/runs/321');
+  }, {
+    cloudCollect: { token: 'test-token', repository: 'kyungsooNa/Fishing', workflow: 'collect.yml', ref: 'main' },
+    cloudFetch: async (url, options = {}) => {
+      if (options.method === 'POST') {
+        return new Response(JSON.stringify({
+          workflow_run_id: 321, html_url: 'https://github.test/runs/321',
+        }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+      }
+      statusChecks++;
+      return new Response(JSON.stringify({
+        status: statusChecks === 1 ? 'in_progress' : 'completed',
+        conclusion: statusChecks === 1 ? null : 'success',
+        html_url: 'https://github.test/runs/321', updated_at: '2026-10-08T00:00:00Z',
+      }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+    },
+  });
+});
+
+test('서버를 재시작해도 클라우드 실행 id를 이어서 확인한다', async () => {
+  const dir = await mkdtemp(join(tmpdir(), 'cloud-collect-state-'));
+  const statePath = join(dir, 'last.json');
+  const config = { token: 'test-token', repository: 'kyungsooNa/Fishing', workflow: 'collect.yml', ref: 'main' };
+
+  await withServer(async ({ base }) => {
+    const started = await admin(base, '/api/cloud-collect/aaa', { method: 'POST' }).then((r) => r.json());
+    assert.equal(started.runId, 654);
+  }, {
+    cloudCollect: config,
+    cloudCollectStatePath: statePath,
+    cloudFetch: async () => new Response(JSON.stringify({
+      workflow_run_id: 654, html_url: 'https://github.com/kyungsooNa/Fishing/actions/runs/654',
+    }), { status: 200, headers: { 'Content-Type': 'application/json' } }),
+  });
+
+  await withServer(async ({ base }) => {
+    const resumed = await admin(base, '/api/cloud-collect').then((r) => r.json());
+    assert.equal(resumed.runId, 654);
+    assert.equal(resumed.status, 'completed');
+    assert.equal(resumed.conclusion, 'success');
+  }, {
+    cloudCollect: config,
+    cloudCollectStatePath: statePath,
+    cloudFetch: async (_url, options = {}) => {
+      assert.equal(options.method, undefined, '재시작 뒤에는 새 실행이 아니라 기존 실행을 조회해야 합니다');
+      return new Response(JSON.stringify({
+        status: 'completed', conclusion: 'success',
+        html_url: 'https://github.com/kyungsooNa/Fishing/actions/runs/654',
+        updated_at: '2026-10-08T00:00:00Z',
+      }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+    },
+  });
+});
+
+test('클라우드 재수집은 토큰·선사·GitHub 응답을 검사한다', async () => {
+  await withServer(async ({ base }) => {
+    assert.equal((await admin(base, '/api/cloud-collect/aaa', { method: 'POST' })).status, 409);
+  }, { cloudCollect: { token: '', useGh: false, repository: 'kyungsooNa/Fishing', workflow: 'collect.yml', ref: 'main' } });
+
+  await withServer(async ({ base }) => {
+    assert.equal((await admin(base, '/api/cloud-collect/missing', { method: 'POST' })).status, 404);
+    assert.equal((await admin(base, '/api/cloud-collect/bbb', { method: 'POST' })).status, 409);
+    const denied = await admin(base, '/api/cloud-collect/aaa', { method: 'POST' });
+    assert.equal(denied.status, 403);
+    assert.match((await denied.json()).error, /거절/);
+  }, {
+    cloudCollect: { token: 'bad-token', repository: 'kyungsooNa/Fishing', workflow: 'collect.yml', ref: 'main' },
+    cloudFetch: async () => new Response('{"message":"forbidden"}', { status: 403 }),
+  });
+});
+
 test('표기와 켜짐, 메모를 고치면 registry에 남는다', async () => {
   await withServer(async ({ base, registry }) => {
     const res = await admin(base, '/api/sites/bbb', {
@@ -129,6 +275,7 @@ test('X-Admin 헤더가 없으면 전부 403', async () => {
       ['/api/collect', { method: 'POST' }],
       ['/api/research', { method: 'POST', body: '{"sites":["aaa"],"pages":8}' }],
       ['/api/collect/aaa', { method: 'POST' }],
+      ['/api/cloud-collect/aaa', { method: 'POST' }],
       ['/api/restart', { method: 'POST' }],
       ['/api/shutdown', { method: 'POST' }],
       ['/api/sites/aaa', { method: 'PATCH', body: '{"name":"x"}' }],
@@ -354,6 +501,23 @@ test('관리 화면은 현황판과 한눈에 구분되는 관리 전용 머리�
   assert.ok(!board.includes('class="adminhead"'), '현황판까지 관리 전용 모양이면 다시 헷갈립니다');
 });
 
+test('관리 화면: Actions 성공과 실제 수집 성과를 나눠 표시한다', async () => {
+  const html = await readFile('docs/admin.html', 'utf8');
+  const inline = html.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
+
+  assert.match(inline, /function collectionMatches\(/);
+  assert.match(inline, /function collectionText\(/);
+  assert.match(inline, /'부분 완료'/);
+  assert.match(inline, /\$\{summary\.success\}\/\$\{summary\.total\}곳 성공/);
+  assert.match(inline, /실패 \$\{summary\.failed\} · 보류 \$\{summary\.skipped\}/);
+  assert.match(inline, /data\.collection \?\? null/,
+    'data.json에 저장된 실제 성과를 읽어야 합니다');
+  assert.match(inline, /shownSummary\?\.runUrl \?\? task\?\.runUrl/,
+    'Actions에서 직접 실행한 최신 결과 링크도 보여야 합니다');
+  assert.match(inline, /읽기 전용이라고 성공·실패·보류까지 숨길 이유는 없습니다/,
+    'GitHub Pages의 관리 화면에서도 저장된 마지막 성과는 보여야 합니다');
+});
+
 test('관리 화면: 사이트가 300곳 가까이 되므로 쪽 나눔과 등록 출처 구분이 있다', async () => {
   const html = await readFile('docs/admin.html', 'utf8');
 
@@ -410,7 +574,7 @@ test('관리 화면과 현황판이 배 이름을 같은 규칙으로 줄인다'
     readFile('docs/admin.html', 'utf8'),
     readFile('docs/index.html', 'utf8'),
   ]);
-  const pick = (html) => html.match(/const SESSION_TAIL = [^\n]*\nconst boatId = [^\n]*/)?.[0];
+  const pick = (html) => html.match(/const SESSION_TAIL = [^\n]*\nconst boatId = [^\n]*/)?.[0].replaceAll('\r\n', '\n').replace(/\r$/, '');
   assert.ok(pick(admin), '관리 화면에 boatId가 없습니다');
   assert.equal(pick(admin), pick(board), '두 화면의 규칙이 갈렸습니다');
 });
@@ -678,7 +842,7 @@ test('관리 화면과 현황판이 항구에서 지역을 같은 규칙으로 �
     readFile('docs/admin.html', 'utf8'),
     readFile('docs/index.html', 'utf8'),
   ]);
-  const pick = (html) => html.match(/function regionOf\(port\) \{[\s\S]*?\n\}/)?.[0];
+  const pick = (html) => html.match(/function regionOf\(port\) \{[\s\S]*?\n\}/)?.[0].replaceAll('\r\n', '\n');
   assert.ok(pick(admin), '관리 화면에 regionOf가 없습니다');
   assert.equal(pick(admin), pick(board), '두 화면의 규칙이 갈렸습니다');
   assert.match(admin, /const NO_PORT = '\(항구 미상\)';/, 'regionOf가 쓰는 값입니다');
@@ -765,7 +929,7 @@ test('관리 화면: 배 이름 옆에서 바로 숨기고 되돌린다', async 
   // 숨긴 것 표에서 되돌려도 위 표의 ✕ 가 같이 돌아와야 합니다. 한쪽만 바뀌면 어느 쪽이
   // 맞는지 알 수 없습니다.
   const panel = inline.slice(inline.indexOf('function renderMutes'), inline.indexOf('function staticMode'));
-  assert.match(panel, /if \(!unmute\(kind, key\)\) return toast\('브라우저가 저장을 막고 있습니다'\);\n\s*render\(\);/);
+  assert.match(panel, /if \(!unmute\(kind, key\)\) return toast\('브라우저가 저장을 막고 있습니다'\);\r?\n\s*render\(\);/);
   assert.ok(html.includes('배별 칸 ✕(배)'), '숨긴 것이 없을 때 어디서 거는지 알려줘야 합니다');
 });
 
@@ -803,7 +967,7 @@ test('관리 화면: 선사 이름 옆에서 바로 숨기고 되돌린다', asy
   // 것처럼 보입니다. 걸림 표시도 "모두 걸렸을 때"만입니다.
   assert.match(cell, /const off = names\.every\(\(name\) => MUTED_SITES\.has\(name\)\);/);
   const toggle = inline.slice(inline.indexOf('function toggleSiteMute'), inline.indexOf('// ── 즐겨찾기 옮기기 ──'));
-  assert.match(toggle, /for \(const name of names\) \{\n\s*if \(!setMute\('site', name, on\)\) return toast\('브라우저가 저장을 막고 있습니다'\);/);
+  assert.match(toggle, /for \(const name of names\) \{\r?\n\s*if \(!setMute\('site', name, on\)\) return toast\('브라우저가 저장을 막고 있습니다'\);/);
   assert.match(toggle, /render\(\);/, '표의 ✕ 를 다시 칠해야 합니다');
   assert.match(toggle, /renderMutes\(TRIPS\);/, '숨긴 것 목록도 같이 바뀌어야 합니다');
   assert.ok(html.includes('선사 이름 옆 ✕(선사)'), '숨긴 것이 없을 때 어디서 거는지 알려줘야 합니다');
@@ -881,7 +1045,7 @@ test('관리 화면: 배별 칸에서 즐겨찾기를 담는다', async () => {
   // 담고 빼는 곳이 둘이라 값을 고치는 곳은 하나여야 합니다. 갈리면 표의 ☆ 와 아래 목록이
   // 어긋나고, 저장이 막혔을 때 한쪽만 되돌아갑니다.
   const toggle = inline.slice(inline.indexOf('function toggleFav'), inline.indexOf('// ── 즐겨찾기 옮기기 ──'));
-  assert.match(toggle, /if \(!saveFavs\(.*\)\) \{\n\s*return toast\('브라우저가 저장을 막고 있습니다'\);/,
+  assert.match(toggle, /if \(!saveFavs\(.*\)\) \{\r?\n\s*return toast\('브라우저가 저장을 막고 있습니다'\);/,
     '저장이 막히면 없던 일로 둡니다');
   assert.match(toggle, /render\(\);/, '표의 ☆ 를 다시 칠해야 합니다');
   assert.match(toggle, /renderFavs\(TRIPS\);/, '아래 목록도 같이 바뀌어야 합니다');

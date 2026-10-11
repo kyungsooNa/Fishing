@@ -24,8 +24,8 @@ try {
     onProgress: (progress) => process.send?.({ type: 'collect-progress', ...progress }),
   });
 
-  const ok = Object.values(data.sites).filter((s) => s.ok).length;
-  console.log(`\n출조 ${data.trips.length}건 / 사이트 ${ok}곳 성공, ${failed.length}곳 실패`);
+  const { success: ok, failed: failedCount, skipped } = data.collection;
+  console.log(`\n출조 ${data.trips.length}건 / 사이트 ${ok}곳 성공, ${failedCount}곳 실패, ${skipped}곳 보류`);
 
   if (openings.length) {
     console.log(`새로 난 자리 ${openings.length}건`);

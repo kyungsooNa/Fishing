@@ -1,0 +1,5 @@
+# 실제 도메인으로 바꾸면 Caddy가 HTTPS 인증서를 자동 발급합니다.
+fishing.example.com {
+    encode zstd gzip
+    reverse_proxy 127.0.0.1:8080
+}

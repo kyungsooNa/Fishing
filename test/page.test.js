@@ -29,46 +29,48 @@ test('가까운 일정과 90일 장기 일정을 나눠 읽는다', () => {
     '화면에서는 가까운 일정과 장기 일정을 합쳐야 합니다');
 });
 
-// 화면이 둘(현황판·시스템 관리)이라 탭은 링크입니다. 탭바 조각이 두 파일에 같이
-// 들어가므로 한쪽만 고치면 화면마다 탭이 다른 자리에 뜹니다. 여기서 둘을 맞춰 봅니다.
-test('두 화면은 왼쪽 탭바로 오가고, 탭바는 양쪽이 같다', async () => {
+// 화면 셋(현황판·출조기록·시스템 관리)의 탭바 조각은 같아야 합니다.
+test('세 화면은 왼쪽 탭바로 오가고, 탭바는 모두 같다', async () => {
   const admin = await readFile('docs/admin.html', 'utf8');
+  const log = await readFile('docs/log.html', 'utf8');
   const nav = (page) => page.match(/<nav class="sidenav"[\s\S]*?<\/nav>/)?.[0] ?? '';
-  const [boardNav, adminNav] = [nav(html), nav(admin)];
+  const [boardNav, logNav, adminNav] = [nav(html), nav(log), nav(admin)];
 
-  assert.ok(boardNav && adminNav, '탭바가 없는 화면이 있습니다');
-  // 지금 보는 쪽 표시만 빼면 양쪽 탭바는 글자 하나까지 같아야 합니다.
-  const bare = (block) => block.replaceAll(' aria-current="page"', '');
+  assert.ok(boardNav && logNav && adminNav, '탭바가 없는 화면이 있습니다');
+  // 지금 보는 쪽 표시만 빼면 세 탭바는 글자 하나까지 같아야 합니다.
+  const bare = (block) => block.replaceAll(' aria-current="page"', '').replaceAll('\r\n', '\n');
   assert.equal(bare(boardNav), bare(adminNav));
+  assert.equal(bare(boardNav), bare(logNav));
   assert.match(bare(boardNav),
-    /href="index\.html"[\s\S]*?>현황<[\s\S]*?href="admin\.html"[\s\S]*?>시스템</,
-    '탭은 현황 · 시스템 순서입니다');
+    /href="index\.html"[\s\S]*?>현황<[\s\S]*?href="log\.html"[\s\S]*?>출조기록<[\s\S]*?href="admin\.html"[\s\S]*?>시스템</,
+    '탭은 현황 · 출조기록 · 시스템 순서입니다');
 
-  // 표시는 자기 화면에 하나만. 둘 다 켜지면 어디 있는지 알 수 없습니다.
-  for (const [page, own] of [[boardNav, 'index.html'], [adminNav, 'admin.html']]) {
+  // 표시는 자기 화면에 하나만. 둘 이상 켜지면 어디 있는지 알 수 없습니다.
+  for (const [page, own] of [[boardNav, 'index.html'], [logNav, 'log.html'], [adminNav, 'admin.html']]) {
     const marked = [...page.matchAll(/href="([\w.]+)"[^>]*aria-current="page"/g)].map((m) => m[1]);
     assert.deepEqual(marked, [own]);
   }
 
   // 탭바가 생겼으니 제목 아래 이동 링크는 없앴습니다. 길이 둘이면 한쪽만 고치게 됩니다.
-  for (const [page, block] of [[html, boardNav], [admin, adminNav]]) {
-    const links = [...page.matchAll(/<a href="(index|admin)\.html"/g)].map((m) => m[0]);
+  for (const [page, block] of [[html, boardNav], [log, logNav], [admin, adminNav]]) {
+    const links = [...page.matchAll(/<a href="(index|log|admin)\.html"/g)].map((m) => m[0]);
     assert.deepEqual(links, [], `화면 이동 링크는 탭바에만 둡니다: ${links.join(', ')}`);
     assert.ok(block.includes('class="sidetab"'));
   }
 
   // 작은 화면에서는 아래로 내립니다. 위는 제목·필터가 sticky로 자리를 잡고 있습니다.
-  for (const page of [html, admin]) {
+  for (const page of [html, log, admin]) {
     assert.match(page, /@media \(max-width: 720px\) \{\s*body \{ padding-left: 0; padding-bottom: 64px; \}/);
   }
 });
 
 // 접은 상태는 브라우저에만 남는 값이라 화면 크기를 모릅니다. 접기 규칙을 min-width로
 // 묶지 않으면 접어둔 채로 폰에서 열었을 때 아래 탭바의 글자만 사라집니다.
-test('탭바는 접었다 펼 수 있고, 접은 상태는 두 화면이 같이 본다', async () => {
+test('탭바는 접었다 펼 수 있고, 접은 상태는 세 화면이 같이 본다', async () => {
   const admin = await readFile('docs/admin.html', 'utf8');
+  const log = await readFile('docs/log.html', 'utf8');
 
-  for (const page of [html, admin]) {
+  for (const page of [html, log, admin]) {
     assert.match(page, /<button type="button" class="navfold" id="navfold"[^>]*aria-expanded="true"/,
       '접기 버튼이 없습니다');
 
@@ -1237,7 +1239,7 @@ test('정렬 메뉴가 있고 바꾸면 다시 그린다', () => {
   // 정렬은 보이는 날짜를 바꾸지 않으므로 첫 쪽으로 돌아가지 않습니다(필터와 다른 점).
   assert.match(inline, /\$\('f-sort'\)\.addEventListener\('change', \(\) => chooseSort\(SORT_BEFORE\)\)/);
   const choose = inline.slice(inline.indexOf('async function chooseSort'), inline.indexOf("$('f-sort').addEventListener"));
-  assert.match(choose, /\n  refresh\(\);\n/);
+  assert.match(choose, /\r?\n  refresh\(\);\r?\n/);
   assert.doesNotMatch(choose, /filtered\(\)/);
 });
 

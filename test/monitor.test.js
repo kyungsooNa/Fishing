@@ -481,6 +481,43 @@ test('로컬 API는 헤더를 검사하고 감시 결과를 제공하며 원래 
   } finally { await f.monitor.stop(); server.close(); }
 });
 
+test('상시 서버 상태 확인은 감시 목록과 로그를 공개하지 않는다', async () => {
+  const f = await fixture();
+  const server = createApp({ root: f.dir, monitor: f.monitor, watchPublic: true });
+  await new Promise((r) => server.listen(0, '127.0.0.1', r));
+  const base = `http://127.0.0.1:${server.address().port}`;
+  try {
+    const res = await fetch(base + '/healthz');
+    assert.equal(res.status, 200);
+    const health = await res.json();
+    assert.equal(health.ok, true);
+    assert.equal(health.monitor, true);
+    assert.equal('watches' in health, false);
+    assert.equal('log' in health, false);
+  } finally { await f.monitor.stop(); server.close(); }
+});
+
+test('리버스 프록시의 루프백 연결을 로컬 사용자로 오인하지 않는다', async () => {
+  const adopted = [];
+  const monitor = {
+    adopt: async (_id, options) => { adopted.push(options); },
+    status: () => ({ watches: [], running: false, overdue: 0, notificationConfigured: false }),
+    data: () => ({ sites: {}, trips: [] }),
+    futureData: () => ({ sites: {}, trips: [] }),
+    stop: async () => {},
+  };
+  const server = createApp({ monitor, watchPublic: true });
+  await new Promise((r) => server.listen(0, '127.0.0.1', r));
+  const base = `http://127.0.0.1:${server.address().port}`;
+  try {
+    const res = await fetch(base + '/api/monitor', {
+      headers: { Host: 'fishing.example', 'X-Watcher': 'watcher-token-0123456789' },
+    });
+    assert.equal(res.status, 200);
+    assert.deepEqual(adopted, [{ local: false }]);
+  } finally { server.close(); }
+});
+
 test('별도 수집 프로세스의 동시 실행은 잠금으로 막는다', async () => {
   const dir = await mkdtemp(join(tmpdir(), 'collector-lock-'));
   const path = join(dir, 'lock');

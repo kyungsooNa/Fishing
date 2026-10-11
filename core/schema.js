@@ -397,6 +397,27 @@ export function pickPhone(site, boat) {
   return site.boats?.[boat]?.phone ?? site.phone ?? null;
 }
 
+/**
+ * 한 함대 일정표를 여러 선사가 함께 쓰면 배별 공식 홈페이지로 링크를 돌립니다.
+ * 어댑터가 월별 경로를 이미 붙였으므로 경로·쿼리는 보존하고 도메인만 바꿉니다.
+ */
+function pickUrl(site, boat, rawUrl) {
+  const source = rawUrl ?? site.url ?? null;
+  const home = site.boats?.[boat]?.url;
+  if (!home) return source;
+  if (!source) return home;
+  try {
+    const from = new URL(source);
+    const target = new URL(home);
+    target.pathname = from.pathname;
+    target.search = from.search;
+    target.hash = from.hash;
+    return target.toString();
+  } catch {
+    return home;
+  }
+}
+
 /** 전화번호는 표기가 제각각(010-1234-5678 / 010.1234.5678)이라 숫자만 남겨 비교합니다. */
 export function normPhone(raw) {
   if (!raw) return null;
@@ -452,6 +473,7 @@ export function makeTrip(site, fields) {
   const range = toTimeRange(rawTime ?? '');
   const rawDepartureWindow = departureWindow(rawStatus);
   const boatName = boat ? String(boat).trim() : null;
+  const boatConf = site.boats?.[boatName] ?? {};
   const normalizedSpecies = toSpecies(species);
   const guide = selectTimeGuide(site, boatName, normalizedSpecies, resolvedDate);
   const guideApplies = Boolean(guide);
@@ -477,7 +499,7 @@ export function makeTrip(site, fields) {
 
   return {
     siteId: site.id,
-    siteName: site.name ?? site.id,
+    siteName: boatConf.siteName ?? site.name ?? site.id,
     boat: boatName,
     port: port ?? pickPort(site, boatName),
     phone: pickPhone(site, boatName),
@@ -497,7 +519,7 @@ export function makeTrip(site, fields) {
     seatsTotal: seatsTotal ?? site.seatsTotal ?? null,
     price: selectedPrice.value,
     ...(selectedPrice.source ? { priceSource: 'notice', priceSourceUrl: selectedPrice.source } : {}),
-    url: url ?? site.url ?? null,
+    url: pickUrl(site, boatName, url),
     // 이 주소가 **그 날짜의 예약 화면**으로 바로 가는지. 대부분의 사이트는 일정표 한 장에
     // 여러 날을 담아서 날짜를 주소로 지정할 수 없습니다. 그때는 화면이 "링크를 눌러도
     // 날짜는 직접 찾아야 한다"고 알려줘야 해서, 갈 수 있는 경우만 표시해 둡니다.

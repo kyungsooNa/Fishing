@@ -145,6 +145,10 @@ export async function runAll({
   onProgress = null,
   collectFn = collectSite,
   rotatePerRun = ROTATE_PER_RUN,
+  runId = process.env.GITHUB_RUN_ID?.trim() || null,
+  runUrl = process.env.GITHUB_RUN_ID
+    ? `${process.env.GITHUB_SERVER_URL ?? 'https://github.com'}/${process.env.GITHUB_REPOSITORY ?? ''}/actions/runs/${process.env.GITHUB_RUN_ID}`
+    : null,
   // 해외 러너(Actions)인가. `domesticOnly` 선사는 여기서 요청하지 않습니다.
   overseas = process.env.GITHUB_ACTIONS === 'true',
 } = {}) {
@@ -541,8 +545,26 @@ export async function runAll({
   // 한 곳만 다시 본 실행(`only`)이 전체 차례를 되감으면 안 됩니다.
   const rotation = { ...(prev.rotation ?? {}), ...Object.fromEntries(nextCursors) };
 
+  // Actions의 초록색 성공은 스크립트가 끝나고 결과를 커밋했다는 뜻이지, 모든 사이트를
+  // 새로 확인했다는 뜻이 아닙니다. 회전 보류·플랫폼 회로 차단을 실제 실패와 나눠 저장해
+  // 관리 화면이 "완료" 한 단어로 9/264 같은 부분 성공을 감추지 않게 합니다.
+  const outcomes = targets.map((site) => statusById.get(site.id)).filter(Boolean);
+  const collection = {
+    startedAt: startedAt.toISOString(),
+    scope: only ? { type: 'site', value: only }
+      : onlyAdapter ? { type: 'adapter', value: onlyAdapter }
+        : { type: 'all' },
+    total: targets.length,
+    success: outcomes.filter((result) => result.ok).length,
+    failed: outcomes.filter((result) => !result.ok && !result.skipped).length,
+    skipped: outcomes.filter((result) => !result.ok && result.skipped).length,
+    ...(runId ? { runId: String(runId) } : {}),
+    ...(runUrl && !runUrl.includes('//actions/') ? { runUrl } : {}),
+  };
+
   const data = {
     generatedAt: startedAt.toISOString(),
+    collection,
     // 파일 끝이 아니라 앞에 둡니다. 뒤에 두면 trips 수천 줄 밑에 깔려 안 보입니다.
     ...(Object.keys(rotation).length ? { rotation } : {}),
     sites: status,
