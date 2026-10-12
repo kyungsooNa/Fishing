@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-12T09:35:19.252Z",
+  "generatedAt": "2026-10-12T09:36:43.582Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -123,14 +123,14 @@
     "tpho": 81,
     "twin": 81,
     "urbis": 81,
-    "vancouver": 22,
-    "venice": 22,
-    "veteranfishing": 22,
-    "viking": 22,
-    "vtrfishing": 22,
-    "wangnuni": 22,
-    "welcome": 22,
-    "yejiqueen": 81,
+    "vancouver": 81,
+    "venice": 81,
+    "veteranfishing": 81,
+    "viking": 81,
+    "vtrfishing": 81,
+    "wangnuni": 81,
+    "welcome": 81,
+    "yejiqueen": 22,
     "yeongjae": 22,
     "yong": 22,
     "yongma": 22,
@@ -2523,7 +2523,7 @@
       "status": "open",
       "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://veteranfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -18164,7 +18164,7 @@
       "status": "open",
       "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://veteranfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -25772,7 +25772,7 @@
       "status": "open",
       "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://veteranfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -27076,8 +27076,8 @@
       "species": "갑오징어",
       "tide": "3물",
       "status": "open",
-      "statusText": "베니스호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/6명",
-      "seatsLeft": 14,
+      "statusText": "베니스호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/8명",
+      "seatsLeft": 12,
       "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202611"
@@ -31525,6 +31525,26 @@
       "urlDated": true
     },
     {
+      "siteId": "vtrfishing",
+      "siteName": "가디언호",
+      "boat": "가디언호",
+      "port": "충남 보령 무창포항",
+      "phone": "010-4405-2690",
+      "date": "2026-11-07",
+      "departAt": null,
+      "returnAt": null,
+      "session": null,
+      "hours": null,
+      "species": "주꾸미·갑오징어",
+      "tide": "4물",
+      "status": "open",
+      "statusText": "가디언호 바로예약 어종 : 주꾸미,갑오징어 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/2명",
+      "seatsLeft": 18,
+      "seatsTotal": 20,
+      "price": null,
+      "url": "https://vtrfishing.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "badafish",
       "siteName": "경원7호",
       "boat": "경원7호",
@@ -32935,8 +32955,8 @@
       "species": "문어",
       "tide": "5물",
       "status": "open",
-      "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
+      "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/2명",
+      "seatsLeft": 18,
       "seatsTotal": 20,
       "price": null,
       "url": "https://veteranfishing.sunsang24.com/ship/schedule_fleet/202611"
@@ -34260,9 +34280,9 @@
       "hours": 10,
       "species": "주꾸미",
       "tide": "4물",
-      "status": "closed",
-      "statusText": "바이킹호 대기하기 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 21명 예약/21명",
-      "seatsLeft": 0,
+      "status": "few",
+      "statusText": "바이킹호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/20명",
+      "seatsLeft": 1,
       "seatsTotal": 21,
       "price": null,
       "url": "https://viking.sunsang24.com/ship/schedule_fleet/202611"
@@ -41404,7 +41424,7 @@
       "status": "open",
       "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://veteranfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -47392,8 +47412,8 @@
       "species": "오징어",
       "tide": "6물",
       "status": "open",
-      "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/2명",
-      "seatsLeft": 12,
+      "statusText": "왔어호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 18:30 ~ 00:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/4명",
+      "seatsLeft": 10,
       "seatsTotal": 14,
       "price": null,
       "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
@@ -47579,8 +47599,8 @@
       "species": "참돔",
       "tide": "7물",
       "status": "open",
-      "statusText": "베테랑호 바로예약 어종 : 참돔 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/6명",
-      "seatsLeft": 11,
+      "statusText": "베테랑호 바로예약 어종 : 참돔 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/7명",
+      "seatsLeft": 10,
       "seatsTotal": 17,
       "price": null,
       "url": "https://vtrfishing.sunsang24.com/ship/schedule_fleet/202611"
@@ -49863,7 +49883,7 @@
       "status": "open",
       "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://veteranfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -58386,7 +58406,7 @@
       "status": "open",
       "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://veteranfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -66928,7 +66948,7 @@
       "status": "open",
       "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://veteranfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -75448,7 +75468,7 @@
       "status": "open",
       "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://veteranfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -83822,7 +83842,7 @@
       "status": "open",
       "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://veteranfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -94200,8 +94220,8 @@
       "species": "문어",
       "tide": "13물",
       "status": "open",
-      "statusText": "왕눈이호 바로예약 어종 : 문어 / 선상 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/14명",
-      "seatsLeft": 7,
+      "statusText": "왕눈이호 바로예약 어종 : 문어 / 선상 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/15명",
+      "seatsLeft": 6,
       "seatsTotal": 21,
       "price": null,
       "url": "https://wangnuni.sunsang24.com/ship/schedule_fleet/202611"
@@ -107504,7 +107524,7 @@
       "status": "open",
       "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://veteranfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -115193,7 +115213,7 @@
       "status": "open",
       "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://veteranfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -123263,7 +123283,7 @@
       "status": "open",
       "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://veteranfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -131414,7 +131434,7 @@
       "status": "open",
       "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://veteranfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -139545,7 +139565,7 @@
       "status": "open",
       "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://veteranfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -150441,8 +150461,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "4물",
       "status": "open",
-      "statusText": "베테랑호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/10명",
-      "seatsLeft": 11,
+      "statusText": "베테랑호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/13명",
+      "seatsLeft": 8,
       "seatsTotal": 21,
       "price": null,
       "url": "https://vtrfishing.sunsang24.com/ship/schedule_fleet/202611"
@@ -155689,7 +155709,7 @@
       "status": "open",
       "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://veteranfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -162794,7 +162814,7 @@
       "status": "open",
       "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://veteranfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -170370,7 +170390,7 @@
       "status": "open",
       "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://veteranfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -185936,7 +185956,7 @@
       "status": "open",
       "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://veteranfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -193748,7 +193768,7 @@
       "status": "open",
       "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://veteranfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -201490,7 +201510,7 @@
       "status": "open",
       "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://veteranfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -209065,7 +209085,7 @@
       "status": "open",
       "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://veteranfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -216475,7 +216495,7 @@
       "status": "open",
       "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://veteranfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
