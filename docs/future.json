@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-11T23:21:27.176Z",
+  "generatedAt": "2026-10-12T00:26:33.339Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -170,14 +170,14 @@
     "daon": 81,
     "dasol": 81,
     "dragonfishing": 81,
-    "dream": 22,
-    "eagles": 22,
-    "ebada": 22,
-    "emerald": 22,
-    "enjoy": 22,
-    "eunhasuho": 22,
-    "fishbank": 22,
-    "fishhunter": 22,
+    "dream": 81,
+    "eagles": 81,
+    "ebada": 81,
+    "emerald": 81,
+    "enjoy": 81,
+    "eunhasuho": 81,
+    "fishbank": 81,
+    "fishhunter": 81,
     "gagaho": 22,
     "galchiho": 22,
     "gdcompany": 22,
@@ -4115,6 +4115,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "star",
+      "siteName": "안면도 아라온피싱",
+      "boat": "아라온피싱호",
+      "port": "충남 태안 영목항",
+      "phone": "010-4735-4515",
+      "date": "2026-11-03",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "17:00",
+      "session": "종일",
+      "hours": 12,
+      "species": "갑오징어",
+      "tide": "무시",
+      "status": "open",
+      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명예약/1명",
+      "seatsLeft": 20,
+      "seatsTotal": 21,
+      "price": null,
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "arakhaeng",
       "siteName": "어락행호",
       "boat": "어락행호",
@@ -4803,27 +4824,6 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "star",
-      "siteName": "파티호",
-      "boat": "아라온피싱호",
-      "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
-      "date": "2026-11-03",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "17:00",
-      "session": "종일",
-      "hours": 12,
-      "species": "갑오징어",
-      "tide": "무시",
-      "status": "open",
-      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명예약/1명",
-      "seatsLeft": 20,
-      "seatsTotal": 21,
-      "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "star",
@@ -11893,6 +11893,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "star",
+      "siteName": "안면도 아라온피싱",
+      "boat": "아라온피싱호",
+      "port": "충남 태안 영목항",
+      "phone": "010-4735-4515",
+      "date": "2026-11-04",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "17:00",
+      "session": "종일",
+      "hours": 12,
+      "species": "갑오징어",
+      "tide": "1물",
+      "status": "open",
+      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명예약/2명",
+      "seatsLeft": 19,
+      "seatsTotal": 21,
+      "price": null,
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "arakhaeng",
       "siteName": "어락행호",
       "boat": "어락행호",
@@ -12581,27 +12602,6 @@
       "seatsTotal": 20,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "star",
-      "siteName": "파티호",
-      "boat": "아라온피싱호",
-      "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
-      "date": "2026-11-04",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "17:00",
-      "session": "종일",
-      "hours": 12,
-      "species": "갑오징어",
-      "tide": "1물",
-      "status": "open",
-      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명예약/2명",
-      "seatsLeft": 19,
-      "seatsTotal": 21,
-      "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "star",
@@ -19777,6 +19777,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "star",
+      "siteName": "안면도 아라온피싱",
+      "boat": "아라온피싱호",
+      "port": "충남 태안 영목항",
+      "phone": "010-4735-4515",
+      "date": "2026-11-05",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "17:00",
+      "session": "종일",
+      "hours": 12,
+      "species": "갑오징어",
+      "tide": "2물",
+      "status": "open",
+      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/11명",
+      "seatsLeft": 10,
+      "seatsTotal": 21,
+      "price": null,
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "arakhaeng",
       "siteName": "어락행호",
       "boat": "어락행호",
@@ -20465,27 +20486,6 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "star",
-      "siteName": "파티호",
-      "boat": "아라온피싱호",
-      "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
-      "date": "2026-11-05",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "17:00",
-      "session": "종일",
-      "hours": 12,
-      "species": "갑오징어",
-      "tide": "2물",
-      "status": "open",
-      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/11명",
-      "seatsLeft": 10,
-      "seatsTotal": 21,
-      "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "star",
@@ -27364,6 +27364,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "star",
+      "siteName": "안면도 아라온피싱",
+      "boat": "아라온피싱호",
+      "port": "충남 태안 영목항",
+      "phone": "010-4735-4515",
+      "date": "2026-11-06",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "17:00",
+      "session": "종일",
+      "hours": 12,
+      "species": "갑오징어",
+      "tide": "3물",
+      "status": "closed",
+      "statusText": "아라온피싱호 대기하기 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 21명 예약/21명",
+      "seatsLeft": 0,
+      "seatsTotal": 21,
+      "price": null,
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "arakhaeng",
       "siteName": "어락행호",
       "boat": "어락행호",
@@ -28052,27 +28073,6 @@
       "seatsTotal": 20,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "star",
-      "siteName": "파티호",
-      "boat": "아라온피싱호",
-      "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
-      "date": "2026-11-06",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "17:00",
-      "session": "종일",
-      "hours": 12,
-      "species": "갑오징어",
-      "tide": "3물",
-      "status": "closed",
-      "statusText": "아라온피싱호 대기하기 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 21명 예약/21명",
-      "seatsLeft": 0,
-      "seatsTotal": 21,
-      "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "star",
@@ -34520,6 +34520,27 @@
       "url": "https://asiaho.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "star",
+      "siteName": "안면도 아라온피싱",
+      "boat": "아라온피싱호",
+      "port": "충남 태안 영목항",
+      "phone": "010-4735-4515",
+      "date": "2026-11-07",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "17:00",
+      "session": "종일",
+      "hours": 12,
+      "species": "갑오징어",
+      "tide": "4물",
+      "status": "closed",
+      "statusText": "아라온피싱호 대기하기 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 21명 예약/21명",
+      "seatsLeft": 0,
+      "seatsTotal": 21,
+      "price": null,
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "arakhaeng",
       "siteName": "어락행호",
       "boat": "어락행호",
@@ -35097,27 +35118,6 @@
       "seatsTotal": 20,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "star",
-      "siteName": "파티호",
-      "boat": "아라온피싱호",
-      "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
-      "date": "2026-11-07",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "17:00",
-      "session": "종일",
-      "hours": 12,
-      "species": "갑오징어",
-      "tide": "4물",
-      "status": "closed",
-      "statusText": "아라온피싱호 대기하기 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 21명 예약/21명",
-      "seatsLeft": 0,
-      "seatsTotal": 21,
-      "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "star",
@@ -36645,9 +36645,9 @@
       "hours": 9,
       "species": "주꾸미·갑오징어",
       "tide": "4물",
-      "status": "few",
-      "statusText": "해모수호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/16명",
-      "seatsLeft": 1,
+      "status": "closed",
+      "statusText": "해모수호 대기하기 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 17명 예약/17명",
+      "seatsLeft": 0,
       "seatsTotal": 17,
       "price": null,
       "url": "https://ebada.sunsang24.com/ship/schedule_fleet/202611"
@@ -43151,6 +43151,27 @@
       "url": "https://asiaho.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "star",
+      "siteName": "안면도 아라온피싱",
+      "boat": "아라온피싱호",
+      "port": "충남 태안 영목항",
+      "phone": "010-4735-4515",
+      "date": "2026-11-08",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "17:00",
+      "session": "종일",
+      "hours": 12,
+      "species": "갑오징어",
+      "tide": "5물",
+      "status": "closed",
+      "statusText": "아라온피싱호 대기하기 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 21명 예약/21명",
+      "seatsLeft": 0,
+      "seatsTotal": 21,
+      "price": null,
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "arakhaeng",
       "siteName": "어락행호",
       "boat": "어락행호",
@@ -43839,27 +43860,6 @@
       "seatsTotal": 20,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "star",
-      "siteName": "파티호",
-      "boat": "아라온피싱호",
-      "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
-      "date": "2026-11-08",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "17:00",
-      "session": "종일",
-      "hours": 12,
-      "species": "갑오징어",
-      "tide": "5물",
-      "status": "closed",
-      "statusText": "아라온피싱호 대기하기 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 21명 예약/21명",
-      "seatsLeft": 0,
-      "seatsTotal": 21,
-      "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "star",
@@ -51483,6 +51483,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "star",
+      "siteName": "안면도 아라온피싱",
+      "boat": "아라온피싱호",
+      "port": "충남 태안 영목항",
+      "phone": "010-4735-4515",
+      "date": "2026-11-09",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "17:00",
+      "session": "종일",
+      "hours": 12,
+      "species": "갑오징어",
+      "tide": "7물",
+      "status": "open",
+      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명예약/1명",
+      "seatsLeft": 20,
+      "seatsTotal": 21,
+      "price": null,
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "arakhaeng",
       "siteName": "어락행호",
       "boat": "어락행호",
@@ -52171,27 +52192,6 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "star",
-      "siteName": "파티호",
-      "boat": "아라온피싱호",
-      "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
-      "date": "2026-11-09",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "17:00",
-      "session": "종일",
-      "hours": 12,
-      "species": "갑오징어",
-      "tide": "7물",
-      "status": "open",
-      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명예약/1명",
-      "seatsLeft": 20,
-      "seatsTotal": 21,
-      "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "star",
@@ -59985,6 +59985,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "star",
+      "siteName": "안면도 아라온피싱",
+      "boat": "아라온피싱호",
+      "port": "충남 태안 영목항",
+      "phone": "010-4735-4515",
+      "date": "2026-11-10",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "17:00",
+      "session": "종일",
+      "hours": 12,
+      "species": "갑오징어",
+      "tide": "8물",
+      "status": "open",
+      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
+      "seatsLeft": 21,
+      "seatsTotal": 21,
+      "price": null,
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "arakhaeng",
       "siteName": "어락행호",
       "boat": "어락행호",
@@ -60694,27 +60715,6 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "star",
-      "siteName": "파티호",
-      "boat": "아라온피싱호",
-      "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
-      "date": "2026-11-10",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "17:00",
-      "session": "종일",
-      "hours": 12,
-      "species": "갑오징어",
-      "tide": "8물",
-      "status": "open",
-      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
-      "seatsTotal": 21,
-      "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "star",
@@ -68483,6 +68483,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "star",
+      "siteName": "안면도 아라온피싱",
+      "boat": "아라온피싱호",
+      "port": "충남 태안 영목항",
+      "phone": "010-4735-4515",
+      "date": "2026-11-11",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "17:00",
+      "session": "종일",
+      "hours": 12,
+      "species": "갑오징어",
+      "tide": "9물",
+      "status": "open",
+      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
+      "seatsLeft": 21,
+      "seatsTotal": 21,
+      "price": null,
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "arakhaeng",
       "siteName": "어락행호",
       "boat": "어락행호",
@@ -69192,27 +69213,6 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "star",
-      "siteName": "파티호",
-      "boat": "아라온피싱호",
-      "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
-      "date": "2026-11-11",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "17:00",
-      "session": "종일",
-      "hours": 12,
-      "species": "갑오징어",
-      "tide": "9물",
-      "status": "open",
-      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
-      "seatsTotal": 21,
-      "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "star",
@@ -77068,6 +77068,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "star",
+      "siteName": "안면도 아라온피싱",
+      "boat": "아라온피싱호",
+      "port": "충남 태안 영목항",
+      "phone": "010-4735-4515",
+      "date": "2026-11-12",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "17:00",
+      "session": "종일",
+      "hours": 12,
+      "species": "갑오징어",
+      "tide": "10물",
+      "status": "open",
+      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
+      "seatsLeft": 21,
+      "seatsTotal": 21,
+      "price": null,
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "arakhaeng",
       "siteName": "어락행호",
       "boat": "어락행호",
@@ -77756,27 +77777,6 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "star",
-      "siteName": "파티호",
-      "boat": "아라온피싱호",
-      "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
-      "date": "2026-11-12",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "17:00",
-      "session": "종일",
-      "hours": 12,
-      "species": "갑오징어",
-      "tide": "10물",
-      "status": "open",
-      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
-      "seatsTotal": 21,
-      "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "star",
@@ -85465,6 +85465,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "star",
+      "siteName": "안면도 아라온피싱",
+      "boat": "아라온피싱호",
+      "port": "충남 태안 영목항",
+      "phone": "010-4735-4515",
+      "date": "2026-11-13",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "17:00",
+      "session": "종일",
+      "hours": 12,
+      "species": "갑오징어",
+      "tide": "11물",
+      "status": "open",
+      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
+      "seatsLeft": 21,
+      "seatsTotal": 21,
+      "price": null,
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "arakhaeng",
       "siteName": "어락행호",
       "boat": "어락행호",
@@ -86174,27 +86195,6 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "star",
-      "siteName": "파티호",
-      "boat": "아라온피싱호",
-      "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
-      "date": "2026-11-13",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "17:00",
-      "session": "종일",
-      "hours": 12,
-      "species": "갑오징어",
-      "tide": "11물",
-      "status": "open",
-      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
-      "seatsTotal": 21,
-      "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "star",
@@ -93776,6 +93776,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "star",
+      "siteName": "안면도 아라온피싱",
+      "boat": "아라온피싱호",
+      "port": "충남 태안 영목항",
+      "phone": "010-4735-4515",
+      "date": "2026-11-14",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "17:00",
+      "session": "종일",
+      "hours": 12,
+      "species": "갑오징어",
+      "tide": "12물",
+      "status": "closed",
+      "statusText": "아라온피싱호 대기하기 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 21명 예약/21명",
+      "seatsLeft": 0,
+      "seatsTotal": 21,
+      "price": null,
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "arakhaeng",
       "siteName": "어락행호",
       "boat": "어락행호",
@@ -94353,27 +94374,6 @@
       "seatsTotal": 20,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "star",
-      "siteName": "파티호",
-      "boat": "아라온피싱호",
-      "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
-      "date": "2026-11-14",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "17:00",
-      "session": "종일",
-      "hours": 12,
-      "species": "갑오징어",
-      "tide": "12물",
-      "status": "closed",
-      "statusText": "아라온피싱호 대기하기 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 21명 예약/21명",
-      "seatsLeft": 0,
-      "seatsTotal": 21,
-      "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "star",
@@ -95943,8 +95943,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "12물",
       "status": "open",
-      "statusText": "해모수호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/9명",
-      "seatsLeft": 8,
+      "statusText": "해모수호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/8명",
+      "seatsLeft": 9,
       "seatsTotal": 17,
       "price": null,
       "url": "https://ebada.sunsang24.com/ship/schedule_fleet/202611"
@@ -101628,6 +101628,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "star",
+      "siteName": "안면도 아라온피싱",
+      "boat": "아라온피싱호",
+      "port": "충남 태안 영목항",
+      "phone": "010-4735-4515",
+      "date": "2026-11-15",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "17:00",
+      "session": "종일",
+      "hours": 12,
+      "species": "갑오징어",
+      "tide": "13물",
+      "status": "closed",
+      "statusText": "아라온피싱호 대기하기 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 21명 예약/21명",
+      "seatsLeft": 0,
+      "seatsTotal": 21,
+      "price": null,
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "arakhaeng",
       "siteName": "어락행호",
       "boat": "어락행호",
@@ -102117,27 +102138,6 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "star",
-      "siteName": "파티호",
-      "boat": "아라온피싱호",
-      "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
-      "date": "2026-11-15",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "17:00",
-      "session": "종일",
-      "hours": 12,
-      "species": "갑오징어",
-      "tide": "13물",
-      "status": "closed",
-      "statusText": "아라온피싱호 대기하기 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 21명 예약/21명",
-      "seatsLeft": 0,
-      "seatsTotal": 21,
-      "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "star",
@@ -108986,6 +108986,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "star",
+      "siteName": "안면도 아라온피싱",
+      "boat": "아라온피싱호",
+      "port": "충남 태안 영목항",
+      "phone": "010-4735-4515",
+      "date": "2026-11-16",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "17:00",
+      "session": "종일",
+      "hours": 12,
+      "species": "갑오징어",
+      "tide": "조금",
+      "status": "open",
+      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명예약/2명",
+      "seatsLeft": 19,
+      "seatsTotal": 21,
+      "price": null,
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "arakhaeng",
       "siteName": "어락행호",
       "boat": "어락행호",
@@ -109454,27 +109475,6 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "star",
-      "siteName": "파티호",
-      "boat": "아라온피싱호",
-      "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
-      "date": "2026-11-16",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "17:00",
-      "session": "종일",
-      "hours": 12,
-      "species": "갑오징어",
-      "tide": "조금",
-      "status": "open",
-      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명예약/2명",
-      "seatsLeft": 19,
-      "seatsTotal": 21,
-      "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "star",
@@ -116782,6 +116782,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "star",
+      "siteName": "안면도 아라온피싱",
+      "boat": "아라온피싱호",
+      "port": "충남 태안 영목항",
+      "phone": "010-4735-4515",
+      "date": "2026-11-17",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "17:00",
+      "session": "종일",
+      "hours": 12,
+      "species": "갑오징어",
+      "tide": "무시",
+      "status": "open",
+      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
+      "seatsLeft": 21,
+      "seatsTotal": 21,
+      "price": null,
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "arakhaeng",
       "siteName": "어락행호",
       "boat": "어락행호",
@@ -117365,27 +117386,6 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "star",
-      "siteName": "파티호",
-      "boat": "아라온피싱호",
-      "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
-      "date": "2026-11-17",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "17:00",
-      "session": "종일",
-      "hours": 12,
-      "species": "갑오징어",
-      "tide": "무시",
-      "status": "open",
-      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
-      "seatsTotal": 21,
-      "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "star",
@@ -124852,6 +124852,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "star",
+      "siteName": "안면도 아라온피싱",
+      "boat": "아라온피싱호",
+      "port": "충남 태안 영목항",
+      "phone": "010-4735-4515",
+      "date": "2026-11-18",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "17:00",
+      "session": "종일",
+      "hours": 12,
+      "species": "갑오징어",
+      "tide": "1물",
+      "status": "open",
+      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
+      "seatsLeft": 21,
+      "seatsTotal": 21,
+      "price": null,
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "arakhaeng",
       "siteName": "어락행호",
       "boat": "어락행호",
@@ -125435,27 +125456,6 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "star",
-      "siteName": "파티호",
-      "boat": "아라온피싱호",
-      "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
-      "date": "2026-11-18",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "17:00",
-      "session": "종일",
-      "hours": 12,
-      "species": "갑오징어",
-      "tide": "1물",
-      "status": "open",
-      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
-      "seatsTotal": 21,
-      "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "star",
@@ -132982,6 +132982,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "star",
+      "siteName": "안면도 아라온피싱",
+      "boat": "아라온피싱호",
+      "port": "충남 태안 영목항",
+      "phone": "010-4735-4515",
+      "date": "2026-11-19",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "17:00",
+      "session": "종일",
+      "hours": 12,
+      "species": "갑오징어",
+      "tide": "2물",
+      "status": "open",
+      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
+      "seatsLeft": 21,
+      "seatsTotal": 21,
+      "price": null,
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "arakhaeng",
       "siteName": "어락행호",
       "boat": "어락행호",
@@ -133565,27 +133586,6 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "star",
-      "siteName": "파티호",
-      "boat": "아라온피싱호",
-      "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
-      "date": "2026-11-19",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "17:00",
-      "session": "종일",
-      "hours": 12,
-      "species": "갑오징어",
-      "tide": "2물",
-      "status": "open",
-      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
-      "seatsTotal": 21,
-      "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "star",
@@ -141113,6 +141113,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "star",
+      "siteName": "안면도 아라온피싱",
+      "boat": "아라온피싱호",
+      "port": "충남 태안 영목항",
+      "phone": "010-4735-4515",
+      "date": "2026-11-20",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "17:00",
+      "session": "종일",
+      "hours": 12,
+      "species": "갑오징어",
+      "tide": "3물",
+      "status": "open",
+      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
+      "seatsLeft": 21,
+      "seatsTotal": 21,
+      "price": null,
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "arakhaeng",
       "siteName": "어락행호",
       "boat": "어락행호",
@@ -141696,27 +141717,6 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "star",
-      "siteName": "파티호",
-      "boat": "아라온피싱호",
-      "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
-      "date": "2026-11-20",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "17:00",
-      "session": "종일",
-      "hours": 12,
-      "species": "갑오징어",
-      "tide": "3물",
-      "status": "open",
-      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
-      "seatsTotal": 21,
-      "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "star",
@@ -149593,6 +149593,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "star",
+      "siteName": "안면도 아라온피싱",
+      "boat": "아라온피싱호",
+      "port": "충남 태안 영목항",
+      "phone": "010-4735-4515",
+      "date": "2026-11-21",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "17:00",
+      "session": "종일",
+      "hours": 12,
+      "species": "갑오징어",
+      "tide": "4물",
+      "status": "open",
+      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/13명",
+      "seatsLeft": 8,
+      "seatsTotal": 21,
+      "price": null,
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "arakhaeng",
       "siteName": "어락행호",
       "boat": "어락행호",
@@ -150174,27 +150195,6 @@
       "seatsTotal": 20,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "star",
-      "siteName": "파티호",
-      "boat": "아라온피싱호",
-      "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
-      "date": "2026-11-21",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "17:00",
-      "session": "종일",
-      "hours": 12,
-      "species": "갑오징어",
-      "tide": "4물",
-      "status": "open",
-      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/13명",
-      "seatsLeft": 8,
-      "seatsTotal": 21,
-      "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "star",
@@ -157388,6 +157388,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "star",
+      "siteName": "안면도 아라온피싱",
+      "boat": "아라온피싱호",
+      "port": "충남 태안 영목항",
+      "phone": "010-4735-4515",
+      "date": "2026-11-22",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "17:00",
+      "session": "종일",
+      "hours": 12,
+      "species": "갑오징어",
+      "tide": "5물",
+      "status": "closed",
+      "statusText": "아라온피싱호 대기하기 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 21명 예약/21명",
+      "seatsLeft": 0,
+      "seatsTotal": 21,
+      "price": null,
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "arakhaeng",
       "siteName": "어락행호",
       "boat": "어락행호",
@@ -157971,27 +157992,6 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "star",
-      "siteName": "파티호",
-      "boat": "아라온피싱호",
-      "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
-      "date": "2026-11-22",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "17:00",
-      "session": "종일",
-      "hours": 12,
-      "species": "갑오징어",
-      "tide": "5물",
-      "status": "closed",
-      "statusText": "아라온피싱호 대기하기 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 21명 예약/21명",
-      "seatsLeft": 0,
-      "seatsTotal": 21,
-      "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "star",
@@ -164388,6 +164388,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "star",
+      "siteName": "안면도 아라온피싱",
+      "boat": "아라온피싱호",
+      "port": "충남 태안 영목항",
+      "phone": "010-4735-4515",
+      "date": "2026-11-23",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "17:00",
+      "session": "종일",
+      "hours": 12,
+      "species": "갑오징어",
+      "tide": "6물",
+      "status": "open",
+      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
+      "seatsLeft": 21,
+      "seatsTotal": 21,
+      "price": null,
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "arakhaeng",
       "siteName": "어락행호",
       "boat": "어락행호",
@@ -164837,27 +164858,6 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "star",
-      "siteName": "파티호",
-      "boat": "아라온피싱호",
-      "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
-      "date": "2026-11-23",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "17:00",
-      "session": "종일",
-      "hours": 12,
-      "species": "갑오징어",
-      "tide": "6물",
-      "status": "open",
-      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
-      "seatsTotal": 21,
-      "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "star",
@@ -171966,6 +171966,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "star",
+      "siteName": "안면도 아라온피싱",
+      "boat": "아라온피싱호",
+      "port": "충남 태안 영목항",
+      "phone": "010-4735-4515",
+      "date": "2026-11-24",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "17:00",
+      "session": "종일",
+      "hours": 12,
+      "species": "갑오징어",
+      "tide": "7물",
+      "status": "open",
+      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
+      "seatsLeft": 21,
+      "seatsTotal": 21,
+      "price": null,
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "arakhaeng",
       "siteName": "어락행호",
       "boat": "어락행호",
@@ -172434,27 +172455,6 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "star",
-      "siteName": "파티호",
-      "boat": "아라온피싱호",
-      "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
-      "date": "2026-11-24",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "17:00",
-      "session": "종일",
-      "hours": 12,
-      "species": "갑오징어",
-      "tide": "7물",
-      "status": "open",
-      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
-      "seatsTotal": 21,
-      "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "star",
@@ -179738,6 +179738,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "star",
+      "siteName": "안면도 아라온피싱",
+      "boat": "아라온피싱호",
+      "port": "충남 태안 영목항",
+      "phone": "010-4735-4515",
+      "date": "2026-11-25",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "17:00",
+      "session": "종일",
+      "hours": 12,
+      "species": "갑오징어",
+      "tide": "8물",
+      "status": "open",
+      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
+      "seatsLeft": 21,
+      "seatsTotal": 21,
+      "price": null,
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "arakhaeng",
       "siteName": "어락행호",
       "boat": "어락행호",
@@ -180206,27 +180227,6 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "star",
-      "siteName": "파티호",
-      "boat": "아라온피싱호",
-      "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
-      "date": "2026-11-25",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "17:00",
-      "session": "종일",
-      "hours": 12,
-      "species": "갑오징어",
-      "tide": "8물",
-      "status": "open",
-      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
-      "seatsTotal": 21,
-      "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "star",
@@ -187553,6 +187553,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "star",
+      "siteName": "안면도 아라온피싱",
+      "boat": "아라온피싱호",
+      "port": "충남 태안 영목항",
+      "phone": "010-4735-4515",
+      "date": "2026-11-26",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "17:00",
+      "session": "종일",
+      "hours": 12,
+      "species": "갑오징어",
+      "tide": "9물",
+      "status": "open",
+      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
+      "seatsLeft": 21,
+      "seatsTotal": 21,
+      "price": null,
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "arakhaeng",
       "siteName": "어락행호",
       "boat": "어락행호",
@@ -188021,27 +188042,6 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "star",
-      "siteName": "파티호",
-      "boat": "아라온피싱호",
-      "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
-      "date": "2026-11-26",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "17:00",
-      "session": "종일",
-      "hours": 12,
-      "species": "갑오징어",
-      "tide": "9물",
-      "status": "open",
-      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
-      "seatsTotal": 21,
-      "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "star",
@@ -195365,6 +195365,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "star",
+      "siteName": "안면도 아라온피싱",
+      "boat": "아라온피싱호",
+      "port": "충남 태안 영목항",
+      "phone": "010-4735-4515",
+      "date": "2026-11-27",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "17:00",
+      "session": "종일",
+      "hours": 12,
+      "species": "갑오징어",
+      "tide": "10물",
+      "status": "open",
+      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
+      "seatsLeft": 21,
+      "seatsTotal": 21,
+      "price": null,
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "arakhaeng",
       "siteName": "어락행호",
       "boat": "어락행호",
@@ -195833,27 +195854,6 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "star",
-      "siteName": "파티호",
-      "boat": "아라온피싱호",
-      "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
-      "date": "2026-11-27",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "17:00",
-      "session": "종일",
-      "hours": 12,
-      "species": "갑오징어",
-      "tide": "10물",
-      "status": "open",
-      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
-      "seatsTotal": 21,
-      "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "star",
@@ -203193,6 +203193,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "star",
+      "siteName": "안면도 아라온피싱",
+      "boat": "아라온피싱호",
+      "port": "충남 태안 영목항",
+      "phone": "010-4735-4515",
+      "date": "2026-11-28",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "17:00",
+      "session": "종일",
+      "hours": 12,
+      "species": "갑오징어",
+      "tide": "11물",
+      "status": "open",
+      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명예약/1명",
+      "seatsLeft": 20,
+      "seatsTotal": 21,
+      "price": null,
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "arakhaeng",
       "siteName": "어락행호",
       "boat": "어락행호",
@@ -203661,27 +203682,6 @@
       "seatsTotal": 20,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "star",
-      "siteName": "파티호",
-      "boat": "아라온피싱호",
-      "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
-      "date": "2026-11-28",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "17:00",
-      "session": "종일",
-      "hours": 12,
-      "species": "갑오징어",
-      "tide": "11물",
-      "status": "open",
-      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명예약/1명",
-      "seatsLeft": 20,
-      "seatsTotal": 21,
-      "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "star",
@@ -210766,6 +210766,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "star",
+      "siteName": "안면도 아라온피싱",
+      "boat": "아라온피싱호",
+      "port": "충남 태안 영목항",
+      "phone": "010-4735-4515",
+      "date": "2026-11-29",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "17:00",
+      "session": "종일",
+      "hours": 12,
+      "species": "갑오징어",
+      "tide": "12물",
+      "status": "open",
+      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
+      "seatsLeft": 21,
+      "seatsTotal": 21,
+      "price": null,
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "arakhaeng",
       "siteName": "어락행호",
       "boat": "어락행호",
@@ -211234,27 +211255,6 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "star",
-      "siteName": "파티호",
-      "boat": "아라온피싱호",
-      "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
-      "date": "2026-11-29",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "17:00",
-      "session": "종일",
-      "hours": 12,
-      "species": "갑오징어",
-      "tide": "12물",
-      "status": "open",
-      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
-      "seatsTotal": 21,
-      "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "star",
@@ -218092,6 +218092,27 @@
       "url": "https://arirang.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
+      "siteId": "star",
+      "siteName": "안면도 아라온피싱",
+      "boat": "아라온피싱호",
+      "port": "충남 태안 영목항",
+      "phone": "010-4735-4515",
+      "date": "2026-11-30",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "17:00",
+      "session": "종일",
+      "hours": 12,
+      "species": "갑오징어",
+      "tide": "13물",
+      "status": "open",
+      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
+      "seatsLeft": 21,
+      "seatsTotal": 21,
+      "price": null,
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
       "siteId": "arakhaeng",
       "siteName": "어락행호",
       "boat": "어락행호",
@@ -218581,27 +218602,6 @@
       "seatsTotal": 21,
       "price": null,
       "url": "https://taegeukho.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "star",
-      "siteName": "파티호",
-      "boat": "아라온피싱호",
-      "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
-      "date": "2026-11-30",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "17:00",
-      "session": "종일",
-      "hours": 12,
-      "species": "갑오징어",
-      "tide": "13물",
-      "status": "open",
-      "statusText": "아라온피싱호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
-      "seatsTotal": 21,
-      "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "star",
@@ -223204,10 +223204,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-01",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -223221,7 +223221,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "lukina",
@@ -226893,10 +226893,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-02",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -226910,7 +226910,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "lukina",
@@ -230561,10 +230561,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-03",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -230578,7 +230578,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "lukina",
@@ -234290,10 +234290,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-04",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -234307,7 +234307,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "lukina",
@@ -238138,10 +238138,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-05",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -238155,7 +238155,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "specialdream",
@@ -241422,10 +241422,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-06",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -241439,7 +241439,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "specialdream",
@@ -244397,10 +244397,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-07",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -244414,7 +244414,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "lukina",
@@ -247624,10 +247624,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-08",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -247641,7 +247641,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "lukina",
@@ -250851,10 +250851,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-09",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -250868,7 +250868,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "lukina",
@@ -254056,10 +254056,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-10",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -254073,7 +254073,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "lukina",
@@ -257319,10 +257319,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-11",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -257336,7 +257336,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "lukina",
@@ -260728,10 +260728,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-12",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -260745,7 +260745,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "specialdream",
@@ -264138,10 +264138,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-13",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -264155,7 +264155,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "specialdream",
@@ -267136,10 +267136,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-14",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -267153,7 +267153,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "lukina",
@@ -269669,10 +269669,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-15",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -269686,7 +269686,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "lukina",
@@ -272222,10 +272222,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-16",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -272239,7 +272239,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "lukina",
@@ -274752,10 +274752,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-17",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -274769,7 +274769,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "lukina",
@@ -277323,10 +277323,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-18",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -277340,7 +277340,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "lukina",
@@ -280013,10 +280013,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-19",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -280030,7 +280030,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "specialdream",
@@ -282767,10 +282767,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-20",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -282784,7 +282784,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "specialdream",
@@ -285296,10 +285296,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-21",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -285313,7 +285313,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "lukina",
@@ -287720,10 +287720,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-22",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -287737,7 +287737,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "lukina",
@@ -290165,10 +290165,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-23",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -290182,7 +290182,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "lukina",
@@ -292610,10 +292610,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-24",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -292627,7 +292627,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "lukina",
@@ -295197,10 +295197,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-25",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -295214,7 +295214,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "specialdream",
@@ -297804,10 +297804,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-26",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -297821,7 +297821,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "specialdream",
@@ -300412,10 +300412,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-27",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -300429,7 +300429,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "specialdream",
@@ -302856,10 +302856,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-28",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -302873,7 +302873,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "lukina",
@@ -305301,10 +305301,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-29",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -305318,7 +305318,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "lukina",
@@ -307766,10 +307766,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-30",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -307783,7 +307783,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "lukina",
@@ -310272,10 +310272,10 @@
     },
     {
       "siteId": "star",
-      "siteName": "파티호",
+      "siteName": "안면도 아라온피싱",
       "boat": "아라온피싱호",
       "port": "충남 태안 영목항",
-      "phone": "010-3334-7777",
+      "phone": "010-4735-4515",
       "date": "2026-12-31",
       "departAt": "04:50",
       "meetingAt": "04:50",
@@ -310289,7 +310289,7 @@
       "seatsLeft": 21,
       "seatsTotal": null,
       "price": null,
-      "url": "https://star.sunsang24.com/ship/schedule_fleet/202612"
+      "url": "https://araonfishing.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "lukina",
