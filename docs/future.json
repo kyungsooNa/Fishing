@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-12T02:28:26.253Z",
+  "generatedAt": "2026-10-12T02:29:53.666Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -209,14 +209,14 @@
     "jinpro": 81,
     "jjanggu": 81,
     "juliana": 81,
-    "jungwonho": 22,
-    "kangnam": 22,
-    "keoyang": 22,
-    "kingstar": 22,
-    "kingstarho": 22,
-    "ksnaksi": 22,
-    "ktg": 22,
-    "lucy": 22,
+    "jungwonho": 81,
+    "kangnam": 81,
+    "keoyang": 81,
+    "kingstar": 81,
+    "kingstarho": 81,
+    "ksnaksi": 81,
+    "ktg": 81,
+    "lucy": 81,
     "lukina": 22,
     "luna": 22,
     "macgyver": 22,
@@ -41298,8 +41298,8 @@
       "species": "문어",
       "tide": "5물",
       "status": "open",
-      "statusText": "강남호 바로예약 예약완료 되오니 착오 없으시길 바랍니다 * 추는 40호 50호 입니다 * 신분증 및 PASS어플 필히 지참 해주세요 * 자리는 15인 부터 추첨 합니다 * 선내에서는 절대 음주 금지 입니다입금계좌 : 기업은행 계좌번호: 010-3684-5249 예금주 : 최형우(예약 즉시 입금 / 출조 3일전 환불불가)▶출조에 필요한 모든 물품은 출조점에 있습니다강남호 밴드 : band.us/@kangnamho예약문의 ; 010-3684-5249 어종 : 문어 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/5명",
-      "seatsLeft": 15,
+      "statusText": "강남호 바로예약 예약완료 되오니 착오 없으시길 바랍니다 * 추는 40호 50호 입니다 * 신분증 및 PASS어플 필히 지참 해주세요 * 자리는 15인 부터 추첨 합니다 * 선내에서는 절대 음주 금지 입니다입금계좌 : 기업은행 계좌번호: 010-3684-5249 예금주 : 최형우(예약 즉시 입금 / 출조 3일전 환불불가)▶출조에 필요한 모든 물품은 출조점에 있습니다강남호 밴드 : band.us/@kangnamho예약문의 ; 010-3684-5249 어종 : 문어 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/6명",
+      "seatsLeft": 14,
       "seatsTotal": 20,
       "price": null,
       "url": "https://kangnam.sunsang24.com/ship/schedule_fleet/202611"
@@ -94326,9 +94326,9 @@
       "hours": 10,
       "species": "주꾸미·갑오징어",
       "tide": "12물",
-      "status": "few",
-      "statusText": "킹스타호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/19명",
-      "seatsLeft": 1,
+      "status": "closed",
+      "statusText": "킹스타호 대기하기 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/20명",
+      "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
       "url": "https://kingstar.sunsang24.com/ship/schedule_fleet/202611"
@@ -101348,8 +101348,8 @@
       "species": "갑오징어",
       "tide": "13물",
       "status": "open",
-      "statusText": "리더호 바로예약 어종 바뀔 수 있습니다.@4시30분 매장집결(3시20분 매장오픈) @미입금시 자동취소됩니다/5일전부터 취소환불 안됩니다▶ 자 리 배 정 ◀ - 선탑 1번에서 4번까지 오버시 가위바위보 - 14인이상 추첨, 연박자 우선권 어종 : 갑오징어 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/12명",
-      "seatsLeft": 8,
+      "statusText": "리더호 바로예약 어종 바뀔 수 있습니다.@4시30분 매장집결(3시20분 매장오픈) @미입금시 자동취소됩니다/5일전부터 취소환불 안됩니다▶ 자 리 배 정 ◀ - 선탑 1번에서 4번까지 오버시 가위바위보 - 14인이상 추첨, 연박자 우선권 어종 : 갑오징어 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/14명",
+      "seatsLeft": 6,
       "seatsTotal": 20,
       "price": null,
       "url": "https://ksnaksi.sunsang24.com/ship/schedule_fleet/202611"
@@ -108032,8 +108032,8 @@
       "species": "문어",
       "tide": "조금",
       "status": "open",
-      "statusText": "킹스타호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/13명",
-      "seatsLeft": 7,
+      "statusText": "킹스타호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/14명",
+      "seatsLeft": 6,
       "seatsTotal": 20,
       "price": null,
       "url": "https://kingstarho.sunsang24.com/ship/schedule_fleet/202611"
@@ -115742,8 +115742,8 @@
       "species": "문어",
       "tide": "무시",
       "status": "open",
-      "statusText": "킹스타호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/10명",
-      "seatsLeft": 10,
+      "statusText": "킹스타호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/12명",
+      "seatsLeft": 8,
       "seatsTotal": 20,
       "price": null,
       "url": "https://kingstarho.sunsang24.com/ship/schedule_fleet/202611"
@@ -150148,8 +150148,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "4물",
       "status": "open",
-      "statusText": "킹스타호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/14명",
-      "seatsLeft": 6,
+      "statusText": "킹스타호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/15명",
+      "seatsLeft": 5,
       "seatsTotal": 20,
       "price": null,
       "url": "https://kingstar.sunsang24.com/ship/schedule_fleet/202611"
@@ -157945,8 +157945,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "5물",
       "status": "open",
-      "statusText": "킹스타호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명예약/1명",
-      "seatsLeft": 19,
+      "statusText": "킹스타호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/6명",
+      "seatsLeft": 14,
       "seatsTotal": 20,
       "price": null,
       "url": "https://kingstar.sunsang24.com/ship/schedule_fleet/202611"
@@ -222841,7 +222841,7 @@
       "status": "open",
       "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -226530,7 +226530,7 @@
       "status": "open",
       "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -230198,7 +230198,7 @@
       "status": "open",
       "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -233906,7 +233906,7 @@
       "status": "open",
       "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -237710,9 +237710,9 @@
       "species": "문어",
       "tide": "3물",
       "status": "open",
-      "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
-      "seatsTotal": null,
+      "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/2명",
+      "seatsLeft": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -241015,9 +241015,9 @@
       "species": "문어",
       "tide": "4물",
       "status": "open",
-      "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
-      "seatsTotal": null,
+      "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/2명",
+      "seatsLeft": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -244034,7 +244034,7 @@
       "status": "open",
       "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -247261,7 +247261,7 @@
       "status": "open",
       "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -250488,7 +250488,7 @@
       "status": "open",
       "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -253693,7 +253693,7 @@
       "status": "open",
       "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -256956,7 +256956,7 @@
       "status": "open",
       "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -260344,7 +260344,7 @@
       "status": "open",
       "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -263754,7 +263754,7 @@
       "status": "open",
       "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -266773,7 +266773,7 @@
       "status": "open",
       "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -269327,7 +269327,7 @@
       "status": "open",
       "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -271880,7 +271880,7 @@
       "status": "open",
       "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -274410,7 +274410,7 @@
       "status": "open",
       "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -276981,7 +276981,7 @@
       "status": "open",
       "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -279650,7 +279650,7 @@
       "status": "open",
       "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -282404,7 +282404,7 @@
       "status": "open",
       "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -284933,7 +284933,7 @@
       "status": "open",
       "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -287357,7 +287357,7 @@
       "status": "open",
       "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -289802,7 +289802,7 @@
       "status": "open",
       "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -292247,7 +292247,7 @@
       "status": "open",
       "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -294834,7 +294834,7 @@
       "status": "open",
       "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -297441,7 +297441,7 @@
       "status": "open",
       "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -300028,7 +300028,7 @@
       "status": "open",
       "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -302513,7 +302513,7 @@
       "status": "open",
       "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -304958,7 +304958,7 @@
       "status": "open",
       "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -307423,7 +307423,7 @@
       "status": "open",
       "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -309929,7 +309929,7 @@
       "status": "open",
       "statusText": "루시호 바로예약 어종 : 문어 / 선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://lucy.sunsang24.com/ship/schedule_fleet/202612"
     },
