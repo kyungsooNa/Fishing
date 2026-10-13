@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-13T21:02:25.152Z",
+  "generatedAt": "2026-10-13T21:03:50.804Z",
   "horizonDays": 90,
   "cursors": {
     "7": 79,
@@ -183,13 +183,13 @@
     "gdcompany": 22,
     "genieyonghan": 22,
     "giant": 22,
-    "goaraho": 80,
-    "gonghyeonjin": 80,
-    "gosu": 80,
-    "gsseven": 80,
-    "gudiho": 80,
-    "gukbo": 22,
-    "gull": 80,
+    "goaraho": 22,
+    "gonghyeonjin": 22,
+    "gosu": 22,
+    "gsseven": 22,
+    "gudiho": 22,
+    "gukbo": 79,
+    "gull": 22,
     "gundam": 80,
     "gunsannaksi": 80,
     "gyeongjuho": 80,
@@ -263,7 +263,7 @@
     "napoliho": 50,
     "bumblebee": 50,
     "eagleho": 43,
-    "goldatsr": 22
+    "goldatsr": 79
   },
   "trips": [
     {
@@ -5973,7 +5973,7 @@
       "status": "open",
       "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": null,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -13644,7 +13644,7 @@
       "status": "open",
       "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": null,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -20814,7 +20814,7 @@
       "status": "open",
       "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": null,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -29682,7 +29682,7 @@
       "status": "open",
       "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": null,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -36105,8 +36105,8 @@
       "species": "갑오징어",
       "tide": "7물",
       "status": "open",
-      "statusText": "신출항호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/11명",
-      "seatsLeft": 6,
+      "statusText": "신출항호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/9명",
+      "seatsLeft": 8,
       "seatsTotal": 17,
       "price": null,
       "url": "https://gukbo.sunsang24.com/ship/schedule_fleet/202611"
@@ -38077,7 +38077,7 @@
       "status": "open",
       "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": null,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -46726,7 +46726,7 @@
       "status": "open",
       "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": null,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -55349,7 +55349,7 @@
       "status": "open",
       "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": null,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -63997,7 +63997,7 @@
       "status": "open",
       "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": null,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -72520,7 +72520,7 @@
       "status": "open",
       "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": null,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -79816,8 +79816,8 @@
       "species": "갑오징어",
       "tide": "12물",
       "status": "open",
-      "statusText": "고수호 바로예약 어종 : 갑오징어 / 선상 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명예약/4명",
-      "seatsLeft": 16,
+      "statusText": "고수호 바로예약 어종 : 갑오징어 / 선상 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/5명",
+      "seatsLeft": 15,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gosu.sunsang24.com/ship/schedule_fleet/202611"
@@ -96022,7 +96022,7 @@
       "status": "open",
       "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": null,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -100659,8 +100659,8 @@
       "species": "문어",
       "tide": "무시",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/10명",
-      "seatsLeft": 10,
+      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/12명",
+      "seatsLeft": 8,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -102200,8 +102200,8 @@
       "species": "갑오징어",
       "tide": "무시",
       "status": "open",
-      "statusText": "신출항호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/10명",
-      "seatsLeft": 7,
+      "statusText": "신출항호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/11명",
+      "seatsLeft": 6,
       "seatsTotal": 17,
       "price": null,
       "url": "https://gukbo.sunsang24.com/ship/schedule_fleet/202611"
@@ -104151,7 +104151,7 @@
       "status": "open",
       "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": null,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -112284,7 +112284,7 @@
       "status": "open",
       "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": null,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -117048,8 +117048,8 @@
       "species": "문어",
       "tide": "2물",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/8명",
-      "seatsLeft": 12,
+      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/10명",
+      "seatsLeft": 10,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -118547,8 +118547,8 @@
       "species": "갑오징어",
       "tide": "2물",
       "status": "open",
-      "statusText": "신출항호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/9명",
-      "seatsLeft": 8,
+      "statusText": "신출항호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리4명예약/13명",
+      "seatsLeft": 4,
       "seatsTotal": 17,
       "price": null,
       "url": "https://gukbo.sunsang24.com/ship/schedule_fleet/202611"
@@ -120519,7 +120519,7 @@
       "status": "open",
       "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": null,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -128734,7 +128734,7 @@
       "status": "open",
       "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": null,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -137254,7 +137254,7 @@
       "status": "open",
       "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": null,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -141679,8 +141679,8 @@
       "species": "문어",
       "tide": "5물",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/8명",
-      "seatsLeft": 12,
+      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/11명",
+      "seatsLeft": 9,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -144955,7 +144955,7 @@
       "status": "open",
       "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": null,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -148889,8 +148889,8 @@
       "species": "문어",
       "tide": "6물",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/8명",
-      "seatsLeft": 12,
+      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/10명",
+      "seatsLeft": 10,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -151838,7 +151838,7 @@
       "status": "open",
       "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": null,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -159715,7 +159715,7 @@
       "status": "open",
       "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": null,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -167592,7 +167592,7 @@
       "status": "open",
       "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": null,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -175533,7 +175533,7 @@
       "status": "open",
       "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": null,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -177474,8 +177474,8 @@
       "species": "문어",
       "tide": "9물",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 문어 / 루어 운항시간 : 16:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/8명",
-      "seatsLeft": 12,
+      "statusText": "홈런호 바로예약 어종 : 문어 / 루어 운항시간 : 16:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/11명",
+      "seatsLeft": 9,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -180326,8 +180326,8 @@
       "species": "문어",
       "tide": "10물",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/6명",
-      "seatsLeft": 14,
+      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/8명",
+      "seatsLeft": 12,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -183450,7 +183450,7 @@
       "status": "open",
       "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": null,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -191342,7 +191342,7 @@
       "status": "open",
       "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": null,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -193365,8 +193365,8 @@
       "species": "문어",
       "tide": "11물",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 문어 / 루어 운항시간 : 16:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명예약/7명",
-      "seatsLeft": 13,
+      "statusText": "홈런호 바로예약 어종 : 문어 / 루어 운항시간 : 16:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/10명",
+      "seatsLeft": 10,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -198979,7 +198979,7 @@
       "status": "open",
       "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": null,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -206473,7 +206473,7 @@
       "status": "open",
       "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": null,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202611"
     },
