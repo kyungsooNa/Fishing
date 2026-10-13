@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-12T19:26:50.761Z",
+  "generatedAt": "2026-10-13T00:32:34.323Z",
   "horizonDays": 90,
   "cursors": {
     "7": 81,
@@ -231,14 +231,14 @@
     "newsky": 22,
     "newtaejinho": 22,
     "ninedragon": 22,
-    "np": 81,
-    "nurifish": 22,
-    "orion": 81,
-    "pacific": 81,
-    "parkpro": 81,
-    "pigho": 81,
-    "poseidon": 81,
-    "princeho": 81,
+    "np": 22,
+    "nurifish": 80,
+    "orion": 22,
+    "pacific": 22,
+    "parkpro": 22,
+    "pigho": 22,
+    "poseidon": 22,
+    "princeho": 22,
     "pro": 81,
     "redfox": 81,
     "redpulsegs": 81,
@@ -4838,8 +4838,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "1물",
       "status": "open",
-      "statusText": "프린스호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명예약/4명",
-      "seatsLeft": 13,
+      "statusText": "프린스호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/2명",
+      "seatsLeft": 15,
       "seatsTotal": 17,
       "price": null,
       "url": "https://princeho.sunsang24.com/ship/schedule_fleet/202611"
@@ -5197,8 +5197,8 @@
       "species": "참돔",
       "tide": "2물",
       "status": "open",
-      "statusText": "거금 박프로호 바로예약 어종 : 참돔,농어,붉바리 / 생미끼 외수질,선상 운항시간 : 05:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
+      "statusText": "거금 박프로호 바로예약 어종 : 참돔,농어,붉바리 / 생미끼 외수질,선상 운항시간 : 05:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명예약/1명",
+      "seatsLeft": 19,
       "seatsTotal": 20,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202611"
@@ -7620,7 +7620,7 @@
       "status": "open",
       "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://np.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -13081,8 +13081,8 @@
       "species": "참돔",
       "tide": "3물",
       "status": "open",
-      "statusText": "거금 박프로호 바로예약 어종 : 참돔,농어,붉바리 / 생미끼 외수질,선상 운항시간 : 05:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
+      "statusText": "거금 박프로호 바로예약 어종 : 참돔,농어,붉바리 / 생미끼 외수질,선상 운항시간 : 05:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명예약/1명",
+      "seatsLeft": 19,
       "seatsTotal": 20,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202611"
@@ -15399,7 +15399,7 @@
       "status": "open",
       "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://np.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -22986,7 +22986,7 @@
       "status": "open",
       "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://np.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -27753,9 +27753,9 @@
       "hours": 10,
       "species": "참돔",
       "tide": "5물",
-      "status": "open",
-      "statusText": "거금 박프로호 바로예약 어종 : 참돔,농어,붉바리 / 생미끼 외수질,선상 운항시간 : 05:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/15명",
-      "seatsLeft": 5,
+      "status": "closed",
+      "statusText": "거금 박프로호 대기하기 어종 : 참돔,농어,붉바리 / 생미끼 외수질,선상 운항시간 : 05:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/20명",
+      "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202611"
@@ -30131,8 +30131,8 @@
       "species": "갈치",
       "tide": "5물",
       "status": "open",
-      "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/6명",
-      "seatsLeft": 10,
+      "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/7명",
+      "seatsLeft": 9,
       "seatsTotal": 16,
       "price": null,
       "url": "https://np.sunsang24.com/ship/schedule_fleet/202611"
@@ -39067,7 +39067,7 @@
       "status": "open",
       "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://np.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -47357,7 +47357,7 @@
       "status": "open",
       "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://np.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -55922,7 +55922,7 @@
       "status": "open",
       "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://np.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -64440,7 +64440,7 @@
       "status": "open",
       "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://np.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -72899,7 +72899,7 @@
       "status": "open",
       "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://np.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -81338,7 +81338,7 @@
       "status": "open",
       "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://np.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -87093,8 +87093,8 @@
       "species": "참돔",
       "tide": "13물",
       "status": "open",
-      "statusText": "거금 박프로호 바로예약 어종 : 참돔,농어,붉바리 / 생미끼 외수질,선상 운항시간 : 05:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
+      "statusText": "거금 박프로호 바로예약 어종 : 참돔,농어,붉바리 / 생미끼 외수질,선상 운항시간 : 05:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/6명",
+      "seatsLeft": 14,
       "seatsTotal": 20,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202611"
@@ -89513,8 +89513,8 @@
       "species": "갈치",
       "tide": "13물",
       "status": "open",
-      "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/6명",
-      "seatsLeft": 10,
+      "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/9명",
+      "seatsLeft": 7,
       "seatsTotal": 16,
       "price": null,
       "url": "https://np.sunsang24.com/ship/schedule_fleet/202611"
@@ -97142,7 +97142,7 @@
       "status": "open",
       "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://np.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -104439,7 +104439,7 @@
       "status": "open",
       "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://np.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -112570,7 +112570,7 @@
       "status": "open",
       "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://np.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -120640,7 +120640,7 @@
       "status": "open",
       "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://np.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -128812,7 +128812,7 @@
       "status": "open",
       "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://np.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -136943,7 +136943,7 @@
       "status": "open",
       "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://np.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -141107,9 +141107,9 @@
       "hours": 10,
       "species": "주꾸미·갑오징어",
       "tide": "4물",
-      "status": "open",
-      "statusText": "꽃돼지호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 입금완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/14명",
-      "seatsLeft": 7,
+      "status": "few",
+      "statusText": "꽃돼지호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 입금완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/19명",
+      "seatsLeft": 2,
       "seatsTotal": 21,
       "price": null,
       "url": "https://pigho.sunsang24.com/ship/schedule_fleet/202611"
@@ -145272,7 +145272,7 @@
       "status": "open",
       "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://np.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -152807,7 +152807,7 @@
       "status": "open",
       "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://np.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -159543,7 +159543,7 @@
       "status": "open",
       "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://np.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -167379,7 +167379,7 @@
       "status": "open",
       "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://np.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -175172,7 +175172,7 @@
       "status": "open",
       "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://np.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -183029,7 +183029,7 @@
       "status": "open",
       "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://np.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -190862,7 +190862,7 @@
       "status": "open",
       "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://np.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -198730,7 +198730,7 @@
       "status": "open",
       "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://np.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -206281,7 +206281,7 @@
       "status": "open",
       "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://np.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -213588,7 +213588,7 @@
       "status": "open",
       "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://np.sunsang24.com/ship/schedule_fleet/202611"
     },
