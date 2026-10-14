@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T14:52:22.493Z",
+  "generatedAt": "2026-10-14T14:53:49.530Z",
   "horizonDays": 90,
   "cursors": {
     "7": 79,
@@ -181,13 +181,13 @@
     "gagaho": 22,
     "galchiho": 22,
     "gdcompany": 22,
-    "genieyonghan": 79,
-    "giant": 79,
-    "goaraho": 79,
-    "gonghyeonjin": 79,
-    "gosu": 79,
-    "gsseven": 79,
-    "gudiho": 79,
+    "genieyonghan": 22,
+    "giant": 22,
+    "goaraho": 22,
+    "gonghyeonjin": 22,
+    "gosu": 22,
+    "gsseven": 22,
+    "gudiho": 22,
     "gukbo": 22,
     "gull": 79,
     "gundam": 79,
@@ -263,7 +263,7 @@
     "napoliho": 50,
     "bumblebee": 50,
     "eagleho": 43,
-    "goldatsr": 22
+    "goldatsr": 79
   },
   "trips": [
     {
@@ -17418,8 +17418,8 @@
       "species": "농어",
       "tide": "4물",
       "status": "open",
-      "statusText": "팀루비나2호 바로예약 어종 : 농어 / 갯바위,루어,선상,캐스팅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리4명예약/5명",
-      "seatsLeft": 4,
+      "statusText": "팀루비나2호 바로예약 어종 : 농어 / 갯바위,루어,선상,캐스팅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리3명예약/6명",
+      "seatsLeft": 3,
       "seatsTotal": 9,
       "price": null,
       "url": "https://gosu.sunsang24.com/ship/schedule_fleet/202611"
@@ -21467,8 +21467,8 @@
       "species": "대구",
       "tide": "5물",
       "status": "open",
-      "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
+      "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명예약/1명",
+      "seatsLeft": 20,
       "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202611"
@@ -22395,8 +22395,8 @@
       "species": "갈치",
       "tide": "5물",
       "status": "open",
-      "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/5명",
-      "seatsLeft": 10,
+      "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/6명",
+      "seatsLeft": 9,
       "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202611"
@@ -25948,9 +25948,9 @@
       "species": "농어",
       "tide": "5물",
       "status": "open",
-      "statusText": "팀루비나2호 바로예약 어종 : 농어 / 갯바위,루어,선상,캐스팅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/1명",
-      "seatsLeft": 8,
-      "seatsTotal": 9,
+      "statusText": "팀루비나2호 바로예약 어종 : 농어 / 갯바위,루어,선상,캐스팅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
+      "seatsLeft": 9,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://gosu.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -86834,8 +86834,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "13물",
       "status": "open",
-      "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
+      "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명예약/4명",
+      "seatsLeft": 17,
       "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202611"
@@ -141224,6 +141224,26 @@
       "price": null,
       "url": "https://yjong.thefishing.kr/index.php?mid=bk&year=2026&month=11&day=22",
       "urlDated": true
+    },
+    {
+      "siteId": "giant",
+      "siteName": "자이언트호",
+      "boat": "자이언트호",
+      "port": "전북 군산 비응항",
+      "phone": "010-9496-9367",
+      "date": "2026-11-22",
+      "departAt": null,
+      "returnAt": null,
+      "session": null,
+      "hours": null,
+      "species": "광어",
+      "tide": "5물",
+      "status": "open",
+      "statusText": "자이언트호 바로예약 어종 : 광어,우럭 / 다운샷,루어 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/2명",
+      "seatsLeft": 18,
+      "seatsTotal": 20,
+      "price": null,
+      "url": "https://giant.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "secretbus",
