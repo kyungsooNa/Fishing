@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T22:17:49.717Z",
+  "generatedAt": "2026-10-14T23:52:27.854Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -180,13 +180,13 @@
     "fishhunter": 78,
     "gagaho": 78,
     "galchiho": 78,
-    "gdcompany": 22,
-    "genieyonghan": 22,
-    "giant": 22,
-    "goaraho": 22,
-    "gonghyeonjin": 22,
-    "gosu": 22,
-    "gsseven": 22,
+    "gdcompany": 78,
+    "genieyonghan": 78,
+    "giant": 78,
+    "goaraho": 78,
+    "gonghyeonjin": 78,
+    "gosu": 78,
+    "gsseven": 78,
     "gudiho": 22,
     "gukbo": 78,
     "gull": 22,
@@ -263,7 +263,7 @@
     "napoliho": 50,
     "bumblebee": 50,
     "eagleho": 43,
-    "goldatsr": 79
+    "goldatsr": 22
   },
   "trips": [
     {
@@ -9202,8 +9202,8 @@
       "species": "갑오징어",
       "tide": "4물",
       "status": "open",
-      "statusText": "지디3호 바로예약 어종 : 갑오징어 / 선상 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/11명",
-      "seatsLeft": 6,
+      "statusText": "지디3호 바로예약 어종 : 갑오징어 / 선상 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/12명",
+      "seatsLeft": 5,
       "seatsTotal": 17,
       "price": null,
       "url": "https://gdcompany.sunsang24.com/ship/schedule_fleet/202611"
@@ -216952,9 +216952,9 @@
       "hours": null,
       "species": "방어",
       "tide": "3물",
-      "status": "open",
-      "statusText": "지디1호 바로예약 어종 : 방어 / 선상,지깅 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리3명예약/19명",
-      "seatsLeft": 3,
+      "status": "closed",
+      "statusText": "지디1호 대기하기 어종 : 방어 / 선상,지깅 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 22명 예약/22명",
+      "seatsLeft": 0,
       "seatsTotal": 22,
       "price": null,
       "url": "https://gdcompany.sunsang24.com/ship/schedule_fleet/202612"
@@ -216973,8 +216973,8 @@
       "species": "대구",
       "tide": "3물",
       "status": "open",
-      "statusText": "지디4호 바로예약 어종 : 대구 / 지깅 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/12명",
-      "seatsLeft": 11,
+      "statusText": "지디4호 바로예약 어종 : 대구 / 지깅 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/13명",
+      "seatsLeft": 10,
       "seatsTotal": 23,
       "price": null,
       "url": "https://gdcompany.sunsang24.com/ship/schedule_fleet/202612"
@@ -240127,9 +240127,9 @@
       "hours": null,
       "species": "방어",
       "tide": "10물",
-      "status": "closed",
-      "statusText": "지디1호 대기하기 어종 : 방어 / 선상,지깅 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 22명 예약/22명",
-      "seatsLeft": 0,
+      "status": "few",
+      "statusText": "지디1호 바로예약 어종 : 방어 / 선상,지깅 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/21명",
+      "seatsLeft": 1,
       "seatsTotal": 22,
       "price": null,
       "url": "https://gdcompany.sunsang24.com/ship/schedule_fleet/202612"
