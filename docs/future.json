@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T04:59:48.831Z",
+  "generatedAt": "2026-10-14T05:01:12.861Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -182,13 +182,13 @@
     "galchiho": 79,
     "gdcompany": 79,
     "genieyonghan": 79,
-    "giant": 22,
-    "goaraho": 22,
-    "gonghyeonjin": 22,
-    "gosu": 22,
-    "gsseven": 22,
-    "gudiho": 22,
-    "gukbo": 79,
+    "giant": 79,
+    "goaraho": 79,
+    "gonghyeonjin": 79,
+    "gosu": 79,
+    "gsseven": 79,
+    "gudiho": 79,
+    "gukbo": 22,
     "gull": 22,
     "gundam": 22,
     "gunsannaksi": 22,
@@ -263,7 +263,7 @@
     "napoliho": 50,
     "bumblebee": 50,
     "eagleho": 43,
-    "goldatsr": 79
+    "goldatsr": 22
   },
   "trips": [
     {
@@ -17838,9 +17838,9 @@
       "hours": 10.5,
       "species": "갑오징어",
       "tide": "4물",
-      "status": "open",
-      "statusText": "뉴세븐호 바로예약 어종 : 갑오징어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/11명",
-      "seatsLeft": 9,
+      "status": "few",
+      "statusText": "뉴세븐호 바로예약 어종 : 갑오징어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/19명",
+      "seatsLeft": 1,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gsseven.sunsang24.com/ship/schedule_fleet/202611"
@@ -35999,8 +35999,8 @@
       "species": "갑오징어",
       "tide": "7물",
       "status": "open",
-      "statusText": "신출항호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/9명",
-      "seatsLeft": 8,
+      "statusText": "신출항호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/5명",
+      "seatsLeft": 12,
       "seatsTotal": 17,
       "price": null,
       "url": "https://gukbo.sunsang24.com/ship/schedule_fleet/202611"
@@ -79605,8 +79605,8 @@
       "species": "갑오징어",
       "tide": "12물",
       "status": "open",
-      "statusText": "고수호 바로예약 어종 : 갑오징어 / 선상 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/5명",
-      "seatsLeft": 15,
+      "statusText": "고수호 바로예약 어종 : 갑오징어 / 선상 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명예약/7명",
+      "seatsLeft": 13,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gosu.sunsang24.com/ship/schedule_fleet/202611"
@@ -94024,9 +94024,9 @@
       "hours": 12,
       "species": "갑오징어",
       "tide": "조금",
-      "status": "few",
-      "statusText": "신출항호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/16명",
-      "seatsLeft": 1,
+      "status": "closed",
+      "statusText": "신출항호 대기하기 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 17명 예약/17명",
+      "seatsLeft": 0,
       "seatsTotal": 17,
       "price": null,
       "url": "https://gukbo.sunsang24.com/ship/schedule_fleet/202611"
@@ -141321,9 +141321,9 @@
       "species": "농어",
       "tide": "5물",
       "status": "open",
-      "statusText": "팀루비나2호 바로예약 어종 : 농어 / 갯바위,루어,선상,캐스팅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
-      "seatsLeft": 9,
-      "seatsTotal": 17,
+      "statusText": "팀루비나2호 바로예약 어종 : 농어 / 갯바위,루어,선상,캐스팅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/2명",
+      "seatsLeft": 7,
+      "seatsTotal": 9,
       "price": null,
       "url": "https://gosu.sunsang24.com/ship/schedule_fleet/202611"
     },
