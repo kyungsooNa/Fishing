@@ -11,6 +11,8 @@ rem   run.bat noupdate   시작할 때 git pull 을 건너뜁니다
 rem                      (KEEP_DATA=1 이면 로컬 수집 결과를 버리지 않습니다)
 rem   run.bat collect    전체 수집. docs\data.json 을 갱신합니다
 rem   run.bat all        수집한 다음 화면 띄우기
+rem   run.bat publish    더피싱·국내 전용 선사를 이 PC에서 받아 공개 현황판(main)에 올립니다
+rem                      (로컬 서버가 켜져 있으면 그 서버가 받아둔 값을 올립니다)
 rem   run.bat test       파서 회귀 테스트. 네트워크 불필요
 rem   run.bat debug [id] 사이트 한 곳만 돌려보기. id 생략하면 목록
 
@@ -68,6 +70,7 @@ if /i "%CMD%"=="admin"   goto :admin
 if /i "%CMD%"=="noupdate" goto :serve
 if /i "%CMD%"=="collect" goto :collect
 if /i "%CMD%"=="all"     goto :all
+if /i "%CMD%"=="publish" goto :publish
 if /i "%CMD%"=="test"    goto :test
 if /i "%CMD%"=="debug"   goto :debug
 goto :usage
@@ -116,6 +119,12 @@ if errorlevel 1 (
 )
 exit /b 0
 
+:publish
+echo [올리기] 더피싱·국내 전용 선사를 받아 main에 올립니다. 20분 남짓 걸립니다...
+echo.
+node publish.js %2
+goto :end
+
 :test
 call npm test
 goto :end
@@ -136,6 +145,7 @@ echo   run.bat admin          시스템 관리 페이지 열기
 echo   run.bat noupdate       git pull 없이 띄우기
 echo   run.bat collect        전체 수집
 echo   run.bat all            수집 후 화면 띄우기
+echo   run.bat publish        더피싱·국내 전용을 받아 공개 현황판에 올리기
 echo   run.bat test           테스트
 echo   run.bat debug ^<id^>     사이트 한 곳만 확인
 goto :end

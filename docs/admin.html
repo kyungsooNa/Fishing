@@ -1118,7 +1118,8 @@ function paintCloudCollect(task) {
   const siteId = shownSummary && scope?.type === 'site' ? scope.value : task?.siteId;
   const target = siteId
     ? (SITES.find((site) => site.id === siteId)?.name ?? siteId)
-    : scope?.type === 'adapter' ? `${scope.value} 어댑터` : '전체 선사';
+    : scope?.type === 'adapter' ? `${scope.value} 어댑터`
+      : scope?.type === 'sites' ? `국내 PC 선사 ${scope.value}곳` : '전체 선사';
   const partly = shownSummary && shownSummary.success < shownSummary.total;
   box.className = `cloudstate ${task?.conclusion && task.conclusion !== 'success'
     ? 'failure' : partly ? 'partial' : task?.status === 'completed' || !task?.status ? 'success' : ''}`;
