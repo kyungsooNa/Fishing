@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T00:31:42.509Z",
+  "generatedAt": "2026-10-15T00:33:07.436Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -203,14 +203,14 @@
     "jangbogo": 22,
     "jangbogofishing": 22,
     "janggofish": 22,
-    "jeilfishing": 22,
-    "jejutv": 22,
-    "jh": 22,
-    "jinpro": 22,
-    "jjanggu": 22,
-    "juliana": 22,
-    "jungwonho": 22,
-    "kangnam": 22,
+    "jeilfishing": 78,
+    "jejutv": 78,
+    "jh": 78,
+    "jinpro": 78,
+    "jjanggu": 78,
+    "juliana": 78,
+    "jungwonho": 78,
+    "kangnam": 78,
     "keoyang": 22,
     "kingstar": 22,
     "kingstarho": 22,
@@ -3045,7 +3045,7 @@
       "status": "open",
       "statusText": "진프로 3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://jinpro.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -4458,8 +4458,8 @@
       "species": "광어",
       "tide": "3물",
       "status": "open",
-      "statusText": "정환호 바로예약 어종 : 광어,우럭 / 다운샷 운항시간 : 05:00 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/10명",
-      "seatsLeft": 10,
+      "statusText": "정환호 바로예약 어종 : 광어,우럭 / 다운샷 운항시간 : 05:00 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/12명",
+      "seatsLeft": 8,
       "seatsTotal": 20,
       "price": null,
       "url": "https://jh.sunsang24.com/ship/schedule_fleet/202611"
@@ -27451,7 +27451,7 @@
       "status": "open",
       "statusText": "진프로 3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://jinpro.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -36037,7 +36037,7 @@
       "status": "open",
       "statusText": "진프로 3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://jinpro.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -44662,7 +44662,7 @@
       "status": "open",
       "statusText": "진프로 3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://jinpro.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -53286,7 +53286,7 @@
       "status": "open",
       "statusText": "진프로 3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://jinpro.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -61805,7 +61805,7 @@
       "status": "open",
       "statusText": "진프로 3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://jinpro.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -77411,8 +77411,8 @@
       "species": "문어",
       "tide": "14물",
       "status": "open",
-      "statusText": "짱구호 바로예약 어종 : 문어 / 루어 운항시간 : 03:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/8명",
-      "seatsLeft": 12,
+      "statusText": "짱구호 바로예약 어종 : 문어 / 루어 운항시간 : 03:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/12명",
+      "seatsLeft": 8,
       "seatsTotal": 20,
       "price": null,
       "url": "https://jjanggu.sunsang24.com/ship/schedule_fleet/202611"
@@ -78320,7 +78320,7 @@
       "status": "open",
       "statusText": "진프로 3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://jinpro.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -84957,8 +84957,8 @@
       "species": "문어",
       "tide": "조금",
       "status": "open",
-      "statusText": "짱구호 바로예약 어종 : 문어 / 루어 운항시간 : 03:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/5명",
-      "seatsLeft": 15,
+      "statusText": "짱구호 바로예약 어종 : 문어 / 루어 운항시간 : 03:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명예약/7명",
+      "seatsLeft": 13,
       "seatsTotal": 20,
       "price": null,
       "url": "https://jjanggu.sunsang24.com/ship/schedule_fleet/202611"
@@ -85929,7 +85929,7 @@
       "status": "open",
       "statusText": "진프로 3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://jinpro.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -93828,7 +93828,7 @@
       "status": "open",
       "statusText": "진프로 3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://jinpro.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -102003,7 +102003,7 @@
       "status": "open",
       "statusText": "진프로 3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://jinpro.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -110238,7 +110238,7 @@
       "status": "open",
       "statusText": "진프로 3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://jinpro.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -118495,7 +118495,7 @@
       "status": "open",
       "statusText": "진프로 3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://jinpro.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -131557,8 +131557,8 @@
       "species": "갈치",
       "tide": "5물",
       "status": "open",
-      "statusText": "제주갈치TV호 바로예약 어종 : 갈치 / 선상 운항시간 : 15:30 ~ 05:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/3명",
-      "seatsLeft": 9,
+      "statusText": "제주갈치TV호 바로예약 어종 : 갈치 / 선상 운항시간 : 15:30 ~ 05:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/2명",
+      "seatsLeft": 10,
       "seatsTotal": 12,
       "price": null,
       "url": "https://jejutv.sunsang24.com/ship/schedule_fleet/202611"
@@ -136299,9 +136299,9 @@
       "hours": 10,
       "species": "우럭",
       "tide": "5물",
-      "status": "open",
-      "statusText": "제일피싱호 바로예약 어종 : 우럭 / 어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리4명예약/12명",
-      "seatsLeft": 4,
+      "status": "few",
+      "statusText": "제일피싱호 바로예약 어종 : 우럭 / 어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/14명",
+      "seatsLeft": 2,
       "seatsTotal": 16,
       "price": null,
       "url": "https://jeilfishing.sunsang24.com/ship/schedule_fleet/202611"
@@ -139238,8 +139238,8 @@
       "species": "갈치",
       "tide": "6물",
       "status": "open",
-      "statusText": "제주갈치TV호 바로예약 어종 : 갈치 / 선상 운항시간 : 15:30 ~ 05:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/1명",
-      "seatsLeft": 11,
+      "statusText": "제주갈치TV호 바로예약 어종 : 갈치 / 선상 운항시간 : 15:30 ~ 05:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
+      "seatsLeft": 12,
       "seatsTotal": 12,
       "price": null,
       "url": "https://jejutv.sunsang24.com/ship/schedule_fleet/202611"
@@ -142137,7 +142137,7 @@
       "status": "open",
       "statusText": "진프로 3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://jinpro.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -149843,7 +149843,7 @@
       "status": "open",
       "statusText": "진프로 3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://jinpro.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -157699,7 +157699,7 @@
       "status": "open",
       "statusText": "진프로 3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://jinpro.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -188982,7 +188982,7 @@
       "status": "open",
       "statusText": "진프로 3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://jinpro.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -196476,7 +196476,7 @@
       "status": "open",
       "statusText": "진프로 3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://jinpro.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -223187,8 +223187,8 @@
       "species": "갈치",
       "tide": "5물",
       "status": "open",
-      "statusText": "제주갈치TV호 바로예약 어종 : 갈치 / 선상 운항시간 : 15:30 ~ 05:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/3명",
-      "seatsLeft": 9,
+      "statusText": "제주갈치TV호 바로예약 어종 : 갈치 / 선상 운항시간 : 15:30 ~ 05:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/4명",
+      "seatsLeft": 8,
       "seatsTotal": 12,
       "price": null,
       "url": "https://jejutv.sunsang24.com/ship/schedule_fleet/202612"
@@ -229515,8 +229515,8 @@
       "species": "갈치",
       "tide": "7물",
       "status": "open",
-      "statusText": "제주갈치TV호 바로예약 어종 : 갈치 / 선상 운항시간 : 15:30 ~ 05:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/6명",
-      "seatsLeft": 6,
+      "statusText": "제주갈치TV호 바로예약 어종 : 갈치 / 선상 운항시간 : 15:30 ~ 05:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리4명예약/8명",
+      "seatsLeft": 4,
       "seatsTotal": 12,
       "price": null,
       "url": "https://jejutv.sunsang24.com/ship/schedule_fleet/202612"
@@ -232803,8 +232803,8 @@
       "species": "갈치",
       "tide": "8물",
       "status": "open",
-      "statusText": "제주갈치TV호 바로예약 어종 : 갈치 / 선상 운항시간 : 15:30 ~ 05:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/6명",
-      "seatsLeft": 6,
+      "statusText": "제주갈치TV호 바로예약 어종 : 갈치 / 선상 운항시간 : 15:30 ~ 05:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/7명",
+      "seatsLeft": 5,
       "seatsTotal": 12,
       "price": null,
       "url": "https://jejutv.sunsang24.com/ship/schedule_fleet/202612"
