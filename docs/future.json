@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-15T21:44:50.236Z",
+  "generatedAt": "2026-10-15T21:46:15.491Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
-    "sky": 22,
+    "sky": 77,
     "eugeneho": 57,
     "mansu": 57,
     "smgfishing": 22,
@@ -248,13 +248,13 @@
     "rosemary": 77,
     "samdeok": 77,
     "seamanho": 77,
-    "seo": 22,
-    "seongyeon": 22,
-    "sharkmarine": 22,
-    "ship": 22,
-    "sinara": 22,
-    "sinjinho": 22,
-    "skyho": 22,
+    "seo": 77,
+    "seongyeon": 77,
+    "sharkmarine": 77,
+    "ship": 77,
+    "sinara": 77,
+    "sinjinho": 77,
+    "skyho": 77,
     "sseondeo": 22,
     "myway": 58,
     "monster": 50,
@@ -20437,7 +20437,7 @@
       "status": "open",
       "statusText": "스카이호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 16,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://sky.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -29023,7 +29023,7 @@
       "status": "closed",
       "statusText": "스카이호 대기하기 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 15명",
       "seatsLeft": 0,
-      "seatsTotal": 16,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://sky.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -37648,7 +37648,7 @@
       "status": "open",
       "statusText": "스카이호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 16,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://sky.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -46293,7 +46293,7 @@
       "status": "open",
       "statusText": "스카이호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 16,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://sky.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -78784,7 +78784,7 @@
       "status": "open",
       "statusText": "스카이호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 16,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://sky.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -135181,7 +135181,7 @@
       "status": "open",
       "statusText": "스카이호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 16,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://sky.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -142907,7 +142907,7 @@
       "status": "open",
       "statusText": "스카이호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 16,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://sky.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -150742,7 +150742,7 @@
       "status": "open",
       "statusText": "스카이호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 16,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://sky.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -158662,7 +158662,7 @@
       "status": "open",
       "statusText": "스카이호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 16,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://sky.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -166517,7 +166517,7 @@
       "status": "open",
       "statusText": "스카이호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 16,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://sky.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -174428,7 +174428,7 @@
       "status": "open",
       "statusText": "스카이호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 16,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://sky.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -182088,7 +182088,7 @@
       "status": "open",
       "statusText": "스카이호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 16,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://sky.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -189477,7 +189477,7 @@
       "status": "open",
       "statusText": "스카이호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 16,
+      "seatsTotal": 15,
       "price": null,
       "url": "https://sky.sunsang24.com/ship/schedule_fleet/202611"
     },
