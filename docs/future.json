@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T18:33:51.998Z",
+  "generatedAt": "2026-10-15T18:35:25.718Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -170,14 +170,14 @@
     "daon": 77,
     "dasol": 77,
     "dragonfishing": 77,
-    "dream": 22,
-    "eagles": 22,
-    "ebada": 22,
-    "emerald": 22,
-    "enjoy": 22,
-    "eunhasuho": 22,
-    "fishbank": 22,
-    "fishhunter": 22,
+    "dream": 77,
+    "eagles": 77,
+    "ebada": 77,
+    "emerald": 77,
+    "enjoy": 77,
+    "eunhasuho": 77,
+    "fishbank": 77,
+    "fishhunter": 77,
     "gagaho": 22,
     "galchiho": 22,
     "gdcompany": 22,
@@ -15650,7 +15650,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 21,
+      "seatsTotal": 8,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -24064,7 +24064,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 21,
+      "seatsTotal": 8,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -32692,7 +32692,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 21,
+      "seatsTotal": 8,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -41315,7 +41315,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 21,
+      "seatsTotal": 8,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -49857,7 +49857,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 21,
+      "seatsTotal": 8,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -58420,7 +58420,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 21,
+      "seatsTotal": 8,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -64858,8 +64858,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "12물",
       "status": "open",
-      "statusText": "이바다호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 05:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/7명",
-      "seatsLeft": 14,
+      "statusText": "이바다호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 05:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/11명",
+      "seatsLeft": 10,
       "seatsTotal": 21,
       "price": null,
       "url": "https://ebada.sunsang24.com/ship/schedule_fleet/202611"
@@ -74414,7 +74414,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 21,
+      "seatsTotal": 8,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -81899,7 +81899,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 21,
+      "seatsTotal": 8,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -90198,7 +90198,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 21,
+      "seatsTotal": 8,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -98394,7 +98394,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 21,
+      "seatsTotal": 8,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -106692,7 +106692,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 21,
+      "seatsTotal": 8,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -114949,7 +114949,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 21,
+      "seatsTotal": 8,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -122029,9 +122029,9 @@
       "species": "문어",
       "tide": "4물",
       "status": "closed",
-      "statusText": "꿈에그린호 어종 : 문어 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 전화예약5명예약/3명",
+      "statusText": "꿈에그린호 어종 : 문어 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 전화예약4명예약/4명",
       "seatsLeft": 0,
-      "seatsTotal": 3,
+      "seatsTotal": 4,
       "price": null,
       "url": "https://dream.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -123446,7 +123446,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 21,
+      "seatsTotal": 8,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -131127,7 +131127,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 21,
+      "seatsTotal": 8,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -138009,7 +138009,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 21,
+      "seatsTotal": 8,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -145949,7 +145949,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 21,
+      "seatsTotal": 8,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -153805,7 +153805,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 21,
+      "seatsTotal": 8,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -161725,7 +161725,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 21,
+      "seatsTotal": 8,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -169601,7 +169601,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 21,
+      "seatsTotal": 8,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -177491,7 +177491,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 21,
+      "seatsTotal": 8,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -185148,7 +185148,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 21,
+      "seatsTotal": 8,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -192560,7 +192560,7 @@
       "status": "open",
       "statusText": "이슬호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 12:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 21,
+      "seatsTotal": 8,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -213482,8 +213482,8 @@
       "species": "돌돔",
       "tide": "5물",
       "status": "open",
-      "statusText": "흑룡호 바로예약 어종:돌돔,쥐치,열기,볼락,왕전갱이 등등♦️예약확정: 예약➡️입금➡️예약확정♦️입금예시:7월9일(김흑룡) 입금시 위와같이 작성후 입금후 문자남겨주세요 어종 : 돌돔,쥐치 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/2명",
-      "seatsLeft": 18,
+      "statusText": "흑룡호 바로예약 어종:돌돔,쥐치,열기,볼락,왕전갱이 등등♦️예약확정: 예약➡️입금➡️예약확정♦️입금예시:7월9일(김흑룡) 입금시 위와같이 작성후 입금후 문자남겨주세요 어종 : 돌돔,쥐치 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명예약/7명",
+      "seatsLeft": 13,
       "seatsTotal": 20,
       "price": null,
       "url": "https://fishhunter.sunsang24.com/ship/schedule_fleet/202612"
