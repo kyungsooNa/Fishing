@@ -1,20 +1,20 @@
 {
-  "generatedAt": "2026-10-16T02:44:10.547Z",
+  "generatedAt": "2026-10-16T02:45:36.387Z",
   "horizonDays": 90,
   "cursors": {
     "7": 77,
     "sky": 22,
     "eugeneho": 57,
     "mansu": 57,
-    "smgfishing": 77,
+    "smgfishing": 22,
     "lureschool": 57,
-    "specialdream": 77,
+    "specialdream": 22,
     "jstar": 57,
-    "stallone": 77,
+    "stallone": 22,
     "teamhanpro": 57,
-    "star": 77,
+    "star": 22,
     "blackpig": 57,
-    "stealth": 77,
+    "stealth": 22,
     "healing": 57,
     "daejinmcp": 57,
     "hanpro": 57,
@@ -113,7 +113,7 @@
     "yjong": 64,
     "yongsa": 57,
     "ysho": 57,
-    "sunghoon": 77,
+    "sunghoon": 22,
     "sunstarho": 77,
     "taeanfishing": 77,
     "taegeukho": 77,
@@ -254,8 +254,8 @@
     "ship": 22,
     "sinara": 22,
     "sinjinho": 22,
-    "skyho": 77,
-    "sseondeo": 77,
+    "skyho": 22,
+    "sseondeo": 22,
     "myway": 58,
     "monster": 50,
     "ssfish": 50,
@@ -7155,8 +7155,8 @@
       "species": "오징어",
       "tide": "5물",
       "status": "open",
-      "statusText": "스페셜드림 5호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 15:30 ~ 04:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명예약/7명",
-      "seatsLeft": 13,
+      "statusText": "스페셜드림 5호 바로예약 어종 : 무늬오징어 / 루어,선상 운항시간 : 15:30 ~ 04:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/10명",
+      "seatsLeft": 10,
       "seatsTotal": 20,
       "price": null,
       "url": "https://specialdream.sunsang24.com/ship/schedule_fleet/202611"
@@ -13957,8 +13957,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "5물",
       "status": "open",
-      "statusText": "이배다호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/2명",
-      "seatsLeft": 15,
+      "statusText": "이배다호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/6명",
+      "seatsLeft": 11,
       "seatsTotal": 17,
       "price": null,
       "url": "https://smgfishing.sunsang24.com/ship/schedule_fleet/202611"
@@ -15055,7 +15055,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 06:30 ~ 13:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -16091,7 +16091,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 14:30 ~ 17:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -24505,7 +24505,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 14:30 ~ 17:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -32138,7 +32138,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 06:30 ~ 13:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -33154,7 +33154,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 14:30 ~ 17:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -40740,7 +40740,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 06:30 ~ 13:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -41756,7 +41756,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 14:30 ~ 17:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -49282,7 +49282,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 06:30 ~ 13:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -50298,7 +50298,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 14:30 ~ 17:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -57845,7 +57845,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 06:30 ~ 13:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -58861,7 +58861,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 14:30 ~ 17:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -67123,7 +67123,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 14:30 ~ 17:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -73866,7 +73866,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 06:30 ~ 13:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -74876,7 +74876,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 14:30 ~ 17:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -89647,7 +89647,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 06:30 ~ 13:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -90618,7 +90618,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 14:30 ~ 17:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -97843,7 +97843,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 06:30 ~ 13:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -98814,7 +98814,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 14:30 ~ 17:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -106141,7 +106141,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 06:30 ~ 13:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -107133,7 +107133,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 14:30 ~ 17:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -114398,7 +114398,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 06:30 ~ 13:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -115411,7 +115411,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 14:30 ~ 17:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -123127,7 +123127,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -123928,7 +123928,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 14:30 ~ 17:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -130829,7 +130829,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -131609,7 +131609,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 14:30 ~ 17:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -137732,7 +137732,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -138470,7 +138470,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 14:30 ~ 17:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -145673,7 +145673,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -146410,7 +146410,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 14:30 ~ 17:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -153529,7 +153529,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -154266,7 +154266,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 14:30 ~ 17:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -161449,7 +161449,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -162186,7 +162186,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 14:30 ~ 17:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -169325,7 +169325,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -170062,7 +170062,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 14:30 ~ 17:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -177195,7 +177195,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -177719,9 +177719,9 @@
       "species": "갈치",
       "tide": "12물",
       "status": "open",
-      "statusText": "스페셜드림 5호 바로예약 어종 : 갈치 운항시간 : 13:30 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
-      "seatsLeft": 16,
-      "seatsTotal": 20,
+      "statusText": "스페셜드림 5호 바로예약 어종 : 갈치 운항시간 : 13:30 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/9명",
+      "seatsLeft": 7,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://specialdream.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -177994,7 +177994,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 14:30 ~ 17:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -184852,7 +184852,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -185630,7 +185630,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 14:30 ~ 17:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -192284,7 +192284,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -193021,7 +193021,7 @@
       "status": "open",
       "statusText": "성훈호 바로예약 어종 : 삼치,방어,고등어,참치 / 루어,선상,지깅,캐스팅 운항시간 : 14:30 ~ 17:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 12,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://sunghoon.sunsang24.com/ship/schedule_fleet/202611"
     },
