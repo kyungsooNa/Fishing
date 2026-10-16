@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T17:05:58.239Z",
+  "generatedAt": "2026-10-16T17:07:22.537Z",
   "horizonDays": 90,
   "cursors": {
     "7": 76,
@@ -183,13 +183,13 @@
     "gdcompany": 22,
     "genieyonghan": 22,
     "giant": 22,
-    "goaraho": 77,
-    "gonghyeonjin": 77,
-    "gosu": 77,
-    "gsseven": 77,
-    "gudiho": 77,
-    "gukbo": 22,
-    "gull": 77,
+    "goaraho": 22,
+    "gonghyeonjin": 22,
+    "gosu": 22,
+    "gsseven": 22,
+    "gudiho": 22,
+    "gukbo": 76,
+    "gull": 22,
     "gundam": 77,
     "gunsannaksi": 77,
     "gyeongjuho": 77,
@@ -263,7 +263,7 @@
     "napoliho": 50,
     "bumblebee": 50,
     "eagleho": 43,
-    "goldatsr": 22
+    "goldatsr": 76
   },
   "trips": [
     {
@@ -46308,8 +46308,8 @@
       "species": "문어",
       "tide": "11물",
       "status": "open",
-      "statusText": "갈매기호 바로예약 어종 : 문어 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/8명",
-      "seatsLeft": 12,
+      "statusText": "갈매기호 바로예약 어종 : 문어 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/10명",
+      "seatsLeft": 10,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -68124,8 +68124,8 @@
       "species": "문어",
       "tide": "13물",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 문어 / 루어 운항시간 : 16:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/12명",
-      "seatsLeft": 8,
+      "statusText": "홈런호 바로예약 어종 : 문어 / 루어 운항시간 : 16:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/10명",
+      "seatsLeft": 10,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -103248,8 +103248,8 @@
       "species": "문어",
       "tide": "3물",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/13명",
-      "seatsLeft": 7,
+      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/11명",
+      "seatsLeft": 9,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -113435,9 +113435,9 @@
       "hours": 12,
       "species": "갑오징어",
       "tide": "4물",
-      "status": "few",
-      "statusText": "신출항호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/16명",
-      "seatsLeft": 1,
+      "status": "closed",
+      "statusText": "신출항호 대기하기 어종 : 갑오징어 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 17명 예약/17명",
+      "seatsLeft": 0,
       "seatsTotal": 17,
       "price": null,
       "url": "https://gukbo.sunsang24.com/ship/schedule_fleet/202611"
@@ -119829,9 +119829,9 @@
       "hours": 11,
       "species": "문어",
       "tide": "5물",
-      "status": "closed",
-      "statusText": "갈매기호 대기하기 어종 : 문어 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/20명",
-      "seatsLeft": 0,
+      "status": "open",
+      "statusText": "갈매기호 바로예약 어종 : 문어 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리4명예약/16명",
+      "seatsLeft": 4,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -166470,8 +166470,8 @@
       "species": "문어",
       "tide": "11물",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/8명",
-      "seatsLeft": 12,
+      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/10명",
+      "seatsLeft": 10,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -179381,8 +179381,8 @@
       "species": "문어",
       "tide": "12물",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 문어 / 루어 운항시간 : 16:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/6명",
-      "seatsLeft": 14,
+      "statusText": "홈런호 바로예약 어종 : 문어 / 루어 운항시간 : 16:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/9명",
+      "seatsLeft": 11,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -181728,8 +181728,8 @@
       "species": "문어",
       "tide": "13물",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명예약/3명",
-      "seatsLeft": 17,
+      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/8명",
+      "seatsLeft": 12,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
