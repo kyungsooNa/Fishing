@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T16:09:59.027Z",
+  "generatedAt": "2026-10-17T16:11:47.975Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -148,14 +148,14 @@
     "2018miracle": 22,
     "ace": 22,
     "alice": 22,
-    "aqua": 76,
-    "arakhaeng": 76,
-    "arirang": 76,
-    "art": 76,
-    "asiaho": 76,
-    "badalove": 76,
-    "baekya": 76,
-    "bigboss24": 76,
+    "aqua": 22,
+    "arakhaeng": 22,
+    "arirang": 22,
+    "art": 22,
+    "asiaho": 22,
+    "badalove": 22,
+    "baekya": 22,
+    "bigboss24": 22,
     "bluefc": 22,
     "boas": 22,
     "boss": 22,
@@ -8319,7 +8319,7 @@
       "status": "open",
       "statusText": "아쿠아호 바로예약 어종 : 갈치 운항시간 : 15:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 18,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://aqua.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -17030,7 +17030,7 @@
       "status": "open",
       "statusText": "아쿠아호 바로예약 어종 : 갈치 운항시간 : 15:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 18,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://aqua.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -25674,7 +25674,7 @@
       "status": "open",
       "statusText": "아쿠아호 바로예약 어종 : 갈치 운항시간 : 15:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 18,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://aqua.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -34279,7 +34279,7 @@
       "status": "open",
       "statusText": "아쿠아호 바로예약 어종 : 갈치 운항시간 : 15:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 18,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://aqua.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -66551,7 +66551,7 @@
       "status": "open",
       "statusText": "아쿠아호 바로예약 어종 : 갈치 운항시간 : 15:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 18,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://aqua.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -74892,7 +74892,7 @@
       "status": "open",
       "statusText": "아쿠아호 바로예약 어종 : 갈치 운항시간 : 15:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 18,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://aqua.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -83109,7 +83109,7 @@
       "status": "open",
       "statusText": "아쿠아호 바로예약 어종 : 갈치 운항시간 : 15:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 18,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://aqua.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -86225,8 +86225,8 @@
       "species": "문어",
       "tide": "2물",
       "status": "open",
-      "statusText": "아시아호 바로예약 어종 : 문어 / 루어 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명예약/1명",
-      "seatsLeft": 19,
+      "statusText": "아시아호 바로예약 어종 : 문어 / 루어 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/2명",
+      "seatsLeft": 18,
       "seatsTotal": 20,
       "price": null,
       "url": "https://asiaho.sunsang24.com/ship/schedule_fleet/202611"
@@ -91470,7 +91470,7 @@
       "status": "open",
       "statusText": "아쿠아호 바로예약 어종 : 갈치 운항시간 : 15:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 18,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://aqua.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -99790,7 +99790,7 @@
       "status": "open",
       "statusText": "아쿠아호 바로예약 어종 : 갈치 운항시간 : 15:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 18,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://aqua.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -104648,9 +104648,9 @@
       "hours": 10,
       "species": "갑오징어",
       "tide": "4물",
-      "status": "closed",
-      "statusText": "어락행호 대기하기 어종 : 갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 입금완료 입금전 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/20명",
-      "seatsLeft": 0,
+      "status": "few",
+      "statusText": "어락행호 바로예약 어종 : 갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 입금완료 입금전 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/18명",
+      "seatsLeft": 2,
       "seatsTotal": 20,
       "price": null,
       "url": "https://arakhaeng.sunsang24.com/ship/schedule_fleet/202611"
@@ -116072,7 +116072,7 @@
       "status": "open",
       "statusText": "아쿠아호 바로예약 어종 : 갈치 운항시간 : 15:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 18,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://aqua.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -122975,7 +122975,7 @@
       "status": "open",
       "statusText": "아쿠아호 바로예약 어종 : 갈치 운항시간 : 15:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 18,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://aqua.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -130956,7 +130956,7 @@
       "status": "open",
       "statusText": "아쿠아호 바로예약 어종 : 갈치 운항시간 : 15:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 18,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://aqua.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -138833,7 +138833,7 @@
       "status": "open",
       "statusText": "아쿠아호 바로예약 어종 : 갈치 운항시간 : 15:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 18,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://aqua.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -146795,7 +146795,7 @@
       "status": "open",
       "statusText": "아쿠아호 바로예약 어종 : 갈치 운항시간 : 15:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 18,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://aqua.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -154713,7 +154713,7 @@
       "status": "open",
       "statusText": "아쿠아호 바로예약 어종 : 갈치 운항시간 : 15:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 18,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://aqua.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -170365,7 +170365,7 @@
       "status": "open",
       "statusText": "아쿠아호 바로예약 어종 : 갈치 운항시간 : 15:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 18,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://aqua.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -177818,7 +177818,7 @@
       "status": "open",
       "statusText": "아쿠아호 바로예약 어종 : 갈치 운항시간 : 15:00 ~ 06:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 18,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://aqua.sunsang24.com/ship/schedule_fleet/202611"
     },
