@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T01:14:46.104Z",
+  "generatedAt": "2026-10-17T04:55:54.249Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -205,14 +205,14 @@
     "janggofish": 22,
     "jeilfishing": 76,
     "jejutv": 76,
-    "jh": 22,
-    "jinpro": 22,
-    "jjanggu": 22,
-    "juliana": 22,
-    "jungwonho": 22,
-    "kangnam": 22,
-    "keoyang": 22,
-    "kingstar": 22,
+    "jh": 76,
+    "jinpro": 76,
+    "jjanggu": 76,
+    "juliana": 76,
+    "jungwonho": 76,
+    "kangnam": 76,
+    "keoyang": 76,
+    "kingstar": 76,
     "kingstarho": 22,
     "ksnaksi": 22,
     "ktg": 22,
@@ -111684,9 +111684,9 @@
       "hours": 12,
       "species": "문어",
       "tide": "5물",
-      "status": "few",
-      "statusText": "짱구호 바로예약 어종 : 문어 / 루어 운항시간 : 03:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/18명",
-      "seatsLeft": 2,
+      "status": "closed",
+      "statusText": "짱구호 대기하기 어종 : 문어 / 루어 운항시간 : 03:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/20명",
+      "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
       "url": "https://jjanggu.sunsang24.com/ship/schedule_fleet/202611"
@@ -188767,7 +188767,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -192560,7 +192560,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -196312,7 +196312,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -200089,27 +200089,6 @@
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
-      "siteId": "keoyang",
-      "siteName": "거양호",
-      "boat": "거양호",
-      "port": "충남 보령 오천항",
-      "phone": "010-5436-9009",
-      "date": "2026-12-04",
-      "departAt": "05:00",
-      "meetingAt": "05:00",
-      "returnAt": "16:00",
-      "session": "종일",
-      "hours": 11,
-      "species": "광어",
-      "tide": "2물",
-      "status": "open",
-      "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
-      "seatsLeft": 11,
-      "seatsTotal": null,
-      "price": null,
-      "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
-    },
-    {
       "siteId": "pigho",
       "siteName": "꽃돼지호",
       "boat": "꽃돼지호",
@@ -201695,6 +201674,27 @@
       "seatsTotal": null,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
+    },
+    {
+      "siteId": "keoyang",
+      "siteName": "거양호",
+      "boat": "거양호",
+      "port": "충남 보령 오천항",
+      "phone": "010-5436-9009",
+      "date": "2026-12-04",
+      "departAt": "07:00",
+      "meetingAt": "07:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 8,
+      "species": "우럭",
+      "tide": "2물",
+      "status": "open",
+      "statusText": "거양호 바로예약 어종 : 우럭 / 다운샷,루어,생미끼 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/5명",
+      "seatsLeft": 6,
+      "seatsTotal": 11,
+      "price": null,
+      "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
     {
       "siteId": "rosemary",
@@ -203975,7 +203975,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -207403,7 +207403,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -210503,7 +210503,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -213814,7 +213814,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -217104,7 +217104,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -220393,7 +220393,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -223740,7 +223740,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -227233,7 +227233,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -230727,7 +230727,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -233809,7 +233809,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -236447,7 +236447,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -239063,7 +239063,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -241656,7 +241656,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -244352,7 +244352,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -247126,7 +247126,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -250025,7 +250025,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -252679,7 +252679,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -255187,7 +255187,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -257716,7 +257716,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -260245,7 +260245,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -262916,7 +262916,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -265668,7 +265668,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -268359,7 +268359,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -270908,7 +270908,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -273437,7 +273437,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -276006,7 +276006,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -278596,7 +278596,7 @@
       "status": "open",
       "statusText": "거양호 바로예약 어종 : 광어,우럭 / 다운샷,루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://keoyang.sunsang24.com/ship/schedule_fleet/202612"
     },
