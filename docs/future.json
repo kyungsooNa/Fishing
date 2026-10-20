@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T17:15:45.912Z",
+  "generatedAt": "2026-10-20T17:17:13.555Z",
   "horizonDays": 90,
   "cursors": {
     "7": 73,
@@ -163,14 +163,14 @@
     "chambada": 22,
     "cherryfish": 22,
     "chf": 22,
-    "cjh": 73,
-    "d": 73,
-    "daebak": 73,
-    "daejinvictory": 73,
-    "daon": 73,
-    "dasol": 73,
-    "dragonfishing": 73,
-    "dream": 73,
+    "cjh": 22,
+    "d": 22,
+    "daebak": 22,
+    "daejinvictory": 22,
+    "daon": 22,
+    "dasol": 22,
+    "dragonfishing": 22,
+    "dream": 22,
     "eagles": 73,
     "ebada": 73,
     "emerald": 73,
@@ -7912,7 +7912,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 : 대구 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -8482,7 +8482,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 우럭 돌삼치(쥐놀래미)오른쪽 앞쪽 선수부터1~13명 한줄로 낚시 어종 : 우럭,참우럭,노래미 / 선상 운항시간 : 14:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -16657,7 +16657,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 : 대구 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -17227,7 +17227,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 우럭 돌삼치(쥐놀래미)오른쪽 앞쪽 선수부터1~13명 한줄로 낚시 어종 : 우럭,참우럭,노래미 / 선상 운항시간 : 14:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -25081,7 +25081,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 : 대구 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -25692,7 +25692,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 우럭 돌삼치(쥐놀래미)오른쪽 앞쪽 선수부터1~13명 한줄로 낚시 어종 : 우럭,참우럭,노래미 / 선상 운항시간 : 14:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -33060,7 +33060,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 : 대구 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -33627,7 +33627,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 우럭 돌삼치(쥐놀래미)오른쪽 앞쪽 선수부터1~13명 한줄로 낚시 어종 : 우럭,참우럭,노래미 / 선상 운항시간 : 14:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -40682,7 +40682,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 : 대구 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -41229,7 +41229,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 우럭 돌삼치(쥐놀래미)오른쪽 앞쪽 선수부터1~13명 한줄로 낚시 어종 : 우럭,참우럭,노래미 / 선상 운항시간 : 14:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -49096,7 +49096,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 : 대구 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -49645,7 +49645,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 우럭 돌삼치(쥐놀래미)오른쪽 앞쪽 선수부터1~13명 한줄로 낚시 어종 : 우럭,참우럭,노래미 / 선상 운항시간 : 14:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -57408,7 +57408,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 : 대구 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -57957,7 +57957,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 우럭 돌삼치(쥐놀래미)오른쪽 앞쪽 선수부터1~13명 한줄로 낚시 어종 : 우럭,참우럭,노래미 / 선상 운항시간 : 14:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -65844,7 +65844,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 : 대구 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -66414,7 +66414,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 우럭 돌삼치(쥐놀래미)오른쪽 앞쪽 선수부터1~13명 한줄로 낚시 어종 : 우럭,참우럭,노래미 / 선상 운항시간 : 14:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -74239,7 +74239,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 : 대구 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -74830,7 +74830,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 우럭 돌삼치(쥐놀래미)오른쪽 앞쪽 선수부터1~13명 한줄로 낚시 어종 : 우럭,참우럭,노래미 / 선상 운항시간 : 14:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -79395,8 +79395,8 @@
       "species": "광어",
       "tide": "4물",
       "status": "open",
-      "statusText": "강프로호 바로예약 어종 : 광어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/5명",
-      "seatsLeft": 9,
+      "statusText": "강프로호 바로예약 어종 : 광어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/8명",
+      "seatsLeft": 6,
       "seatsTotal": 14,
       "price": null,
       "url": "https://daon.sunsang24.com/ship/schedule_fleet/202611"
@@ -80685,8 +80685,8 @@
       "species": "갑오징어",
       "tide": "4물",
       "status": "open",
-      "statusText": "다온호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명예약/7명",
-      "seatsLeft": 13,
+      "statusText": "다온호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/8명",
+      "seatsLeft": 12,
       "seatsTotal": 20,
       "price": null,
       "url": "https://daon.sunsang24.com/ship/schedule_fleet/202611"
@@ -82875,7 +82875,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 : 대구 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -83465,7 +83465,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 우럭 돌삼치(쥐놀래미)오른쪽 앞쪽 선수부터1~13명 한줄로 낚시 어종 : 우럭,참우럭,노래미 / 선상 운항시간 : 14:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -88765,8 +88765,8 @@
       "species": "갑오징어",
       "tide": "5물",
       "status": "open",
-      "statusText": "다온호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/15명",
-      "seatsLeft": 5,
+      "statusText": "다온호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리4명예약/16명",
+      "seatsLeft": 4,
       "seatsTotal": 20,
       "price": null,
       "url": "https://daon.sunsang24.com/ship/schedule_fleet/202611"
@@ -90596,9 +90596,9 @@
       "hours": 8,
       "species": "주꾸미·갑오징어",
       "tide": "5물",
-      "status": "few",
-      "statusText": "뉴항구1호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/20명",
-      "seatsLeft": 1,
+      "status": "closed",
+      "statusText": "뉴항구1호 어종 : 주꾸미,갑오징어 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 21명 예약/21명",
+      "seatsLeft": 0,
       "seatsTotal": 21,
       "price": null,
       "url": "https://daebak.sunsang24.com/ship/schedule_fleet/202611"
@@ -90852,7 +90852,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 : 대구 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -91421,7 +91421,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 우럭 돌삼치(쥐놀래미)오른쪽 앞쪽 선수부터1~13명 한줄로 낚시 어종 : 우럭,참우럭,노래미 / 선상 운항시간 : 14:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -98029,7 +98029,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 : 대구 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -98577,7 +98577,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 우럭 돌삼치(쥐놀래미)오른쪽 앞쪽 선수부터1~13명 한줄로 낚시 어종 : 우럭,참우럭,노래미 / 선상 운항시간 : 14:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -106086,7 +106086,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 : 대구 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -106633,7 +106633,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 우럭 돌삼치(쥐놀래미)오른쪽 앞쪽 선수부터1~13명 한줄로 낚시 어종 : 우럭,참우럭,노래미 / 선상 운항시간 : 14:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -114038,7 +114038,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 : 대구 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -114585,7 +114585,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 우럭 돌삼치(쥐놀래미)오른쪽 앞쪽 선수부터1~13명 한줄로 낚시 어종 : 우럭,참우럭,노래미 / 선상 운항시간 : 14:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -122075,7 +122075,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 : 대구 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -122622,7 +122622,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 우럭 돌삼치(쥐놀래미)오른쪽 앞쪽 선수부터1~13명 한줄로 낚시 어종 : 우럭,참우럭,노래미 / 선상 운항시간 : 14:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -130068,7 +130068,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 : 대구 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -130615,7 +130615,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 우럭 돌삼치(쥐놀래미)오른쪽 앞쪽 선수부터1~13명 한줄로 낚시 어종 : 우럭,참우럭,노래미 / 선상 운항시간 : 14:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -137883,9 +137883,9 @@
       "hours": 8,
       "species": "갑오징어",
       "tide": "11물",
-      "status": "open",
-      "statusText": "뉴항구호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리3명예약/17명",
-      "seatsLeft": 3,
+      "status": "few",
+      "statusText": "뉴항구호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/19명",
+      "seatsLeft": 1,
       "seatsTotal": 20,
       "price": null,
       "url": "https://daebak.sunsang24.com/ship/schedule_fleet/202611"
@@ -138097,7 +138097,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 : 대구 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -138685,7 +138685,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 우럭 돌삼치(쥐놀래미)오른쪽 앞쪽 선수부터1~13명 한줄로 낚시 어종 : 우럭,참우럭,노래미 / 선상 운항시간 : 14:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -145913,7 +145913,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 : 대구 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -146480,7 +146480,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 우럭 돌삼치(쥐놀래미)오른쪽 앞쪽 선수부터1~13명 한줄로 낚시 어종 : 우럭,참우럭,노래미 / 선상 운항시간 : 14:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -153503,7 +153503,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 : 대구 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -154050,7 +154050,7 @@
       "status": "open",
       "statusText": "청룡호 바로예약 어종 우럭 돌삼치(쥐놀래미)오른쪽 앞쪽 선수부터1~13명 한줄로 낚시 어종 : 우럭,참우럭,노래미 / 선상 운항시간 : 14:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://dragonfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
