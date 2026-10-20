@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T23:30:13.400Z",
+  "generatedAt": "2026-10-20T23:31:39.651Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -178,13 +178,13 @@
     "eunhasuho": 72,
     "fishbank": 72,
     "fishhunter": 72,
-    "gagaho": 22,
-    "galchiho": 22,
-    "gdcompany": 22,
-    "genieyonghan": 22,
-    "giant": 22,
-    "goaraho": 22,
-    "gonghyeonjin": 22,
+    "gagaho": 72,
+    "galchiho": 72,
+    "gdcompany": 72,
+    "genieyonghan": 72,
+    "giant": 72,
+    "goaraho": 72,
+    "gonghyeonjin": 72,
     "gosu": 22,
     "gsseven": 22,
     "gudiho": 22,
@@ -263,7 +263,7 @@
     "napoliho": 57,
     "bumblebee": 57,
     "eagleho": 50,
-    "goldatsr": 72
+    "goldatsr": 22
   },
   "trips": [
     {
@@ -22403,9 +22403,9 @@
       "hours": 10,
       "species": "갑오징어",
       "tide": "12물",
-      "status": "few",
-      "statusText": "자이언트호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/19명",
-      "seatsLeft": 1,
+      "status": "closed",
+      "statusText": "자이언트호 대기하기 어종 : 갑오징어 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/20명",
+      "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
       "url": "https://giant.sunsang24.com/ship/schedule_fleet/202611"
@@ -38372,8 +38372,8 @@
       "species": "갑오징어",
       "tide": "조금",
       "status": "open",
-      "statusText": "청용호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 05:30 ~ 16:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/3명",
-      "seatsLeft": 18,
+      "statusText": "청용호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 05:30 ~ 16:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/6명",
+      "seatsLeft": 15,
       "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
@@ -133021,9 +133021,9 @@
       "hours": null,
       "species": "방어",
       "tide": "11물",
-      "status": "open",
-      "statusText": "지디1호 바로예약 어종 : 방어 / 선상,지깅 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리3명예약/25명",
-      "seatsLeft": 3,
+      "status": "few",
+      "statusText": "지디1호 바로예약 어종 : 방어 / 선상,지깅 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/26명",
+      "seatsLeft": 2,
       "seatsTotal": 28,
       "price": null,
       "url": "https://gdcompany.sunsang24.com/ship/schedule_fleet/202611"
