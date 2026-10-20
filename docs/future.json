@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T17:18:38.802Z",
+  "generatedAt": "2026-10-20T17:20:04.724Z",
   "horizonDays": 90,
   "cursors": {
     "7": 73,
@@ -179,13 +179,13 @@
     "fishbank": 22,
     "fishhunter": 22,
     "gagaho": 22,
-    "galchiho": 73,
-    "gdcompany": 73,
-    "genieyonghan": 73,
-    "giant": 73,
-    "goaraho": 73,
-    "gonghyeonjin": 73,
-    "gosu": 73,
+    "galchiho": 22,
+    "gdcompany": 22,
+    "genieyonghan": 22,
+    "giant": 22,
+    "goaraho": 22,
+    "gonghyeonjin": 22,
+    "gosu": 22,
     "gsseven": 73,
     "gudiho": 73,
     "gukbo": 22,
@@ -263,7 +263,7 @@
     "napoliho": 57,
     "bumblebee": 57,
     "eagleho": 50,
-    "goldatsr": 22
+    "goldatsr": 72
   },
   "trips": [
     {
@@ -22403,9 +22403,9 @@
       "hours": 10,
       "species": "갑오징어",
       "tide": "12물",
-      "status": "open",
-      "statusText": "자이언트호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/14명",
-      "seatsLeft": 6,
+      "status": "few",
+      "statusText": "자이언트호 바로예약 어종 : 갑오징어 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/19명",
+      "seatsLeft": 1,
       "seatsTotal": 20,
       "price": null,
       "url": "https://giant.sunsang24.com/ship/schedule_fleet/202611"
@@ -169276,8 +169276,8 @@
       "species": "대구",
       "tide": "3물",
       "status": "open",
-      "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
-      "seatsLeft": 10,
+      "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/2명",
+      "seatsLeft": 8,
       "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202612"
@@ -173251,8 +173251,8 @@
       "species": "대구",
       "tide": "4물",
       "status": "open",
-      "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
-      "seatsLeft": 10,
+      "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/2명",
+      "seatsLeft": 8,
       "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202612"
@@ -194846,8 +194846,8 @@
       "species": "대구",
       "tide": "10물",
       "status": "open",
-      "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
-      "seatsLeft": 10,
+      "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/2명",
+      "seatsLeft": 8,
       "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202612"
@@ -199168,8 +199168,8 @@
       "species": "대구",
       "tide": "11물",
       "status": "open",
-      "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
-      "seatsLeft": 10,
+      "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/2명",
+      "seatsLeft": 8,
       "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202612"
@@ -203449,8 +203449,8 @@
       "species": "대구",
       "tide": "12물",
       "status": "open",
-      "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
-      "seatsLeft": 10,
+      "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/2명",
+      "seatsLeft": 8,
       "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202612"
@@ -228974,8 +228974,8 @@
       "species": "대구",
       "tide": "4물",
       "status": "open",
-      "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
-      "seatsLeft": 10,
+      "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/2명",
+      "seatsLeft": 8,
       "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202612"
