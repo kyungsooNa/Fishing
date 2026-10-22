@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-22T01:57:14.634Z",
+  "generatedAt": "2026-10-22T01:58:38.614Z",
   "horizonDays": 90,
   "cursors": {
     "7": 71,
@@ -183,13 +183,13 @@
     "gdcompany": 22,
     "genieyonghan": 22,
     "giant": 22,
-    "goaraho": 71,
-    "gonghyeonjin": 71,
-    "gosu": 71,
-    "gsseven": 71,
-    "gudiho": 71,
-    "gukbo": 22,
-    "gull": 71,
+    "goaraho": 22,
+    "gonghyeonjin": 22,
+    "gosu": 22,
+    "gsseven": 22,
+    "gudiho": 22,
+    "gukbo": 71,
+    "gull": 22,
     "gundam": 71,
     "gunsannaksi": 71,
     "gyeongjuho": 71,
@@ -263,7 +263,7 @@
     "napoliho": 57,
     "bumblebee": 57,
     "eagleho": 50,
-    "goldatsr": 22
+    "goldatsr": 71
   },
   "trips": [
     {
@@ -43933,8 +43933,8 @@
       "species": "문어",
       "tide": "1물",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/10명",
-      "seatsLeft": 10,
+      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/13명",
+      "seatsLeft": 7,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -72043,8 +72043,8 @@
       "species": "문어",
       "tide": "4물",
       "status": "open",
-      "statusText": "썬크루즈호 바로예약 어종출조는 선사상황에 따라 변경될수도 있습니다 어종 : 문어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/8명",
-      "seatsLeft": 12,
+      "statusText": "썬크루즈호 바로예약 어종출조는 선사상황에 따라 변경될수도 있습니다 어종 : 문어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/11명",
+      "seatsLeft": 9,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gsseven.sunsang24.com/ship/schedule_fleet/202611"
@@ -148823,8 +148823,8 @@
       "species": "광어",
       "tide": "조금",
       "status": "open",
-      "statusText": "신출항호 바로예약 어종 : 광어,우럭,노래미 / 똥침,생미끼,어초,흘림 찌낚시 운항시간 : 06:00 ~ 17:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/5명",
-      "seatsLeft": 12,
+      "statusText": "신출항호 바로예약 어종 : 광어,우럭,노래미 / 똥침,생미끼,어초,흘림 찌낚시 운항시간 : 06:00 ~ 17:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/8명",
+      "seatsLeft": 9,
       "seatsTotal": 17,
       "price": null,
       "url": "https://gukbo.sunsang24.com/ship/schedule_fleet/202612"
