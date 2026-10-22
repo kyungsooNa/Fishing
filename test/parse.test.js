@@ -457,6 +457,61 @@ test('sunsang24: 공지의 출항 항구가 사이트 기본 항구를 덮는다
   ]);
 });
 
+test('sunsang24: "출항 출항"의 출항은 항구가 아니다', () => {
+  // 청룡호 백호호가 "강원 고성 출항"이라는 없는 항구로 10월 내내 실렸습니다.
+  const html = `
+    <table id="d2026-10-24" class="shipsinfo_daywarp">
+      <tr><td class="date_info2">5물</td><td class="ships_warp">
+        <table class="ship_unit"><tr>
+          <td class="ship_info"><div class="title">백호호</div></td>
+          <td><ul class="reservation_detail" data-sdate="2026-10-24">
+            <li>공지사항 09시 출항 출항 전 승선명부 작성</li>
+            <li>어종 : 참가자미</li><li>운항시간 : 09:00 ~ 11:00</li>
+          </ul></td>
+          <td class="ship_info2">남은자리 18명</td>
+        </tr></table>
+        <table class="ship_unit"><tr>
+          <td class="ship_info"><div class="title">청룡호</div></td>
+          <td><ul class="reservation_detail" data-sdate="2026-10-24">
+            <li>공지사항 출항 출항지 변경 ★거진항 출항★</li>
+            <li>어종 : 대구</li><li>운항시간 : 06:00 ~ 12:00</li>
+          </ul></td>
+          <td class="ship_info2">남은자리 5명</td>
+        </tr></table>
+      </td></tr>
+    </table>`;
+  const trips = parseSimpleDay(
+    { ...sunsangSite, id: 'dragonfishing', port: '강원 고성 아야진항', boats: { 청룡호: {}, 백호호: {} } },
+    html,
+    'https://dragonfishing.sunsang24.com/ship/schedule_fleet/2026-10-24/0/simple_day',
+  );
+  assert.deepEqual(trips.map((t) => [t.boat, t.port]), [
+    ['백호호', '강원 고성 아야진항'],
+    ['청룡호', '강원 고성 거진항'],
+  ], '항구가 아닌 낱말은 건너뛰고 다음 후보를 봅니다');
+});
+
+test('thefishing: detail — 숙소 행은 출조가 아니고, 명단의 손님 이름은 배 이름이 아니다', () => {
+  // 영진호 예약판의 "영진펜션 … 낚시종류 민박"이 정원 99·남은자리 84인 배 "이제호"로 실렸습니다.
+  // 이제호는 예약자 이름입니다.
+  const site = { id: 'yjin', name: '영진호', boats: { 영진호: {} }, url: 'https://x/index.php?mid=bk' };
+  const html = `
+    <div class="day"><span>2026년 10월 24일 (토요일)</span><span>5물</span></div>
+    <h2>영진펜션</h2>
+    <ul><li>예약하기 낚시종류 민박</li><li>예약자 이제호/방1개님(2) / 배영우/방1개님(3)</li><li>남은자리 84명</li></ul>
+    <h2>가이아호</h2>
+    <ul><li>낚시종류 쭈꾸미 갑오징어</li><li>남은자리 4명</li></ul>`;
+  const trips = parseDetail(site, html, 'https://x');
+  assert.deepEqual(trips.map((t) => [t.boat, t.seatsLeft]), [['가이아호', 4]]);
+
+  // 배 이름 칸이 비어 본문으로 넘어가도 명단 속 '…호'는 집지 않습니다.
+  const unnamed = parseDetail(site, `
+    <div class="day"><span>2026년 10월 24일 (토요일)</span><span>5물</span></div>
+    <h2>쭈갑 종일</h2>
+    <ul><li>낚시종류 쭈꾸미</li><li>예약자 박장호님(2)</li><li>남은자리 6명</li></ul>`, 'https://x');
+  assert.deepEqual(unnamed.map((t) => t.boat), ['영진호'], '알 수 없으면 선사 이름으로 둡니다');
+});
+
 test('uijiho: 월별 예약현황의 날짜 행과 정원을 읽는다', () => {
   const html = `
     <h2>2026년 9월 예약인원현황</h2>
