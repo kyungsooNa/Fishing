@@ -29,7 +29,8 @@ test('서버가 다른 사이트는 동시에 받고, 결과 순서는 registry 
     { ...mockSite, id: 'c', url: 'https://c.example.com' },
   ];
   const { registryPath, dataPath } = await fixture(sites);
-  const { data } = await runAll({ registryPath, dataPath, days: 21 });
+  // CI의 GITHUB_RUN_ID가 collection에 실리지 않게 실행 정보를 비웁니다.
+  const { data } = await runAll({ registryPath, dataPath, days: 21, runId: null, runUrl: null });
 
   assert.deepEqual(Object.keys(data.sites), ['a', 'b', 'c'], 'registry 순서 그대로여야 합니다');
   assert.ok(data.trips.length > 0);
@@ -698,7 +699,7 @@ test('더피싱 회로가 끊기면 커서는 실제로 물어본 곳까지만 �
   const rotatePerRun = { 'platform:thefishing': 6 };
   const calls = [];
   const blocked = await runAll({
-    registryPath, dataPath, days: 21, rotatePerRun, timeoutBackoffHours: 0,
+    registryPath, dataPath, days: 21, rotatePerRun, timeoutBackoffHours: 0, runId: null, runUrl: null,
     collectFn: async (site) => {
       calls.push(site.id);
       throw new Error('30000ms 안에 응답이 없습니다');
