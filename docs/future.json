@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-23T00:01:52.060Z",
+  "generatedAt": "2026-10-23T00:03:15.797Z",
   "horizonDays": 90,
   "cursors": {
     "7": 70,
@@ -227,14 +227,14 @@
     "miracle": 22,
     "muldori": 22,
     "nara": 22,
-    "newhanlyo": 70,
-    "newsky": 70,
-    "newtaejinho": 70,
-    "ninedragon": 70,
-    "np": 70,
-    "nurifish": 22,
-    "orion": 70,
-    "pacific": 70,
+    "newhanlyo": 22,
+    "newsky": 22,
+    "newtaejinho": 22,
+    "ninedragon": 22,
+    "np": 22,
+    "nurifish": 70,
+    "orion": 22,
+    "pacific": 22,
     "parkpro": 70,
     "pigho": 70,
     "poseidon": 70,
@@ -7968,7 +7968,7 @@
       "status": "open",
       "statusText": "오리온2호 바로예약 어종 : 갈치 / 생미끼,생미끼 외수질,선상 운항시간 : 13:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://orion.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -8260,8 +8260,8 @@
       "species": "갈치",
       "tide": "13물",
       "status": "open",
-      "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/10명",
-      "seatsLeft": 6,
+      "statusText": "뉴피닉스호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:30 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/11명",
+      "seatsLeft": 5,
       "seatsTotal": 16,
       "price": null,
       "url": "https://np.sunsang24.com/ship/schedule_fleet/202611"
@@ -16026,7 +16026,7 @@
       "status": "open",
       "statusText": "오리온2호 바로예약 어종 : 갈치 / 생미끼,생미끼 외수질,선상 운항시간 : 13:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://orion.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -23732,7 +23732,7 @@
       "status": "open",
       "statusText": "오리온2호 바로예약 어종 : 갈치 / 생미끼,생미끼 외수질,선상 운항시간 : 13:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://orion.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -32230,7 +32230,7 @@
       "status": "open",
       "statusText": "오리온2호 바로예약 어종 : 갈치 / 생미끼,생미끼 외수질,선상 운항시간 : 13:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://orion.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -40625,7 +40625,7 @@
       "status": "open",
       "statusText": "오리온2호 바로예약 어종 : 갈치 / 생미끼,생미끼 외수질,선상 운항시간 : 13:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://orion.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -49164,7 +49164,7 @@
       "status": "open",
       "statusText": "오리온2호 바로예약 어종 : 갈치 / 생미끼,생미끼 외수질,선상 운항시간 : 13:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://orion.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -57621,7 +57621,7 @@
       "status": "open",
       "statusText": "오리온2호 바로예약 어종 : 갈치 / 생미끼,생미끼 외수질,선상 운항시간 : 13:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://orion.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -66276,7 +66276,7 @@
       "status": "open",
       "statusText": "오리온2호 바로예약 어종 : 갈치 / 생미끼,생미끼 외수질,선상 운항시간 : 13:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://orion.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -74273,7 +74273,7 @@
       "status": "open",
       "statusText": "오리온2호 바로예약 어종 : 갈치 / 생미끼,생미끼 외수질,선상 운항시간 : 13:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://orion.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -81470,7 +81470,7 @@
       "status": "open",
       "statusText": "오리온2호 바로예약 어종 : 갈치 / 생미끼,생미끼 외수질,선상 운항시간 : 13:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://orion.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -89568,7 +89568,7 @@
       "status": "open",
       "statusText": "오리온2호 바로예약 어종 : 갈치 / 생미끼,생미끼 외수질,선상 운항시간 : 13:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://orion.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -97562,7 +97562,7 @@
       "status": "open",
       "statusText": "오리온2호 바로예약 어종 : 갈치 / 생미끼,생미끼 외수질,선상 운항시간 : 13:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://orion.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -105641,7 +105641,7 @@
       "status": "open",
       "statusText": "오리온2호 바로예약 어종 : 갈치 / 생미끼,생미끼 외수질,선상 운항시간 : 13:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://orion.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -113676,7 +113676,7 @@
       "status": "open",
       "statusText": "오리온2호 바로예약 어종 : 갈치 / 생미끼,생미끼 외수질,선상 운항시간 : 13:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://orion.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -119413,8 +119413,8 @@
       "species": "주꾸미",
       "tide": "12물",
       "status": "open",
-      "statusText": "뉴한려피싱호 바로예약 어종: 쭈꾸미 종일반 / 8만원 2.집결시간: 05시30분 배앞으로 집결 »자리선정: 모두 집결후 자리뽑기 진행 3.승선지: 전남 여수시 신월동112-41번지(소경도 대합실) 4.준비물: 신분증,장비, 봉돌 4호~10호 소형에기 에자(스몰에자8호10호) 얼린 생수2L, 쿨러 #갑오징어도 공략가능 가지채비 준비 » 로드 및 릴 대여가능 » 채비는 제공하지 않습니다.5.선사 서비스: 점심식사,한강라면,컵라면,커피,음료,스넥바 지퍼백, »멀미약은 제공되지 않습니다.6.예약완료: 예약→입금→예약확정 7.입금예시: 홍길동(9/09) / 괄호안 출조날짜 꼭!! 기재요청 어종 : 주꾸미 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/7명",
-      "seatsLeft": 14,
+      "statusText": "뉴한려피싱호 바로예약 어종: 쭈꾸미 종일반 / 8만원 2.집결시간: 05시30분 배앞으로 집결 »자리선정: 모두 집결후 자리뽑기 진행 3.승선지: 전남 여수시 신월동112-41번지(소경도 대합실) 4.준비물: 신분증,장비, 봉돌 4호~10호 소형에기 에자(스몰에자8호10호) 얼린 생수2L, 쿨러 #갑오징어도 공략가능 가지채비 준비 » 로드 및 릴 대여가능 » 채비는 제공하지 않습니다.5.선사 서비스: 점심식사,한강라면,컵라면,커피,음료,스넥바 지퍼백, »멀미약은 제공되지 않습니다.6.예약완료: 예약→입금→예약확정 7.입금예시: 홍길동(9/09) / 괄호안 출조날짜 꼭!! 기재요청 어종 : 주꾸미 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명예약/8명",
+      "seatsLeft": 13,
       "seatsTotal": 21,
       "price": null,
       "url": "https://newhanlyo.sunsang24.com/ship/schedule_fleet/202611"
@@ -121724,7 +121724,7 @@
       "status": "open",
       "statusText": "오리온2호 바로예약 어종 : 갈치 / 생미끼,생미끼 외수질,선상 운항시간 : 13:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://orion.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -129580,7 +129580,7 @@
       "status": "open",
       "statusText": "오리온2호 바로예약 어종 : 갈치 / 생미끼,생미끼 외수질,선상 운항시간 : 13:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://orion.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -137213,7 +137213,7 @@
       "status": "open",
       "statusText": "오리온2호 바로예약 어종 : 갈치 / 생미끼,생미끼 외수질,선상 운항시간 : 13:00 ~ 08:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://orion.sunsang24.com/ship/schedule_fleet/202611"
     },
