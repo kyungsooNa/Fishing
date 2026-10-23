@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-23T09:37:24.976Z",
+  "generatedAt": "2026-10-23T09:38:48.836Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -242,14 +242,14 @@
     "pro": 70,
     "redfox": 70,
     "redpulsegs": 70,
-    "richard": 22,
-    "rise": 22,
-    "rkclgh": 22,
-    "rosemary": 22,
-    "samdeok": 22,
-    "seamanho": 22,
-    "seo": 22,
-    "seongyeon": 22,
+    "richard": 70,
+    "rise": 70,
+    "rkclgh": 70,
+    "rosemary": 70,
+    "samdeok": 70,
+    "seamanho": 70,
+    "seo": 70,
+    "seongyeon": 70,
     "sharkmarine": 22,
     "ship": 22,
     "sinara": 22,
@@ -6489,7 +6489,7 @@
       "status": "open",
       "statusText": "삼덕레저호 바로예약 어종 : 부시리,방어 / 지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 18,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://samdeok.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -8427,9 +8427,9 @@
       "hours": 3,
       "species": "주꾸미·갑오징어",
       "tide": "12물",
-      "status": "closed",
-      "statusText": "라이즈호 대기하기 어종 : 쭈꾸미,갑오징어 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 15:30 ~ 18:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/20명",
-      "seatsLeft": 0,
+      "status": "few",
+      "statusText": "라이즈호 바로예약 어종 : 쭈꾸미,갑오징어 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 15:30 ~ 18:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/18명",
+      "seatsLeft": 2,
       "seatsTotal": 20,
       "price": null,
       "url": "https://rise.sunsang24.com/ship/schedule_fleet/202611"
@@ -13548,8 +13548,8 @@
       "species": "갑오징어",
       "tide": "13물",
       "status": "open",
-      "statusText": "포인트호 바로예약 어종 : 갑오징어 운항시간 : 05:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/9명",
-      "seatsLeft": 8,
+      "statusText": "포인트호 바로예약 어종 : 갑오징어 운항시간 : 05:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/11명",
+      "seatsLeft": 6,
       "seatsTotal": 17,
       "price": null,
       "url": "https://seo.sunsang24.com/ship/schedule_fleet/202611"
@@ -14572,7 +14572,7 @@
       "status": "open",
       "statusText": "삼덕레저호 바로예약 어종 : 부시리,방어 / 지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 18,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://samdeok.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -22318,7 +22318,7 @@
       "status": "open",
       "statusText": "삼덕레저호 바로예약 어종 : 부시리,방어 / 지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 18,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://samdeok.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -30709,7 +30709,7 @@
       "status": "open",
       "statusText": "삼덕레저호 바로예약 어종 : 부시리,방어 / 지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 18,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://samdeok.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -39104,7 +39104,7 @@
       "status": "open",
       "statusText": "삼덕레저호 바로예약 어종 : 부시리,방어 / 지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 18,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://samdeok.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -47622,7 +47622,7 @@
       "status": "open",
       "statusText": "삼덕레저호 바로예약 어종 : 부시리,방어 / 지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 18,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://samdeok.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -56079,7 +56079,7 @@
       "status": "open",
       "statusText": "삼덕레저호 바로예약 어종 : 부시리,방어 / 지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 18,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://samdeok.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -64736,7 +64736,7 @@
       "status": "open",
       "statusText": "삼덕레저호 바로예약 어종 : 부시리,방어 / 지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 18,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://samdeok.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -72793,7 +72793,7 @@
       "status": "open",
       "statusText": "삼덕레저호 바로예약 어종 : 부시리,방어 / 지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 18,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://samdeok.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -80053,7 +80053,7 @@
       "status": "open",
       "statusText": "삼덕레저호 바로예약 어종 : 부시리,방어 / 지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 18,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://samdeok.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -88109,7 +88109,7 @@
       "status": "open",
       "statusText": "삼덕레저호 바로예약 어종 : 부시리,방어 / 지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 18,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://samdeok.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -96103,7 +96103,7 @@
       "status": "open",
       "statusText": "삼덕레저호 바로예약 어종 : 부시리,방어 / 지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 18,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://samdeok.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -104161,7 +104161,7 @@
       "status": "open",
       "statusText": "삼덕레저호 바로예약 어종 : 부시리,방어 / 지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 18,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://samdeok.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -112196,7 +112196,7 @@
       "status": "open",
       "statusText": "삼덕레저호 바로예약 어종 : 부시리,방어 / 지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 18,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://samdeok.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -120267,7 +120267,7 @@
       "status": "open",
       "statusText": "삼덕레저호 바로예약 어종 : 부시리,방어 / 지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 18,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://samdeok.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -128124,7 +128124,7 @@
       "status": "open",
       "statusText": "삼덕레저호 바로예약 어종 : 부시리,방어 / 지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 18,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://samdeok.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -135797,7 +135797,7 @@
       "status": "open",
       "statusText": "삼덕레저호 바로예약 어종 : 부시리,방어 / 지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 18,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://samdeok.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -180966,9 +180966,9 @@
       "hours": null,
       "species": "대구",
       "tide": "11물",
-      "status": "few",
-      "statusText": "성연호 바로예약 어종 : 대구 / 선상 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/10명",
-      "seatsLeft": 1,
+      "status": "open",
+      "statusText": "성연호 바로예약 어종 : 대구 / 선상 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리3명예약/8명",
+      "seatsLeft": 3,
       "seatsTotal": 11,
       "price": null,
       "url": "https://seongyeon.sunsang24.com/ship/schedule_fleet/202612"
