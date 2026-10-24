@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-24T16:39:54.946Z",
+  "generatedAt": "2026-10-24T16:41:23.013Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -184,13 +184,13 @@
     "genieyonghan": 68,
     "giant": 68,
     "goaraho": 68,
-    "gonghyeonjin": 22,
-    "gosu": 22,
-    "gsseven": 22,
-    "gudiho": 22,
-    "gukbo": 69,
-    "gull": 22,
-    "gundam": 22,
+    "gonghyeonjin": 68,
+    "gosu": 68,
+    "gsseven": 68,
+    "gudiho": 68,
+    "gukbo": 22,
+    "gull": 68,
+    "gundam": 68,
     "gunsannaksi": 22,
     "gyeongjuho": 22,
     "haemaho": 22,
@@ -263,7 +263,7 @@
     "napoliho": 64,
     "bumblebee": 64,
     "eagleho": 57,
-    "goldatsr": 69
+    "goldatsr": 22
   },
   "trips": [
     {
@@ -6494,7 +6494,7 @@
       "status": "open",
       "statusText": "미르호 바로예약 어종 : 대구 / 타이라바 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -15011,7 +15011,7 @@
       "status": "open",
       "statusText": "미르호 바로예약 어종 : 대구 / 타이라바 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -23406,7 +23406,7 @@
       "status": "open",
       "statusText": "미르호 바로예약 어종 : 대구 / 타이라바 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -24649,8 +24649,8 @@
       "species": "문어",
       "tide": "1물",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 문어 / 루어 운항시간 : 16:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/11명",
-      "seatsLeft": 9,
+      "statusText": "홈런호 바로예약 어종 : 문어 / 루어 운항시간 : 16:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/13명",
+      "seatsLeft": 7,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -27449,8 +27449,8 @@
       "species": "문어",
       "tide": "2물",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/13명",
-      "seatsLeft": 7,
+      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/12명",
+      "seatsLeft": 8,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -31966,7 +31966,7 @@
       "status": "open",
       "statusText": "미르호 바로예약 어종 : 대구 / 타이라바 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -40444,7 +40444,7 @@
       "status": "open",
       "statusText": "미르호 바로예약 어종 : 대구 / 타이라바 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -44733,9 +44733,9 @@
       "hours": 11,
       "species": "문어",
       "tide": "4물",
-      "status": "closed",
-      "statusText": "홈런호 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/20명",
-      "seatsLeft": 0,
+      "status": "few",
+      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/18명",
+      "seatsLeft": 2,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -50405,8 +50405,8 @@
       "species": "문어",
       "tide": "4물",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 문어 / 루어 운항시간 : 16:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/10명",
-      "seatsLeft": 10,
+      "statusText": "홈런호 바로예약 어종 : 문어 / 루어 운항시간 : 16:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/12명",
+      "seatsLeft": 8,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -57198,7 +57198,7 @@
       "status": "open",
       "statusText": "미르호 바로예약 어종 : 대구 / 타이라바 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -64521,7 +64521,7 @@
       "status": "open",
       "statusText": "미르호 바로예약 어종 : 대구 / 타이라바 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -72619,7 +72619,7 @@
       "status": "open",
       "statusText": "미르호 바로예약 어종 : 대구 / 타이라바 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -76674,8 +76674,8 @@
       "species": "문어",
       "tide": "8물",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/12명",
-      "seatsLeft": 8,
+      "statusText": "홈런호 바로예약 어종 : 문어 / 지깅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/15명",
+      "seatsLeft": 5,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202611"
@@ -80676,7 +80676,7 @@
       "status": "open",
       "statusText": "미르호 바로예약 어종 : 대구 / 타이라바 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -88797,7 +88797,7 @@
       "status": "open",
       "statusText": "미르호 바로예약 어종 : 대구 / 타이라바 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -96874,7 +96874,7 @@
       "status": "open",
       "statusText": "미르호 바로예약 어종 : 대구 / 타이라바 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -104945,7 +104945,7 @@
       "status": "open",
       "statusText": "미르호 바로예약 어종 : 대구 / 타이라바 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -112821,7 +112821,7 @@
       "status": "open",
       "statusText": "미르호 바로예약 어종 : 대구 / 타이라바 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -120536,7 +120536,7 @@
       "status": "open",
       "statusText": "미르호 바로예약 어종 : 대구 / 타이라바 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 21,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -123185,8 +123185,8 @@
       "species": "문어",
       "tide": "조금",
       "status": "open",
-      "statusText": "갈매기호 바로예약 어종 : 문어 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/8명",
-      "seatsLeft": 12,
+      "statusText": "갈매기호 바로예약 어종 : 문어 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/9명",
+      "seatsLeft": 11,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202612"
@@ -135365,8 +135365,8 @@
       "species": "문어",
       "tide": "2물",
       "status": "open",
-      "statusText": "갈매기호 바로예약 어종 : 문어 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/5명",
-      "seatsLeft": 15,
+      "statusText": "갈매기호 바로예약 어종 : 문어 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/6명",
+      "seatsLeft": 14,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202612"
