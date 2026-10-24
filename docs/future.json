@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-23T22:00:04.832Z",
+  "generatedAt": "2026-10-23T23:59:08.953Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -178,13 +178,13 @@
     "eunhasuho": 69,
     "fishbank": 69,
     "fishhunter": 69,
-    "gagaho": 22,
-    "galchiho": 22,
-    "gdcompany": 22,
-    "genieyonghan": 22,
-    "giant": 22,
-    "goaraho": 22,
-    "gonghyeonjin": 22,
+    "gagaho": 69,
+    "galchiho": 69,
+    "gdcompany": 69,
+    "genieyonghan": 69,
+    "giant": 69,
+    "goaraho": 69,
+    "gonghyeonjin": 69,
     "gosu": 22,
     "gsseven": 22,
     "gudiho": 22,
@@ -263,7 +263,7 @@
     "napoliho": 64,
     "bumblebee": 64,
     "eagleho": 57,
-    "goldatsr": 70
+    "goldatsr": 22
   },
   "trips": [
     {
@@ -165299,6 +165299,27 @@
       "urlDated": true
     },
     {
+      "siteId": "gdcompany",
+      "siteName": "지디1호",
+      "boat": "지디1호",
+      "port": null,
+      "phone": "010-4780-6092",
+      "date": "2026-12-10",
+      "departAt": null,
+      "meetingAt": "05:00",
+      "returnAt": null,
+      "session": null,
+      "hours": null,
+      "species": "방어",
+      "tide": "8물",
+      "status": "open",
+      "statusText": "지디1호 바로예약 어종 : 방어 / 선상 운행시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명예약/1명",
+      "seatsLeft": 21,
+      "seatsTotal": 22,
+      "price": null,
+      "url": "https://gdcompany.sunsang24.com/ship/schedule_fleet/202612"
+    },
+    {
       "siteId": "chungnamho",
       "siteName": "충남호",
       "boat": "뉴청남호",
@@ -178343,8 +178364,8 @@
       "species": "방어",
       "tide": "11물",
       "status": "open",
-      "statusText": "지디1호 바로예약 어종 : 방어 / 선상,지깅 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명예약/1명",
-      "seatsLeft": 21,
+      "statusText": "지디1호 바로예약 어종 : 방어 / 선상,지깅 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명예약/6명",
+      "seatsLeft": 16,
       "seatsTotal": 22,
       "price": null,
       "url": "https://gdcompany.sunsang24.com/ship/schedule_fleet/202612"
