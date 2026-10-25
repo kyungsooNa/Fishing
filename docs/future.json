@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T21:49:29.370Z",
+  "generatedAt": "2026-10-25T23:32:28.774Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -203,14 +203,14 @@
     "jangbogo": 22,
     "jangbogofishing": 22,
     "janggofish": 22,
-    "jeilfishing": 22,
-    "jejutv": 22,
-    "jh": 22,
-    "jinpro": 22,
-    "jjanggu": 22,
-    "juliana": 22,
-    "jungwonho": 22,
-    "kangnam": 22,
+    "jeilfishing": 67,
+    "jejutv": 67,
+    "jh": 67,
+    "jinpro": 67,
+    "jjanggu": 67,
+    "juliana": 67,
+    "jungwonho": 67,
+    "kangnam": 67,
     "keoyang": 22,
     "kingstar": 22,
     "kingstarho": 22,
@@ -41176,9 +41176,9 @@
       "hours": 18,
       "species": "주꾸미·갑오징어",
       "tide": "4물",
-      "status": "closed",
-      "statusText": "줄리아나호 대기하기 어종 : 주꾸미,갑오징어 운항시간 : 06:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 17명 예약/17명",
-      "seatsLeft": 0,
+      "status": "few",
+      "statusText": "줄리아나호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 06:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/16명",
+      "seatsLeft": 1,
       "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202611"
@@ -97104,8 +97104,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "11물",
       "status": "open",
-      "statusText": "줄리아나호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 06:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명예약/1명",
-      "seatsLeft": 16,
+      "statusText": "줄리아나호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 06:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/2명",
+      "seatsLeft": 15,
       "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202611"
@@ -116951,9 +116951,9 @@
       "species": "주꾸미·갑오징어",
       "tide": "조금",
       "status": "open",
-      "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
-      "seatsLeft": 17,
-      "seatsTotal": null,
+      "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명예약/1명",
+      "seatsLeft": 16,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -121048,7 +121048,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -125207,7 +125207,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -129343,7 +129343,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -133701,7 +133701,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -137493,7 +137493,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -140916,7 +140916,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -144508,7 +144508,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -148071,7 +148071,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -152205,7 +152205,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -156546,7 +156546,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -161033,7 +161033,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -165582,7 +165582,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -169703,7 +169703,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -173254,7 +173254,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -176357,7 +176357,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -180020,7 +180020,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -184070,7 +184070,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -188366,7 +188366,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -193060,7 +193060,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -197725,7 +197725,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -202207,7 +202207,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -205850,7 +205850,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -209565,7 +209565,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -213443,7 +213443,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -217167,7 +217167,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -221229,7 +221229,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -225405,7 +225405,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -229605,7 +229605,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -233425,7 +233425,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -237811,7 +237811,7 @@
       "status": "open",
       "statusText": "줄리아나호 바로예약 어종 : 참돔,광어,우럭,주꾸미,갑오징어,노래미,농어,도다리 / 다운샷,똥침,루어,생미끼,생미끼 외수질,선상,어초,타이라바 운항시간 : 05:00 ~ 00:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://juliana.sunsang24.com/ship/schedule_fleet/202612"
     },
