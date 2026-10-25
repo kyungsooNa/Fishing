@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T06:50:00.783Z",
+  "generatedAt": "2026-10-25T06:51:23.955Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -236,14 +236,14 @@
     "orion": 68,
     "pacific": 68,
     "parkpro": 68,
-    "pigho": 22,
-    "poseidon": 22,
-    "princeho": 22,
-    "pro": 22,
-    "redfox": 22,
-    "redpulsegs": 22,
-    "richard": 22,
-    "rise": 22,
+    "pigho": 68,
+    "poseidon": 68,
+    "princeho": 68,
+    "pro": 68,
+    "redfox": 68,
+    "redpulsegs": 68,
+    "richard": 68,
+    "rise": 68,
     "rkclgh": 22,
     "rosemary": 22,
     "samdeok": 22,
@@ -10725,8 +10725,8 @@
       "species": "문어",
       "tide": "무시",
       "status": "open",
-      "statusText": "해무니호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/9명",
-      "seatsLeft": 11,
+      "statusText": "해무니호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/15명",
+      "seatsLeft": 5,
       "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202611"
@@ -19036,8 +19036,8 @@
       "species": "문어",
       "tide": "1물",
       "status": "open",
-      "statusText": "먹깨비호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명예약/5명",
-      "seatsLeft": 16,
+      "statusText": "먹깨비호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/3명",
+      "seatsLeft": 18,
       "seatsTotal": 21,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202611"
@@ -20535,8 +20535,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "1물",
       "status": "open",
-      "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/14명",
-      "seatsLeft": 6,
+      "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/15명",
+      "seatsLeft": 5,
       "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202611"
@@ -36031,8 +36031,8 @@
       "species": "문어",
       "tide": "3물",
       "status": "open",
-      "statusText": "먹깨비호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/6명",
-      "seatsLeft": 15,
+      "statusText": "먹깨비호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/9명",
+      "seatsLeft": 12,
       "seatsTotal": 21,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202611"
@@ -57472,8 +57472,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "5물",
       "status": "open",
-      "statusText": "라이즈호 바로예약 어종 : 쭈꾸미,갑오징어 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/8명",
-      "seatsLeft": 12,
+      "statusText": "라이즈호 바로예약 어종 : 쭈꾸미,갑오징어 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/5명",
+      "seatsLeft": 15,
       "seatsTotal": 20,
       "price": null,
       "url": "https://rise.sunsang24.com/ship/schedule_fleet/202611"
@@ -67210,8 +67210,8 @@
       "species": "갑오징어",
       "tide": "7물",
       "status": "open",
-      "statusText": "슈퍼마린호 바로예약 어종 : 갑오징어 / 루어 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/6명",
-      "seatsLeft": 14,
+      "statusText": "슈퍼마린호 바로예약 어종 : 갑오징어 / 루어 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명예약/7명",
+      "seatsLeft": 13,
       "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202611"
@@ -94390,8 +94390,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "10물",
       "status": "open",
-      "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/6명",
-      "seatsLeft": 14,
+      "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/8명",
+      "seatsLeft": 12,
       "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202611"
@@ -124110,7 +124110,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -128184,7 +128184,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -132343,7 +132343,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -135679,8 +135679,8 @@
       "species": "문어",
       "tide": "2물",
       "status": "open",
-      "statusText": "에르메스호 바로예약 어종 : 문어 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
+      "statusText": "에르메스호 바로예약 어종 : 문어 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/2명",
+      "seatsLeft": 18,
       "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
@@ -136458,7 +136458,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -140814,9 +140814,9 @@
       "species": "주꾸미",
       "tide": "3물",
       "status": "open",
-      "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
-      "seatsTotal": null,
+      "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/12명",
+      "seatsLeft": 8,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -144587,7 +144587,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -147968,7 +147968,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -151581,7 +151581,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -155144,7 +155144,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -159255,7 +159255,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -163596,7 +163596,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -168062,7 +168062,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -172632,7 +172632,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -176751,7 +176751,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -180323,7 +180323,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -183472,7 +183472,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -187114,7 +187114,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -191164,7 +191164,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -195397,7 +195397,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -200087,7 +200087,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -204773,7 +204773,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -209255,7 +209255,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -212919,7 +212919,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -216634,7 +216634,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -220512,7 +220512,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -224282,7 +224282,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -228323,7 +228323,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -232499,7 +232499,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -236699,7 +236699,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -240498,7 +240498,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -244884,7 +244884,7 @@
       "status": "open",
       "statusText": "슈퍼마린호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
     },
