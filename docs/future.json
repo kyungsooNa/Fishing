@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T19:08:02.978Z",
+  "generatedAt": "2026-10-25T19:09:29.518Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -180,13 +180,13 @@
     "fishhunter": 67,
     "gagaho": 67,
     "galchiho": 67,
-    "gdcompany": 22,
-    "genieyonghan": 22,
-    "giant": 22,
-    "goaraho": 22,
-    "gonghyeonjin": 22,
-    "gosu": 22,
-    "gsseven": 22,
+    "gdcompany": 67,
+    "genieyonghan": 67,
+    "giant": 67,
+    "goaraho": 67,
+    "gonghyeonjin": 67,
+    "gosu": 67,
+    "gsseven": 67,
     "gudiho": 22,
     "gukbo": 68,
     "gull": 22,
@@ -263,7 +263,7 @@
     "napoliho": 64,
     "bumblebee": 64,
     "eagleho": 57,
-    "goldatsr": 68
+    "goldatsr": 22
   },
   "trips": [
     {
@@ -5285,7 +5285,7 @@
       "status": "open",
       "statusText": "고수호 바로예약 어종 : 갑오징어 / 선상 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gosu.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -13701,7 +13701,7 @@
       "status": "open",
       "statusText": "고수호 바로예약 어종 : 갑오징어 / 선상 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gosu.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -22198,7 +22198,7 @@
       "status": "open",
       "statusText": "고수호 바로예약 어종 : 갑오징어 / 선상 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gosu.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -30737,7 +30737,7 @@
       "status": "open",
       "statusText": "고수호 바로예약 어종 : 갑오징어 / 선상 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gosu.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -36631,8 +36631,8 @@
       "species": "부시리",
       "tide": "4물",
       "status": "open",
-      "statusText": "지디2호 바로예약 어종 : 부시리,방어 / 선상 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/10명",
-      "seatsLeft": 15,
+      "statusText": "지디2호 바로예약 어종 : 부시리,방어 / 선상 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명예약/8명",
+      "seatsLeft": 17,
       "seatsTotal": 25,
       "price": null,
       "url": "https://gdcompany.sunsang24.com/ship/schedule_fleet/202611"
@@ -45788,8 +45788,8 @@
       "species": "갑오징어",
       "tide": "5물",
       "status": "open",
-      "statusText": "고수호 바로예약 어종 : 갑오징어 / 선상 운항시간 : 04:30 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/4명",
-      "seatsLeft": 11,
+      "statusText": "고수호 바로예약 어종 : 갑오징어 / 선상 운항시간 : 04:30 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/5명",
+      "seatsLeft": 10,
       "seatsTotal": 15,
       "price": null,
       "url": "https://gosu.sunsang24.com/ship/schedule_fleet/202611"
@@ -55260,7 +55260,7 @@
       "status": "open",
       "statusText": "고수호 바로예약 어종 : 갑오징어 / 선상 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gosu.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -63339,7 +63339,7 @@
       "status": "open",
       "statusText": "고수호 바로예약 어종 : 갑오징어 / 선상 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gosu.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -71354,7 +71354,7 @@
       "status": "open",
       "statusText": "고수호 바로예약 어종 : 갑오징어 / 선상 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gosu.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -79475,7 +79475,7 @@
       "status": "open",
       "statusText": "고수호 바로예약 어종 : 갑오징어 / 선상 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gosu.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -87552,7 +87552,7 @@
       "status": "open",
       "statusText": "고수호 바로예약 어종 : 갑오징어 / 선상 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gosu.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -95728,7 +95728,7 @@
       "status": "open",
       "statusText": "고수호 바로예약 어종 : 갑오징어 / 선상 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gosu.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -103626,7 +103626,7 @@
       "status": "open",
       "statusText": "고수호 바로예약 어종 : 갑오징어 / 선상 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gosu.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -111299,7 +111299,7 @@
       "status": "open",
       "statusText": "고수호 바로예약 어종 : 갑오징어 / 선상 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gosu.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -138343,8 +138343,8 @@
       "species": "대구",
       "tide": "5물",
       "status": "open",
-      "statusText": "미르호 바로예약 어종 : 대구 / 타이라바 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
-      "seatsLeft": 13,
+      "statusText": "미르호 바로예약 어종 : 대구 / 타이라바 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/1명",
+      "seatsLeft": 12,
       "seatsTotal": 13,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
@@ -208123,8 +208123,8 @@
       "species": "방어",
       "tide": "7물",
       "status": "open",
-      "statusText": "지디1호 바로예약 어종 : 방어 / 선상 운행시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명예약/5명",
-      "seatsLeft": 17,
+      "statusText": "지디1호 바로예약 어종 : 방어 / 선상 운행시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/7명",
+      "seatsLeft": 15,
       "seatsTotal": 22,
       "price": null,
       "url": "https://gdcompany.sunsang24.com/ship/schedule_fleet/202612"
