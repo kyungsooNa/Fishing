@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T12:13:08.043Z",
+  "generatedAt": "2026-10-25T12:14:38.428Z",
   "horizonDays": 90,
   "cursors": {
     "7": 68,
@@ -181,13 +181,13 @@
     "gagaho": 22,
     "galchiho": 22,
     "gdcompany": 22,
-    "genieyonghan": 68,
-    "giant": 68,
-    "goaraho": 68,
-    "gonghyeonjin": 68,
-    "gosu": 68,
-    "gsseven": 68,
-    "gudiho": 68,
+    "genieyonghan": 22,
+    "giant": 22,
+    "goaraho": 22,
+    "gonghyeonjin": 22,
+    "gosu": 22,
+    "gsseven": 22,
+    "gudiho": 22,
     "gukbo": 22,
     "gull": 68,
     "gundam": 68,
@@ -263,7 +263,7 @@
     "napoliho": 64,
     "bumblebee": 64,
     "eagleho": 57,
-    "goldatsr": 22
+    "goldatsr": 68
   },
   "trips": [
     {
