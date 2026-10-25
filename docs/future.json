@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T19:03:48.818Z",
+  "generatedAt": "2026-10-25T19:05:14.439Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -156,14 +156,14 @@
     "badalove": 22,
     "baekya": 22,
     "bigboss24": 22,
-    "bluefc": 22,
-    "boas": 22,
-    "boss": 22,
-    "busung": 22,
-    "chambada": 22,
-    "cherryfish": 22,
-    "chf": 22,
-    "cjh": 22,
+    "bluefc": 67,
+    "boas": 67,
+    "boss": 67,
+    "busung": 67,
+    "chambada": 67,
+    "cherryfish": 67,
+    "chf": 67,
+    "cjh": 67,
     "d": 22,
     "daebak": 22,
     "daejinvictory": 22,
@@ -94644,9 +94644,9 @@
       "hours": 10,
       "species": "광어",
       "tide": "11물",
-      "status": "open",
-      "statusText": "마검포 뉴패밀리호 바로예약 어종 : 광어,우럭,농어 / 생미끼,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/2명",
-      "seatsLeft": 18,
+      "status": "closed",
+      "statusText": "마검포 뉴패밀리호 대기하기 어종 : 광어,우럭,농어 / 생미끼,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/20명",
+      "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
       "url": "https://cjh.sunsang24.com/ship/schedule_fleet/202611"
@@ -116317,7 +116317,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -120412,7 +120412,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -124571,7 +124571,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -128686,7 +128686,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -133023,7 +133023,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -136794,7 +136794,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -140196,7 +140196,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -143809,7 +143809,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -147372,7 +147372,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -151483,7 +151483,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -155824,7 +155824,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -160287,10 +160287,10 @@
       "hours": 10,
       "species": "방어",
       "tide": "11물",
-      "status": "open",
-      "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/3명",
-      "seatsLeft": 12,
-      "seatsTotal": 15,
+      "status": "closed",
+      "statusText": "녹동보스호 대기하기 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 15명 예약/3명",
+      "seatsLeft": 0,
+      "seatsTotal": 3,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -164860,7 +164860,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -169000,7 +169000,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -172593,7 +172593,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -175721,7 +175721,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -179384,7 +179384,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -183434,7 +183434,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -187604,7 +187604,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -192357,7 +192357,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -197022,7 +197022,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -201504,7 +201504,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -205168,7 +205168,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -208883,7 +208883,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -212761,7 +212761,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -216531,7 +216531,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -220572,7 +220572,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -224748,7 +224748,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -228948,7 +228948,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -232768,7 +232768,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -237154,7 +237154,7 @@
       "status": "open",
       "statusText": "녹동보스호 바로예약 어종 : 방어 / 지깅 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
       "seatsLeft": 15,
-      "seatsTotal": 15,
+      "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202612"
     },
