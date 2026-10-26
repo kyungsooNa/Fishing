@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T04:36:02.220Z",
+  "generatedAt": "2026-10-26T06:55:47.300Z",
   "horizonDays": 90,
   "cursors": {
     "7": 67,
@@ -194,14 +194,14 @@
     "gunsannaksi": 22,
     "gyeongjuho": 22,
     "haemaho": 22,
-    "hanareum": 67,
-    "hanbada": 22,
-    "harmony": 22,
-    "healingho": 22,
-    "heeyoung": 22,
-    "hunterfishing": 22,
-    "jangbogo": 22,
-    "jangbogofishing": 22,
+    "hanareum": 22,
+    "hanbada": 67,
+    "harmony": 67,
+    "healingho": 67,
+    "heeyoung": 67,
+    "hunterfishing": 67,
+    "jangbogo": 67,
+    "jangbogofishing": 67,
     "janggofish": 22,
     "jeilfishing": 67,
     "jejutv": 67,
@@ -45114,9 +45114,9 @@
       "hours": null,
       "species": "갑오징어",
       "tide": "5물",
-      "status": "open",
-      "statusText": "한아름호 바로예약 어종 : 갑오징어 / 선상 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/13명",
-      "seatsLeft": 7,
+      "status": "closed",
+      "statusText": "한아름호 대기하기 어종 : 갑오징어 / 선상 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/20명",
+      "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
       "url": "https://hanareum.sunsang24.com/ship/schedule_fleet/202611"
@@ -118230,7 +118230,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -122325,7 +122325,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -126463,7 +126463,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -130620,7 +130620,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -134958,7 +134958,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -138684,7 +138684,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -142086,7 +142086,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -145543,7 +145543,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -149190,7 +149190,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -153452,7 +153452,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -157796,7 +157796,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -162281,9 +162281,9 @@
       "species": "주꾸미",
       "tide": "11물",
       "status": "open",
-      "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
-      "seatsLeft": 11,
-      "seatsTotal": null,
+      "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/3명",
+      "seatsLeft": 8,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -166874,7 +166874,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -170887,7 +170887,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -174480,7 +174480,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -177513,7 +177513,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -181460,7 +181460,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -185426,7 +185426,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -189721,7 +189721,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -194566,7 +194566,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -199042,7 +199042,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -203503,7 +203503,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -206904,7 +206904,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -210662,7 +210662,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -214540,7 +214540,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -218285,7 +218285,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -222542,7 +222542,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -226719,7 +226719,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -230898,7 +230898,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -234717,7 +234717,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -239127,7 +239127,7 @@
       "status": "open",
       "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202612"
     },
