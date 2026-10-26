@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T01:45:20.227Z",
+  "generatedAt": "2026-10-26T01:46:44.840Z",
   "horizonDays": 90,
   "cursors": {
     "7": 67,
@@ -179,13 +179,13 @@
     "fishbank": 22,
     "fishhunter": 22,
     "gagaho": 22,
-    "galchiho": 67,
-    "gdcompany": 67,
-    "genieyonghan": 67,
-    "giant": 67,
-    "goaraho": 67,
-    "gonghyeonjin": 67,
-    "gosu": 67,
+    "galchiho": 22,
+    "gdcompany": 22,
+    "genieyonghan": 22,
+    "giant": 22,
+    "goaraho": 22,
+    "gonghyeonjin": 22,
+    "gosu": 22,
     "gsseven": 67,
     "gudiho": 67,
     "gukbo": 22,
@@ -263,7 +263,7 @@
     "napoliho": 64,
     "bumblebee": 64,
     "eagleho": 57,
-    "goldatsr": 22
+    "goldatsr": 67
   },
   "trips": [
     {
@@ -45808,8 +45808,8 @@
       "species": "갑오징어",
       "tide": "5물",
       "status": "open",
-      "statusText": "고수호 바로예약 어종 : 갑오징어 / 선상 운항시간 : 04:30 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/5명",
-      "seatsLeft": 10,
+      "statusText": "고수호 바로예약 어종 : 갑오징어 / 선상 운항시간 : 04:30 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/7명",
+      "seatsLeft": 8,
       "seatsTotal": 15,
       "price": null,
       "url": "https://gosu.sunsang24.com/ship/schedule_fleet/202611"
@@ -106709,8 +106709,8 @@
       "species": "갈치",
       "tide": "13물",
       "status": "open",
-      "statusText": "갈치호 바로예약 운항시간 : 17:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
-      "seatsLeft": 12,
+      "statusText": "갈치호 바로예약 운항시간 : 17:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/2명",
+      "seatsLeft": 10,
       "seatsTotal": 12,
       "price": null,
       "url": "https://galchiho.sunsang24.com/ship/schedule_fleet/202611"
