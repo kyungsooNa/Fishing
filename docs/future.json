@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T01:59:15.540Z",
+  "generatedAt": "2026-10-27T02:12:27.743Z",
   "horizonDays": 90,
   "cursors": {
     "7": 66,
@@ -177,13 +177,13 @@
     "enjoy": 22,
     "eunhasuho": 22,
     "fishbank": 22,
-    "fishhunter": 67,
-    "gagaho": 66,
-    "galchiho": 66,
-    "gdcompany": 66,
-    "genieyonghan": 66,
-    "giant": 66,
-    "goaraho": 66,
+    "fishhunter": 22,
+    "gagaho": 22,
+    "galchiho": 22,
+    "gdcompany": 22,
+    "genieyonghan": 22,
+    "giant": 22,
+    "goaraho": 22,
     "gonghyeonjin": 66,
     "gosu": 66,
     "gsseven": 66,
@@ -263,7 +263,7 @@
     "napoliho": 64,
     "bumblebee": 64,
     "eagleho": 57,
-    "goldatsr": 22
+    "goldatsr": 66
   },
   "trips": [
     {
@@ -29770,8 +29770,8 @@
       "species": "돌돔",
       "tide": "5물",
       "status": "open",
-      "statusText": "흑룡호 바로예약 어종:돌돔,쥐치,열기,볼락,왕전갱이 등등♦️예약확정: 예약➡️입금➡️예약확정♦️입금예시:7월9일(김흑룡) 입금시 위와같이 작성후 입금후 문자남겨주세요 어종 : 돌돔,쥐치 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/10명",
-      "seatsLeft": 10,
+      "statusText": "흑룡호 바로예약 어종:돌돔,쥐치,열기,볼락,왕전갱이 등등♦️예약확정: 예약➡️입금➡️예약확정♦️입금예시:7월9일(김흑룡) 입금시 위와같이 작성후 입금후 문자남겨주세요 어종 : 돌돔,쥐치 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/14명",
+      "seatsLeft": 6,
       "seatsTotal": 20,
       "price": null,
       "url": "https://fishhunter.sunsang24.com/ship/schedule_fleet/202611"
@@ -94718,8 +94718,8 @@
       "species": "갑오징어",
       "tide": "12물",
       "status": "few",
-      "statusText": "여명호 바로예약 어종 : 갑오징어 / 지깅 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/19명",
-      "seatsLeft": 2,
+      "statusText": "여명호 바로예약 어종 : 갑오징어 / 지깅 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/20명",
+      "seatsLeft": 1,
       "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202611"
