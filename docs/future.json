@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T19:09:33.039Z",
+  "generatedAt": "2026-10-27T19:10:59.190Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -121,14 +121,14 @@
     "tamra": 65,
     "thales": 65,
     "tpho": 65,
-    "twin": 22,
-    "urbis": 22,
-    "vancouver": 22,
-    "venice": 22,
-    "veteranfishing": 22,
-    "viking": 22,
-    "vtrfishing": 22,
-    "wangnuni": 22,
+    "twin": 65,
+    "urbis": 65,
+    "vancouver": 65,
+    "venice": 65,
+    "veteranfishing": 65,
+    "viking": 65,
+    "vtrfishing": 65,
+    "wangnuni": 65,
     "welcome": 22,
     "yejiqueen": 66,
     "yeongjae": 22,
@@ -2680,8 +2680,8 @@
       "species": "문어",
       "tide": "3물",
       "status": "open",
-      "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 03:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
+      "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 03:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명예약/2명",
+      "seatsLeft": 19,
       "seatsTotal": 21,
       "price": null,
       "url": "https://veteranfishing.sunsang24.com/ship/schedule_fleet/202611"
@@ -11344,8 +11344,8 @@
       "species": "문어",
       "tide": "4물",
       "status": "open",
-      "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 03:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
+      "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 03:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/6명",
+      "seatsLeft": 15,
       "seatsTotal": 21,
       "price": null,
       "url": "https://veteranfishing.sunsang24.com/ship/schedule_fleet/202611"
@@ -20025,9 +20025,9 @@
       "hours": null,
       "species": "문어",
       "tide": "5물",
-      "status": "closed",
-      "statusText": "트윈스타호 어종 : 문어 / 루어 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/20명",
-      "seatsLeft": 0,
+      "status": "few",
+      "statusText": "트윈스타호 바로예약 어종 : 문어 / 루어 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/18명",
+      "seatsLeft": 2,
       "seatsTotal": 20,
       "price": null,
       "url": "https://twin.sunsang24.com/ship/schedule_fleet/202611"
@@ -20679,9 +20679,9 @@
       "hours": 10,
       "species": "광어",
       "tide": "4물",
-      "status": "open",
-      "statusText": "바다하리호 바로예약 어종 : 광어,우럭,민어,농어 / 똥침,생미끼,선상,어초,침선 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/14명",
-      "seatsLeft": 6,
+      "status": "few",
+      "statusText": "바다하리호 바로예약 어종 : 광어,우럭,민어,농어 / 똥침,생미끼,선상,어초,침선 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/19명",
+      "seatsLeft": 1,
       "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202611"
@@ -20700,9 +20700,9 @@
       "hours": 10,
       "species": "문어",
       "tide": "4물",
-      "status": "closed",
-      "statusText": "에프원호 대기하기 어종 : 문어 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/20명",
-      "seatsLeft": 0,
+      "status": "open",
+      "statusText": "에프원호 바로예약 어종 : 문어 운항시간 : 04:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리3명예약/17명",
+      "seatsLeft": 3,
       "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202611"
@@ -21966,8 +21966,8 @@
       "species": "갑오징어",
       "tide": "4물",
       "status": "open",
-      "statusText": "럭키호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/10명",
-      "seatsLeft": 10,
+      "statusText": "럭키호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/13명",
+      "seatsLeft": 7,
       "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202611"
@@ -28517,8 +28517,8 @@
       "species": "문어",
       "tide": "6물",
       "status": "open",
-      "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 03:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
+      "statusText": "뉴베테랑호 바로예약 어종 : 문어 / 선상 운항시간 : 03:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/7명",
+      "seatsLeft": 14,
       "seatsTotal": 21,
       "price": null,
       "url": "https://veteranfishing.sunsang24.com/ship/schedule_fleet/202611"
@@ -32023,8 +32023,8 @@
       "species": "문어",
       "tide": "5물",
       "status": "open",
-      "statusText": "베테랑호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명예약/2명",
-      "seatsLeft": 19,
+      "statusText": "베테랑호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명예약/5명",
+      "seatsLeft": 16,
       "seatsTotal": 21,
       "price": null,
       "url": "https://vtrfishing.sunsang24.com/ship/schedule_fleet/202611"
@@ -100346,7 +100346,7 @@
       "status": "open",
       "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -100388,7 +100388,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -100848,8 +100848,8 @@
       "species": "우럭",
       "tide": "조금",
       "status": "open",
-      "statusText": "바이킹호 바로예약 어종 : 우럭 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/5명",
-      "seatsLeft": 12,
+      "statusText": "바이킹호 바로예약 어종 : 우럭 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/6명",
+      "seatsLeft": 11,
       "seatsTotal": 17,
       "price": null,
       "url": "https://viking.sunsang24.com/ship/schedule_fleet/202612"
@@ -104609,7 +104609,7 @@
       "status": "open",
       "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -104630,7 +104630,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -108914,7 +108914,7 @@
       "status": "open",
       "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -108956,7 +108956,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -113239,7 +113239,7 @@
       "status": "open",
       "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -113281,7 +113281,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -113720,8 +113720,8 @@
       "species": "우럭",
       "tide": "2물",
       "status": "open",
-      "statusText": "바이킹호 바로예약 어종 : 우럭 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/2명",
-      "seatsLeft": 15,
+      "statusText": "바이킹호 바로예약 어종 : 우럭 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/3명",
+      "seatsLeft": 14,
       "seatsTotal": 17,
       "price": null,
       "url": "https://viking.sunsang24.com/ship/schedule_fleet/202612"
@@ -117720,9 +117720,9 @@
       "species": "광어",
       "tide": "3물",
       "status": "open",
-      "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
-      "seatsTotal": null,
+      "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/2명",
+      "seatsLeft": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -117783,9 +117783,9 @@
       "species": "우럭",
       "tide": "3물",
       "status": "open",
-      "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
-      "seatsTotal": null,
+      "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명예약/4명",
+      "seatsLeft": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -121638,9 +121638,9 @@
       "species": "광어",
       "tide": "4물",
       "status": "open",
-      "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
-      "seatsTotal": null,
+      "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명예약/1명",
+      "seatsLeft": 19,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -121703,7 +121703,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -122799,8 +122799,8 @@
       "species": "문어",
       "tide": "4물",
       "status": "open",
-      "statusText": "어비스호 바로예약 어종 : 문어 / 루어 운항시간 : 05:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/8명",
-      "seatsLeft": 12,
+      "statusText": "어비스호 바로예약 어종 : 문어 / 루어 운항시간 : 05:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/10명",
+      "seatsLeft": 10,
       "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
@@ -125231,7 +125231,7 @@
       "status": "open",
       "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -125252,7 +125252,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -128991,7 +128991,7 @@
       "status": "open",
       "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -129012,7 +129012,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -132678,7 +132678,7 @@
       "status": "open",
       "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -132699,7 +132699,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -136915,7 +136915,7 @@
       "status": "open",
       "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -136936,7 +136936,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -141382,7 +141382,7 @@
       "status": "open",
       "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -141403,7 +141403,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -145953,7 +145953,7 @@
       "status": "open",
       "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -145993,9 +145993,9 @@
       "species": "우럭",
       "tide": "10물",
       "status": "open",
-      "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
-      "seatsTotal": null,
+      "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명예약/4명",
+      "seatsLeft": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -150670,7 +150670,7 @@
       "status": "open",
       "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -150712,7 +150712,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -154936,7 +154936,7 @@
       "status": "open",
       "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -154957,7 +154957,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -158654,7 +158654,7 @@
       "status": "open",
       "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -158675,7 +158675,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -161952,7 +161952,7 @@
       "status": "open",
       "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -161973,7 +161973,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -165783,7 +165783,7 @@
       "status": "open",
       "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -165804,7 +165804,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -169959,7 +169959,7 @@
       "status": "open",
       "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -169980,7 +169980,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -174253,7 +174253,7 @@
       "status": "open",
       "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -174293,9 +174293,9 @@
       "species": "우럭",
       "tide": "2물",
       "status": "open",
-      "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
-      "seatsTotal": null,
+      "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명예약/4명",
+      "seatsLeft": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -174818,8 +174818,8 @@
       "species": "우럭",
       "tide": "2물",
       "status": "open",
-      "statusText": "바이킹호 바로예약 어종 : 우럭 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/11명",
-      "seatsLeft": 6,
+      "statusText": "바이킹호 바로예약 어종 : 우럭 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리4명예약/13명",
+      "seatsLeft": 4,
       "seatsTotal": 17,
       "price": null,
       "url": "https://viking.sunsang24.com/ship/schedule_fleet/202612"
@@ -179235,7 +179235,7 @@
       "status": "open",
       "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -179277,7 +179277,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -184068,7 +184068,7 @@
       "status": "open",
       "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -184089,7 +184089,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -188718,7 +188718,7 @@
       "status": "open",
       "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -188739,7 +188739,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -192508,7 +192508,7 @@
       "status": "open",
       "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -192529,7 +192529,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -196349,7 +196349,7 @@
       "status": "open",
       "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -196370,7 +196370,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -200373,7 +200373,7 @@
       "status": "open",
       "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -200394,7 +200394,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -204269,7 +204269,7 @@
       "status": "open",
       "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -204290,7 +204290,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -208501,7 +208501,7 @@
       "status": "open",
       "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -208522,7 +208522,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -212803,7 +212803,7 @@
       "status": "open",
       "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -212824,7 +212824,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -217129,7 +217129,7 @@
       "status": "open",
       "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -217150,7 +217150,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -221075,7 +221075,7 @@
       "status": "open",
       "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -221096,7 +221096,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -225587,7 +225587,7 @@
       "status": "open",
       "statusText": "베니스호 바로예약 어종 : 광어,우럭 / 생미끼,어초 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://venice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -225608,7 +225608,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202612"
     },
