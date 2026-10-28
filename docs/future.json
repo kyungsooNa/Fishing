@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T20:24:10.423Z",
+  "generatedAt": "2026-10-28T20:25:35.837Z",
   "horizonDays": 90,
   "cursors": {
     "7": 64,
@@ -181,13 +181,13 @@
     "gagaho": 22,
     "galchiho": 22,
     "gdcompany": 22,
-    "genieyonghan": 65,
-    "giant": 65,
-    "goaraho": 65,
-    "gonghyeonjin": 65,
-    "gosu": 65,
-    "gsseven": 65,
-    "gudiho": 65,
+    "genieyonghan": 22,
+    "giant": 22,
+    "goaraho": 22,
+    "gonghyeonjin": 22,
+    "gosu": 22,
+    "gsseven": 22,
+    "gudiho": 22,
     "gukbo": 22,
     "gull": 65,
     "gundam": 65,
@@ -263,7 +263,7 @@
     "napoliho": 64,
     "bumblebee": 64,
     "eagleho": 57,
-    "goldatsr": 22
+    "goldatsr": 64
   },
   "trips": [
     {
@@ -12312,8 +12312,8 @@
       "species": "갑오징어",
       "tide": "4물",
       "status": "open",
-      "statusText": "뉴세븐호 바로예약 어종 : 갑오징어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/8명",
-      "seatsLeft": 12,
+      "statusText": "뉴세븐호 바로예약 어종 : 갑오징어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/11명",
+      "seatsLeft": 9,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gsseven.sunsang24.com/ship/schedule_fleet/202611"
@@ -204822,9 +204822,9 @@
       "hours": 8,
       "species": "대구",
       "tide": "11물",
-      "status": "open",
-      "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
-      "seatsLeft": 10,
+      "status": "closed",
+      "statusText": "금성호 대기하기 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 10명 예약/10명",
+      "seatsLeft": 0,
       "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202612"
