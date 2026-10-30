@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T01:57:56.703Z",
+  "generatedAt": "2026-10-30T01:59:20.666Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -154,14 +154,14 @@
     "art": 22,
     "asiaho": 22,
     "badalove": 22,
-    "baekya": 63,
-    "bigboss24": 63,
-    "bluefc": 22,
-    "boas": 22,
-    "boss": 22,
-    "busung": 22,
-    "chambada": 22,
-    "cherryfish": 22,
+    "baekya": 22,
+    "bigboss24": 22,
+    "bluefc": 63,
+    "boas": 63,
+    "boss": 63,
+    "busung": 63,
+    "chambada": 63,
+    "cherryfish": 63,
     "chf": 22,
     "cjh": 22,
     "d": 22,
@@ -70806,8 +70806,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "12물",
       "status": "open",
-      "statusText": "테슬란호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 05:00 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/12명",
-      "seatsLeft": 8,
+      "statusText": "테슬란호 바로예약 어종 : 주꾸미,갑오징어 / 루어 운항시간 : 05:00 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/15명",
+      "seatsLeft": 5,
       "seatsTotal": 20,
       "price": null,
       "url": "https://bluefc.sunsang24.com/ship/schedule_fleet/202611"
@@ -85340,7 +85340,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -89750,7 +89750,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -94244,7 +94244,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -98735,7 +98735,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -103407,7 +103407,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -103890,8 +103890,8 @@
       "species": "광어",
       "tide": "3물",
       "status": "open",
-      "statusText": "은아호 바로예약 어종 : 광어,우럭,농어,백조기 운항시간 : 06:20 ~ 11:00 예약완료 예약명단(입금하면 100% 확정이니 입금확인전화 절대하지마세요) 취소대기 취소완료 예약대기 출조대기 남은자리56명예약/7명",
-      "seatsLeft": 56,
+      "statusText": "은아호 바로예약 어종 : 광어,우럭,농어,백조기 운항시간 : 06:20 ~ 11:00 예약완료 예약명단(입금하면 100% 확정이니 입금확인전화 절대하지마세요) 취소대기 취소완료 예약대기 출조대기 남은자리55명예약/8명",
+      "seatsLeft": 55,
       "seatsTotal": 63,
       "price": null,
       "url": "https://bluefc.sunsang24.com/ship/schedule_fleet/202612"
@@ -107431,7 +107431,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -111169,7 +111169,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -115034,7 +115034,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -119071,7 +119071,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -123617,7 +123617,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -128367,7 +128367,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -133263,7 +133263,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -138085,7 +138085,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -142437,7 +142437,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -146281,7 +146281,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -149569,7 +149569,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -153746,7 +153746,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -158088,7 +158088,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -162822,7 +162822,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -167898,7 +167898,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -172836,7 +172836,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -177612,7 +177612,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -181329,7 +181329,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -185317,7 +185317,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -189531,7 +189531,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -193592,7 +193592,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -198123,7 +198123,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -202615,7 +202615,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -207131,7 +207131,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -211309,7 +211309,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -216032,7 +216032,7 @@
       "status": "open",
       "statusText": "보아스호 바로예약 어종 : 부시리,붉바리,방어 / 루어,선상,지깅,타이라바 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://boas.sunsang24.com/ship/schedule_fleet/202612"
     },
