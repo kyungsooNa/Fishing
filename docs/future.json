@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-31T14:56:23.117Z",
+  "generatedAt": "2026-10-31T14:58:09.403Z",
   "horizonDays": 90,
   "cursors": {
-    "7": 22,
+    "7": 62,
     "sky": 62,
     "eugeneho": 71,
     "mansu": 71,
@@ -144,13 +144,13 @@
     "daehan": 62,
     "nature": 62,
     "bj": 62,
-    "dongmun": 22,
-    "2018miracle": 22,
-    "ace": 22,
-    "alice": 22,
-    "aqua": 22,
-    "arakhaeng": 22,
-    "arirang": 22,
+    "dongmun": 62,
+    "2018miracle": 62,
+    "ace": 62,
+    "alice": 62,
+    "aqua": 62,
+    "arakhaeng": 62,
+    "arirang": 62,
     "art": 22,
     "asiaho": 22,
     "badalove": 22,
@@ -3183,9 +3183,9 @@
       "hours": 10.5,
       "species": "문어",
       "tide": "5물",
-      "status": "closed",
-      "statusText": "아레나호 대기하기 어종 : 문어 / 루어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/20명",
-      "seatsLeft": 0,
+      "status": "few",
+      "statusText": "아레나호 바로예약 어종 : 문어 / 루어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/19명",
+      "seatsLeft": 1,
       "seatsTotal": 20,
       "price": null,
       "url": "https://arakhaeng.sunsang24.com/ship/schedule_fleet/202611"
@@ -75278,7 +75278,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -79709,7 +79709,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -84224,7 +84224,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -88778,7 +88778,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -93471,7 +93471,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -96699,8 +96699,8 @@
       "species": "우럭",
       "tide": "4물",
       "status": "open",
-      "statusText": "어락행호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 입금완료 입금전 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/5명",
-      "seatsLeft": 15,
+      "statusText": "어락행호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 입금완료 입금전 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/13명",
+      "seatsLeft": 7,
       "seatsTotal": 20,
       "price": null,
       "url": "https://arakhaeng.sunsang24.com/ship/schedule_fleet/202612"
@@ -97558,7 +97558,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -101317,7 +101317,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -105287,7 +105287,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -109299,7 +109299,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -113841,7 +113841,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -118633,7 +118633,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -123529,7 +123529,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -128527,9 +128527,9 @@
       "species": "광어",
       "tide": "11물",
       "status": "open",
-      "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
-      "seatsTotal": null,
+      "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명예약/1명",
+      "seatsLeft": 19,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -132962,7 +132962,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -136848,7 +136848,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -140334,7 +140334,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -144353,7 +144353,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -148799,7 +148799,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -153303,7 +153303,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -157306,6 +157306,26 @@
       "urlDated": true
     },
     {
+      "siteId": "arakhaeng",
+      "siteName": "어락행호",
+      "boat": "어락행호",
+      "port": "전북 군산 비응항",
+      "phone": null,
+      "date": "2026-12-20",
+      "departAt": null,
+      "returnAt": null,
+      "session": null,
+      "hours": null,
+      "species": "우럭",
+      "tide": "3물",
+      "status": "open",
+      "statusText": "어락행호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 입금완료 입금전 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/5명",
+      "seatsLeft": 15,
+      "seatsTotal": 20,
+      "price": null,
+      "url": "https://arakhaeng.sunsang24.com/ship/schedule_fleet/202612"
+    },
+    {
       "siteId": "neweocheongdo",
       "siteName": "어청도피싱호",
       "boat": "어청도피싱호",
@@ -158558,7 +158578,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -163600,7 +163620,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -168439,7 +168459,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -172418,7 +172438,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -176448,7 +176468,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -180682,7 +180702,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -184810,7 +184830,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -189274,7 +189294,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -193808,7 +193828,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -198386,7 +198406,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -202584,7 +202604,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -207328,7 +207348,7 @@
       "status": "open",
       "statusText": "엘리스호 바로예약 어종 : 광어 운항시간 : 04:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://alice.sunsang24.com/ship/schedule_fleet/202612"
     },
