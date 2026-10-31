@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-31T08:44:56.150Z",
+  "generatedAt": "2026-10-31T08:46:22.272Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -184,13 +184,13 @@
     "genieyonghan": 62,
     "giant": 62,
     "goaraho": 62,
-    "gonghyeonjin": 22,
-    "gosu": 22,
-    "gsseven": 22,
-    "gudiho": 22,
-    "gukbo": 62,
-    "gull": 22,
-    "gundam": 22,
+    "gonghyeonjin": 62,
+    "gosu": 62,
+    "gsseven": 62,
+    "gudiho": 62,
+    "gukbo": 22,
+    "gull": 62,
+    "gundam": 62,
     "gunsannaksi": 22,
     "gyeongjuho": 22,
     "haemaho": 22,
@@ -263,7 +263,7 @@
     "napoliho": 64,
     "bumblebee": 64,
     "eagleho": 57,
-    "goldatsr": 62
+    "goldatsr": 22
   },
   "trips": [
     {
@@ -2512,8 +2512,8 @@
       "species": "농어",
       "tide": "5물",
       "status": "few",
-      "statusText": "팀루비나2호 바로예약 어종 : 농어 / 갯바위,루어,선상,캐스팅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/7명",
-      "seatsLeft": 2,
+      "statusText": "팀루비나2호 바로예약 어종 : 농어 / 갯바위,루어,선상,캐스팅 운항시간 : 04:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/8명",
+      "seatsLeft": 1,
       "seatsTotal": 9,
       "price": null,
       "url": "https://gosu.sunsang24.com/ship/schedule_fleet/202611"
@@ -55882,8 +55882,8 @@
       "species": "대구",
       "tide": "12물",
       "status": "open",
-      "statusText": "미르호 바로예약 어종 : 대구 / 타이라바 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/2명",
-      "seatsLeft": 11,
+      "statusText": "미르호 바로예약 어종 : 대구 / 타이라바 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/5명",
+      "seatsLeft": 8,
       "seatsTotal": 13,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202611"
