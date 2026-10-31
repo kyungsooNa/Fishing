@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T23:24:22.029Z",
+  "generatedAt": "2026-10-31T00:41:07.455Z",
   "horizonDays": 90,
   "cursors": {
     "7": 62,
@@ -239,14 +239,14 @@
     "pigho": 22,
     "poseidon": 22,
     "princeho": 22,
-    "pro": 63,
-    "redfox": 63,
-    "redpulsegs": 63,
-    "richard": 63,
-    "rise": 63,
-    "rkclgh": 63,
-    "rosemary": 63,
-    "samdeok": 63,
+    "pro": 22,
+    "redfox": 22,
+    "redpulsegs": 22,
+    "richard": 22,
+    "rise": 22,
+    "rkclgh": 22,
+    "rosemary": 22,
+    "samdeok": 22,
     "seamanho": 63,
     "seo": 62,
     "seongyeon": 62,
@@ -7225,7 +7225,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": 10,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -14694,7 +14694,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": 10,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -23064,7 +23064,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": 10,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -28441,8 +28441,8 @@
       "species": "갑오징어",
       "tide": "8물",
       "status": "open",
-      "statusText": "킹마린호 바로예약 어종 : 갑오징어 / 루어,선상 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명예약/1명",
-      "seatsLeft": 19,
+      "statusText": "킹마린호 바로예약 어종 : 갑오징어 / 루어,선상 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명예약/3명",
+      "seatsLeft": 17,
       "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202611"
@@ -31370,7 +31370,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": 10,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -39700,7 +39700,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": 10,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -48027,7 +48027,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": 10,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -56308,7 +56308,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": 10,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -64416,7 +64416,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": 10,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -72341,7 +72341,7 @@
       "status": "open",
       "statusText": "로즈마리호 바로예약 어종 : 벵에돔 / 흘림 찌낚시 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명",
       "seatsLeft": 5,
-      "seatsTotal": 10,
+      "seatsTotal": 5,
       "price": null,
       "url": "https://rosemary.sunsang24.com/ship/schedule_fleet/202611"
     },
