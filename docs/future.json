@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-01T22:37:02.285Z",
+  "generatedAt": "2026-11-01T22:38:05.024Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -180,13 +180,13 @@
     "fishhunter": 60,
     "gagaho": 60,
     "galchiho": 60,
-    "gdcompany": 22,
-    "genieyonghan": 22,
-    "giant": 22,
-    "goaraho": 22,
-    "gonghyeonjin": 22,
-    "gosu": 22,
-    "gsseven": 22,
+    "gdcompany": 60,
+    "genieyonghan": 60,
+    "giant": 60,
+    "goaraho": 60,
+    "gonghyeonjin": 60,
+    "gosu": 60,
+    "gsseven": 60,
     "gudiho": 22,
     "gukbo": 61,
     "gull": 22,
@@ -263,7 +263,7 @@
     "napoliho": 64,
     "bumblebee": 64,
     "eagleho": 57,
-    "goldatsr": 61
+    "goldatsr": 22
   },
   "trips": [
     {
@@ -6900,8 +6900,8 @@
       "species": "대구",
       "tide": "8물",
       "status": "open",
-      "statusText": "돌핀호 바로예약 어종 : 대구 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
+      "statusText": "돌핀호 바로예약 어종 : 대구 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
       "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202611"
@@ -15185,8 +15185,8 @@
       "species": "대구",
       "tide": "9물",
       "status": "open",
-      "statusText": "돌핀호 바로예약 어종 : 대구 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
+      "statusText": "돌핀호 바로예약 어종 : 대구 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
       "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202611"
@@ -23494,8 +23494,8 @@
       "species": "대구",
       "tide": "10물",
       "status": "open",
-      "statusText": "돌핀호 바로예약 어종 : 대구 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
+      "statusText": "돌핀호 바로예약 어종 : 대구 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
       "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202611"
@@ -31841,8 +31841,8 @@
       "species": "대구",
       "tide": "11물",
       "status": "open",
-      "statusText": "돌핀호 바로예약 어종 : 대구 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
+      "statusText": "돌핀호 바로예약 어종 : 대구 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
       "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202611"
@@ -40102,8 +40102,8 @@
       "species": "대구",
       "tide": "12물",
       "status": "open",
-      "statusText": "돌핀호 바로예약 어종 : 대구 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
+      "statusText": "돌핀호 바로예약 어종 : 대구 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
       "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202611"
@@ -48147,8 +48147,8 @@
       "species": "대구",
       "tide": "13물",
       "status": "open",
-      "statusText": "돌핀호 바로예약 어종 : 대구 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
+      "statusText": "돌핀호 바로예약 어종 : 대구 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
       "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202611"
@@ -56155,8 +56155,8 @@
       "species": "대구",
       "tide": "14물",
       "status": "open",
-      "statusText": "돌핀호 바로예약 어종 : 대구 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
+      "statusText": "돌핀호 바로예약 어종 : 대구 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
+      "seatsLeft": 13,
       "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202611"
@@ -58910,8 +58910,8 @@
       "species": "방어",
       "tide": "조금",
       "status": "open",
-      "statusText": "지디1호 바로예약 어종 : 방어 / 선상 운행시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/8명",
-      "seatsLeft": 14,
+      "statusText": "지디1호 바로예약 어종 : 방어 / 선상 운행시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/10명",
+      "seatsLeft": 12,
       "seatsTotal": 22,
       "price": null,
       "url": "https://gdcompany.sunsang24.com/ship/schedule_fleet/202612"
@@ -72472,8 +72472,8 @@
       "species": "방어",
       "tide": "2물",
       "status": "open",
-      "statusText": "지디1호 바로예약 어종 : 방어 / 선상 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리23명예약/2명",
-      "seatsLeft": 23,
+      "statusText": "지디1호 바로예약 어종 : 방어 / 선상 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리22명예약/3명",
+      "seatsLeft": 22,
       "seatsTotal": 25,
       "price": null,
       "url": "https://gdcompany.sunsang24.com/ship/schedule_fleet/202612"
