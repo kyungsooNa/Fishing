@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-01T22:31:31.650Z",
+  "generatedAt": "2026-11-01T22:32:30.356Z",
   "horizonDays": 90,
   "cursors": {
-    "7": 61,
+    "7": 22,
     "sky": 22,
     "eugeneho": 71,
     "mansu": 71,
@@ -142,12 +142,12 @@
     "goldenbaek": 22,
     "blueocean2": 22,
     "daehan": 22,
-    "nature": 61,
-    "bj": 61,
-    "dongmun": 61,
-    "2018miracle": 61,
-    "ace": 61,
-    "alice": 61,
+    "nature": 22,
+    "bj": 22,
+    "dongmun": 22,
+    "2018miracle": 22,
+    "ace": 22,
+    "alice": 22,
     "aqua": 61,
     "arakhaeng": 61,
     "arirang": 61,
@@ -7050,7 +7050,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": null,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -15335,7 +15335,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": null,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -23644,7 +23644,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": null,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -31991,7 +31991,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": null,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -40293,7 +40293,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": null,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -48359,7 +48359,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": null,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -56305,7 +56305,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": null,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -198127,9 +198127,9 @@
       "species": "참돔",
       "tide": "2물",
       "status": "open",
-      "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
-      "seatsLeft": 16,
-      "seatsTotal": null,
+      "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/2명",
+      "seatsLeft": 14,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -199509,7 +199509,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -200747,7 +200747,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -202004,7 +202004,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -202927,7 +202927,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -203788,7 +203788,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -204670,7 +204670,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -205734,7 +205734,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -206844,7 +206844,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -207852,7 +207852,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -208860,7 +208860,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -209888,7 +209888,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -210958,7 +210958,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -212278,7 +212278,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -213535,7 +213535,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -214500,7 +214500,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -215466,7 +215466,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -216369,7 +216369,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -217272,7 +217272,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -218175,7 +218175,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -219183,7 +219183,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -220294,7 +220294,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -221344,7 +221344,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -222352,7 +222352,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -223360,7 +223360,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -224368,7 +224368,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -225082,7 +225082,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -225817,7 +225817,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -226633,7 +226633,7 @@
       "status": "open",
       "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": null,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -226953,6 +226953,27 @@
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202701"
     },
     {
+      "siteId": "nature",
+      "siteName": "자연피싱",
+      "boat": "자연피싱호",
+      "port": "충남 태안 마검포항",
+      "phone": "010-4297-7001",
+      "date": "2027-01-31",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "16:00",
+      "session": "종일",
+      "hours": 11,
+      "species": "우럭",
+      "tide": "무시",
+      "status": "open",
+      "statusText": "자연피싱호 바로예약 어종 : 우럭 / 똥침,생미끼,선상,어초 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
+      "seatsLeft": 20,
+      "seatsTotal": 20,
+      "price": null,
+      "url": "https://nature.sunsang24.com/ship/schedule_fleet/202701"
+    },
+    {
       "siteId": "parkpro",
       "siteName": "박프로호",
       "boat": "박프로호",
@@ -227014,6 +227035,27 @@
       "seatsTotal": 14,
       "price": null,
       "url": "https://jejutv.sunsang24.com/ship/schedule_fleet/202701"
+    },
+    {
+      "siteId": "2018miracle",
+      "siteName": "미라클호",
+      "boat": "미라클호",
+      "port": "경남 통영 신봉항",
+      "phone": "010-9308-1507",
+      "date": "2027-01-31",
+      "departAt": "06:30",
+      "meetingAt": "06:30",
+      "returnAt": "16:00",
+      "session": "종일",
+      "hours": 9.5,
+      "species": "참돔",
+      "tide": "1물",
+      "status": "open",
+      "statusText": "뉴 2018 미라클호 (일정-1) 바로예약 어종 : 참돔,붉바리,쏨뱅이 / 타이라바 운항시간 : 06:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
+      "seatsLeft": 16,
+      "seatsTotal": 16,
+      "price": null,
+      "url": "https://2018miracle.sunsang24.com/ship/schedule_fleet/202701"
     },
     {
       "siteId": "yeongjae",
