@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-01T22:35:59.589Z",
+  "generatedAt": "2026-11-01T22:37:02.285Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -172,14 +172,14 @@
     "dragonfishing": 60,
     "dream": 60,
     "eagles": 60,
-    "ebada": 22,
-    "emerald": 22,
-    "enjoy": 22,
-    "eunhasuho": 22,
-    "fishbank": 22,
-    "fishhunter": 22,
-    "gagaho": 22,
-    "galchiho": 22,
+    "ebada": 60,
+    "emerald": 60,
+    "enjoy": 60,
+    "eunhasuho": 60,
+    "fishbank": 60,
+    "fishhunter": 60,
+    "gagaho": 60,
+    "galchiho": 60,
     "gdcompany": 22,
     "genieyonghan": 22,
     "giant": 22,
@@ -61110,7 +61110,7 @@
       "status": "open",
       "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -65583,7 +65583,7 @@
       "status": "open",
       "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -70140,7 +70140,7 @@
       "status": "open",
       "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -74694,7 +74694,7 @@
       "status": "open",
       "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -79427,9 +79427,9 @@
       "species": "부시리",
       "tide": "4물",
       "status": "open",
-      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
-      "seatsLeft": 13,
-      "seatsTotal": null,
+      "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/5명",
+      "seatsLeft": 8,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -82048,9 +82048,9 @@
       "hours": 10,
       "species": "돌돔",
       "tide": "5물",
-      "status": "closed",
-      "statusText": "흑룡호 대기하기 어종:돌돔,쥐치,열기,볼락,왕전갱이 등등♦️예약확정: 예약➡️입금➡️예약확정♦️입금예시:7월9일(김흑룡) 입금시 위와같이 작성후 입금후 문자남겨주세요 어종 : 돌돔,쥐치 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/20명",
-      "seatsLeft": 0,
+      "status": "few",
+      "statusText": "흑룡호 바로예약 어종:돌돔,쥐치,열기,볼락,왕전갱이 등등♦️예약확정: 예약➡️입금➡️예약확정♦️입금예시:7월9일(김흑룡) 입금시 위와같이 작성후 입금후 문자남겨주세요 어종 : 돌돔,쥐치 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/19명",
+      "seatsLeft": 1,
       "seatsTotal": 20,
       "price": null,
       "url": "https://fishhunter.sunsang24.com/ship/schedule_fleet/202612"
@@ -83516,7 +83516,7 @@
       "status": "open",
       "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -87316,7 +87316,7 @@
       "status": "open",
       "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -91265,7 +91265,7 @@
       "status": "open",
       "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -95365,7 +95365,7 @@
       "status": "open",
       "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -99974,7 +99974,7 @@
       "status": "open",
       "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -104787,7 +104787,7 @@
       "status": "open",
       "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -108144,9 +108144,9 @@
       "hours": 10,
       "species": "돌돔",
       "tide": "11물",
-      "status": "few",
-      "statusText": "흑룡호 바로예약 어종:돌돔,쥐치,열기,볼락,왕전갱이 등등♦️예약확정: 예약➡️입금➡️예약확정♦️입금예시:7월9일(김흑룡) 입금시 위와같이 작성후 입금후 문자남겨주세요 어종 : 돌돔,쥐치 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/18명",
-      "seatsLeft": 2,
+      "status": "closed",
+      "statusText": "흑룡호 대기하기 어종:돌돔,쥐치,열기,볼락,왕전갱이 등등♦️예약확정: 예약➡️입금➡️예약확정♦️입금예시:7월9일(김흑룡) 입금시 위와같이 작성후 입금후 문자남겨주세요 어종 : 돌돔,쥐치 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/20명",
+      "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
       "url": "https://fishhunter.sunsang24.com/ship/schedule_fleet/202612"
@@ -114631,7 +114631,7 @@
       "status": "open",
       "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -119087,7 +119087,7 @@
       "status": "open",
       "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -122994,7 +122994,7 @@
       "status": "open",
       "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -126365,7 +126365,7 @@
       "status": "open",
       "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -130645,7 +130645,7 @@
       "status": "open",
       "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -135070,7 +135070,7 @@
       "status": "open",
       "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -139889,7 +139889,7 @@
       "status": "open",
       "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -145048,7 +145048,7 @@
       "status": "open",
       "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -150069,7 +150069,7 @@
       "status": "open",
       "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -154908,7 +154908,7 @@
       "status": "open",
       "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -158688,7 +158688,7 @@
       "status": "open",
       "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -162739,7 +162739,7 @@
       "status": "open",
       "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -167036,7 +167036,7 @@
       "status": "open",
       "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -171160,7 +171160,7 @@
       "status": "open",
       "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -175754,7 +175754,7 @@
       "status": "open",
       "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -180309,7 +180309,7 @@
       "status": "open",
       "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -184908,7 +184908,7 @@
       "status": "open",
       "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -189169,7 +189169,7 @@
       "status": "open",
       "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -193955,7 +193955,7 @@
       "status": "open",
       "statusText": "에메랄드호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅,캐스팅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": null,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://emerald.sunsang24.com/ship/schedule_fleet/202612"
     },
