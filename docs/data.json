@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-11-03T12:49:31.612Z",
+  "generatedAt": "2026-11-03T12:50:23.212Z",
   "collection": {
-    "startedAt": "2026-11-03T12:49:31.612Z",
+    "startedAt": "2026-11-03T12:50:23.212Z",
     "scope": {
       "type": "site",
-      "value": "mfish"
+      "value": "kingstar"
     },
     "total": 1,
     "success": 1,
     "failed": 0,
     "skipped": 0,
-    "runId": "41638940409",
-    "runUrl": "https://github.com/kyungsooNa/Fishing/actions/runs/41638940409"
+    "runId": "41639056518",
+    "runUrl": "https://github.com/kyungsooNa/Fishing/actions/runs/41639056518"
   },
   "rotation": {
     "sunsang24.com": "pro",
@@ -1526,13 +1526,11 @@
       "addedBy": "discover"
     },
     "kingstar": {
-      "ok": false,
-      "at": "2026-11-03T09:26:11.034Z",
-      "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
-      "count": 21,
-      "keptFrom": "2026-11-03T08:02:40.895Z",
-      "lastSelectedAt": "2026-11-03T08:02:40.895Z",
-      "skipped": "rotation",
+      "ok": true,
+      "at": "2026-11-03T12:50:23.219Z",
+      "lastSelectedAt": "2026-11-03T12:50:23.219Z",
+      "count": 36,
+      "futureCount": 74,
       "name": "킹스타호",
       "platform": "선상24",
       "url": "https://kingstar.sunsang24.com",
@@ -133195,8 +133193,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "조금",
       "status": "open",
-      "statusText": "킹스타호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명예약/3명",
-      "seatsLeft": 17,
+      "statusText": "킹스타호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/5명",
+      "seatsLeft": 15,
       "seatsTotal": 20,
       "price": null,
       "url": "https://kingstar.sunsang24.com/ship/schedule_fleet/202611"
