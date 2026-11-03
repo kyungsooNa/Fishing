@@ -136,6 +136,9 @@ export function parseDetail(site, html, url) {
     // 모바일판은 공지사항도 배와 같은 res_box/h2 구조입니다. registry 정원이 있으면
     // 공지의 "20시 안내문자"가 출항 20:00인 빈 배 20석으로 바뀌므로 배 이름 단계에서 버립니다.
     if (/^(?:공지사항?|안내사항?)$/.test(squash(block.boat))) continue;
+    // 낚시 예약판에 숙소를 같이 파는 선사가 있습니다(영진호의 "영진펜션 … 낚시종류 민박").
+    // 배가 아니라 방이라 정원 99에 남은자리 84처럼 읽혀 빈자리 목록 맨 위에 올라왔습니다.
+    if (isLodging(block.boat, text)) continue;
     if (!date || !/남은자리|잔여|여석|입금|예약확정|휴항|결항|출조취소|개인사정/.test(text)) continue;
 
     const mode = site.seatCount ?? seatMode(text);
@@ -402,6 +405,16 @@ function splitByDate($) {
   return blocks.filter((b) => b.text.trim());
 }
 
+// 예약자·입금자 명단이 시작되는 자리. 그 뒤의 '…호'는 손님 이름입니다.
+const ROSTER = /예약자|입금자|입금대기|예약확정|대기자|취소자/;
+
+// 배가 아닌 숙소 행. 배 이름 칸이 펜션·민박이거나, 낚시종류가 민박·숙박입니다.
+// 본문 전체에서 "숙박"을 찾지는 않습니다 — "전날무료숙박" 같은 배 출조의 혜택 문구가 있습니다.
+function isLodging(heading, text) {
+  return /펜션|민박|게스트하우스|모텔/.test(squash(heading)) ||
+    /낚시\s*종류\s*:?\s*(?:민박|숙박|펜션)/.test(text);
+}
+
 function textWithBreaks($, el) {
   const copy = $(el).clone();
   copy.find('script,style').remove();
@@ -412,7 +425,9 @@ function textWithBreaks($, el) {
 
 function pickBoat(site, heading, text = heading) {
   const primary = String(heading ?? '');
-  const detail = String(text ?? '');
+  // 본문은 명단 앞까지만 봅니다. "예약자 이제호/방1개님"의 손님 이름이 '…호'로 끝나
+  // 배 이름으로 읽혔습니다 — 명단에는 배가 아니라 사람 이름이 옵니다.
+  const detail = String(text ?? '').split(ROSTER)[0];
   const known = Object.keys(site.boats ?? {});
   // 선박명 칸을 먼저 믿되, 여행사형 예약판처럼 그 칸에 `갈치`만 쓰고 실제 배는
   // `출조선사: 스텔론호`로 공지에 적는 곳은 행 본문까지 봅니다.

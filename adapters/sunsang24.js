@@ -9,7 +9,7 @@
 
 import { fetchHtml } from '../core/fetcher.js';
 import * as cheerio from 'cheerio';
-import { parseRows, speciesIn, matchBoatName, mentionsBoat } from './_rows.js';
+import { parseRows, speciesIn, speciesListIn, matchBoatName, mentionsBoat } from './_rows.js';
 import { makeTrip, toDate, toTide } from '../core/schema.js';
 import { kstDate } from '../core/when.js';
 
@@ -302,13 +302,20 @@ function fillMissingSeatTotals(trips) {
 
 
 function pickNoticePort(site, text) {
-  const found = String(text ?? '').match(/([가-힣A-Za-z0-9]+항)\s*(?:에서\s*)?출항/)?.[1];
-  if (!found || found === '출조항' || found === '입출항') return null;
+  // "출항 출항"처럼 낱말이 겹치면 '출항' 자체가 항구로 잡혔습니다(청룡호 백호호의 "강원 고성 출항").
+  // 항구가 아닌 낱말은 건너뛰고 다음 후보를 봅니다.
+  const found = [...String(text ?? '').matchAll(/([가-힣A-Za-z0-9]+항)\s*(?:에서\s*)?출항/g)]
+    .map((m) => m[1])
+    .find((name) => !NOT_PORT.test(name));
+  if (!found) return null;
   const normalized = site.portAliases?.[found] ?? found;
   if (/\s/.test(normalized)) return normalized;
   const prefix = portPrefix(site.port);
   return prefix ? `${prefix} ${normalized}` : normalized;
 }
+
+// '…항'으로 끝나지만 항구 이름이 아닌 낱말. 공지사항·주의사항 같은 '…사항'도 있습니다.
+const NOT_PORT = /^(?:출|입|귀|회|재출|입출|출조|운)항$|사항$/;
 
 function portPrefix(port) {
   const parts = String(port ?? '').trim().split(/\s+/).filter(Boolean);
@@ -318,7 +325,8 @@ function portPrefix(port) {
 
 function pickSpecies(text) {
   const m = text.match(/어종\s*:\s*([^/\n]{1,20}?)(?:\/|운항시간|예약|$)/);
-  return speciesIn(m?.[1]) ?? speciesIn(text);
+  // 어종 칸은 짧고 그 출조의 것만 적혀 있어 전부 싣습니다("광어,우럭,농어").
+  return speciesListIn(m?.[1]) ?? speciesIn(text);
 }
 
 function pickBoat(site, text) {

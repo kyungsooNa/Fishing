@@ -30,6 +30,30 @@ export function speciesIn(text) {
     .sort((a, b) => a.at - b.at || a.order - b.order)[0]?.name ?? null;
 }
 
+/**
+ * 어종 칸에 적힌 어종을 **전부** 적은 순서대로 돌려줍니다("광어,우럭,농어" → "광어,우럭,농어").
+ * `speciesIn`은 대표 하나만 골라서, 오이도 킹스타호의 "광어,우럭,농어" 출조가 광어로만 실려
+ * 우럭·농어로 찾으면 안 나왔습니다. 공지 전체가 아니라 어종 칸처럼 짧은 글에만 쓰세요 —
+ * 본문에는 준비물·다른 날 안내의 어종이 섞입니다.
+ * 긴 이름 안의 짧은 이름은 따로 세지 않습니다(갑오징어 속 오징어).
+ */
+export function speciesListIn(text) {
+  const compact = String(text ?? '').replace(/\s+/g, '');
+  if (!compact) return null;
+  const taken = [];
+  const found = [];
+  for (const name of [...SPECIES].sort((a, b) => b.length - a.length)) {
+    for (let at = compact.indexOf(name); at >= 0; at = compact.indexOf(name, at + 1)) {
+      const end = at + name.length;
+      if (taken.some(([s, e]) => at < e && end > s)) continue;
+      taken.push([at, end]);
+      found.push({ name, at });
+    }
+  }
+  if (!found.length) return speciesIn(compact);
+  return [...new Set(found.sort((a, b) => a.at - b.at).map((f) => f.name))].join(',');
+}
+
 // ── 파싱 ────────────────────────────────────────────────────────────────────
 /**
  * `urlDated`는 넘겨받은 주소가 그 날짜의 예약 화면이냐입니다. 이 파서는 한 페이지에서

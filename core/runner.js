@@ -132,6 +132,8 @@ export async function collectSite(site) {
 export async function runAll({
   only = null,
   onlyAdapter = null,
+  // 여러 선사를 한 번에 고를 때(publish.js: 더피싱 + 국내 전용). 차례·회로는 전체 수집과 같습니다.
+  onlyIds = null,
   days = 21,
   horizonDays = days,
   futureDataPath = null,
@@ -153,10 +155,12 @@ export async function runAll({
   overseas = process.env.GITHUB_ACTIONS === 'true',
 } = {}) {
   const registry = await loadRegistry(registryPath);
+  const pickedIds = onlyIds ? new Set(onlyIds) : null;
   const targets = registry.filter((s) => (only
     ? s.id === only
-    : s.enabled !== false && (!onlyAdapter || s.adapter === onlyAdapter)));
-  const partial = Boolean(only || onlyAdapter);
+    : s.enabled !== false && (!onlyAdapter || s.adapter === onlyAdapter)
+      && (!pickedIds || pickedIds.has(s.id))));
+  const partial = Boolean(only || onlyAdapter || pickedIds);
   const targetIds = new Set(targets.map((site) => site.id));
   let completed = 0;
   // 진행 표시가 끊겨도 수집 자체는 계속돼야 합니다(IPC가 먼저 닫히는 경우 등).
@@ -171,6 +175,9 @@ export async function runAll({
   }
   if (onlyAdapter && !targets.length) {
     throw new Error(`registry에 '${onlyAdapter}' 어댑터가 없습니다`);
+  }
+  if (pickedIds && !targets.length) {
+    throw new Error('고른 선사가 registry에 하나도 없습니다');
   }
 
   const [prev, prevFuture] = await Promise.all([
@@ -553,7 +560,8 @@ export async function runAll({
     startedAt: startedAt.toISOString(),
     scope: only ? { type: 'site', value: only }
       : onlyAdapter ? { type: 'adapter', value: onlyAdapter }
-        : { type: 'all' },
+        : pickedIds ? { type: 'sites', value: targets.length }
+          : { type: 'all' },
     total: targets.length,
     success: outcomes.filter((result) => result.ok).length,
     failed: outcomes.filter((result) => !result.ok && !result.skipped).length,
@@ -572,18 +580,17 @@ export async function runAll({
     trips,
   };
 
+  const future = futureDataPath ? {
+    generatedAt: startedAt.toISOString(),
+    horizonDays,
+    cursors: futureCursors,
+    trips: futureTrips,
+  } : null;
   if (!dryRun) await save(data, dataPath);
-  if (!dryRun && futureDataPath) {
-    await save({
-      generatedAt: startedAt.toISOString(),
-      horizonDays,
-      cursors: futureCursors,
-      trips: futureTrips,
-    }, futureDataPath);
-  }
+  if (!dryRun && future) await save(future, futureDataPath);
   // prevSites는 "그 사이트를 직전에 확인한 시각"입니다. 취소석을 얼마나 빨리 잡았는지는
   // 그 시각과 이번 시각 사이의 폭으로만 알 수 있어서(core/alerts.js) 같이 돌려줍니다.
-  return { data, openings, failed: [...failed], prevSites: prev.sites ?? {} };
+  return { data, future, openings, failed: [...failed], prevSites: prev.sites ?? {} };
 }
 
 // 오늘 이전과 수집 범위 밖의 날짜를 떨궈냅니다. 기준은 한국 날짜입니다.
