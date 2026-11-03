@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-03T12:50:23.212Z",
+  "generatedAt": "2026-11-03T12:51:10.945Z",
   "horizonDays": 90,
   "cursors": {
     "7": 90,
@@ -237,7 +237,7 @@
     "pacific": 22,
     "parkpro": 22,
     "pigho": 22,
-    "poseidon": 22,
+    "poseidon": 59,
     "princeho": 22,
     "pro": 22,
     "redfox": 90,

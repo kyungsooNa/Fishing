@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-11-03T12:50:23.212Z",
+  "generatedAt": "2026-11-03T12:51:10.945Z",
   "collection": {
-    "startedAt": "2026-11-03T12:50:23.212Z",
+    "startedAt": "2026-11-03T12:51:10.945Z",
     "scope": {
       "type": "site",
-      "value": "kingstar"
+      "value": "poseidon"
     },
     "total": 1,
     "success": 1,
     "failed": 0,
     "skipped": 0,
-    "runId": "41639056518",
-    "runUrl": "https://github.com/kyungsooNa/Fishing/actions/runs/41639056518"
+    "runId": "41639180154",
+    "runUrl": "https://github.com/kyungsooNa/Fishing/actions/runs/41639180154"
   },
   "rotation": {
     "sunsang24.com": "pro",
@@ -1904,8 +1904,8 @@
     },
     "poseidon": {
       "ok": true,
-      "at": "2026-11-03T09:26:36.336Z",
-      "lastSelectedAt": "2026-11-03T09:26:36.336Z",
+      "at": "2026-11-03T12:51:10.952Z",
+      "lastSelectedAt": "2026-11-03T12:51:10.952Z",
       "count": 22,
       "futureCount": 37,
       "name": "포세이돈호",
@@ -23526,9 +23526,9 @@
       "hours": 10,
       "species": "주꾸미·갑오징어",
       "tide": "2물",
-      "status": "open",
-      "statusText": "포세이돈호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리3명예약/17명",
-      "seatsLeft": 3,
+      "status": "few",
+      "statusText": "포세이돈호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/18명",
+      "seatsLeft": 2,
       "seatsTotal": 20,
       "price": null,
       "url": "https://poseidon.sunsang24.com/ship/schedule_fleet/202611"
@@ -116705,9 +116705,9 @@
       "hours": 10,
       "species": "주꾸미·갑오징어",
       "tide": "12물",
-      "status": "open",
-      "statusText": "포세이돈호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/15명",
-      "seatsLeft": 5,
+      "status": "few",
+      "statusText": "포세이돈호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/18명",
+      "seatsLeft": 2,
       "seatsTotal": 20,
       "price": null,
       "url": "https://poseidon.sunsang24.com/ship/schedule_fleet/202611"
@@ -168673,9 +168673,9 @@
       "hours": 10,
       "species": "주꾸미·갑오징어",
       "tide": "4물",
-      "status": "few",
-      "statusText": "포세이돈호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/19명",
-      "seatsLeft": 1,
+      "status": "open",
+      "statusText": "포세이돈호 바로예약 어종 : 주꾸미,갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리4명예약/16명",
+      "seatsLeft": 4,
       "seatsTotal": 20,
       "price": null,
       "url": "https://poseidon.sunsang24.com/ship/schedule_fleet/202611"
