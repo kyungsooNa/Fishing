@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-11-03T12:51:36.077Z",
+  "generatedAt": "2026-11-03T12:52:15.784Z",
   "collection": {
-    "startedAt": "2026-11-03T12:51:36.077Z",
+    "startedAt": "2026-11-03T12:52:15.784Z",
     "scope": {
       "type": "site",
-      "value": "bluefc"
+      "value": "ace"
     },
     "total": 1,
     "success": 1,
     "failed": 0,
     "skipped": 0,
-    "runId": "41639234785",
-    "runUrl": "https://github.com/kyungsooNa/Fishing/actions/runs/41639234785"
+    "runId": "41639323805",
+    "runUrl": "https://github.com/kyungsooNa/Fishing/actions/runs/41639323805"
   },
   "rotation": {
     "sunsang24.com": "pro",
@@ -493,13 +493,11 @@
       "addedBy": "discover"
     },
     "ace": {
-      "ok": false,
-      "at": "2026-11-03T09:26:10.899Z",
-      "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
-      "count": 21,
-      "keptFrom": "2026-11-03T01:21:00.084Z",
-      "lastSelectedAt": "2026-11-03T01:21:00.084Z",
-      "skipped": "rotation",
+      "ok": true,
+      "at": "2026-11-03T12:52:15.790Z",
+      "lastSelectedAt": "2026-11-03T12:52:15.790Z",
+      "count": 22,
+      "futureCount": 37,
       "name": "에이스호",
       "platform": "선상24",
       "url": "https://ace.sunsang24.com",
@@ -4003,7 +4001,7 @@
       "lng": 126.6,
       "approx": true,
       "trips": 480,
-      "open": 327
+      "open": 326
     },
     "전남 여수 국동항": {
       "lat": 34.7258,
@@ -65553,9 +65551,9 @@
       "hours": 11.5,
       "species": "갑오징어",
       "tide": "7물",
-      "status": "open",
-      "statusText": "에이스호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 16:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/12명",
-      "seatsLeft": 8,
+      "status": "closed",
+      "statusText": "에이스호 대기하기 어종 : 갑오징어 운항시간 : 05:00 ~ 16:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/20명",
+      "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
       "url": "https://ace.sunsang24.com/ship/schedule_fleet/202611"
@@ -162549,8 +162547,8 @@
       "species": "갑오징어",
       "tide": "3물",
       "status": "open",
-      "statusText": "에이스호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 16:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리3명예약/17명",
-      "seatsLeft": 3,
+      "statusText": "에이스호 바로예약 어종 : 갑오징어 운항시간 : 05:00 ~ 16:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/15명",
+      "seatsLeft": 5,
       "seatsTotal": 20,
       "price": null,
       "url": "https://ace.sunsang24.com/ship/schedule_fleet/202611"
