@@ -9,7 +9,7 @@
 
 import { fetchHtml } from '../core/fetcher.js';
 import * as cheerio from 'cheerio';
-import { parseRows, speciesIn, matchBoatName, mentionsBoat } from './_rows.js';
+import { parseRows, speciesIn, speciesListIn, matchBoatName, mentionsBoat } from './_rows.js';
 import { makeTrip, toDate, toTide } from '../core/schema.js';
 import { kstDate } from '../core/when.js';
 
@@ -325,7 +325,8 @@ function portPrefix(port) {
 
 function pickSpecies(text) {
   const m = text.match(/어종\s*:\s*([^/\n]{1,20}?)(?:\/|운항시간|예약|$)/);
-  return speciesIn(m?.[1]) ?? speciesIn(text);
+  // 어종 칸은 짧고 그 출조의 것만 적혀 있어 전부 싣습니다("광어,우럭,농어").
+  return speciesListIn(m?.[1]) ?? speciesIn(text);
 }
 
 function pickBoat(site, text) {

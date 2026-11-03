@@ -512,6 +512,36 @@ test('thefishing: detail — 숙소 행은 출조가 아니고, 명단의 손님
   assert.deepEqual(unnamed.map((t) => t.boat), ['영진호'], '알 수 없으면 선사 이름으로 둡니다');
 });
 
+test('sunsang24: 어종 칸에 여럿 적으면 전부 싣는다', () => {
+  // 오이도 킹스타호의 "광어,우럭,농어" 출조가 광어로만 실려 우럭·농어로 거르면 안 나왔습니다.
+  const html = `
+    <table id="d2026-11-28" class="shipsinfo_daywarp">
+      <tr><td class="date_info2">5물</td><td class="ships_warp">
+        <table class="ship_unit"><tr>
+          <td class="ship_info"><div class="title">킹스타호</div></td>
+          <td><ul class="reservation_detail" data-sdate="2026-11-28">
+            <li>어종 : 광어,우럭,농어 / 생미끼,생미끼 외수질</li><li>운항시간 : 05:00 ~ 15:00</li>
+          </ul></td>
+          <td class="ship_info2">남은자리 1명</td>
+        </tr></table>
+        <table class="ship_unit"><tr>
+          <td class="ship_info"><div class="title">킹스타호</div></td>
+          <td><ul class="reservation_detail" data-sdate="2026-11-28">
+            <li>어종 : 갑오징어 / 선상</li><li>운항시간 : 05:00 ~ 15:00</li>
+          </ul></td>
+          <td class="ship_info2">남은자리 3명</td>
+        </tr></table>
+      </td></tr>
+    </table>`;
+  const trips = parseSimpleDay(
+    { ...sunsangSite, id: 'kingstar', port: '경기 시흥 시화방조제 중간선착장', boats: { 킹스타호: {} } },
+    html,
+    'https://kingstar.sunsang24.com/ship/schedule_fleet/2026-11-28/0/simple_day',
+  );
+  assert.deepEqual(trips.map((t) => t.species), ['광어·우럭·농어', '갑오징어'],
+    '갑오징어 속 "오징어"는 따로 세지 않습니다');
+});
+
 test('uijiho: 월별 예약현황의 날짜 행과 정원을 읽는다', () => {
   const html = `
     <h2>2026년 9월 예약인원현황</h2>
