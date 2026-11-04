@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-04T01:39:02.472Z",
+  "generatedAt": "2026-11-04T01:40:03.545Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
-    "sky": 22,
+    "sky": 58,
     "eugeneho": 71,
     "mansu": 71,
     "smgfishing": 22,
@@ -247,13 +247,13 @@
     "rkclgh": 58,
     "rosemary": 58,
     "samdeok": 58,
-    "seamanho": 22,
-    "seo": 22,
-    "seongyeon": 22,
-    "sharkmarine": 22,
-    "ship": 22,
-    "sinara": 22,
-    "sinjinho": 22,
+    "seamanho": 58,
+    "seo": 58,
+    "seongyeon": 58,
+    "sharkmarine": 58,
+    "ship": 58,
+    "sinara": 58,
+    "sinjinho": 58,
     "skyho": 22,
     "sseondeo": 22,
     "myway": 58,
@@ -44895,7 +44895,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -49452,7 +49452,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -54072,7 +54072,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -58750,7 +58750,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -63587,9 +63587,9 @@
       "species": "주꾸미",
       "tide": "3물",
       "status": "open",
-      "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
-      "seatsTotal": null,
+      "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/3명",
+      "seatsLeft": 18,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -67802,7 +67802,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -68602,8 +68602,8 @@
       "species": "갈치",
       "tide": "5물",
       "status": "open",
-      "statusText": "신진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
-      "seatsLeft": 16,
+      "statusText": "신진호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 14:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/1명",
+      "seatsLeft": 15,
       "seatsTotal": 16,
       "price": null,
       "url": "https://sinjinho.sunsang24.com/ship/schedule_fleet/202612"
@@ -71686,7 +71686,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -75697,7 +75697,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -79902,7 +79902,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -84720,7 +84720,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -89617,7 +89617,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -94659,7 +94659,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -99626,7 +99626,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -104080,7 +104080,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -108071,7 +108071,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -111524,7 +111524,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -115867,7 +115867,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -120376,7 +120376,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -125279,7 +125279,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -130647,7 +130647,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -135604,7 +135604,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -140506,7 +140506,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -144391,7 +144391,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -148527,7 +148527,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -152907,7 +152907,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -157094,7 +157094,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -161751,7 +161751,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -166369,7 +166369,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -171010,7 +171010,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -175291,7 +175291,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -180119,7 +180119,7 @@
       "status": "open",
       "statusText": "해맨호 바로예약 어종 : 주꾸미 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://seamanho.sunsang24.com/ship/schedule_fleet/202612"
     },
