@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-05T22:33:38.905Z",
+  "generatedAt": "2026-11-06T00:04:49.535Z",
   "horizonDays": 90,
   "cursors": {
     "7": 56,
@@ -181,13 +181,13 @@
     "gagaho": 22,
     "galchiho": 87,
     "gdcompany": 87,
-    "genieyonghan": 57,
-    "giant": 57,
-    "goaraho": 57,
-    "gonghyeonjin": 57,
-    "gosu": 57,
-    "gsseven": 57,
-    "gudiho": 57,
+    "genieyonghan": 87,
+    "giant": 87,
+    "goaraho": 87,
+    "gonghyeonjin": 87,
+    "gosu": 87,
+    "gsseven": 87,
+    "gudiho": 87,
     "gukbo": 22,
     "gull": 57,
     "gundam": 57,
@@ -263,7 +263,7 @@
     "napoliho": 64,
     "bumblebee": 64,
     "eagleho": 57,
-    "goldatsr": 22
+    "goldatsr": 56
   },
   "trips": [
     {
@@ -78350,8 +78350,8 @@
       "species": "대구",
       "tide": "11물",
       "status": "open",
-      "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/2명",
-      "seatsLeft": 8,
+      "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/3명",
+      "seatsLeft": 7,
       "seatsTotal": 10,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202612"
