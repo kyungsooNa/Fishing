@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-07T01:51:56.468Z",
+  "generatedAt": "2026-11-07T01:52:57.001Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -179,13 +179,13 @@
     "fishbank": 86,
     "fishhunter": 86,
     "gagaho": 86,
-    "galchiho": 22,
-    "gdcompany": 22,
-    "genieyonghan": 22,
-    "giant": 22,
-    "goaraho": 22,
-    "gonghyeonjin": 22,
-    "gosu": 22,
+    "galchiho": 55,
+    "gdcompany": 55,
+    "genieyonghan": 55,
+    "giant": 55,
+    "goaraho": 55,
+    "gonghyeonjin": 55,
+    "gosu": 55,
     "gsseven": 22,
     "gudiho": 22,
     "gukbo": 86,
@@ -263,7 +263,7 @@
     "napoliho": 64,
     "bumblebee": 64,
     "eagleho": 57,
-    "goldatsr": 86
+    "goldatsr": 22
   },
   "trips": [
     {
@@ -20531,7 +20531,7 @@
       "status": "open",
       "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -25130,7 +25130,7 @@
       "status": "open",
       "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -25548,8 +25548,8 @@
       "species": "갈치",
       "tide": "1물",
       "status": "open",
-      "statusText": "갈치호 바로예약 운항시간 : 17:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
-      "seatsLeft": 12,
+      "statusText": "갈치호 바로예약 운항시간 : 17:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/2명",
+      "seatsLeft": 10,
       "seatsTotal": 12,
       "price": null,
       "url": "https://galchiho.sunsang24.com/ship/schedule_fleet/202612"
@@ -29833,7 +29833,7 @@
       "status": "open",
       "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -34594,7 +34594,7 @@
       "status": "open",
       "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -38942,9 +38942,9 @@
       "species": "대구",
       "tide": "4물",
       "status": "open",
-      "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
-      "seatsTotal": null,
+      "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/8명",
+      "seatsLeft": 5,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -39494,10 +39494,10 @@
       "hours": 6.5,
       "species": "대구",
       "tide": "4물",
-      "status": "open",
-      "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
-      "seatsLeft": 11,
-      "seatsTotal": null,
+      "status": "closed",
+      "statusText": "용한호 대기하기 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 11명 예약/11명",
+      "seatsLeft": 0,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -43769,7 +43769,7 @@
       "status": "open",
       "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -51792,7 +51792,7 @@
       "status": "open",
       "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -56058,7 +56058,7 @@
       "status": "open",
       "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -60939,7 +60939,7 @@
       "status": "open",
       "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -65881,7 +65881,7 @@
       "status": "open",
       "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -71002,10 +71002,10 @@
       "hours": 6.5,
       "species": "대구",
       "tide": "11물",
-      "status": "open",
-      "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
-      "seatsLeft": 11,
-      "seatsTotal": null,
+      "status": "closed",
+      "statusText": "용한호 대기하기 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 11명 예약/11명",
+      "seatsLeft": 0,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -76056,7 +76056,7 @@
       "status": "open",
       "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -80551,7 +80551,7 @@
       "status": "open",
       "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -84624,7 +84624,7 @@
       "status": "open",
       "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -88160,7 +88160,7 @@
       "status": "open",
       "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -92651,7 +92651,7 @@
       "status": "open",
       "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -97202,7 +97202,7 @@
       "status": "open",
       "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -102143,10 +102143,10 @@
       "hours": 6.5,
       "species": "대구",
       "tide": "3물",
-      "status": "open",
-      "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
-      "seatsLeft": 11,
-      "seatsTotal": null,
+      "status": "closed",
+      "statusText": "용한호 대기하기 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 11명 예약/11명",
+      "seatsLeft": 0,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -107577,7 +107577,7 @@
       "status": "open",
       "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -112556,7 +112556,7 @@
       "status": "open",
       "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -117500,7 +117500,7 @@
       "status": "open",
       "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -121342,7 +121342,7 @@
       "status": "open",
       "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -125541,7 +125541,7 @@
       "status": "open",
       "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -126941,8 +126941,8 @@
       "species": "방어",
       "tide": "8물",
       "status": "open",
-      "statusText": "지디2호 바로예약 어종 : 방어 / 선상 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명예약/8명",
-      "seatsLeft": 17,
+      "statusText": "지디2호 바로예약 어종 : 방어 / 선상 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명예약/6명",
+      "seatsLeft": 19,
       "seatsTotal": 25,
       "price": null,
       "url": "https://gdcompany.sunsang24.com/ship/schedule_fleet/202612"
@@ -129963,7 +129963,7 @@
       "status": "open",
       "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -131154,8 +131154,8 @@
       "species": "방어",
       "tide": "9물",
       "status": "open",
-      "statusText": "지디1호 바로예약 어종 : 방어 / 선상,지깅 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/10명",
-      "seatsLeft": 12,
+      "statusText": "지디1호 바로예약 어종 : 방어 / 선상,지깅 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/13명",
+      "seatsLeft": 9,
       "seatsTotal": 22,
       "price": null,
       "url": "https://gdcompany.sunsang24.com/ship/schedule_fleet/202612"
@@ -133222,8 +133222,8 @@
       "species": "대구",
       "tide": "10물",
       "status": "open",
-      "statusText": "돌핀호 바로예약 어종 : 대구 운항시간 : 06:00 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/11명",
-      "seatsLeft": 10,
+      "statusText": "돌핀호 바로예약 어종 : 대구 운항시간 : 06:00 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/12명",
+      "seatsLeft": 9,
       "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
@@ -134213,7 +134213,7 @@
       "status": "open",
       "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -138975,7 +138975,7 @@
       "status": "open",
       "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -143636,7 +143636,7 @@
       "status": "open",
       "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -148319,7 +148319,7 @@
       "status": "open",
       "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -152642,7 +152642,7 @@
       "status": "open",
       "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -157557,7 +157557,7 @@
       "status": "open",
       "statusText": "용한호 바로예약 어종 : 대구 / 타이라바 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": null,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
