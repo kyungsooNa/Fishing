@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-07T14:43:20.544Z",
+  "generatedAt": "2026-11-07T14:44:20.364Z",
   "horizonDays": 90,
   "cursors": {
     "7": 55,
@@ -178,13 +178,13 @@
     "eunhasuho": 22,
     "fishbank": 22,
     "fishhunter": 22,
-    "gagaho": 86,
-    "galchiho": 55,
-    "gdcompany": 55,
-    "genieyonghan": 55,
-    "giant": 55,
-    "goaraho": 55,
-    "gonghyeonjin": 55,
+    "gagaho": 22,
+    "galchiho": 86,
+    "gdcompany": 86,
+    "genieyonghan": 86,
+    "giant": 86,
+    "goaraho": 86,
+    "gonghyeonjin": 86,
     "gosu": 55,
     "gsseven": 55,
     "gudiho": 55,
@@ -263,7 +263,7 @@
     "napoliho": 64,
     "bumblebee": 64,
     "eagleho": 57,
-    "goldatsr": 22
+    "goldatsr": 55
   },
   "trips": [
     {
@@ -2015,8 +2015,8 @@
       "species": "방어",
       "tide": "12물",
       "status": "open",
-      "statusText": "지디1호 바로예약 어종 : 방어 / 선상,지깅 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/10명",
-      "seatsLeft": 12,
+      "statusText": "지디1호 바로예약 어종 : 방어 / 선상,지깅 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/11명",
+      "seatsLeft": 11,
       "seatsTotal": 22,
       "price": null,
       "url": "https://gdcompany.sunsang24.com/ship/schedule_fleet/202611"
@@ -198330,6 +198330,27 @@
       "seatsTotal": null,
       "price": null,
       "url": "https://nature.sunsang24.com/ship/schedule_fleet/202702"
+    },
+    {
+      "siteId": "gagaho",
+      "siteName": "가가호",
+      "boat": "스페이스호",
+      "port": "충남 태안 마검포항",
+      "phone": "010-2036-2003",
+      "date": "2027-02-05",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "16:00",
+      "session": "종일",
+      "hours": 10,
+      "species": "광어·우럭",
+      "tide": "5물",
+      "status": "open",
+      "statusText": "안흥 스페이스호 바로예약 어종 : 광어,우럭 / 생미끼,생미끼 외수질 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
+      "seatsLeft": 19,
+      "seatsTotal": null,
+      "price": null,
+      "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202702"
     },
     {
       "siteId": "jejutv",
