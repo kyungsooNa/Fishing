@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-07T19:07:00.936Z",
+  "generatedAt": "2026-11-07T19:08:03.490Z",
   "horizonDays": 90,
   "cursors": {
     "7": 55,
@@ -115,14 +115,14 @@
     "ysho": 71,
     "sunghoon": 85,
     "sunstarho": 85,
-    "taeanfishing": 55,
-    "taegeukho": 55,
-    "taesung": 55,
-    "tamra": 55,
-    "thales": 55,
-    "tpho": 55,
-    "twin": 55,
-    "urbis": 55,
+    "taeanfishing": 85,
+    "taegeukho": 85,
+    "taesung": 85,
+    "tamra": 85,
+    "thales": 85,
+    "tpho": 85,
+    "twin": 85,
+    "urbis": 85,
     "vancouver": 55,
     "venice": 55,
     "veteranfishing": 55,
@@ -4153,8 +4153,8 @@
       "species": "광어·우럭",
       "tide": "13물",
       "status": "open",
-      "statusText": "어해루호 바로예약 어종 : 광어,우럭 / 다운샷,루어,선상 운항시간 : 05:00 ~ 15:30 입금완료 예약 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/6명",
-      "seatsLeft": 15,
+      "statusText": "어해루호 바로예약 어종 : 광어,우럭 / 다운샷,루어,선상 운항시간 : 05:00 ~ 15:30 입금완료 예약 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/9명",
+      "seatsLeft": 12,
       "seatsTotal": 21,
       "price": null,
       "url": "https://taeanfishing.sunsang24.com/ship/schedule_fleet/202611"
@@ -157584,7 +157584,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -159006,7 +159006,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -160307,7 +160307,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -161606,7 +161606,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -162550,7 +162550,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -163453,7 +163453,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -164335,7 +164335,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -165420,7 +165420,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -166431,6 +166431,26 @@
       "urlDated": true
     },
     {
+      "siteId": "tamra",
+      "siteName": "탐라호",
+      "boat": "탐라호",
+      "port": "강원 삼척 임원항",
+      "phone": "010-4431-1050",
+      "date": "2027-01-10",
+      "departAt": null,
+      "returnAt": null,
+      "session": null,
+      "hours": null,
+      "species": "대구",
+      "tide": "10물",
+      "status": "open",
+      "statusText": "탐라호 바로예약 어종 : 대구 / 지깅 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/1명",
+      "seatsLeft": 7,
+      "seatsTotal": 8,
+      "price": null,
+      "url": "https://tamra.sunsang24.com/ship/schedule_fleet/202701"
+    },
+    {
       "siteId": "pacific",
       "siteName": "태평양호",
       "boat": "태평양호",
@@ -166572,7 +166592,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -167664,7 +167684,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -168693,7 +168713,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -169763,7 +169783,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -170833,7 +170853,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -172153,7 +172173,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -173471,7 +173491,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -174498,7 +174518,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -175506,7 +175526,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -176451,7 +176471,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -177375,7 +177395,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -178299,7 +178319,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -179328,7 +179348,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -180418,7 +180438,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -181531,7 +181551,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -182602,7 +182622,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -183631,7 +183651,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -184660,7 +184680,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -185395,7 +185415,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -186151,7 +186171,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -186987,7 +187007,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -187764,7 +187784,7 @@
       "status": "open",
       "statusText": "바다하리호 바로예약 어종 : 우럭,열기 / 똥침,선상,어초,침선 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://urbis.sunsang24.com/ship/schedule_fleet/202701"
     },
