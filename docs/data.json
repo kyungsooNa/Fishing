@@ -1,26 +1,25 @@
 {
-  "generatedAt": "2026-11-08T08:14:55.716Z",
+  "generatedAt": "2026-11-08T10:09:38.125Z",
   "collection": {
-    "startedAt": "2026-11-08T08:14:55.716Z",
+    "startedAt": "2026-11-08T10:09:38.125Z",
     "scope": {
-      "type": "adapter",
-      "value": "sunsang24"
+      "type": "all"
     },
-    "total": 153,
+    "total": 264,
     "success": 8,
-    "failed": 0,
-    "skipped": 145,
-    "runId": "42461567737",
-    "runUrl": "https://github.com/kyungsooNa/Fishing/actions/runs/42461567737"
+    "failed": 5,
+    "skipped": 251,
+    "runId": "42470212923",
+    "runUrl": "https://github.com/kyungsooNa/Fishing/actions/runs/42470212923"
   },
   "rotation": {
-    "sunsang24.com": "heeyoung",
-    "platform:thefishing": "chungkwang"
+    "sunsang24.com": "jinpro",
+    "platform:thefishing": "jungwonnaksi"
   },
   "sites": {
     "7": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.757Z",
+      "at": "2026-11-08T10:09:38.195Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 49,
       "keptFrom": "2026-11-08T08:09:05.499Z",
@@ -35,7 +34,7 @@
     },
     "eungabi": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.721Z",
+      "at": "2026-11-08T10:09:38.132Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T02:20:00.077Z",
@@ -50,7 +49,7 @@
     },
     "ocpro": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.725Z",
+      "at": "2026-11-08T10:09:38.137Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 42,
       "keptFrom": "2026-11-08T02:20:06.315Z",
@@ -65,7 +64,7 @@
     },
     "supernova": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.727Z",
+      "at": "2026-11-08T10:09:38.142Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T08:07:36.043Z",
@@ -80,7 +79,7 @@
     },
     "goldenbaek": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.728Z",
+      "at": "2026-11-08T10:09:38.144Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 38,
       "keptFrom": "2026-11-08T08:07:40.090Z",
@@ -95,7 +94,7 @@
     },
     "blueocean2": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.731Z",
+      "at": "2026-11-08T10:09:38.148Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T08:07:46.042Z",
@@ -110,7 +109,7 @@
     },
     "daehan": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.735Z",
+      "at": "2026-11-08T10:09:38.155Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 42,
       "keptFrom": "2026-11-08T08:07:52.076Z",
@@ -125,7 +124,7 @@
     },
     "monster": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.055Z",
+      "at": "2026-11-08T10:11:10.899Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 14,
       "keptFrom": "2026-10-23T18:23:12.410Z",
@@ -139,7 +138,7 @@
     },
     "ssfish": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.055Z",
+      "at": "2026-11-08T10:11:10.899Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 45,
       "keptFrom": "2026-10-23T18:23:22.185Z",
@@ -153,7 +152,7 @@
     },
     "hifishing": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.057Z",
+      "at": "2026-11-08T10:11:10.902Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 0,
       "keptFrom": "2026-10-23T18:23:34.504Z",
@@ -167,7 +166,7 @@
     },
     "eugeneho": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.057Z",
+      "at": "2026-11-08T10:11:10.902Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 7,
       "keptFrom": "2026-10-23T18:23:46.017Z",
@@ -181,7 +180,7 @@
     },
     "mansu": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.057Z",
+      "at": "2026-11-08T10:11:10.903Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 7,
       "keptFrom": "2026-10-23T18:23:56.304Z",
@@ -195,7 +194,7 @@
     },
     "lureschool": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.057Z",
+      "at": "2026-11-08T10:11:10.903Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 14,
       "keptFrom": "2026-10-23T18:24:06.707Z",
@@ -209,7 +208,7 @@
     },
     "jstar": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.058Z",
+      "at": "2026-11-08T10:11:10.904Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 7,
       "keptFrom": "2026-10-23T18:24:16.678Z",
@@ -223,11 +222,11 @@
     },
     "blueseaho": {
       "ok": false,
-      "at": "2026-11-08T02:19:25.851Z",
+      "at": "2026-11-08T10:09:38.531Z",
       "error": "출조 행을 못 찾았습니다 — 예약 목록이 있는 주소가 맞는지 확인하세요 (--dump)",
       "count": 1,
       "keptFrom": "2026-11-07T13:54:11.187Z",
-      "lastSelectedAt": "2026-11-08T02:19:25.851Z",
+      "lastSelectedAt": "2026-11-08T10:09:38.531Z",
       "name": "오천항 푸른바다낚시",
       "platform": "자체",
       "url": "http://blueseaho.com/reservation",
@@ -237,7 +236,7 @@
     },
     "teamhanpro": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.058Z",
+      "at": "2026-11-08T10:11:10.905Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 6,
       "keptFrom": "2026-10-23T18:24:26.798Z",
@@ -251,7 +250,7 @@
     },
     "blackpig": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.058Z",
+      "at": "2026-11-08T10:11:10.906Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 6,
       "keptFrom": "2026-10-23T18:24:37.897Z",
@@ -265,7 +264,7 @@
     },
     "healing": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.059Z",
+      "at": "2026-11-08T10:11:10.906Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 2,
       "keptFrom": "2026-10-23T18:24:49.498Z",
@@ -279,7 +278,7 @@
     },
     "daejinmcp": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.059Z",
+      "at": "2026-11-08T10:11:10.907Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 7,
       "keptFrom": "2026-10-23T18:24:59.701Z",
@@ -293,7 +292,7 @@
     },
     "hanpro": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.059Z",
+      "at": "2026-11-08T10:11:10.907Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 7,
       "keptFrom": "2026-10-23T18:25:09.934Z",
@@ -307,7 +306,7 @@
     },
     "raraho": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.059Z",
+      "at": "2026-11-08T10:11:10.908Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 7,
       "keptFrom": "2026-10-23T18:25:20.452Z",
@@ -321,7 +320,7 @@
     },
     "napoliho": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.059Z",
+      "at": "2026-11-08T10:11:10.908Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 0,
       "keptFrom": "2026-10-23T18:25:30.802Z",
@@ -335,12 +334,11 @@
     },
     "bumblebee": {
       "ok": false,
-      "at": "2026-11-08T02:19:25.851Z",
-      "error": "30000ms 안에 응답이 없습니다 — 31.0초 만에",
+      "at": "2026-11-08T10:11:10.908Z",
+      "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 13,
       "keptFrom": "2026-10-23T18:25:41.727Z",
-      "lastSelectedAt": "2026-11-08T02:19:25.851Z",
-      "timeoutStreak": 2,
+      "skipped": "platform-timeout",
       "name": "오천항 범블비호",
       "platform": "더피싱(상세)",
       "url": "http://xn--xk3bm1aee249g.com/m/index.php?mid=bk",
@@ -350,11 +348,11 @@
     },
     "friendho": {
       "ok": false,
-      "at": "2026-11-08T02:19:25.851Z",
+      "at": "2026-11-08T10:09:38.531Z",
       "error": "국내에서만 열리는 선사라 해외 러너에서는 요청하지 않습니다 — 로컬 모니터가 수집합니다",
       "count": 0,
       "keptFrom": "2026-09-21T07:36:33.026Z",
-      "lastSelectedAt": "2026-11-08T02:19:25.851Z",
+      "lastSelectedAt": "2026-11-08T10:09:38.531Z",
       "skipped": "domestic-only",
       "name": "오천항 프랜드피싱",
       "platform": "자체",
@@ -365,12 +363,11 @@
     },
     "chungma": {
       "ok": false,
-      "at": "2026-11-08T02:19:56.949Z",
-      "error": "30000ms 안에 응답이 없습니다 — 30.8초 만에",
+      "at": "2026-11-08T10:11:10.909Z",
+      "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 10,
       "keptFrom": "2026-10-23T18:25:52.073Z",
-      "lastSelectedAt": "2026-11-08T02:19:56.949Z",
-      "timeoutStreak": 2,
+      "skipped": "platform-timeout",
       "name": "영종도 청마피싱",
       "platform": "더피싱(상세)",
       "url": "https://www.chungmafishing.com/m/index.php?mid=bk",
@@ -380,29 +377,26 @@
     },
     "uijiho": {
       "ok": false,
-      "at": "2026-11-07T22:39:17.236Z",
-      "error": "30000ms 안에 응답이 없습니다 — 30.3초 만에 — 최근 timeout이라 2026-11-08T04:39:17.236Z까지 재시도 보류",
+      "at": "2026-11-08T10:09:38.531Z",
+      "error": "30000ms 안에 응답이 없습니다 — 30.3초 만에",
       "count": 0,
       "keptFrom": "2026-09-15T07:38:45.897Z",
-      "lastSelectedAt": "2026-11-08T02:19:25.851Z",
-      "timeoutStreak": 142,
+      "lastSelectedAt": "2026-11-08T10:09:38.531Z",
+      "timeoutStreak": 143,
       "name": "의지호",
       "platform": "자체",
       "url": "http://uijiho.com/month_view.php?strt=0&tb=2&tbnr=4",
       "port": "충남 서천 홍원항",
       "phone": "010-6422-2497",
-      "addedBy": null,
-      "retryAt": "2026-11-08T04:39:17.236Z",
-      "skipped": "timeout-backoff"
+      "addedBy": null
     },
     "chungkwang": {
       "ok": false,
-      "at": "2026-11-08T02:20:27.773Z",
-      "error": "30000ms 안에 응답이 없습니다 — 30.2초 만에",
+      "at": "2026-11-08T10:11:10.909Z",
+      "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 18,
       "keptFrom": "2026-10-23T18:26:02.200Z",
-      "lastSelectedAt": "2026-11-08T02:20:27.773Z",
-      "timeoutStreak": 2,
+      "skipped": "platform-timeout",
       "name": "영목항 청광호",
       "platform": "더피싱(상세)",
       "url": "http://chungkwangho.net/index.php?mid=bk",
@@ -412,11 +406,12 @@
     },
     "chungnamho": {
       "ok": false,
-      "at": "2026-11-08T02:20:57.999Z",
-      "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
+      "at": "2026-11-08T10:09:38.530Z",
+      "error": "30000ms 안에 응답이 없습니다 — 30.0초 만에",
       "count": 18,
       "keptFrom": "2026-10-23T18:26:12.109Z",
-      "skipped": "platform-timeout",
+      "lastSelectedAt": "2026-11-08T10:09:38.530Z",
+      "timeoutStreak": 2,
       "name": "충남호",
       "platform": "더피싱(상세)",
       "url": "http://www.chungnamho.com/index.php?mid=bk",
@@ -426,7 +421,7 @@
     },
     "fishinggate": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.737Z",
+      "at": "2026-11-08T10:09:38.159Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 348,
       "keptFrom": "2026-11-08T08:07:58.088Z",
@@ -441,7 +436,7 @@
     },
     "nature": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.750Z",
+      "at": "2026-11-08T10:09:38.180Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 42,
       "keptFrom": "2026-11-08T08:08:28.367Z",
@@ -456,7 +451,7 @@
     },
     "bj": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.752Z",
+      "at": "2026-11-08T10:09:38.184Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 42,
       "keptFrom": "2026-11-08T08:08:34.405Z",
@@ -471,7 +466,7 @@
     },
     "dongmun": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.752Z",
+      "at": "2026-11-08T10:09:38.186Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 84,
       "keptFrom": "2026-11-08T08:08:40.251Z",
@@ -486,7 +481,7 @@
     },
     "2018miracle": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.756Z",
+      "at": "2026-11-08T10:09:38.193Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T08:09:01.126Z",
@@ -501,7 +496,7 @@
     },
     "ace": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.759Z",
+      "at": "2026-11-08T10:09:38.198Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T08:09:11.555Z",
@@ -516,7 +511,7 @@
     },
     "alice": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.759Z",
+      "at": "2026-11-08T10:09:38.200Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T08:09:17.439Z",
@@ -531,7 +526,7 @@
     },
     "aqua": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.760Z",
+      "at": "2026-11-08T10:09:38.202Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T08:09:23.215Z",
@@ -546,7 +541,7 @@
     },
     "arakhaeng": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.762Z",
+      "at": "2026-11-08T10:09:38.204Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 50,
       "keptFrom": "2026-11-08T08:09:29.331Z",
@@ -561,7 +556,7 @@
     },
     "arirang": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.764Z",
+      "at": "2026-11-08T10:09:38.208Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 42,
       "keptFrom": "2026-11-08T08:09:35.153Z",
@@ -576,7 +571,7 @@
     },
     "art": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.764Z",
+      "at": "2026-11-08T10:09:38.209Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T08:09:41.316Z",
@@ -591,7 +586,7 @@
     },
     "asiaho": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.765Z",
+      "at": "2026-11-08T10:09:38.210Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T08:09:59.876Z",
@@ -606,7 +601,7 @@
     },
     "badalove": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.766Z",
+      "at": "2026-11-08T10:09:38.213Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T08:10:04.530Z",
@@ -621,7 +616,7 @@
     },
     "baekya": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.767Z",
+      "at": "2026-11-08T10:09:38.213Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 22,
       "keptFrom": "2026-11-08T08:10:10.229Z",
@@ -636,7 +631,7 @@
     },
     "bigboss24": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.767Z",
+      "at": "2026-11-08T10:09:38.214Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T08:10:16.494Z",
@@ -651,7 +646,7 @@
     },
     "bluefc": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.768Z",
+      "at": "2026-11-08T10:09:38.215Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 84,
       "keptFrom": "2026-11-08T08:10:22.258Z",
@@ -666,7 +661,7 @@
     },
     "boas": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.771Z",
+      "at": "2026-11-08T10:09:38.223Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 18,
       "keptFrom": "2026-11-08T08:10:28.885Z",
@@ -681,7 +676,7 @@
     },
     "boss": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.773Z",
+      "at": "2026-11-08T10:09:38.225Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 84,
       "keptFrom": "2026-11-08T08:10:34.931Z",
@@ -696,7 +691,7 @@
     },
     "busung": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.777Z",
+      "at": "2026-11-08T10:09:38.236Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T08:10:40.638Z",
@@ -711,7 +706,7 @@
     },
     "chambada": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.778Z",
+      "at": "2026-11-08T10:09:38.238Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T08:10:58.900Z",
@@ -726,7 +721,7 @@
     },
     "cherryfish": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.778Z",
+      "at": "2026-11-08T10:09:38.239Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 18,
       "keptFrom": "2026-11-08T08:11:02.913Z",
@@ -741,7 +736,7 @@
     },
     "chf": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.779Z",
+      "at": "2026-11-08T10:09:38.240Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 84,
       "keptFrom": "2026-11-08T08:11:08.808Z",
@@ -756,7 +751,7 @@
     },
     "cjh": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.781Z",
+      "at": "2026-11-08T10:09:38.243Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 41,
       "keptFrom": "2026-11-08T08:11:15.413Z",
@@ -771,7 +766,7 @@
     },
     "d": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.781Z",
+      "at": "2026-11-08T10:09:38.245Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 14,
       "keptFrom": "2026-11-08T08:11:21.150Z",
@@ -786,7 +781,7 @@
     },
     "daebak": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.782Z",
+      "at": "2026-11-08T10:09:38.245Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 50,
       "keptFrom": "2026-11-08T08:11:27.136Z",
@@ -801,7 +796,7 @@
     },
     "daejinvictory": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.782Z",
+      "at": "2026-11-08T10:09:38.247Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T08:11:33.092Z",
@@ -816,7 +811,7 @@
     },
     "daon": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.786Z",
+      "at": "2026-11-08T10:09:38.255Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 56,
       "keptFrom": "2026-11-08T08:11:38.905Z",
@@ -831,7 +826,7 @@
     },
     "dasol": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.787Z",
+      "at": "2026-11-08T10:09:38.257Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T08:11:57.454Z",
@@ -846,7 +841,7 @@
     },
     "dragonfishing": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.788Z",
+      "at": "2026-11-08T10:09:38.258Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 41,
       "keptFrom": "2026-11-08T08:12:01.661Z",
@@ -861,7 +856,7 @@
     },
     "dream": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.789Z",
+      "at": "2026-11-08T10:09:38.260Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 14,
       "keptFrom": "2026-11-08T08:12:07.636Z",
@@ -876,11 +871,12 @@
     },
     "eagleho": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.000Z",
-      "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
+      "at": "2026-11-08T10:10:08.706Z",
+      "error": "30000ms 안에 응답이 없습니다 — 31.0초 만에",
       "count": 7,
       "keptFrom": "2026-10-23T18:26:21.989Z",
-      "skipped": "platform-timeout",
+      "lastSelectedAt": "2026-11-08T10:10:08.706Z",
+      "timeoutStreak": 2,
       "name": "오천항 월드레저",
       "platform": "더피싱(상세)",
       "url": "http://www.eagleho.com/m/index.php?mid=bk",
@@ -890,7 +886,7 @@
     },
     "eagles": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.789Z",
+      "at": "2026-11-08T10:09:38.260Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 84,
       "keptFrom": "2026-11-08T08:12:13.703Z",
@@ -905,7 +901,7 @@
     },
     "ebada": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.794Z",
+      "at": "2026-11-08T10:09:38.266Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 42,
       "keptFrom": "2026-11-08T08:12:20.731Z",
@@ -920,7 +916,7 @@
     },
     "emerald": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.795Z",
+      "at": "2026-11-08T10:09:38.270Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T08:12:26.175Z",
@@ -935,7 +931,7 @@
     },
     "enjoy": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.796Z",
+      "at": "2026-11-08T10:09:38.272Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T08:12:31.669Z",
@@ -950,7 +946,7 @@
     },
     "eunhasuho": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.798Z",
+      "at": "2026-11-08T10:09:38.275Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 44,
       "keptFrom": "2026-11-08T08:12:37.670Z",
@@ -965,7 +961,7 @@
     },
     "fishbank": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.800Z",
+      "at": "2026-11-08T10:09:38.280Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 23,
       "keptFrom": "2026-11-08T08:12:59.171Z",
@@ -980,7 +976,7 @@
     },
     "fishhunter": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.800Z",
+      "at": "2026-11-08T10:09:38.281Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T08:13:03.470Z",
@@ -995,7 +991,7 @@
     },
     "gagaho": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.802Z",
+      "at": "2026-11-08T10:09:38.286Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 75,
       "keptFrom": "2026-11-08T08:13:09.986Z",
@@ -1010,7 +1006,7 @@
     },
     "galchiho": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.809Z",
+      "at": "2026-11-08T10:09:38.294Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T08:13:16.072Z",
@@ -1025,7 +1021,7 @@
     },
     "gdcompany": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.810Z",
+      "at": "2026-11-08T10:09:38.296Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 16,
       "keptFrom": "2026-11-08T08:13:21.764Z",
@@ -1040,7 +1036,7 @@
     },
     "genieyonghan": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.811Z",
+      "at": "2026-11-08T10:09:38.297Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 42,
       "keptFrom": "2026-11-08T08:13:27.959Z",
@@ -1055,7 +1051,7 @@
     },
     "giant": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.812Z",
+      "at": "2026-11-08T10:09:38.300Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 35,
       "keptFrom": "2026-11-08T08:13:33.800Z",
@@ -1070,7 +1066,7 @@
     },
     "goaraho": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.814Z",
+      "at": "2026-11-08T10:09:38.303Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 42,
       "keptFrom": "2026-11-08T08:13:39.792Z",
@@ -1085,7 +1081,7 @@
     },
     "goldatsr": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.815Z",
+      "at": "2026-11-08T10:09:38.305Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 19,
       "keptFrom": "2026-11-08T08:13:58.805Z",
@@ -1100,7 +1096,7 @@
     },
     "gonghyeonjin": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.816Z",
+      "at": "2026-11-08T10:09:38.306Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 84,
       "keptFrom": "2026-11-08T08:14:03.275Z",
@@ -1115,7 +1111,7 @@
     },
     "gosu": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.819Z",
+      "at": "2026-11-08T10:09:38.313Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 42,
       "keptFrom": "2026-11-08T08:14:09.787Z",
@@ -1130,7 +1126,7 @@
     },
     "gsseven": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.820Z",
+      "at": "2026-11-08T10:09:38.315Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 42,
       "keptFrom": "2026-11-08T08:14:15.655Z",
@@ -1145,7 +1141,7 @@
     },
     "gudiho": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.821Z",
+      "at": "2026-11-08T10:09:38.317Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T08:14:21.433Z",
@@ -1160,7 +1156,7 @@
     },
     "gukbo": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.822Z",
+      "at": "2026-11-08T10:09:38.318Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T08:14:27.397Z",
@@ -1175,7 +1171,7 @@
     },
     "gull": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.824Z",
+      "at": "2026-11-08T10:09:38.320Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 63,
       "keptFrom": "2026-11-08T08:14:33.244Z",
@@ -1190,7 +1186,7 @@
     },
     "gundam": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.825Z",
+      "at": "2026-11-08T10:09:38.323Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T08:14:39.426Z",
@@ -1204,11 +1200,13 @@
       "addedBy": "discover"
     },
     "gunsannaksi": {
-      "ok": true,
-      "at": "2026-11-08T08:14:55.926Z",
+      "ok": false,
+      "at": "2026-11-08T10:09:38.323Z",
+      "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
+      "count": 372,
+      "keptFrom": "2026-11-08T08:14:55.926Z",
       "lastSelectedAt": "2026-11-08T08:14:55.926Z",
-      "count": 389,
-      "futureCount": 354,
+      "skipped": "rotation",
       "name": "챔피언호",
       "platform": "선상24",
       "url": "https://gunsannaksi.sunsang24.com",
@@ -1217,11 +1215,13 @@
       "addedBy": "discover"
     },
     "gyeongjuho": {
-      "ok": true,
-      "at": "2026-11-08T08:15:01.323Z",
-      "lastSelectedAt": "2026-11-08T08:15:01.323Z",
+      "ok": false,
+      "at": "2026-11-08T10:09:38.345Z",
+      "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 18,
-      "futureCount": 47,
+      "keptFrom": "2026-11-08T08:15:01.323Z",
+      "lastSelectedAt": "2026-11-08T08:15:01.323Z",
+      "skipped": "rotation",
       "name": "경주호",
       "platform": "선상24",
       "url": "https://gyeongjuho.sunsang24.com",
@@ -1230,11 +1230,13 @@
       "addedBy": "discover"
     },
     "haemaho": {
-      "ok": true,
-      "at": "2026-11-08T08:15:06.476Z",
+      "ok": false,
+      "at": "2026-11-08T10:09:38.347Z",
+      "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
+      "count": 18,
+      "keptFrom": "2026-11-08T08:15:06.476Z",
       "lastSelectedAt": "2026-11-08T08:15:06.476Z",
-      "count": 19,
-      "futureCount": 32,
+      "skipped": "rotation",
       "name": "해마호",
       "platform": "선상24",
       "url": "https://haemaho.sunsang24.com",
@@ -1243,11 +1245,13 @@
       "addedBy": "discover"
     },
     "hanareum": {
-      "ok": true,
-      "at": "2026-11-08T08:15:12.581Z",
+      "ok": false,
+      "at": "2026-11-08T10:09:38.348Z",
+      "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
+      "count": 16,
+      "keptFrom": "2026-11-08T08:15:12.581Z",
       "lastSelectedAt": "2026-11-08T08:15:12.581Z",
-      "count": 17,
-      "futureCount": 32,
+      "skipped": "rotation",
       "name": "한아름호",
       "platform": "선상24",
       "url": "https://hanareum.sunsang24.com",
@@ -1256,11 +1260,13 @@
       "addedBy": "discover"
     },
     "hanbada": {
-      "ok": true,
-      "at": "2026-11-08T08:15:18.501Z",
+      "ok": false,
+      "at": "2026-11-08T10:09:38.349Z",
+      "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
+      "count": 21,
+      "keptFrom": "2026-11-08T08:15:18.501Z",
       "lastSelectedAt": "2026-11-08T08:15:18.501Z",
-      "count": 22,
-      "futureCount": 32,
+      "skipped": "rotation",
       "name": "2호",
       "platform": "선상24",
       "url": "https://hanbada.sunsang24.com",
@@ -1269,11 +1275,13 @@
       "addedBy": "discover"
     },
     "harmony": {
-      "ok": true,
-      "at": "2026-11-08T08:15:24.123Z",
+      "ok": false,
+      "at": "2026-11-08T10:09:38.351Z",
+      "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
+      "count": 22,
+      "keptFrom": "2026-11-08T08:15:24.123Z",
       "lastSelectedAt": "2026-11-08T08:15:24.123Z",
-      "count": 23,
-      "futureCount": 75,
+      "skipped": "rotation",
       "name": "하모니호",
       "platform": "선상24",
       "url": "https://harmony.sunsang24.com",
@@ -1282,11 +1290,13 @@
       "addedBy": "discover"
     },
     "healingho": {
-      "ok": true,
-      "at": "2026-11-08T08:15:30.520Z",
+      "ok": false,
+      "at": "2026-11-08T10:09:38.353Z",
+      "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
+      "count": 21,
+      "keptFrom": "2026-11-08T08:15:30.520Z",
       "lastSelectedAt": "2026-11-08T08:15:30.520Z",
-      "count": 22,
-      "futureCount": 1,
+      "skipped": "rotation",
       "name": "힐링호",
       "platform": "선상24",
       "url": "https://healingho.sunsang24.com",
@@ -1295,11 +1305,13 @@
       "addedBy": "discover"
     },
     "heeyoung": {
-      "ok": true,
-      "at": "2026-11-08T08:15:36.380Z",
+      "ok": false,
+      "at": "2026-11-08T10:09:38.354Z",
+      "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
+      "count": 29,
+      "keptFrom": "2026-11-08T08:15:36.380Z",
       "lastSelectedAt": "2026-11-08T08:15:36.380Z",
-      "count": 30,
-      "futureCount": 32,
+      "skipped": "rotation",
       "name": "희영호",
       "platform": "선상24",
       "url": "https://heeyoung.sunsang24.com",
@@ -1308,13 +1320,11 @@
       "addedBy": "discover"
     },
     "hunterfishing": {
-      "ok": false,
-      "at": "2026-11-08T08:14:55.825Z",
-      "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
-      "count": 21,
-      "keptFrom": "2026-11-07T22:46:48.745Z",
-      "lastSelectedAt": "2026-11-07T22:46:48.745Z",
-      "skipped": "rotation",
+      "ok": true,
+      "at": "2026-11-08T10:09:38.530Z",
+      "lastSelectedAt": "2026-11-08T10:09:38.530Z",
+      "count": 22,
+      "futureCount": 2,
       "name": "헌터호",
       "platform": "선상24",
       "url": "https://hunterfishing.sunsang24.com",
@@ -1323,13 +1333,11 @@
       "addedBy": "discover"
     },
     "jangbogo": {
-      "ok": false,
-      "at": "2026-11-08T08:14:55.825Z",
-      "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
-      "count": 21,
-      "keptFrom": "2026-11-07T22:47:09.487Z",
-      "lastSelectedAt": "2026-11-07T22:47:09.487Z",
-      "skipped": "rotation",
+      "ok": true,
+      "at": "2026-11-08T10:09:43.014Z",
+      "lastSelectedAt": "2026-11-08T10:09:43.014Z",
+      "count": 22,
+      "futureCount": 32,
       "name": "장보고호",
       "platform": "선상24",
       "url": "https://jangbogo.sunsang24.com",
@@ -1338,13 +1346,11 @@
       "addedBy": "discover"
     },
     "jangbogofishing": {
-      "ok": false,
-      "at": "2026-11-08T08:14:55.826Z",
-      "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
-      "count": 29,
-      "keptFrom": "2026-11-07T22:47:13.456Z",
-      "lastSelectedAt": "2026-11-07T22:47:13.456Z",
-      "skipped": "rotation",
+      "ok": true,
+      "at": "2026-11-08T10:09:48.747Z",
+      "lastSelectedAt": "2026-11-08T10:09:48.747Z",
+      "count": 28,
+      "futureCount": 33,
       "name": "장보고호",
       "platform": "선상24",
       "url": "https://jangbogofishing.sunsang24.com",
@@ -1353,13 +1359,11 @@
       "addedBy": "discover"
     },
     "janggofish": {
-      "ok": false,
-      "at": "2026-11-08T08:14:55.826Z",
-      "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
-      "count": 21,
-      "keptFrom": "2026-11-07T22:47:19.517Z",
-      "lastSelectedAt": "2026-11-07T22:47:19.517Z",
-      "skipped": "rotation",
+      "ok": true,
+      "at": "2026-11-08T10:09:54.862Z",
+      "lastSelectedAt": "2026-11-08T10:09:54.862Z",
+      "count": 22,
+      "futureCount": 32,
       "name": "태풍호",
       "platform": "선상24",
       "url": "https://janggofish.sunsang24.com",
@@ -1368,13 +1372,11 @@
       "addedBy": "discover"
     },
     "jeilfishing": {
-      "ok": false,
-      "at": "2026-11-08T08:14:55.827Z",
-      "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
-      "count": 21,
-      "keptFrom": "2026-11-07T22:47:25.468Z",
-      "lastSelectedAt": "2026-11-07T22:47:25.468Z",
-      "skipped": "rotation",
+      "ok": true,
+      "at": "2026-11-08T10:10:00.776Z",
+      "lastSelectedAt": "2026-11-08T10:10:00.776Z",
+      "count": 22,
+      "futureCount": 32,
       "name": "제일피싱호",
       "platform": "선상24",
       "url": "https://jeilfishing.sunsang24.com",
@@ -1383,13 +1385,11 @@
       "addedBy": "discover"
     },
     "jejutv": {
-      "ok": false,
-      "at": "2026-11-08T08:14:55.828Z",
-      "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
-      "count": 20,
-      "keptFrom": "2026-11-07T22:47:31.492Z",
-      "lastSelectedAt": "2026-11-07T22:47:31.492Z",
-      "skipped": "rotation",
+      "ok": true,
+      "at": "2026-11-08T10:10:07.159Z",
+      "lastSelectedAt": "2026-11-08T10:10:07.159Z",
+      "count": 21,
+      "futureCount": 69,
       "name": "제주갈치TV호",
       "platform": "선상24",
       "url": "https://jejutv.sunsang24.com",
@@ -1398,13 +1398,11 @@
       "addedBy": "discover"
     },
     "jh": {
-      "ok": false,
-      "at": "2026-11-08T08:14:55.829Z",
-      "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
-      "count": 21,
-      "keptFrom": "2026-11-07T22:47:37.726Z",
-      "lastSelectedAt": "2026-11-07T22:47:37.726Z",
-      "skipped": "rotation",
+      "ok": true,
+      "at": "2026-11-08T10:10:13.115Z",
+      "lastSelectedAt": "2026-11-08T10:10:13.115Z",
+      "count": 22,
+      "futureCount": 32,
       "name": "정환호",
       "platform": "선상24",
       "url": "https://jh.sunsang24.com",
@@ -1413,13 +1411,11 @@
       "addedBy": "discover"
     },
     "jinpro": {
-      "ok": false,
-      "at": "2026-11-08T08:14:55.830Z",
-      "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
-      "count": 42,
-      "keptFrom": "2026-11-07T22:47:43.446Z",
-      "lastSelectedAt": "2026-11-07T22:47:43.446Z",
-      "skipped": "rotation",
+      "ok": true,
+      "at": "2026-11-08T10:10:19.169Z",
+      "lastSelectedAt": "2026-11-08T10:10:19.169Z",
+      "count": 43,
+      "futureCount": 64,
       "name": "1호",
       "platform": "선상24",
       "url": "https://jinpro.sunsang24.com",
@@ -1429,7 +1425,7 @@
     },
     "jjanggu": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.832Z",
+      "at": "2026-11-08T10:09:38.355Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-07T22:47:49.474Z",
@@ -1444,7 +1440,7 @@
     },
     "juliana": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.832Z",
+      "at": "2026-11-08T10:09:38.356Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-07T22:48:08.328Z",
@@ -1459,7 +1455,7 @@
     },
     "jungwonho": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.833Z",
+      "at": "2026-11-08T10:09:38.357Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-07T22:48:12.686Z",
@@ -1474,11 +1470,12 @@
     },
     "jungwonnaksi": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.000Z",
-      "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
+      "at": "2026-11-08T10:10:39.753Z",
+      "error": "30000ms 안에 응답이 없습니다 — 31.0초 만에",
       "count": 14,
       "keptFrom": "2026-10-23T18:26:31.808Z",
-      "skipped": "platform-timeout",
+      "lastSelectedAt": "2026-11-08T10:10:39.753Z",
+      "timeoutStreak": 2,
       "name": "정원낚시",
       "platform": "더피싱(상세)",
       "url": "https://www.jungwonho.com/index.php?mid=bk",
@@ -1488,7 +1485,7 @@
     },
     "kangnam": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.833Z",
+      "at": "2026-11-08T10:09:38.358Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-07T22:48:18.663Z",
@@ -1503,7 +1500,7 @@
     },
     "keoyang": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.834Z",
+      "at": "2026-11-08T10:09:38.361Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-07T22:48:24.735Z",
@@ -1518,7 +1515,7 @@
     },
     "kingstar": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.835Z",
+      "at": "2026-11-08T10:09:38.362Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-07T22:48:30.714Z",
@@ -1533,7 +1530,7 @@
     },
     "kingstarho": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.837Z",
+      "at": "2026-11-08T10:09:38.365Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-07T22:48:36.838Z",
@@ -1548,7 +1545,7 @@
     },
     "ksnaksi": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.837Z",
+      "at": "2026-11-08T10:09:38.366Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 37,
       "keptFrom": "2026-11-07T22:48:42.495Z",
@@ -1563,7 +1560,7 @@
     },
     "ktg": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.838Z",
+      "at": "2026-11-08T10:09:38.367Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 42,
       "keptFrom": "2026-11-07T22:48:48.889Z",
@@ -1578,7 +1575,7 @@
     },
     "lucy": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.838Z",
+      "at": "2026-11-08T10:09:38.368Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T01:51:13.419Z",
@@ -1593,7 +1590,7 @@
     },
     "lukina": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.839Z",
+      "at": "2026-11-08T10:09:38.370Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 63,
       "keptFrom": "2026-11-08T01:51:17.811Z",
@@ -1608,7 +1605,7 @@
     },
     "luna": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.840Z",
+      "at": "2026-11-08T10:09:38.373Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T01:51:24.009Z",
@@ -1623,7 +1620,7 @@
     },
     "macgyver": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.841Z",
+      "at": "2026-11-08T10:09:38.374Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 84,
       "keptFrom": "2026-11-08T01:51:29.995Z",
@@ -1638,7 +1635,7 @@
     },
     "madoross": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.845Z",
+      "at": "2026-11-08T10:09:38.380Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 42,
       "keptFrom": "2026-11-08T01:51:36.392Z",
@@ -1653,7 +1650,7 @@
     },
     "manmul": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.847Z",
+      "at": "2026-11-08T10:09:38.384Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T01:51:42.177Z",
@@ -1668,7 +1665,7 @@
     },
     "marineho": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.848Z",
+      "at": "2026-11-08T10:09:38.386Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 83,
       "keptFrom": "2026-11-08T01:51:47.770Z",
@@ -1683,7 +1680,7 @@
     },
     "mfish": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.850Z",
+      "at": "2026-11-08T10:09:38.390Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 126,
       "keptFrom": "2026-11-08T01:51:53.961Z",
@@ -1698,7 +1695,7 @@
     },
     "miracle": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.852Z",
+      "at": "2026-11-08T10:09:38.397Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 7,
       "keptFrom": "2026-11-08T01:52:14.639Z",
@@ -1713,7 +1710,7 @@
     },
     "muldori": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.852Z",
+      "at": "2026-11-08T10:09:38.397Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T01:52:18.869Z",
@@ -1728,7 +1725,7 @@
     },
     "myway": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.853Z",
+      "at": "2026-11-08T10:09:38.398Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 0,
       "keptFrom": "2026-10-04T01:53:56.553Z",
@@ -1743,7 +1740,7 @@
     },
     "nara": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.853Z",
+      "at": "2026-11-08T10:09:38.398Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T01:52:28.002Z",
@@ -1758,7 +1755,7 @@
     },
     "newhanlyo": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.854Z",
+      "at": "2026-11-08T10:09:38.399Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 42,
       "keptFrom": "2026-11-08T01:52:33.836Z",
@@ -1773,7 +1770,7 @@
     },
     "newsky": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.856Z",
+      "at": "2026-11-08T10:09:38.401Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T01:52:39.796Z",
@@ -1788,7 +1785,7 @@
     },
     "newtaejinho": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.856Z",
+      "at": "2026-11-08T10:09:38.403Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T01:52:45.843Z",
@@ -1803,7 +1800,7 @@
     },
     "ninedragon": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.857Z",
+      "at": "2026-11-08T10:09:38.403Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 20,
       "keptFrom": "2026-11-08T01:52:51.813Z",
@@ -1818,7 +1815,7 @@
     },
     "np": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.857Z",
+      "at": "2026-11-08T10:09:38.404Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T01:53:09.607Z",
@@ -1833,7 +1830,7 @@
     },
     "nurifish": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.858Z",
+      "at": "2026-11-08T10:09:38.405Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 0,
       "keptFrom": "2026-11-01T06:57:28.865Z",
@@ -1848,7 +1845,7 @@
     },
     "orion": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.858Z",
+      "at": "2026-11-08T10:09:38.405Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 42,
       "keptFrom": "2026-11-08T01:53:13.879Z",
@@ -1863,7 +1860,7 @@
     },
     "pacific": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.859Z",
+      "at": "2026-11-08T10:09:38.408Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 15,
       "keptFrom": "2026-11-08T01:53:22.866Z",
@@ -1878,7 +1875,7 @@
     },
     "parkpro": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.859Z",
+      "at": "2026-11-08T10:09:38.408Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 31,
       "keptFrom": "2026-11-08T01:53:29.305Z",
@@ -1893,7 +1890,7 @@
     },
     "pigho": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.861Z",
+      "at": "2026-11-08T10:09:38.411Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 14,
       "keptFrom": "2026-11-08T01:53:35.057Z",
@@ -1908,7 +1905,7 @@
     },
     "poseidon": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.861Z",
+      "at": "2026-11-08T10:09:38.412Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T01:53:40.870Z",
@@ -1923,7 +1920,7 @@
     },
     "princeho": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.862Z",
+      "at": "2026-11-08T10:09:38.415Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T01:53:47.245Z",
@@ -1938,7 +1935,7 @@
     },
     "pro": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.862Z",
+      "at": "2026-11-08T10:09:38.416Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 211,
       "keptFrom": "2026-11-08T01:54:06.253Z",
@@ -1953,7 +1950,7 @@
     },
     "redfox": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.869Z",
+      "at": "2026-11-08T10:09:38.436Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T01:54:11.255Z",
@@ -1968,7 +1965,7 @@
     },
     "redpulsegs": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.869Z",
+      "at": "2026-11-08T10:09:38.437Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 43,
       "keptFrom": "2026-11-08T01:54:16.517Z",
@@ -1983,7 +1980,7 @@
     },
     "richard": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.870Z",
+      "at": "2026-11-08T10:09:38.438Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T01:54:22.442Z",
@@ -1998,7 +1995,7 @@
     },
     "rise": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.871Z",
+      "at": "2026-11-08T10:09:38.439Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 31,
       "keptFrom": "2026-11-08T01:54:28.444Z",
@@ -2013,7 +2010,7 @@
     },
     "rkclgh": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.872Z",
+      "at": "2026-11-08T10:09:38.440Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 42,
       "keptFrom": "2026-11-08T01:54:34.430Z",
@@ -2028,7 +2025,7 @@
     },
     "rosemary": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.874Z",
+      "at": "2026-11-08T10:09:38.445Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T01:54:40.486Z",
@@ -2043,7 +2040,7 @@
     },
     "samdeok": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.875Z",
+      "at": "2026-11-08T10:09:38.446Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T01:54:46.651Z",
@@ -2058,7 +2055,7 @@
     },
     "seamanho": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.876Z",
+      "at": "2026-11-08T10:09:38.447Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 17,
       "keptFrom": "2026-11-08T01:55:06.275Z",
@@ -2073,7 +2070,7 @@
     },
     "seo": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.877Z",
+      "at": "2026-11-08T10:09:38.448Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 75,
       "keptFrom": "2026-11-08T01:55:10.541Z",
@@ -2088,7 +2085,7 @@
     },
     "seongyeon": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.878Z",
+      "at": "2026-11-08T10:09:38.451Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 14,
       "keptFrom": "2026-11-08T01:55:16.617Z",
@@ -2103,7 +2100,7 @@
     },
     "sharkmarine": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.878Z",
+      "at": "2026-11-08T10:09:38.452Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 42,
       "keptFrom": "2026-11-08T01:55:22.529Z",
@@ -2118,7 +2115,7 @@
     },
     "ship": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.879Z",
+      "at": "2026-11-08T10:09:38.454Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 15,
       "keptFrom": "2026-11-08T01:55:28.339Z",
@@ -2133,7 +2130,7 @@
     },
     "sinara": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.880Z",
+      "at": "2026-11-08T10:09:38.455Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T01:55:34.329Z",
@@ -2148,7 +2145,7 @@
     },
     "sinjinho": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.880Z",
+      "at": "2026-11-08T10:09:38.455Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T01:55:40.296Z",
@@ -2163,7 +2160,7 @@
     },
     "sky": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.881Z",
+      "at": "2026-11-08T10:09:38.456Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T01:55:46.317Z",
@@ -2178,7 +2175,7 @@
     },
     "skyho": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.881Z",
+      "at": "2026-11-08T10:09:38.457Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T01:56:05.383Z",
@@ -2193,7 +2190,7 @@
     },
     "smgfishing": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.882Z",
+      "at": "2026-11-08T10:09:38.458Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 63,
       "keptFrom": "2026-11-08T01:56:09.775Z",
@@ -2208,7 +2205,7 @@
     },
     "specialdream": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.883Z",
+      "at": "2026-11-08T10:09:38.461Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 69,
       "keptFrom": "2026-11-08T01:56:16.265Z",
@@ -2223,7 +2220,7 @@
     },
     "sseondeo": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.885Z",
+      "at": "2026-11-08T10:09:38.464Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 20,
       "keptFrom": "2026-11-08T01:56:21.699Z",
@@ -2238,7 +2235,7 @@
     },
     "stallone": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.886Z",
+      "at": "2026-11-08T10:09:38.465Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 84,
       "keptFrom": "2026-11-08T01:56:27.744Z",
@@ -2253,7 +2250,7 @@
     },
     "star": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.888Z",
+      "at": "2026-11-08T10:09:38.467Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 63,
       "keptFrom": "2026-11-08T01:56:33.947Z",
@@ -2268,7 +2265,7 @@
     },
     "stealth": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.891Z",
+      "at": "2026-11-08T10:09:38.470Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T01:56:39.946Z",
@@ -2283,7 +2280,7 @@
     },
     "sunghoon": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.892Z",
+      "at": "2026-11-08T10:09:38.471Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 40,
       "keptFrom": "2026-11-08T01:56:45.719Z",
@@ -2298,7 +2295,7 @@
     },
     "sunstarho": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.895Z",
+      "at": "2026-11-08T10:09:38.475Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 63,
       "keptFrom": "2026-11-08T01:57:06.188Z",
@@ -2313,7 +2310,7 @@
     },
     "taeanfishing": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.897Z",
+      "at": "2026-11-08T10:09:38.478Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 59,
       "keptFrom": "2026-11-08T01:57:10.608Z",
@@ -2328,7 +2325,7 @@
     },
     "taegeukho": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.900Z",
+      "at": "2026-11-08T10:09:38.481Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 42,
       "keptFrom": "2026-11-08T01:57:16.613Z",
@@ -2343,7 +2340,7 @@
     },
     "taesung": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.901Z",
+      "at": "2026-11-08T10:09:38.483Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 27,
       "keptFrom": "2026-11-08T01:57:22.395Z",
@@ -2358,7 +2355,7 @@
     },
     "tamra": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.903Z",
+      "at": "2026-11-08T10:09:38.485Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 14,
       "keptFrom": "2026-11-08T01:57:28.204Z",
@@ -2373,7 +2370,7 @@
     },
     "thales": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.903Z",
+      "at": "2026-11-08T10:09:38.485Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 42,
       "keptFrom": "2026-11-08T01:57:34.166Z",
@@ -2388,7 +2385,7 @@
     },
     "tpho": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.905Z",
+      "at": "2026-11-08T10:09:38.488Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T01:57:40.197Z",
@@ -2403,7 +2400,7 @@
     },
     "twin": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.907Z",
+      "at": "2026-11-08T10:09:38.493Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 22,
       "keptFrom": "2026-11-08T01:57:46.197Z",
@@ -2418,7 +2415,7 @@
     },
     "urbis": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.908Z",
+      "at": "2026-11-08T10:09:38.494Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 146,
       "keptFrom": "2026-11-08T01:58:08.320Z",
@@ -2433,7 +2430,7 @@
     },
     "vancouver": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.912Z",
+      "at": "2026-11-08T10:09:38.503Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 42,
       "keptFrom": "2026-11-08T01:58:13.127Z",
@@ -2448,7 +2445,7 @@
     },
     "venice": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.914Z",
+      "at": "2026-11-08T10:09:38.508Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 63,
       "keptFrom": "2026-11-08T01:58:18.666Z",
@@ -2463,7 +2460,7 @@
     },
     "veteranfishing": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.915Z",
+      "at": "2026-11-08T10:09:38.511Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T01:58:24.651Z",
@@ -2478,7 +2475,7 @@
     },
     "viking": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.915Z",
+      "at": "2026-11-08T10:09:38.512Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T01:58:30.313Z",
@@ -2493,7 +2490,7 @@
     },
     "vtrfishing": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.916Z",
+      "at": "2026-11-08T10:09:38.513Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 26,
       "keptFrom": "2026-11-08T01:58:36.567Z",
@@ -2508,7 +2505,7 @@
     },
     "wangnuni": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.916Z",
+      "at": "2026-11-08T10:09:38.514Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 18,
       "keptFrom": "2026-11-08T01:58:42.657Z",
@@ -2523,7 +2520,7 @@
     },
     "welcome": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.917Z",
+      "at": "2026-11-08T10:09:38.515Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 22,
       "keptFrom": "2026-11-08T01:58:48.353Z",
@@ -2538,7 +2535,7 @@
     },
     "yejiqueen": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.918Z",
+      "at": "2026-11-08T10:09:38.517Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T02:19:25.851Z",
@@ -2553,7 +2550,7 @@
     },
     "yeongjae": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.918Z",
+      "at": "2026-11-08T10:09:38.518Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T02:19:30.042Z",
@@ -2568,7 +2565,7 @@
     },
     "yong": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.921Z",
+      "at": "2026-11-08T10:09:38.521Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 11,
       "keptFrom": "2026-11-08T02:19:36.423Z",
@@ -2583,7 +2580,7 @@
     },
     "yongma": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.922Z",
+      "at": "2026-11-08T10:09:38.524Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T02:19:42.113Z",
@@ -2598,7 +2595,7 @@
     },
     "ysoceanstar": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.922Z",
+      "at": "2026-11-08T10:09:38.525Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 63,
       "keptFrom": "2026-11-08T02:19:48.064Z",
@@ -2613,7 +2610,7 @@
     },
     "yurimho": {
       "ok": false,
-      "at": "2026-11-08T08:14:55.925Z",
+      "at": "2026-11-08T10:09:38.528Z",
       "error": "sunsang24.com는 한 실행에 8곳씩 돌아가며 봅니다 — 이번 차례가 아닙니다",
       "count": 21,
       "keptFrom": "2026-11-08T02:19:54.059Z",
@@ -2628,7 +2625,7 @@
     },
     "52fish": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.001Z",
+      "at": "2026-11-08T10:11:10.795Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 19,
       "keptFrom": "2026-10-23T18:26:42.703Z",
@@ -2642,7 +2639,7 @@
     },
     "5sunrise": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.002Z",
+      "at": "2026-11-08T10:11:10.796Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 5,
       "keptFrom": "2026-10-23T18:26:53.372Z",
@@ -2656,7 +2653,7 @@
     },
     "acefish": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.003Z",
+      "at": "2026-11-08T10:11:10.796Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 28,
       "keptFrom": "2026-10-23T18:27:04.719Z",
@@ -2670,7 +2667,7 @@
     },
     "angel": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.004Z",
+      "at": "2026-11-08T10:11:10.798Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 7,
       "keptFrom": "2026-10-23T18:27:17.528Z",
@@ -2684,7 +2681,7 @@
     },
     "aquamarine": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.004Z",
+      "at": "2026-11-08T10:11:10.799Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 7,
       "keptFrom": "2026-10-23T18:27:28.687Z",
@@ -2698,7 +2695,7 @@
     },
     "asea": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.004Z",
+      "at": "2026-11-08T10:11:10.800Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 19,
       "keptFrom": "2026-10-23T18:27:40.890Z",
@@ -2712,7 +2709,7 @@
     },
     "badafish": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.005Z",
+      "at": "2026-11-08T10:11:10.800Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 6,
       "keptFrom": "2026-10-23T18:27:52.828Z",
@@ -2726,7 +2723,7 @@
     },
     "badasarang": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.005Z",
+      "at": "2026-11-08T10:11:10.800Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 6,
       "keptFrom": "2026-10-23T18:28:04.870Z",
@@ -2740,7 +2737,7 @@
     },
     "bokseong": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.005Z",
+      "at": "2026-11-08T10:11:10.801Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 5,
       "keptFrom": "2026-10-23T18:28:16.721Z",
@@ -2754,7 +2751,7 @@
     },
     "baekdusan": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.006Z",
+      "at": "2026-11-08T10:11:10.802Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 7,
       "keptFrom": "2026-10-23T18:28:28.720Z",
@@ -2768,7 +2765,7 @@
     },
     "bestho": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.006Z",
+      "at": "2026-11-08T10:11:10.802Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 20,
       "keptFrom": "2026-10-23T18:28:41.062Z",
@@ -2782,7 +2779,7 @@
     },
     "bgsho": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.007Z",
+      "at": "2026-11-08T10:11:10.803Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 7,
       "keptFrom": "2026-10-23T18:28:53.531Z",
@@ -2796,7 +2793,7 @@
     },
     "bikini": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.007Z",
+      "at": "2026-11-08T10:11:10.804Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 7,
       "keptFrom": "2026-10-23T18:29:04.721Z",
@@ -2810,7 +2807,7 @@
     },
     "bless": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.007Z",
+      "at": "2026-11-08T10:11:10.804Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 28,
       "keptFrom": "2026-10-23T18:29:16.882Z",
@@ -2824,7 +2821,7 @@
     },
     "cgho": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.008Z",
+      "at": "2026-11-08T10:11:10.806Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 7,
       "keptFrom": "2026-10-23T18:29:29.297Z",
@@ -2838,7 +2835,7 @@
     },
     "champion": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.008Z",
+      "at": "2026-11-08T10:11:10.806Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 7,
       "keptFrom": "2026-10-23T18:29:40.759Z",
@@ -2852,7 +2849,7 @@
     },
     "choice": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.008Z",
+      "at": "2026-11-08T10:11:10.807Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 7,
       "keptFrom": "2026-10-23T18:29:52.754Z",
@@ -2866,7 +2863,7 @@
     },
     "chungwoon": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.009Z",
+      "at": "2026-11-08T10:11:10.807Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 7,
       "keptFrom": "2026-10-23T18:30:05.204Z",
@@ -2880,7 +2877,7 @@
     },
     "daeyang": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.009Z",
+      "at": "2026-11-08T10:11:10.808Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:06:41.103Z",
@@ -2894,9 +2891,9 @@
     },
     "djfishing": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.009Z",
+      "at": "2026-11-08T10:11:10.808Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
-      "count": 46,
+      "count": 45,
       "keptFrom": "2026-10-28T23:06:51.032Z",
       "skipped": "platform-timeout",
       "name": "우리바다호",
@@ -2908,7 +2905,7 @@
     },
     "dolphin": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.011Z",
+      "at": "2026-11-08T10:11:10.815Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:07:02.888Z",
@@ -2922,7 +2919,7 @@
     },
     "doublek": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.011Z",
+      "at": "2026-11-08T10:11:10.816Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 23,
       "keptFrom": "2026-10-28T23:07:14.940Z",
@@ -2936,7 +2933,7 @@
     },
     "eoulim": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.012Z",
+      "at": "2026-11-08T10:11:10.818Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:07:26.991Z",
@@ -2950,7 +2947,7 @@
     },
     "flex": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.012Z",
+      "at": "2026-11-08T10:11:10.819Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 23,
       "keptFrom": "2026-10-28T23:07:38.955Z",
@@ -2964,7 +2961,7 @@
     },
     "fmania": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.013Z",
+      "at": "2026-11-08T10:11:10.820Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:07:50.889Z",
@@ -2978,7 +2975,7 @@
     },
     "haeduk": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.013Z",
+      "at": "2026-11-08T10:11:10.821Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 11,
       "keptFrom": "2026-10-28T23:08:03.099Z",
@@ -2992,7 +2989,7 @@
     },
     "hansol": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.014Z",
+      "at": "2026-11-08T10:11:10.822Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 0,
       "keptFrom": "2026-09-15T13:44:59.769Z",
@@ -3006,7 +3003,7 @@
     },
     "hhj": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.014Z",
+      "at": "2026-11-08T10:11:10.822Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 24,
       "keptFrom": "2026-10-28T23:08:17.532Z",
@@ -3020,7 +3017,7 @@
     },
     "hohae": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.014Z",
+      "at": "2026-11-08T10:11:10.823Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 6,
       "keptFrom": "2026-10-28T23:08:30.044Z",
@@ -3034,7 +3031,7 @@
     },
     "hongwonhang": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.014Z",
+      "at": "2026-11-08T10:11:10.823Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 24,
       "keptFrom": "2026-10-28T23:08:41.793Z",
@@ -3048,7 +3045,7 @@
     },
     "ilsin": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.015Z",
+      "at": "2026-11-08T10:11:10.824Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:08:53.802Z",
@@ -3062,7 +3059,7 @@
     },
     "jido": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.015Z",
+      "at": "2026-11-08T10:11:10.825Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:09:05.950Z",
@@ -3076,7 +3073,7 @@
     },
     "jinjo": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.015Z",
+      "at": "2026-11-08T10:11:10.825Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 8,
       "keptFrom": "2026-10-28T23:09:18.124Z",
@@ -3090,7 +3087,7 @@
     },
     "joen": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.015Z",
+      "at": "2026-11-08T10:11:10.826Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 24,
       "keptFrom": "2026-10-28T23:09:29.888Z",
@@ -3104,7 +3101,7 @@
     },
     "jungwoo": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.016Z",
+      "at": "2026-11-08T10:11:10.827Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 3,
       "keptFrom": "2026-10-28T23:09:41.847Z",
@@ -3118,7 +3115,7 @@
     },
     "junjin": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.016Z",
+      "at": "2026-11-08T10:11:10.828Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:09:54.007Z",
@@ -3132,7 +3129,7 @@
     },
     "kzm": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.016Z",
+      "at": "2026-11-08T10:11:10.828Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 35,
       "keptFrom": "2026-10-28T23:10:05.990Z",
@@ -3146,7 +3143,7 @@
     },
     "light": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.017Z",
+      "at": "2026-11-08T10:11:10.830Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:10:17.990Z",
@@ -3160,7 +3157,7 @@
     },
     "linkus": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.017Z",
+      "at": "2026-11-08T10:11:10.830Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:10:29.897Z",
@@ -3174,7 +3171,7 @@
     },
     "lucky7": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.018Z",
+      "at": "2026-11-08T10:11:10.831Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:10:41.893Z",
@@ -3188,7 +3185,7 @@
     },
     "manaru": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.018Z",
+      "at": "2026-11-08T10:11:10.832Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 73,
       "keptFrom": "2026-10-28T23:10:54.212Z",
@@ -3202,7 +3199,7 @@
     },
     "marinestar": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.022Z",
+      "at": "2026-11-08T10:11:10.836Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 19,
       "keptFrom": "2026-10-28T23:11:28.477Z",
@@ -3216,7 +3213,7 @@
     },
     "mobok": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.023Z",
+      "at": "2026-11-08T10:11:10.838Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 7,
       "keptFrom": "2026-10-28T23:11:40.461Z",
@@ -3230,7 +3227,7 @@
     },
     "mobum": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.023Z",
+      "at": "2026-11-08T10:11:10.839Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:11:52.725Z",
@@ -3244,7 +3241,7 @@
     },
     "neweocheongdo": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.023Z",
+      "at": "2026-11-08T10:11:10.839Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:12:04.656Z",
@@ -3258,7 +3255,7 @@
     },
     "newsj": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.024Z",
+      "at": "2026-11-08T10:11:10.841Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:12:16.501Z",
@@ -3272,7 +3269,7 @@
     },
     "nixx": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.024Z",
+      "at": "2026-11-08T10:11:10.842Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:12:28.499Z",
@@ -3286,7 +3283,7 @@
     },
     "no1": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.024Z",
+      "at": "2026-11-08T10:11:10.842Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 22,
       "keptFrom": "2026-10-28T23:12:40.762Z",
@@ -3300,7 +3297,7 @@
     },
     "noblesse": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.025Z",
+      "at": "2026-11-08T10:11:10.844Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:12:52.939Z",
@@ -3314,7 +3311,7 @@
     },
     "oasis": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.026Z",
+      "at": "2026-11-08T10:11:10.845Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:13:04.645Z",
@@ -3328,7 +3325,7 @@
     },
     "obok": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.027Z",
+      "at": "2026-11-08T10:11:10.847Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:13:16.768Z",
@@ -3342,7 +3339,7 @@
     },
     "ochbada": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.027Z",
+      "at": "2026-11-08T10:11:10.849Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 1,
       "keptFrom": "2026-10-28T23:13:28.900Z",
@@ -3356,7 +3353,7 @@
     },
     "orange": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.027Z",
+      "at": "2026-11-08T10:11:10.849Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:13:40.569Z",
@@ -3370,7 +3367,7 @@
     },
     "plaza": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.028Z",
+      "at": "2026-11-08T10:11:10.849Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 45,
       "keptFrom": "2026-10-28T23:13:52.678Z",
@@ -3384,7 +3381,7 @@
     },
     "plus": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.030Z",
+      "at": "2026-11-08T10:11:10.852Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 36,
       "keptFrom": "2026-10-28T23:14:05.154Z",
@@ -3398,7 +3395,7 @@
     },
     "pthbest": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.031Z",
+      "at": "2026-11-08T10:11:10.854Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:14:17.339Z",
@@ -3412,7 +3409,7 @@
     },
     "redpearl": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.032Z",
+      "at": "2026-11-08T10:11:10.855Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 11,
       "keptFrom": "2026-10-28T23:14:28.715Z",
@@ -3426,7 +3423,7 @@
     },
     "secretbus": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.032Z",
+      "at": "2026-11-08T10:11:10.856Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 29,
       "keptFrom": "2026-10-28T23:14:40.711Z",
@@ -3440,7 +3437,7 @@
     },
     "seohae2": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.033Z",
+      "at": "2026-11-08T10:11:10.857Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 46,
       "keptFrom": "2026-10-28T23:14:52.836Z",
@@ -3454,7 +3451,7 @@
     },
     "sindo": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.034Z",
+      "at": "2026-11-08T10:11:10.859Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 24,
       "keptFrom": "2026-10-28T23:15:04.616Z",
@@ -3468,7 +3465,7 @@
     },
     "sinil": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.035Z",
+      "at": "2026-11-08T10:11:10.861Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:15:16.836Z",
@@ -3482,7 +3479,7 @@
     },
     "sinjindo": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.036Z",
+      "at": "2026-11-08T10:11:10.861Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 56,
       "keptFrom": "2026-10-28T23:15:28.951Z",
@@ -3496,7 +3493,7 @@
     },
     "sjdsamsung": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.038Z",
+      "at": "2026-11-08T10:11:10.866Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 24,
       "keptFrom": "2026-10-28T23:15:41.020Z",
@@ -3510,7 +3507,7 @@
     },
     "soosung": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.039Z",
+      "at": "2026-11-08T10:11:10.869Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:15:53.602Z",
@@ -3524,7 +3521,7 @@
     },
     "sooyoungho": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.039Z",
+      "at": "2026-11-08T10:11:10.870Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 11,
       "keptFrom": "2026-10-28T23:16:04.747Z",
@@ -3538,7 +3535,7 @@
     },
     "spdman7": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.040Z",
+      "at": "2026-11-08T10:11:10.872Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 9,
       "keptFrom": "2026-10-28T23:16:16.785Z",
@@ -3552,7 +3549,7 @@
     },
     "starfishing": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.040Z",
+      "at": "2026-11-08T10:11:10.873Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 24,
       "keptFrom": "2026-10-28T23:16:30.883Z",
@@ -3566,7 +3563,7 @@
     },
     "start": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.041Z",
+      "at": "2026-11-08T10:11:10.874Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:16:42.837Z",
@@ -3580,7 +3577,7 @@
     },
     "subok": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.041Z",
+      "at": "2026-11-08T10:11:10.875Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:16:54.985Z",
@@ -3594,7 +3591,7 @@
     },
     "sungho": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.041Z",
+      "at": "2026-11-08T10:11:10.875Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 36,
       "keptFrom": "2026-10-28T23:17:07.153Z",
@@ -3608,7 +3605,7 @@
     },
     "sunny": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.042Z",
+      "at": "2026-11-08T10:11:10.877Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 0,
       "keptFrom": "2026-09-17T18:22:40.945Z",
@@ -3622,7 +3619,7 @@
     },
     "susung": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.042Z",
+      "at": "2026-11-08T10:11:10.877Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:17:28.149Z",
@@ -3636,7 +3633,7 @@
     },
     "venus": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.043Z",
+      "at": "2026-11-08T10:11:10.878Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:17:40.009Z",
@@ -3650,7 +3647,7 @@
     },
     "vip": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.043Z",
+      "at": "2026-11-08T10:11:10.879Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 11,
       "keptFrom": "2026-10-28T23:17:52.024Z",
@@ -3664,7 +3661,7 @@
     },
     "winner": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.044Z",
+      "at": "2026-11-08T10:11:10.879Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 72,
       "keptFrom": "2026-10-28T23:18:04.020Z",
@@ -3678,7 +3675,7 @@
     },
     "worldfishing": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.046Z",
+      "at": "2026-11-08T10:11:10.882Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 4,
       "keptFrom": "2026-10-28T23:18:16.833Z",
@@ -3692,7 +3689,7 @@
     },
     "wsd": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.046Z",
+      "at": "2026-11-08T10:11:10.882Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:18:29.012Z",
@@ -3706,7 +3703,7 @@
     },
     "wsdhaesin": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.046Z",
+      "at": "2026-11-08T10:11:10.883Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:18:40.082Z",
@@ -3720,7 +3717,7 @@
     },
     "yaho": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.047Z",
+      "at": "2026-11-08T10:11:10.883Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:18:51.932Z",
@@ -3734,7 +3731,7 @@
     },
     "yamujin": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.048Z",
+      "at": "2026-11-08T10:11:10.884Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 84,
       "keptFrom": "2026-10-28T23:19:03.952Z",
@@ -3748,7 +3745,7 @@
     },
     "yayaho": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.050Z",
+      "at": "2026-11-08T10:11:10.888Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 24,
       "keptFrom": "2026-10-28T23:19:17.540Z",
@@ -3762,7 +3759,7 @@
     },
     "xnk1x87k": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.051Z",
+      "at": "2026-11-08T10:11:10.889Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 7,
       "keptFrom": "2026-10-23T18:21:51.907Z",
@@ -3776,7 +3773,7 @@
     },
     "yd1": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.051Z",
+      "at": "2026-11-08T10:11:10.889Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:19:36.518Z",
@@ -3790,7 +3787,7 @@
     },
     "yejin": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.051Z",
+      "at": "2026-11-08T10:11:10.890Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 11,
       "keptFrom": "2026-10-28T23:19:46.107Z",
@@ -3804,7 +3801,7 @@
     },
     "yjin": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.052Z",
+      "at": "2026-11-08T10:11:10.892Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 36,
       "keptFrom": "2026-10-28T23:19:58.263Z",
@@ -3818,7 +3815,7 @@
     },
     "yjong": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.053Z",
+      "at": "2026-11-08T10:11:10.895Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 12,
       "keptFrom": "2026-10-28T23:20:10.488Z",
@@ -3832,7 +3829,7 @@
     },
     "yongsa": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.053Z",
+      "at": "2026-11-08T10:11:10.895Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 23,
       "keptFrom": "2026-10-28T23:20:22.238Z",
@@ -3846,7 +3843,7 @@
     },
     "ysho": {
       "ok": false,
-      "at": "2026-11-08T02:20:58.054Z",
+      "at": "2026-11-08T10:11:10.897Z",
       "error": "더피싱에서 3곳 연속 timeout — 이번 수집 보류",
       "count": 36,
       "keptFrom": "2026-10-28T23:20:34.164Z",
@@ -3900,7 +3897,7 @@
       "lng": 126.46,
       "approx": true,
       "trips": 168,
-      "open": 133
+      "open": 130
     },
     "인천 옹진 진두항": {
       "lat": 37.23,
@@ -3913,8 +3910,8 @@
       "lat": 35.9403,
       "lng": 126.5343,
       "approx": true,
-      "trips": 2638,
-      "open": 2239
+      "trips": 2637,
+      "open": 2238
     },
     "충남 보령 선촌항": {
       "lat": 36.36,
@@ -3998,28 +3995,14 @@
       "lng": 126.3,
       "approx": true,
       "trips": 777,
-      "open": 644
+      "open": 645
     },
     "전남 여수 신월항": {
       "lat": 34.7225,
       "lng": 127.707,
       "approx": true,
-      "trips": 213,
+      "trips": 212,
       "open": 196
-    },
-    "경남 사천 팔포항": {
-      "lat": 34.9282,
-      "lng": 128.0785,
-      "approx": true,
-      "trips": 71,
-      "open": 71
-    },
-    "제주 제주시 한림항": {
-      "lat": 33.41,
-      "lng": 126.27,
-      "approx": true,
-      "trips": 117,
-      "open": 114
     },
     "인천 중구 남항 유어선부두": {
       "lat": 37.44,
@@ -4032,8 +4015,8 @@
       "lat": 34.7258,
       "lng": 127.7143,
       "approx": true,
-      "trips": 323,
-      "open": 270
+      "trips": 322,
+      "open": 268
     },
     "인천 중구 연안부두": {
       "lat": 37.4548,
@@ -4088,15 +4071,15 @@
       "lat": 34.4887,
       "lng": 127.1221,
       "approx": true,
-      "trips": 62,
-      "open": 54
+      "trips": 60,
+      "open": 53
     },
     "충남 홍성 남당항": {
       "lat": 36.55,
       "lng": 126.42,
       "approx": true,
       "trips": 159,
-      "open": 109
+      "open": 110
     },
     "전북 군산 야미도항": {
       "lat": 35.8448,
@@ -4168,6 +4151,13 @@
       "trips": 22,
       "open": 22
     },
+    "경남 사천 팔포항": {
+      "lat": 34.9282,
+      "lng": 128.0785,
+      "approx": true,
+      "trips": 70,
+      "open": 70
+    },
     "충남 서산 삼길포항": {
       "lat": 37.0043,
       "lng": 126.4533,
@@ -4237,6 +4227,13 @@
       "approx": true,
       "trips": 29,
       "open": 27
+    },
+    "제주 제주시 한림항": {
+      "lat": 33.41,
+      "lng": 126.27,
+      "approx": true,
+      "trips": 116,
+      "open": 113
     },
     "방포항": {
       "lat": 36.47,
@@ -7465,111 +7462,6 @@
       "price": null,
       "url": "https://hhj.thefishing.kr/index.php?mid=bk&year=2026&month=11&day=8",
       "urlDated": true
-    },
-    {
-      "siteId": "welcome",
-      "siteName": "왔어호",
-      "boat": "왔어호",
-      "port": "제주 제주시 애월항",
-      "phone": "010-2853-8252",
-      "date": "2026-11-08",
-      "departAt": "17:30",
-      "meetingAt": "17:30",
-      "returnAt": "01:30",
-      "session": "종일",
-      "hours": 8,
-      "species": "오징어",
-      "tide": "6물",
-      "status": "closed",
-      "statusText": "왔어호 대기하기 어종 : 무늬오징어 / 루어,선상 운항시간 : 17:30 ~ 01:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 14명 예약/14명",
-      "seatsLeft": 0,
-      "seatsTotal": 14,
-      "price": null,
-      "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "eunhasuho",
-      "siteName": "은하수호",
-      "boat": "은하수호",
-      "port": "전남 여수 신월항",
-      "phone": "010-9203-9988",
-      "date": "2026-11-08",
-      "departAt": "17:30",
-      "meetingAt": "17:30",
-      "returnAt": "01:00",
-      "session": "오후",
-      "hours": 7.5,
-      "species": "갈치",
-      "tide": "6물",
-      "status": "closed",
-      "statusText": "은하수호 대기하기 어종 : 갈치 / 루어,선상 운항시간 : 17:30 ~ 01:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명",
-      "seatsLeft": 0,
-      "seatsTotal": 18,
-      "price": null,
-      "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "doublek",
-      "siteName": "1호",
-      "boat": "1호",
-      "port": "경남 사천 팔포항",
-      "phone": "010-4455-6222",
-      "date": "2026-11-08",
-      "departAt": "18:00",
-      "returnAt": "00:00",
-      "session": "야간",
-      "hours": 6,
-      "species": "문어",
-      "tide": "6물",
-      "status": "open",
-      "statusText": "2026년 11월 08일, 일요일, 6물 (야간)문어 오후6시~밤12시 1호(10톤)또는2,3호(5톤) 예약하기 낚시종류 오후/야간 돌문어",
-      "seatsLeft": 31,
-      "seatsTotal": 31,
-      "price": null,
-      "url": "https://doublek.thefishing.kr/index.php?mid=bk&year=2026&month=11&day=8",
-      "urlDated": true
-    },
-    {
-      "siteId": "redpulsegs",
-      "siteName": "뉴미라클호",
-      "boat": "뉴미라클호",
-      "port": "전북 군산 비응항",
-      "phone": "063-471-0070",
-      "date": "2026-11-08",
-      "departAt": "18:00",
-      "meetingAt": "18:00",
-      "returnAt": "02:00",
-      "session": "야간",
-      "hours": 8,
-      "species": "갈치",
-      "tide": "5물",
-      "status": "open",
-      "statusText": "뉴미라클호 바로예약 어종 : 갈치 / 선상,지깅,캐스팅 운항시간 : 18:00 ~ 02:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 출항확정남은자리9명예약/7명",
-      "seatsLeft": 9,
-      "seatsTotal": 16,
-      "price": null,
-      "url": "https://redpulsegs.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "baekya",
-      "siteName": "백야호",
-      "boat": "백야호",
-      "port": "제주 제주시 한림항",
-      "phone": "010-7447-0120",
-      "date": "2026-11-08",
-      "departAt": "18:00",
-      "meetingAt": "18:00",
-      "returnAt": "05:00",
-      "session": "야간",
-      "hours": 11,
-      "species": "갈치",
-      "tide": "6물",
-      "status": "open",
-      "statusText": "백야호 바로예약 어종 : 갈치 / 선상 운항시간 : 18:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/5명",
-      "seatsLeft": 9,
-      "seatsTotal": 14,
-      "price": null,
-      "url": "https://baekya.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "52fish",
@@ -12685,8 +12577,8 @@
       "species": "갑오징어",
       "tide": "7물",
       "status": "open",
-      "statusText": "제일피싱호 바로예약 어종 : 갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/11명",
-      "seatsLeft": 5,
+      "statusText": "제일피싱호 바로예약 어종 : 갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리4명예약/12명",
+      "seatsLeft": 4,
       "seatsTotal": 16,
       "price": null,
       "url": "https://jeilfishing.sunsang24.com/ship/schedule_fleet/202611"
@@ -13966,10 +13858,10 @@
       "hours": 9.5,
       "species": "갑오징어",
       "tide": "8물",
-      "status": "open",
-      "statusText": "헌터호 바로예약 어종 : 갑오징어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/14명",
-      "seatsLeft": 7,
-      "seatsTotal": 21,
+      "status": "off",
+      "statusText": "헌터호 어종 : 갑오징어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 기상악화",
+      "seatsLeft": null,
+      "seatsTotal": null,
       "price": null,
       "url": "https://hunterfishing.sunsang24.com/ship/schedule_fleet/202611"
     },
@@ -16369,8 +16261,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "7물",
       "status": "open",
-      "statusText": "태풍호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/9명",
-      "seatsLeft": 12,
+      "statusText": "태풍호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/13명",
+      "seatsLeft": 8,
       "seatsTotal": 21,
       "price": null,
       "url": "https://janggofish.sunsang24.com/ship/schedule_fleet/202611"
@@ -16566,27 +16458,6 @@
       "seatsTotal": 8,
       "price": null,
       "url": "https://fishbank.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "jinpro",
-      "siteName": "1호",
-      "boat": "1호",
-      "port": "전남 여수 국동항",
-      "phone": "010-5775-5594",
-      "date": "2026-11-09",
-      "departAt": "13:00",
-      "meetingAt": "13:00",
-      "returnAt": "07:00",
-      "session": "종일",
-      "hours": 18,
-      "species": "갈치",
-      "tide": "8물",
-      "status": "open",
-      "statusText": "진프로 1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/4명",
-      "seatsLeft": 12,
-      "seatsTotal": 16,
-      "price": null,
-      "url": "https://jinpro.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "busung",
@@ -21672,8 +21543,8 @@
       "species": "참돔",
       "tide": "9물",
       "status": "open",
-      "statusText": "진프로 3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/3명",
-      "seatsLeft": 15,
+      "statusText": "진프로 3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/4명",
+      "seatsLeft": 14,
       "seatsTotal": 18,
       "price": null,
       "url": "https://jinpro.sunsang24.com/ship/schedule_fleet/202611"
@@ -24365,8 +24236,8 @@
       "species": "갑오징어",
       "tide": "9물",
       "status": "open",
-      "statusText": "헌터호 바로예약 어종 : 갑오징어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/14명",
-      "seatsLeft": 7,
+      "statusText": "헌터호 바로예약 어종 : 갑오징어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/16명",
+      "seatsLeft": 5,
       "seatsTotal": 21,
       "price": null,
       "url": "https://hunterfishing.sunsang24.com/ship/schedule_fleet/202611"
@@ -31856,9 +31727,9 @@
       "hours": 12,
       "species": "참돔",
       "tide": "10물",
-      "status": "open",
-      "statusText": "진프로 3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리4명예약/14명",
-      "seatsLeft": 4,
+      "status": "few",
+      "statusText": "진프로 3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/17명",
+      "seatsLeft": 1,
       "seatsTotal": 18,
       "price": null,
       "url": "https://jinpro.sunsang24.com/ship/schedule_fleet/202611"
@@ -34463,8 +34334,8 @@
       "species": "갑오징어",
       "tide": "10물",
       "status": "open",
-      "statusText": "헌터호 바로예약 어종 : 갑오징어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/12명",
-      "seatsLeft": 9,
+      "statusText": "헌터호 바로예약 어종 : 갑오징어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/14명",
+      "seatsLeft": 7,
       "seatsTotal": 21,
       "price": null,
       "url": "https://hunterfishing.sunsang24.com/ship/schedule_fleet/202611"
@@ -42185,8 +42056,8 @@
       "species": "참돔",
       "tide": "11물",
       "status": "open",
-      "statusText": "진프로 3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/12명",
-      "seatsLeft": 6,
+      "statusText": "진프로 3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 05:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/13명",
+      "seatsLeft": 5,
       "seatsTotal": 18,
       "price": null,
       "url": "https://jinpro.sunsang24.com/ship/schedule_fleet/202611"
@@ -43506,8 +43377,8 @@
       "species": "문어",
       "tide": "11물",
       "status": "open",
-      "statusText": "장보고호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
-      "seatsLeft": 11,
+      "statusText": "장보고호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/6명",
+      "seatsLeft": 5,
       "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202611"
@@ -44875,9 +44746,9 @@
       "hours": 11.5,
       "species": "갑오징어",
       "tide": "11물",
-      "status": "open",
-      "statusText": "헌터호 바로예약 어종 : 갑오징어 운항시간 : 05:30 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/15명",
-      "seatsLeft": 6,
+      "status": "few",
+      "statusText": "헌터호 바로예약 어종 : 갑오징어 운항시간 : 05:30 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/19명",
+      "seatsLeft": 2,
       "seatsTotal": 21,
       "price": null,
       "url": "https://hunterfishing.sunsang24.com/ship/schedule_fleet/202611"
@@ -45745,27 +45616,6 @@
       "seatsTotal": 8,
       "price": null,
       "url": "https://jangbogo.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
-      "siteId": "jangbogofishing",
-      "siteName": "장보고호",
-      "boat": "장보고호",
-      "port": "전남 고흥 금진항",
-      "phone": "010-3626-2841",
-      "date": "2026-11-12",
-      "departAt": "06:00",
-      "meetingAt": "06:00",
-      "returnAt": "15:00",
-      "session": "종일",
-      "hours": 9,
-      "species": "주꾸미·갑오징어",
-      "tide": "11물",
-      "status": "open",
-      "statusText": "장보고호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
-      "seatsLeft": 11,
-      "seatsTotal": 11,
-      "price": null,
-      "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "gunsannaksi",
@@ -53861,8 +53711,8 @@
       "species": "문어",
       "tide": "12물",
       "status": "open",
-      "statusText": "장보고호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/1명",
-      "seatsLeft": 10,
+      "statusText": "장보고호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/2명",
+      "seatsLeft": 9,
       "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202611"
@@ -53882,8 +53732,8 @@
       "species": "광어·우럭",
       "tide": "11물",
       "status": "open",
-      "statusText": "정환호 바로예약 어종 : 광어,우럭 / 다운샷 운항시간 : 05:00 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/9명",
-      "seatsLeft": 11,
+      "statusText": "정환호 바로예약 어종 : 광어,우럭 / 다운샷 운항시간 : 05:00 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/12명",
+      "seatsLeft": 8,
       "seatsTotal": 20,
       "price": null,
       "url": "https://jh.sunsang24.com/ship/schedule_fleet/202611"
@@ -57675,8 +57525,8 @@
       "species": "갈치",
       "tide": "12물",
       "status": "open",
-      "statusText": "진프로 1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/10명",
-      "seatsLeft": 6,
+      "statusText": "진프로 1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/9명",
+      "seatsLeft": 7,
       "seatsTotal": 16,
       "price": null,
       "url": "https://jinpro.sunsang24.com/ship/schedule_fleet/202611"
@@ -68016,8 +67866,8 @@
       "species": "갈치",
       "tide": "13물",
       "status": "few",
-      "statusText": "진프로 1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/14명",
-      "seatsLeft": 2,
+      "statusText": "진프로 1호 바로예약 어종 : 갈치 / 생미끼 운항시간 : 13:00 ~ 07:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/15명",
+      "seatsLeft": 1,
       "seatsTotal": 16,
       "price": null,
       "url": "https://jinpro.sunsang24.com/ship/schedule_fleet/202611"
@@ -73722,9 +73572,9 @@
       "hours": 10.5,
       "species": "광어·우럭",
       "tide": "13물",
-      "status": "closed",
-      "statusText": "정환호 대기하기 어종 : 광어,우럭 / 다운샷 운항시간 : 05:00 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/20명",
-      "seatsLeft": 0,
+      "status": "few",
+      "statusText": "정환호 바로예약 어종 : 광어,우럭 / 다운샷 운항시간 : 05:00 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/19명",
+      "seatsLeft": 1,
       "seatsTotal": 20,
       "price": null,
       "url": "https://jh.sunsang24.com/ship/schedule_fleet/202611"
@@ -73743,9 +73593,9 @@
       "hours": 10,
       "species": "갑오징어",
       "tide": "13물",
-      "status": "closed",
-      "statusText": "제일피싱호 대기하기 어종 : 갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 16명 예약/16명",
-      "seatsLeft": 0,
+      "status": "open",
+      "statusText": "제일피싱호 바로예약 어종 : 갑오징어 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리4명예약/12명",
+      "seatsLeft": 4,
       "seatsTotal": 16,
       "price": null,
       "url": "https://jeilfishing.sunsang24.com/ship/schedule_fleet/202611"
@@ -83718,27 +83568,6 @@
       "url": "https://ebada.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
-      "siteId": "jangbogofishing",
-      "siteName": "장보고호",
-      "boat": "장보고호",
-      "port": "전남 고흥 금진항",
-      "phone": "010-3626-2841",
-      "date": "2026-11-16",
-      "departAt": "05:30",
-      "meetingAt": "05:30",
-      "returnAt": "15:30",
-      "session": "종일",
-      "hours": 10,
-      "species": "문어",
-      "tide": "조금",
-      "status": "open",
-      "statusText": "장보고호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 05:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/3명",
-      "seatsLeft": 8,
-      "seatsTotal": 11,
-      "price": null,
-      "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
       "siteId": "jungwonho",
       "siteName": "정원호",
       "boat": "정원호",
@@ -83879,8 +83708,8 @@
       "species": "갑오징어",
       "tide": "조금",
       "status": "open",
-      "statusText": "헌터호 바로예약 어종 : 갑오징어 운항시간 : 05:30 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명예약/1명",
-      "seatsLeft": 20,
+      "statusText": "헌터호 바로예약 어종 : 갑오징어 운항시간 : 05:30 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/3명",
+      "seatsLeft": 18,
       "seatsTotal": 21,
       "price": null,
       "url": "https://hunterfishing.sunsang24.com/ship/schedule_fleet/202611"
@@ -84789,6 +84618,27 @@
       "seatsTotal": 8,
       "price": null,
       "url": "https://jangbogo.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
+      "siteId": "jangbogofishing",
+      "siteName": "장보고호",
+      "boat": "장보고호",
+      "port": "전남 고흥 금진항",
+      "phone": "010-3626-2841",
+      "date": "2026-11-16",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "주꾸미",
+      "tide": "조금",
+      "status": "open",
+      "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/4명",
+      "seatsLeft": 7,
+      "seatsTotal": 11,
+      "price": null,
+      "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "genieyonghan",
@@ -86241,8 +86091,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "조금",
       "status": "open",
-      "statusText": "태풍호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/15명",
-      "seatsLeft": 6,
+      "statusText": "태풍호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/16명",
+      "seatsLeft": 5,
       "seatsTotal": 21,
       "price": null,
       "url": "https://janggofish.sunsang24.com/ship/schedule_fleet/202611"
@@ -87374,9 +87224,9 @@
       "hours": 14,
       "species": "갈치",
       "tide": "조금",
-      "status": "closed",
-      "statusText": "제주갈치TV호 대기하기 어종 : 갈치 / 선상 운항시간 : 15:30 ~ 05:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 12명 예약/12명",
-      "seatsLeft": 0,
+      "status": "few",
+      "statusText": "제주갈치TV호 바로예약 어종 : 갈치 / 선상 운항시간 : 15:30 ~ 05:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/11명",
+      "seatsLeft": 1,
       "seatsTotal": 12,
       "price": null,
       "url": "https://jejutv.sunsang24.com/ship/schedule_fleet/202611"
@@ -92644,27 +92494,6 @@
       "url": "https://ebada.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
-      "siteId": "jangbogofishing",
-      "siteName": "장보고호",
-      "boat": "장보고호",
-      "port": "전남 고흥 금진항",
-      "phone": "010-3626-2841",
-      "date": "2026-11-17",
-      "departAt": "05:30",
-      "meetingAt": "05:30",
-      "returnAt": "15:30",
-      "session": "종일",
-      "hours": 10,
-      "species": "문어",
-      "tide": "1물",
-      "status": "open",
-      "statusText": "장보고호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 05:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/5명",
-      "seatsLeft": 6,
-      "seatsTotal": 11,
-      "price": null,
-      "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
       "siteId": "jungwonho",
       "siteName": "정원호",
       "boat": "정원호",
@@ -93737,6 +93566,27 @@
       "seatsTotal": 8,
       "price": null,
       "url": "https://jangbogo.sunsang24.com/ship/schedule_fleet/202611"
+    },
+    {
+      "siteId": "jangbogofishing",
+      "siteName": "장보고호",
+      "boat": "장보고호",
+      "port": "전남 고흥 금진항",
+      "phone": "010-3626-2841",
+      "date": "2026-11-17",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "주꾸미",
+      "tide": "1물",
+      "status": "open",
+      "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/2명",
+      "seatsLeft": 9,
+      "seatsTotal": 11,
+      "price": null,
+      "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
       "siteId": "genieyonghan",
@@ -102360,9 +102210,9 @@
       "hours": 9,
       "species": "주꾸미",
       "tide": "2물",
-      "status": "closed",
-      "statusText": "장보고호 대기하기 어종 : 주꾸미 / 루어,선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 11명 예약/11명",
-      "seatsLeft": 0,
+      "status": "open",
+      "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/6명",
+      "seatsLeft": 5,
       "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202611"
@@ -103356,8 +103206,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "1물",
       "status": "open",
-      "statusText": "태풍호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명예약/8명",
-      "seatsLeft": 13,
+      "statusText": "태풍호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/10명",
+      "seatsLeft": 11,
       "seatsTotal": 21,
       "price": null,
       "url": "https://janggofish.sunsang24.com/ship/schedule_fleet/202611"
@@ -109168,27 +109018,6 @@
       "url": "https://ebada.sunsang24.com/ship/schedule_fleet/202611"
     },
     {
-      "siteId": "jangbogofishing",
-      "siteName": "장보고호",
-      "boat": "장보고호",
-      "port": "전남 고흥 금진항",
-      "phone": "010-3626-2841",
-      "date": "2026-11-19",
-      "departAt": "05:30",
-      "meetingAt": "05:30",
-      "returnAt": "15:30",
-      "session": "종일",
-      "hours": 10,
-      "species": "문어",
-      "tide": "3물",
-      "status": "open",
-      "statusText": "장보고호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 05:30 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/1명",
-      "seatsLeft": 10,
-      "seatsTotal": 11,
-      "price": null,
-      "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202611"
-    },
-    {
       "siteId": "jungwonho",
       "siteName": "정원호",
       "boat": "정원호",
@@ -110255,8 +110084,8 @@
       "species": "주꾸미",
       "tide": "3물",
       "status": "open",
-      "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
-      "seatsLeft": 11,
+      "statusText": "장보고호 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/1명",
+      "seatsLeft": 10,
       "seatsTotal": 11,
       "price": null,
       "url": "https://jangbogofishing.sunsang24.com/ship/schedule_fleet/202611"
@@ -111293,8 +111122,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "2물",
       "status": "open",
-      "statusText": "태풍호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/9명",
-      "seatsLeft": 12,
+      "statusText": "태풍호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/10명",
+      "seatsLeft": 11,
       "seatsTotal": 21,
       "price": null,
       "url": "https://janggofish.sunsang24.com/ship/schedule_fleet/202611"
@@ -116936,8 +116765,8 @@
       "species": "주꾸미·갑오징어",
       "tide": "3물",
       "status": "open",
-      "statusText": "태풍호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/9명",
-      "seatsLeft": 12,
+      "statusText": "태풍호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/12명",
+      "seatsLeft": 9,
       "seatsTotal": 21,
       "price": null,
       "url": "https://janggofish.sunsang24.com/ship/schedule_fleet/202611"
@@ -117649,9 +117478,9 @@
       "hours": 14,
       "species": "갈치",
       "tide": "4물",
-      "status": "few",
-      "statusText": "제주갈치TV호 바로예약 어종 : 갈치 / 선상 운항시간 : 15:30 ~ 05:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/10명",
-      "seatsLeft": 2,
+      "status": "open",
+      "statusText": "제주갈치TV호 바로예약 어종 : 갈치 / 선상 운항시간 : 15:30 ~ 05:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리3명예약/9명",
+      "seatsLeft": 3,
       "seatsTotal": 12,
       "price": null,
       "url": "https://jejutv.sunsang24.com/ship/schedule_fleet/202611"
@@ -134758,9 +134587,9 @@
       "hours": 14,
       "species": "갈치",
       "tide": "7물",
-      "status": "few",
-      "statusText": "제주갈치TV호 바로예약 어종 : 갈치 / 선상 운항시간 : 15:30 ~ 05:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/11명",
-      "seatsLeft": 1,
+      "status": "closed",
+      "statusText": "제주갈치TV호 대기하기 어종 : 갈치 / 선상 운항시간 : 15:30 ~ 05:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 12명 예약/12명",
+      "seatsLeft": 0,
       "seatsTotal": 12,
       "price": null,
       "url": "https://jejutv.sunsang24.com/ship/schedule_fleet/202611"
@@ -145319,9 +145148,9 @@
       "hours": 14,
       "species": "갈치",
       "tide": "9물",
-      "status": "few",
-      "statusText": "제주갈치TV호 바로예약 어종 : 갈치 / 선상 운항시간 : 15:30 ~ 05:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리2명예약/10명",
-      "seatsLeft": 2,
+      "status": "closed",
+      "statusText": "제주갈치TV호 대기하기 어종 : 갈치 / 선상 운항시간 : 15:30 ~ 05:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 12명 예약/12명",
+      "seatsLeft": 0,
       "seatsTotal": 12,
       "price": null,
       "url": "https://jejutv.sunsang24.com/ship/schedule_fleet/202611"
@@ -150571,8 +150400,8 @@
       "species": "갈치",
       "tide": "10물",
       "status": "open",
-      "statusText": "제주갈치TV호 바로예약 어종 : 갈치 / 선상 운항시간 : 15:30 ~ 05:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/5명",
-      "seatsLeft": 7,
+      "statusText": "제주갈치TV호 바로예약 어종 : 갈치 / 선상 운항시간 : 15:30 ~ 05:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/7명",
+      "seatsLeft": 5,
       "seatsTotal": 12,
       "price": null,
       "url": "https://jejutv.sunsang24.com/ship/schedule_fleet/202611"
