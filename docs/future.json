@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-10T11:03:50.820Z",
+  "generatedAt": "2026-11-10T11:05:13.053Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -134,14 +134,14 @@
     "yeongjae": 83,
     "yong": 83,
     "yongma": 83,
-    "ysoceanstar": 22,
-    "yurimho": 22,
-    "eungabi": 22,
-    "ocpro": 22,
-    "supernova": 22,
-    "goldenbaek": 22,
-    "blueocean2": 22,
-    "daehan": 22,
+    "ysoceanstar": 83,
+    "yurimho": 83,
+    "eungabi": 83,
+    "ocpro": 83,
+    "supernova": 83,
+    "goldenbaek": 83,
+    "blueocean2": 83,
+    "daehan": 83,
     "nature": 22,
     "bj": 22,
     "dongmun": 22,
@@ -2378,7 +2378,7 @@
       "status": "open",
       "statusText": "은가비호 바로예약 어종 : 주꾸미 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -3180,8 +3180,8 @@
       "species": "주꾸미",
       "tide": "1물",
       "status": "open",
-      "statusText": "오션스타2호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명예약/4명",
-      "seatsLeft": 16,
+      "statusText": "오션스타2호 바로예약 어종 : 주꾸미 / 루어 운항시간 : 05:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/9명",
+      "seatsLeft": 11,
       "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
@@ -12451,7 +12451,7 @@
       "status": "open",
       "statusText": "은가비호 바로예약 어종 : 주꾸미 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -17269,8 +17269,8 @@
       "species": "참돔",
       "tide": "4물",
       "status": "open",
-      "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리4명예약/14명",
-      "seatsLeft": 4,
+      "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리3명예약/15명",
+      "seatsLeft": 3,
       "seatsTotal": 18,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
@@ -26500,7 +26500,7 @@
       "status": "open",
       "statusText": "은가비호 바로예약 어종 : 우럭,열기 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -30869,7 +30869,7 @@
       "status": "open",
       "statusText": "은가비호 바로예약 어종 : 우럭,열기 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -32395,8 +32395,8 @@
       "species": "광어·우럭",
       "tide": "6물",
       "status": "open",
-      "statusText": "슈퍼노바호 바로예약 어종 : 광어,우럭 / 다운샷 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/9명",
-      "seatsLeft": 11,
+      "statusText": "슈퍼노바호 바로예약 어종 : 광어,우럭 / 다운샷 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/11명",
+      "seatsLeft": 9,
       "seatsTotal": 20,
       "price": null,
       "url": "https://supernova.sunsang24.com/ship/schedule_fleet/202612"
@@ -35303,7 +35303,7 @@
       "status": "open",
       "statusText": "은가비호 바로예약 어종 : 우럭,열기 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -40264,7 +40264,7 @@
       "status": "open",
       "statusText": "은가비호 바로예약 어종 : 광어 / 루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -45473,9 +45473,9 @@
       "species": "광어",
       "tide": "9물",
       "status": "open",
-      "statusText": "은가비호 바로예약 어종 : 광어 / 루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명예약/1명",
-      "seatsLeft": 19,
-      "seatsTotal": 20,
+      "statusText": "은가비호 바로예약 어종 : 광어 / 루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
+      "seatsLeft": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -57811,9 +57811,9 @@
       "hours": 10,
       "species": "광어·우럭",
       "tide": "11물",
-      "status": "closed",
-      "statusText": "슈퍼노바호 대기하기 어종 : 광어,우럭 / 다운샷 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/20명",
-      "seatsLeft": 0,
+      "status": "few",
+      "statusText": "슈퍼노바호 바로예약 어종 : 광어,우럭 / 다운샷 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/19명",
+      "seatsLeft": 1,
       "seatsTotal": 20,
       "price": null,
       "url": "https://supernova.sunsang24.com/ship/schedule_fleet/202612"
@@ -61034,8 +61034,8 @@
       "species": "광어",
       "tide": "12물",
       "status": "open",
-      "statusText": "은가비호 바로예약 어종 : 광어 / 루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
+      "statusText": "은가비호 바로예약 어종 : 광어 / 루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명예약/1명",
+      "seatsLeft": 19,
       "seatsTotal": 20,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202612"
@@ -65342,7 +65342,7 @@
       "status": "open",
       "statusText": "은가비호 바로예약 어종 : 광어 / 루어 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -69243,7 +69243,7 @@
       "status": "open",
       "statusText": "은가비호 바로예약 어종 : 주꾸미 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -73660,7 +73660,7 @@
       "status": "open",
       "statusText": "은가비호 바로예약 어종 : 주꾸미 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -78548,7 +78548,7 @@
       "status": "open",
       "statusText": "은가비호 바로예약 어종 : 주꾸미 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -83134,8 +83134,8 @@
       "species": "참돔",
       "tide": "3물",
       "status": "open",
-      "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/9명",
-      "seatsLeft": 9,
+      "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리4명예약/14명",
+      "seatsLeft": 4,
       "seatsTotal": 18,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
@@ -89124,7 +89124,7 @@
       "status": "open",
       "statusText": "은가비호 바로예약 어종 : 주꾸미 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -94523,7 +94523,7 @@
       "status": "open",
       "statusText": "은가비호 바로예약 어종 : 우럭,열기 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -99740,7 +99740,7 @@
       "status": "open",
       "statusText": "은가비호 바로예약 어종 : 우럭,열기 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -104097,7 +104097,7 @@
       "status": "open",
       "statusText": "은가비호 바로예약 어종 : 우럭,열기 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -108463,7 +108463,7 @@
       "status": "open",
       "statusText": "은가비호 바로예약 어종 : 우럭,열기 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -117536,7 +117536,7 @@
       "status": "open",
       "statusText": "은가비호 바로예약 어종 : 우럭,열기 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -122312,7 +122312,7 @@
       "status": "open",
       "statusText": "은가비호 바로예약 어종 : 우럭,열기 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -127203,7 +127203,7 @@
       "status": "open",
       "statusText": "은가비호 바로예약 어종 : 우럭,열기 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -136651,7 +136651,7 @@
       "status": "open",
       "statusText": "은가비호 바로예약 어종 : 우럭,열기 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://eungabi.sunsang24.com/ship/schedule_fleet/202612"
     },
