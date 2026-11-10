@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-09T21:02:24.809Z",
+  "generatedAt": "2026-11-10T01:58:51.166Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -173,14 +173,14 @@
     "dream": 83,
     "eagles": 83,
     "ebada": 83,
-    "emerald": 53,
-    "enjoy": 53,
-    "eunhasuho": 53,
-    "fishbank": 53,
-    "fishhunter": 53,
-    "gagaho": 53,
-    "galchiho": 22,
-    "gdcompany": 22,
+    "emerald": 83,
+    "enjoy": 83,
+    "eunhasuho": 83,
+    "fishbank": 83,
+    "fishhunter": 83,
+    "gagaho": 83,
+    "galchiho": 83,
+    "gdcompany": 83,
     "genieyonghan": 22,
     "giant": 22,
     "goaraho": 22,
@@ -2232,7 +2232,7 @@
       "status": "open",
       "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -4352,7 +4352,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -7207,7 +7207,7 @@
       "status": "open",
       "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -9285,7 +9285,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -10001,8 +10001,8 @@
       "species": "갈치",
       "tide": "2물",
       "status": "open",
-      "statusText": "갈치호 바로예약 운항시간 : 17:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명",
-      "seatsLeft": 12,
+      "statusText": "갈치호 바로예약 운항시간 : 17:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/2명",
+      "seatsLeft": 10,
       "seatsTotal": 12,
       "price": null,
       "url": "https://galchiho.sunsang24.com/ship/schedule_fleet/202612"
@@ -14215,7 +14215,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -16075,8 +16075,8 @@
       "species": "대구",
       "tide": "3물",
       "status": "open",
-      "statusText": "지디4호 바로예약 어종 : 대구 / 지깅 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/15명",
-      "seatsLeft": 8,
+      "statusText": "지디4호 바로예약 어종 : 대구 / 지깅 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/16명",
+      "seatsLeft": 7,
       "seatsTotal": 23,
       "price": null,
       "url": "https://gdcompany.sunsang24.com/ship/schedule_fleet/202612"
@@ -18292,9 +18292,9 @@
       "hours": 10,
       "species": "광어·우럭",
       "tide": "3물",
-      "status": "few",
-      "statusText": "안흥 스페이스호 바로예약 어종 : 광어,우럭 / 생미끼,생미끼 외수질 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/18명",
-      "seatsLeft": 1,
+      "status": "closed",
+      "statusText": "안흥 스페이스호 대기하기 어종 : 광어,우럭 / 생미끼,생미끼 외수질 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 19명 예약/19명",
+      "seatsLeft": 0,
       "seatsTotal": 19,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
@@ -19306,9 +19306,9 @@
       "species": "주꾸미",
       "tide": "3물",
       "status": "open",
-      "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명예약/1명",
-      "seatsLeft": 19,
-      "seatsTotal": 20,
+      "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
+      "seatsLeft": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -21671,8 +21671,8 @@
       "species": "광어·우럭",
       "tide": "4물",
       "status": "open",
-      "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명예약/3명",
-      "seatsLeft": 17,
+      "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/5명",
+      "seatsLeft": 15,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
@@ -23836,7 +23836,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -25850,7 +25850,7 @@
       "status": "open",
       "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -27929,7 +27929,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -30135,7 +30135,7 @@
       "status": "open",
       "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -32170,7 +32170,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -34485,7 +34485,7 @@
       "status": "open",
       "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -36583,7 +36583,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -39362,7 +39362,7 @@
       "status": "open",
       "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -41611,7 +41611,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -44489,7 +44489,7 @@
       "status": "open",
       "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -46720,7 +46720,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -49740,7 +49740,7 @@
       "status": "open",
       "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -51990,7 +51990,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -54900,9 +54900,9 @@
       "hours": 10,
       "species": "돌돔",
       "tide": "12물",
-      "status": "few",
-      "statusText": "흑룡호 바로예약 어종:돌돔,쥐치,열기,볼락,왕전갱이 등등♦️예약확정: 예약➡️입금➡️예약확정♦️입금예시:7월9일(김흑룡) 입금시 위와같이 작성후 입금후 문자남겨주세요 어종 : 돌돔,쥐치 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/19명",
-      "seatsLeft": 1,
+      "status": "closed",
+      "statusText": "흑룡호 대기하기 어종:돌돔,쥐치,열기,볼락,왕전갱이 등등♦️예약확정: 예약➡️입금➡️예약확정♦️입금예시:7월9일(김흑룡) 입금시 위와같이 작성후 입금후 문자남겨주세요 어종 : 돌돔,쥐치 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/20명",
+      "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
       "url": "https://fishhunter.sunsang24.com/ship/schedule_fleet/202612"
@@ -55031,7 +55031,7 @@
       "status": "open",
       "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -57145,7 +57145,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -59735,7 +59735,7 @@
       "status": "open",
       "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -61745,7 +61745,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -63957,7 +63957,7 @@
       "status": "open",
       "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -65968,7 +65968,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -67773,7 +67773,7 @@
       "status": "open",
       "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -69712,7 +69712,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -72085,7 +72085,7 @@
       "status": "open",
       "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -74350,7 +74350,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -76868,7 +76868,7 @@
       "status": "open",
       "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -79049,7 +79049,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -81622,8 +81622,8 @@
       "species": "광어·우럭",
       "tide": "2물",
       "status": "open",
-      "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/8명",
-      "seatsLeft": 12,
+      "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명예약/4명",
+      "seatsLeft": 16,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
@@ -84119,7 +84119,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -87339,7 +87339,7 @@
       "status": "open",
       "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -89716,7 +89716,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -92654,7 +92654,7 @@
       "status": "open",
       "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -94842,7 +94842,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -97787,7 +97787,7 @@
       "status": "open",
       "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -99933,7 +99933,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -102039,7 +102039,7 @@
       "status": "open",
       "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -103901,7 +103901,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -106321,7 +106321,7 @@
       "status": "open",
       "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -108226,7 +108226,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -110826,7 +110826,7 @@
       "status": "open",
       "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -112753,7 +112753,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -114259,8 +114259,8 @@
       "species": "방어",
       "tide": "9물",
       "status": "open",
-      "statusText": "지디1호 바로예약 어종 : 방어 / 선상,지깅 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리7명예약/15명",
-      "seatsLeft": 7,
+      "statusText": "지디1호 바로예약 어종 : 방어 / 선상,지깅 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리6명예약/16명",
+      "seatsLeft": 6,
       "seatsTotal": 22,
       "price": null,
       "url": "https://gdcompany.sunsang24.com/ship/schedule_fleet/202612"
@@ -115096,8 +115096,8 @@
       "species": "돌돔",
       "tide": "10물",
       "status": "open",
-      "statusText": "흑룡호 바로예약 어종:돌돔,쥐치,열기,볼락,왕전갱이 등등♦️예약확정: 예약➡️입금➡️예약확정♦️입금예시:7월9일(김흑룡) 입금시 위와같이 작성후 입금후 문자남겨주세요 어종 : 돌돔,쥐치 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명예약/4명",
-      "seatsLeft": 16,
+      "statusText": "흑룡호 바로예약 어종:돌돔,쥐치,열기,볼락,왕전갱이 등등♦️예약확정: 예약➡️입금➡️예약확정♦️입금예시:7월9일(김흑룡) 입금시 위와같이 작성후 입금후 문자남겨주세요 어종 : 돌돔,쥐치 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/8명",
+      "seatsLeft": 12,
       "seatsTotal": 20,
       "price": null,
       "url": "https://fishhunter.sunsang24.com/ship/schedule_fleet/202612"
@@ -115226,7 +115226,7 @@
       "status": "open",
       "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -117128,7 +117128,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -119918,7 +119918,7 @@
       "status": "open",
       "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -122036,7 +122036,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -124725,7 +124725,7 @@
       "status": "open",
       "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -126823,7 +126823,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -129555,7 +129555,7 @@
       "status": "open",
       "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -131632,7 +131632,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -134005,7 +134005,7 @@
       "status": "open",
       "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -136081,7 +136081,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -139001,7 +139001,7 @@
       "status": "open",
       "statusText": "청용호 바로예약 어종 : 광어,우럭,노래미 / 다운샷,생미끼 외수질 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -141098,7 +141098,7 @@
       "status": "open",
       "statusText": "가가호 바로예약 어종 : 주꾸미 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 20,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -142713,8 +142713,8 @@
       "species": "방어",
       "tide": "무시",
       "status": "open",
-      "statusText": "지디1호 바로예약 어종 : 방어 / 선상 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리22명예약/3명",
-      "seatsLeft": 22,
+      "statusText": "지디1호 바로예약 어종 : 방어 / 선상 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명예약/4명",
+      "seatsLeft": 21,
       "seatsTotal": 25,
       "price": null,
       "url": "https://gdcompany.sunsang24.com/ship/schedule_fleet/202701"
