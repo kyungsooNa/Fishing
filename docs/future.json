@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-10T01:58:51.166Z",
+  "generatedAt": "2026-11-10T03:01:50.326Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -181,13 +181,13 @@
     "gagaho": 83,
     "galchiho": 83,
     "gdcompany": 83,
-    "genieyonghan": 22,
-    "giant": 22,
-    "goaraho": 22,
-    "gonghyeonjin": 22,
-    "gosu": 22,
-    "gsseven": 22,
-    "gudiho": 22,
+    "genieyonghan": 83,
+    "giant": 83,
+    "goaraho": 83,
+    "gonghyeonjin": 83,
+    "gosu": 83,
+    "gsseven": 83,
+    "gudiho": 83,
     "gukbo": 84,
     "gull": 22,
     "gundam": 22,
@@ -263,7 +263,7 @@
     "napoliho": 64,
     "bumblebee": 64,
     "eagleho": 57,
-    "goldatsr": 84
+    "goldatsr": 22
   },
   "trips": [
     {
@@ -2547,7 +2547,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -2568,7 +2568,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -4056,7 +4056,7 @@
       "status": "open",
       "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -4671,7 +4671,7 @@
       "status": "open",
       "statusText": "지니호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 07:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 10,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -7501,7 +7501,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -7522,7 +7522,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -8989,7 +8989,7 @@
       "status": "open",
       "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -9604,7 +9604,7 @@
       "status": "open",
       "statusText": "지니호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 07:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 10,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -12431,7 +12431,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -12452,7 +12452,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -13919,7 +13919,7 @@
       "status": "open",
       "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -14555,7 +14555,7 @@
       "status": "open",
       "statusText": "지니호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 07:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 10,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -17481,7 +17481,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -17502,7 +17502,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -18482,8 +18482,8 @@
       "species": "대구",
       "tide": "4물",
       "status": "open",
-      "statusText": "돌핀호 바로예약 어종 : 대구 운항시간 : 06:00 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/11명",
-      "seatsLeft": 10,
+      "statusText": "돌핀호 바로예약 어종 : 대구 운항시간 : 06:00 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/12명",
+      "seatsLeft": 9,
       "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
@@ -19627,7 +19627,7 @@
       "status": "open",
       "statusText": "지니호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 07:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 10,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -19877,8 +19877,8 @@
       "species": "갈치",
       "tide": "4물",
       "status": "open",
-      "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/5명",
-      "seatsLeft": 10,
+      "statusText": "구디호 바로예약 어종 : 갈치 운항시간 : 14:00 ~ 05:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명",
+      "seatsLeft": 15,
       "seatsTotal": 15,
       "price": null,
       "url": "https://gudiho.sunsang24.com/ship/schedule_fleet/202612"
@@ -22093,7 +22093,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -22114,7 +22114,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -23539,7 +23539,7 @@
       "status": "open",
       "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -24131,7 +24131,7 @@
       "status": "open",
       "statusText": "지니호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 07:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 10,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -26228,7 +26228,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -26249,7 +26249,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -30534,7 +30534,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -30555,7 +30555,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -31895,7 +31895,7 @@
       "status": "open",
       "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -32489,7 +32489,7 @@
       "status": "open",
       "statusText": "지니호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 07:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 10,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -34884,7 +34884,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -34905,7 +34905,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -36310,7 +36310,7 @@
       "status": "open",
       "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -36902,7 +36902,7 @@
       "status": "open",
       "statusText": "지니호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 07:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 10,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -39761,7 +39761,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -39782,7 +39782,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -41338,7 +41338,7 @@
       "status": "open",
       "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -41930,7 +41930,7 @@
       "status": "open",
       "statusText": "지니호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 07:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 10,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -44888,7 +44888,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -44909,7 +44909,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -46465,7 +46465,7 @@
       "status": "open",
       "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -47039,7 +47039,7 @@
       "status": "open",
       "statusText": "지니호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 07:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 10,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -50139,7 +50139,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -50160,7 +50160,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -51737,7 +51737,7 @@
       "status": "open",
       "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -55430,7 +55430,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -55451,7 +55451,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -56871,7 +56871,7 @@
       "status": "open",
       "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -57464,7 +57464,7 @@
       "status": "open",
       "statusText": "지니호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 07:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 10,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -60113,7 +60113,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -60134,7 +60134,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -61493,7 +61493,7 @@
       "status": "open",
       "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -62085,7 +62085,7 @@
       "status": "open",
       "statusText": "지니호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 07:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 10,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -64272,7 +64272,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -64293,7 +64293,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -65694,7 +65694,7 @@
       "status": "open",
       "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -66284,7 +66284,7 @@
       "status": "open",
       "statusText": "지니호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 07:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 10,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -68109,7 +68109,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -68130,7 +68130,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -69397,7 +69397,7 @@
       "status": "open",
       "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -70028,7 +70028,7 @@
       "status": "open",
       "statusText": "지니호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 07:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 10,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -72400,7 +72400,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -72421,7 +72421,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -73950,7 +73950,7 @@
       "status": "open",
       "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -74666,7 +74666,7 @@
       "status": "open",
       "statusText": "지니호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 07:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 10,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -77183,7 +77183,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -77204,7 +77204,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -78670,7 +78670,7 @@
       "status": "open",
       "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -79365,7 +79365,7 @@
       "status": "open",
       "statusText": "지니호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 07:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 10,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -82065,7 +82065,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -82086,7 +82086,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -83783,7 +83783,7 @@
       "status": "open",
       "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -84435,7 +84435,7 @@
       "status": "open",
       "statusText": "지니호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 07:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 10,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -87654,7 +87654,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -87675,7 +87675,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -89359,7 +89359,7 @@
       "status": "open",
       "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -90032,7 +90032,7 @@
       "status": "open",
       "statusText": "지니호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 07:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 10,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -93011,7 +93011,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -93032,7 +93032,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -94505,7 +94505,7 @@
       "status": "open",
       "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -95158,7 +95158,7 @@
       "status": "open",
       "statusText": "지니호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 07:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 10,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -98165,7 +98165,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -98186,7 +98186,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -99596,7 +99596,7 @@
       "status": "open",
       "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -100249,7 +100249,7 @@
       "status": "open",
       "statusText": "지니호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 07:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 10,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -102417,7 +102417,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -102438,7 +102438,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -103649,7 +103649,7 @@
       "status": "open",
       "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -104217,7 +104217,7 @@
       "status": "open",
       "statusText": "지니호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 07:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 10,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -106699,7 +106699,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -106720,7 +106720,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -107953,7 +107953,7 @@
       "status": "open",
       "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -108542,7 +108542,7 @@
       "status": "open",
       "statusText": "지니호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 07:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 10,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -111204,7 +111204,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -111225,7 +111225,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -112480,7 +112480,7 @@
       "status": "open",
       "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -113069,7 +113069,7 @@
       "status": "open",
       "statusText": "지니호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 07:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 10,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -115604,7 +115604,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -115625,7 +115625,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -116855,7 +116855,7 @@
       "status": "open",
       "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -117465,7 +117465,7 @@
       "status": "open",
       "statusText": "지니호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 07:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 10,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -120296,7 +120296,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -120317,7 +120317,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -121700,7 +121700,7 @@
       "status": "open",
       "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -122373,7 +122373,7 @@
       "status": "open",
       "statusText": "지니호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 07:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 10,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -125103,7 +125103,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -125124,7 +125124,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -126486,7 +126486,7 @@
       "status": "open",
       "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -127160,7 +127160,7 @@
       "status": "open",
       "statusText": "지니호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 07:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 10,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -129933,7 +129933,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -129954,7 +129954,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -131295,7 +131295,7 @@
       "status": "open",
       "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -131969,7 +131969,7 @@
       "status": "open",
       "statusText": "지니호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 07:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 10,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -134341,7 +134341,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -134362,7 +134362,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -135744,7 +135744,7 @@
       "status": "open",
       "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -136418,7 +136418,7 @@
       "status": "open",
       "statusText": "지니호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 07:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 10,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -139337,7 +139337,7 @@
       "status": "open",
       "statusText": "아라2호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -139358,7 +139358,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 주꾸미,갑오징어 / 루어,선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -140740,7 +140740,7 @@
       "status": "open",
       "statusText": "돌핀3호 바로예약 어종 : 대구 / 지깅 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": null,
+      "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -141459,7 +141459,7 @@
       "status": "open",
       "statusText": "지니호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 07:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
       "seatsLeft": 10,
-      "seatsTotal": 10,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -162285,8 +162285,8 @@
       "species": "가자미",
       "tide": "1물",
       "status": "open",
-      "statusText": "미르호 바로예약 어종 : 어구가자미 / 생미끼 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명예약/2명",
-      "seatsLeft": 19,
+      "statusText": "미르호 바로예약 어종 : 어구가자미 / 생미끼 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명예약/5명",
+      "seatsLeft": 16,
       "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202701"
@@ -176662,8 +176662,8 @@
       "species": "가자미",
       "tide": "조금",
       "status": "open",
-      "statusText": "돌핀3호 바로예약 어종 : 어구가자미 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명예약/5명",
-      "seatsLeft": 16,
+      "statusText": "돌핀3호 바로예약 어종 : 어구가자미 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/7명",
+      "seatsLeft": 14,
       "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202701"
@@ -178223,6 +178223,27 @@
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202702"
     },
     {
+      "siteId": "goldatsr",
+      "siteName": "금성호",
+      "boat": "금성호",
+      "port": "강원 삼척 임원항",
+      "phone": "010-5376-4829",
+      "date": "2027-02-02",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "14:00",
+      "session": "종일",
+      "hours": 8,
+      "species": "열기",
+      "tide": "3물",
+      "status": "open",
+      "statusText": "금성호 바로예약 어종 : 황열기 / 선상,어초 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
+      "seatsLeft": 9,
+      "seatsTotal": null,
+      "price": null,
+      "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202702"
+    },
+    {
       "siteId": "jejutv",
       "siteName": "제주갈치TV호",
       "boat": "제주갈치TV호",
@@ -178643,6 +178664,27 @@
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202702"
     },
     {
+      "siteId": "goldatsr",
+      "siteName": "금성호",
+      "boat": "금성호",
+      "port": "강원 삼척 임원항",
+      "phone": "010-5376-4829",
+      "date": "2027-02-03",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "14:00",
+      "session": "종일",
+      "hours": 8,
+      "species": "열기",
+      "tide": "4물",
+      "status": "open",
+      "statusText": "금성호 바로예약 어종 : 황열기 / 선상,어초 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
+      "seatsLeft": 9,
+      "seatsTotal": null,
+      "price": null,
+      "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202702"
+    },
+    {
       "siteId": "jejutv",
       "siteName": "제주갈치TV호",
       "boat": "제주갈치TV호",
@@ -179063,6 +179105,27 @@
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202702"
     },
     {
+      "siteId": "goldatsr",
+      "siteName": "금성호",
+      "boat": "금성호",
+      "port": "강원 삼척 임원항",
+      "phone": "010-5376-4829",
+      "date": "2027-02-04",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "14:00",
+      "session": "종일",
+      "hours": 8,
+      "species": "열기",
+      "tide": "5물",
+      "status": "open",
+      "statusText": "금성호 바로예약 어종 : 황열기 / 선상,어초 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
+      "seatsLeft": 9,
+      "seatsTotal": null,
+      "price": null,
+      "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202702"
+    },
+    {
       "siteId": "jejutv",
       "siteName": "제주갈치TV호",
       "boat": "제주갈치TV호",
@@ -179481,6 +179544,27 @@
       "seatsTotal": null,
       "price": null,
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202702"
+    },
+    {
+      "siteId": "goldatsr",
+      "siteName": "금성호",
+      "boat": "금성호",
+      "port": "강원 삼척 임원항",
+      "phone": "010-5376-4829",
+      "date": "2027-02-05",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "14:00",
+      "session": "종일",
+      "hours": 8,
+      "species": "열기",
+      "tide": "6물",
+      "status": "open",
+      "statusText": "금성호 바로예약 어종 : 황열기 / 선상,어초 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
+      "seatsLeft": 9,
+      "seatsTotal": null,
+      "price": null,
+      "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202702"
     },
     {
       "siteId": "jejutv",
@@ -179924,6 +180008,27 @@
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202702"
     },
     {
+      "siteId": "goldatsr",
+      "siteName": "금성호",
+      "boat": "금성호",
+      "port": "강원 삼척 임원항",
+      "phone": "010-5376-4829",
+      "date": "2027-02-06",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "14:00",
+      "session": "종일",
+      "hours": 8,
+      "species": "열기",
+      "tide": "7물",
+      "status": "open",
+      "statusText": "금성호 바로예약 어종 : 황열기 / 선상,어초 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
+      "seatsLeft": 9,
+      "seatsTotal": null,
+      "price": null,
+      "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202702"
+    },
+    {
       "siteId": "jejutv",
       "siteName": "제주갈치TV호",
       "boat": "제주갈치TV호",
@@ -180323,6 +180428,27 @@
       "url": "https://gagaho.sunsang24.com/ship/schedule_fleet/202702"
     },
     {
+      "siteId": "goldatsr",
+      "siteName": "금성호",
+      "boat": "금성호",
+      "port": "강원 삼척 임원항",
+      "phone": "010-5376-4829",
+      "date": "2027-02-07",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "14:00",
+      "session": "종일",
+      "hours": 8,
+      "species": "열기",
+      "tide": "8물",
+      "status": "open",
+      "statusText": "금성호 바로예약 어종 : 황열기 / 선상,어초 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
+      "seatsLeft": 9,
+      "seatsTotal": null,
+      "price": null,
+      "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202702"
+    },
+    {
       "siteId": "jejutv",
       "siteName": "제주갈치TV호",
       "boat": "제주갈치TV호",
@@ -180615,6 +180741,27 @@
       "seatsTotal": null,
       "price": null,
       "url": "https://nature.sunsang24.com/ship/schedule_fleet/202702"
+    },
+    {
+      "siteId": "goldatsr",
+      "siteName": "금성호",
+      "boat": "금성호",
+      "port": "강원 삼척 임원항",
+      "phone": "010-5376-4829",
+      "date": "2027-02-08",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "14:00",
+      "session": "종일",
+      "hours": 8,
+      "species": "열기",
+      "tide": "9물",
+      "status": "open",
+      "statusText": "금성호 바로예약 어종 : 황열기 / 선상,어초 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
+      "seatsLeft": 9,
+      "seatsTotal": null,
+      "price": null,
+      "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202702"
     },
     {
       "siteId": "2018miracle",
