@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-13T15:17:07.193Z",
+  "generatedAt": "2026-11-13T17:38:00.244Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -190,14 +190,14 @@
     "gudiho": 79,
     "gukbo": 22,
     "gull": 79,
-    "gundam": 22,
-    "gunsannaksi": 22,
-    "gyeongjuho": 22,
-    "haemaho": 22,
-    "hanareum": 22,
-    "hanbada": 80,
-    "harmony": 80,
-    "healingho": 80,
+    "gundam": 79,
+    "gunsannaksi": 79,
+    "gyeongjuho": 79,
+    "haemaho": 79,
+    "hanareum": 79,
+    "hanbada": 22,
+    "harmony": 22,
+    "healingho": 22,
     "heeyoung": 80,
     "hunterfishing": 80,
     "jangbogo": 80,
@@ -1463,8 +1463,8 @@
       "species": "우럭·열기",
       "tide": "4물",
       "status": "open",
-      "statusText": "인해호 바로예약 어종이 변경될 수 있습니다★출조에 필요한 모든 물품은 출조점에 있습니다★자세한 출조안내는 출조 전일 17시경 정실장이 카톡으로 발송합니다☎문의:깡슨장010.5480.6040 / 정실장010.9882.3088밴드https://band.us/@inhaefishing 어종 : 우럭,열기 / 생미끼,선상,어초 운항시간 : 04:00 ~ 16:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/2명",
-      "seatsLeft": 18,
+      "statusText": "인해호 바로예약 어종이 변경될 수 있습니다★출조에 필요한 모든 물품은 출조점에 있습니다★자세한 출조안내는 출조 전일 17시경 정실장이 카톡으로 발송합니다☎문의:깡슨장010.5480.6040 / 정실장010.9882.3088밴드https://band.us/@inhaefishing 어종 : 우럭,열기 / 생미끼,선상,어초 운항시간 : 04:00 ~ 16:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/12명",
+      "seatsLeft": 8,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
@@ -2899,7 +2899,7 @@
       "status": "open",
       "statusText": "해마호 바로예약 어종 : 광어,문어 / 다운샷,루어 운항시간 : 05:00 ~ 16:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://haemaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -5976,8 +5976,8 @@
       "species": "문어",
       "tide": "5물",
       "status": "open",
-      "statusText": "포세이돈호 바로예약 어종 : 문어 운항시간 : 04:00 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
+      "statusText": "포세이돈호 바로예약 어종 : 문어 운항시간 : 04:00 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명예약/4명",
+      "seatsLeft": 16,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
@@ -6228,8 +6228,8 @@
       "species": "문어",
       "tide": "5물",
       "status": "open",
-      "statusText": "포세이돈2호 바로예약 어종 : 문어 운항시간 : 04:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
+      "statusText": "포세이돈2호 바로예약 어종 : 문어 운항시간 : 04:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명예약/1명",
+      "seatsLeft": 19,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
@@ -11904,7 +11904,7 @@
       "status": "open",
       "statusText": "해마호 바로예약 어종 : 광어,문어 / 다운샷,루어 운항시간 : 05:00 ~ 16:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://haemaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -16505,7 +16505,7 @@
       "status": "open",
       "statusText": "해마호 바로예약 어종 : 광어,문어 / 다운샷,루어 운항시간 : 05:00 ~ 16:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://haemaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -21615,7 +21615,7 @@
       "status": "open",
       "statusText": "해마호 바로예약 어종 : 광어,문어 / 다운샷,루어 운항시간 : 05:00 ~ 16:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://haemaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -26952,7 +26952,7 @@
       "status": "open",
       "statusText": "해마호 바로예약 어종 : 광어,문어 / 다운샷,루어 운항시간 : 05:00 ~ 16:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://haemaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -31036,8 +31036,8 @@
       "species": "우럭·열기",
       "tide": "10물",
       "status": "open",
-      "statusText": "인해호 바로예약 어종이 변경될 수 있습니다★출조에 필요한 모든 물품은 출조점에 있습니다★자세한 출조안내는 출조 전일 17시경 정실장이 카톡으로 발송합니다☎문의:깡슨장010.5480.6040 / 정실장010.9882.3088밴드https://band.us/@inhaefishing 어종 : 우럭,열기 / 생미끼,선상,어초 운항시간 : 04:00 ~ 16:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/2명",
-      "seatsLeft": 18,
+      "statusText": "인해호 바로예약 어종이 변경될 수 있습니다★출조에 필요한 모든 물품은 출조점에 있습니다★자세한 출조안내는 출조 전일 17시경 정실장이 카톡으로 발송합니다☎문의:깡슨장010.5480.6040 / 정실장010.9882.3088밴드https://band.us/@inhaefishing 어종 : 우럭,열기 / 생미끼,선상,어초 운항시간 : 04:00 ~ 16:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명예약/7명",
+      "seatsLeft": 13,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
@@ -36558,8 +36558,8 @@
       "species": "우럭·열기",
       "tide": "11물",
       "status": "open",
-      "statusText": "인해호 바로예약 어종이 변경될 수 있습니다★출조에 필요한 모든 물품은 출조점에 있습니다★자세한 출조안내는 출조 전일 17시경 정실장이 카톡으로 발송합니다☎문의:깡슨장010.5480.6040 / 정실장010.9882.3088밴드https://band.us/@inhaefishing 어종 : 우럭,열기 / 생미끼,선상,어초 운항시간 : 04:00 ~ 16:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/2명",
-      "seatsLeft": 18,
+      "statusText": "인해호 바로예약 어종이 변경될 수 있습니다★출조에 필요한 모든 물품은 출조점에 있습니다★자세한 출조안내는 출조 전일 17시경 정실장이 카톡으로 발송합니다☎문의:깡슨장010.5480.6040 / 정실장010.9882.3088밴드https://band.us/@inhaefishing 어종 : 우럭,열기 / 생미끼,선상,어초 운항시간 : 04:00 ~ 16:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명예약/4명",
+      "seatsLeft": 16,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
@@ -37956,7 +37956,7 @@
       "status": "open",
       "statusText": "해마호 바로예약 어종 : 광어,문어 / 다운샷,루어 운항시간 : 05:00 ~ 16:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://haemaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -43086,7 +43086,7 @@
       "status": "open",
       "statusText": "해마호 바로예약 어종 : 광어,문어 / 다운샷,루어 운항시간 : 05:30 ~ 16:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://haemaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -46007,8 +46007,8 @@
       "species": "문어",
       "tide": "13물",
       "status": "open",
-      "statusText": "포세이돈호 바로예약 어종 : 문어 운항시간 : 04:00 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
+      "statusText": "포세이돈호 바로예약 어종 : 문어 운항시간 : 04:00 ~ 15:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명예약/1명",
+      "seatsLeft": 19,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
@@ -47537,7 +47537,7 @@
       "status": "open",
       "statusText": "해마호 바로예약 어종 : 광어,문어 / 다운샷,루어 운항시간 : 05:30 ~ 16:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://haemaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -51471,7 +51471,7 @@
       "status": "open",
       "statusText": "해마호 바로예약 어종 : 광어,문어 / 다운샷,루어 운항시간 : 05:30 ~ 16:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://haemaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -56171,7 +56171,7 @@
       "status": "open",
       "statusText": "해마호 바로예약 어종 : 광어,문어 / 다운샷,루어 운항시간 : 05:30 ~ 16:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://haemaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -61185,7 +61185,7 @@
       "status": "open",
       "statusText": "해마호 바로예약 어종 : 광어,문어 / 다운샷,루어 운항시간 : 05:30 ~ 16:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://haemaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -66074,10 +66074,10 @@
       "hours": 10,
       "species": "우럭",
       "tide": "2물",
-      "status": "open",
-      "statusText": "원투피싱호 바로예약 어종 : 우럭 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/2명",
-      "seatsLeft": 18,
-      "seatsTotal": 20,
+      "status": "closed",
+      "statusText": "원투피싱호 대기하기 어종 : 우럭 / 선상 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/2명",
+      "seatsLeft": 0,
+      "seatsTotal": 2,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -66095,9 +66095,9 @@
       "hours": 9,
       "species": "우럭",
       "tide": "2물",
-      "status": "few",
-      "statusText": "창성호 바로예약 어종 : 우럭 / 선상운항시간 : 05:00 ~ 14:00 어종 : 우럭 운항시간 : 04:00 ~ 15:00 예약가능 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/19명",
-      "seatsLeft": 1,
+      "status": "closed",
+      "statusText": "창성호 대기하기 어종 : 우럭 / 선상운항시간 : 05:00 ~ 14:00 어종 : 우럭 운항시간 : 04:00 ~ 15:00 예약가능 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/20명",
+      "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
@@ -66203,7 +66203,7 @@
       "status": "closed",
       "statusText": "해마호 대기하기 어종 : 광어,우럭,문어,주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 16명",
       "seatsLeft": 0,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://haemaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -71880,7 +71880,7 @@
       "status": "closed",
       "statusText": "해마호 대기하기 어종 : 광어,우럭,문어,주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 16명",
       "seatsLeft": 0,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://haemaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -74352,8 +74352,8 @@
       "species": "대구",
       "tide": "5물",
       "status": "open",
-      "statusText": "경주호 바로예약 어종 : 대구 / 선상,지깅 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명예약/1명",
-      "seatsLeft": 10,
+      "statusText": "경주호 바로예약 어종 : 대구 / 선상,지깅 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/3명",
+      "seatsLeft": 8,
       "seatsTotal": 11,
       "price": null,
       "url": "https://gyeongjuho.sunsang24.com/ship/schedule_fleet/202612"
@@ -77467,7 +77467,7 @@
       "status": "closed",
       "statusText": "해마호 대기하기 어종 : 광어,우럭,문어,주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 16명",
       "seatsLeft": 0,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://haemaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -82831,7 +82831,7 @@
       "status": "closed",
       "statusText": "해마호 대기하기 어종 : 광어,우럭,문어,주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 16명",
       "seatsLeft": 0,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://haemaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -87334,7 +87334,7 @@
       "status": "closed",
       "statusText": "해마호 대기하기 어종 : 광어,우럭,문어,주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 16명",
       "seatsLeft": 0,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://haemaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -91847,7 +91847,7 @@
       "status": "closed",
       "statusText": "해마호 대기하기 어종 : 광어,우럭,문어,주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 16명",
       "seatsLeft": 0,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://haemaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -96562,7 +96562,7 @@
       "status": "closed",
       "statusText": "해마호 대기하기 어종 : 광어,우럭,문어,주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 16명",
       "seatsLeft": 0,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://haemaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -101168,7 +101168,7 @@
       "status": "closed",
       "statusText": "해마호 대기하기 어종 : 광어,우럭,문어,주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 16명",
       "seatsLeft": 0,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://haemaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -106112,7 +106112,7 @@
       "status": "closed",
       "statusText": "해마호 대기하기 어종 : 광어,우럭,문어,주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 16명",
       "seatsLeft": 0,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://haemaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -111150,7 +111150,7 @@
       "status": "closed",
       "statusText": "해마호 대기하기 어종 : 광어,우럭,문어,주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 16명",
       "seatsLeft": 0,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://haemaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -116232,7 +116232,7 @@
       "status": "closed",
       "statusText": "해마호 대기하기 어종 : 광어,우럭,문어,주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 16명",
       "seatsLeft": 0,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://haemaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -120892,7 +120892,7 @@
       "status": "closed",
       "statusText": "해마호 대기하기 어종 : 광어,우럭,문어,주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 16명",
       "seatsLeft": 0,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://haemaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -126099,7 +126099,7 @@
       "status": "closed",
       "statusText": "해마호 대기하기 어종 : 광어,우럭,문어,주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 16명",
       "seatsLeft": 0,
-      "seatsTotal": 17,
+      "seatsTotal": 16,
       "price": null,
       "url": "https://haemaho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -160690,9 +160690,9 @@
       "species": "열기",
       "tide": "8물",
       "status": "open",
-      "statusText": "경주호 바로예약 어종 : 황열기,임연수어 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
-      "seatsLeft": 10,
-      "seatsTotal": 11,
+      "statusText": "경주호 바로예약 어종 : 황열기,임연수어 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/2명",
+      "seatsLeft": 8,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://gyeongjuho.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -170191,9 +170191,9 @@
       "species": "열기",
       "tide": "1물",
       "status": "open",
-      "statusText": "경주호 바로예약 어종 : 황열기,임연수어 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
-      "seatsLeft": 10,
-      "seatsTotal": 11,
+      "statusText": "경주호 바로예약 어종 : 황열기,임연수어 운항시간 : 07:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/2명",
+      "seatsLeft": 8,
+      "seatsTotal": 10,
       "price": null,
       "url": "https://gyeongjuho.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -176298,6 +176298,27 @@
       "url": "https://kingstar.sunsang24.com/ship/schedule_fleet/202702"
     },
     {
+      "siteId": "harmony",
+      "siteName": "하모니호",
+      "boat": "하모니호",
+      "port": null,
+      "phone": "010-9654-1715",
+      "date": "2027-02-11",
+      "departAt": "07:00",
+      "meetingAt": "07:00",
+      "returnAt": "16:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "참돔",
+      "tide": "12물",
+      "status": "open",
+      "statusText": "하모니호 바로예약 어종 : 참돔 / 루어,타이라바 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
+      "seatsLeft": 18,
+      "seatsTotal": null,
+      "price": null,
+      "url": "https://harmony.sunsang24.com/ship/schedule_fleet/202702"
+    },
+    {
       "siteId": "eagles",
       "siteName": "블랙이글스호",
       "boat": "블랙이글스3호",
@@ -176380,6 +176401,27 @@
       "seatsTotal": null,
       "price": null,
       "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202702"
+    },
+    {
+      "siteId": "harmony",
+      "siteName": "하모니호",
+      "boat": "하모니호",
+      "port": null,
+      "phone": "010-9654-1715",
+      "date": "2027-02-12",
+      "departAt": "07:00",
+      "meetingAt": "07:00",
+      "returnAt": "16:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "참돔",
+      "tide": "13물",
+      "status": "open",
+      "statusText": "하모니호 바로예약 어종 : 참돔 / 루어,타이라바 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
+      "seatsLeft": 18,
+      "seatsTotal": null,
+      "price": null,
+      "url": "https://harmony.sunsang24.com/ship/schedule_fleet/202702"
     }
   ]
 }
