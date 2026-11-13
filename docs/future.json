@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-13T02:46:51.656Z",
+  "generatedAt": "2026-11-13T02:48:12.648Z",
   "horizonDays": 90,
   "cursors": {
     "7": 80,
@@ -238,14 +238,14 @@
     "parkpro": 22,
     "pigho": 22,
     "poseidon": 22,
-    "princeho": 80,
-    "pro": 80,
-    "redfox": 80,
-    "redpulsegs": 80,
-    "richard": 80,
-    "rise": 80,
-    "rkclgh": 80,
-    "rosemary": 80,
+    "princeho": 22,
+    "pro": 22,
+    "redfox": 22,
+    "redpulsegs": 22,
+    "richard": 22,
+    "rise": 22,
+    "rkclgh": 22,
+    "rosemary": 22,
     "samdeok": 80,
     "seamanho": 80,
     "seo": 80,
@@ -693,9 +693,9 @@
       "hours": null,
       "species": "광어·우럭",
       "tide": "3물",
-      "status": "few",
-      "statusText": "샤크호 바로예약 어종 : 광어,우럭 / 다운샷,똥침,루어,어초,침선 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리1명예약/19명",
-      "seatsLeft": 1,
+      "status": "closed",
+      "statusText": "샤크호 대기하기 어종 : 광어,우럭 / 다운샷,똥침,루어,어초,침선 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 예약마감 20명 예약/20명",
+      "seatsLeft": 0,
       "seatsTotal": 20,
       "price": null,
       "url": "https://pro.sunsang24.com/ship/schedule_fleet/202612"
@@ -3876,7 +3876,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -8737,7 +8737,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -13145,7 +13145,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -17679,7 +17679,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -22324,7 +22324,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -27457,7 +27457,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -32794,7 +32794,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -38316,9 +38316,9 @@
       "species": "문어",
       "tide": "11물",
       "status": "open",
-      "statusText": "리차드호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
-      "seatsTotal": null,
+      "statusText": "리차드호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/2명",
+      "seatsLeft": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -43683,7 +43683,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -48662,7 +48662,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -53114,7 +53114,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -57048,7 +57048,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -61811,7 +61811,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -66762,7 +66762,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -72063,7 +72063,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -77744,7 +77744,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -83310,7 +83310,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -88653,7 +88653,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -92999,7 +92999,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -97512,7 +97512,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -102249,7 +102249,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -106855,7 +106855,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -111889,7 +111889,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -116927,7 +116927,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -122009,7 +122009,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -126732,7 +126732,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -131960,7 +131960,7 @@
       "status": "open",
       "statusText": "리차드호 바로예약 어종 : 문어 / 루어,선상 운항시간 : 06:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": null,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://richard.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -179900,6 +179900,48 @@
       "seatsTotal": null,
       "price": null,
       "url": "https://boss.sunsang24.com/ship/schedule_fleet/202702"
+    },
+    {
+      "siteId": "pro",
+      "siteName": "샤크호",
+      "boat": "먹깨비호",
+      "port": "전북 군산 비응항",
+      "phone": "010-9855-7570",
+      "date": "2027-02-11",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "14:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "광어·우럭·열기",
+      "tide": "11물",
+      "status": "open",
+      "statusText": "먹깨비호 바로예약 어종 : 광어,우럭,열기 / 다운샷,똥침,생미끼,생미끼 외수질,어초,침선 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
+      "seatsLeft": 21,
+      "seatsTotal": null,
+      "price": null,
+      "url": "https://pro.sunsang24.com/ship/schedule_fleet/202702"
+    },
+    {
+      "siteId": "pro",
+      "siteName": "샤크호",
+      "boat": "에르메스호",
+      "port": "전북 군산 비응항",
+      "phone": "010-9007-9464",
+      "date": "2027-02-11",
+      "departAt": "05:00",
+      "meetingAt": "05:00",
+      "returnAt": "15:00",
+      "session": "종일",
+      "hours": 10,
+      "species": "광어·우럭·열기",
+      "tide": "11물",
+      "status": "open",
+      "statusText": "에르메스호 바로예약 어종 : 광어,우럭,열기 / 똥침,생미끼,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
+      "seatsLeft": 20,
+      "seatsTotal": null,
+      "price": null,
+      "url": "https://pro.sunsang24.com/ship/schedule_fleet/202702"
     },
     {
       "siteId": "eunhasuho",
