@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-15T16:57:51.460Z",
+  "generatedAt": "2026-11-15T19:51:07.488Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -218,14 +218,14 @@
     "ktg": 77,
     "lucy": 77,
     "lukina": 77,
-    "luna": 22,
-    "macgyver": 22,
-    "madoross": 22,
-    "manmul": 22,
-    "marineho": 22,
-    "mfish": 22,
-    "miracle": 22,
-    "muldori": 22,
+    "luna": 77,
+    "macgyver": 77,
+    "madoross": 77,
+    "manmul": 77,
+    "marineho": 77,
+    "mfish": 77,
+    "miracle": 77,
+    "muldori": 77,
     "nara": 22,
     "newhanlyo": 22,
     "newsky": 22,
@@ -4440,7 +4440,7 @@
       "status": "open",
       "statusText": "미라클호 바로예약 어종 : 감성돔 / 선상,어초,흘림 찌낚시 운항시간 : 08:00 ~ 17:00 입금완료 예약완료 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 11,
+      "seatsTotal": null,
       "price": null,
       "url": "https://miracle.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -9209,7 +9209,7 @@
       "status": "open",
       "statusText": "미라클호 바로예약 어종 : 감성돔 / 선상,어초,흘림 찌낚시 운항시간 : 08:00 ~ 17:00 입금완료 예약완료 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 11,
+      "seatsTotal": null,
       "price": null,
       "url": "https://miracle.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -14552,7 +14552,7 @@
       "status": "open",
       "statusText": "미라클호 바로예약 어종 : 감성돔 / 선상,어초,흘림 찌낚시 운항시간 : 08:00 ~ 17:00 입금완료 예약완료 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 11,
+      "seatsTotal": null,
       "price": null,
       "url": "https://miracle.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -19997,7 +19997,7 @@
       "status": "open",
       "statusText": "미라클호 바로예약 어종 : 감성돔 / 선상,어초,흘림 찌낚시 운항시간 : 08:00 ~ 17:00 입금완료 예약완료 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 11,
+      "seatsTotal": null,
       "price": null,
       "url": "https://miracle.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -25603,7 +25603,7 @@
       "status": "open",
       "statusText": "미라클호 바로예약 어종 : 감성돔 / 선상,어초,흘림 찌낚시 운항시간 : 08:00 ~ 17:00 입금완료 예약완료 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 11,
+      "seatsTotal": null,
       "price": null,
       "url": "https://miracle.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -31094,7 +31094,7 @@
       "status": "open",
       "statusText": "미라클호 바로예약 어종 : 감성돔 / 선상,어초,흘림 찌낚시 운항시간 : 08:00 ~ 17:00 입금완료 예약완료 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 11,
+      "seatsTotal": null,
       "price": null,
       "url": "https://miracle.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -36051,7 +36051,7 @@
       "status": "open",
       "statusText": "미라클호 바로예약 어종 : 감성돔 / 선상,어초,흘림 찌낚시 운항시간 : 08:00 ~ 17:00 입금완료 예약완료 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 11,
+      "seatsTotal": null,
       "price": null,
       "url": "https://miracle.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -40605,7 +40605,7 @@
       "status": "open",
       "statusText": "미라클호 바로예약 어종 : 감성돔 / 선상,어초,흘림 찌낚시 운항시간 : 08:00 ~ 17:00 입금완료 예약완료 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 11,
+      "seatsTotal": null,
       "price": null,
       "url": "https://miracle.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -44664,7 +44664,7 @@
       "status": "open",
       "statusText": "미라클호 바로예약 어종 : 감성돔 / 선상,어초,흘림 찌낚시 운항시간 : 08:00 ~ 17:00 입금완료 예약완료 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 11,
+      "seatsTotal": null,
       "price": null,
       "url": "https://miracle.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -49617,7 +49617,7 @@
       "status": "open",
       "statusText": "미라클호 바로예약 어종 : 감성돔 / 선상,어초,흘림 찌낚시 운항시간 : 08:00 ~ 17:00 입금완료 예약완료 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 11,
+      "seatsTotal": null,
       "price": null,
       "url": "https://miracle.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -54631,7 +54631,7 @@
       "status": "open",
       "statusText": "미라클호 바로예약 어종 : 감성돔 / 선상,어초,흘림 찌낚시 운항시간 : 08:00 ~ 17:00 입금완료 예약완료 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 11,
+      "seatsTotal": null,
       "price": null,
       "url": "https://miracle.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -60015,7 +60015,7 @@
       "status": "open",
       "statusText": "미라클호 바로예약 어종 : 감성돔 / 선상,어초,흘림 찌낚시 운항시간 : 08:00 ~ 17:00 입금완료 예약완료 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 11,
+      "seatsTotal": null,
       "price": null,
       "url": "https://miracle.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -65736,8 +65736,8 @@
       "species": "주꾸미",
       "tide": "3물",
       "status": "open",
-      "statusText": "악바리호 바로예약 어종 : 주꾸미,낙지 / 다운샷 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
+      "statusText": "악바리호 바로예약 어종 : 주꾸미,낙지 / 다운샷 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명예약/2명",
+      "seatsLeft": 19,
       "seatsTotal": 21,
       "price": 100000,
       "url": "https://macgyver.sunsang24.com/ship/schedule_fleet/202612"
@@ -65906,7 +65906,7 @@
       "status": "open",
       "statusText": "미라클호 바로예약 어종 : 감성돔 / 선상,어초,흘림 찌낚시 운항시간 : 08:00 ~ 17:00 입금완료 예약완료 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 11,
+      "seatsTotal": null,
       "price": null,
       "url": "https://miracle.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -71387,7 +71387,7 @@
       "status": "open",
       "statusText": "미라클호 바로예약 어종 : 감성돔 / 선상,어초,흘림 찌낚시 운항시간 : 08:00 ~ 17:00 입금완료 예약완료 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 11,
+      "seatsTotal": null,
       "price": null,
       "url": "https://miracle.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -76834,7 +76834,7 @@
       "status": "open",
       "statusText": "미라클호 바로예약 어종 : 감성돔 / 선상,어초,흘림 찌낚시 운항시간 : 08:00 ~ 17:00 입금완료 예약완료 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 11,
+      "seatsTotal": null,
       "price": null,
       "url": "https://miracle.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -81199,7 +81199,7 @@
       "status": "open",
       "statusText": "미라클호 바로예약 어종 : 감성돔 / 선상,어초,흘림 찌낚시 운항시간 : 08:00 ~ 17:00 입금완료 예약완료 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 11,
+      "seatsTotal": null,
       "price": null,
       "url": "https://miracle.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -85880,7 +85880,7 @@
       "status": "open",
       "statusText": "미라클호 바로예약 어종 : 감성돔 / 선상,어초,흘림 찌낚시 운항시간 : 08:00 ~ 17:00 입금완료 예약완료 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 11,
+      "seatsTotal": null,
       "price": null,
       "url": "https://miracle.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -90722,7 +90722,7 @@
       "status": "open",
       "statusText": "미라클호 바로예약 어종 : 감성돔 / 선상,어초,흘림 찌낚시 운항시간 : 08:00 ~ 17:00 입금완료 예약완료 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 11,
+      "seatsTotal": null,
       "price": null,
       "url": "https://miracle.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -95433,7 +95433,7 @@
       "status": "open",
       "statusText": "미라클호 바로예약 어종 : 감성돔 / 선상,어초,흘림 찌낚시 운항시간 : 08:00 ~ 17:00 입금완료 예약완료 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 11,
+      "seatsTotal": null,
       "price": null,
       "url": "https://miracle.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -100654,7 +100654,7 @@
       "status": "open",
       "statusText": "미라클호 바로예약 어종 : 감성돔 / 선상,어초,흘림 찌낚시 운항시간 : 08:00 ~ 17:00 입금완료 예약완료 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 11,
+      "seatsTotal": null,
       "price": null,
       "url": "https://miracle.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -105796,7 +105796,7 @@
       "status": "open",
       "statusText": "미라클호 바로예약 어종 : 감성돔 / 선상,어초,흘림 찌낚시 운항시간 : 08:00 ~ 17:00 입금완료 예약완료 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 11,
+      "seatsTotal": null,
       "price": null,
       "url": "https://miracle.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -108545,10 +108545,10 @@
       "hours": 11,
       "species": "광어·우럭",
       "tide": "12물",
-      "status": "open",
-      "statusText": "진주만호 바로예약 어종 : 광어,우럭 / 생미끼 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
-      "seatsLeft": 19,
-      "seatsTotal": 19,
+      "status": "closed",
+      "statusText": "진주만호 어종 : 광어,우럭 / 생미끼 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 점검일",
+      "seatsLeft": null,
+      "seatsTotal": null,
       "price": null,
       "url": "https://marineho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -110960,7 +110960,7 @@
       "status": "open",
       "statusText": "미라클호 바로예약 어종 : 감성돔 / 선상,어초,흘림 찌낚시 운항시간 : 08:00 ~ 17:00 입금완료 예약완료 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 11,
+      "seatsTotal": null,
       "price": null,
       "url": "https://miracle.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -115743,7 +115743,7 @@
       "status": "open",
       "statusText": "미라클호 바로예약 어종 : 감성돔 / 선상,어초,흘림 찌낚시 운항시간 : 08:00 ~ 17:00 입금완료 예약완료 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 11,
+      "seatsTotal": null,
       "price": null,
       "url": "https://miracle.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -121098,7 +121098,7 @@
       "status": "open",
       "statusText": "미라클호 바로예약 어종 : 감성돔 / 선상,어초,흘림 찌낚시 운항시간 : 08:00 ~ 17:00 입금완료 예약완료 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 11,
+      "seatsTotal": null,
       "price": null,
       "url": "https://miracle.sunsang24.com/ship/schedule_fleet/202612"
     },
