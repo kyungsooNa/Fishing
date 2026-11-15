@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-15T23:44:47.130Z",
+  "generatedAt": "2026-11-15T23:46:17.172Z",
   "horizonDays": 90,
   "cursors": {
     "7": 77,
@@ -193,14 +193,14 @@
     "gundam": 22,
     "gunsannaksi": 22,
     "gyeongjuho": 22,
-    "haemaho": 78,
-    "hanareum": 78,
-    "hanbada": 22,
-    "harmony": 22,
-    "healingho": 22,
-    "heeyoung": 22,
-    "hunterfishing": 22,
-    "jangbogo": 22,
+    "haemaho": 22,
+    "hanareum": 22,
+    "hanbada": 77,
+    "harmony": 77,
+    "healingho": 77,
+    "heeyoung": 77,
+    "hunterfishing": 77,
+    "jangbogo": 77,
     "jangbogofishing": 22,
     "janggofish": 22,
     "jeilfishing": 78,
@@ -3720,7 +3720,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 / 루어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": 19,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -8575,7 +8575,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 / 루어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": 19,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -13981,7 +13981,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 / 루어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": 19,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -19486,7 +19486,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 / 루어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": 19,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -20671,7 +20671,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 15:30 ~ 21:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": 19,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -26361,7 +26361,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 15:30 ~ 21:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": 19,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -30690,7 +30690,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 / 루어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": 19,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -35711,7 +35711,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 / 루어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": 19,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -40330,7 +40330,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 / 루어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": 19,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -44432,7 +44432,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 / 루어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": 19,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -49363,7 +49363,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 / 루어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": 19,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -54461,7 +54461,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 / 루어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": 19,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -59951,7 +59951,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 / 루어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": 19,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -65884,7 +65884,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 / 루어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": 19,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -71448,7 +71448,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 / 루어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": 19,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -76937,7 +76937,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 / 루어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": 19,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -81471,7 +81471,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 / 루어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": 19,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -86194,7 +86194,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 / 루어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": 19,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -101075,7 +101075,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 / 루어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": 19,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -106258,7 +106258,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 / 루어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": 19,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -111485,7 +111485,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 / 루어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": 19,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -116331,7 +116331,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 / 루어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": 19,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -121704,7 +121704,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 / 루어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": 19,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -124722,9 +124722,9 @@
       "species": "문어",
       "tide": "1물",
       "status": "open",
-      "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
-      "seatsLeft": 19,
-      "seatsTotal": null,
+      "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명예약/2명",
+      "seatsLeft": 17,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -126879,7 +126879,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -128615,7 +128615,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -130209,7 +130209,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -131801,7 +131801,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -133059,7 +133059,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -134276,7 +134276,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -135493,7 +135493,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -136892,7 +136892,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -138378,7 +138378,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -139742,7 +139742,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -141085,7 +141085,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -142448,7 +142448,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -143853,7 +143853,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -145507,7 +145507,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -147139,7 +147139,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -148480,7 +148480,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -149802,7 +149802,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -151040,7 +151040,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -152278,7 +152278,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -153516,7 +153516,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -154859,7 +154859,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -156284,7 +156284,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -157690,7 +157690,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -159054,7 +159054,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -160397,7 +160397,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -161740,7 +161740,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -162789,7 +162789,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -163859,7 +163859,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -165030,7 +165030,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -166121,7 +166121,7 @@
       "status": "open",
       "statusText": "희영호 바로예약 어종 : 문어 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리19명",
       "seatsLeft": 19,
-      "seatsTotal": null,
+      "seatsTotal": 19,
       "price": null,
       "url": "https://heeyoung.sunsang24.com/ship/schedule_fleet/202701"
     },
