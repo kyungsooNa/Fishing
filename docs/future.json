@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-17T21:05:13.793Z",
+  "generatedAt": "2026-11-17T21:06:46.773Z",
   "horizonDays": 90,
   "cursors": {
     "7": 76,
@@ -121,14 +121,14 @@
     "tamra": 22,
     "thales": 22,
     "tpho": 22,
-    "twin": 76,
-    "urbis": 76,
-    "vancouver": 76,
-    "venice": 76,
-    "veteranfishing": 76,
-    "viking": 76,
-    "vtrfishing": 76,
-    "wangnuni": 76,
+    "twin": 22,
+    "urbis": 22,
+    "vancouver": 22,
+    "venice": 22,
+    "veteranfishing": 22,
+    "viking": 22,
+    "vtrfishing": 22,
+    "wangnuni": 22,
     "welcome": 76,
     "yejiqueen": 22,
     "yeongjae": 76,
@@ -4884,7 +4884,7 @@
       "status": "open",
       "statusText": "벤쿠버호 바로예약 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
       "seatsLeft": 9,
-      "seatsTotal": 11,
+      "seatsTotal": 9,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -10455,7 +10455,7 @@
       "status": "open",
       "statusText": "벤쿠버호 바로예약 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
       "seatsLeft": 9,
-      "seatsTotal": 11,
+      "seatsTotal": 9,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -16250,7 +16250,7 @@
       "status": "open",
       "statusText": "벤쿠버호 바로예약 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
       "seatsLeft": 9,
-      "seatsTotal": 11,
+      "seatsTotal": 9,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -26949,7 +26949,7 @@
       "status": "open",
       "statusText": "벤쿠버호 바로예약 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
       "seatsLeft": 9,
-      "seatsTotal": 11,
+      "seatsTotal": 9,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -31716,7 +31716,7 @@
       "status": "open",
       "statusText": "벤쿠버호 바로예약 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
       "seatsLeft": 9,
-      "seatsTotal": 11,
+      "seatsTotal": 9,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -35943,7 +35943,7 @@
       "status": "open",
       "statusText": "벤쿠버호 바로예약 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
       "seatsLeft": 9,
-      "seatsTotal": 11,
+      "seatsTotal": 9,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -41063,7 +41063,7 @@
       "status": "open",
       "statusText": "벤쿠버호 바로예약 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
       "seatsLeft": 9,
-      "seatsTotal": 11,
+      "seatsTotal": 9,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -46245,7 +46245,7 @@
       "status": "open",
       "statusText": "벤쿠버호 바로예약 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
       "seatsLeft": 9,
-      "seatsTotal": 11,
+      "seatsTotal": 9,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -51797,7 +51797,7 @@
       "status": "open",
       "statusText": "벤쿠버호 바로예약 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
       "seatsLeft": 9,
-      "seatsTotal": 11,
+      "seatsTotal": 9,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -57814,7 +57814,7 @@
       "status": "open",
       "statusText": "벤쿠버호 바로예약 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
       "seatsLeft": 9,
-      "seatsTotal": 11,
+      "seatsTotal": 9,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -63400,7 +63400,7 @@
       "status": "open",
       "statusText": "벤쿠버호 바로예약 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
       "seatsLeft": 9,
-      "seatsTotal": 11,
+      "seatsTotal": 9,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -68973,7 +68973,7 @@
       "status": "open",
       "statusText": "벤쿠버호 바로예약 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
       "seatsLeft": 9,
-      "seatsTotal": 11,
+      "seatsTotal": 9,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -73506,7 +73506,7 @@
       "status": "open",
       "statusText": "벤쿠버호 바로예약 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
       "seatsLeft": 9,
-      "seatsTotal": 11,
+      "seatsTotal": 9,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -78334,7 +78334,7 @@
       "status": "open",
       "statusText": "벤쿠버호 바로예약 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
       "seatsLeft": 9,
-      "seatsTotal": 11,
+      "seatsTotal": 9,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -83302,7 +83302,7 @@
       "status": "open",
       "statusText": "벤쿠버호 바로예약 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
       "seatsLeft": 9,
-      "seatsTotal": 11,
+      "seatsTotal": 9,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -88160,7 +88160,7 @@
       "status": "open",
       "statusText": "벤쿠버호 바로예약 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
       "seatsLeft": 9,
-      "seatsTotal": 11,
+      "seatsTotal": 9,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -93530,7 +93530,7 @@
       "status": "open",
       "statusText": "벤쿠버호 바로예약 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
       "seatsLeft": 9,
-      "seatsTotal": 11,
+      "seatsTotal": 9,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -98798,7 +98798,7 @@
       "status": "open",
       "statusText": "벤쿠버호 바로예약 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
       "seatsLeft": 9,
-      "seatsTotal": 11,
+      "seatsTotal": 9,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -104129,7 +104129,7 @@
       "status": "open",
       "statusText": "벤쿠버호 바로예약 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
       "seatsLeft": 9,
-      "seatsTotal": 11,
+      "seatsTotal": 9,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -109101,7 +109101,7 @@
       "status": "open",
       "statusText": "벤쿠버호 바로예약 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
       "seatsLeft": 9,
-      "seatsTotal": 11,
+      "seatsTotal": 9,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -114620,7 +114620,7 @@
       "status": "open",
       "statusText": "벤쿠버호 바로예약 운항시간 : 07:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명",
       "seatsLeft": 9,
-      "seatsTotal": 11,
+      "seatsTotal": 9,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
