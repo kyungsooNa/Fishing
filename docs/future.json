@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-22T22:50:35.436Z",
+  "generatedAt": "2026-11-22T22:51:56.752Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -175,14 +175,14 @@
     "ebada": 70,
     "emerald": 70,
     "enjoy": 70,
-    "eunhasuho": 22,
-    "fishbank": 22,
-    "fishhunter": 22,
-    "gagaho": 22,
-    "galchiho": 22,
-    "gdcompany": 22,
-    "genieyonghan": 22,
-    "giant": 22,
+    "eunhasuho": 70,
+    "fishbank": 70,
+    "fishhunter": 70,
+    "gagaho": 70,
+    "galchiho": 70,
+    "gdcompany": 70,
+    "genieyonghan": 70,
+    "giant": 70,
     "goaraho": 22,
     "gonghyeonjin": 22,
     "gosu": 22,
@@ -2408,7 +2408,7 @@
       "status": "open",
       "statusText": "은하수호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -6979,7 +6979,7 @@
       "status": "open",
       "statusText": "은하수호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -12046,7 +12046,7 @@
       "status": "open",
       "statusText": "은하수호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -17564,7 +17564,7 @@
       "status": "open",
       "statusText": "은하수호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -23160,7 +23160,7 @@
       "status": "open",
       "statusText": "은하수호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -28677,8 +28677,8 @@
       "species": "돌돔",
       "tide": "4물",
       "status": "open",
-      "statusText": "흑룡호 바로예약 어종:돌돔,쥐치,열기,볼락,왕전갱이 등등♦️예약확정: 예약➡️입금➡️예약확정♦️입금예시:7월9일(김흑룡) 입금시 위와같이 작성후 입금후 문자남겨주세요 어종 : 돌돔,쥐치 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리4명예약/16명",
-      "seatsLeft": 4,
+      "statusText": "흑룡호 바로예약 어종:돌돔,쥐치,열기,볼락,왕전갱이 등등♦️예약확정: 예약➡️입금➡️예약확정♦️입금예시:7월9일(김흑룡) 입금시 위와같이 작성후 입금후 문자남겨주세요 어종 : 돌돔,쥐치 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리3명예약/17명",
+      "seatsLeft": 3,
       "seatsTotal": 20,
       "price": null,
       "url": "https://fishhunter.sunsang24.com/ship/schedule_fleet/202612"
@@ -29443,7 +29443,7 @@
       "status": "open",
       "statusText": "은하수호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -35596,7 +35596,7 @@
       "status": "open",
       "statusText": "은하수호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -41504,7 +41504,7 @@
       "status": "open",
       "statusText": "은하수호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -46552,7 +46552,7 @@
       "status": "open",
       "statusText": "은하수호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -51568,7 +51568,7 @@
       "status": "open",
       "statusText": "은하수호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -56767,7 +56767,7 @@
       "status": "open",
       "statusText": "은하수호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -61860,7 +61860,7 @@
       "status": "open",
       "statusText": "은하수호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -67225,7 +67225,7 @@
       "status": "open",
       "statusText": "은하수호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -72682,7 +72682,7 @@
       "status": "open",
       "statusText": "은하수호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -78266,7 +78266,7 @@
       "status": "open",
       "statusText": "은하수호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -83450,7 +83450,7 @@
       "status": "open",
       "statusText": "은하수호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -89159,7 +89159,7 @@
       "status": "open",
       "statusText": "은하수호 바로예약 어종 : 감성돔 / 흘림 찌낚시 운항시간 : 05:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명",
       "seatsLeft": 11,
-      "seatsTotal": 12,
+      "seatsTotal": 11,
       "price": null,
       "url": "https://eunhasuho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -92885,8 +92885,8 @@
       "species": "방어",
       "tide": "무시",
       "status": "open",
-      "statusText": "지디1호 바로예약 어종 : 방어 / 선상 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명예약/4명",
-      "seatsLeft": 21,
+      "statusText": "지디1호 바로예약 어종 : 방어 / 선상 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명예약/5명",
+      "seatsLeft": 20,
       "seatsTotal": 25,
       "price": null,
       "url": "https://gdcompany.sunsang24.com/ship/schedule_fleet/202701"
@@ -96612,8 +96612,8 @@
       "species": "가자미",
       "tide": "2물",
       "status": "open",
-      "statusText": "지니호 바로예약 어종 : 어구가자미 / 생미끼,선상 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리15명예약/2명",
-      "seatsLeft": 15,
+      "statusText": "지니호 바로예약 어종 : 어구가자미 / 생미끼,선상 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명예약/4명",
+      "seatsLeft": 13,
       "seatsTotal": 17,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202701"
@@ -119609,8 +119609,8 @@
       "species": "돌돔",
       "tide": "2물",
       "status": "open",
-      "statusText": "흑룡호 바로예약 어종:돌돔,쥐치,열기,볼락,왕전갱이 등등♦️예약확정: 예약➡️입금➡️예약확정♦️입금예시:7월9일(김흑룡) 입금시 위와같이 작성후 입금후 문자남겨주세요 어종 : 돌돔,쥐치 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/2명",
-      "seatsLeft": 18,
+      "statusText": "흑룡호 바로예약 어종:돌돔,쥐치,열기,볼락,왕전갱이 등등♦️예약확정: 예약➡️입금➡️예약확정♦️입금예시:7월9일(김흑룡) 입금시 위와같이 작성후 입금후 문자남겨주세요 어종 : 돌돔,쥐치 운항시간 : 04:30 ~ 14:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명예약/3명",
+      "seatsLeft": 17,
       "seatsTotal": 20,
       "price": null,
       "url": "https://fishhunter.sunsang24.com/ship/schedule_fleet/202701"
@@ -122003,8 +122003,8 @@
       "species": "가자미",
       "tide": "3물",
       "status": "open",
-      "statusText": "지니호 바로예약 어종 : 어구가자미 / 생미끼,선상 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
-      "seatsLeft": 17,
+      "statusText": "지니호 바로예약 어종 : 어구가자미 / 생미끼,선상 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/6명",
+      "seatsLeft": 11,
       "seatsTotal": 17,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202701"
@@ -123431,8 +123431,8 @@
       "species": "가자미",
       "tide": "4물",
       "status": "open",
-      "statusText": "지니호 바로예약 어종 : 어구가자미 / 생미끼,선상 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
-      "seatsLeft": 17,
+      "statusText": "지니호 바로예약 어종 : 어구가자미 / 생미끼,선상 운항시간 : 07:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/6명",
+      "seatsLeft": 11,
       "seatsTotal": 17,
       "price": null,
       "url": "https://genieyonghan.sunsang24.com/ship/schedule_fleet/202701"
