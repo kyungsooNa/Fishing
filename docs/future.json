@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-22T02:28:58.769Z",
+  "generatedAt": "2026-11-22T02:30:23.453Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -130,14 +130,14 @@
     "vtrfishing": 71,
     "wangnuni": 71,
     "welcome": 71,
-    "yejiqueen": 71,
-    "yeongjae": 22,
-    "yong": 22,
-    "yongma": 22,
-    "ysoceanstar": 22,
-    "yurimho": 22,
-    "eungabi": 22,
-    "ocpro": 22,
+    "yejiqueen": 22,
+    "yeongjae": 71,
+    "yong": 71,
+    "yongma": 71,
+    "ysoceanstar": 71,
+    "yurimho": 71,
+    "eungabi": 71,
+    "ocpro": 71,
     "supernova": 22,
     "goldenbaek": 22,
     "blueocean2": 22,
@@ -2002,7 +2002,7 @@
       "status": "open",
       "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -6998,7 +6998,7 @@
       "status": "open",
       "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -11571,7 +11571,7 @@
       "status": "open",
       "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -16638,7 +16638,7 @@
       "status": "open",
       "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -22072,7 +22072,7 @@
       "status": "open",
       "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -39976,7 +39976,7 @@
       "status": "open",
       "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -45884,7 +45884,7 @@
       "status": "open",
       "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -50932,7 +50932,7 @@
       "status": "open",
       "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -55948,7 +55948,7 @@
       "status": "open",
       "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -66240,7 +66240,7 @@
       "status": "open",
       "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -71628,7 +71628,7 @@
       "status": "open",
       "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -77085,7 +77085,7 @@
       "status": "open",
       "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -82669,7 +82669,7 @@
       "status": "open",
       "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -87853,7 +87853,7 @@
       "status": "open",
       "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -93541,7 +93541,7 @@
       "status": "open",
       "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
     },
