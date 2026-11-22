@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-22T22:51:56.752Z",
+  "generatedAt": "2026-11-22T22:53:20.086Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -183,13 +183,13 @@
     "gdcompany": 70,
     "genieyonghan": 70,
     "giant": 70,
-    "goaraho": 22,
-    "gonghyeonjin": 22,
-    "gosu": 22,
-    "gsseven": 22,
-    "gudiho": 22,
-    "gukbo": 71,
-    "gull": 22,
+    "goaraho": 70,
+    "gonghyeonjin": 70,
+    "gosu": 70,
+    "gsseven": 70,
+    "gudiho": 70,
+    "gukbo": 22,
+    "gull": 70,
     "gundam": 22,
     "gunsannaksi": 22,
     "gyeongjuho": 22,
@@ -263,7 +263,7 @@
     "napoliho": 64,
     "bumblebee": 64,
     "eagleho": 57,
-    "goldatsr": 71
+    "goldatsr": 22
   },
   "trips": [
     {
@@ -2171,7 +2171,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 광어 / 다운샷,똥침,선상,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": 21,
+      "seatsTotal": null,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -6763,7 +6763,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 광어 / 다운샷,똥침,선상,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": 21,
+      "seatsTotal": null,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -11135,8 +11135,8 @@
       "species": "광어·우럭·열기",
       "tide": "무시",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 광어,우럭,열기,노래미 / 갯바위,똥침,루어,생미끼,선상,어초,지깅 운항시간 : 04:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
+      "statusText": "홈런호 바로예약 어종 : 광어,우럭,열기,노래미 / 갯바위,똥침,루어,생미끼,선상,어초,지깅 운항시간 : 04:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/6명",
+      "seatsLeft": 14,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202612"
@@ -11788,7 +11788,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 광어 / 다운샷,똥침,선상,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": 21,
+      "seatsTotal": null,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -15019,8 +15019,8 @@
       "species": "문어",
       "tide": "무시",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 문어 / 루어 운항시간 : 16:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
+      "statusText": "홈런호 바로예약 어종 : 문어 / 루어 운항시간 : 16:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/6명",
+      "seatsLeft": 14,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202612"
@@ -16590,8 +16590,8 @@
       "species": "광어·우럭·열기",
       "tide": "1물",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 광어,우럭,열기,노래미 / 갯바위,똥침,루어,생미끼,선상,어초,지깅 운항시간 : 04:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
+      "statusText": "홈런호 바로예약 어종 : 광어,우럭,열기,노래미 / 갯바위,똥침,루어,생미끼,선상,어초,지깅 운항시간 : 04:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/6명",
+      "seatsLeft": 14,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202612"
@@ -17306,7 +17306,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 광어 / 다운샷,똥침,선상,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": 21,
+      "seatsTotal": null,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -20495,8 +20495,8 @@
       "species": "문어",
       "tide": "1물",
       "status": "open",
-      "statusText": "홈런호 바로예약 어종 : 문어 / 루어 운항시간 : 16:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
-      "seatsLeft": 20,
+      "statusText": "홈런호 바로예약 어종 : 문어 / 루어 운항시간 : 16:00 ~ 03:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명예약/3명",
+      "seatsLeft": 17,
       "seatsTotal": 20,
       "price": null,
       "url": "https://gull.sunsang24.com/ship/schedule_fleet/202612"
@@ -22881,7 +22881,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 광어 / 다운샷,똥침,선상,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": 21,
+      "seatsTotal": null,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -29164,7 +29164,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 광어 / 다운샷,똥침,선상,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": 21,
+      "seatsTotal": null,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -35317,7 +35317,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 광어 / 다운샷,똥침,선상,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": 21,
+      "seatsTotal": null,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -41246,7 +41246,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 광어 / 다운샷,똥침,선상,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": 21,
+      "seatsTotal": null,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -46315,7 +46315,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 광어 / 다운샷,똥침,선상,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": 21,
+      "seatsTotal": null,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -51331,7 +51331,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 광어 / 다운샷,똥침,선상,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": 21,
+      "seatsTotal": null,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -56530,7 +56530,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 광어 / 다운샷,똥침,선상,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": 21,
+      "seatsTotal": null,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -61602,7 +61602,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 광어 / 다운샷,똥침,선상,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": 21,
+      "seatsTotal": null,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -66946,7 +66946,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 광어 / 다운샷,똥침,선상,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": 21,
+      "seatsTotal": null,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -72424,7 +72424,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 광어 / 다운샷,똥침,선상,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": 21,
+      "seatsTotal": null,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -78008,7 +78008,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 광어 / 다운샷,똥침,선상,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": 21,
+      "seatsTotal": null,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -83171,7 +83171,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 광어 / 다운샷,똥침,선상,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": 21,
+      "seatsTotal": null,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -88880,7 +88880,7 @@
       "status": "open",
       "statusText": "아라호 바로예약 어종 : 광어 / 다운샷,똥침,선상,어초,침선 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
       "seatsLeft": 21,
-      "seatsTotal": 21,
+      "seatsTotal": null,
       "price": null,
       "url": "https://goaraho.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -90512,8 +90512,8 @@
       "species": "대구",
       "tide": "조금",
       "status": "open",
-      "statusText": "미르호 바로예약 어종 : 대구 / 타이라바 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/8명",
-      "seatsLeft": 5,
+      "statusText": "미르호 바로예약 어종 : 대구 / 타이라바 운항시간 : 06:20 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리4명예약/9명",
+      "seatsLeft": 4,
       "seatsTotal": 13,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202612"
@@ -108979,8 +108979,8 @@
       "species": "가자미",
       "tide": "10물",
       "status": "open",
-      "statusText": "돌핀호 바로예약 어종 : 어구가자미 운항시간 : 06:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리21명",
-      "seatsLeft": 21,
+      "statusText": "돌핀호 바로예약 어종 : 어구가자미 운항시간 : 06:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명예약/3명",
+      "seatsLeft": 18,
       "seatsTotal": 21,
       "price": null,
       "url": "https://gonghyeonjin.sunsang24.com/ship/schedule_fleet/202701"
@@ -157082,6 +157082,27 @@
       "seatsTotal": null,
       "price": null,
       "url": "https://nature.sunsang24.com/ship/schedule_fleet/202702"
+    },
+    {
+      "siteId": "goldatsr",
+      "siteName": "금성호",
+      "boat": "금성호",
+      "port": "강원 삼척 임원항",
+      "phone": "010-5376-4829",
+      "date": "2027-02-21",
+      "departAt": "06:00",
+      "meetingAt": "06:00",
+      "returnAt": "14:00",
+      "session": "종일",
+      "hours": 8,
+      "species": "대구",
+      "tide": "7물",
+      "status": "open",
+      "statusText": "금성호 바로예약 어종 : 대구 / 선상,지깅 운항시간 : 06:00 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
+      "seatsLeft": 10,
+      "seatsTotal": null,
+      "price": null,
+      "url": "https://goldatsr.sunsang24.com/ship/schedule_fleet/202702"
     },
     {
       "siteId": "taeanfishing",
