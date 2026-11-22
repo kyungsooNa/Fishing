@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-22T22:53:20.086Z",
+  "generatedAt": "2026-11-22T22:54:45.135Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -190,14 +190,14 @@
     "gudiho": 70,
     "gukbo": 22,
     "gull": 70,
-    "gundam": 22,
-    "gunsannaksi": 22,
-    "gyeongjuho": 22,
-    "haemaho": 22,
-    "hanareum": 22,
-    "hanbada": 71,
-    "harmony": 71,
-    "healingho": 71,
+    "gundam": 70,
+    "gunsannaksi": 70,
+    "gyeongjuho": 70,
+    "haemaho": 70,
+    "hanareum": 70,
+    "hanbada": 22,
+    "harmony": 22,
+    "healingho": 22,
     "heeyoung": 71,
     "hunterfishing": 71,
     "jangbogo": 71,
@@ -4561,7 +4561,7 @@
       "status": "open",
       "statusText": "아폴로호 (일정-1) 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -6217,7 +6217,7 @@
       "status": "open",
       "statusText": "뉴빅토리호 바로예약 어종 : 광어,우럭 / 똥침,생미끼,선상,어초,침선 운항시간 : 04:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -9018,7 +9018,7 @@
       "status": "open",
       "statusText": "아폴로호 (일정-1) 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -11305,7 +11305,7 @@
       "status": "open",
       "statusText": "뉴빅토리호 바로예약 어종 : 광어,우럭 / 똥침,생미끼,선상,어초,침선 운항시간 : 04:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -14390,7 +14390,7 @@
       "status": "open",
       "statusText": "아폴로호 (일정-1) 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -16760,7 +16760,7 @@
       "status": "open",
       "statusText": "뉴빅토리호 바로예약 어종 : 광어,우럭 / 똥침,생미끼,선상,어초,침선 운항시간 : 04:30 ~ 14:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -19866,7 +19866,7 @@
       "status": "open",
       "statusText": "아폴로호 (일정-1) 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -24725,7 +24725,7 @@
       "status": "open",
       "statusText": "아폴로호 (일정-1) 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -30974,7 +30974,7 @@
       "status": "open",
       "statusText": "아폴로호 (일정-1) 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -34706,7 +34706,7 @@
       "status": "open",
       "statusText": "뉴빅토리호 바로예약 어종 : 광어,우럭 / 똥침,생미끼,선상,어초,침선 운항시간 : 04:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -37800,7 +37800,7 @@
       "status": "open",
       "statusText": "아폴로호 (일정-1) 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -40614,7 +40614,7 @@
       "status": "open",
       "statusText": "뉴빅토리호 바로예약 어종 : 광어,우럭 / 똥침,생미끼,선상,어초,침선 운항시간 : 04:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -43687,7 +43687,7 @@
       "status": "open",
       "statusText": "아폴로호 (일정-1) 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -45662,7 +45662,7 @@
       "status": "open",
       "statusText": "뉴빅토리호 바로예약 어종 : 광어,우럭 / 똥침,생미끼,선상,어초,침선 운항시간 : 04:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -48451,7 +48451,7 @@
       "status": "open",
       "statusText": "아폴로호 (일정-1) 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -50678,7 +50678,7 @@
       "status": "open",
       "statusText": "뉴빅토리호 바로예약 어종 : 광어,우럭 / 똥침,생미끼,선상,어초,침선 운항시간 : 04:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -53510,7 +53510,7 @@
       "status": "open",
       "statusText": "아폴로호 (일정-1) 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -55898,7 +55898,7 @@
       "status": "open",
       "statusText": "뉴빅토리호 바로예약 어종 : 광어,우럭 / 똥침,생미끼,선상,어초,침선 운항시간 : 04:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -58710,7 +58710,7 @@
       "status": "open",
       "statusText": "아폴로호 (일정-1) 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -60970,7 +60970,7 @@
       "status": "open",
       "statusText": "뉴빅토리호 바로예약 어종 : 광어,우럭 / 똥침,생미끼,선상,어초,침선 운항시간 : 04:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -62979,7 +62979,7 @@
       "status": "open",
       "statusText": "아폴로호 (일정-1) 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -66358,7 +66358,7 @@
       "status": "open",
       "statusText": "뉴빅토리호 바로예약 어종 : 광어,우럭 / 똥침,생미끼,선상,어초,침선 운항시간 : 04:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -68455,7 +68455,7 @@
       "status": "open",
       "statusText": "아폴로호 (일정-1) 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -71815,7 +71815,7 @@
       "status": "open",
       "statusText": "뉴빅토리호 바로예약 어종 : 광어,우럭 / 똥침,생미끼,선상,어초,침선 운항시간 : 04:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -74795,7 +74795,7 @@
       "status": "open",
       "statusText": "아폴로호 (일정-1) 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -77399,7 +77399,7 @@
       "status": "open",
       "statusText": "뉴빅토리호 바로예약 어종 : 광어,우럭 / 똥침,생미끼,선상,어초,침선 운항시간 : 04:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -80358,7 +80358,7 @@
       "status": "open",
       "statusText": "아폴로호 (일정-1) 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -82583,7 +82583,7 @@
       "status": "open",
       "statusText": "뉴빅토리호 바로예약 어종 : 광어,우럭 / 똥침,생미끼,선상,어초,침선 운항시간 : 04:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -85562,7 +85562,7 @@
       "status": "open",
       "statusText": "아폴로호 (일정-1) 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -88292,7 +88292,7 @@
       "status": "open",
       "statusText": "뉴빅토리호 바로예약 어종 : 광어,우럭 / 똥침,생미끼,선상,어초,침선 운항시간 : 04:30 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -91358,7 +91358,7 @@
       "status": "open",
       "statusText": "아폴로호 (일정-1) 바로예약 어종 : 주꾸미 / 루어,선상 운항시간 : 07:00 ~ 13:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리20명",
       "seatsLeft": 20,
-      "seatsTotal": 21,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://gunsannaksi.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -157229,6 +157229,27 @@
       "seatsTotal": 16,
       "price": null,
       "url": "https://baekya.sunsang24.com/ship/schedule_fleet/202702"
+    },
+    {
+      "siteId": "harmony",
+      "siteName": "하모니호",
+      "boat": "하모니호",
+      "port": null,
+      "phone": "010-9654-1715",
+      "date": "2027-02-21",
+      "departAt": "07:00",
+      "meetingAt": "07:00",
+      "returnAt": "16:00",
+      "session": "종일",
+      "hours": 9,
+      "species": "참돔",
+      "tide": "7물",
+      "status": "open",
+      "statusText": "하모니호 바로예약 어종 : 참돔 / 루어,타이라바 운항시간 : 07:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
+      "seatsLeft": 18,
+      "seatsTotal": null,
+      "price": null,
+      "url": "https://harmony.sunsang24.com/ship/schedule_fleet/202702"
     },
     {
       "siteId": "smgfishing",
