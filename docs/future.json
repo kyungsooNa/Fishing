@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-24T01:00:49.032Z",
+  "generatedAt": "2026-11-24T01:02:13.489Z",
   "horizonDays": 90,
   "cursors": {
     "7": 70,
@@ -127,14 +127,14 @@
     "venice": 22,
     "veteranfishing": 22,
     "viking": 22,
-    "vtrfishing": 70,
-    "wangnuni": 70,
-    "welcome": 70,
-    "yejiqueen": 22,
-    "yeongjae": 70,
-    "yong": 70,
-    "yongma": 70,
-    "ysoceanstar": 70,
+    "vtrfishing": 22,
+    "wangnuni": 22,
+    "welcome": 22,
+    "yejiqueen": 69,
+    "yeongjae": 22,
+    "yong": 22,
+    "yongma": 22,
+    "ysoceanstar": 22,
     "yurimho": 70,
     "eungabi": 70,
     "ocpro": 70,
@@ -1182,7 +1182,7 @@
       "status": "open",
       "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -4004,7 +4004,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 6만원 어종 : 우럭 / 다운샷,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -4382,7 +4382,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 5만원 어종 : 우럭 / 다운샷,선상 운항시간 : 13:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -6291,7 +6291,7 @@
       "status": "open",
       "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -9397,7 +9397,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 6만원 어종 : 우럭 / 다운샷,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -9797,7 +9797,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 5만원 어종 : 우럭 / 다운샷,선상 운항시간 : 13:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -11767,7 +11767,7 @@
       "status": "open",
       "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -14894,7 +14894,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 6만원 어종 : 우럭 / 다운샷,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -15294,7 +15294,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 5만원 어종 : 우럭 / 다운샷,선상 운항시간 : 13:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -17382,8 +17382,8 @@
       "species": "참돔",
       "tide": "3물",
       "status": "open",
-      "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리4명예약/14명",
-      "seatsLeft": 4,
+      "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/10명",
+      "seatsLeft": 8,
       "seatsTotal": 18,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
@@ -20699,7 +20699,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 6만원 어종 : 우럭 / 다운샷,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -21098,7 +21098,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 5만원 어종 : 우럭 / 다운샷,선상 운항시간 : 13:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -27072,7 +27072,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 6만원 어종 : 우럭 / 다운샷,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -27473,7 +27473,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 5만원 어종 : 우럭 / 다운샷,선상 운항시간 : 13:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -29858,7 +29858,7 @@
       "status": "open",
       "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -32952,7 +32952,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 6만원 어종 : 우럭 / 다운샷,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -33396,7 +33396,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 5만원 어종 : 우럭 / 다운샷,선상 운항시간 : 13:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -35766,7 +35766,7 @@
       "status": "open",
       "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -38839,7 +38839,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 6만원 어종 : 우럭 / 다운샷,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -39283,7 +39283,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 5만원 어종 : 우럭 / 다운샷,선상 운항시간 : 13:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -40814,7 +40814,7 @@
       "status": "open",
       "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -43603,7 +43603,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 6만원 어종 : 우럭 / 다운샷,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -44025,7 +44025,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 5만원 어종 : 우럭 / 다운샷,선상 운항시간 : 13:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -45830,7 +45830,7 @@
       "status": "open",
       "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -48662,7 +48662,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 6만원 어종 : 우럭 / 다운샷,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -49084,7 +49084,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 5만원 어종 : 우럭 / 다운샷,선상 운항시간 : 13:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -53883,7 +53883,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 6만원 어종 : 우럭 / 다운샷,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -54284,7 +54284,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 5만원 어종 : 우럭 / 다운샷,선상 운항시간 : 13:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -56143,7 +56143,7 @@
       "status": "open",
       "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -58951,7 +58951,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 6만원 어종 : 우럭 / 다운샷,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -59331,7 +59331,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 5만원 어종 : 우럭 / 다운샷,선상 운항시간 : 13:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -61531,7 +61531,7 @@
       "status": "open",
       "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -64489,7 +64489,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 6만원 어종 : 우럭 / 다운샷,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -64867,7 +64867,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 5만원 어종 : 우럭 / 다운샷,선상 운항시간 : 13:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -66967,7 +66967,7 @@
       "status": "open",
       "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -69968,7 +69968,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 6만원 어종 : 우럭 / 다운샷,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -70389,7 +70389,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 5만원 어종 : 우럭 / 다운샷,선상 운항시간 : 13:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -72551,7 +72551,7 @@
       "status": "open",
       "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -75552,7 +75552,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 6만원 어종 : 우럭 / 다운샷,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -75973,7 +75973,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 5만원 어종 : 우럭 / 다운샷,선상 운항시간 : 13:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -77756,7 +77756,7 @@
       "status": "open",
       "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -80735,7 +80735,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 6만원 어종 : 우럭 / 다운샷,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -81156,7 +81156,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 5만원 어종 : 우럭 / 다운샷,선상 운항시간 : 13:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -83485,7 +83485,7 @@
       "status": "open",
       "statusText": "오션스타3호 바로예약 어종 : 참돔 / 타이라바 운항시간 : 04:30 ~ 18:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
       "seatsLeft": 18,
-      "seatsTotal": 18,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://ysoceanstar.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -86551,7 +86551,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 6만원 어종 : 우럭 / 다운샷,선상 운항시간 : 07:00 ~ 12:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -86972,7 +86972,7 @@
       "status": "open",
       "statusText": "용성호 바로예약 어종은 시즌별/물때별로 달라집니다출항30분전 명부쓰시고 승선장소로 이동해주세요승선명부:충남 태안군 고남면 구매길93 구매항승선장소 : 충남 태안군 고남면 구매길93구매항구(출항시간 30분전까지 도착하시기 바랍니다.)선박비용 : 5만원 어종 : 우럭 / 다운샷,선상 운항시간 : 13:00 ~ 17:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://yong.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -154159,6 +154159,48 @@
       "seatsTotal": 17,
       "price": null,
       "url": "https://taeanfishing.sunsang24.com/ship/schedule_fleet/202702"
+    },
+    {
+      "siteId": "yeongjae",
+      "siteName": "영재호",
+      "boat": "영재호",
+      "port": null,
+      "phone": "010-9855-2676",
+      "date": "2027-02-22",
+      "departAt": "06:30",
+      "meetingAt": "06:30",
+      "returnAt": "13:30",
+      "session": "오전",
+      "hours": 7,
+      "species": "우럭·열기·대구",
+      "tide": "8물",
+      "status": "open",
+      "statusText": "영재호 바로예약 어종으로 출조합니다.♧ 선입금자분께서는 예약 후 선장에게 전화(010-9855-2676), 문자 또는 메모란칸에 출조어종을 남겨주세요. ♧ 예약 後 3시간이내 선비 미 입금시 예약이 자동취소됩니다. ♧ 출조 최소인원 3인 이상입니다. 어종 : 우럭,황열기,대구 운항시간 : 06:30 ~ 13:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리10명",
+      "seatsLeft": 10,
+      "seatsTotal": null,
+      "price": null,
+      "url": "https://yeongjae.sunsang24.com/ship/schedule_fleet/202702"
+    },
+    {
+      "siteId": "welcome",
+      "siteName": "왔어호",
+      "boat": "왔어호",
+      "port": "제주 제주시 한림항",
+      "phone": "010-2853-8252",
+      "date": "2027-02-22",
+      "departAt": "06:30",
+      "meetingAt": "06:30",
+      "returnAt": "17:30",
+      "session": "종일",
+      "hours": 11,
+      "species": "갑오징어",
+      "tide": "8물",
+      "status": "open",
+      "statusText": "왔어호 바로예약 어종 : 갑오징어 / 루어,선상 운항시간 : 06:30 ~ 17:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
+      "seatsLeft": 18,
+      "seatsTotal": 18,
+      "price": null,
+      "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202702"
     },
     {
       "siteId": "tpho",
