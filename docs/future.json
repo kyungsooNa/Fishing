@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-24T20:53:12.837Z",
+  "generatedAt": "2026-11-24T20:54:33.251Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -235,14 +235,14 @@
     "nurifish": 22,
     "orion": 68,
     "pacific": 68,
-    "parkpro": 22,
-    "pigho": 22,
-    "poseidon": 22,
-    "princeho": 22,
-    "pro": 22,
-    "redfox": 22,
-    "redpulsegs": 22,
-    "richard": 22,
+    "parkpro": 68,
+    "pigho": 68,
+    "poseidon": 68,
+    "princeho": 68,
+    "pro": 68,
+    "redfox": 68,
+    "redpulsegs": 68,
+    "richard": 68,
     "rise": 22,
     "rkclgh": 22,
     "rosemary": 22,
@@ -88835,7 +88835,7 @@
       "status": "open",
       "statusText": "거금 박프로호 바로예약 어종 : 참돔 / 선상,타이라바 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -90640,7 +90640,7 @@
       "status": "open",
       "statusText": "거금 박프로호 바로예약 어종 : 참돔 / 선상,타이라바 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -92464,7 +92464,7 @@
       "status": "open",
       "statusText": "거금 박프로호 바로예약 어종 : 참돔 / 선상,타이라바 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -93932,7 +93932,7 @@
       "status": "open",
       "statusText": "거금 박프로호 바로예약 어종 : 참돔 / 선상,타이라바 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -95339,7 +95339,7 @@
       "status": "open",
       "statusText": "거금 박프로호 바로예약 어종 : 참돔 / 선상,타이라바 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -96745,7 +96745,7 @@
       "status": "open",
       "statusText": "거금 박프로호 바로예약 어종 : 참돔 / 선상,타이라바 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -101565,7 +101565,7 @@
       "status": "open",
       "statusText": "거금 박프로호 바로예약 어종 : 참돔 / 선상,타이라바 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -103098,7 +103098,7 @@
       "status": "open",
       "statusText": "거금 박프로호 바로예약 어종 : 참돔 / 선상,타이라바 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -104671,7 +104671,7 @@
       "status": "open",
       "statusText": "거금 박프로호 바로예약 어종 : 참돔 / 선상,타이라바 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -106265,7 +106265,7 @@
       "status": "open",
       "statusText": "거금 박프로호 바로예약 어종 : 참돔 / 선상,타이라바 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -108109,7 +108109,7 @@
       "status": "open",
       "statusText": "거금 박프로호 바로예약 어종 : 참돔 / 선상,타이라바 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -109949,8 +109949,8 @@
       "species": "참돔",
       "tide": "1물",
       "status": "open",
-      "statusText": "거금 박프로호 바로예약 어종 : 참돔 / 선상,타이라바 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
-      "seatsLeft": 16,
+      "statusText": "거금 박프로호 바로예약 어종 : 참돔 / 선상,타이라바 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/2명",
+      "seatsLeft": 14,
       "seatsTotal": 16,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202701"
@@ -111522,7 +111522,7 @@
       "status": "open",
       "statusText": "거금 박프로호 바로예약 어종 : 참돔 / 선상,타이라바 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -113055,7 +113055,7 @@
       "status": "open",
       "statusText": "거금 박프로호 바로예약 어종 : 참돔 / 선상,타이라바 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -114525,7 +114525,7 @@
       "status": "open",
       "statusText": "거금 박프로호 바로예약 어종 : 참돔 / 선상,타이라바 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -115974,7 +115974,7 @@
       "status": "open",
       "statusText": "거금 박프로호 바로예약 어종 : 참돔 / 선상,타이라바 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -117402,7 +117402,7 @@
       "status": "open",
       "statusText": "거금 박프로호 바로예약 어종 : 참돔 / 선상,타이라바 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -118935,7 +118935,7 @@
       "status": "open",
       "statusText": "거금 박프로호 바로예약 어종 : 참돔 / 선상,타이라바 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -120527,8 +120527,8 @@
       "species": "참돔",
       "tide": "8물",
       "status": "open",
-      "statusText": "거금 박프로호 바로예약 어종 : 참돔 / 선상,타이라바 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명예약/3명",
-      "seatsLeft": 13,
+      "statusText": "거금 박프로호 바로예약 어종 : 참돔 / 선상,타이라바 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리14명예약/2명",
+      "seatsLeft": 14,
       "seatsTotal": 16,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202701"
@@ -123700,7 +123700,7 @@
       "status": "open",
       "statusText": "거금 박프로호 바로예약 어종 : 참돔 / 선상,타이라바 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -125233,7 +125233,7 @@
       "status": "open",
       "statusText": "거금 박프로호 바로예약 어종 : 참돔 / 선상,타이라바 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -126766,7 +126766,7 @@
       "status": "open",
       "statusText": "거금 박프로호 바로예약 어종 : 참돔 / 선상,타이라바 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -128005,7 +128005,7 @@
       "status": "open",
       "statusText": "거금 박프로호 바로예약 어종 : 참돔 / 선상,타이라바 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -129265,7 +129265,7 @@
       "status": "open",
       "statusText": "거금 박프로호 바로예약 어종 : 참돔 / 선상,타이라바 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -130625,7 +130625,7 @@
       "status": "open",
       "statusText": "거금 박프로호 바로예약 어종 : 참돔 / 선상,타이라바 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202701"
     },
@@ -131926,7 +131926,7 @@
       "status": "open",
       "statusText": "거금 박프로호 바로예약 어종 : 참돔 / 선상,타이라바 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리16명",
       "seatsLeft": 16,
-      "seatsTotal": 16,
+      "seatsTotal": 20,
       "price": null,
       "url": "https://parkpro.sunsang24.com/ship/schedule_fleet/202701"
     },
