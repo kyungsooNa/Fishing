@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-26T04:33:02.866Z",
+  "generatedAt": "2026-11-26T04:34:28.405Z",
   "horizonDays": 90,
   "cursors": {
     "7": 22,
@@ -218,14 +218,14 @@
     "ktg": 67,
     "lucy": 67,
     "lukina": 67,
-    "luna": 22,
-    "macgyver": 22,
-    "madoross": 22,
-    "manmul": 22,
-    "marineho": 22,
-    "mfish": 22,
-    "miracle": 22,
-    "muldori": 22,
+    "luna": 67,
+    "macgyver": 67,
+    "madoross": 67,
+    "manmul": 67,
+    "marineho": 67,
+    "mfish": 67,
+    "miracle": 67,
+    "muldori": 67,
     "nara": 22,
     "newhanlyo": 22,
     "newsky": 22,
@@ -3676,7 +3676,7 @@
       "status": "open",
       "statusText": "물돌이호 바로예약 어종)을 선택 할 수 있습니다.* 중식은 제공하지 않습니다.* 전자렌지, 정수기(물), 물끓이기 설치* 선비는 점심 도시락 값, 1만 원 공제 한 금액 입니다.* 간식으로 드실 사발면은 제공 합니다.* 점심시간 없이 한마리 더 잡는 전투낚시! 어종 : 광어,우럭,기타 운항시간 : 06:00 ~ 18:00 예약완료 입금전 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://muldori.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -7805,8 +7805,8 @@
       "species": "우럭",
       "tide": "2물",
       "status": "open",
-      "statusText": "무야호 바로예약 어종 : 우럭 / 똥침,생미끼,어초 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리5명예약/14명",
-      "seatsLeft": 5,
+      "statusText": "무야호 바로예약 어종 : 우럭 / 똥침,생미끼,어초 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리4명예약/15명",
+      "seatsLeft": 4,
       "seatsTotal": 19,
       "price": null,
       "url": "https://marineho.sunsang24.com/ship/schedule_fleet/202612"
@@ -9566,7 +9566,7 @@
       "status": "open",
       "statusText": "물돌이호 바로예약 어종)을 선택 할 수 있습니다.* 중식은 제공하지 않습니다.* 전자렌지, 정수기(물), 물끓이기 설치* 선비는 점심 도시락 값, 1만 원 공제 한 금액 입니다.* 간식으로 드실 사발면은 제공 합니다.* 점심시간 없이 한마리 더 잡는 전투낚시! 어종 : 광어,우럭,기타 운항시간 : 06:00 ~ 18:00 예약완료 입금전 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://muldori.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -14275,8 +14275,8 @@
       "species": "우럭",
       "tide": "3물",
       "status": "open",
-      "statusText": "무야호 바로예약 어종 : 우럭 / 똥침,생미끼,어초 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리9명예약/10명",
-      "seatsLeft": 9,
+      "statusText": "무야호 바로예약 어종 : 우럭 / 똥침,생미끼,어초 운항시간 : 05:00 ~ 16:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명예약/11명",
+      "seatsLeft": 8,
       "seatsTotal": 19,
       "price": null,
       "url": "https://marineho.sunsang24.com/ship/schedule_fleet/202612"
@@ -15855,7 +15855,7 @@
       "status": "open",
       "statusText": "물돌이호 바로예약 어종)을 선택 할 수 있습니다.* 중식은 제공하지 않습니다.* 전자렌지, 정수기(물), 물끓이기 설치* 선비는 점심 도시락 값, 1만 원 공제 한 금액 입니다.* 간식으로 드실 사발면은 제공 합니다.* 점심시간 없이 한마리 더 잡는 전투낚시! 어종 : 광어,우럭,기타 운항시간 : 06:00 ~ 18:00 예약완료 입금전 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://muldori.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -22008,7 +22008,7 @@
       "status": "open",
       "statusText": "물돌이호 바로예약 어종)을 선택 할 수 있습니다.* 중식은 제공하지 않습니다.* 전자렌지, 정수기(물), 물끓이기 설치* 선비는 점심 도시락 값, 1만 원 공제 한 금액 입니다.* 간식으로 드실 사발면은 제공 합니다.* 점심시간 없이 한마리 더 잡는 전투낚시! 어종 : 광어,우럭,기타 운항시간 : 06:00 ~ 18:00 예약완료 입금전 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://muldori.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -27937,7 +27937,7 @@
       "status": "open",
       "statusText": "물돌이호 바로예약 어종)을 선택 할 수 있습니다.* 중식은 제공하지 않습니다.* 전자렌지, 정수기(물), 물끓이기 설치* 선비는 점심 도시락 값, 1만 원 공제 한 금액 입니다.* 간식으로 드실 사발면은 제공 합니다.* 점심시간 없이 한마리 더 잡는 전투낚시! 어종 : 광어,우럭,기타 운항시간 : 06:00 ~ 18:00 예약완료 입금전 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://muldori.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -32765,7 +32765,7 @@
       "status": "open",
       "statusText": "물돌이호 바로예약 어종)을 선택 할 수 있습니다.* 중식은 제공하지 않습니다.* 전자렌지, 정수기(물), 물끓이기 설치* 선비는 점심 도시락 값, 1만 원 공제 한 금액 입니다.* 간식으로 드실 사발면은 제공 합니다.* 점심시간 없이 한마리 더 잡는 전투낚시! 어종 : 광어,우럭,기타 운항시간 : 06:00 ~ 18:00 예약완료 입금전 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://muldori.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -37823,7 +37823,7 @@
       "status": "open",
       "statusText": "물돌이호 바로예약 어종)을 선택 할 수 있습니다.* 중식은 제공하지 않습니다.* 전자렌지, 정수기(물), 물끓이기 설치* 선비는 점심 도시락 값, 1만 원 공제 한 금액 입니다.* 간식으로 드실 사발면은 제공 합니다.* 점심시간 없이 한마리 더 잡는 전투낚시! 어종 : 광어,우럭,기타 운항시간 : 06:00 ~ 18:00 예약완료 입금전 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://muldori.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -43107,7 +43107,7 @@
       "status": "open",
       "statusText": "물돌이호 바로예약 어종)을 선택 할 수 있습니다.* 중식은 제공하지 않습니다.* 전자렌지, 정수기(물), 물끓이기 설치* 선비는 점심 도시락 값, 1만 원 공제 한 금액 입니다.* 간식으로 드실 사발면은 제공 합니다.* 점심시간 없이 한마리 더 잡는 전투낚시! 어종 : 광어,우럭,기타 운항시간 : 06:00 ~ 18:00 예약완료 입금전 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://muldori.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -48175,7 +48175,7 @@
       "status": "open",
       "statusText": "물돌이호 바로예약 어종)을 선택 할 수 있습니다.* 중식은 제공하지 않습니다.* 전자렌지, 정수기(물), 물끓이기 설치* 선비는 점심 도시락 값, 1만 원 공제 한 금액 입니다.* 간식으로 드실 사발면은 제공 합니다.* 점심시간 없이 한마리 더 잡는 전투낚시! 어종 : 광어,우럭,기타 운항시간 : 06:00 ~ 18:00 예약완료 입금전 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://muldori.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -53714,7 +53714,7 @@
       "status": "open",
       "statusText": "물돌이호 바로예약 어종)을 선택 할 수 있습니다.* 중식은 제공하지 않습니다.* 전자렌지, 정수기(물), 물끓이기 설치* 선비는 점심 도시락 값, 1만 원 공제 한 금액 입니다.* 간식으로 드실 사발면은 제공 합니다.* 점심시간 없이 한마리 더 잡는 전투낚시! 어종 : 광어,우럭,기타 운항시간 : 06:00 ~ 18:00 예약완료 입금전 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://muldori.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -59191,7 +59191,7 @@
       "status": "open",
       "statusText": "물돌이호 바로예약 어종)을 선택 할 수 있습니다.* 중식은 제공하지 않습니다.* 전자렌지, 정수기(물), 물끓이기 설치* 선비는 점심 도시락 값, 1만 원 공제 한 금액 입니다.* 간식으로 드실 사발면은 제공 합니다.* 점심시간 없이 한마리 더 잡는 전투낚시! 어종 : 광어,우럭,기타 운항시간 : 06:00 ~ 18:00 예약완료 입금전 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://muldori.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -64796,7 +64796,7 @@
       "status": "open",
       "statusText": "물돌이호 바로예약 어종)을 선택 할 수 있습니다.* 중식은 제공하지 않습니다.* 전자렌지, 정수기(물), 물끓이기 설치* 선비는 점심 도시락 값, 1만 원 공제 한 금액 입니다.* 간식으로 드실 사발면은 제공 합니다.* 점심시간 없이 한마리 더 잡는 전투낚시! 어종 : 광어,우럭,기타 운항시간 : 06:00 ~ 18:00 예약완료 입금전 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://muldori.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -70106,7 +70106,7 @@
       "status": "open",
       "statusText": "물돌이호 바로예약 어종)을 선택 할 수 있습니다.* 중식은 제공하지 않습니다.* 전자렌지, 정수기(물), 물끓이기 설치* 선비는 점심 도시락 값, 1만 원 공제 한 금액 입니다.* 간식으로 드실 사발면은 제공 합니다.* 점심시간 없이 한마리 더 잡는 전투낚시! 어종 : 광어,우럭,기타 운항시간 : 06:00 ~ 18:00 예약완료 입금전 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://muldori.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -75919,7 +75919,7 @@
       "status": "open",
       "statusText": "물돌이호 바로예약 어종)을 선택 할 수 있습니다.* 중식은 제공하지 않습니다.* 전자렌지, 정수기(물), 물끓이기 설치* 선비는 점심 도시락 값, 1만 원 공제 한 금액 입니다.* 간식으로 드실 사발면은 제공 합니다.* 점심시간 없이 한마리 더 잡는 전투낚시! 어종 : 광어,우럭,기타 운항시간 : 06:00 ~ 18:00 예약완료 입금전 취소대기 취소완료 예약대기 출조대기 남은자리17명",
       "seatsLeft": 17,
-      "seatsTotal": null,
+      "seatsTotal": 17,
       "price": null,
       "url": "https://muldori.sunsang24.com/ship/schedule_fleet/202612"
     },
