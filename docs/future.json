@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-27T04:59:07.596Z",
+  "generatedAt": "2026-11-27T05:00:30.995Z",
   "horizonDays": 90,
   "cursors": {
     "7": 67,
@@ -123,14 +123,14 @@
     "tpho": 22,
     "twin": 22,
     "urbis": 22,
-    "vancouver": 67,
-    "venice": 67,
-    "veteranfishing": 67,
-    "viking": 67,
-    "vtrfishing": 67,
-    "wangnuni": 67,
-    "welcome": 67,
-    "yejiqueen": 22,
+    "vancouver": 22,
+    "venice": 22,
+    "veteranfishing": 22,
+    "viking": 22,
+    "vtrfishing": 22,
+    "wangnuni": 22,
+    "welcome": 22,
+    "yejiqueen": 66,
     "yeongjae": 67,
     "yong": 67,
     "yongma": 67,
@@ -3796,7 +3796,7 @@
       "status": "open",
       "statusText": "뉴벤쿠버호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 15,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -5013,8 +5013,8 @@
       "species": "광어·우럭",
       "tide": "2물",
       "status": "open",
-      "statusText": "예지퀸호 바로예약 어종 : 광어,우럭 / 생미끼 외수질,어초 운항시간 : 06:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리12명예약/7명",
-      "seatsLeft": 12,
+      "statusText": "예지퀸호 바로예약 어종 : 광어,우럭 / 생미끼 외수질,어초 운항시간 : 06:30 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리11명예약/8명",
+      "seatsLeft": 11,
       "seatsTotal": 19,
       "price": null,
       "url": "https://yejiqueen.sunsang24.com/ship/schedule_fleet/202612"
@@ -10148,7 +10148,7 @@
       "status": "open",
       "statusText": "뉴벤쿠버호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 15,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -16364,7 +16364,7 @@
       "status": "open",
       "statusText": "뉴벤쿠버호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 15,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -22293,7 +22293,7 @@
       "status": "open",
       "statusText": "뉴벤쿠버호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 15,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -27183,7 +27183,7 @@
       "status": "open",
       "statusText": "뉴벤쿠버호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 15,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -32240,7 +32240,7 @@
       "status": "open",
       "statusText": "뉴벤쿠버호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 15,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -37545,7 +37545,7 @@
       "status": "open",
       "statusText": "뉴벤쿠버호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 15,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -42634,7 +42634,7 @@
       "status": "open",
       "statusText": "뉴벤쿠버호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 15,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -48131,7 +48131,7 @@
       "status": "open",
       "statusText": "뉴벤쿠버호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 15,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -53650,7 +53650,7 @@
       "status": "open",
       "statusText": "뉴벤쿠버호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 15,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -59255,7 +59255,7 @@
       "status": "open",
       "statusText": "뉴벤쿠버호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 15,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -64502,7 +64502,7 @@
       "status": "open",
       "statusText": "뉴벤쿠버호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 15,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -70294,7 +70294,7 @@
       "status": "open",
       "statusText": "뉴벤쿠버호 바로예약 어종 : 부시리,방어 / 루어,선상,지깅 운항시간 : 06:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리13명",
       "seatsLeft": 13,
-      "seatsTotal": 15,
+      "seatsTotal": 13,
       "price": null,
       "url": "https://vancouver.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -145908,6 +145908,27 @@
       "seatsTotal": 14,
       "price": null,
       "url": "https://jejutv.sunsang24.com/ship/schedule_fleet/202702"
+    },
+    {
+      "siteId": "welcome",
+      "siteName": "왔어호",
+      "boat": "왔어호",
+      "port": "제주 제주시 한림항",
+      "phone": "010-2853-8252",
+      "date": "2027-02-25",
+      "departAt": "06:30",
+      "meetingAt": "06:30",
+      "returnAt": "17:30",
+      "session": "종일",
+      "hours": 11,
+      "species": "갑오징어",
+      "tide": "11물",
+      "status": "open",
+      "statusText": "왔어호 바로예약 어종 : 갑오징어 / 루어,선상 운항시간 : 06:30 ~ 17:30 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리18명",
+      "seatsLeft": 18,
+      "seatsTotal": 18,
+      "price": null,
+      "url": "https://welcome.sunsang24.com/ship/schedule_fleet/202702"
     },
     {
       "siteId": "tpho",
