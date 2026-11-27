@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-27T23:07:38.049Z",
+  "generatedAt": "2026-11-27T23:09:22.985Z",
   "horizonDays": 90,
   "cursors": {
-    "7": 22,
+    "7": 65,
     "sky": 65,
     "eugeneho": 71,
     "mansu": 71,
@@ -145,13 +145,13 @@
     "nature": 65,
     "bj": 65,
     "dongmun": 65,
-    "2018miracle": 22,
-    "ace": 66,
-    "alice": 22,
-    "aqua": 22,
-    "arakhaeng": 22,
-    "arirang": 22,
-    "art": 22,
+    "2018miracle": 65,
+    "ace": 22,
+    "alice": 65,
+    "aqua": 65,
+    "arakhaeng": 65,
+    "arirang": 65,
+    "art": 65,
     "asiaho": 22,
     "badalove": 22,
     "baekya": 22,
@@ -2808,7 +2808,7 @@
       "status": "open",
       "statusText": "황금사자호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": null,
       "price": null,
       "url": "https://7.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -9214,7 +9214,7 @@
       "status": "open",
       "statusText": "황금사자호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": null,
       "price": null,
       "url": "https://7.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -15353,7 +15353,7 @@
       "status": "open",
       "statusText": "황금사자호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": null,
       "price": null,
       "url": "https://7.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -20631,7 +20631,7 @@
       "status": "open",
       "statusText": "황금사자호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": null,
       "price": null,
       "url": "https://7.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -25836,7 +25836,7 @@
       "status": "open",
       "statusText": "황금사자호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": null,
       "price": null,
       "url": "https://7.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -31246,7 +31246,7 @@
       "status": "open",
       "statusText": "황금사자호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": null,
       "price": null,
       "url": "https://7.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -36550,7 +36550,7 @@
       "status": "open",
       "statusText": "황금사자호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": null,
       "price": null,
       "url": "https://7.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -42126,7 +42126,7 @@
       "status": "open",
       "statusText": "황금사자호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": null,
       "price": null,
       "url": "https://7.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -47835,7 +47835,7 @@
       "status": "open",
       "statusText": "황금사자호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": null,
       "price": null,
       "url": "https://7.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -53588,7 +53588,7 @@
       "status": "open",
       "statusText": "황금사자호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": null,
       "price": null,
       "url": "https://7.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -58962,7 +58962,7 @@
       "status": "open",
       "statusText": "황금사자호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": null,
       "price": null,
       "url": "https://7.sunsang24.com/ship/schedule_fleet/202612"
     },
@@ -64860,7 +64860,7 @@
       "status": "open",
       "statusText": "황금사자호 바로예약 어종 : 주꾸미,갑오징어 운항시간 : 05:00 ~ 15:00 예약완료 입금대기 취소대기 취소완료 예약대기 출조대기 남은자리8명",
       "seatsLeft": 8,
-      "seatsTotal": 8,
+      "seatsTotal": null,
       "price": null,
       "url": "https://7.sunsang24.com/ship/schedule_fleet/202612"
     },
